@@ -1,0 +1,6 @@
+{
+  "name": "Devil Labs",
+  "description": "Devil Labs builds autonomous AI systems and scalable web infrastructure for the modern enterprise.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
