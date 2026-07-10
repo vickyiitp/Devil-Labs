@@ -22,6 +22,30 @@ export const serviceData: Record<string, any> = {
         a: 'Typically, a high-converting landing page takes 1-2 weeks from concept to deployment, depending on the complexity of the design, copy, and tracking integration.'
       }
     ],
+    
+    plans: [
+      {
+        name: 'Starter Plan',
+        price: '₹7,500',
+        description: 'Ideal for small businesses in emerging markets (Gaya, Patna) establishing their digital footprint.',
+        features: ['3-4 Web Pages', 'Mobile Responsive UI', 'Contact Form Integration', 'Basic On-Page SEO', 'Social Media Links'],
+        highlight: false
+      },
+      {
+        name: 'Professional Plan',
+        price: '₹15,000',
+        description: 'Comprehensive solution for growing brands across New Delhi and metro cities.',
+        features: ['Up to 10 Web Pages', 'Custom UI/UX Design', 'CMS Integration', 'Speed & Performance Optimization', 'Advanced Analytics'],
+        highlight: true
+      },
+      {
+        name: 'Enterprise Plan',
+        price: '₹35,000+',
+        description: 'Fully custom architecture with advanced automation and integrations.',
+        features: ['Unlimited / Dynamic Pages', 'Payment Gateway Integration', 'AI Automation & Agents', 'Custom Backend Systems', 'Priority Tech Support'],
+        highlight: false
+      }
+    ],
     contactValue: 'Web App'
   },
   'business-website': {
@@ -45,6 +69,30 @@ export const serviceData: Record<string, any> = {
         a: 'Technical SEO refers to website and server optimizations that help search engine spiders crawl and index your site more effectively (to help improve organic rankings). This includes things like site speed, mobile-friendliness, structured data, and clean code.'
       }
     ],
+    
+    plans: [
+      {
+        name: 'Starter Plan',
+        price: '₹7,500',
+        description: 'Ideal for small businesses in emerging markets (Gaya, Patna) establishing their digital footprint.',
+        features: ['3-4 Web Pages', 'Mobile Responsive UI', 'Contact Form Integration', 'Basic On-Page SEO', 'Social Media Links'],
+        highlight: false
+      },
+      {
+        name: 'Professional Plan',
+        price: '₹15,000',
+        description: 'Comprehensive solution for growing brands across New Delhi and metro cities.',
+        features: ['Up to 10 Web Pages', 'Custom UI/UX Design', 'CMS Integration', 'Speed & Performance Optimization', 'Advanced Analytics'],
+        highlight: true
+      },
+      {
+        name: 'Enterprise Plan',
+        price: '₹35,000+',
+        description: 'Fully custom architecture with advanced automation and integrations.',
+        features: ['Unlimited / Dynamic Pages', 'Payment Gateway Integration', 'AI Automation & Agents', 'Custom Backend Systems', 'Priority Tech Support'],
+        highlight: false
+      }
+    ],
     contactValue: 'Web App'
   },
   'ecommerce': {
@@ -66,6 +114,30 @@ export const serviceData: Record<string, any> = {
       {
         q: 'Can I manage my own inventory and products?',
         a: 'Yes, we provide you with a dashboard (either custom or through platforms like Shopify/WooCommerce) where you can easily add products, update prices, and track inventory without any coding knowledge.'
+      }
+    ],
+    
+    plans: [
+      {
+        name: 'Starter Plan',
+        price: '₹7,500',
+        description: 'Ideal for small businesses in emerging markets (Gaya, Patna) establishing their digital footprint.',
+        features: ['3-4 Web Pages', 'Mobile Responsive UI', 'Contact Form Integration', 'Basic On-Page SEO', 'Social Media Links'],
+        highlight: false
+      },
+      {
+        name: 'Professional Plan',
+        price: '₹15,000',
+        description: 'Comprehensive solution for growing brands across New Delhi and metro cities.',
+        features: ['Up to 10 Web Pages', 'Custom UI/UX Design', 'CMS Integration', 'Speed & Performance Optimization', 'Advanced Analytics'],
+        highlight: true
+      },
+      {
+        name: 'Enterprise Plan',
+        price: '₹35,000+',
+        description: 'Fully custom architecture with advanced automation and integrations.',
+        features: ['Unlimited / Dynamic Pages', 'Payment Gateway Integration', 'AI Automation & Agents', 'Custom Backend Systems', 'Priority Tech Support'],
+        highlight: false
       }
     ],
     contactValue: 'Web App'
@@ -95,6 +167,30 @@ export const serviceData: Record<string, any> = {
         a: 'A database is an organized collection of structured information, or data, typically stored electronically in a computer system. It\'s where all your users\' accounts, posts, and transactions are securely saved.'
       }
     ],
+    
+    plans: [
+      {
+        name: 'Starter Plan',
+        price: '₹7,500',
+        description: 'Ideal for small businesses in emerging markets (Gaya, Patna) establishing their digital footprint.',
+        features: ['3-4 Web Pages', 'Mobile Responsive UI', 'Contact Form Integration', 'Basic On-Page SEO', 'Social Media Links'],
+        highlight: false
+      },
+      {
+        name: 'Professional Plan',
+        price: '₹15,000',
+        description: 'Comprehensive solution for growing brands across New Delhi and metro cities.',
+        features: ['Up to 10 Web Pages', 'Custom UI/UX Design', 'CMS Integration', 'Speed & Performance Optimization', 'Advanced Analytics'],
+        highlight: true
+      },
+      {
+        name: 'Enterprise Plan',
+        price: '₹35,000+',
+        description: 'Fully custom architecture with advanced automation and integrations.',
+        features: ['Unlimited / Dynamic Pages', 'Payment Gateway Integration', 'AI Automation & Agents', 'Custom Backend Systems', 'Priority Tech Support'],
+        highlight: false
+      }
+    ],
     contactValue: 'Web App'
   },
   'ai-agents': {
@@ -116,6 +212,30 @@ export const serviceData: Record<string, any> = {
       {
         q: 'Will the AI hallucinate or give wrong answers to my customers?',
         a: 'We build strict "guardrails" and "human handoff" systems. The AI is constrained to only answer from your specific company data. If it doesn\'t know the answer or detects an angry customer, it automatically transfers the conversation to a human.'
+      }
+    ],
+    
+    plans: [
+      {
+        name: 'Starter Plan',
+        price: '₹7,500',
+        description: 'Ideal for small businesses in emerging markets (Gaya, Patna) establishing their digital footprint.',
+        features: ['3-4 Web Pages', 'Mobile Responsive UI', 'Contact Form Integration', 'Basic On-Page SEO', 'Social Media Links'],
+        highlight: false
+      },
+      {
+        name: 'Professional Plan',
+        price: '₹15,000',
+        description: 'Comprehensive solution for growing brands across New Delhi and metro cities.',
+        features: ['Up to 10 Web Pages', 'Custom UI/UX Design', 'CMS Integration', 'Speed & Performance Optimization', 'Advanced Analytics'],
+        highlight: true
+      },
+      {
+        name: 'Enterprise Plan',
+        price: '₹35,000+',
+        description: 'Fully custom architecture with advanced automation and integrations.',
+        features: ['Unlimited / Dynamic Pages', 'Payment Gateway Integration', 'AI Automation & Agents', 'Custom Backend Systems', 'Priority Tech Support'],
+        highlight: false
       }
     ],
     contactValue: 'AI Automation'
@@ -141,6 +261,30 @@ export const serviceData: Record<string, any> = {
         a: 'Yes! We use a technique called RAG (Retrieval-Augmented Generation) which allows the AI to securely read, search, and understand your massive internal documents and answer questions based strictly on them.'
       }
     ],
+    
+    plans: [
+      {
+        name: 'Starter Plan',
+        price: '₹7,500',
+        description: 'Ideal for small businesses in emerging markets (Gaya, Patna) establishing their digital footprint.',
+        features: ['3-4 Web Pages', 'Mobile Responsive UI', 'Contact Form Integration', 'Basic On-Page SEO', 'Social Media Links'],
+        highlight: false
+      },
+      {
+        name: 'Professional Plan',
+        price: '₹15,000',
+        description: 'Comprehensive solution for growing brands across New Delhi and metro cities.',
+        features: ['Up to 10 Web Pages', 'Custom UI/UX Design', 'CMS Integration', 'Speed & Performance Optimization', 'Advanced Analytics'],
+        highlight: true
+      },
+      {
+        name: 'Enterprise Plan',
+        price: '₹35,000+',
+        description: 'Fully custom architecture with advanced automation and integrations.',
+        features: ['Unlimited / Dynamic Pages', 'Payment Gateway Integration', 'AI Automation & Agents', 'Custom Backend Systems', 'Priority Tech Support'],
+        highlight: false
+      }
+    ],
     contactValue: 'AI Automation'
   },
   'automation': {
@@ -162,6 +306,30 @@ export const serviceData: Record<string, any> = {
       {
         q: 'What is an API?',
         a: 'An API (Application Programming Interface) is a way for two different software programs to talk to each other. We use APIs to connect your website with tools like Salesforce, Stripe, or Mailchimp so they can share data securely.'
+      }
+    ],
+    
+    plans: [
+      {
+        name: 'Starter Plan',
+        price: '₹7,500',
+        description: 'Ideal for small businesses in emerging markets (Gaya, Patna) establishing their digital footprint.',
+        features: ['3-4 Web Pages', 'Mobile Responsive UI', 'Contact Form Integration', 'Basic On-Page SEO', 'Social Media Links'],
+        highlight: false
+      },
+      {
+        name: 'Professional Plan',
+        price: '₹15,000',
+        description: 'Comprehensive solution for growing brands across New Delhi and metro cities.',
+        features: ['Up to 10 Web Pages', 'Custom UI/UX Design', 'CMS Integration', 'Speed & Performance Optimization', 'Advanced Analytics'],
+        highlight: true
+      },
+      {
+        name: 'Enterprise Plan',
+        price: '₹35,000+',
+        description: 'Fully custom architecture with advanced automation and integrations.',
+        features: ['Unlimited / Dynamic Pages', 'Payment Gateway Integration', 'AI Automation & Agents', 'Custom Backend Systems', 'Priority Tech Support'],
+        highlight: false
       }
     ],
     contactValue: 'AI Automation'
@@ -187,6 +355,30 @@ export const serviceData: Record<string, any> = {
         a: 'Faster websites lead to higher conversion rates, better user experience, and higher rankings on Google. Users typically abandon a website if it takes more than 3 seconds to load.'
       }
     ],
+    
+    plans: [
+      {
+        name: 'Starter Plan',
+        price: '₹7,500',
+        description: 'Ideal for small businesses in emerging markets (Gaya, Patna) establishing their digital footprint.',
+        features: ['3-4 Web Pages', 'Mobile Responsive UI', 'Contact Form Integration', 'Basic On-Page SEO', 'Social Media Links'],
+        highlight: false
+      },
+      {
+        name: 'Professional Plan',
+        price: '₹15,000',
+        description: 'Comprehensive solution for growing brands across New Delhi and metro cities.',
+        features: ['Up to 10 Web Pages', 'Custom UI/UX Design', 'CMS Integration', 'Speed & Performance Optimization', 'Advanced Analytics'],
+        highlight: true
+      },
+      {
+        name: 'Enterprise Plan',
+        price: '₹35,000+',
+        description: 'Fully custom architecture with advanced automation and integrations.',
+        features: ['Unlimited / Dynamic Pages', 'Payment Gateway Integration', 'AI Automation & Agents', 'Custom Backend Systems', 'Priority Tech Support'],
+        highlight: false
+      }
+    ],
     contactValue: 'Other'
   },
   'web-apps': {
@@ -210,6 +402,30 @@ export const serviceData: Record<string, any> = {
         a: 'It means when we push an update to your app, your users never see a "Maintenance" screen. The old version keeps running until the new version is completely ready, and then traffic is instantly switched over.'
       }
     ],
+    
+    plans: [
+      {
+        name: 'Starter Plan',
+        price: '₹7,500',
+        description: 'Ideal for small businesses in emerging markets (Gaya, Patna) establishing their digital footprint.',
+        features: ['3-4 Web Pages', 'Mobile Responsive UI', 'Contact Form Integration', 'Basic On-Page SEO', 'Social Media Links'],
+        highlight: false
+      },
+      {
+        name: 'Professional Plan',
+        price: '₹15,000',
+        description: 'Comprehensive solution for growing brands across New Delhi and metro cities.',
+        features: ['Up to 10 Web Pages', 'Custom UI/UX Design', 'CMS Integration', 'Speed & Performance Optimization', 'Advanced Analytics'],
+        highlight: true
+      },
+      {
+        name: 'Enterprise Plan',
+        price: '₹35,000+',
+        description: 'Fully custom architecture with advanced automation and integrations.',
+        features: ['Unlimited / Dynamic Pages', 'Payment Gateway Integration', 'AI Automation & Agents', 'Custom Backend Systems', 'Priority Tech Support'],
+        highlight: false
+      }
+    ],
     contactValue: 'Other'
   },
   'vps': {
@@ -231,6 +447,30 @@ export const serviceData: Record<string, any> = {
       {
         q: 'Do I need a Dedicated Server?',
         a: 'Dedicated servers are usually only necessary for enterprise-scale applications with massive databases and extremely high traffic volumes. For most modern web apps, a scalable VPS or Cloud infrastructure is more cost-effective and flexible.'
+      }
+    ],
+    
+    plans: [
+      {
+        name: 'Starter Plan',
+        price: '₹7,500',
+        description: 'Ideal for small businesses in emerging markets (Gaya, Patna) establishing their digital footprint.',
+        features: ['3-4 Web Pages', 'Mobile Responsive UI', 'Contact Form Integration', 'Basic On-Page SEO', 'Social Media Links'],
+        highlight: false
+      },
+      {
+        name: 'Professional Plan',
+        price: '₹15,000',
+        description: 'Comprehensive solution for growing brands across New Delhi and metro cities.',
+        features: ['Up to 10 Web Pages', 'Custom UI/UX Design', 'CMS Integration', 'Speed & Performance Optimization', 'Advanced Analytics'],
+        highlight: true
+      },
+      {
+        name: 'Enterprise Plan',
+        price: '₹35,000+',
+        description: 'Fully custom architecture with advanced automation and integrations.',
+        features: ['Unlimited / Dynamic Pages', 'Payment Gateway Integration', 'AI Automation & Agents', 'Custom Backend Systems', 'Priority Tech Support'],
+        highlight: false
       }
     ],
     contactValue: 'Other'

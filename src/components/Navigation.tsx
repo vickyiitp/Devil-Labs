@@ -1,6 +1,7 @@
 import { motion } from 'motion/react';
 import { Menu, X, Terminal, Cpu, ShieldAlert, ArrowUpRight } from 'lucide-react';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useCurrency } from '../contexts/CurrencyContext';
 import TelemetryVisualizer from './TelemetryVisualizer';
 import LaboratoryHum from './LaboratoryHum';
 
@@ -10,15 +11,21 @@ interface NavigationProps {
 }
 
 export default function Navigation({ currentPath, navigate }: NavigationProps) {
+  const { currency, setCurrency } = useCurrency();
+
+  const toggleCurrency = () => {
+    setCurrency(currency === 'USD' ? 'INR' : 'USD');
+  };
   const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [
     { name: 'HOME', path: '/', label: '01_HOME' },
     { name: 'SERVICES', path: '/services', label: '02_SERVICES' },
     { name: 'PROCESS', path: '/process', label: '03_PROCESS' },
-    { name: 'INSIGHTS', path: '/insights', label: '04_INSIGHTS' },
-    { name: 'PRICING', path: '/pricing', label: '05_PRICING' },
-    { name: 'CONTACT', path: '/contact', label: '06_CONTACT' },
+    { name: 'WORK', path: '/work', label: '04_WORK' },
+    { name: 'INSIGHTS', path: '/insights', label: '05_INSIGHTS' },
+    { name: 'PRICING', path: '/pricing', label: '06_PRICING' },
+    { name: 'CONTACT', path: '/contact', label: '07_CONTACT' },
   ];
 
   return (
@@ -54,7 +61,13 @@ export default function Navigation({ currentPath, navigate }: NavigationProps) {
         </nav>
 
         {/* Desktop CTA */}
-        <div className="hidden md:flex items-center">
+        <div className="hidden md:flex items-center space-x-3">
+          <button
+            onClick={toggleCurrency}
+            className="flex items-center justify-center w-10 h-10 bg-[#050505]/80 backdrop-blur-xl border border-white/10 rounded-full font-mono text-[10px] font-bold text-gray-400 hover:text-white hover:border-violet-500 transition-all cursor-pointer shadow-2xl"
+          >
+            {currency}
+          </button>
           <button
             id="nav-cta-btn"
             onClick={() => navigate('/contact')}
@@ -66,7 +79,13 @@ export default function Navigation({ currentPath, navigate }: NavigationProps) {
         </div>
 
         {/* Mobile menu button */}
-        <div className="md:hidden flex items-center">
+        <div className="md:hidden flex items-center space-x-3">
+          <button
+            onClick={toggleCurrency}
+            className="flex items-center justify-center w-12 h-12 bg-[#050505]/80 backdrop-blur-xl border border-white/10 rounded-full font-mono text-xs font-bold text-gray-400 hover:text-white hover:border-violet-500 transition-all cursor-pointer"
+          >
+            {currency}
+          </button>
           <button
             id="mobile-menu-toggle"
             onClick={() => setIsOpen(!isOpen)}
@@ -176,8 +195,14 @@ export function Footer({ navigate }: { navigate: (path: string) => void }) {
           <button onClick={() => navigate('/services')} className="text-left hover:text-white hover:pl-2 transition-all duration-300">SERVICES</button>
           <button onClick={() => navigate('/process')} className="text-left hover:text-white hover:pl-2 transition-all duration-300">PROCESS</button>
           <button onClick={() => navigate('/insights')} className="text-left hover:text-white hover:pl-2 transition-all duration-300">INSIGHTS</button>
+          <button onClick={() => navigate('/work')} className="text-left hover:text-white hover:pl-2 transition-all duration-300">WORK</button>
           <button onClick={() => navigate('/pricing')} className="text-left hover:text-white hover:pl-2 transition-all duration-300">PRICING</button>
-          <button onClick={() => navigate('/contact')} className="text-left hover:text-white hover:pl-2 transition-all duration-300">CONTACT</button>
+          <button onClick={() => navigate('/contact')} className="text-left hover:text-white hover:pl-2 transition-all duration-300">CONTACT</button><div className="flex flex-col space-y-3 font-bold tracking-widest text-[10px] pt-6 border-t border-white/5">
+          <span className="text-white mb-2">LEGAL</span>
+          <button onClick={() => navigate('/legal/privacy')} className="text-left hover:text-white hover:pl-2 transition-all duration-300">PRIVACY POLICY</button>
+          <button onClick={() => navigate('/legal/terms')} className="text-left hover:text-white hover:pl-2 transition-all duration-300">TERMS & REFUNDS</button>
+          <button onClick={() => navigate('/legal/msa')} className="text-left hover:text-white hover:pl-2 transition-all duration-300">MSA / NDA</button>
+        </div>
         </div>
 
         {/* Socials & Language */}

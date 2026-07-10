@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'motion/react';
 import { Phone, MessageCircle, X } from 'lucide-react';
 import { useState } from 'react';
 

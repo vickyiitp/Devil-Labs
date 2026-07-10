@@ -1,9 +1,9 @@
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, Briefcase } from 'lucide-react';
 
 export default function MSAPage({ navigate }: { navigate: (path: string) => void }) {
   return (
-    <div className="min-h-screen bg-[#050505] text-gray-400 font-mono p-6 sm:p-12 relative z-10">
-      <div className="max-w-2xl mx-auto">
+    <div className="min-h-screen bg-[#050505] text-gray-400 font-mono p-6 sm:p-12 relative z-10 pt-32">
+      <div className="max-w-4xl mx-auto">
         <button 
           onClick={() => navigate('/')}
           className="flex items-center space-x-2 text-xs hover:text-white transition-colors mb-12"
@@ -12,26 +12,53 @@ export default function MSAPage({ navigate }: { navigate: (path: string) => void
           <span>Return to Command Center</span>
         </button>
         
-        <h1 className="text-white text-2xl font-bold mb-6">[MASTER_SERVICES_AGREEMENT]</h1>
-        <p className="text-xs mb-8">LAST UPDATED: 2026-07-05</p>
+        <div className="flex items-center space-x-4 mb-6">
+          <Briefcase className="text-violet-500" size={32} />
+          <h1 className="text-white text-3xl font-display font-extrabold tracking-tight uppercase">Master Services Agreement (MSA) & NDA</h1>
+        </div>
+        <p className="text-xs mb-12 border-b border-white/10 pb-6 text-violet-400 font-bold tracking-widest">STANDARD ENTERPRISE TEMPLATE</p>
         
-        <div className="space-y-6 text-sm leading-relaxed">
+        <div className="space-y-12 text-sm leading-relaxed max-w-3xl">
+          
+          <div className="bg-white/5 border border-white/10 p-6 rounded-lg text-white font-sans text-base mb-8">
+            <p><strong>Note:</strong> This is a generalized overview of our Master Services Agreement and Non-Disclosure parameters. A formalized, legally binding PDF document will be signed by both entities prior to the commencement of any Enterprise-tier engineering.</p>
+          </div>
+
           <section>
-            <h2 className="text-white font-bold mb-2">1. SCOPE OF ENGAGEMENT</h2>
-            <p>This Master Services Agreement ("MSA") governs all Statements of Work ("SOW") executed between the Client and Devil Labs. It outlines the foundational legal framework for our engineering engagements.</p>
+            <h2 className="text-white text-lg font-bold mb-4 uppercase tracking-wider">// 1. NON-DISCLOSURE AGREEMENT (NDA) PROTOCOL</h2>
+            <p className="mb-4">
+              Devil Labs operates under a strict default-confidentiality framework. We agree not to disclose, reproduce, or distribute any proprietary business information, trade secrets, architectural plans, or client lists shared during the discovery or execution phases. This confidentiality obligation survives the termination of the project indefinitely.
+            </p>
           </section>
+
           <section>
-            <h2 className="text-white font-bold mb-2">2. PAYMENT ARCHITECTURE</h2>
-            <p>Standard payment terms are Net 15 unless otherwise specified in the SOW. Work phases are gated by milestone payments. Late payments will incur a 1.5% monthly compounding interest penalty and may halt deployment pipelines.</p>
+            <h2 className="text-white text-lg font-bold mb-4 uppercase tracking-wider">// 2. STATEMENTS OF WORK (SOW)</h2>
+            <p className="mb-4">
+              This MSA acts as the umbrella agreement. Each individual project, sprint, or feature set will be defined in a separate Statement of Work (SOW). The SOW will explicitly define the deliverables, timeline (e.g., agile milestones), pricing plans, and acceptance criteria. In case of conflict, the SOW supersedes the MSA for that specific project.
+            </p>
           </section>
+
           <section>
-            <h2 className="text-white font-bold mb-2">3. CONFIDENTIALITY PROTOCOLS</h2>
-            <p>Both parties agree to maintain strict confidentiality regarding proprietary architectures, trade secrets, and business logic. Non-Disclosure Agreements (NDAs) executed prior to this MSA remain in full effect.</p>
+            <h2 className="text-white text-lg font-bold mb-4 uppercase tracking-wider">// 3. ACCEPTANCE & TESTING</h2>
+            <p className="mb-4">
+              Upon delivery of milestones, the Client has five (5) business days to review the software against the Acceptance Criteria defined in the SOW. If no bugs or deviations from the SOW are reported within this window, the milestone is deemed accepted, and invoicing triggers automatically.
+            </p>
           </section>
+
           <section>
-            <h2 className="text-white font-bold mb-2">4. WARRANTY AND SUPPORT</h2>
-            <p>Devil Labs provides a 30-day post-deployment warranty to resolve critical bugs resulting from our code. Any modifications made by the Client or unauthorized third parties void this warranty immediately.</p>
+            <h2 className="text-white text-lg font-bold mb-4 uppercase tracking-wider">// 4. MAINTENANCE & SERVICE LEVEL AGREEMENT (SLA)</h2>
+            <p className="mb-4">
+              Post-deployment, Devil Labs offers a standard 30-day warranty period for critical bug fixes related to the original scope at no extra cost. Ongoing maintenance, AI model updates, and active server monitoring require an active Retainer Plan, which guarantees a 24-hour response time for critical infrastructure failures.
+            </p>
           </section>
+
+          <section>
+            <h2 className="text-white text-lg font-bold mb-4 uppercase tracking-wider">// 5. INDEPENDENT CONTRACTOR STATUS</h2>
+            <p className="mb-4">
+              Devil Labs is an independent contractor. Nothing in this MSA or any SOW creates a partnership, joint venture, agency, or employment relationship between the Client and Devil Labs.
+            </p>
+          </section>
+
         </div>
       </div>
     </div>

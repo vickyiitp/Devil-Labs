@@ -1,12 +1,14 @@
 import { motion } from 'motion/react';
 import { Send, Check, Mail, Calendar, MapPin, Phone, MessageCircle } from 'lucide-react';
 import React, { useState, useEffect } from 'react';
+import { useCurrency } from '../contexts/CurrencyContext';
 
 interface ContactPageProps {
   navigate: (path: string) => void;
 }
 
 export default function ContactPage({ navigate }: ContactPageProps) {
+  const { currency } = useCurrency();
   const [formData, setFormData] = useState({
     name: '',
     company: '',
@@ -21,18 +23,26 @@ export default function ContactPage({ navigate }: ContactPageProps) {
   const [isConsentChecked, setIsConsentChecked] = useState(false);
 
   useEffect(() => {
-    // Parse URL parameters for scope auto-fill
+    // Parse URL parameters for scope auto-fill or check localStorage
     const params = new URLSearchParams(window.location.search);
     const scopeParam = params.get('scope');
+    const storedScope = localStorage.getItem('selectedPlanScope');
+    
     if (scopeParam) {
       setFormData(prev => ({ ...prev, scope: scopeParam }));
+      localStorage.setItem('selectedPlanScope', scopeParam); // keep it synced
+    } else if (storedScope) {
+      setFormData(prev => ({ ...prev, scope: storedScope }));
     }
   }, []);
 
   const scopes = [
-    { value: 'Web App', label: 'Web Application Design & Architecture' },
-    { value: 'AI Automation', label: 'AI System & Autonomous Workflow Engineering' },
-    { value: 'Other', label: 'Custom Digital Platform & Media Solutions' }
+    { value: 'MVP Build (Starter)', label: 'MVP Build (Starter)' },
+    { value: 'Full-Stack + AI (Professional)', label: 'Full-Stack + AI (Professional)' },
+    { value: 'Retainer / Enterprise', label: 'Retainer / Enterprise' },
+    { value: 'Web App', label: 'Custom Web Application' },
+    { value: 'AI Automation', label: 'AI System & Autonomous Workflow' },
+    { value: 'Other', label: 'Other / Custom Requirements' }
   ];
 
   const budgetTiers = [

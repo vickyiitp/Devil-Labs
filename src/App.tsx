@@ -10,12 +10,14 @@ import InsightsPage from './pages/InsightsPage';
 import PrivacyPage from './pages/PrivacyPage';
 import TermsPage from './pages/TermsPage';
 import MSAPage from './pages/MSAPage';
+import ProjectsPage from './pages/ProjectsPage';
 import BackgroundEffects from './components/BackgroundEffects';
 import ScrollProgress from './components/ScrollProgress';
 import CommandPalette from './components/CommandPalette';
 import SEO from './components/SEO';
 import FloatingContact from './components/FloatingContact';
 import { DebugProvider } from './components/DebugContext';
+import { CurrencyProvider } from './contexts/CurrencyContext';
 
 function usePath() {
   const [path, setPath] = useState(window.location.pathname || '/');
@@ -46,6 +48,8 @@ export default function App() {
         return <LandingPage navigate={navigate} />;
       case '/services':
         return <ServicesPage navigate={navigate} />;
+      case '/work':
+        return <ProjectsPage navigate={navigate} />;
       case '/pricing':
         return <PricingPage navigate={navigate} />;
       case '/contact':
@@ -69,8 +73,9 @@ export default function App() {
   };
 
   return (
-    <DebugProvider>
-      <div id="devil-labs-app-shell" className="min-h-screen bg-[#050505] text-white flex flex-col justify-between selection:bg-violet-500/30 selection:text-white">
+    <CurrencyProvider>
+      <DebugProvider>
+        <div id="devil-labs-app-shell" className="min-h-screen bg-[#050505] text-white flex flex-col justify-between selection:bg-violet-500/30 selection:text-white">
         <SEO path={currentPath} />
         <ScrollProgress />
         <BackgroundEffects />
@@ -95,5 +100,6 @@ export default function App() {
         <FloatingContact />
       </div>
     </DebugProvider>
+    </CurrencyProvider>
   );
 }

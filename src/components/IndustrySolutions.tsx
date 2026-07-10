@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { ShoppingCart, LineChart, Stethoscope, Briefcase, Zap, Bot, ArrowRight, ShieldCheck } from 'lucide-react';
 import CyberFrame from './CyberFrame';
 import { useState, useEffect } from 'react';

@@ -1,12 +1,14 @@
 import { motion, AnimatePresence } from 'motion/react';
 import { ArrowUpRight, Check, HelpCircle, ChevronDown, ChevronUp, Zap, Sparkles, Sliders, Clock, Users, DollarSign } from 'lucide-react';
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
+import { useCurrency } from '../contexts/CurrencyContext';
 
 interface PricingPageProps {
   navigate: (path: string) => void;
 }
 
 export default function PricingPage({ navigate }: PricingPageProps) {
+  const { currency } = useCurrency();
   const [openFaq, setOpenFaq] = useState<number | null>(0);
 
   // Calculator State
@@ -20,41 +22,41 @@ export default function PricingPage({ navigate }: PricingPageProps) {
     );
   };
 
+
   // Calculator Logic
   const estimation = useMemo(() => {
     let basePrice = 0;
     let baseWeeksMin = 0;
     let baseWeeksMax = 0;
-    let resources = [];
-    let isMonthly = false;
+    let resources: string[] = [];
 
     switch (calcTier) {
       case 'landing-pages':
-        basePrice = 5000;
+        basePrice = 199;
         baseWeeksMin = 1;
         baseWeeksMax = 2;
         resources = ['1x UI/UX Designer', '1x Frontend Developer'];
         break;
       case 'business-website':
-        basePrice = 12000;
+        basePrice = 399;
         baseWeeksMin = 2;
         baseWeeksMax = 4;
         resources = ['1x UI/UX Designer', '1x Full-Stack Developer'];
         break;
       case 'ecommerce':
-        basePrice = 25000;
+        basePrice = 799;
         baseWeeksMin = 4;
         baseWeeksMax = 6;
         resources = ['1x UI/UX Designer', '1x E-Commerce Architect', '1x Full-Stack Developer'];
         break;
       case 'fullstack':
-        basePrice = 40000;
+        basePrice = 1299;
         baseWeeksMin = 6;
         baseWeeksMax = 10;
         resources = ['1x System Architect', '2x Full-Stack Developers', '1x Database Engineer'];
         break;
       case 'ai-agents':
-        basePrice = 20000;
+        basePrice = 999;
         baseWeeksMin = 3;
         baseWeeksMax = 5;
         resources = ['1x AI Automation Specialist', '1x Python/Node Developer'];
@@ -71,7 +73,7 @@ export default function PricingPage({ navigate }: PricingPageProps) {
 
     calcAddons.forEach(addon => {
       if (addon === 'ai' && calcTier !== 'ai-agents') {
-        finalPrice += 8000;
+        finalPrice += 399;
         finalWeeksMin += 2;
         finalWeeksMax += 2;
         if (!resources.includes('1x AI Automation Specialist')) {
@@ -79,7 +81,7 @@ export default function PricingPage({ navigate }: PricingPageProps) {
         }
       }
       if (addon === 'motion') {
-        finalPrice += 4000;
+        finalPrice += 199;
         finalWeeksMin += 1;
         finalWeeksMax += 2;
         if (!resources.includes('1x Creative Developer (WebGL)')) {
@@ -87,69 +89,71 @@ export default function PricingPage({ navigate }: PricingPageProps) {
         }
       }
       if (addon === 'priority') {
-        finalPrice += 5000;
+        finalPrice += 149;
       }
     });
 
     return {
-      priceStr: `$${(finalPrice / 1000).toFixed(1)}k`,
+      priceStr: (currency === 'INR') ? `₹${(finalPrice * 40).toLocaleString('en-IN')}` : `$${finalPrice.toLocaleString('en-US')}`,
       timelineStr: `${finalWeeksMin}-${finalWeeksMax} Weeks`,
       resources
     };
-  }, [calcTier, calcScope, calcAddons]);
+  }, [calcTier, calcScope, calcAddons, (currency === 'INR')]);
 
   const models = [
     {
-      title: "MVP Build",
+      title: "MVP Build (Starter)",
       tagline: "FAST PRODUCT SHIPMENT",
-      price: "$15k",
+      price: (currency === 'INR') ? "₹7,500" : "$199",
       priceBasis: "per deployment",
-      description: "Best for early stage startups needing a polished, functional React-based mockup or fully functional production web frontend to secure funding or test market fit.",
+      description: "Ideal for small businesses establishing their first digital footprint.",
       features: [
-        "React 19 / Next.js customized frontend",
-        "Subtle Framer Motion interface animations",
-        "Tailwind CSS mobile-responsive layouts",
-        "Fully functional static states & client-side mocks",
-        "Uplink support for standard public REST APIs",
+        "3-4 Web Pages (Home, About, Services, Contact)",
+        "Mobile Responsive Design",
+        "Contact Form Integration",
+        "Basic On-Page SEO Setup",
+        "Social Media Links",
         "14-day production support period"
       ],
       cta: "INITIALIZE MVP UPLINK",
-      popular: false
+      popular: false,
+      scope: "MVP Build (Starter)"
     },
     {
-      title: "Full-Stack + AI",
+      title: "Full-Stack + AI (Professional)",
       tagline: "AUTONOMOUS & DATA ENGINES",
-      price: "$35k",
+      price: (currency === 'INR') ? "₹15,000" : "$499",
       priceBasis: "per architecture",
-      description: "Our signature flagship tier. Best for scale-ready enterprises that require custom AI multi-agent automation pipelines integrated directly into a bulletproof database structure.",
+      description: "Comprehensive solution for growing brands requiring custom logic and design.",
       features: [
-        "Everything in the MVP Build package",
-        "Custom LLM orchestrations (Gemini SDKs)",
-        "Secure server-side proxy route structures",
-        "MERN/MEVN or Relational SQL schemas",
-        "WhatsApp Business API pipelines",
-        "Vector search engine implementations",
+        "Up to 10 Web Pages (Dynamic Content)",
+        "Custom UI/UX Design & User Authentication",
+        "CMS Integration (Manage your own content)",
+        "Speed & Performance Optimization",
+        "Advanced Analytics & Tracking",
         "30-day dedicated engineering support"
       ],
       cta: "INITIALIZE SECURE SYSTEM",
-      popular: true
+      popular: true,
+      scope: "Full-Stack + AI (Professional)"
     },
     {
-      title: "Retainer / Dedicated Team",
+      title: "Retainer / Enterprise",
       tagline: "CONTINUOUS AUTOMATION SCALE",
-      price: "$10k",
+      price: (currency === 'INR') ? "₹35,000+" : "$1,000+",
       priceBasis: "per sprint period",
-      description: "Best for established enterprises seeking to scale their software assets over time, perform regular system audits, or build complex program workflows dynamically.",
+      description: "Fully custom architecture with advanced AI automation for high-volume operations.",
       features: [
-        "Dedicated fractional Principal Engineer",
-        "Continuous custom feature sprint releases",
-        "Weekly database & security protocol audits",
-        "Real-time slack/discord sync communications",
-        "Programmatic creative assets updates",
-        "Infinite system maintenance SLA"
+        "Unlimited / Dynamic Pages",
+        "Payment Gateway Integration",
+        "AI Agent Integration (Gemini/OpenAI)",
+        "Custom Backend Systems & APIs",
+        "Weekly database & security audits",
+        "Priority Tech Support & Infinite SLA"
       ],
       cta: "INITIALIZE PARTNERSHIP",
-      popular: false
+      popular: false,
+      scope: "Retainer / Enterprise"
     }
   ];
 
@@ -238,7 +242,19 @@ export default function PricingPage({ navigate }: PricingPageProps) {
             <div className="pt-8 mt-8 border-t border-white/5">
               <button
                 id={`pricing-card-cta-${model.title.toLowerCase().replace(/[^a-z0-9]/g, '')}`}
-                onClick={() => navigate('/contact')}
+                onClick={() => {
+                  localStorage.setItem('selectedPlanScope', model.scope);
+                  const message = `*New Project Inquiry*
+------------------------
+*Plan:* ${model.title}
+*Scope:* ${model.scope}
+*Price:* ${model.price}
+
+I would like to proceed with this architecture. Please provide further details.`;
+                  const encodedMessage = encodeURIComponent(message);
+                  const whatsappUrl = `https://wa.me/918102099678?text=${encodedMessage}`;
+                  window.open(whatsappUrl, '_blank');
+                }}
                 className={`w-full py-3.5 font-mono font-bold text-xs uppercase tracking-widest transition-all duration-300 flex items-center justify-center space-x-2 border cursor-pointer ${
                   model.popular
                     ? 'bg-white text-black border-white hover:bg-violet-600 hover:text-white hover:border-violet-500 shadow-neon-violet'
@@ -251,6 +267,46 @@ export default function PricingPage({ navigate }: PricingPageProps) {
             </div>
           </motion.div>
         ))}
+      </section>
+
+      {/* FEATURE COMPARISON TABLE */}
+      <section id="pricing-comparison" className="mb-32 overflow-x-auto">
+        <div className="mb-10 text-center">
+          <span className="text-violet-500 font-mono text-xs uppercase tracking-widest font-semibold">// CAPABILITY MATRIX</span>
+          <h2 className="font-display font-extrabold text-3xl text-white tracking-tighter uppercase mt-2">Compare Architectures</h2>
+        </div>
+        <div className="min-w-[800px] border border-white/5 bg-black/40">
+          <div className="grid grid-cols-4 border-b border-white/5 bg-white/5">
+            <div className="p-6 font-mono text-xs text-gray-500 uppercase tracking-widest font-bold flex items-end">Feature Set</div>
+            <div className="p-6 font-display text-lg text-white font-bold text-center">MVP Build<br/><span className="text-sm font-mono text-gray-500 font-normal">{(currency === 'INR') ? '₹7,500' : '$199'}</span></div>
+            <div className="p-6 font-display text-lg text-white font-bold text-center border-x border-white/5 bg-violet-950/20">Full-Stack + AI<br/><span className="text-sm font-mono text-violet-400 font-normal">{(currency === 'INR') ? '₹15,000' : '$499'}</span></div>
+            <div className="p-6 font-display text-lg text-white font-bold text-center">Enterprise<br/><span className="text-sm font-mono text-gray-500 font-normal">{(currency === 'INR') ? '₹35,000+' : '$1,000+'}</span></div>
+          </div>
+          
+          {[
+            { name: 'Pages / Views', starter: '3-4 Pages', pro: 'Up to 10 Pages', enterprise: 'Unlimited / Dynamic' },
+            { name: 'Mobile Responsive', starter: true, pro: true, enterprise: true },
+            { name: 'SEO & Speed', starter: 'Basic Setup', pro: 'Optimized / Caching', enterprise: 'Advanced + Analytics' },
+            { name: 'CMS Access', starter: false, pro: true, enterprise: 'Custom Backend' },
+            { name: 'User Authentication', starter: false, pro: true, enterprise: 'SSO / Complex Auth' },
+            { name: 'Payments / E-Commerce', starter: false, pro: false, enterprise: 'Custom Gateway' },
+            { name: 'AI Integration', starter: false, pro: false, enterprise: 'Gemini / OpenAI Agents' },
+            { name: 'Support SLA', starter: '14-day production', pro: '30-day dedicated', enterprise: 'Infinite Priority' }
+          ].map((row, idx) => (
+            <div key={idx} className="grid grid-cols-4 border-b border-white/5 hover:bg-white/[0.02] transition-colors">
+              <div className="p-4 px-6 font-mono text-xs text-gray-300">{row.name}</div>
+              <div className="p-4 px-6 flex justify-center items-center text-sm font-sans text-gray-400">
+                {typeof row.starter === 'boolean' ? (row.starter ? <Check size={16} className="text-emerald-500" /> : <span className="text-gray-600">-</span>) : row.starter}
+              </div>
+              <div className="p-4 px-6 flex justify-center items-center text-sm font-sans text-white border-x border-white/5 bg-violet-950/10">
+                {typeof row.pro === 'boolean' ? (row.pro ? <Check size={16} className="text-violet-500" /> : <span className="text-gray-600">-</span>) : row.pro}
+              </div>
+              <div className="p-4 px-6 flex justify-center items-center text-sm font-sans text-gray-400">
+                {typeof row.enterprise === 'boolean' ? (row.enterprise ? <Check size={16} className="text-emerald-500" /> : <span className="text-gray-600">-</span>) : row.enterprise}
+              </div>
+            </div>
+          ))}
+        </div>
       </section>
 
       {/* NEW: INTERACTIVE ESTIMATION TOOL */}
@@ -402,7 +458,17 @@ export default function PricingPage({ navigate }: PricingPageProps) {
                   } else if (calcTier === 'ai-agents') {
                     scopeStr = 'AI Automation';
                   }
-                  navigate(`/contact?scope=${encodeURIComponent(scopeStr)}`);
+                  localStorage.setItem('selectedPlanScope', scopeStr);
+                  const message = `*New Project Estimate Inquiry*
+------------------------
+*Estimated Cost:* ${estimation.priceStr}
+*Projected Timeline:* ${estimation.timelineStr}
+*Scope Category:* ${scopeStr}
+
+I would like to proceed with an estimate for my project. Please provide further details.`;
+                  const encodedMessage = encodeURIComponent(message);
+                  const whatsappUrl = `https://wa.me/918102099678?text=${encodedMessage}`;
+                  window.open(whatsappUrl, '_blank');
                 }}
                 className="w-full py-4 bg-white text-black font-mono font-bold text-xs uppercase tracking-widest hover:bg-violet-600 hover:text-white transition-all shadow-neon-violet"
               >

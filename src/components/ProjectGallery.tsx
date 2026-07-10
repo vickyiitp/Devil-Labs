@@ -184,17 +184,51 @@ export default function ProjectGallery() {
               }}
             >
               <CyberFrame glowColor={['violet', 'fuchsia', 'blue'][project.id % 3] as 'violet' | 'fuchsia' | 'blue'} className="p-4 rounded-xl cursor-pointer bg-black/40">
-                {/* Thumbnail */}
-                <div className={`w-full aspect-[4/3] bg-gradient-to-br ${project.thumbnail} rounded-lg overflow-hidden relative mb-4 border border-white/5 transition-all duration-300 flex flex-col items-center justify-center p-6 text-center`}>
-                  <project.icon className="text-white/20 mb-4 group-hover:scale-110 group-hover:text-violet-400 transition-all duration-500" size={48} />
-                  <h3 className="font-display font-black text-xl text-white/50 group-hover:text-white transition-colors duration-300 tracking-tight leading-tight uppercase max-w-[80%]">
-                    {project.title.split('//')[0]}
-                  </h3>
+                {/* Thumbnail / Live Preview */}
+                <div className={`w-full aspect-[4/3] bg-gradient-to-br ${project.thumbnail} rounded-lg overflow-hidden relative mb-4 border border-white/5 transition-all duration-300 flex flex-col`}>
+                  {/* Browser Header */}
+                  <div className="h-6 w-full bg-black/60 border-b border-white/10 flex items-center px-3 space-x-1.5 shrink-0 z-20 backdrop-blur-md">
+                    <div className="w-2 h-2 rounded-full bg-red-500/80" />
+                    <div className="w-2 h-2 rounded-full bg-yellow-500/80" />
+                    <div className="w-2 h-2 rounded-full bg-green-500/80" />
+                    <div className="ml-2 px-2 py-0.5 rounded bg-white/5 border border-white/5 text-[8px] font-mono text-gray-400 truncate max-w-[120px]">
+                      {project.link ? project.link.replace(/^https?:\/\//, '') : 'localhost:3000'}
+                    </div>
+                  </div>
                   
-                  {/* Overlay on hover */}
-                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm">
-                    <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                      <ArrowUpRight className="text-black" size={20} />
+                  {/* Browser Content */}
+                  <div className="relative flex-grow w-full overflow-hidden bg-[#050505]">
+                    {project.link && project.link.startsWith('http') ? (
+                      <div 
+                        className="absolute top-0 left-0 w-[400%] h-[400%] origin-top-left pointer-events-none"
+                        style={{ transform: 'scale(0.25)' }}
+                      >
+                        <iframe 
+                          src={project.link} 
+                          className="w-full h-full border-none bg-white"
+                          sandbox="allow-scripts allow-same-origin"
+                          loading="lazy"
+                          title={project.title}
+                        />
+                      </div>
+                    ) : (
+                      <>
+                        <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,white_1px,transparent_1px)] bg-[size:20px_20px]" />
+                        <div className="absolute inset-0 flex items-center justify-center flex-col p-6 text-center">
+                          <project.icon className="text-white/20 mb-4 group-hover:scale-110 group-hover:text-violet-400 transition-all duration-500" size={48} />
+                          <h3 className="font-display font-black text-xl text-white/50 group-hover:text-white transition-colors duration-300 tracking-tight leading-tight uppercase max-w-[80%]">
+                            {project.title.split('//')[0]}
+                          </h3>
+                        </div>
+                      </>
+                    )}
+                    
+                    {/* Overlay to catch clicks and prevent iframe interaction while scrolling/hovering */}
+                    <div className="absolute inset-0 z-10 bg-black/40 group-hover:bg-black/10 transition-colors duration-300 flex items-center justify-center">
+                       {/* Overlay on hover */}
+                       <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-lg transform translate-y-4 group-hover:translate-y-0">
+                         <ArrowUpRight className="text-black" size={20} />
+                       </div>
                     </div>
                   </div>
                 </div>
