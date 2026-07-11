@@ -173,6 +173,22 @@ export default function PricingPage({ navigate }: PricingPageProps) {
     {
       question: "How do you handle post-launch maintenance?",
       answer: "We include post-launch support with all individual builds (14 days for MVP, 30 days for Full-Stack + AI). If you require continuous system upgrades, telemetry audits, and maintenance, you can seamlessly migrate to our Retainer / Dedicated Team model."
+    },
+    {
+      question: "What services do you provide for startup technology and enterprise software in India?",
+      answer: "As Bihar's premier tech architecture firm based in Gaya, we offer full-spectrum software development services for startups and enterprises across India (including Patna, Gaya, and major hubs like Bangalore and Delhi). Our offerings range from high-conversion landing pages, professional business websites, and scalable e-commerce systems to complex full-stack web applications, AI agents, WhatsApp automation, and custom CRM integrations."
+    },
+    {
+      question: "Do you specialize in Next.js and React full-stack SaaS development?",
+      answer: "Yes. Our core engineering workflow leverages React, Next.js, and high-performance server-side architectures. We design lightweight, high-speed dashboards, SaaS platforms, and secure multi-user environments with robust backend systems, D3/Recharts data visualizations, and containerized Cloud Run, Render, or Vercel deployments."
+    },
+    {
+      question: "How do your autonomous AI Agents and Business Automation workflows work?",
+      answer: "We engineer autonomous AI agents and automated workflows utilizing the Google GenAI SDK (Gemini API) and OpenAI APIs. Our systems handle automated data categorization, intelligent CRM routing, real-time lead generation, and custom WhatsApp automation triggers—helping Indian and global businesses run complex workflows 24/7 without manual intervention."
+    },
+    {
+      question: "Do you offer professional SEO services and page performance optimization?",
+      answer: "Absolutely. Our UX engineering process is optimized for Core Web Vitals, targeting a Lighthouse Performance score of 95+. We integrate structured JSON-LD schema tags, semantic heading hierarchies, responsive layouts, image compression, and route prefetching, ensuring high rankings in both Google Search results and AI-powered Search Overview services (AEO/GEO) like ChatGPT, Claude, and Perplexity."
     }
   ];
 

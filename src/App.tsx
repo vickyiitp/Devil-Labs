@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import Navigation, { Footer } from './components/Navigation';
 import LandingPage from './pages/LandingPage';
 import ServicesPage from './pages/ServicesPage';
 import ServiceDetailPage from './pages/ServiceDetailPage';
 import PricingPage from './pages/PricingPage';
 import ContactPage from './pages/ContactPage';
-import ProcessPage from './pages/ProcessPage';
-import InsightsPage from './pages/InsightsPage';
+import ProcessInsightsPage from './pages/ProcessInsightsPage';
 import PrivacyPage from './pages/PrivacyPage';
 import TermsPage from './pages/TermsPage';
 import MSAPage from './pages/MSAPage';
@@ -69,9 +69,8 @@ export default function App() {
       case '/contact':
         return <ContactPage navigate={navigate} />;
       case '/process':
-        return <ProcessPage navigate={navigate} />;
       case '/insights':
-        return <InsightsPage navigate={navigate} />;
+        return <ProcessInsightsPage navigate={navigate} />;
       case '/legal/privacy':
         return <PrivacyPage navigate={navigate} />;
       case '/legal/terms':
@@ -103,7 +102,18 @@ export default function App() {
 
           {/* Dynamic Main Page Container */}
           <main id="main-content" className="flex-grow" data-debug="PAGE_ROOT" data-x="0" data-y="100">
-            {renderPage()}
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentPath + (isNavigating ? '-loading' : '-ready')}
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -15 }}
+                transition={{ duration: 0.3, ease: [0.25, 1, 0.5, 1] }}
+                className="w-full flex-grow flex flex-col justify-between"
+              >
+                {renderPage()}
+              </motion.div>
+            </AnimatePresence>
           </main>
         </div>
 

@@ -1,0 +1,868 @@
+[
+  {
+    "title": "Home / Operator Console",
+    "path": "/",
+    "category": "Pages",
+    "description": "Devil Labs operator console. High-performance software engineering, bespoke AI systems, and containerized cloud deployment services in Patna & Gaya, India.",
+    "tags": [
+      "home",
+      "landing",
+      "main",
+      "devil labs",
+      "console",
+      "patna",
+      "bihar",
+      "gaya",
+      "india",
+      "tech architecture"
+    ]
+  },
+  {
+    "title": "Services Overview",
+    "path": "/services",
+    "category": "Pages",
+    "description": "Explore our full spectrum of services, ranging from custom landing pages and scalable SaaS products to secure DevOps setups and autonomous AI agents.",
+    "tags": [
+      "services",
+      "overview",
+      "capabilities",
+      "what we do",
+      "landing pages",
+      "saas",
+      "crm",
+      "vps",
+      "hosting"
+    ]
+  },
+  {
+    "title": "Methodology & Process",
+    "path": "/process",
+    "category": "Pages",
+    "description": "Discover our four-step high-velocity system design and build sprint: from architecture modeling, AI-assisted development, security hardening, to cloud scaling.",
+    "tags": [
+      "process",
+      "methodology",
+      "sprint",
+      "design",
+      "hardening",
+      "qa",
+      "ci/cd",
+      "deployment",
+      "velocity"
+    ]
+  },
+  {
+    "title": "Lab Notes & Insights",
+    "path": "/insights",
+    "category": "Pages",
+    "description": "Deep technical research papers and engineering logs on microservices, prompt injection safety, streaming state management, and the Vibe Coding shift.",
+    "tags": [
+      "insights",
+      "articles",
+      "blog",
+      "papers",
+      "research",
+      "security",
+      "state management",
+      "vibe coding",
+      "prompt injection"
+    ]
+  },
+  {
+    "title": "Pricing & Estimates",
+    "path": "/pricing",
+    "category": "Pages",
+    "description": "View our transparent, high-performance pricing plans for Startups and Enterprises. Get immediate estimates for single-page applications, MVP prototypes, and full-scale AI systems.",
+    "tags": [
+      "pricing",
+      "plans",
+      "cost",
+      "estimates",
+      "startup",
+      "enterprise",
+      "mvp",
+      "retainer",
+      "calculator"
+    ]
+  },
+  {
+    "title": "Contact Us",
+    "path": "/contact",
+    "category": "Pages",
+    "description": "Get in touch with Devil Labs. Send an encrypted transmission to secure your next rapid development deployment slot.",
+    "tags": [
+      "contact",
+      "email",
+      "form",
+      "telegram",
+      "hire us",
+      "gaya",
+      "bihar",
+      "office",
+      "consultation"
+    ]
+  },
+  {
+    "title": "Landing Pages // Service",
+    "path": "/services/landing-pages",
+    "category": "Services",
+    "description": "High-converting, visually stunning single-page websites designed to capture leads and drive sales. Perfect for marketing campaigns and new product launches.",
+    "tags": [
+      "landing-pages",
+      "create a website",
+      "service",
+      "landing pages",
+      "high-converting,",
+      "visually",
+      "stunning",
+      "single-page",
+      "websites",
+      "designed",
+      "capture",
+      "leads",
+      "drive",
+      "sales.",
+      "perfect",
+      "marketing",
+      "campaigns",
+      "product",
+      "launches."
+    ]
+  },
+  {
+    "title": "Business Websites // Service",
+    "path": "/services/business-website",
+    "category": "Services",
+    "description": "Professional multi-page web presence to establish authority and showcase your company's services. The digital storefront for your company.",
+    "tags": [
+      "business-website",
+      "create a website",
+      "service",
+      "business websites",
+      "professional",
+      "multi-page",
+      "presence",
+      "establish",
+      "authority",
+      "showcase",
+      "company's",
+      "services.",
+      "digital",
+      "storefront",
+      "company."
+    ]
+  },
+  {
+    "title": "E-Commerce // Service",
+    "path": "/services/ecommerce",
+    "category": "Services",
+    "description": "Scalable online stores with secure checkout, inventory management, and beautiful product displays. Start selling your products online.",
+    "tags": [
+      "ecommerce",
+      "create a website",
+      "service",
+      "e-commerce",
+      "scalable",
+      "online",
+      "stores",
+      "secure",
+      "checkout,",
+      "inventory",
+      "management,",
+      "beautiful",
+      "product",
+      "displays.",
+      "start",
+      "selling",
+      "products",
+      "online."
+    ]
+  },
+  {
+    "title": "Custom Full-Stack // Service",
+    "path": "/services/fullstack",
+    "category": "Services",
+    "description": "Complex web applications with custom databases, user authentication, and advanced functionality. For unique ideas that need custom coding and databases.",
+    "tags": [
+      "fullstack",
+      "create a website",
+      "service",
+      "custom full-stack",
+      "complex",
+      "applications",
+      "custom",
+      "databases,",
+      "authentication,",
+      "advanced",
+      "functionality.",
+      "unique",
+      "ideas",
+      "custom",
+      "coding",
+      "databases."
+    ]
+  },
+  {
+    "title": "AI Agents // Service",
+    "path": "/services/ai-agents",
+    "category": "Services",
+    "description": "Autonomous AI workers that handle customer support, data entry, and continuous operational tasks 24/7. Hire a digital employee that never sleeps.",
+    "tags": [
+      "ai-agents",
+      "ai & automation",
+      "service",
+      "ai agents",
+      "autonomous",
+      "workers",
+      "handle",
+      "customer",
+      "support,",
+      "entry,",
+      "continuous",
+      "operational",
+      "tasks",
+      "24/7.",
+      "digital",
+      "employee",
+      "never",
+      "sleeps."
+    ]
+  },
+  {
+    "title": "AI Tools // Service",
+    "path": "/services/ai-tools",
+    "category": "Services",
+    "description": "Custom generative AI tools integrating GPT-4, Claude, or Gemini directly into your business processes. Supercharge your team with custom AI tools.",
+    "tags": [
+      "ai-tools",
+      "ai & automation",
+      "service",
+      "ai tools",
+      "custom",
+      "generative",
+      "tools",
+      "integrating",
+      "gpt-4,",
+      "claude,",
+      "gemini",
+      "directly",
+      "business",
+      "processes.",
+      "supercharge",
+      "custom",
+      "tools."
+    ]
+  },
+  {
+    "title": "Workflow Automation // Service",
+    "path": "/services/automation",
+    "category": "Services",
+    "description": "Connect your favorite apps and automate repetitive tasks using secure APIs and webhook triggers. Stop doing repetitive manual work.",
+    "tags": [
+      "automation",
+      "ai & automation",
+      "service",
+      "workflow automation",
+      "connect",
+      "favorite",
+      "automate",
+      "repetitive",
+      "tasks",
+      "using",
+      "secure",
+      "webhook",
+      "triggers.",
+      "doing",
+      "repetitive",
+      "manual",
+      "work."
+    ]
+  },
+  {
+    "title": "Cloud Hosting // Service",
+    "path": "/services/cloud-hosting",
+    "category": "Services",
+    "description": "Lightning-fast edge networks ensuring your website loads instantly from anywhere in the world. Fast, secure home for your basic websites.",
+    "tags": [
+      "cloud-hosting",
+      "hosting & infrastructure",
+      "service",
+      "cloud hosting",
+      "lightning-fast",
+      "networks",
+      "ensuring",
+      "website",
+      "loads",
+      "instantly",
+      "anywhere",
+      "world.",
+      "fast,",
+      "secure",
+      "basic",
+      "websites."
+    ]
+  },
+  {
+    "title": "Web Apps Deployment // Service",
+    "path": "/services/web-apps",
+    "category": "Services",
+    "description": "Containerized CI/CD pipelines to seamlessly deploy and scale modern React and Node.js applications. Professional deployment for complex software.",
+    "tags": [
+      "web-apps",
+      "hosting & infrastructure",
+      "service",
+      "web apps deployment",
+      "containerized",
+      "ci/cd",
+      "pipelines",
+      "seamlessly",
+      "deploy",
+      "scale",
+      "modern",
+      "react",
+      "node.js",
+      "applications.",
+      "professional",
+      "deployment",
+      "complex",
+      "software."
+    ]
+  },
+  {
+    "title": "VPS & Dedicated // Service",
+    "path": "/services/vps",
+    "category": "Services",
+    "description": "Raw computing power. Fully managed virtual private servers for intensive enterprise workloads. Maximum power and control for your systems.",
+    "tags": [
+      "vps",
+      "hosting & infrastructure",
+      "service",
+      "vps & dedicated",
+      "computing",
+      "power.",
+      "fully",
+      "managed",
+      "virtual",
+      "private",
+      "servers",
+      "intensive",
+      "enterprise",
+      "workloads.",
+      "maximum",
+      "power",
+      "control",
+      "systems."
+    ]
+  },
+  {
+    "title": "Nexus — Enterprise CRM (Client Project)",
+    "path": "/work?id=101",
+    "category": "Projects",
+    "description": "Deployed tech architecture under domain Web. Powered by React / Node. Built for Confidential (FinTech).",
+    "tags": [
+      "project",
+      "nexus // enterprise crm",
+      "react / node",
+      "confidential (fintech)",
+      "saas & business",
+      "web"
+    ]
+  },
+  {
+    "title": "Aura — Health Portal (Client Project)",
+    "path": "/work?id=102",
+    "category": "Projects",
+    "description": "Deployed tech architecture under domain AI. Powered by AI / HIPAA. Built for Confidential (Healthcare).",
+    "tags": [
+      "project",
+      "aura // health portal",
+      "ai / hipaa",
+      "confidential (healthcare)",
+      "ai & automation",
+      "ai"
+    ]
+  },
+  {
+    "title": "Vanguard — Analytics (Client Project)",
+    "path": "/work?id=103",
+    "category": "Projects",
+    "description": "Deployed tech architecture under domain Infrastructure. Powered by Data / Dashboards. Built for Confidential (Logistics).",
+    "tags": [
+      "project",
+      "vanguard // analytics",
+      "data / dashboards",
+      "confidential (logistics)",
+      "saas & business",
+      "infrastructure"
+    ]
+  },
+  {
+    "title": "GeniusMVA — AI Analytics (Demo Project)",
+    "path": "/work?id=1",
+    "category": "Projects",
+    "description": "Deployed tech architecture under domain AI. Powered by AI / Vision. Built for Demo.",
+    "tags": [
+      "project",
+      "geniusmva // ai analytics",
+      "ai / vision",
+      "demo",
+      "ai & automation",
+      "ai"
+    ]
+  },
+  {
+    "title": "ThreadGenius — AI Content (Demo Project)",
+    "path": "/work?id=2",
+    "category": "Projects",
+    "description": "Deployed tech architecture under domain AI. Powered by OpenAI / Social. Built for Demo.",
+    "tags": [
+      "project",
+      "threadgenius // ai content",
+      "openai / social",
+      "demo",
+      "ai & automation",
+      "ai"
+    ]
+  },
+  {
+    "title": "SkillSculpt AI — Learning (Demo Project)",
+    "path": "/work?id=3",
+    "category": "Projects",
+    "description": "Deployed tech architecture under domain AI. Powered by AI / EdTech. Built for Demo.",
+    "tags": [
+      "project",
+      "skillsculpt ai // learning",
+      "ai / edtech",
+      "demo",
+      "ai & automation",
+      "ai"
+    ]
+  },
+  {
+    "title": "DevilFintech AI — FinTech Advisor (Demo Project)",
+    "path": "/work?id=4",
+    "category": "Projects",
+    "description": "Deployed tech architecture under domain AI. Powered by Chatbot / AI. Built for Demo.",
+    "tags": [
+      "project",
+      "devilfintech ai // fintech advisor",
+      "chatbot / ai",
+      "demo",
+      "ai & automation",
+      "ai"
+    ]
+  },
+  {
+    "title": "NoDepression AI — Wellness (Demo Project)",
+    "path": "/work?id=5",
+    "category": "Projects",
+    "description": "Deployed tech architecture under domain AI. Powered by HealthTech / AI. Built for Demo.",
+    "tags": [
+      "project",
+      "nodepression ai // wellness",
+      "healthtech / ai",
+      "demo",
+      "ai & automation",
+      "ai"
+    ]
+  },
+  {
+    "title": "Resume AI — Builder (Demo Project)",
+    "path": "/work?id=6",
+    "category": "Projects",
+    "description": "Deployed tech architecture under domain AI. Powered by AI / PDF. Built for Demo.",
+    "tags": [
+      "project",
+      "resume ai // builder",
+      "ai / pdf",
+      "demo",
+      "ai & automation",
+      "ai"
+    ]
+  },
+  {
+    "title": "Quiz App — Interactive (Demo Project)",
+    "path": "/work?id=7",
+    "category": "Projects",
+    "description": "Deployed tech architecture under domain Web. Powered by Education / Web. Built for Demo.",
+    "tags": [
+      "project",
+      "quiz app // interactive",
+      "education / web",
+      "demo",
+      "edtech & learning",
+      "web"
+    ]
+  },
+  {
+    "title": "EduStream — Classes App (Demo Project)",
+    "path": "/work?id=8",
+    "category": "Projects",
+    "description": "Deployed tech architecture under domain Web. Powered by Streaming / LMS. Built for Demo.",
+    "tags": [
+      "project",
+      "edustream // classes app",
+      "streaming / lms",
+      "demo",
+      "edtech & learning",
+      "web"
+    ]
+  },
+  {
+    "title": "Cosmic Genesis — EdArt (Demo Project)",
+    "path": "/work?id=9",
+    "category": "Projects",
+    "description": "Deployed tech architecture under domain Web. Powered by Art / Code. Built for Demo.",
+    "tags": [
+      "project",
+      "cosmic genesis // edart",
+      "art / code",
+      "demo",
+      "edtech & learning",
+      "web"
+    ]
+  },
+  {
+    "title": "TypeX — Typing AI (Demo Project)",
+    "path": "/work?id=10",
+    "category": "Projects",
+    "description": "Deployed tech architecture under domain Web. Powered by Typing / Utility. Built for Demo.",
+    "tags": [
+      "project",
+      "typex // typing ai",
+      "typing / utility",
+      "demo",
+      "edtech & learning",
+      "web"
+    ]
+  },
+  {
+    "title": "Hisaab — Payments (Demo Project)",
+    "path": "/work?id=11",
+    "category": "Projects",
+    "description": "Deployed tech architecture under domain Web. Powered by SaaS / WhatsApp. Built for Demo.",
+    "tags": [
+      "project",
+      "hisaab // payments",
+      "saas / whatsapp",
+      "demo",
+      "saas & business",
+      "web"
+    ]
+  },
+  {
+    "title": "Invoice Flow — Automation (Demo Project)",
+    "path": "/work?id=12",
+    "category": "Projects",
+    "description": "Deployed tech architecture under domain Web. Powered by Invoicing / B2B. Built for Demo.",
+    "tags": [
+      "project",
+      "invoice flow // automation",
+      "invoicing / b2b",
+      "demo",
+      "saas & business",
+      "web"
+    ]
+  },
+  {
+    "title": "ShivaTri — Startups (Demo Project)",
+    "path": "/work?id=13",
+    "category": "Projects",
+    "description": "Deployed tech architecture under domain Web. Powered by Legal / Utility. Built for Demo.",
+    "tags": [
+      "project",
+      "shivatri // startups",
+      "legal / utility",
+      "demo",
+      "saas & business",
+      "web"
+    ]
+  },
+  {
+    "title": "Bio-Hub — Linktree (Demo Project)",
+    "path": "/work?id=14",
+    "category": "Projects",
+    "description": "Deployed tech architecture under domain Web. Powered by Social / Links. Built for Demo.",
+    "tags": [
+      "project",
+      "bio-hub // linktree",
+      "social / links",
+      "demo",
+      "saas & business",
+      "web"
+    ]
+  },
+  {
+    "title": "DevScript — Tool Hub (Demo Project)",
+    "path": "/work?id=15",
+    "category": "Projects",
+    "description": "Deployed tech architecture under domain Infrastructure. Powered by PWA / DevTools. Built for Demo.",
+    "tags": [
+      "project",
+      "devscript // tool hub",
+      "pwa / devtools",
+      "demo",
+      "saas & business",
+      "infrastructure"
+    ]
+  },
+  {
+    "title": "QR Menu Generator — Tools (Demo Project)",
+    "path": "/work?id=16",
+    "category": "Projects",
+    "description": "Deployed tech architecture under domain Web. Powered by QR / Utility. Built for Demo.",
+    "tags": [
+      "project",
+      "qr menu generator // tools",
+      "qr / utility",
+      "demo",
+      "saas & business",
+      "web"
+    ]
+  },
+  {
+    "title": "Developer Portfolio — Portfolio (Demo Project)",
+    "path": "/work?id=17",
+    "category": "Projects",
+    "description": "Deployed tech architecture under domain Web. Powered by Portfolio / Web. Built for Demo.",
+    "tags": [
+      "project",
+      "developer portfolio // portfolio",
+      "portfolio / web",
+      "demo",
+      "saas & business",
+      "web"
+    ]
+  },
+  {
+    "title": "Prop View — Real Estate (Demo Project)",
+    "path": "/work?id=18",
+    "category": "Projects",
+    "description": "Deployed tech architecture under domain Web. Powered by Real Estate / UI. Built for Demo.",
+    "tags": [
+      "project",
+      "prop view // real estate",
+      "real estate / ui",
+      "demo",
+      "real estate & agency",
+      "web"
+    ]
+  },
+  {
+    "title": "Menu Craft — Hospitality (Demo Project)",
+    "path": "/work?id=19",
+    "category": "Projects",
+    "description": "Deployed tech architecture under domain Web. Powered by Hospitality / Book. Built for Demo.",
+    "tags": [
+      "project",
+      "menu craft // hospitality",
+      "hospitality / book",
+      "demo",
+      "real estate & agency",
+      "web"
+    ]
+  },
+  {
+    "title": "Kishan Farm — E-Commerce (Demo Project)",
+    "path": "/work?id=20",
+    "category": "Projects",
+    "description": "Deployed tech architecture under domain Web. Powered by AgriTech / Web. Built for Demo.",
+    "tags": [
+      "project",
+      "kishan farm // e-commerce",
+      "agritech / web",
+      "demo",
+      "real estate & agency",
+      "web"
+    ]
+  },
+  {
+    "title": "Fit Launch — Agency (Demo Project)",
+    "path": "/work?id=21",
+    "category": "Projects",
+    "description": "Deployed tech architecture under domain Web. Powered by Fitness / Landing. Built for Demo.",
+    "tags": [
+      "project",
+      "fit launch // agency",
+      "fitness / landing",
+      "demo",
+      "real estate & agency",
+      "web"
+    ]
+  },
+  {
+    "title": "Indigo Lens — 3D Agency (Demo Project)",
+    "path": "/work?id=22",
+    "category": "Projects",
+    "description": "Deployed tech architecture under domain Web. Powered by 3D / WebGL. Built for Demo.",
+    "tags": [
+      "project",
+      "indigo lens // 3d agency",
+      "3d / webgl",
+      "demo",
+      "real estate & agency",
+      "web"
+    ]
+  },
+  {
+    "title": "MindSpark Hub — Games (Demo Project)",
+    "path": "/work?id=23",
+    "category": "Projects",
+    "description": "Deployed tech architecture under domain Web. Powered by Gaming / JS. Built for Demo.",
+    "tags": [
+      "project",
+      "mindspark hub // games",
+      "gaming / js",
+      "demo",
+      "utilities & games",
+      "web"
+    ]
+  },
+  {
+    "title": "Timer & Stopwatch — Tool (Demo Project)",
+    "path": "/work?id=24",
+    "category": "Projects",
+    "description": "Deployed tech architecture under domain Web. Powered by Utility / Clock. Built for Demo.",
+    "tags": [
+      "project",
+      "timer & stopwatch // tool",
+      "utility / clock",
+      "demo",
+      "utilities & games",
+      "web"
+    ]
+  },
+  {
+    "title": "RapidGrab Video — Download (Demo Project)",
+    "path": "/work?id=25",
+    "category": "Projects",
+    "description": "Deployed tech architecture under domain Infrastructure. Powered by Media / Downloader. Built for Demo.",
+    "tags": [
+      "project",
+      "rapidgrab video // download",
+      "media / downloader",
+      "demo",
+      "utilities & games",
+      "infrastructure"
+    ]
+  },
+  {
+    "title": "Valentine Day Gift — Fun (Demo Project)",
+    "path": "/work?id=26",
+    "category": "Projects",
+    "description": "Deployed tech architecture under domain Web. Powered by Interactive / Fun. Built for Demo.",
+    "tags": [
+      "project",
+      "valentine day gift // fun",
+      "interactive / fun",
+      "demo",
+      "utilities & games",
+      "web"
+    ]
+  },
+  {
+    "title": "Microservices vs. Monoliths in the Era of AI Agents [Architecture]",
+    "path": "/insights?id=1",
+    "category": "Insights",
+    "description": "Evaluating the cost of network latency when routing LLM responses through distributed systems. The paradigm of software development is undergoing a tectonic shift. As AI agents route requests and consume tokens dynamically, traditional microserv...",
+    "tags": [
+      "article",
+      "insight",
+      "microservices vs. monoliths in the era of ai agents",
+      "[architecture]",
+      "evaluating",
+      "network",
+      "latency",
+      "routing",
+      "responses",
+      "through",
+      "distributed",
+      "systems."
+    ]
+  },
+  {
+    "title": "The Fallacy of Zero-Shot Enterprise Deployments [AI Agents]",
+    "path": "/insights?id=2",
+    "category": "Insights",
+    "description": "Why raw foundation models fail in production, and how strict structural guardrails prevent catastrophic logic loops. Zero-shot requests rarely succeed in highly secure business environments. This paper explores the necessity of strict system schemas, state-machine ve...",
+    "tags": [
+      "article",
+      "insight",
+      "the fallacy of zero-shot enterprise deployments",
+      "[ai agents]",
+      "foundation",
+      "models",
+      "production,",
+      "strict",
+      "structural",
+      "guardrails",
+      "prevent",
+      "catastrophic",
+      "logic",
+      "loops."
+    ]
+  },
+  {
+    "title": "State Management for Real-Time LLM Streams [Systems Design]",
+    "path": "/insights?id=3",
+    "category": "Insights",
+    "description": "Strategies for handling token-by-token streaming in React Server Components without blocking the main thread. React Server Components (RSC) and server-sent events (SSE) have revolutionized how we stream data. We detail a custom debounced buffer architecture th...",
+    "tags": [
+      "article",
+      "insight",
+      "state management for real-time llm streams",
+      "[systems design]",
+      "strategies",
+      "handling",
+      "token-by-token",
+      "streaming",
+      "react",
+      "server",
+      "components",
+      "without",
+      "blocking",
+      "thread."
+    ]
+  },
+  {
+    "title": "Hardening Agentic Workflows Against Prompt Injection [Security]",
+    "path": "/insights?id=4",
+    "category": "Insights",
+    "description": "An architectural review of isolation layers and query sanitization techniques for public-facing AI. Security in the age of natural language inputs requires a complete rethink of safety parameters. We present our multi-layered isolation proxy system t...",
+    "tags": [
+      "article",
+      "insight",
+      "hardening agentic workflows against prompt injection",
+      "[security]",
+      "architectural",
+      "review",
+      "isolation",
+      "layers",
+      "query",
+      "sanitization",
+      "techniques",
+      "public-facing"
+    ]
+  },
+  {
+    "title": "Why Vibe Coding is Replacing Traditional Frontend Development [Vibe Coding]",
+    "path": "/insights?id=5",
+    "category": "Insights",
+    "description": "An inside look at how AI-assisted generation is shifting the role of the developer from a syntax writer to an architectural director. In the era of LLMs, writing raw syntax is increasingly becoming a bottleneck. 'Vibe Coding'—the process of directing autonomous AI agents using high-l...",
+    "tags": [
+      "article",
+      "insight",
+      "why vibe coding is replacing traditional frontend development",
+      "[vibe coding]",
+      "inside",
+      "ai-assisted",
+      "generation",
+      "shifting",
+      "developer",
+      "syntax",
+      "writer",
+      "architectural",
+      "director."
+    ]
+  }
+]

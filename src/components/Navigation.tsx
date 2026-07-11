@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { Menu, X, Terminal, Cpu, ShieldAlert, ArrowUpRight } from 'lucide-react';
+import { Menu, X, Terminal, Cpu, ShieldAlert, ArrowUpRight, Github, Linkedin, Instagram, Globe } from 'lucide-react';
 import React, { useState, useEffect } from 'react';
 import { useCurrency } from '../contexts/CurrencyContext';
 import TelemetryVisualizer from './TelemetryVisualizer';
@@ -212,20 +212,32 @@ export function Footer({ navigate }: { navigate: (path: string) => void }) {
         {/* Socials & Language */}
         <div className="flex flex-col space-y-3 font-bold tracking-widest text-[10px]">
           <span className="text-white mb-2">NETWORK</span>
-          <a href="https://instagram.com/devil_labs" target="_blank" rel="noreferrer" className="text-left hover:text-violet-400 hover:pl-2 transition-all duration-300 flex items-center justify-between group">
-            <span>INSTAGRAM</span>
+          <a href="https://github.com/Devil-Labs/" target="_blank" rel="noreferrer" className="text-left hover:text-violet-400 hover:pl-2 transition-all duration-300 flex items-center justify-between group">
+            <span className="flex items-center space-x-2">
+              <Github size={12} className="text-gray-500 group-hover:text-violet-400 transition-colors" />
+              <span>GITHUB</span>
+            </span>
             <ArrowUpRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" />
           </a>
           <a href="https://linkedin.com/company/devil-labs" target="_blank" rel="noreferrer" className="text-left hover:text-violet-400 hover:pl-2 transition-all duration-300 flex items-center justify-between group">
-            <span>LINKEDIN</span>
+            <span className="flex items-center space-x-2">
+              <Linkedin size={12} className="text-gray-500 group-hover:text-violet-400 transition-colors" />
+              <span>LINKEDIN</span>
+            </span>
             <ArrowUpRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" />
           </a>
-          <a href="https://github.com/Devil-Labs/" target="_blank" rel="noreferrer" className="text-left hover:text-violet-400 hover:pl-2 transition-all duration-300 flex items-center justify-between group">
-            <span>GITHUB HUB</span>
+          <a href="https://instagram.com/devil_labs" target="_blank" rel="noreferrer" className="text-left hover:text-violet-400 hover:pl-2 transition-all duration-300 flex items-center justify-between group">
+            <span className="flex items-center space-x-2">
+              <Instagram size={12} className="text-gray-500 group-hover:text-violet-400 transition-colors" />
+              <span>INSTAGRAM</span>
+            </span>
             <ArrowUpRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" />
           </a>
           <a href="https://vickyiitp.tech" target="_blank" rel="noreferrer" className="text-left hover:text-violet-400 hover:pl-2 transition-all duration-300 flex items-center justify-between group">
-            <span>VICKYIITP.TECH</span>
+            <span className="flex items-center space-x-2">
+              <Globe size={12} className="text-gray-500 group-hover:text-violet-400 transition-colors" />
+              <span>FOUNDER: VICKYIITP.TECH</span>
+            </span>
             <ArrowUpRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" />
           </a>
           <div className="pt-6">

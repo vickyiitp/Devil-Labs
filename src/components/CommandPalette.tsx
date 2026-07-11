@@ -1,42 +1,78 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Search, Command, ArrowRight, X, Layout, Zap, Cpu, Server, FileText, Phone } from 'lucide-react';
-import { serviceCategories } from '../data/services';
+import { 
+  Search, Command, ArrowRight, X, Layout, Zap, Cpu, Server, 
+  FileText, Phone, Terminal, BrainCircuit, Sparkles, HelpCircle 
+} from 'lucide-react';
 
 interface CommandPaletteProps {
   navigate: (path: string) => void;
 }
 
+interface SearchRecord {
+  title: string;
+  path: string;
+  category: 'Pages' | 'Services' | 'Projects' | 'Insights';
+  description: string;
+  tags: string[];
+}
+
+const getIconForRecord = (category: string, pathStr: string) => {
+  if (category === 'Pages') {
+    if (pathStr === '/') return Layout;
+    if (pathStr === '/services') return Zap;
+    if (pathStr === '/process') return Server;
+    if (pathStr === '/insights') return FileText;
+    if (pathStr === '/pricing') return Sparkles;
+    if (pathStr === '/contact') return Phone;
+    return Layout;
+  }
+  if (category === 'Services') {
+    if (pathStr.includes('agent')) return Cpu;
+    if (pathStr.includes('automation')) return Cpu;
+    if (pathStr.includes('hosting') || pathStr.includes('vps') || pathStr.includes('apps')) return Server;
+    return Zap;
+  }
+  if (category === 'Projects') {
+    return Terminal;
+  }
+  if (category === 'Insights') {
+    return BrainCircuit;
+  }
+  return HelpCircle;
+};
+
 export default function CommandPalette({ navigate }: CommandPaletteProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [query, setQuery] = useState('');
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const [records, setRecords] = useState<SearchRecord[]>([]);
   const inputRef = useRef<HTMLInputElement>(null);
-  const listRef = useRef<HTMLDivElement>(null);
 
-  const serviceItems = serviceCategories.flatMap(cat => 
-    cat.items.map(item => ({
-      title: item.title,
-      path: `/services/${item.slug}`,
-      icon: item.icon,
-      category: 'Services'
-    }))
-  );
+  useEffect(() => {
+    fetch('/search.json')
+      .then(res => {
+        if (!res.ok) throw new Error('Failed to load search index');
+        return res.json();
+      })
+      .then(data => {
+        setRecords(data);
+      })
+      .catch(err => {
+        console.error('Failed to load search index:', err);
+      });
+  }, []);
 
-  const items = [
-    { title: 'Home', path: '/', icon: Layout, category: 'Pages' },
-    { title: 'Services Overview', path: '/services', icon: Zap, category: 'Pages' },
-    { title: 'Methodology & Process', path: '/process', icon: Server, category: 'Pages' },
-    { title: 'Lab Notes & Insights', path: '/insights', icon: FileText, category: 'Pages' },
-    { title: 'Pricing & Estimates', path: '/pricing', icon: FileText, category: 'Pages' },
-    { title: 'Contact Us', path: '/contact', icon: Phone, category: 'Pages' },
-    ...serviceItems
-  ];
-
-  const filteredItems = items.filter(item => 
-    item.title.toLowerCase().includes(query.toLowerCase()) || 
-    item.category.toLowerCase().includes(query.toLowerCase())
-  );
+  const filteredItems = records.filter(item => {
+    const q = query.toLowerCase().trim();
+    if (!q) return true; // Show everything if query is empty (allows browsing)
+    return (
+      item.title.toLowerCase().includes(q) ||
+      item.category.toLowerCase().includes(q) ||
+      item.description.toLowerCase().includes(q) ||
+      item.tags.some(tag => tag.toLowerCase().includes(q))
+    );
+  });
 
   useEffect(() => {
     setSelectedIndex(0);
@@ -84,6 +120,10 @@ export default function CommandPalette({ navigate }: CommandPaletteProps) {
     setIsOpen(false);
   };
 
+  const categoriesOrder: ('Pages' | 'Services' | 'Projects' | 'Insights')[] = [
+    'Pages', 'Services', 'Projects', 'Insights'
+  ];
+
   return (
     <>
       <AnimatePresence>
@@ -129,7 +169,7 @@ export default function CommandPalette({ navigate }: CommandPaletteProps) {
                 <div className="overflow-y-auto p-2 flex-grow scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent">
                   {filteredItems.length > 0 ? (
                     <div className="space-y-1 py-2">
-                      {['Pages', 'Services'].map(category => {
+                      {categoriesOrder.map(category => {
                         const catItems = filteredItems.filter(i => i.category === category);
                         if (catItems.length === 0) return null;
                         
@@ -141,7 +181,7 @@ export default function CommandPalette({ navigate }: CommandPaletteProps) {
                             {catItems.map((item, idx) => {
                               const globalIndex = filteredItems.indexOf(item);
                               const isSelected = globalIndex === selectedIndex;
-                              const Icon = item.icon;
+                              const Icon = getIconForRecord(item.category, item.path);
                               return (
                                 <button
                                   key={idx}
@@ -149,13 +189,22 @@ export default function CommandPalette({ navigate }: CommandPaletteProps) {
                                   onMouseEnter={() => setSelectedIndex(globalIndex)}
                                   className={`w-full flex items-center justify-between px-3 py-3 rounded-lg transition-colors group text-left ${isSelected ? 'bg-white/10' : 'hover:bg-white/5'}`}
                                 >
-                                  <div className="flex items-center space-x-3">
-                                    <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-colors ${isSelected ? 'bg-violet-500/20 text-violet-400' : 'bg-white/5 text-gray-400 group-hover:text-violet-400'}`}>
+                                  <div className="flex items-center space-x-3 flex-grow min-w-0">
+                                    <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-colors shrink-0 ${isSelected ? 'bg-violet-500/20 text-violet-400' : 'bg-white/5 text-gray-400 group-hover:text-violet-400'}`}>
                                       <Icon size={14} />
                                     </div>
-                                    <span className={`text-sm font-medium transition-colors ${isSelected ? 'text-white' : 'text-gray-200 group-hover:text-white'}`}>{item.title}</span>
+                                    <div className="flex flex-col min-w-0">
+                                      <span className={`text-sm font-medium truncate transition-colors ${isSelected ? 'text-white' : 'text-gray-200 group-hover:text-white'}`}>
+                                        {item.title}
+                                      </span>
+                                      {item.description && (
+                                        <span className="text-[11px] text-gray-500 truncate mt-0.5 max-w-full font-light font-sans group-hover:text-gray-400">
+                                          {item.description}
+                                        </span>
+                                      )}
+                                    </div>
                                   </div>
-                                  <ArrowRight size={14} className={`transition-all transform ${isSelected ? 'text-white opacity-100 translate-x-0' : 'text-gray-600 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 group-hover:text-white'}`} />
+                                  <ArrowRight size={14} className={`shrink-0 transition-all transform ${isSelected ? 'text-white opacity-100 translate-x-0' : 'text-gray-600 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 group-hover:text-white'}`} />
                                 </button>
                               );
                             })}

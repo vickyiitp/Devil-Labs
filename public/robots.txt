@@ -1,0 +1,29 @@
+# Robots.txt for Devil Labs - Production Launch
+User-agent: *
+Allow: /
+
+# Optimize accessibility for AI-powered Search Engines (AEO / GEO)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Anthropic-AI
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+# Sitemap Location
+Sitemap: https://devillabs.co/sitemap.xml
+Sitemap: https://vickyiitp.tech/sitemap.xml

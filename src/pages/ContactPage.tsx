@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { Send, Check, Mail, Calendar, MapPin, Phone, MessageCircle } from 'lucide-react';
+import { Send, Check, Mail, Calendar, MapPin, Phone, MessageCircle, Github, Linkedin, Instagram, Globe, ArrowUpRight } from 'lucide-react';
 import React, { useState, useEffect } from 'react';
 import { useCurrency } from '../contexts/CurrencyContext';
 
@@ -514,13 +514,51 @@ export default function ContactPage({ navigate }: ContactPageProps) {
                 </div>
               </a>
 
-              <div className="flex items-center space-x-6">
+              <div className="flex items-center space-x-6 pb-6">
                 <div className="w-14 h-14 rounded-full bg-white/5 flex items-center justify-center text-gray-400 border border-white/10">
                   <MapPin size={20} />
                 </div>
                 <div>
                   <div className="text-xs font-mono text-gray-500 uppercase tracking-widest mb-1">Location</div>
                   <div className="text-white font-medium text-lg">San Francisco, CA</div>
+                </div>
+              </div>
+
+              {/* Network Platforms */}
+              <div className="space-y-4 pt-6 border-t border-white/5">
+                <h4 className="font-mono text-xs font-bold text-gray-400 uppercase tracking-[0.25em]">// NETWORK PLATFORMS</h4>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <a href="https://github.com/Devil-Labs/" target="_blank" rel="noreferrer" className="flex items-center justify-between p-4 bg-white/5 hover:bg-violet-600/10 border border-white/5 hover:border-violet-500/30 rounded-xl transition-all duration-300 group">
+                    <div className="flex items-center space-x-3">
+                      <Github size={16} className="text-gray-400 group-hover:text-violet-400 transition-colors" />
+                      <span className="text-xs text-white font-mono font-bold tracking-wider">GitHub Org</span>
+                    </div>
+                    <ArrowUpRight size={14} className="text-gray-600 group-hover:text-violet-400 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all" />
+                  </a>
+
+                  <a href="https://linkedin.com/company/devil-labs" target="_blank" rel="noreferrer" className="flex items-center justify-between p-4 bg-white/5 hover:bg-violet-600/10 border border-white/5 hover:border-violet-500/30 rounded-xl transition-all duration-300 group">
+                    <div className="flex items-center space-x-3">
+                      <Linkedin size={16} className="text-gray-400 group-hover:text-violet-400 transition-colors" />
+                      <span className="text-xs text-white font-mono font-bold tracking-wider">LinkedIn</span>
+                    </div>
+                    <ArrowUpRight size={14} className="text-gray-600 group-hover:text-violet-400 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all" />
+                  </a>
+
+                  <a href="https://instagram.com/devil_labs" target="_blank" rel="noreferrer" className="flex items-center justify-between p-4 bg-white/5 hover:bg-violet-600/10 border border-white/5 hover:border-violet-500/30 rounded-xl transition-all duration-300 group">
+                    <div className="flex items-center space-x-3">
+                      <Instagram size={16} className="text-gray-400 group-hover:text-violet-400 transition-colors" />
+                      <span className="text-xs text-white font-mono font-bold tracking-wider">Instagram</span>
+                    </div>
+                    <ArrowUpRight size={14} className="text-gray-600 group-hover:text-violet-400 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all" />
+                  </a>
+
+                  <a href="https://vickyiitp.tech" target="_blank" rel="noreferrer" className="flex items-center justify-between p-4 bg-white/5 hover:bg-violet-600/10 border border-white/5 hover:border-violet-500/30 rounded-xl transition-all duration-300 group">
+                    <div className="flex items-center space-x-3">
+                      <Globe size={16} className="text-gray-400 group-hover:text-violet-400 transition-colors" />
+                      <span className="text-xs text-white font-mono font-bold tracking-wider">Founder Site</span>
+                    </div>
+                    <ArrowUpRight size={14} className="text-gray-600 group-hover:text-violet-400 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all" />
+                  </a>
                 </div>
               </div>
             </div>
