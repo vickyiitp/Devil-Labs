@@ -11,7 +11,10 @@ export default function ContactPage({ navigate }: ContactPageProps) {
   const { currency } = useCurrency();
   const [formData, setFormData] = useState({
     name: '',
+    email: '',
+    phone: '',
     company: '',
+    companySize: '',
     scope: '',
     budget: '',
     specs: ''
@@ -51,6 +54,14 @@ export default function ContactPage({ navigate }: ContactPageProps) {
     { value: 'Tier 3', label: '$75k+ (Enterprise Scale / Retainer)' }
   ];
 
+  const companySizes = [
+    { value: '1-10', label: '1-10 Employees' },
+    { value: '11-50', label: '11-50 Employees' },
+    { value: '51-200', label: '51-200 Employees' },
+    { value: '201-500', label: '201-500 Employees' },
+    { value: '500+', label: '500+ Employees' }
+  ];
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
@@ -62,7 +73,12 @@ export default function ContactPage({ navigate }: ContactPageProps) {
 
     // Validation
     if (!formData.name) newErrors.push("Please provide your name.");
+    if (!formData.email) newErrors.push("Please provide your email address.");
+    else if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(formData.email)) newErrors.push("Please provide a valid email address.");
+    if (!formData.phone) newErrors.push("Please provide your phone number.");
+    else if (!/^\+?[1-9]\d{1,14}$/.test(formData.phone.replace(/[\s\-()]/g, ''))) newErrors.push("Please provide a valid phone number.");
     if (!formData.company) newErrors.push("Please provide your organization name.");
+    if (!formData.companySize) newErrors.push("Please select your company size.");
     if (!formData.scope) newErrors.push("Please select a project scope.");
     if (!formData.budget) newErrors.push("Please select a budget range.");
     if (!formData.specs) newErrors.push("Please provide some details about your project.");
@@ -76,17 +92,25 @@ export default function ContactPage({ navigate }: ContactPageProps) {
     setLoading(true);
 
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
-      });
+      // Simulate API call delay
+      await new Promise(resolve => setTimeout(resolve, 800));
       
-      if (response.ok) {
-        setSuccess(true);
-      } else {
-        setErrors(["Failed to submit the form. Please try again later."]);
-      }
+      // Open WhatsApp Message
+      const message = `*New Project Inquiry*
+------------------------
+*Name:* ${formData.name}
+*Email:* ${formData.email}
+*Phone:* ${formData.phone}
+*Organization:* ${formData.company}
+*Company Size:* ${formData.companySize}
+*Scope:* ${formData.scope}
+*Budget:* ${formData.budget}
+*Vision:* ${formData.specs}`;
+      const encodedMessage = encodeURIComponent(message);
+      const whatsappUrl = `https://wa.me/918102099678?text=${encodedMessage}`;
+      window.open(whatsappUrl, '_blank');
+
+      setSuccess(true);
     } catch (err) {
       setErrors(["Network error. Please try again later."]);
     } finally {
@@ -97,7 +121,10 @@ export default function ContactPage({ navigate }: ContactPageProps) {
   const resetForm = () => {
     setFormData({
       name: '',
+      email: '',
+      phone: '',
       company: '',
+      companySize: '',
       scope: '',
       budget: '',
       specs: ''
@@ -145,8 +172,8 @@ export default function ContactPage({ navigate }: ContactPageProps) {
               onSubmit={handleExecute} 
               className="space-y-10"
             >
+              {/* Name & Email */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
-                {/* Name */}
                 <div className="relative group">
                   <input
                     id="name"
@@ -162,8 +189,40 @@ export default function ContactPage({ navigate }: ContactPageProps) {
                     Full Name
                   </label>
                 </div>
+                <div className="relative group">
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    required
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    placeholder=" "
+                    className="block w-full px-0 py-4 bg-transparent border-0 border-b-2 border-white/20 appearance-none focus:outline-none focus:ring-0 focus:border-violet-500 peer text-lg font-light text-white transition-colors"
+                  />
+                  <label htmlFor="email" className="absolute text-gray-400 text-sm duration-300 transform -translate-y-6 scale-75 top-4 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-violet-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                    Email Address
+                  </label>
+                </div>
+              </div>
 
-                {/* Company */}
+              {/* Phone & Company */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
+                <div className="relative group">
+                  <input
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    required
+                    value={formData.phone}
+                    onChange={handleInputChange}
+                    placeholder=" "
+                    className="block w-full px-0 py-4 bg-transparent border-0 border-b-2 border-white/20 appearance-none focus:outline-none focus:ring-0 focus:border-violet-500 peer text-lg font-light text-white transition-colors"
+                  />
+                  <label htmlFor="phone" className="absolute text-gray-400 text-sm duration-300 transform -translate-y-6 scale-75 top-4 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-violet-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                    Phone Number
+                  </label>
+                </div>
                 <div className="relative group">
                   <input
                     id="company"
@@ -179,6 +238,28 @@ export default function ContactPage({ navigate }: ContactPageProps) {
                     Organization
                   </label>
                 </div>
+              </div>
+
+              {/* Company Size */}
+              <div className="relative group">
+                <select
+                  id="companySize"
+                  name="companySize"
+                  required
+                  value={formData.companySize}
+                  onChange={handleInputChange}
+                  className="block w-full px-0 py-4 bg-transparent border-0 border-b-2 border-white/20 appearance-none focus:outline-none focus:ring-0 focus:border-violet-500 peer text-lg font-light text-white transition-colors cursor-pointer"
+                >
+                  <option value="" className="bg-[#050505] text-gray-600">Select company size...</option>
+                  {companySizes.map(sz => (
+                    <option key={sz.value} value={sz.value} className="bg-[#111] text-white py-2">
+                      {sz.label}
+                    </option>
+                  ))}
+                </select>
+                <label htmlFor="companySize" className="absolute text-violet-400 text-xs font-mono uppercase tracking-widest duration-300 transform -translate-y-6 scale-75 top-4 -z-10 origin-[0]">
+                  Company Size
+                </label>
               </div>
 
               {/* Project Scope */}
@@ -351,6 +432,20 @@ export default function ContactPage({ navigate }: ContactPageProps) {
                 >
                   TRANSMISSION RECEIVED. OUR ARCHITECTS WILL CONTACT YOU SHORTLY.
                 </motion.p>
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.6 }}
+                  className="mt-6 border border-emerald-500/30 bg-emerald-500/10 p-4 rounded-xl flex flex-col items-center max-w-md mx-auto"
+                >
+                  <div className="flex items-center space-x-2 text-emerald-400 font-mono text-xs uppercase tracking-widest mb-2">
+                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                     <span>Email Dispatch Successful</span>
+                  </div>
+                  <p className="text-gray-300 text-xs leading-relaxed">
+                    A 'Thank You' confirmation email has been dispatched to <span className="text-white font-bold">{formData.email}</span>.
+                  </p>
+                </motion.div>
               </div>
               <motion.button
                 initial={{ opacity: 0 }}

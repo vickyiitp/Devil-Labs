@@ -1,3 +1,4 @@
+import IframeWithSkeleton from '../components/IframeWithSkeleton';
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ArrowUpRight, Cpu, Layout, Globe, Lock, BrainCircuit, GraduationCap, Building2, Terminal, Code2, Heart, Eye } from 'lucide-react';
@@ -10,6 +11,7 @@ interface ProjectsPageProps {
 const CLIENT_PROJECTS = [
   {
     id: 101,
+    domain: "Web",
     title: 'Nexus // Enterprise CRM',
     client: 'Confidential (FinTech)',
     category: 'SaaS & Business',
@@ -22,6 +24,7 @@ const CLIENT_PROJECTS = [
   },
   {
     id: 102,
+    domain: "AI",
     title: 'Aura // Health Portal',
     client: 'Confidential (Healthcare)',
     category: 'AI & Automation',
@@ -34,6 +37,7 @@ const CLIENT_PROJECTS = [
   },
   {
     id: 103,
+    domain: "Infrastructure",
     title: 'Vanguard // Analytics',
     client: 'Confidential (Logistics)',
     category: 'SaaS & Business',
@@ -50,6 +54,7 @@ const DEMO_PROJECTS = [
   // AI & Automation
   {
     id: 1,
+    domain: "AI",
     title: 'GeniusMVA // AI Analytics',
     client: 'Demo',
     category: 'AI & Automation',
@@ -63,6 +68,7 @@ const DEMO_PROJECTS = [
   },
   {
     id: 2,
+    domain: "AI",
     title: 'ThreadGenius // AI Content',
     client: 'Demo',
     category: 'AI & Automation',
@@ -76,6 +82,7 @@ const DEMO_PROJECTS = [
   },
   {
     id: 3,
+    domain: "AI",
     title: 'SkillSculpt AI // Learning',
     client: 'Demo',
     category: 'AI & Automation',
@@ -89,6 +96,7 @@ const DEMO_PROJECTS = [
   },
   {
     id: 4,
+    domain: "AI",
     title: 'DevilFintech AI // FinTech Advisor',
     client: 'Demo',
     category: 'AI & Automation',
@@ -102,6 +110,7 @@ const DEMO_PROJECTS = [
   },
   {
     id: 5,
+    domain: "AI",
     title: 'NoDepression AI // Wellness',
     client: 'Demo',
     category: 'AI & Automation',
@@ -115,6 +124,7 @@ const DEMO_PROJECTS = [
   },
   {
     id: 6,
+    domain: "AI",
     title: 'Resume AI // Builder',
     client: 'Demo',
     category: 'AI & Automation',
@@ -130,6 +140,7 @@ const DEMO_PROJECTS = [
   // EdTech & Learning
   {
     id: 7,
+    domain: "Web",
     title: 'Quiz App // Interactive',
     client: 'Demo',
     category: 'EdTech & Learning',
@@ -143,6 +154,7 @@ const DEMO_PROJECTS = [
   },
   {
     id: 8,
+    domain: "Web",
     title: 'EduStream // Classes App',
     client: 'Demo',
     category: 'EdTech & Learning',
@@ -156,6 +168,7 @@ const DEMO_PROJECTS = [
   },
   {
     id: 9,
+    domain: "Web",
     title: 'Cosmic Genesis // EdArt',
     client: 'Demo',
     category: 'EdTech & Learning',
@@ -184,6 +197,7 @@ const DEMO_PROJECTS = [
   // SaaS & Business
   {
     id: 11,
+    domain: "Web",
     title: 'Hisaab // Payments',
     client: 'Demo',
     category: 'SaaS & Business',
@@ -197,6 +211,7 @@ const DEMO_PROJECTS = [
   },
   {
     id: 12,
+    domain: "Web",
     title: 'Invoice Flow // Automation',
     client: 'Demo',
     category: 'SaaS & Business',
@@ -210,6 +225,7 @@ const DEMO_PROJECTS = [
   },
   {
     id: 13,
+    domain: "Web",
     title: 'ShivaTri // Startups',
     client: 'Demo',
     category: 'SaaS & Business',
@@ -223,6 +239,7 @@ const DEMO_PROJECTS = [
   },
   {
     id: 14,
+    domain: "Web",
     title: 'Bio-Hub // Linktree',
     client: 'Demo',
     category: 'SaaS & Business',
@@ -236,6 +253,7 @@ const DEMO_PROJECTS = [
   },
   {
     id: 15,
+    domain: "Infrastructure",
     title: 'DevScript // Tool Hub',
     client: 'Demo',
     category: 'SaaS & Business',
@@ -249,6 +267,7 @@ const DEMO_PROJECTS = [
   },
   {
     id: 16,
+    domain: "Web",
     title: 'QR Menu Generator // Tools',
     client: 'Demo',
     category: 'SaaS & Business',
@@ -262,6 +281,7 @@ const DEMO_PROJECTS = [
   },
   {
     id: 17,
+    domain: "Web",
     title: 'Developer Portfolio // Portfolio',
     client: 'Demo',
     category: 'SaaS & Business',
@@ -277,6 +297,7 @@ const DEMO_PROJECTS = [
   // Real Estate & Agency
   {
     id: 18,
+    domain: "Web",
     title: 'Prop View // Real Estate',
     client: 'Demo',
     category: 'Real Estate & Agency',
@@ -290,6 +311,7 @@ const DEMO_PROJECTS = [
   },
   {
     id: 19,
+    domain: "Web",
     title: 'Menu Craft // Hospitality',
     client: 'Demo',
     category: 'Real Estate & Agency',
@@ -303,6 +325,7 @@ const DEMO_PROJECTS = [
   },
   {
     id: 20,
+    domain: "Web",
     title: 'Kishan Farm // E-Commerce',
     client: 'Demo',
     category: 'Real Estate & Agency',
@@ -316,6 +339,7 @@ const DEMO_PROJECTS = [
   },
   {
     id: 21,
+    domain: "Web",
     title: 'Fit Launch // Agency',
     client: 'Demo',
     category: 'Real Estate & Agency',
@@ -329,6 +353,7 @@ const DEMO_PROJECTS = [
   },
   {
     id: 22,
+    domain: "Web",
     title: 'Indigo Lens // 3D Agency',
     client: 'Demo',
     category: 'Real Estate & Agency',
@@ -344,6 +369,7 @@ const DEMO_PROJECTS = [
   // Utilities & Games
   {
     id: 23,
+    domain: "Web",
     title: 'MindSpark Hub // Games',
     client: 'Demo',
     category: 'Utilities & Games',
@@ -357,6 +383,7 @@ const DEMO_PROJECTS = [
   },
   {
     id: 24,
+    domain: "Web",
     title: 'Timer & Stopwatch // Tool',
     client: 'Demo',
     category: 'Utilities & Games',
@@ -370,6 +397,7 @@ const DEMO_PROJECTS = [
   },
   {
     id: 25,
+    domain: "Infrastructure",
     title: 'RapidGrab Video // Download',
     client: 'Demo',
     category: 'Utilities & Games',
@@ -383,6 +411,7 @@ const DEMO_PROJECTS = [
   },
   {
     id: 26,
+    domain: "Web",
     title: 'Valentine Day Gift // Fun',
     client: 'Demo',
     category: 'Utilities & Games',
@@ -398,20 +427,22 @@ const DEMO_PROJECTS = [
 
 const CATEGORIES = [
   "All",
-  "AI & Automation",
-  "EdTech & Learning",
-  "SaaS & Business",
-  "Real Estate & Agency",
-  "Utilities & Games"
+  "AI",
+  "Web",
+  "Infrastructure"
 ];
 
 export default function ProjectsPage({ navigate }: ProjectsPageProps) {
   const [section, setSection] = useState<'demo' | 'client'>('demo');
   const [activeCategory, setActiveCategory] = useState("All");
 
-  const filteredProjects = activeCategory === "All" 
-    ? DEMO_PROJECTS 
-    : DEMO_PROJECTS.filter(p => p.category === activeCategory);
+  const filteredClientProjects = activeCategory === "All"
+    ? CLIENT_PROJECTS
+    : CLIENT_PROJECTS.filter(p => p.domain === activeCategory);
+
+  const filteredDemoProjects = activeCategory === "All"
+    ? DEMO_PROJECTS
+    : DEMO_PROJECTS.filter(p => p.domain === activeCategory);
 
   return (
     <div className="pt-32 pb-24 px-4 sm:px-6 lg:px-8 max-w-[1600px] mx-auto min-h-screen">
@@ -435,7 +466,7 @@ export default function ProjectsPage({ navigate }: ProjectsPageProps) {
       </motion.div>
 
       {/* Primary Toggle: Demo vs Client */}
-      <div className="flex justify-center mb-12">
+      <div className="flex justify-center mb-8">
         <div className="inline-flex p-1 bg-black/40 border border-white/10 rounded-full">
           <button
             onClick={() => setSection('demo')}
@@ -458,6 +489,28 @@ export default function ProjectsPage({ navigate }: ProjectsPageProps) {
         </div>
       </div>
 
+      {/* Categories Filter */}
+      <div className="flex flex-col items-center gap-4 w-full max-w-full overflow-hidden mb-12">
+        <span className="text-gray-500 font-mono text-[10px] uppercase tracking-[0.3em] font-bold">
+          Filter By Domain
+        </span>
+        <div className="flex sm:flex-wrap overflow-x-auto w-full justify-start sm:justify-center items-center gap-2 pb-2 scrollbar-hide px-4 sm:px-0">
+          {CATEGORIES.map((category) => (
+            <button
+              key={category}
+              onClick={() => setActiveCategory(category)}
+              className={`whitespace-nowrap px-6 py-2 rounded-full font-mono text-[11px] font-bold tracking-wider uppercase transition-all duration-300 border ${
+                activeCategory === category
+                  ? 'bg-violet-600 text-white shadow-neon-violet border-violet-500'
+                  : 'bg-white/5 text-gray-300 hover:bg-white/10 hover:text-white border-white/10'
+              }`}
+            >
+              {category}
+            </button>
+          ))}
+        </div>
+      </div>
+
       {section === 'client' ? (
         <motion.div
           key="client-section"
@@ -465,10 +518,36 @@ export default function ProjectsPage({ navigate }: ProjectsPageProps) {
           animate={{ opacity: 1, scale: 1 }}
           className="w-full"
         >
+          {/* GitHub Upload Hub Note banner */}
+          <div className="max-w-4xl mx-auto mb-10 text-center">
+            <CyberFrame glowColor="violet" className="p-6 bg-violet-950/10 rounded-xl border border-violet-500/20">
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-left">
+                <div>
+                  <h4 className="text-white font-mono text-xs uppercase tracking-widest font-bold mb-1 flex items-center gap-2">
+                    <Terminal size={14} className="text-violet-400" />
+                    SECURE REPOSITORY HUB
+                  </h4>
+                  <p className="text-xs text-gray-400 font-sans leading-relaxed">
+                    All active client systems and source-controlled projects are securely pushed, cataloged, and integrated through our official organization. We grant full private repository ownership and automated deployment logs directly to client teams.
+                  </p>
+                </div>
+                <a 
+                  href="https://github.com/Devil-Labs/" 
+                  target="_blank" 
+                  rel="noreferrer"
+                  className="px-5 py-2.5 bg-violet-600 hover:bg-violet-500 text-white font-mono text-xs font-bold tracking-widest uppercase transition-all shrink-0 rounded border border-violet-400 shadow-neon-violet flex items-center space-x-2"
+                >
+                  <span>EXPLORE GITHUB</span>
+                  <ArrowUpRight size={14} />
+                </a>
+              </div>
+            </CyberFrame>
+          </div>
+
           {/* Project Grid */}
           <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             <AnimatePresence>
-              {CLIENT_PROJECTS.map((project) => (
+              {filteredClientProjects.map((project) => (
                 <motion.div
                   layout
                   initial={{ opacity: 0, scale: 0.9 }}
@@ -532,6 +611,12 @@ export default function ProjectsPage({ navigate }: ProjectsPageProps) {
               ))}
             </AnimatePresence>
           </motion.div>
+
+          {filteredClientProjects.length === 0 && (
+            <div className="py-20 text-center border border-white/10 bg-black/40 rounded-xl mt-8">
+              <p className="text-gray-500 font-mono text-sm tracking-widest uppercase">No deployments found for this domain.</p>
+            </div>
+          )}
         </motion.div>
       ) : (
         <motion.div
@@ -540,32 +625,10 @@ export default function ProjectsPage({ navigate }: ProjectsPageProps) {
           animate={{ opacity: 1 }}
           className="w-full"
         >
-          {/* Categories Filter */}
-          <div className="flex flex-col items-center gap-6 w-full max-w-full overflow-hidden mb-12">
-            <span className="text-gray-500 font-mono text-xs uppercase tracking-widest font-bold">
-              Filter By Domain
-            </span>
-            <div className="flex sm:flex-wrap overflow-x-auto w-full justify-start sm:justify-center items-center gap-2 pb-4 scrollbar-hide px-4 sm:px-0">
-              {CATEGORIES.map((category) => (
-                <button
-                  key={category}
-                  onClick={() => setActiveCategory(category)}
-                  className={`whitespace-nowrap px-5 py-2.5 rounded-full font-bold text-xs tracking-wide transition-all duration-300 border ${
-                    activeCategory === category
-                      ? 'bg-violet-600 text-white shadow-neon-violet border-violet-500'
-                      : 'bg-white/5 text-gray-300 hover:bg-white/10 hover:text-white border-white/10'
-                  }`}
-                >
-                  {category}
-                </button>
-              ))}
-            </div>
-          </div>
-
           {/* Project Grid */}
           <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             <AnimatePresence>
-              {filteredProjects.map((project) => (
+              {filteredDemoProjects.map((project) => (
                 <motion.div
                   layout
                   initial={{ opacity: 0, scale: 0.9 }}
@@ -649,7 +712,7 @@ export default function ProjectsPage({ navigate }: ProjectsPageProps) {
             </AnimatePresence>
           </motion.div>
 
-          {filteredProjects.length === 0 && (
+          {filteredDemoProjects.length === 0 && (
             <div className="py-20 text-center border border-white/10 bg-black/40 rounded-xl mt-8">
               <p className="text-gray-500 font-mono text-sm tracking-widest uppercase">No deployments found for this domain.</p>
             </div>

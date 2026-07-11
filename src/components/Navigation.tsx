@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { useCurrency } from '../contexts/CurrencyContext';
 import TelemetryVisualizer from './TelemetryVisualizer';
 import LaboratoryHum from './LaboratoryHum';
+import DevilLabsLogo from './DevilLabsLogo';
 
 interface NavigationProps {
   currentPath: string;
@@ -19,11 +20,11 @@ export default function Navigation({ currentPath, navigate }: NavigationProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [
-    { name: 'HOME', path: '/', label: '01_HOME' },
-    { name: 'SERVICES', path: '/services', label: '02_SERVICES' },
+    { name: 'SERVICES', path: '/services', label: '01_SERVICES' },
+    { name: 'WORK', path: '/work', label: '02_WORK' },
     { name: 'PROCESS', path: '/process', label: '03_PROCESS' },
-    { name: 'WORK', path: '/work', label: '04_WORK' },
-    { name: 'INSIGHTS', path: '/insights', label: '05_INSIGHTS' },
+    { name: 'INSIGHTS', path: '/insights', label: '04_INSIGHTS' },
+    { name: 'ABOUT', path: '/about', label: '05_ABOUT' },
     { name: 'PRICING', path: '/pricing', label: '06_PRICING' },
     { name: 'CONTACT', path: '/contact', label: '07_CONTACT' },
   ];
@@ -38,7 +39,7 @@ export default function Navigation({ currentPath, navigate }: NavigationProps) {
           className="flex items-center space-x-3 group text-white font-bold tracking-tighter text-xl cursor-pointer bg-[#050505]/80 backdrop-blur-xl border border-white/10 px-5 py-2.5 rounded-full shadow-2xl hover:border-violet-500 transition-all duration-300"
         >
           <div className="relative flex items-center justify-center">
-            <span className="text-red-500 font-extrabold text-lg group-hover:text-violet-400 transition-colors duration-300">Δ</span>
+            <DevilLabsLogo className="w-5 h-5" glow />
           </div>
           <span className="font-display tracking-tight text-white text-sm group-hover:text-violet-400 transition-colors duration-300">DEVIL LABS</span>
         </button>
@@ -104,7 +105,7 @@ export default function Navigation({ currentPath, navigate }: NavigationProps) {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
-          className="md:hidden bg-[#050505] border-b border-white/5 absolute top-20 left-0 w-full px-6 py-8 flex flex-col space-y-6"
+          className="md:hidden bg-[#050505] border-b border-white/5 absolute top-20 left-0 w-full px-6 py-8 flex flex-col space-y-6 pointer-events-auto"
         >
           {navItems.map((item) => {
             const isActive = currentPath === item.path;
@@ -191,33 +192,40 @@ export function Footer({ navigate }: { navigate: (path: string) => void }) {
         {/* Navigation */}
         <div className="flex flex-col space-y-3 font-bold tracking-widest text-[10px]">
           <span className="text-white mb-2">INDEX</span>
-          <button onClick={() => navigate('/')} className="text-left hover:text-white hover:pl-2 transition-all duration-300">HOME</button>
           <button onClick={() => navigate('/services')} className="text-left hover:text-white hover:pl-2 transition-all duration-300">SERVICES</button>
+          <button onClick={() => navigate('/work')} className="text-left hover:text-white hover:pl-2 transition-all duration-300">WORK</button>
           <button onClick={() => navigate('/process')} className="text-left hover:text-white hover:pl-2 transition-all duration-300">PROCESS</button>
           <button onClick={() => navigate('/insights')} className="text-left hover:text-white hover:pl-2 transition-all duration-300">INSIGHTS</button>
-          <button onClick={() => navigate('/work')} className="text-left hover:text-white hover:pl-2 transition-all duration-300">WORK</button>
+          <button onClick={() => navigate('/about')} className="text-left hover:text-white hover:pl-2 transition-all duration-300">ABOUT</button>
           <button onClick={() => navigate('/pricing')} className="text-left hover:text-white hover:pl-2 transition-all duration-300">PRICING</button>
-          <button onClick={() => navigate('/contact')} className="text-left hover:text-white hover:pl-2 transition-all duration-300">CONTACT</button><div className="flex flex-col space-y-3 font-bold tracking-widest text-[10px] pt-6 border-t border-white/5">
+          <button onClick={() => navigate('/contact')} className="text-left hover:text-white hover:pl-2 transition-all duration-300">CONTACT</button>
+        </div>
+
+        {/* Legal */}
+        <div className="flex flex-col space-y-3 font-bold tracking-widest text-[10px]">
           <span className="text-white mb-2">LEGAL</span>
           <button onClick={() => navigate('/legal/privacy')} className="text-left hover:text-white hover:pl-2 transition-all duration-300">PRIVACY POLICY</button>
           <button onClick={() => navigate('/legal/terms')} className="text-left hover:text-white hover:pl-2 transition-all duration-300">TERMS & REFUNDS</button>
           <button onClick={() => navigate('/legal/msa')} className="text-left hover:text-white hover:pl-2 transition-all duration-300">MSA / NDA</button>
         </div>
-        </div>
 
         {/* Socials & Language */}
         <div className="flex flex-col space-y-3 font-bold tracking-widest text-[10px]">
           <span className="text-white mb-2">NETWORK</span>
-          <a href="https://twitter.com" target="_blank" rel="noreferrer" className="text-left hover:text-violet-400 hover:pl-2 transition-all duration-300 flex items-center justify-between group">
-            <span>X / TWITTER</span>
+          <a href="https://instagram.com/devil_labs" target="_blank" rel="noreferrer" className="text-left hover:text-violet-400 hover:pl-2 transition-all duration-300 flex items-center justify-between group">
+            <span>INSTAGRAM</span>
             <ArrowUpRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" />
           </a>
-          <a href="https://github.com" target="_blank" rel="noreferrer" className="text-left hover:text-violet-400 hover:pl-2 transition-all duration-300 flex items-center justify-between group">
-            <span>GITHUB</span>
-            <ArrowUpRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" />
-          </a>
-          <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="text-left hover:text-violet-400 hover:pl-2 transition-all duration-300 flex items-center justify-between group">
+          <a href="https://linkedin.com/company/devil-labs" target="_blank" rel="noreferrer" className="text-left hover:text-violet-400 hover:pl-2 transition-all duration-300 flex items-center justify-between group">
             <span>LINKEDIN</span>
+            <ArrowUpRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" />
+          </a>
+          <a href="https://github.com/Devil-Labs/" target="_blank" rel="noreferrer" className="text-left hover:text-violet-400 hover:pl-2 transition-all duration-300 flex items-center justify-between group">
+            <span>GITHUB HUB</span>
+            <ArrowUpRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" />
+          </a>
+          <a href="https://vickyiitp.tech" target="_blank" rel="noreferrer" className="text-left hover:text-violet-400 hover:pl-2 transition-all duration-300 flex items-center justify-between group">
+            <span>VICKYIITP.TECH</span>
             <ArrowUpRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" />
           </a>
           <div className="pt-6">

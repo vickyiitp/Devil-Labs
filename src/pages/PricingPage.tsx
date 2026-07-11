@@ -104,7 +104,7 @@ export default function PricingPage({ navigate }: PricingPageProps) {
     {
       title: "MVP Build (Starter)",
       tagline: "FAST PRODUCT SHIPMENT",
-      price: (currency === 'INR') ? "₹7,500" : "$199",
+      price: (currency === 'INR') ? "₹8,500" : "$229",
       priceBasis: "per deployment",
       description: "Ideal for small businesses establishing their first digital footprint.",
       features: [
@@ -122,7 +122,7 @@ export default function PricingPage({ navigate }: PricingPageProps) {
     {
       title: "Full-Stack + AI (Professional)",
       tagline: "AUTONOMOUS & DATA ENGINES",
-      price: (currency === 'INR') ? "₹15,000" : "$499",
+      price: (currency === 'INR') ? "₹28,900" : "$729",
       priceBasis: "per architecture",
       description: "Comprehensive solution for growing brands requiring custom logic and design.",
       features: [
@@ -140,7 +140,7 @@ export default function PricingPage({ navigate }: PricingPageProps) {
     {
       title: "Retainer / Enterprise",
       tagline: "CONTINUOUS AUTOMATION SCALE",
-      price: (currency === 'INR') ? "₹35,000+" : "$1,000+",
+      price: (currency === 'INR') ? "₹47,000+" : "$1,199+",
       priceBasis: "per sprint period",
       description: "Fully custom architecture with advanced AI automation for high-volume operations.",
       features: [
@@ -278,9 +278,9 @@ I would like to proceed with this architecture. Please provide further details.`
         <div className="min-w-[800px] border border-white/5 bg-black/40">
           <div className="grid grid-cols-4 border-b border-white/5 bg-white/5">
             <div className="p-6 font-mono text-xs text-gray-500 uppercase tracking-widest font-bold flex items-end">Feature Set</div>
-            <div className="p-6 font-display text-lg text-white font-bold text-center">MVP Build<br/><span className="text-sm font-mono text-gray-500 font-normal">{(currency === 'INR') ? '₹7,500' : '$199'}</span></div>
-            <div className="p-6 font-display text-lg text-white font-bold text-center border-x border-white/5 bg-violet-950/20">Full-Stack + AI<br/><span className="text-sm font-mono text-violet-400 font-normal">{(currency === 'INR') ? '₹15,000' : '$499'}</span></div>
-            <div className="p-6 font-display text-lg text-white font-bold text-center">Enterprise<br/><span className="text-sm font-mono text-gray-500 font-normal">{(currency === 'INR') ? '₹35,000+' : '$1,000+'}</span></div>
+            <div className="p-6 font-display text-lg text-white font-bold text-center">MVP Build<br/><span className="text-sm font-mono text-gray-500 font-normal">{(currency === 'INR') ? '₹8,500' : '$229'}</span></div>
+            <div className="p-6 font-display text-lg text-white font-bold text-center border-x border-white/5 bg-violet-950/20">Full-Stack + AI<br/><span className="text-sm font-mono text-violet-400 font-normal">{(currency === 'INR') ? '₹28,900' : '$729'}</span></div>
+            <div className="p-6 font-display text-lg text-white font-bold text-center">Enterprise<br/><span className="text-sm font-mono text-gray-500 font-normal">{(currency === 'INR') ? '₹47,000+' : '$1,199+'}</span></div>
           </div>
           
           {[

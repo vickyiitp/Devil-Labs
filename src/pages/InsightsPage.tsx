@@ -106,6 +106,33 @@ export default function InsightsPage({ navigate }: { navigate: (path: string) =>
           ))}
         </div>
 
+        {/* Client Feedback Highlight */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="max-w-4xl mx-auto mb-24 p-8 border border-white/5 bg-[#050505]/60 rounded-2xl relative overflow-hidden font-mono"
+        >
+          <div className="absolute top-0 right-0 w-32 h-32 bg-violet-500/5 blur-3xl rounded-full" />
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+            <div className="space-y-2">
+              <span className="text-[10px] text-violet-400 font-bold tracking-widest uppercase block">// ARCHITECTURE VALIDATION</span>
+              <p className="text-sm text-gray-300 italic font-sans leading-relaxed">
+                "Devil Labs operates at the absolute peak of modern software velocity. Their secure, type-safe full-stack micro-architecture allowed our product team to launch and scale instantly."
+              </p>
+              <p className="text-xs text-gray-500 font-mono">
+                — Vicky IITP, Founder & Lead Architect at <span className="text-white">vickyiitp.tech</span>
+              </p>
+            </div>
+            <button 
+              onClick={() => navigate('/process')}
+              className="px-5 py-2.5 bg-white/5 hover:bg-violet-600/20 text-white font-mono text-[10px] font-bold tracking-widest uppercase transition-all duration-300 rounded border border-white/10 hover:border-violet-500 shrink-0"
+            >
+              VIEW PROCESS & FEEDBACKS
+            </button>
+          </div>
+        </motion.div>
+
       </div>
 
       {/* Terminal Subscribe */}

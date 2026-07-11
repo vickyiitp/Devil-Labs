@@ -1,4 +1,8 @@
-import { motion } from 'motion/react';
+const fs = require('fs');
+
+let content = fs.readFileSync('src/components/HeroVideoPlayer.tsx', 'utf8');
+
+const newComponent = `import { motion } from 'motion/react';
 import { useState } from 'react';
 
 export default function HeroVideoPlayer() {
@@ -20,7 +24,7 @@ export default function HeroVideoPlayer() {
         loop
         muted
         playsInline
-        className={`absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity duration-700 ${loaded ? 'opacity-70' : 'opacity-0'}`}
+        className={\`absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity duration-700 \${loaded ? 'opacity-70' : 'opacity-0'}\`}
         src="https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-a-technological-network-31626-large.mp4"
         onCanPlayThrough={() => setLoaded(true)}
       />
@@ -38,4 +42,7 @@ export default function HeroVideoPlayer() {
       </div>
     </div>
   );
-}
+}`;
+
+fs.writeFileSync('src/components/HeroVideoPlayer.tsx', newComponent);
+console.log('Fixed HeroVideoPlayer');

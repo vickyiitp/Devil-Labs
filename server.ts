@@ -1,6 +1,7 @@
 import express from "express";
 import path from "path";
 import { createServer as createViteServer } from "vite";
+import { serviceCategories } from "./src/data/services";
 
 async function startServer() {
   const app = express();
@@ -70,6 +71,81 @@ async function startServer() {
       console.error("Chat error:", error);
       res.status(500).json({ error: "Failed to process chat request" });
     }
+  });
+
+  // Dynamic Sitemap XML
+  app.get("/sitemap.xml", (req, res) => {
+    const host = req.headers.host || "devillabs.tech";
+    const protocol = req.secure || req.headers["x-forwarded-proto"] === "https" ? "https" : "http";
+    const baseUrl = `${protocol}://${host}`;
+
+    const staticPages = [
+      { path: "/", priority: "1.0", changefreq: "daily" },
+      { path: "/services", priority: "0.9", changefreq: "weekly" },
+      { path: "/work", priority: "0.9", changefreq: "weekly" },
+      { path: "/about", priority: "0.9", changefreq: "weekly" },
+      { path: "/pricing", priority: "0.8", changefreq: "weekly" },
+      { path: "/contact", priority: "0.8", changefreq: "monthly" },
+      { path: "/process", priority: "0.7", changefreq: "monthly" },
+      { path: "/insights", priority: "0.7", changefreq: "weekly" },
+      { path: "/legal/privacy", priority: "0.3", changefreq: "monthly" },
+      { path: "/legal/terms", priority: "0.3", changefreq: "monthly" },
+      { path: "/legal/msa", priority: "0.3", changefreq: "monthly" },
+    ];
+
+    const currentDate = new Date().toISOString().split("T")[0];
+
+    let xml = `<?xml version="1.0" encoding="UTF-8"?>\n`;
+    xml += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
+
+    // Static pages
+    for (const page of staticPages) {
+      xml += `  <url>\n`;
+      xml += `    <loc>${baseUrl}${page.path}</loc>\n`;
+      xml += `    <lastmod>${currentDate}</lastmod>\n`;
+      xml += `    <changefreq>${page.changefreq}</changefreq>\n`;
+      xml += `    <priority>${page.priority}</priority>\n`;
+      xml += `  </url>\n`;
+    }
+
+    // Dynamic services pages from data/services.ts
+    if (Array.isArray(serviceCategories)) {
+      for (const category of serviceCategories) {
+        if (category && Array.isArray(category.items)) {
+          for (const item of category.items) {
+            if (item && item.slug) {
+              xml += `  <url>\n`;
+              xml += `    <loc>${baseUrl}/services/${item.slug}</loc>\n`;
+              xml += `    <lastmod>${currentDate}</lastmod>\n`;
+              xml += `    <changefreq>weekly</changefreq>\n`;
+              xml += `    <priority>0.8</priority>\n`;
+              xml += `  </url>\n`;
+            }
+          }
+        }
+      }
+    }
+
+    xml += `</urlset>`;
+
+    res.header("Content-Type", "application/xml");
+    res.status(200).send(xml);
+  });
+
+  // Robots.txt
+  app.get("/robots.txt", (req, res) => {
+    const host = req.headers.host || "devillabs.tech";
+    const protocol = req.secure || req.headers["x-forwarded-proto"] === "https" ? "https" : "http";
+    const baseUrl = `${protocol}://${host}`;
+
+    let txt = `User-agent: *\n`;
+    txt += `Allow: /\n`;
+    txt += `Disallow: /api/\n`;
+    txt += `\n`;
+    txt += `Sitemap: ${baseUrl}/sitemap.xml\n`;
+
+    res.header("Content-Type", "text/plain");
+    res.status(200).send(txt);
   });
 
   // Vite middleware for development

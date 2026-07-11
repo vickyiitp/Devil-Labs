@@ -26,21 +26,21 @@ export const serviceData: Record<string, any> = {
     plans: [
       {
         name: 'Starter Plan',
-        price: '₹7,500',
+        price: '₹8,500',
         description: 'Ideal for small businesses in emerging markets (Gaya, Patna) establishing their digital footprint.',
         features: ['3-4 Web Pages', 'Mobile Responsive UI', 'Contact Form Integration', 'Basic On-Page SEO', 'Social Media Links'],
         highlight: false
       },
       {
         name: 'Professional Plan',
-        price: '₹15,000',
+        price: '₹28,900',
         description: 'Comprehensive solution for growing brands across New Delhi and metro cities.',
         features: ['Up to 10 Web Pages', 'Custom UI/UX Design', 'CMS Integration', 'Speed & Performance Optimization', 'Advanced Analytics'],
         highlight: true
       },
       {
         name: 'Enterprise Plan',
-        price: '₹35,000+',
+        price: '₹47,000+',
         description: 'Fully custom architecture with advanced automation and integrations.',
         features: ['Unlimited / Dynamic Pages', 'Payment Gateway Integration', 'AI Automation & Agents', 'Custom Backend Systems', 'Priority Tech Support'],
         highlight: false
@@ -73,21 +73,21 @@ export const serviceData: Record<string, any> = {
     plans: [
       {
         name: 'Starter Plan',
-        price: '₹7,500',
+        price: '₹8,500',
         description: 'Ideal for small businesses in emerging markets (Gaya, Patna) establishing their digital footprint.',
         features: ['3-4 Web Pages', 'Mobile Responsive UI', 'Contact Form Integration', 'Basic On-Page SEO', 'Social Media Links'],
         highlight: false
       },
       {
         name: 'Professional Plan',
-        price: '₹15,000',
+        price: '₹28,900',
         description: 'Comprehensive solution for growing brands across New Delhi and metro cities.',
         features: ['Up to 10 Web Pages', 'Custom UI/UX Design', 'CMS Integration', 'Speed & Performance Optimization', 'Advanced Analytics'],
         highlight: true
       },
       {
         name: 'Enterprise Plan',
-        price: '₹35,000+',
+        price: '₹47,000+',
         description: 'Fully custom architecture with advanced automation and integrations.',
         features: ['Unlimited / Dynamic Pages', 'Payment Gateway Integration', 'AI Automation & Agents', 'Custom Backend Systems', 'Priority Tech Support'],
         highlight: false
@@ -120,21 +120,21 @@ export const serviceData: Record<string, any> = {
     plans: [
       {
         name: 'Starter Plan',
-        price: '₹7,500',
+        price: '₹8,500',
         description: 'Ideal for small businesses in emerging markets (Gaya, Patna) establishing their digital footprint.',
         features: ['3-4 Web Pages', 'Mobile Responsive UI', 'Contact Form Integration', 'Basic On-Page SEO', 'Social Media Links'],
         highlight: false
       },
       {
         name: 'Professional Plan',
-        price: '₹15,000',
+        price: '₹28,900',
         description: 'Comprehensive solution for growing brands across New Delhi and metro cities.',
         features: ['Up to 10 Web Pages', 'Custom UI/UX Design', 'CMS Integration', 'Speed & Performance Optimization', 'Advanced Analytics'],
         highlight: true
       },
       {
         name: 'Enterprise Plan',
-        price: '₹35,000+',
+        price: '₹47,000+',
         description: 'Fully custom architecture with advanced automation and integrations.',
         features: ['Unlimited / Dynamic Pages', 'Payment Gateway Integration', 'AI Automation & Agents', 'Custom Backend Systems', 'Priority Tech Support'],
         highlight: false
@@ -171,21 +171,21 @@ export const serviceData: Record<string, any> = {
     plans: [
       {
         name: 'Starter Plan',
-        price: '₹7,500',
+        price: '₹8,500',
         description: 'Ideal for small businesses in emerging markets (Gaya, Patna) establishing their digital footprint.',
         features: ['3-4 Web Pages', 'Mobile Responsive UI', 'Contact Form Integration', 'Basic On-Page SEO', 'Social Media Links'],
         highlight: false
       },
       {
         name: 'Professional Plan',
-        price: '₹15,000',
+        price: '₹28,900',
         description: 'Comprehensive solution for growing brands across New Delhi and metro cities.',
         features: ['Up to 10 Web Pages', 'Custom UI/UX Design', 'CMS Integration', 'Speed & Performance Optimization', 'Advanced Analytics'],
         highlight: true
       },
       {
         name: 'Enterprise Plan',
-        price: '₹35,000+',
+        price: '₹47,000+',
         description: 'Fully custom architecture with advanced automation and integrations.',
         features: ['Unlimited / Dynamic Pages', 'Payment Gateway Integration', 'AI Automation & Agents', 'Custom Backend Systems', 'Priority Tech Support'],
         highlight: false
@@ -218,21 +218,21 @@ export const serviceData: Record<string, any> = {
     plans: [
       {
         name: 'Starter Plan',
-        price: '₹7,500',
+        price: '₹8,500',
         description: 'Ideal for small businesses in emerging markets (Gaya, Patna) establishing their digital footprint.',
         features: ['3-4 Web Pages', 'Mobile Responsive UI', 'Contact Form Integration', 'Basic On-Page SEO', 'Social Media Links'],
         highlight: false
       },
       {
         name: 'Professional Plan',
-        price: '₹15,000',
+        price: '₹28,900',
         description: 'Comprehensive solution for growing brands across New Delhi and metro cities.',
         features: ['Up to 10 Web Pages', 'Custom UI/UX Design', 'CMS Integration', 'Speed & Performance Optimization', 'Advanced Analytics'],
         highlight: true
       },
       {
         name: 'Enterprise Plan',
-        price: '₹35,000+',
+        price: '₹47,000+',
         description: 'Fully custom architecture with advanced automation and integrations.',
         features: ['Unlimited / Dynamic Pages', 'Payment Gateway Integration', 'AI Automation & Agents', 'Custom Backend Systems', 'Priority Tech Support'],
         highlight: false
@@ -265,21 +265,21 @@ export const serviceData: Record<string, any> = {
     plans: [
       {
         name: 'Starter Plan',
-        price: '₹7,500',
+        price: '₹8,500',
         description: 'Ideal for small businesses in emerging markets (Gaya, Patna) establishing their digital footprint.',
         features: ['3-4 Web Pages', 'Mobile Responsive UI', 'Contact Form Integration', 'Basic On-Page SEO', 'Social Media Links'],
         highlight: false
       },
       {
         name: 'Professional Plan',
-        price: '₹15,000',
+        price: '₹28,900',
         description: 'Comprehensive solution for growing brands across New Delhi and metro cities.',
         features: ['Up to 10 Web Pages', 'Custom UI/UX Design', 'CMS Integration', 'Speed & Performance Optimization', 'Advanced Analytics'],
         highlight: true
       },
       {
         name: 'Enterprise Plan',
-        price: '₹35,000+',
+        price: '₹47,000+',
         description: 'Fully custom architecture with advanced automation and integrations.',
         features: ['Unlimited / Dynamic Pages', 'Payment Gateway Integration', 'AI Automation & Agents', 'Custom Backend Systems', 'Priority Tech Support'],
         highlight: false
@@ -312,21 +312,21 @@ export const serviceData: Record<string, any> = {
     plans: [
       {
         name: 'Starter Plan',
-        price: '₹7,500',
+        price: '₹8,500',
         description: 'Ideal for small businesses in emerging markets (Gaya, Patna) establishing their digital footprint.',
         features: ['3-4 Web Pages', 'Mobile Responsive UI', 'Contact Form Integration', 'Basic On-Page SEO', 'Social Media Links'],
         highlight: false
       },
       {
         name: 'Professional Plan',
-        price: '₹15,000',
+        price: '₹28,900',
         description: 'Comprehensive solution for growing brands across New Delhi and metro cities.',
         features: ['Up to 10 Web Pages', 'Custom UI/UX Design', 'CMS Integration', 'Speed & Performance Optimization', 'Advanced Analytics'],
         highlight: true
       },
       {
         name: 'Enterprise Plan',
-        price: '₹35,000+',
+        price: '₹47,000+',
         description: 'Fully custom architecture with advanced automation and integrations.',
         features: ['Unlimited / Dynamic Pages', 'Payment Gateway Integration', 'AI Automation & Agents', 'Custom Backend Systems', 'Priority Tech Support'],
         highlight: false
@@ -359,21 +359,21 @@ export const serviceData: Record<string, any> = {
     plans: [
       {
         name: 'Starter Plan',
-        price: '₹7,500',
+        price: '₹8,500',
         description: 'Ideal for small businesses in emerging markets (Gaya, Patna) establishing their digital footprint.',
         features: ['3-4 Web Pages', 'Mobile Responsive UI', 'Contact Form Integration', 'Basic On-Page SEO', 'Social Media Links'],
         highlight: false
       },
       {
         name: 'Professional Plan',
-        price: '₹15,000',
+        price: '₹28,900',
         description: 'Comprehensive solution for growing brands across New Delhi and metro cities.',
         features: ['Up to 10 Web Pages', 'Custom UI/UX Design', 'CMS Integration', 'Speed & Performance Optimization', 'Advanced Analytics'],
         highlight: true
       },
       {
         name: 'Enterprise Plan',
-        price: '₹35,000+',
+        price: '₹47,000+',
         description: 'Fully custom architecture with advanced automation and integrations.',
         features: ['Unlimited / Dynamic Pages', 'Payment Gateway Integration', 'AI Automation & Agents', 'Custom Backend Systems', 'Priority Tech Support'],
         highlight: false
@@ -406,21 +406,21 @@ export const serviceData: Record<string, any> = {
     plans: [
       {
         name: 'Starter Plan',
-        price: '₹7,500',
+        price: '₹8,500',
         description: 'Ideal for small businesses in emerging markets (Gaya, Patna) establishing their digital footprint.',
         features: ['3-4 Web Pages', 'Mobile Responsive UI', 'Contact Form Integration', 'Basic On-Page SEO', 'Social Media Links'],
         highlight: false
       },
       {
         name: 'Professional Plan',
-        price: '₹15,000',
+        price: '₹28,900',
         description: 'Comprehensive solution for growing brands across New Delhi and metro cities.',
         features: ['Up to 10 Web Pages', 'Custom UI/UX Design', 'CMS Integration', 'Speed & Performance Optimization', 'Advanced Analytics'],
         highlight: true
       },
       {
         name: 'Enterprise Plan',
-        price: '₹35,000+',
+        price: '₹47,000+',
         description: 'Fully custom architecture with advanced automation and integrations.',
         features: ['Unlimited / Dynamic Pages', 'Payment Gateway Integration', 'AI Automation & Agents', 'Custom Backend Systems', 'Priority Tech Support'],
         highlight: false
@@ -453,21 +453,21 @@ export const serviceData: Record<string, any> = {
     plans: [
       {
         name: 'Starter Plan',
-        price: '₹7,500',
+        price: '₹8,500',
         description: 'Ideal for small businesses in emerging markets (Gaya, Patna) establishing their digital footprint.',
         features: ['3-4 Web Pages', 'Mobile Responsive UI', 'Contact Form Integration', 'Basic On-Page SEO', 'Social Media Links'],
         highlight: false
       },
       {
         name: 'Professional Plan',
-        price: '₹15,000',
+        price: '₹28,900',
         description: 'Comprehensive solution for growing brands across New Delhi and metro cities.',
         features: ['Up to 10 Web Pages', 'Custom UI/UX Design', 'CMS Integration', 'Speed & Performance Optimization', 'Advanced Analytics'],
         highlight: true
       },
       {
         name: 'Enterprise Plan',
-        price: '₹35,000+',
+        price: '₹47,000+',
         description: 'Fully custom architecture with advanced automation and integrations.',
         features: ['Unlimited / Dynamic Pages', 'Payment Gateway Integration', 'AI Automation & Agents', 'Custom Backend Systems', 'Priority Tech Support'],
         highlight: false

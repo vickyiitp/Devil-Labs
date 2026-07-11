@@ -11,6 +11,8 @@ import PrivacyPage from './pages/PrivacyPage';
 import TermsPage from './pages/TermsPage';
 import MSAPage from './pages/MSAPage';
 import ProjectsPage from './pages/ProjectsPage';
+import AboutPage from './pages/AboutPage';
+import SkeletonLoader from './components/SkeletonLoader';
 import BackgroundEffects from './components/BackgroundEffects';
 import ScrollProgress from './components/ScrollProgress';
 import CommandPalette from './components/CommandPalette';
@@ -21,6 +23,7 @@ import { CurrencyProvider } from './contexts/CurrencyContext';
 
 function usePath() {
   const [path, setPath] = useState(window.location.pathname || '/');
+  const [isNavigating, setIsNavigating] = useState(false);
 
   useEffect(() => {
     const handlePopState = () => {
@@ -31,18 +34,27 @@ function usePath() {
   }, []);
 
   const navigate = (to: string) => {
+    if (to === path) return;
+    setIsNavigating(true);
     window.history.pushState({}, '', to);
     setPath(to);
     window.scrollTo({ top: 0, behavior: 'instant' });
+    
+    // Simulate data fetching delay to show skeleton
+    setTimeout(() => {
+      setIsNavigating(false);
+    }, 800); // 800ms loading state
   };
 
-  return [path, navigate] as const;
+  return [path, navigate, isNavigating] as const;
 }
 
 export default function App() {
-  const [currentPath, navigate] = usePath();
+  const [currentPath, navigate, isNavigating] = usePath();
 
   const renderPage = () => {
+    if (isNavigating) return <SkeletonLoader />;
+
     switch (currentPath) {
       case '/':
         return <LandingPage navigate={navigate} />;
@@ -50,6 +62,8 @@ export default function App() {
         return <ServicesPage navigate={navigate} />;
       case '/work':
         return <ProjectsPage navigate={navigate} />;
+      case '/about':
+        return <AboutPage navigate={navigate} />;
       case '/pricing':
         return <PricingPage navigate={navigate} />;
       case '/contact':
