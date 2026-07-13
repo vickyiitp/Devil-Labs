@@ -21,6 +21,7 @@ import FloatingContact from './components/FloatingContact';
 import Breadcrumb from './components/Breadcrumb';
 import { DebugProvider } from './components/DebugContext';
 import { CurrencyProvider } from './contexts/CurrencyContext';
+import InitializeModal from './components/InitializeModal';
 
 function usePath() {
   const [path, setPath] = useState(window.location.pathname || '/');
@@ -52,6 +53,13 @@ function usePath() {
 
 export default function App() {
   const [currentPath, navigate, isNavigating] = usePath();
+  const [isInitializeModalOpen, setIsInitializeModalOpen] = useState(false);
+
+  useEffect(() => {
+    const handleOpenModal = () => setIsInitializeModalOpen(true);
+    window.addEventListener('open-initialize-modal', handleOpenModal);
+    return () => window.removeEventListener('open-initialize-modal', handleOpenModal);
+  }, []);
 
   const renderPage = () => {
     if (isNavigating) return <SkeletonLoader />;
@@ -129,6 +137,11 @@ export default function App() {
           <Footer navigate={navigate} />
         </div>
         <FloatingContact />
+        <InitializeModal 
+          isOpen={isInitializeModalOpen} 
+          onClose={() => setIsInitializeModalOpen(false)} 
+          navigate={navigate} 
+        />
       </div>
     </DebugProvider>
     </CurrencyProvider>

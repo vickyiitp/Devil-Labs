@@ -376,7 +376,7 @@ export default function LandingPage({ navigate }: LandingPageProps) {
               >
                 <button
                   onMouseEnter={playSpatialHoverSound}
-                  onClick={() => { playClickSound(); navigate('/contact'); }}
+                  onClick={() => { playClickSound(); window.dispatchEvent(new CustomEvent('open-initialize-modal')); }}
                   className="px-10 py-4 bg-white text-black font-mono font-bold text-[10px] sm:text-xs uppercase tracking-[0.25em] hover:bg-violet-600 hover:text-white transition-all duration-300 flex items-center justify-center space-x-3 rounded-full shadow-[0_0_0_rgba(139,92,246,0)] hover:shadow-[0_0_30px_rgba(139,92,246,0.5)] cursor-pointer"
                 >
                   <span>INITIALIZE PROJECT</span>
@@ -426,7 +426,7 @@ export default function LandingPage({ navigate }: LandingPageProps) {
               </p>
             </div>
             <div className="flex items-center space-x-3">
-              <button onClick={() => { setShowBanner(false); navigate('/contact'); }} className="px-5 py-2 bg-white text-black text-xs font-bold rounded-full hover:bg-violet-500 hover:text-white transition-colors">
+              <button onClick={() => { setShowBanner(false); window.dispatchEvent(new CustomEvent('open-initialize-modal')); }} className="px-5 py-2 bg-white text-black text-xs font-bold rounded-full hover:bg-violet-500 hover:text-white transition-colors">
                 Get Started
               </button>
               <button onClick={() => setShowBanner(false)} className="p-2 text-gray-500 hover:text-white transition-colors rounded-full hover:bg-white/10">

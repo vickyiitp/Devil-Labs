@@ -177,8 +177,8 @@ export default function SEO({ path }: { path: string }) {
           "url": "https://vickyiitp.tech"
         },
         "sameAs": [
-          "https://instagram.com/devil_labs",
-          "https://linkedin.com/company/devil-labs"
+          "https://instagram.com/devillabs",
+          "https://linkedin.com/company/devillabs"
         ],
         "contactPoint": {
           "@type": "ContactPoint",
@@ -211,7 +211,7 @@ export default function SEO({ path }: { path: string }) {
           "https://linkedin.com/in/vickyiitp",
           "https://github.com/vickyiitp",
           "https://vickyiitp.tech",
-          "https://instagram.com/devil_labs"
+          "https://instagram.com/devillabs"
         ],
         "description": "Elite software engineer, full-stack tech architect, and founder of Devil Labs, leading digital acceleration in Bihar and India."
       };

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+  <rect width="120" height="120" rx="30" fill="#050505" />
+  <defs>
+    <linearGradient id="logo-bevel" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stopColor="#FFFFFF" />
+      <stop offset="40%" stopColor="#E2E8F0" />
+      <stop offset="70%" stopColor="#94A3B8" />
+      <stop offset="100%" stopColor="#475569" />
+    </linearGradient>
+  </defs>
+  <g>
+    <path d="M42 22 L34 44 L48 38 Z" fill="url(#logo-bevel)" stroke="rgba(255,255,255,0.2)" strokeWidth="1" />
+    <path d="M78 22 L86 44 L72 38 Z" fill="url(#logo-bevel)" stroke="rgba(255,255,255,0.2)" strokeWidth="1" />
+    <path d="M60 12 L50 44 L60 38 L70 44 Z" fill="url(#logo-bevel)" stroke="rgba(255,255,255,0.3)" strokeWidth="1" />
+    <path d="M56 46 L34 46 L34 80 L56 96 Z" fill="url(#logo-bevel)" stroke="rgba(255,255,255,0.2)" strokeWidth="1" />
+    <path d="M48 54 L40 54 L40 76 L48 82 Z" fill="#050505" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
+    <path d="M64 46 L86 46 L86 80 L64 96 Z" fill="url(#logo-bevel)" stroke="rgba(255,255,255,0.2)" strokeWidth="1" />
+    <path d="M70 46 L70 76 L80 76 L80 46 Z" fill="#050505" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
+    <path d="M60 12 L60 38" stroke="#FFFFFF" strokeWidth="1.5" strokeLinecap="round" />
+    <path d="M34 46 L34 80 M86 46 L86 80" stroke="#FFFFFF" strokeWidth="1" opacity="0.8" />
+  </g>
+</svg>

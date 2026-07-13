@@ -95,10 +95,10 @@ export default function Navigation({ currentPath, navigate }: NavigationProps) {
             <a href="https://github.com/Devil-Labs/" target="_blank" rel="noreferrer" className="text-gray-500 hover:text-white transition-colors">
               <Github size={12} />
             </a>
-            <a href="https://linkedin.com/company/devil-labs" target="_blank" rel="noreferrer" className="text-gray-500 hover:text-white transition-colors">
+            <a href="https://linkedin.com/company/devillabs" target="_blank" rel="noreferrer" className="text-gray-500 hover:text-white transition-colors">
               <Linkedin size={12} />
             </a>
-            <a href="https://instagram.com/devil_labs" target="_blank" rel="noreferrer" className="text-gray-500 hover:text-white transition-colors">
+            <a href="https://instagram.com/devillabs" target="_blank" rel="noreferrer" className="text-gray-500 hover:text-white transition-colors">
               <Instagram size={12} />
             </a>
           </div>
@@ -166,7 +166,7 @@ export default function Navigation({ currentPath, navigate }: NavigationProps) {
           <button
             id="nav-cta-btn"
             onMouseEnter={() => audioEngine.playHover()}
-            onClick={() => { audioEngine.playClick(); navigate('/contact'); }}
+            onClick={() => { audioEngine.playClick(); window.dispatchEvent(new CustomEvent('open-initialize-modal')); }}
             className="group flex items-center space-x-2 bg-white text-black px-6 py-2.5 rounded-full font-bold text-[10px] uppercase tracking-widest hover:bg-violet-600 hover:text-white transition-all shadow-[0_0_20px_rgba(139,92,246,0)] hover:shadow-[0_0_20px_rgba(139,92,246,0.4)] cursor-pointer"
           >
             <span>INITIALIZE</span>
@@ -224,7 +224,7 @@ export default function Navigation({ currentPath, navigate }: NavigationProps) {
           <button
             id="mobile-nav-cta-btn"
             onClick={() => {
-              navigate('/contact');
+              window.dispatchEvent(new CustomEvent('open-initialize-modal'));
               setIsOpen(false);
             }}
             className="w-full py-4 bg-white text-black font-bold text-xs tracking-widest uppercase hover:bg-violet-600 hover:text-white transition-all text-center flex items-center justify-center space-x-2"
@@ -319,14 +319,14 @@ export function Footer({ navigate }: { navigate: (path: string) => void }) {
             </span>
             <ArrowUpRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" />
           </a>
-          <a href="https://linkedin.com/company/devil-labs" target="_blank" rel="noreferrer" className="text-left hover:text-violet-400 hover:pl-2 transition-all duration-300 flex items-center justify-between group">
+          <a href="https://linkedin.com/company/devillabs" target="_blank" rel="noreferrer" className="text-left hover:text-violet-400 hover:pl-2 transition-all duration-300 flex items-center justify-between group">
             <span className="flex items-center space-x-2">
               <Linkedin size={12} className="text-gray-500 group-hover:text-violet-400 transition-colors" />
               <span>LINKEDIN</span>
             </span>
             <ArrowUpRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" />
           </a>
-          <a href="https://instagram.com/devil_labs" target="_blank" rel="noreferrer" className="text-left hover:text-violet-400 hover:pl-2 transition-all duration-300 flex items-center justify-between group">
+          <a href="https://instagram.com/devillabs" target="_blank" rel="noreferrer" className="text-left hover:text-violet-400 hover:pl-2 transition-all duration-300 flex items-center justify-between group">
             <span className="flex items-center space-x-2">
               <Instagram size={12} className="text-gray-500 group-hover:text-violet-400 transition-colors" />
               <span>INSTAGRAM</span>

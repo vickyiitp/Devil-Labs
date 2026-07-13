@@ -588,7 +588,7 @@ ${formData.name}`;
                     <ArrowUpRight size={14} className="text-gray-600 group-hover:text-violet-400 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all" />
                   </a>
 
-                  <a href="https://linkedin.com/company/devil-labs" target="_blank" rel="noreferrer" className="flex items-center justify-between p-4 bg-white/5 hover:bg-violet-600/10 border border-white/5 hover:border-violet-500/30 rounded-xl transition-all duration-300 group">
+                   <a href="https://linkedin.com/company/devillabs" target="_blank" rel="noreferrer" className="flex items-center justify-between p-4 bg-white/5 hover:bg-violet-600/10 border border-white/5 hover:border-violet-500/30 rounded-xl transition-all duration-300 group">
                     <div className="flex items-center space-x-3">
                       <Linkedin size={16} className="text-gray-400 group-hover:text-violet-400 transition-colors" />
                       <span className="text-xs text-white font-mono font-bold tracking-wider">LinkedIn</span>
@@ -596,7 +596,7 @@ ${formData.name}`;
                     <ArrowUpRight size={14} className="text-gray-600 group-hover:text-violet-400 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all" />
                   </a>
 
-                  <a href="https://instagram.com/devil_labs" target="_blank" rel="noreferrer" className="flex items-center justify-between p-4 bg-white/5 hover:bg-violet-600/10 border border-white/5 hover:border-violet-500/30 rounded-xl transition-all duration-300 group">
+                  <a href="https://instagram.com/devillabs" target="_blank" rel="noreferrer" className="flex items-center justify-between p-4 bg-white/5 hover:bg-violet-600/10 border border-white/5 hover:border-violet-500/30 rounded-xl transition-all duration-300 group">
                     <div className="flex items-center space-x-3">
                       <Instagram size={16} className="text-gray-400 group-hover:text-violet-400 transition-colors" />
                       <span className="text-xs text-white font-mono font-bold tracking-wider">Instagram</span>

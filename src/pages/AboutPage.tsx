@@ -3,6 +3,7 @@ import { motion } from 'motion/react';
 import { ArrowUpRight, Code2, Globe, Cpu, MapPin, Award, Terminal } from 'lucide-react';
 import CyberFrame from '../components/CyberFrame';
 import DevilLabsLogo from '../components/DevilLabsLogo';
+import TeamSection from '../components/TeamSection';
 
 interface AboutPageProps {
   navigate: (path: string) => void;
@@ -160,11 +161,11 @@ export default function AboutPage({ navigate }: AboutPageProps) {
                 Network Links
               </h3>
               <div className="space-y-3 font-mono text-[10px] uppercase tracking-widest font-bold">
-                <a href="https://instagram.com/devil_labs" target="_blank" rel="noreferrer" className="flex items-center justify-between group text-gray-400 hover:text-white transition-colors bg-white/5 p-4 rounded-xl border border-white/5 hover:border-violet-500/30">
+                <a href="https://instagram.com/devillabs" target="_blank" rel="noreferrer" className="flex items-center justify-between group text-gray-400 hover:text-white transition-colors bg-white/5 p-4 rounded-xl border border-white/5 hover:border-violet-500/30">
                   <span>Instagram</span>
                   <ArrowUpRight size={14} className="text-violet-400 group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform" />
                 </a>
-                <a href="https://linkedin.com/company/devil-labs" target="_blank" rel="noreferrer" className="flex items-center justify-between group text-gray-400 hover:text-white transition-colors bg-white/5 p-4 rounded-xl border border-white/5 hover:border-violet-500/30">
+                <a href="https://linkedin.com/company/devillabs" target="_blank" rel="noreferrer" className="flex items-center justify-between group text-gray-400 hover:text-white transition-colors bg-white/5 p-4 rounded-xl border border-white/5 hover:border-violet-500/30">
                   <span>LinkedIn</span>
                   <ArrowUpRight size={14} className="text-violet-400 group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform" />
                 </a>
@@ -181,6 +182,9 @@ export default function AboutPage({ navigate }: AboutPageProps) {
           </CyberFrame>
         </div>
       </div>
+
+      {/* Our Team Interactive Section */}
+      <TeamSection />
     </div>
   );
 }
