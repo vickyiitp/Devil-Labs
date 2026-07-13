@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from 'motion/react';
-import { ArrowUpRight, Zap, Cpu, Code2, Check, ArrowRight, X, FileText, ArrowDown, Terminal } from 'lucide-react';
-import React, { useState, useEffect } from 'react';
+import { ArrowUpRight, Zap, Cpu, Code2, Check, ArrowRight, X, FileText, ArrowDown, Terminal, Volume2, VolumeX, Radio, Music } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { audioEngine } from '../lib/audio';
 import Marquee from '../components/Marquee';
 import SocialProofMarquee from '../components/SocialProofMarquee';
 import ProjectGallery from '../components/ProjectGallery';
@@ -20,6 +21,36 @@ export default function LandingPage({ navigate }: LandingPageProps) {
   
   const [heroMode, setHeroMode] = useState<'ai' | 'web'>('ai');
   const [showBanner, setShowBanner] = useState(false);
+
+  const [coords, setCoords] = useState({ x: 0, y: 0 });
+  const [isHoveringHero, setIsHoveringHero] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
+
+  useEffect(() => {
+    setIsMuted(audioEngine.getMuteState());
+  }, []);
+
+  const toggleMute = () => {
+    audioEngine.playClick();
+    const muted = audioEngine.toggleMute();
+    setIsMuted(muted);
+  };
+
+  const playHoverSound = () => {
+    audioEngine.playHover();
+  };
+
+  const playSpatialHoverSound = (e: React.MouseEvent) => {
+    const clientX = e.clientX;
+    const screenWidth = window.innerWidth || 1920;
+    // Map screen position to stereo panning range [-1.0, 1.0]
+    const panValue = (clientX / screenWidth) * 2 - 1;
+    audioEngine.playHapticHover(panValue);
+  };
+
+  const playClickSound = () => {
+    audioEngine.playClick();
+  };
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -62,44 +93,141 @@ export default function LandingPage({ navigate }: LandingPageProps) {
   ];
 
   return (
-    <div id="landing-page-root" className="pt-24 lg:pt-32">
-      {/* 1. HERO SECTION */}
-      <section id="hero-section" className="relative flex flex-col justify-center px-4 sm:px-6 lg:px-12 pb-16 pt-4 md:pb-24 md:pt-0 overflow-hidden min-h-[100dvh] md:min-h-[85vh] debug-box" data-debug="SEC_HERO" data-x="0" data-y="0">
-        {/* Subtle grid pattern background */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#1f1f1f_1px,transparent_1px),linear-gradient(to_bottom,#1f1f1f_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,#000_70%,transparent_100%)] opacity-20 pointer-events-none" />
-
-        <div className="max-w-[1600px] w-full mx-auto relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.2fr_1fr] gap-6 md:gap-12 lg:gap-24 items-center">
+    <div id="landing-page-root" className="pt-28 sm:pt-24 lg:pt-32">
+      {/* 1. HERO SECTION WITH INTEGRATED PORTAL AND AUDIO ENGINE */}
+      <section 
+        id="hero-section" 
+        onMouseMove={(e) => {
+          const container = e.currentTarget;
+          const rect = container.getBoundingClientRect();
+          const x = Math.round(e.clientX - rect.left);
+          const y = Math.round(e.clientY - rect.top);
           
-          {/* LEFT COLUMN: The Value Engine */}
-          <div className="space-y-10 md:space-y-12 order-2 md:order-1 mt-8 md:mt-0">
-            {/* Dual Toggle Pill */}
+          container.style.setProperty('--mouse-x', `${x}px`);
+          container.style.setProperty('--mouse-y', `${y}px`);
+          container.style.setProperty('--spotlight-radius', '190px');
+          
+          setCoords({ x, y });
+          if (!isHoveringHero) {
+            setIsHoveringHero(true);
+          }
+        }}
+        onMouseLeave={(e) => {
+          const container = e.currentTarget;
+          container.style.setProperty('--mouse-x', '50%');
+          container.style.setProperty('--mouse-y', '45%');
+          container.style.setProperty('--spotlight-radius', '120px');
+          setIsHoveringHero(false);
+        }}
+        style={{
+          '--mouse-x': '50%',
+          '--mouse-y': '45%',
+          '--spotlight-radius': '120px',
+        } as React.CSSProperties}
+        className="relative flex flex-col justify-center px-4 sm:px-6 lg:px-12 pb-16 pt-4 md:pb-24 md:pt-0 overflow-hidden min-h-[100dvh] md:min-h-[90vh]"
+      >
+        {/* Dynamic Background Portal Layer */}
+        <div className="absolute inset-0 z-0 pointer-events-none select-none">
+          {/* Base Layer: Beautiful Playing Video (Default background layer) */}
+          <div className="absolute inset-0 z-0 bg-black">
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="absolute inset-0 w-full h-full object-cover opacity-25 filter brightness-90 grayscale-[15%]"
+              src="https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-a-technological-network-31626-large.mp4"
+            />
+            {/* Soft dark vignette gradient to keep content readable */}
+            <div className="absolute inset-0 bg-gradient-to-b from-[#050505]/40 via-[#050505]/85 to-[#050505]" />
+          </div>
+          
+          {/* Grid pattern overlay */}
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#1f1f1f_1px,transparent_1px),linear-gradient(to_bottom,#1f1f1f_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-20" />
+          
+          {/* Solid glass backing to keep content completely legible */}
+          <div className="absolute inset-0 bg-gradient-to-b from-brand-dark/10 via-brand-dark/50 to-brand-dark" />
+
+          {/* Masked Foreground Layer: Interactive Image Revealed Under the Spotlight (Pointer Position) */}
+          <div 
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              clipPath: `circle(var(--spotlight-radius, 120px) at var(--mouse-x, 50%) var(--mouse-y, 45%))`,
+              WebkitClipPath: `circle(var(--spotlight-radius, 120px) at var(--mouse-x, 50%) var(--mouse-y, 45%))`,
+              transition: 'clip-path 0.12s cubic-bezier(0.16, 1, 0.3, 1), -webkit-clip-path 0.12s cubic-bezier(0.16, 1, 0.3, 1)',
+            }}
+          >
+            {/* The beautiful aesthetic high-res motherboard/tech image shown inside the portal */}
+            <div 
+              className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-500 scale-105"
+              style={{ 
+                backgroundImage: `url('https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&w=2000&q=80')`,
+                opacity: 0.95
+              }}
+            />
+            {/* Ambient colorful filter over the image inside the spotlight circular portal */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-violet-600/40 via-transparent to-fuchsia-600/40 mix-blend-color-dodge" />
+            
+            {/* Interactive portal border highlight */}
+            <div 
+              className="absolute inset-0 border border-violet-500/40 pointer-events-none rounded-full"
+              style={{
+                width: 'calc(var(--spotlight-radius, 120px) * 2)',
+                height: 'calc(var(--spotlight-radius, 120px) * 2)',
+                left: 'calc(var(--mouse-x, 50%) - var(--spotlight-radius, 120px))',
+                top: 'calc(var(--mouse-y, 45%) - var(--spotlight-radius, 120px))',
+                boxShadow: '0 0 50px rgba(139, 92, 246, 0.5), inset 0 0 30px rgba(139, 92, 246, 0.3)',
+                transition: 'left 0.12s cubic-bezier(0.16, 1, 0.3, 1), top 0.12s cubic-bezier(0.16, 1, 0.3, 1)',
+              }}
+            />
+          </div>
+
+          {/* Vignette styling to blend background edges perfectly */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_30%,#050505_95%)] pointer-events-none" />
+        </div>
+
+        <div className="max-w-4xl w-full mx-auto relative z-10 flex flex-col items-center justify-center text-center space-y-10 md:space-y-12">
+          
+          {/* CENTER COLUMN: Deep Technical Value Engine (Spans entire width) */}
+          <div className="space-y-8 md:space-y-10 w-full flex flex-col items-center text-center relative">
+            
+            {/* Elegant, minimalist badge tag */}
+            <div className="flex items-center space-x-3 text-white/40 font-mono text-[10px] tracking-[0.25em] uppercase">
+              <span className="w-1.5 h-1.5 rounded-full bg-violet-500 animate-pulse" />
+              <span>// DEVIL LABS OPERATIONAL PROTOCOL</span>
+            </div>
+
+            {/* Dual Mode Selector Pill */}
             <motion.div 
-              initial={{ opacity: 0, y: -20 }}
+              initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
-              className="inline-flex items-center p-1 bg-[#111] border border-white/10 rounded-full self-start"
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="inline-flex items-center p-1 bg-[#090909]/90 backdrop-blur-md border border-white/5 rounded-full self-center"
             >
               <button
-                onClick={() => setHeroMode('ai')}
-                className={`relative px-6 sm:px-8 py-2.5 sm:py-3 text-[10px] sm:text-[11px] md:text-xs font-bold tracking-[0.2em] rounded-full transition-colors ${heroMode === 'ai' ? 'text-white' : 'text-gray-500 hover:text-white'}`}
+                onMouseEnter={playSpatialHoverSound}
+                onClick={() => { playClickSound(); setHeroMode('ai'); }}
+                className={`relative px-5 sm:px-7 py-2 text-[10px] sm:text-[11px] font-mono font-bold tracking-[0.2em] rounded-full transition-colors duration-300 ${heroMode === 'ai' ? 'text-white' : 'text-gray-500 hover:text-white'}`}
               >
                 {heroMode === 'ai' && (
-                  <motion.div layoutId="pill-bg" className="absolute inset-0 bg-white/10 border border-white/20 rounded-full shadow-inner" />
+                  <motion.div layoutId="pill-bg" className="absolute inset-0 bg-white/5 border border-white/10 rounded-full shadow-inner" />
                 )}
-                <span className="relative z-10 uppercase">Build AI</span>
+                <span className="relative z-10 uppercase">BUILD AI</span>
               </button>
               <button
-                onClick={() => setHeroMode('web')}
-                className={`relative px-6 sm:px-8 py-2.5 sm:py-3 text-[10px] sm:text-[11px] md:text-xs font-bold tracking-[0.2em] rounded-full transition-colors ${heroMode === 'web' ? 'text-white' : 'text-gray-500 hover:text-white'}`}
+                onMouseEnter={playSpatialHoverSound}
+                onClick={() => { playClickSound(); setHeroMode('web'); }}
+                className={`relative px-5 sm:px-7 py-2 text-[10px] sm:text-[11px] font-mono font-bold tracking-[0.2em] rounded-full transition-colors duration-300 ${heroMode === 'web' ? 'text-white' : 'text-gray-500 hover:text-white'}`}
               >
                 {heroMode === 'web' && (
-                  <motion.div layoutId="pill-bg" className="absolute inset-0 bg-white/10 border border-white/20 rounded-full shadow-inner" />
+                  <motion.div layoutId="pill-bg" className="absolute inset-0 bg-white/5 border border-white/10 rounded-full shadow-inner" />
                 )}
-                <span className="relative z-10 uppercase">Deploy Web Apps</span>
+                <span className="relative z-10 uppercase">DEPLOY WEB</span>
               </button>
             </motion.div>
 
-            {/* Headline with Staggered Reveal */}
-            <div className="min-h-[160px] sm:min-h-[220px] md:h-[320px] xl:h-[360px] flex flex-col justify-center">
+            {/* Headline with Staggered Kinetic Reveal */}
+            <div className="min-h-[140px] sm:min-h-[180px] md:h-[280px] xl:h-[320px] flex flex-col justify-center w-full">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={heroMode}
@@ -110,103 +238,160 @@ export default function LandingPage({ navigate }: LandingPageProps) {
                     hidden: { opacity: 0 },
                     show: {
                       opacity: 1,
-                      transition: { staggerChildren: 0.15 }
+                      transition: { staggerChildren: 0.12 }
                     },
                     exit: {
                       opacity: 0,
-                      transition: { staggerChildren: 0.1, staggerDirection: -1 }
+                      transition: { staggerChildren: 0.08, staggerDirection: -1 }
                     }
                   }}
-                  className="space-y-6"
+                  className="space-y-4 w-full flex flex-col items-center"
                 >
                   <motion.h1 
-                    variants={{
-                      hidden: { opacity: 0, y: 30 },
-                      show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } },
-                      exit: { opacity: 0, y: -20, transition: { duration: 0.4 } }
-                    }}
-                    className="text-[2.5rem] sm:text-[3.5rem] leading-[1.05] md:text-[4.5rem] lg:text-7xl xl:text-[6.5rem] font-display font-black text-white tracking-tighter uppercase break-words"
+                    className="text-[2.2rem] sm:text-[3.2rem] leading-[1.05] md:text-[4rem] lg:text-6xl xl:text-[5.5rem] font-display font-black tracking-tighter uppercase break-words flex flex-col items-center text-center w-full"
                   >
                     {heroMode === 'ai' ? (
                       <>
-                        Architecting <br className="hidden sm:block" />
-                        Autonomous <br className="hidden sm:block" />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-fuchsia-500">Intelligence.</span>
+                        <span className="block overflow-hidden py-1">
+                          <motion.span
+                            variants={{
+                              hidden: { opacity: 0, y: "105%", rotate: 2 },
+                              show: { opacity: 1, y: 0, rotate: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.02 } },
+                              exit: { opacity: 0, y: "-100%", transition: { duration: 0.25, ease: "easeIn" } }
+                            }}
+                            className="inline-block text-white origin-center"
+                          >
+                            ENGINEERING
+                          </motion.span>
+                        </span>
+                        <span className="block overflow-hidden py-1">
+                          <motion.span
+                            variants={{
+                              hidden: { opacity: 0, y: "105%", rotate: 2 },
+                              show: { opacity: 1, y: 0, rotate: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.1 } },
+                              exit: { opacity: 0, y: "-100%", transition: { duration: 0.25, ease: "easeIn" } }
+                            }}
+                            className="inline-block text-white origin-center"
+                          >
+                            AUTONOMOUS
+                          </motion.span>
+                        </span>
+                        <span className="block overflow-hidden py-1">
+                          <motion.span
+                            variants={{
+                              hidden: { opacity: 0, y: "105%", rotate: 2 },
+                              show: { opacity: 1, y: 0, rotate: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.18 } },
+                              exit: { opacity: 0, y: "-100%", transition: { duration: 0.25, ease: "easeIn" } }
+                            }}
+                            className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-violet-500 to-fuchsia-400 origin-center"
+                          >
+                            INTELLIGENCE.
+                          </motion.span>
+                        </span>
                       </>
                     ) : (
                       <>
-                        Engineering <br className="hidden sm:block" />
-                        High-Velocity <br className="hidden sm:block" />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-fuchsia-500">Infrastructure.</span>
+                        <span className="block overflow-hidden py-1">
+                          <motion.span
+                            variants={{
+                              hidden: { opacity: 0, y: "105%", rotate: 2 },
+                              show: { opacity: 1, y: 0, rotate: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.02 } },
+                              exit: { opacity: 0, y: "-100%", transition: { duration: 0.25, ease: "easeIn" } }
+                            }}
+                            className="inline-block text-white origin-center"
+                          >
+                            SCALING
+                          </motion.span>
+                        </span>
+                        <span className="block overflow-hidden py-1">
+                          <motion.span
+                            variants={{
+                              hidden: { opacity: 0, y: "105%", rotate: 2 },
+                              show: { opacity: 1, y: 0, rotate: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.1 } },
+                              exit: { opacity: 0, y: "-100%", transition: { duration: 0.25, ease: "easeIn" } }
+                            }}
+                            className="inline-block text-white origin-center"
+                          >
+                            HIGH-VELOCITY
+                          </motion.span>
+                        </span>
+                        <span className="block overflow-hidden py-1">
+                          <motion.span
+                            variants={{
+                              hidden: { opacity: 0, y: "105%", rotate: 2 },
+                              show: { opacity: 1, y: 0, rotate: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.18 } },
+                              exit: { opacity: 0, y: "-100%", transition: { duration: 0.25, ease: "easeIn" } }
+                            }}
+                            className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-violet-500 to-fuchsia-400 origin-center"
+                          >
+                            INFRASTRUCTURE.
+                          </motion.span>
+                        </span>
                       </>
                     )}
                   </motion.h1>
                   <motion.p 
                     variants={{
-                      hidden: { opacity: 0, y: 20 },
-                      show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } },
-                      exit: { opacity: 0, y: -10, transition: { duration: 0.4 } }
+                      hidden: { opacity: 0, y: 15 },
+                      show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } },
+                      exit: { opacity: 0, y: -10, transition: { duration: 0.3 } }
                     }}
-                    className="text-gray-400 text-sm sm:text-base md:text-lg xl:text-xl max-w-xl font-sans leading-relaxed"
+                    className="text-gray-400 text-sm sm:text-base md:text-lg max-w-2xl mx-auto font-sans leading-relaxed tracking-wide text-center"
                   >
-                    Building autonomous AI systems and scalable web infrastructure for the modern enterprise.
+                    Designing and deploying high-fidelity digital platforms and autonomous systems for world-changing enterprises.
                   </motion.p>
                 </motion.div>
               </AnimatePresence>
             </div>
 
-            <div className="flex flex-col xl:flex-row items-start xl:items-center justify-between gap-8 pt-4">
-              {/* Core Metrics/Benefits */}
+            {/* Sub-Layout Action Row with clean indicator tokens */}
+            <div className="flex flex-col md:flex-row items-center justify-center gap-8 pt-6 border-t border-white/5 w-full">
+              
+              {/* Refined clean layout badges instead of bullet points */}
               <motion.div 
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 0.6 }}
-                className="space-y-3 font-mono text-[10px] sm:text-[11px] md:text-xs uppercase tracking-widest text-gray-400 w-full xl:w-auto"
+                transition={{ delay: 0.4 }}
+                className="flex flex-wrap items-center justify-center gap-4 font-mono text-[9px] uppercase tracking-widest text-gray-400"
               >
-                <div className="flex items-center space-x-3">
-                  <Check size={14} className="text-violet-500 shrink-0" />
-                  <span>Scalable Cloud Architecture</span>
+                <div className="flex items-center space-x-2 bg-white/[0.03] border border-white/5 px-2.5 py-1.5 rounded-md">
+                  <span className="w-1 h-1 rounded-full bg-violet-400" />
+                  <span>AGENTIC SYSTEMS</span>
                 </div>
-                <div className="flex items-center space-x-3">
-                  <Check size={14} className="text-violet-500 shrink-0" />
-                  <span>AI-Powered Workflows</span>
+                <div className="flex items-center space-x-2 bg-white/[0.03] border border-white/5 px-2.5 py-1.5 rounded-md">
+                  <span className="w-1 h-1 rounded-full bg-fuchsia-400" />
+                  <span>ULTRA-PERFORMANT</span>
                 </div>
-                <div className="flex items-center space-x-3">
-                  <Check size={14} className="text-violet-500 shrink-0" />
-                  <span>Enterprise-Grade Security</span>
+                <div className="flex items-center space-x-2 bg-white/[0.03] border border-white/5 px-2.5 py-1.5 rounded-md">
+                  <span className="w-1 h-1 rounded-full bg-violet-400" />
+                  <span>TYPESAFE STATE</span>
                 </div>
               </motion.div>
 
-              {/* Action Buttons */}
+              {/* Redesigned Start a Project Action Button */}
               <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
+                initial={{ opacity: 0, scale: 0.97 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                className="w-full sm:w-auto"
+                transition={{ duration: 0.6, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
               >
                 <button
-                  onClick={() => navigate('/contact')}
-                  className="w-full sm:w-auto px-8 md:px-10 py-4 md:py-5 bg-white text-black font-mono font-bold text-[10px] md:text-xs uppercase tracking-[0.2em] hover:bg-violet-600 hover:text-white transition-all duration-300 flex items-center justify-center space-x-4 rounded-xl shadow-[0_0_0_rgba(139,92,246,0)] hover:shadow-[0_0_40px_rgba(139,92,246,0.6)] hover:scale-[1.02]"
+                  onMouseEnter={playSpatialHoverSound}
+                  onClick={() => { playClickSound(); navigate('/contact'); }}
+                  className="px-10 py-4 bg-white text-black font-mono font-bold text-[10px] sm:text-xs uppercase tracking-[0.25em] hover:bg-violet-600 hover:text-white transition-all duration-300 flex items-center justify-center space-x-3 rounded-full shadow-[0_0_0_rgba(139,92,246,0)] hover:shadow-[0_0_30px_rgba(139,92,246,0.5)] cursor-pointer"
                 >
-                  <span>START A PROJECT</span>
-                  <div className="w-6 h-6 rounded-full bg-black/10 flex items-center justify-center shrink-0">
-                    <ArrowRight size={14} />
-                  </div>
+                  <span>INITIALIZE PROJECT</span>
+                  <ArrowRight size={14} className="stroke-[2.5]" />
                 </button>
               </motion.div>
             </div>
+            
+            {/* Streamlined hover action reminder */}
+            <div className="pt-2 flex items-center justify-center space-x-1.5 text-gray-500 font-mono text-[8px] tracking-wider uppercase">
+              <div className={`w-1 h-1 rounded-full ${isHoveringHero ? 'bg-violet-400 animate-pulse' : 'bg-gray-700'}`} />
+              <span>{isHoveringHero ? 'HOVER REVEAL: IMAGE PORTAL UNLOCKED' : 'SWIPE MOUSE TO PEER THROUGH THE PHYSICAL DIMENSION'}</span>
+            </div>
+
           </div>
-
-          {/* RIGHT COLUMN: The Visual Core */}
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="w-full h-[40vh] min-h-[350px] md:h-[500px] lg:h-[600px] xl:h-[700px] order-1 md:order-2 relative group flex items-center justify-center p-4 sm:p-0 debug-box"
-          >
-            <HeroVideoPlayer />
-          </motion.div>
-
         </div>
         
         {/* Scroll Indicator */}
@@ -253,12 +438,12 @@ export default function LandingPage({ navigate }: LandingPageProps) {
       </AnimatePresence>
 
       {/* 2. TECH STACK MARQUEE */}
-      <section id="marquee-section" className="w-full debug-box" data-debug="SEC_MARQUEE" data-x="0" data-y="1200">
+      <section id="marquee-section" className="w-full">
         <Marquee />
       </section>
 
       {/* NEW: THE MANIFESTO SECTION */}
-      <section id="manifesto-section" className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto border-b border-white/5 text-center debug-box" data-debug="SEC_MANIFESTO" data-x="100" data-y="1400">
+      <section id="manifesto-section" className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto border-b border-white/5 text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -279,7 +464,7 @@ export default function LandingPage({ navigate }: LandingPageProps) {
       </section>
 
       {/* 3. VALUE PROPOSITION */}
-      <section id="values-section" className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-b border-white/5 debug-box" data-debug="SEC_VALUES" data-x="0" data-y="2100">
+      <section id="values-section" className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-b border-white/5">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 sm:gap-16">
           {valueProps.map((prop, idx) => (
             <motion.div
@@ -314,17 +499,17 @@ export default function LandingPage({ navigate }: LandingPageProps) {
       </section>
 
       {/* 3.5. INDUSTRY SOLUTIONS */}
-      <div data-debug="SEC_INDUSTRY" data-x="0" data-y="2600">
+      <div>
         <IndustrySolutions />
       </div>
 
       {/* 4. RECENT WORK TEASER */}
-      <section id="recent-work-section" className="py-24 sm:py-32 px-4 sm:px-6 lg:px-12 max-w-[1600px] mx-auto debug-box" data-debug="SEC_WORK" data-x="0" data-y="3000">
+      <section id="recent-work-section" className="py-24 sm:py-32 px-4 sm:px-6 lg:px-12 max-w-[1600px] mx-auto">
         <ProjectGallery />
       </section>
 
       {/* 5. FINAL CTA SECTION */}
-      <section id="landing-cta-section" className="py-24 sm:py-32 bg-black border-t border-white/5 px-4 sm:px-6 lg:px-8 relative overflow-hidden debug-box" data-debug="SEC_CTA" data-x="0" data-y="4500">
+      <section id="landing-cta-section" className="py-24 sm:py-32 bg-black border-t border-white/5 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
         {/* Neon vertical alignment dots */}
         <div className="absolute top-0 left-1/4 w-[1px] h-full bg-gradient-to-b from-white/10 via-transparent to-transparent" />
         <div className="absolute top-0 right-1/4 w-[1px] h-full bg-gradient-to-b from-white/10 via-transparent to-transparent" />
@@ -388,6 +573,45 @@ export default function LandingPage({ navigate }: LandingPageProps) {
           )}
         </div>
       </section>
+
+      {/* Floating Ambient Controller */}
+      <div className="fixed bottom-6 right-6 z-50 flex items-center space-x-3 bg-[#0a0a0a]/90 backdrop-blur-md border border-white/5 rounded-full px-4 py-2.5 shadow-2xl pointer-events-auto">
+        <div className="flex items-center space-x-1.5 mr-2 border-r border-white/5 pr-3 select-none">
+          <span className={`w-1.5 h-1.5 rounded-full bg-violet-500 ${!isMuted ? 'animate-pulse' : 'opacity-40'}`} />
+          <span className="font-mono text-[8px] text-gray-400 tracking-[0.2em] uppercase">AMBIENT</span>
+        </div>
+        <button
+          onMouseEnter={playHoverSound}
+          onClick={toggleMute}
+          className={`flex items-center space-x-2 transition-all duration-300 cursor-pointer ${
+            !isMuted 
+              ? 'text-violet-400 hover:text-white' 
+              : 'text-gray-500 hover:text-white'
+          }`}
+          aria-label="Toggle mute"
+        >
+          {!isMuted ? (
+            <div className="flex items-center space-x-2">
+              <Volume2 size={13} className="animate-bounce" />
+              <div className="h-3 flex items-end space-x-0.5">
+                {[1, 2, 3, 4].map((i) => (
+                  <span 
+                    key={i} 
+                    className="w-[2px] bg-violet-400 rounded-t-[1px]"
+                    style={{
+                      height: `${30 + Math.sin(i * 1.5) * 20 + Math.random() * 50}%`,
+                      animation: `shimmer 0.6s ease-in-out infinite alternate`,
+                      animationDelay: `${i * 0.08}s`
+                    }}
+                  />
+                ))}
+              </div>
+            </div>
+          ) : (
+            <VolumeX size={13} />
+          )}
+        </button>
+      </div>
 
       {/* RAG AI Assistant Chat */}
       <HeroChat />

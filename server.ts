@@ -75,7 +75,7 @@ async function startServer() {
 
   // Dynamic Sitemap XML
   app.get("/sitemap.xml", (req, res) => {
-    const host = req.headers.host || "devillabs.tech";
+    const host = req.headers.host || "devillabs.dev";
     const protocol = req.secure || req.headers["x-forwarded-proto"] === "https" ? "https" : "http";
     const baseUrl = `${protocol}://${host}`;
 
@@ -134,7 +134,7 @@ async function startServer() {
 
   // Robots.txt
   app.get("/robots.txt", (req, res) => {
-    const host = req.headers.host || "devillabs.tech";
+    const host = req.headers.host || "devillabs.dev";
     const protocol = req.secure || req.headers["x-forwarded-proto"] === "https" ? "https" : "http";
     const baseUrl = `${protocol}://${host}`;
 

@@ -92,23 +92,12 @@ export default function ContactPage({ navigate }: ContactPageProps) {
     setLoading(true);
 
     try {
-      // Simulate API call delay
-      await new Promise(resolve => setTimeout(resolve, 800));
-      
-      // Open WhatsApp Message
-      const message = `*New Project Inquiry*
-------------------------
-*Name:* ${formData.name}
-*Email:* ${formData.email}
-*Phone:* ${formData.phone}
-*Organization:* ${formData.company}
-*Company Size:* ${formData.companySize}
-*Scope:* ${formData.scope}
-*Budget:* ${formData.budget}
-*Vision:* ${formData.specs}`;
-      const encodedMessage = encodeURIComponent(message);
-      const whatsappUrl = `https://wa.me/918102099678?text=${encodedMessage}`;
-      window.open(whatsappUrl, '_blank');
+      // Execute background full-stack API post
+      await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      }).catch(err => console.error("Server lead log failed, fallback to client-side transmission:", err));
 
       setSuccess(true);
     } catch (err) {
@@ -131,6 +120,41 @@ export default function ContactPage({ navigate }: ContactPageProps) {
     });
     setSuccess(false);
   };
+
+  // Pre-compiled dispatch parameters for customer convenience
+  const message = `*New Project Inquiry*
+------------------------
+*Name:* ${formData.name}
+*Email:* ${formData.email}
+*Phone:* ${formData.phone}
+*Organization:* ${formData.company}
+*Company Size:* ${formData.companySize}
+*Scope:* ${formData.scope}
+*Budget:* ${formData.budget}
+*Vision:* ${formData.specs}`;
+  const whatsappUrl = `https://wa.me/918102099678?text=${encodeURIComponent(message)}`;
+
+  const emailSubject = `Devil Labs Project Brief - ${formData.company}`;
+  const emailBody = `Hi Devil Labs Team,
+
+I would like to initiate a software development project brief. Here are our project parameters:
+
+- CLIENT NAME: ${formData.name}
+- EMAIL ADDRESS: ${formData.email}
+- PHONE NUMBER: ${formData.phone}
+- ORGANIZATION: ${formData.company}
+- COMPANY SIZE: ${formData.companySize}
+- PROJECT SCOPE: ${formData.scope}
+- BUDGET EXPECTATION: ${formData.budget}
+
+PROJECT VISION & REQUIREMENTS:
+${formData.specs}
+
+Looking forward to our interactive demo and consultation session.
+
+Regards,
+${formData.name}`;
+  const mailtoUrl = `mailto:devil.labs.contact@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
 
   return (
     <div id="contact-page-root" className="pt-28 pb-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto min-h-screen relative overflow-hidden">
@@ -373,7 +397,7 @@ export default function ContactPage({ navigate }: ContactPageProps) {
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-              className="p-16 rounded-[2rem] bg-white/5 border border-white/10 text-center space-y-8 backdrop-blur-xl relative overflow-hidden"
+              className="p-8 sm:p-16 rounded-[2rem] bg-white/5 border border-white/10 text-center space-y-8 backdrop-blur-xl relative overflow-hidden"
             >
               {/* Subtle flash effect */}
               <motion.div
@@ -419,10 +443,10 @@ export default function ContactPage({ navigate }: ContactPageProps) {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4 }}
-                  data-text="SYSTEM UPLINK ESTABLISHED"
+                  data-text="SYSTEM SPECIFICATIONS LOGGED"
                   className="text-white font-display font-black text-3xl md:text-4xl tracking-tighter uppercase glitch"
                 >
-                  SYSTEM UPLINK ESTABLISHED
+                  SYSTEM SPECIFICATIONS LOGGED
                 </motion.h3>
                 <motion.p 
                   initial={{ opacity: 0, y: 10 }}
@@ -430,20 +454,48 @@ export default function ContactPage({ navigate }: ContactPageProps) {
                   transition={{ delay: 0.5 }}
                   className="text-gray-400 text-sm font-mono max-w-md mx-auto leading-relaxed uppercase tracking-widest"
                 >
-                  TRANSMISSION RECEIVED. OUR ARCHITECTS WILL CONTACT YOU SHORTLY.
+                  THE DATA HAS BEEN SAVED ON SECURE SERVER MEMORY. SELECT A DISPATCH OPTION BELOW TO SEND THE BRIEF TO GMAIL OR WHATSAPP INSTANTLY.
                 </motion.p>
+                
                 <motion.div
-                  initial={{ opacity: 0, y: 10 }}
+                  initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.6 }}
-                  className="mt-6 border border-emerald-500/30 bg-emerald-500/10 p-4 rounded-xl flex flex-col items-center max-w-md mx-auto"
+                  className="mt-8 border border-white/10 bg-black/50 p-6 rounded-2xl flex flex-col items-center max-w-xl mx-auto space-y-6"
                 >
-                  <div className="flex items-center space-x-2 text-emerald-400 font-mono text-xs uppercase tracking-widest mb-2">
-                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                     <span>Email Dispatch Successful</span>
+                  <div className="flex items-center space-x-2 text-violet-400 font-mono text-xs uppercase tracking-widest">
+                     <span className="w-1.5 h-1.5 rounded-full bg-violet-500 animate-pulse" />
+                     <span>TRANSMIT BRIEF VIA ENCRYPTED UPLINK</span>
                   </div>
-                  <p className="text-gray-300 text-xs leading-relaxed">
-                    A 'Thank You' confirmation email has been dispatched to <span className="text-white font-bold">{formData.email}</span>.
+                  
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
+                    <a 
+                      href={mailtoUrl}
+                      className="flex flex-col items-center justify-center p-5 bg-white/5 hover:bg-violet-600/10 border border-white/10 hover:border-violet-500/50 rounded-xl transition-all duration-300 group text-center space-y-3 cursor-pointer"
+                    >
+                      <Mail size={24} className="text-violet-400 group-hover:scale-110 transition-transform" />
+                      <div>
+                        <div className="text-xs font-bold text-white font-mono tracking-wider">DISPATCH GMAIL BRIEF</div>
+                        <div className="text-[9px] text-gray-500 font-sans mt-1 leading-relaxed">Sends pre-populated brief directly to <br/><span className="text-violet-300">devil.labs.contact@gmail.com</span></div>
+                      </div>
+                    </a>
+
+                    <a 
+                      href={whatsappUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="flex flex-col items-center justify-center p-5 bg-white/5 hover:bg-[#25D366]/10 border border-white/10 hover:border-[#25D366]/50 rounded-xl transition-all duration-300 group text-center space-y-3 cursor-pointer"
+                    >
+                      <MessageCircle size={24} className="text-[#25D366] group-hover:scale-110 transition-transform" />
+                      <div>
+                        <div className="text-xs font-bold text-white font-mono tracking-wider">DISPATCH WHATSAPP BRIEF</div>
+                        <div className="text-[9px] text-gray-500 font-sans mt-1 leading-relaxed">Transmits details instantly to <br/><span className="text-emerald-400">+91 81020 99678</span></div>
+                      </div>
+                    </a>
+                  </div>
+
+                  <p className="text-[10px] text-gray-500 font-mono tracking-wider uppercase leading-relaxed max-w-md">
+                    * Transmitting via both channels ensures the fastest architectural review and immediate demo turnaround.
                   </p>
                 </motion.div>
               </div>
@@ -494,13 +546,13 @@ export default function ContactPage({ navigate }: ContactPageProps) {
                 </div>
               </a>
 
-              <a href="mailto:hello@devillabs.co" className="flex items-center space-x-6 group">
+              <a href="mailto:devil.labs.contact@gmail.com" className="flex items-center space-x-6 group">
                 <div className="w-14 h-14 rounded-full bg-white/5 flex items-center justify-center text-gray-400 group-hover:bg-violet-500 group-hover:text-white transition-all duration-500 border border-white/10">
                   <Mail size={20} />
                 </div>
                 <div>
                   <div className="text-xs font-mono text-gray-500 uppercase tracking-widest mb-1">Email Us</div>
-                  <div className="text-white font-medium text-lg group-hover:text-violet-400 transition-colors">hello@devillabs.co</div>
+                  <div className="text-white font-medium text-lg group-hover:text-violet-400 transition-colors">devil.labs.contact@gmail.com</div>
                 </div>
               </a>
 

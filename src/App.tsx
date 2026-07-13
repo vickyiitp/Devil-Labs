@@ -18,6 +18,7 @@ import ScrollProgress from './components/ScrollProgress';
 import CommandPalette from './components/CommandPalette';
 import SEO from './components/SEO';
 import FloatingContact from './components/FloatingContact';
+import Breadcrumb from './components/Breadcrumb';
 import { DebugProvider } from './components/DebugContext';
 import { CurrencyProvider } from './contexts/CurrencyContext';
 
@@ -94,21 +95,27 @@ export default function App() {
         <BackgroundEffects />
         <CommandPalette navigate={navigate} />
         
-        <div className="relative z-10" data-debug="MAIN_CONTENT_WRAPPER" data-x="0" data-y="32">
+        <div className="relative z-10">
           {/* Navigation Header */}
-          <div data-debug="NAVIGATION" data-x="0" data-y="32">
+          <div>
             <Navigation currentPath={currentPath} navigate={navigate} />
           </div>
 
+          {/* Navigational Breadcrumb Trail */}
+          <Breadcrumb currentPath={currentPath} navigate={navigate} />
+
           {/* Dynamic Main Page Container */}
-          <main id="main-content" className="flex-grow" data-debug="PAGE_ROOT" data-x="0" data-y="100">
+          <main id="main-content" className="flex-grow">
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentPath + (isNavigating ? '-loading' : '-ready')}
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -15 }}
-                transition={{ duration: 0.3, ease: [0.25, 1, 0.5, 1] }}
+                initial={{ opacity: 0, scale: 0.97, y: 15 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 1.02, y: -15 }}
+                transition={{ 
+                  duration: 0.45, 
+                  ease: [0.16, 1, 0.3, 1] // Custom ultra-smooth cubic bezier mimicking premium desktop OS shells
+                }}
                 className="w-full flex-grow flex flex-col justify-between"
               >
                 {renderPage()}
@@ -118,7 +125,7 @@ export default function App() {
         </div>
 
         {/* Footer Element */}
-        <div data-debug="FOOTER" data-x="0" data-y="100%">
+        <div>
           <Footer navigate={navigate} />
         </div>
         <FloatingContact />

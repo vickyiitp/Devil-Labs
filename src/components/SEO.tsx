@@ -3,9 +3,9 @@ import { getServiceBySlug } from '../data/services';
 
 export default function SEO({ path }: { path: string }) {
   useEffect(() => {
-    let title = "Devil Labs | Top AI Automation & Full-Stack Web Development Agency in India";
-    let description = "Devil Labs is the premier tech architecture firm and top IT service provider in Gaya, Bihar, and India. Expert custom web development, autonomous AI agents, and custom AI tools engineered by Vicky (vickyiitp.tech).";
-    let keywords = "Devil Labs, Devil Labs Bihar, Devil Labs Gaya, vickyiitp, vickyiitp.tech, Vicky Kumar IIT Patna, top IT services Gaya, best software company Bihar, AI automation Gaya, web development Bihar, custom web design India, software development company Gaya, AI consulting Bihar, startup software developer India, React full-stack developer Bihar";
+    let title = "Devil Labs | Best AI Automation & Software Agency in Gaya, Patna & Bihar";
+    let description = "Devil Labs (devillabs.dev) is Bihar's premier tech architecture firm & top IT service provider in Gaya, Patna, and India. Expert custom web development, autonomous AI agents, and custom AI tools engineered by Vicky (vickyiitp.tech).";
+    let keywords = "Devil Labs, devillabs.dev, devillabs, Devil Labs Bihar, Devil Labs Gaya, devillabs Gaya, devillabs Bihar, vickyiitp, vickyiitp.tech, Vicky Kumar IIT Patna, best IT services Gaya, best software company Bihar, AI automation Gaya, web development Bihar, custom web design Patna, software development company Gaya, AI consulting Bihar, startup software developer India, React full-stack developer Bihar, web developer Gaya, Patna software company, Gaya IT company";
     let ogType = "website";
     let ogImage = "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80"; // A high-tech aesthetic placeholder
 
@@ -13,43 +13,43 @@ export default function SEO({ path }: { path: string }) {
 
     switch (cleanPath) {
       case '/':
-        title = "Devil Labs | Top AI Automation & Full-Stack Web Development Agency in India";
-        description = "Bihar's leading software development and AI engineering firm in Gaya, India. We design high-performance custom websites, AI agents, and secure cloud environments to supercharge modern enterprises.";
+        title = "Devil Labs | Best AI Automation & Software Agency in Gaya, Patna & Bihar";
+        description = "Bihar's leading software development and AI engineering firm in Gaya, Patna, India. We design high-performance custom websites, AI agents, and secure cloud environments to supercharge modern enterprises at devillabs.dev.";
         break;
       case '/services':
-        title = "AI Automation & Custom Web Development Services in Gaya, Bihar | Devil Labs";
-        description = "Professional IT services in Bihar and India: landing pages, business websites, e-commerce, custom full-stack solutions, AI agents, cloud hosting, and secure workflow automation.";
-        keywords = "IT services Gaya, web development Bihar, software company Gaya, AI agents India, web design Gaya, e-commerce developer Bihar, VPS hosting Bihar, workflow automation India";
+        title = "AI Automation & Custom Web Development Services in Gaya, Patna, Bihar | Devil Labs";
+        description = "Professional IT services in Bihar and India: landing pages, business websites, e-commerce, custom full-stack solutions, AI agents, cloud hosting, and secure workflow automation at devillabs.dev.";
+        keywords = "IT services Gaya, web development Bihar, software company Gaya, AI agents India, web design Gaya, e-commerce developer Bihar, VPS hosting Bihar, workflow automation India, devillabs.dev";
         break;
       case '/work':
-        title = "Our Engineered Works & Case Studies | Devil Labs India";
+        title = "Our Engineered Works & Case Studies | Devil Labs Bihar";
         description = "Explore custom full-stack applications, real-world AI agent integrations, and scalable web solutions executed by Devil Labs for enterprises in Bihar and globally.";
-        keywords = "Devil Labs portfolio, custom web apps Bihar, fullstack projects, AI agent developer, software client list India";
+        keywords = "Devil Labs portfolio, custom web apps Bihar, fullstack projects, AI agent developer, software client list India, devillabs.dev";
         break;
       case '/about':
         title = "About Devil Labs | Bihar's Leading Tech Architects & Founder Vicky (vickyiitp.tech)";
-        description = "Founded by Vicky Kumar (vickyiitp.tech, IIT Patna pedigree), Devil Labs is Gaya's premier software lab. Delivering elite software engineering, high-performance architectures, and cyber-secure designs.";
-        keywords = "Vicky Kumar IIT Patna, vickyiitp, vickyiitp.tech, Devil Labs founder, top IT agency Gaya, software development Bihar, elite programmers Gaya";
+        description = "Founded by Vicky Kumar (vickyiitp.tech, IIT Patna pedigree), Devil Labs (devillabs.dev) is Gaya's premier software lab. Delivering elite software engineering, high-performance architectures, and cyber-secure designs.";
+        keywords = "Vicky Kumar IIT Patna, vickyiitp, vickyiitp.tech, Devil Labs founder, top IT agency Gaya, software development Bihar, elite programmers Gaya, devillabs.dev";
         break;
       case '/process':
         title = "The Architectural Process | High-Performance Tech Sprints - Devil Labs";
         description = "Discover our zero-tech-debt deployment cycle. From scope definition to local execution and live system uplink, engineered for speed and flawless scalability.";
-        keywords = "agile development Gaya, software sprint process, code delivery pipeline, rapid software engineering India";
+        keywords = "agile development Gaya, software sprint process, code delivery pipeline, rapid software engineering India, devillabs.dev";
         break;
       case '/insights':
         title = "Lab Notes & Tech Insights | AI & Web Engineering in India";
         description = "Read our latest technical insights on generative AI, React best practices, serverless scaling, and local IT opportunities in Bihar and Gaya.";
-        keywords = "tech blog Bihar, AI trends Gaya, web development tutorials India, software architecture notes";
+        keywords = "tech blog Bihar, AI trends Gaya, web development tutorials India, software architecture notes, devillabs.dev";
         break;
       case '/pricing':
         title = "Transparent Engineering Rates & Project Tiers | Devil Labs";
         description = "Clear investment options for professional custom websites, AI agency workflows, and dedicated server-side architecture sprinters. Optimized value for Indian and global brands.";
-        keywords = "web design price Gaya, AI agent development cost, software developer rates Bihar, enterprise IT pricing India";
+        keywords = "web design price Gaya, AI agent development cost, software developer rates Bihar, enterprise IT pricing India, devillabs.dev";
         break;
       case '/contact':
         title = "Initialize Project | Top Web & AI Specialists in Gaya, Bihar";
         description = "Begin the dialogue with Devil Labs. Send your custom specs to get custom estimates for top-tier software engineering in Bihar and across India.";
-        keywords = "hire web developers Gaya, contact software company Bihar, custom software quotes India";
+        keywords = "hire web developers Gaya, contact software company Bihar, custom software quotes India, devillabs.dev";
         break;
       case '/legal/privacy':
         title = "Privacy & Encryption Protocols | Devil Labs";

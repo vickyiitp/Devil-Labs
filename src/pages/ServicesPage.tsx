@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { ArrowUpRight, Cpu, Layers, Sparkles, Check, Server, RefreshCw, Code2, Globe, Cloud, Database } from 'lucide-react';
+import { ArrowUpRight, Cpu, Layers, Sparkles, Check, Server, RefreshCw, Code2, Globe, Cloud, Database, MessageCircle } from 'lucide-react';
 import { serviceCategories } from '../data/services';
 
 interface ServicesPageProps {
@@ -27,6 +27,91 @@ export default function ServicesPage({ navigate }: ServicesPageProps) {
         <p className="text-gray-400 text-base sm:text-lg max-w-2xl leading-relaxed">
           Devil Labs operates at the intersection of robust web infrastructure and advanced artificial intelligence. Explore our comprehensive capabilities menu below.
         </p>
+      </section>
+
+      {/* 1.5 DIRECT CONSULT-TO-DEMO SWIPING PIPELINE */}
+      <section className="mb-28 border border-white/10 bg-white/5 p-8 rounded-3xl relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-64 h-64 bg-violet-600/5 rounded-full blur-[80px] pointer-events-none" />
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8 mb-10 pb-6 border-b border-white/5">
+          <div className="space-y-2">
+            <span className="text-violet-400 font-mono text-[10px] uppercase tracking-widest font-black">
+              ★ SYSTEM DEPLOYMENT LIFECYCLE
+            </span>
+            <h2 className="font-display font-black text-2xl sm:text-3xl text-white uppercase tracking-tight">
+              FROM RAW IDEA ➜ INTERACTIVE DEMO ➜ DEPLOY
+            </h2>
+            <p className="text-gray-400 text-xs sm:text-sm font-sans max-w-2xl leading-relaxed">
+              We don't just write code in isolation. We consult with you directly on your custom idea, design the system, and show you a working interactive demo before final deployment.
+            </p>
+          </div>
+          <div className="flex items-center space-x-3 self-start lg:self-center">
+            <a 
+              href="https://wa.me/918102099678?text=Hi%20Devil%20Labs%2C%20I%20would%20like%20to%20consult%20on%20a%20project%20idea%21" 
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center space-x-2 bg-[#25D366] text-black font-bold font-mono text-[10px] tracking-widest uppercase px-5 py-3 rounded-full hover:bg-emerald-400 hover:scale-105 transition-all shadow-[0_0_20px_rgba(37,211,102,0.2)] cursor-pointer"
+            >
+              <MessageCircle size={12} />
+              <span>CONSULT ON IDEA</span>
+            </a>
+          </div>
+        </div>
+
+        {/* Swipe Ticker */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {[
+            {
+              id: "01",
+              title: "DIRECT CONSULT",
+              badge: "STAGE 01",
+              color: "border-violet-500/20",
+              desc: "Discuss your custom ideas directly on WhatsApp or video meet. We define project scope, database models, and target endpoints."
+            },
+            {
+              id: "02",
+              title: "WORK ON THE IDEA",
+              badge: "STAGE 02",
+              color: "border-fuchsia-500/20",
+              desc: "We detail the functional brief, structure full wireframes, and outline typesafe architectures without any bloated dependencies."
+            },
+            {
+              id: "03",
+              title: "LIVE INTERACTIVE DEMO",
+              badge: "STAGE 03",
+              color: "border-indigo-500/20",
+              desc: "We build and host an active staging demo of the custom software within days, so you can interact with it and provide real-time edits."
+            },
+            {
+              id: "04",
+              title: "PRODUCTION UPLINK",
+              badge: "STAGE 04",
+              color: "border-emerald-500/20",
+              desc: "We safely deploy the finalized, production-grade assets to your chosen cloud servers or Vercel containers under your official domain."
+            }
+          ].map((item, idx) => (
+            <motion.div
+              key={item.id}
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: idx * 0.1 }}
+              className={`p-6 bg-[#0c0c0c]/90 border ${item.color} hover:border-violet-500/40 rounded-2xl transition-all duration-300 relative group flex flex-col justify-between`}
+            >
+              <div className="space-y-4">
+                <div className="flex items-center justify-between font-mono">
+                  <span className="text-[10px] text-violet-400 font-bold tracking-widest">{item.badge}</span>
+                  <span className="text-xs text-gray-700 font-black">//{item.id}</span>
+                </div>
+                <h3 className="font-display font-black text-lg text-white group-hover:text-violet-400 transition-colors tracking-tight uppercase">
+                  {item.title}
+                </h3>
+                <p className="text-gray-400 text-xs leading-relaxed font-sans font-light">
+                  {item.desc}
+                </p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </section>
 
       {/* 2. COMPREHENSIVE SERVICE GRID */}
