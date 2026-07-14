@@ -9,6 +9,7 @@ import HeroVideoPlayer from '../components/HeroVideoPlayer';
 import HeroChat from '../components/HeroChat';
 import CyberFrame from '../components/CyberFrame';
 import IndustrySolutions from '../components/IndustrySolutions';
+import ScrollReveal from '../components/ScrollReveal';
 
 interface LandingPageProps {
   navigate: (path: string) => void;
@@ -407,7 +408,9 @@ export default function LandingPage({ navigate }: LandingPageProps) {
       </section>
 
       {/* Social Proof Marquee */}
-      <SocialProofMarquee />
+      <ScrollReveal>
+        <SocialProofMarquee />
+      </ScrollReveal>
 
       {/* Viewport Overlay Banner */}
       <AnimatePresence>
@@ -438,18 +441,15 @@ export default function LandingPage({ navigate }: LandingPageProps) {
       </AnimatePresence>
 
       {/* 2. TECH STACK MARQUEE */}
-      <section id="marquee-section" className="w-full">
-        <Marquee />
-      </section>
+      <ScrollReveal>
+        <section id="marquee-section" className="w-full">
+          <Marquee />
+        </section>
+      </ScrollReveal>
 
       {/* NEW: THE MANIFESTO SECTION */}
       <section id="manifesto-section" className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto border-b border-white/5 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1 }}
-        >
+        <ScrollReveal>
           <CyberFrame glowColor="fuchsia" className="space-y-6 sm:space-y-8 p-8 sm:p-12 md:p-16 rounded-2xl bg-[#0a0a0a]">
             <Cpu size={32} className="mx-auto text-violet-500/50 sm:w-10 sm:h-10" />
             <h2 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-display font-bold leading-tight tracking-tight uppercase">
@@ -460,53 +460,58 @@ export default function LandingPage({ navigate }: LandingPageProps) {
               // Engineering Excellence
             </p>
           </CyberFrame>
-        </motion.div>
+        </ScrollReveal>
       </section>
 
       {/* 3. VALUE PROPOSITION */}
       <section id="values-section" className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-b border-white/5">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 sm:gap-16">
           {valueProps.map((prop, idx) => (
-            <motion.div
-              id={`value-card-${prop.title.toLowerCase()}`}
+            <ScrollReveal
               key={prop.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: idx * 0.1 }}
-              className="group"
+              delay={idx * 100}
+              className="h-full"
             >
-              <CyberFrame glowColor={['violet', 'fuchsia', 'blue'][idx % 3] as 'violet' | 'fuchsia' | 'blue'} className="flex flex-col justify-between p-6 sm:p-8 md:p-10 h-full bg-[#111]">
-                <div>
-                  <div className="flex justify-between items-baseline mb-6 font-mono">
-                    <span className="text-gray-600 text-[10px] sm:text-xs font-semibold">{prop.tagline}</span>
-                    <span className="text-violet-500 font-bold text-xs sm:text-sm">/ 0{idx + 1}</span>
+              <div
+                id={`value-card-${prop.title.toLowerCase()}`}
+                className="group h-full"
+              >
+                <CyberFrame glowColor={['violet', 'fuchsia', 'blue'][idx % 3] as 'violet' | 'fuchsia' | 'blue'} className="flex flex-col justify-between p-6 sm:p-8 md:p-10 h-full bg-[#111]">
+                  <div>
+                    <div className="flex justify-between items-baseline mb-6 font-mono">
+                      <span className="text-gray-600 text-[10px] sm:text-xs font-semibold">{prop.tagline}</span>
+                      <span className="text-violet-500 font-bold text-xs sm:text-sm">/ 0{idx + 1}</span>
+                    </div>
+                    <h3 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl text-white mb-2 tracking-tight group-hover:text-violet-400 transition-colors duration-300">
+                      {prop.title}
+                    </h3>
+                    <p className="text-gray-400 text-xs sm:text-sm leading-relaxed mt-4">
+                      {prop.desc}
+                    </p>
                   </div>
-                  <h3 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl text-white mb-2 tracking-tight group-hover:text-violet-400 transition-colors duration-300">
-                    {prop.title}
-                  </h3>
-                  <p className="text-gray-400 text-xs sm:text-sm leading-relaxed mt-4">
-                    {prop.desc}
-                  </p>
-                </div>
-                <div className="mt-8 font-mono text-4xl sm:text-5xl font-extrabold tracking-tighter text-white/10 group-hover:text-violet-500/20 transition-all duration-300">
-                  {prop.metric}
-                </div>
-              </CyberFrame>
-            </motion.div>
+                  <div className="mt-8 font-mono text-4xl sm:text-5xl font-extrabold tracking-tighter text-white/10 group-hover:text-violet-500/20 transition-all duration-300">
+                    {prop.metric}
+                  </div>
+                </CyberFrame>
+              </div>
+            </ScrollReveal>
           ))}
         </div>
       </section>
 
       {/* 3.5. INDUSTRY SOLUTIONS */}
-      <div>
-        <IndustrySolutions />
-      </div>
+      <ScrollReveal>
+        <div>
+          <IndustrySolutions />
+        </div>
+      </ScrollReveal>
 
       {/* 4. RECENT WORK TEASER */}
-      <section id="recent-work-section" className="py-24 sm:py-32 px-4 sm:px-6 lg:px-12 max-w-[1600px] mx-auto">
-        <ProjectGallery />
-      </section>
+      <ScrollReveal>
+        <section id="recent-work-section" className="py-24 sm:py-32 px-4 sm:px-6 lg:px-12 max-w-[1600px] mx-auto">
+          <ProjectGallery />
+        </section>
+      </ScrollReveal>
 
       {/* 5. FINAL CTA SECTION */}
       <section id="landing-cta-section" className="py-24 sm:py-32 bg-black border-t border-white/5 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
@@ -514,64 +519,66 @@ export default function LandingPage({ navigate }: LandingPageProps) {
         <div className="absolute top-0 left-1/4 w-[1px] h-full bg-gradient-to-b from-white/10 via-transparent to-transparent" />
         <div className="absolute top-0 right-1/4 w-[1px] h-full bg-gradient-to-b from-white/10 via-transparent to-transparent" />
 
-        <div className="max-w-4xl mx-auto text-center relative z-10 space-y-10">
-          <span className="text-violet-500 font-mono text-xs uppercase tracking-widest font-semibold">// START YOUR PROJECT</span>
-          <h2 className="text-4xl sm:text-6xl font-display font-extrabold text-white uppercase tracking-tighter">
-            Ready to scale?<br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-fuchsia-500">
-              Let's build.
-            </span>
-          </h2>
-          <p className="text-gray-400 max-w-lg mx-auto text-sm leading-relaxed">
-            Enter your email below to schedule a discovery call with our engineering team. We'll get back to you within 24 hours.
-          </p>
+        <ScrollReveal className="max-w-4xl mx-auto">
+          <div className="text-center relative z-10 space-y-10">
+            <span className="text-violet-500 font-mono text-xs uppercase tracking-widest font-semibold">// START YOUR PROJECT</span>
+            <h2 className="text-4xl sm:text-6xl font-display font-extrabold text-white uppercase tracking-tighter">
+              Ready to scale?<br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-fuchsia-500">
+                Let's build.
+              </span>
+            </h2>
+            <p className="text-gray-400 max-w-lg mx-auto text-sm leading-relaxed">
+              Enter your email below to schedule a discovery call with our engineering team. We'll get back to you within 24 hours.
+            </p>
 
-          <form id="email-intake-form" onSubmit={handleEmailSubmit} className="max-w-md mx-auto flex flex-col sm:flex-row items-center gap-3">
-            <div className="relative w-full">
-              <input
-                id="intake-email-input"
-                type="email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="hello@company.com"
-                className="w-full bg-white/5 border border-white/10 hover:border-white/20 focus:border-violet-500 focus:outline-none px-4 py-3.5 text-white font-mono text-sm tracking-wider transition-colors placeholder-gray-600 rounded-none"
+            <form id="email-intake-form" onSubmit={handleEmailSubmit} className="max-w-md mx-auto flex flex-col sm:flex-row items-center gap-3">
+              <div className="relative w-full">
+                <input
+                  id="intake-email-input"
+                  type="email"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="hello@company.com"
+                  className="w-full bg-white/5 border border-white/10 hover:border-white/20 focus:border-violet-500 focus:outline-none px-4 py-3.5 text-white font-mono text-sm tracking-wider transition-colors placeholder-gray-600 rounded-none"
+                  disabled={loading || submitted}
+                />
+              </div>
+              <button
+                id="intake-submit-btn"
+                type="submit"
                 disabled={loading || submitted}
-              />
-            </div>
-            <button
-              id="intake-submit-btn"
-              type="submit"
-              disabled={loading || submitted}
-              className="w-full sm:w-auto px-6 py-3.5 bg-white text-black font-mono font-bold text-xs uppercase tracking-widest hover:bg-violet-600 hover:text-white hover:border-violet-500 transition-all duration-300 whitespace-nowrap flex items-center justify-center space-x-2 border border-white disabled:opacity-50 cursor-pointer"
-            >
-              {loading ? (
-                <span>SENDING...</span>
-              ) : submitted ? (
-                <span className="flex items-center space-x-1">
-                  <Check size={14} className="text-emerald-500" />
-                  <span>RECEIVED</span>
-                </span>
-              ) : (
-                <>
-                  <span>GET IN TOUCH</span>
-                  <ArrowRight size={14} />
-                </>
-              )}
-            </button>
-          </form>
+                className="w-full sm:w-auto px-6 py-3.5 bg-white text-black font-mono font-bold text-xs uppercase tracking-widest hover:bg-violet-600 hover:text-white hover:border-violet-500 transition-all duration-300 whitespace-nowrap flex items-center justify-center space-x-2 border border-white disabled:opacity-50 cursor-pointer"
+              >
+                {loading ? (
+                  <span>SENDING...</span>
+                ) : submitted ? (
+                  <span className="flex items-center space-x-1">
+                    <Check size={14} className="text-emerald-500" />
+                    <span>RECEIVED</span>
+                  </span>
+                ) : (
+                  <>
+                    <span>GET IN TOUCH</span>
+                    <ArrowRight size={14} />
+                  </>
+                )}
+              </button>
+            </form>
 
-          {submitted && (
-            <motion.p
-              id="intake-success-msg"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="text-xs font-mono text-emerald-500 bg-emerald-500/10 border border-emerald-500/20 max-w-sm mx-auto py-2.5 px-4"
-            >
-              Thank you. We'll be in touch shortly.
-            </motion.p>
-          )}
-        </div>
+            {submitted && (
+              <motion.p
+                id="intake-success-msg"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="text-xs font-mono text-emerald-500 bg-emerald-500/10 border border-emerald-500/20 max-w-sm mx-auto py-2.5 px-4"
+              >
+                Thank you. We'll be in touch shortly.
+              </motion.p>
+            )}
+          </div>
+        </ScrollReveal>
       </section>
 
       {/* Floating Ambient Controller */}

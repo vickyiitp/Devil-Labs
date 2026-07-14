@@ -314,3 +314,19 @@ body {
 @keyframes shimmer {
   100% { transform: translateX(100%); }
 }
+
+/* Responsive visual integrity for touch & mobile devices (width < 1024px) */
+@media (max-width: 1023px) {
+  .layout-frame::before,
+  .debug-box::before {
+    display: none !important; /* Avoid background canvas overhead on mobile */
+  }
+  .layout-frame::after,
+  .debug-box::after {
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
+    opacity: 0.55 !important;
+    border-color: rgba(139, 92, 246, 0.2) !important;
+  }
+}
+

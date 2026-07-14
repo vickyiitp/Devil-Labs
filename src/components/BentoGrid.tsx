@@ -70,6 +70,7 @@ export default function BentoGrid({ onNavigateContact }: { onNavigateContact: ()
       <motion.div
         id="bento-card-aether"
         whileHover={{ y: -4 }}
+        whileTap={{ scale: 0.98 }}
         className="md:col-span-2 relative overflow-hidden bg-black/60 border border-white/5 p-8 flex flex-col justify-between group cursor-pointer transition-all duration-300 hover:border-violet-500/50"
         onMouseEnter={() => setActiveId('01')}
         onMouseLeave={() => setActiveId(null)}
@@ -109,6 +110,7 @@ export default function BentoGrid({ onNavigateContact }: { onNavigateContact: ()
       <motion.div
         id="bento-card-krypton"
         whileHover={{ y: -4 }}
+        whileTap={{ scale: 0.98 }}
         className="relative overflow-hidden bg-black/60 border border-white/5 p-8 flex flex-col justify-between group cursor-pointer transition-all duration-300 hover:border-blue-500/50"
         onMouseEnter={() => setActiveId('02')}
         onMouseLeave={() => setActiveId(null)}
@@ -148,6 +150,7 @@ export default function BentoGrid({ onNavigateContact }: { onNavigateContact: ()
       <motion.div
         id="bento-card-synthesis"
         whileHover={{ y: -4 }}
+        whileTap={{ scale: 0.98 }}
         className="relative overflow-hidden bg-black/60 border border-white/5 p-8 flex flex-col justify-between group cursor-pointer transition-all duration-300 hover:border-fuchsia-500/50"
         onMouseEnter={() => setActiveId('03')}
         onMouseLeave={() => setActiveId(null)}
@@ -187,6 +190,7 @@ export default function BentoGrid({ onNavigateContact }: { onNavigateContact: ()
       <motion.div
         id="bento-card-vesper"
         whileHover={{ y: -4 }}
+        whileTap={{ scale: 0.98 }}
         className="md:col-span-2 relative overflow-hidden bg-black/60 border border-white/5 p-8 flex flex-col justify-between group cursor-pointer transition-all duration-300 hover:border-emerald-500/50"
         onMouseEnter={() => setActiveId('04')}
         onMouseLeave={() => setActiveId(null)}

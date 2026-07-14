@@ -6,7 +6,7 @@ export default function FloatingContact() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end space-y-4">
+    <div className="fixed bottom-6 left-6 z-50 flex flex-col items-start space-y-4">
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -14,7 +14,7 @@ export default function FloatingContact() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.9 }}
             transition={{ duration: 0.2 }}
-            className="flex flex-col space-y-3 mb-2"
+            className="flex flex-col space-y-3 mb-2 items-start"
           >
             <a
               href="https://wa.me/918102099678"
@@ -22,15 +22,15 @@ export default function FloatingContact() {
               rel="noopener noreferrer"
               className="flex items-center space-x-3 bg-[#25D366] text-white px-4 py-3 rounded-full shadow-lg hover:scale-105 transition-transform"
             >
-              <span className="font-bold text-sm tracking-wide">WhatsApp Us</span>
               <MessageCircle size={20} />
+              <span className="font-bold text-sm tracking-wide">WhatsApp Us</span>
             </a>
             <a
               href="tel:+918102099678"
               className="flex items-center space-x-3 bg-violet-600 text-white px-4 py-3 rounded-full shadow-lg hover:scale-105 transition-transform"
             >
-              <span className="font-bold text-sm tracking-wide">Call Direct</span>
               <Phone size={20} />
+              <span className="font-bold text-sm tracking-wide">Call Direct</span>
             </a>
           </motion.div>
         )}

@@ -1,11 +1,73 @@
 import { motion } from 'motion/react';
-import { Send, Check, Mail, Calendar, MapPin, Phone, MessageCircle, Github, Linkedin, Instagram, Globe, ArrowUpRight } from 'lucide-react';
+import { Send, Check, Mail, Calendar, MapPin, Phone, MessageCircle, Github, Linkedin, Instagram, Globe, ArrowUpRight, Shield, AlertTriangle, MessageSquare, Loader2, CheckCircle } from 'lucide-react';
 import React, { useState, useEffect } from 'react';
 import { useCurrency } from '../contexts/CurrencyContext';
 
 interface ContactPageProps {
   navigate: (path: string) => void;
 }
+
+const COUNTRIES = [
+  { code: 'DZ', dialCode: '+213', name: 'Algeria', flag: '🇩🇿' },
+  { code: 'AR', dialCode: '+54', name: 'Argentina', flag: '🇦🇷' },
+  { code: 'AU', dialCode: '+61', name: 'Australia', flag: '🇦🇺' },
+  { code: 'AT', dialCode: '+43', name: 'Austria', flag: '🇦🇹' },
+  { code: 'BH', dialCode: '+973', name: 'Bahrain', flag: '🇧🇭' },
+  { code: 'BD', dialCode: '+880', name: 'Bangladesh', flag: '🇧🇩' },
+  { code: 'BE', dialCode: '+32', name: 'Belgium', flag: '🇧🇪' },
+  { code: 'BR', dialCode: '+55', name: 'Brazil', flag: '🇧🇷' },
+  { code: 'CA', dialCode: '+1', name: 'Canada', flag: '🇨🇦' },
+  { code: 'CL', dialCode: '+56', name: 'Chile', flag: '🇨🇱' },
+  { code: 'CN', dialCode: '+86', name: 'China', flag: '🇨🇳' },
+  { code: 'CO', dialCode: '+57', name: 'Colombia', flag: '🇨🇴' },
+  { code: 'DK', dialCode: '+45', name: 'Denmark', flag: '🇩🇰' },
+  { code: 'EG', dialCode: '+20', name: 'Egypt', flag: '🇪🇬' },
+  { code: 'FI', dialCode: '+358', name: 'Finland', flag: '🇫🇮' },
+  { code: 'FR', dialCode: '+33', name: 'France', flag: '🇫🇷' },
+  { code: 'DE', dialCode: '+49', name: 'Germany', flag: '🇩🇪' },
+  { code: 'GR', dialCode: '+30', name: 'Greece', flag: '🇬🇷' },
+  { code: 'HK', dialCode: '+852', name: 'Hong Kong', flag: '🇭🇰' },
+  { code: 'HU', dialCode: '+36', name: 'Hungary', flag: '🇭🇺' },
+  { code: 'IS', dialCode: '+354', name: 'Iceland', flag: '🇮🇸' },
+  { code: 'IN', dialCode: '+91', name: 'India', flag: '🇮🇳' },
+  { code: 'ID', dialCode: '+62', name: 'Indonesia', flag: '🇮🇩' },
+  { code: 'IE', dialCode: '+353', name: 'Ireland', flag: '🇮🇪' },
+  { code: 'IL', dialCode: '+972', name: 'Israel', flag: '🇮🇱' },
+  { code: 'IT', dialCode: '+39', name: 'Italy', flag: '🇮🇹' },
+  { code: 'JP', dialCode: '+81', name: 'Japan', flag: '🇯🇵' },
+  { code: 'JO', dialCode: '+962', name: 'Jordan', flag: '🇯🇴' },
+  { code: 'KE', dialCode: '+254', name: 'Kenya', flag: '🇰🇪' },
+  { code: 'KR', dialCode: '+82', name: 'Korea', flag: '🇰🇷' },
+  { code: 'KW', dialCode: '+965', name: 'Kuwait', flag: '🇰🇼' },
+  { code: 'MY', dialCode: '+60', name: 'Malaysia', flag: '🇲🇾' },
+  { code: 'MX', dialCode: '+52', name: 'Mexico', flag: '🇲🇽' },
+  { code: 'NL', dialCode: '+31', name: 'Netherlands', flag: '🇳🇱' },
+  { code: 'NZ', dialCode: '+64', name: 'New Zealand', flag: '🇳🇿' },
+  { code: 'NG', dialCode: '+234', name: 'Nigeria', flag: '🇳🇬' },
+  { code: 'NO', dialCode: '+47', name: 'Norway', flag: '🇳🇴' },
+  { code: 'OM', dialCode: '+968', name: 'Oman', flag: '🇴🇲' },
+  { code: 'PE', dialCode: '+51', name: 'Peru', flag: '🇵🇪' },
+  { code: 'PH', dialCode: '+63', name: 'Philippines', flag: '🇵🇭' },
+  { code: 'PL', dialCode: '+48', name: 'Poland', flag: '🇵🇱' },
+  { code: 'PT', dialCode: '+351', name: 'Portugal', flag: '🇵🇹' },
+  { code: 'QA', dialCode: '+974', name: 'Qatar', flag: '🇶🇦' },
+  { code: 'RO', dialCode: '+40', name: 'Romania', flag: '🇷🇴' },
+  { code: 'SA', dialCode: '+966', name: 'Saudi Arabia', flag: '🇸🇦' },
+  { code: 'SG', dialCode: '+65', name: 'Singapore', flag: '🇸🇬' },
+  { code: 'ZA', dialCode: '+27', name: 'South Africa', flag: '🇿🇦' },
+  { code: 'ES', dialCode: '+34', name: 'Spain', flag: '🇪🇸' },
+  { code: 'LK', dialCode: '+94', name: 'Sri Lanka', flag: '🇱🇰' },
+  { code: 'SE', dialCode: '+46', name: 'Sweden', flag: '🇸🇪' },
+  { code: 'CH', dialCode: '+41', name: 'Switzerland', flag: '🇨🇭' },
+  { code: 'TW', dialCode: '+886', name: 'Taiwan', flag: '🇹🇼' },
+  { code: 'TH', dialCode: '+66', name: 'Thailand', flag: '🇹🇭' },
+  { code: 'TR', dialCode: '+90', name: 'Turkey', flag: '🇹🇷' },
+  { code: 'UA', dialCode: '+380', name: 'Ukraine', flag: '🇺🇦' },
+  { code: 'AE', dialCode: '+971', name: 'United Arab Emirates', flag: '🇦🇪' },
+  { code: 'GB', dialCode: '+44', name: 'United Kingdom', flag: '🇬🇧' },
+  { code: 'US', dialCode: '+1', name: 'United States', flag: '🇺🇸' },
+  { code: 'VN', dialCode: '+84', name: 'Vietnam', flag: '🇻🇳' }
+];
 
 export default function ContactPage({ navigate }: ContactPageProps) {
   const { currency } = useCurrency();
@@ -20,10 +82,25 @@ export default function ContactPage({ navigate }: ContactPageProps) {
     specs: ''
   });
 
+  const [phonePrefix, setPhonePrefix] = useState('+91');
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [dispatchResults, setDispatchResults] = useState<any>(null);
   const [errors, setErrors] = useState<string[]>([]);
   const [isConsentChecked, setIsConsentChecked] = useState(false);
+  const [rateLimitSecondsLeft, setRateLimitSecondsLeft] = useState(0);
+  const [rateLimitClicks, setRateLimitClicks] = useState(0);
+
+  useEffect(() => {
+    if (rateLimitSecondsLeft <= 0) {
+      setRateLimitClicks(0);
+      return;
+    }
+    const timer = setTimeout(() => {
+      setRateLimitSecondsLeft(prev => prev - 1);
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, [rateLimitSecondsLeft]);
 
   useEffect(() => {
     // Parse URL parameters for scope auto-fill or check localStorage
@@ -49,9 +126,10 @@ export default function ContactPage({ navigate }: ContactPageProps) {
   ];
 
   const budgetTiers = [
-    { value: 'Tier 1', label: '$10k - $25k (MVP / Conceptual Build)' },
-    { value: 'Tier 2', label: '$25k - $75k (Full Production Deployment)' },
-    { value: 'Tier 3', label: '$75k+ (Enterprise Scale / Retainer)' }
+    { value: '$100 - $300', label: '$100 - $300 (₹8,000 - ₹25,000)' },
+    { value: '$300 - $700', label: '$300 - $700 (₹25,000 - ₹60,000)' },
+    { value: '$700 - $1,000', label: '$700 - $1,000 (₹60,000 - ₹85,000)' },
+    { value: '$1,000+', label: '$1,000+ (₹85,000+)' }
   ];
 
   const companySizes = [
@@ -69,6 +147,32 @@ export default function ContactPage({ navigate }: ContactPageProps) {
 
   const handleExecute = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Client-side rate limiter check
+    const lastSubmitStr = localStorage.getItem('devil_labs_last_submit_time');
+    const now = Date.now();
+    const COOLDOWN_MS = 20000; // 20 seconds cooldown window
+
+    if (lastSubmitStr) {
+      const elapsed = now - parseInt(lastSubmitStr, 10);
+      if (elapsed < COOLDOWN_MS) {
+        const remainingSecs = Math.ceil((COOLDOWN_MS - elapsed) / 1000);
+        setRateLimitSecondsLeft(remainingSecs);
+        setRateLimitClicks(prev => prev + 1);
+        const clicks = rateLimitClicks + 1;
+
+        let limitMsg = `⚠️ TRANSMISSION RATE LIMIT: Cooldown active. Please wait ${remainingSecs}s before transmitting another brief.`;
+        if (clicks >= 4) {
+          limitMsg = `🚨 CRITICAL THROTTLING: Clicking too fast (${clicks} attempts)! live telemetry pipeline is locked to prevent flood. Wait ${remainingSecs}s.`;
+        } else if (clicks >= 2) {
+          limitMsg = `⚠️ FAST CLICKS DETECTED: Cooldown active! Please wait ${remainingSecs}s before submitting again.`;
+        }
+        
+        setErrors([limitMsg]);
+        return;
+      }
+    }
+
     const newErrors: string[] = [];
 
     // Validation
@@ -76,7 +180,7 @@ export default function ContactPage({ navigate }: ContactPageProps) {
     if (!formData.email) newErrors.push("Please provide your email address.");
     else if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(formData.email)) newErrors.push("Please provide a valid email address.");
     if (!formData.phone) newErrors.push("Please provide your phone number.");
-    else if (!/^\+?[1-9]\d{1,14}$/.test(formData.phone.replace(/[\s\-()]/g, ''))) newErrors.push("Please provide a valid phone number.");
+    else if (!/^\d{4,14}$/.test(formData.phone.replace(/[\s\-()]/g, ''))) newErrors.push("Please provide a valid phone number.");
     if (!formData.company) newErrors.push("Please provide your organization name.");
     if (!formData.companySize) newErrors.push("Please select your company size.");
     if (!formData.scope) newErrors.push("Please select a project scope.");
@@ -91,17 +195,33 @@ export default function ContactPage({ navigate }: ContactPageProps) {
     setErrors([]);
     setLoading(true);
 
+    const fullPhone = `${phonePrefix} ${formData.phone}`;
+    const payload = {
+      ...formData,
+      phone: fullPhone
+    };
+
     try {
       // Execute background full-stack API post
-      await fetch('/api/contact', {
+      const response = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
-      }).catch(err => console.error("Server lead log failed, fallback to client-side transmission:", err));
+        body: JSON.stringify(payload)
+      });
 
-      setSuccess(true);
-    } catch (err) {
-      setErrors(["Network error. Please try again later."]);
+      if (response.ok) {
+        const data = await response.json();
+        // Record timestamp of successful transmission
+        localStorage.setItem('devil_labs_last_submit_time', Date.now().toString());
+        setRateLimitSecondsLeft(20); // trigger live visual feedback countdown
+        setSuccess(true);
+        setDispatchResults(data.results);
+      } else {
+        const errText = await response.text();
+        setErrors([`Transmission failed: ${errText || 'Internal Server Error'}`]);
+      }
+    } catch (err: any) {
+      setErrors([`Network error: ${err.message || 'Transmission interrupted'}`]);
     } finally {
       setLoading(false);
     }
@@ -119,14 +239,16 @@ export default function ContactPage({ navigate }: ContactPageProps) {
       specs: ''
     });
     setSuccess(false);
+    setDispatchResults(null);
   };
 
   // Pre-compiled dispatch parameters for customer convenience
+  const fullPhoneString = `${phonePrefix} ${formData.phone}`;
   const message = `*New Project Inquiry*
 ------------------------
 *Name:* ${formData.name}
 *Email:* ${formData.email}
-*Phone:* ${formData.phone}
+*Phone:* ${fullPhoneString}
 *Organization:* ${formData.company}
 *Company Size:* ${formData.companySize}
 *Scope:* ${formData.scope}
@@ -141,7 +263,7 @@ I would like to initiate a software development project brief. Here are our proj
 
 - CLIENT NAME: ${formData.name}
 - EMAIL ADDRESS: ${formData.email}
-- PHONE NUMBER: ${formData.phone}
+- PHONE NUMBER: ${fullPhoneString}
 - ORGANIZATION: ${formData.company}
 - COMPANY SIZE: ${formData.companySize}
 - PROJECT SCOPE: ${formData.scope}
@@ -232,20 +354,35 @@ ${formData.name}`;
 
               {/* Phone & Company */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
-                <div className="relative group">
-                  <input
-                    id="phone"
-                    name="phone"
-                    type="tel"
-                    required
-                    value={formData.phone}
-                    onChange={handleInputChange}
-                    placeholder=" "
-                    className="block w-full px-0 py-4 bg-transparent border-0 border-b-2 border-white/20 appearance-none focus:outline-none focus:ring-0 focus:border-violet-500 peer text-lg font-light text-white transition-colors"
-                  />
-                  <label htmlFor="phone" className="absolute text-gray-400 text-sm duration-300 transform -translate-y-6 scale-75 top-4 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-violet-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
-                    Phone Number
-                  </label>
+                <div className="relative group flex items-end">
+                  <div className="flex items-center space-x-1.5 border-b-2 border-white/20 pb-2.5 h-[62px]">
+                    <select
+                      value={phonePrefix}
+                      onChange={(e) => setPhonePrefix(e.target.value)}
+                      className="bg-transparent border-0 appearance-none focus:outline-none focus:ring-0 text-white font-mono text-base cursor-pointer hover:text-violet-400 transition-colors"
+                    >
+                      {COUNTRIES.map((c) => (
+                        <option key={c.code} value={c.dialCode} className="bg-[#111] text-white">
+                          {c.flag} {c.dialCode}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                  <div className="relative flex-1">
+                    <input
+                      id="phone"
+                      name="phone"
+                      type="tel"
+                      required
+                      value={formData.phone}
+                      onChange={handleInputChange}
+                      placeholder=" "
+                      className="block w-full pl-2 pr-0 py-4 bg-transparent border-0 border-b-2 border-white/20 appearance-none focus:outline-none focus:ring-0 focus:border-violet-500 peer text-lg font-light text-white transition-colors"
+                    />
+                    <label htmlFor="phone" className="absolute text-gray-400 text-sm duration-300 transform -translate-y-6 scale-75 top-4 -z-10 origin-[0] peer-focus:left-2 peer-focus:text-violet-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 left-2">
+                      Phone Number
+                    </label>
+                  </div>
                 </div>
                 <div className="relative group">
                   <input
@@ -326,7 +463,7 @@ ${formData.name}`;
                   ))}
                 </select>
                 <label htmlFor="budget" className="absolute text-violet-400 text-xs font-mono uppercase tracking-widest duration-300 transform -translate-y-6 scale-75 top-4 -z-10 origin-[0]">
-                  Budget Expectation
+                  Budget Expectation ({currency})
                 </label>
               </div>
 
@@ -377,7 +514,17 @@ ${formData.name}`;
               </div>
 
               {/* Action */}
-              <div className="pt-6">
+              <div className="pt-6 space-y-4">
+                {rateLimitSecondsLeft > 0 && (
+                  <div className="flex items-center justify-between p-3 bg-violet-500/10 border border-violet-500/20 rounded-xl">
+                    <div className="flex items-center space-x-2 text-[10px] font-mono tracking-wider uppercase text-violet-400">
+                      <span className="w-2 h-2 rounded-full bg-violet-500 animate-ping" />
+                      <span>Pipeline Cooldown Active</span>
+                    </div>
+                    <span className="font-mono text-xs text-violet-400 font-bold">{rateLimitSecondsLeft}s remaining</span>
+                  </div>
+                )}
+
                 <button
                   type="submit"
                   disabled={loading || !isConsentChecked}
@@ -443,10 +590,10 @@ ${formData.name}`;
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4 }}
-                  data-text="SYSTEM SPECIFICATIONS LOGGED"
+                  data-text="SYSTEM SPECIFICATIONS DISPATCHED"
                   className="text-white font-display font-black text-3xl md:text-4xl tracking-tighter uppercase glitch"
                 >
-                  SYSTEM SPECIFICATIONS LOGGED
+                  TRANSMISSION COMPLETED
                 </motion.h3>
                 <motion.p 
                   initial={{ opacity: 0, y: 10 }}
@@ -454,8 +601,53 @@ ${formData.name}`;
                   transition={{ delay: 0.5 }}
                   className="text-gray-400 text-sm font-mono max-w-md mx-auto leading-relaxed uppercase tracking-widest"
                 >
-                  THE DATA HAS BEEN SAVED ON SECURE SERVER MEMORY. SELECT A DISPATCH OPTION BELOW TO SEND THE BRIEF TO GMAIL OR WHATSAPP INSTANTLY.
+                  YOUR PROJECT BRIEF HAS BYPASSED FILTERS AND HAS BEEN DISPATCHED LIVE ACROSS THE PIPELINE.
                 </motion.p>
+
+                {/* Live Channel Transmission Status Reporting */}
+                <div className="max-w-xl mx-auto bg-black/60 border border-white/5 rounded-2xl p-6 text-left font-mono text-xs text-gray-400 space-y-3">
+                  <span className="font-bold text-gray-300 uppercase tracking-widest block mb-2">// PIPELINE DISPATCH LOGS:</span>
+                  
+                  {/* Email reporter */}
+                  <div className="flex justify-between items-center border-b border-white/5 pb-2">
+                    <span className="flex items-center space-x-2"><Mail size={12} /> <span>SMTP SECURE MAIL:</span></span>
+                    {dispatchResults?.email?.success ? (
+                      <span className="text-emerald-400 font-bold">● DISPATCHED</span>
+                    ) : (
+                      <span className="text-amber-500/80 font-bold">● STDOUT STANDBY (KEYS REQ)</span>
+                    )}
+                  </div>
+
+                  {/* Telegram reporter */}
+                  <div className="flex justify-between items-center border-b border-white/5 pb-2">
+                    <span className="flex items-center space-x-2"><Globe size={12} /> <span>TELEGRAM BOT API:</span></span>
+                    {dispatchResults?.telegram?.success ? (
+                      <span className="text-emerald-400 font-bold">● DISPATCHED</span>
+                    ) : (
+                      <span className="text-gray-600">● OFFLINE (ENV REQ)</span>
+                    )}
+                  </div>
+
+                  {/* WhatsApp reporter */}
+                  <div className="flex justify-between items-center border-b border-white/5 pb-2">
+                    <span className="flex items-center space-x-2"><MessageSquare size={12} /> <span>WHATSAPP BOT GATEWAY:</span></span>
+                    {dispatchResults?.whatsapp?.success ? (
+                      <span className="text-emerald-400 font-bold">● DISPATCHED</span>
+                    ) : (
+                      <span className="text-gray-600">● OFFLINE (ENV REQ)</span>
+                    )}
+                  </div>
+
+                  {/* SMS reporter */}
+                  <div className="flex justify-between items-center">
+                    <span className="flex items-center space-x-2"><Shield size={12} /> <span>SMS BROADCAST:</span></span>
+                    {dispatchResults?.sms?.success ? (
+                      <span className="text-emerald-400 font-bold">● DISPATCHED</span>
+                    ) : (
+                      <span className="text-gray-600">● OFFLINE (ENV REQ)</span>
+                    )}
+                  </div>
+                </div>
                 
                 <motion.div
                   initial={{ opacity: 0, y: 15 }}
@@ -465,7 +657,7 @@ ${formData.name}`;
                 >
                   <div className="flex items-center space-x-2 text-violet-400 font-mono text-xs uppercase tracking-widest">
                      <span className="w-1.5 h-1.5 rounded-full bg-violet-500 animate-pulse" />
-                     <span>TRANSMIT BRIEF VIA ENCRYPTED UPLINK</span>
+                     <span>MANUALLY ESCALATE OR DISPATCH VIA LOCAL LINK</span>
                   </div>
                   
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">

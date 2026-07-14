@@ -4,6 +4,8 @@ import { ArrowUpRight, Code2, Globe, Cpu, MapPin, Award, Terminal } from 'lucide
 import CyberFrame from '../components/CyberFrame';
 import DevilLabsLogo from '../components/DevilLabsLogo';
 import TeamSection from '../components/TeamSection';
+import ScrollReveal from '../components/ScrollReveal';
+import BlurredImage from '../components/BlurredImage';
 
 interface AboutPageProps {
   navigate: (path: string) => void;
@@ -36,90 +38,80 @@ export default function AboutPage({ navigate }: AboutPageProps) {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 relative z-10 items-start">
         {/* LEFT COLUMN: Narrative */}
         <div className="lg:col-span-7 space-y-12 font-mono text-sm uppercase tracking-widest leading-relaxed text-gray-400">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
+          <ScrollReveal>
             <p className="mb-6 text-white font-bold text-base">
               Devil Labs stands as the premier technology architecture firm in Bihar, India. Headquartered in Gaya, we lead the region in high-performance digital services.
             </p>
             <p className="mb-6">
               Our mission is to bridge the gap between abstract concepts and production-grade reality. We specialize in AI integration, full-stack architectures, and high-performance user interfaces. Recognized as the top IT service provider in Gaya and across Bihar, we deliver world-class software that scales.
             </p>
-          </motion.div>
+          </ScrollReveal>
 
-          <motion.div
-             initial={{ opacity: 0, y: 20 }}
-             whileInView={{ opacity: 1, y: 0 }}
-             viewport={{ once: true }}
-             transition={{ duration: 0.8, delay: 0.2 }}
-             className="flex flex-col md:flex-row gap-6 items-start"
-          >
-            <div className="relative group shrink-0 mt-2">
-              <div className="absolute inset-0 bg-gradient-to-tr from-violet-600 to-fuchsia-600 rounded-2xl blur-lg opacity-40 group-hover:opacity-75 transition-opacity duration-300" />
-              <img 
-                src="https://github.com/Devil-Labs.png" 
-                alt="Vicky - Founder & Architect" 
-                referrerPolicy="no-referrer"
-                className="w-24 h-24 md:w-32 md:h-32 rounded-2xl object-cover border border-white/15 relative z-10"
-              />
+          <ScrollReveal delay={150}>
+            <div className="flex flex-col md:flex-row gap-6 items-start">
+              <div className="relative group shrink-0 mt-2">
+                <div className="absolute inset-0 bg-gradient-to-tr from-violet-600 to-fuchsia-600 rounded-2xl blur-lg opacity-40 group-hover:opacity-75 transition-opacity duration-300" />
+                <BlurredImage 
+                  src="https://github.com/Devil-Labs.png" 
+                  alt="Vicky - Founder & Architect" 
+                  referrerPolicy="no-referrer"
+                  loading="lazy"
+                  className="w-24 h-24 md:w-32 md:h-32 rounded-2xl border border-white/15 relative z-10"
+                />
+              </div>
+              <div>
+                <h3 className="text-violet-400 font-bold mb-4 flex items-center gap-2">
+                  <Terminal size={14} />
+                  The Architect: vickyiitp.tech
+                </h3>
+                <p className="mb-6">
+                  Founded and led by Vicky (vickyiitp.tech), Devil Labs is built on a foundation of rigorous engineering and brutalist aesthetic perfection. Drawing from elite technical pedigree, the lab operates on strict principles of code quality, performance, and uncompromising security.
+                </p>
+                <p>
+                  We don't just build websites; we engineer digital ecosystems. From deep AI automation to robust enterprise platforms, our work speaks for itself across the global matrix.
+                </p>
+              </div>
             </div>
-            <div>
-              <h3 className="text-violet-400 font-bold mb-4 flex items-center gap-2">
-                <Terminal size={14} />
-                The Architect: vickyiitp.tech
-              </h3>
-              <p className="mb-6">
-                Founded and led by Vicky (vickyiitp.tech), Devil Labs is built on a foundation of rigorous engineering and brutalist aesthetic perfection. Drawing from elite technical pedigree, the lab operates on strict principles of code quality, performance, and uncompromising security.
-              </p>
-              <p>
-                We don't just build websites; we engineer digital ecosystems. From deep AI automation to robust enterprise platforms, our work speaks for itself across the global matrix.
-              </p>
-            </div>
-          </motion.div>
+          </ScrollReveal>
 
-          <motion.div
-             initial={{ opacity: 0, y: 20 }}
-             whileInView={{ opacity: 1, y: 0 }}
-             viewport={{ once: true }}
-             transition={{ duration: 0.8, delay: 0.4 }}
-             className="pt-8 border-t border-white/10"
-          >
-            <h3 className="text-white font-bold mb-6">Core Statistics</h3>
-            <div className="grid grid-cols-2 gap-8">
-              <div>
-                <div className="text-3xl font-display font-black text-white">#1</div>
-                <div className="text-[10px] text-gray-500 mt-1">IN BIHAR FOR TECH SERVICES</div>
-              </div>
-              <div>
-                <div className="text-3xl font-display font-black text-white">100+</div>
-                <div className="text-[10px] text-gray-500 mt-1">ARCHITECTURES DEPLOYED</div>
-              </div>
-              <div>
-                <div className="text-3xl font-display font-black text-white">24/7</div>
-                <div className="text-[10px] text-gray-500 mt-1">SYSTEM MONITORING</div>
-              </div>
-              <div>
-                <div className="text-3xl font-display font-black text-white">0</div>
-                <div className="text-[10px] text-gray-500 mt-1">COMPROMISED SYSTEMS</div>
+          <ScrollReveal delay={250}>
+            <div className="pt-8 border-t border-white/10">
+              <h3 className="text-white font-bold mb-6">Core Statistics</h3>
+              <div className="grid grid-cols-2 gap-8">
+                <div>
+                  <div className="text-3xl font-display font-black text-white">#1</div>
+                  <div className="text-[10px] text-gray-500 mt-1">IN BIHAR FOR TECH SERVICES</div>
+                </div>
+                <div>
+                  <div className="text-3xl font-display font-black text-white">100+</div>
+                  <div className="text-[10px] text-gray-500 mt-1">ARCHITECTURES DEPLOYED</div>
+                </div>
+                <div>
+                  <div className="text-3xl font-display font-black text-white">24/7</div>
+                  <div className="text-[10px] text-gray-500 mt-1">SYSTEM MONITORING</div>
+                </div>
+                <div>
+                  <div className="text-3xl font-display font-black text-white">0</div>
+                  <div className="text-[10px] text-gray-500 mt-1">COMPROMISED SYSTEMS</div>
+                </div>
               </div>
             </div>
-          </motion.div>
+          </ScrollReveal>
         </div>
 
         {/* RIGHT COLUMN: Sidebar Links & Info */}
         <div className="lg:col-span-5 space-y-8">
-          <CyberFrame glowColor="violet" className="p-8 bg-black/40 rounded-2xl flex flex-col space-y-8">
+          <ScrollReveal delay={200}>
+            <CyberFrame glowColor="violet" className="p-8 bg-black/40 rounded-2xl flex flex-col space-y-8">
             <div className="flex flex-col items-center justify-center p-6 border-b border-white/10 pb-8">
               <div className="relative group mb-4">
                 <div className="absolute inset-0 bg-gradient-to-tr from-violet-600 to-fuchsia-600 rounded-full blur-md opacity-75 group-hover:opacity-100 transition-opacity duration-300" />
-                <img 
+                <BlurredImage 
                   src="https://github.com/Devil-Labs.png" 
                   alt="Devil Labs Profile" 
                   referrerPolicy="no-referrer"
-                  className="w-20 h-20 rounded-full object-cover border-2 border-white/20 relative z-10 transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy"
+                  className="w-20 h-20 rounded-full border-2 border-white/20 relative z-10 transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
               <span className="font-display text-white text-lg font-black tracking-widest mt-2">DEVIL LABS</span>
@@ -180,7 +172,8 @@ export default function AboutPage({ navigate }: AboutPageProps) {
               </div>
             </div>
           </CyberFrame>
-        </div>
+        </ScrollReveal>
+      </div>
       </div>
 
       {/* Our Team Interactive Section */}

@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { getServiceBySlug } from '../data/services';
+import { articles } from '../data/insights';
 
 export default function SEO({ path }: { path: string }) {
   useEffect(() => {
@@ -10,6 +11,8 @@ export default function SEO({ path }: { path: string }) {
     let ogImage = "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80"; // A high-tech aesthetic placeholder
 
     const cleanPath = path.split('?')[0];
+    const queryParams = new URLSearchParams(path.split('?')[1] || '');
+    const insightIdStr = queryParams.get('id');
 
     switch (cleanPath) {
       case '/':
@@ -37,6 +40,16 @@ export default function SEO({ path }: { path: string }) {
         keywords = "agile development Gaya, software sprint process, code delivery pipeline, rapid software engineering India, devillabs.dev";
         break;
       case '/insights':
+        if (insightIdStr) {
+          const insightId = parseInt(insightIdStr, 10);
+          const article = articles.find(a => a.id === insightId);
+          if (article) {
+            title = `${article.title} | Devil Labs Insights`;
+            description = `${article.excerpt} ${article.content.substring(0, 100)}...`;
+            keywords = `${article.tag.replace(/[\[\]]/g, '')}, ${article.title.toLowerCase().split(' ').slice(0, 5).join(', ')}, Devil Labs, tech insights`;
+            break;
+          }
+        }
         title = "Lab Notes & Tech Insights | AI & Web Engineering in India";
         description = "Read our latest technical insights on generative AI, React best practices, serverless scaling, and local IT opportunities in Bihar and Gaya.";
         keywords = "tech blog Bihar, AI trends Gaya, web development tutorials India, software architecture notes, devillabs.dev";
@@ -104,7 +117,7 @@ export default function SEO({ path }: { path: string }) {
     updateOrCreateMeta('og:title', title, true);
     updateOrCreateMeta('og:description', description, true);
     updateOrCreateMeta('og:type', ogType, true);
-    updateOrCreateMeta('og:url', window.location.href, true);
+    updateOrCreateMeta('og:url', window.location.origin + cleanPath, true);
     updateOrCreateMeta('og:image', ogImage, true);
     updateOrCreateMeta('og:site_name', "Devil Labs", true);
 
@@ -121,7 +134,7 @@ export default function SEO({ path }: { path: string }) {
       canonicalLink.setAttribute('rel', 'canonical');
       document.head.appendChild(canonicalLink);
     }
-    canonicalLink.setAttribute('href', window.location.href);
+    canonicalLink.setAttribute('href', window.location.origin + cleanPath);
 
     // 6. Sitemap Link
     let sitemapLink = document.querySelector('link[rel="sitemap"]');
@@ -143,85 +156,328 @@ export default function SEO({ path }: { path: string }) {
       document.head.appendChild(schemaScript);
     }
 
-    let schemaData: any = null;
+    const baseUrl = window.location.origin;
+    const currentUrl = window.location.href;
 
-    if (cleanPath === '/') {
-      schemaData = {
-        "@context": "https://schema.org",
-        "@type": "ProfessionalService",
-        "@id": `${window.location.origin}/#organization`,
-        "name": "Devil Labs",
-        "alternateName": "Devil Labs Bihar",
-        "url": window.location.origin,
-        "logo": ogImage,
-        "description": description,
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "Sector 01",
-          "addressLocality": "Gaya",
-          "addressRegion": "Bihar",
-          "postalCode": "823001",
-          "addressCountry": "IN"
+    // Base organization (LocalBusiness & ProfessionalService)
+    const orgSchema = {
+      "@type": ["LocalBusiness", "ProfessionalService"],
+      "@id": `${baseUrl}/#organization`,
+      "name": "Devil Labs",
+      "alternateName": [
+        "Devil Labs AI",
+        "Devil Labs India",
+        "Devil Labs Bihar",
+        "Devil Labs Gaya",
+        "Devil Labs Patna"
+      ],
+      "url": baseUrl,
+      "logo": ogImage,
+      "image": ogImage,
+      "description": "Devil Labs (devillabs.dev) is Bihar's premier tech architecture firm & top IT service provider in Gaya, Patna, and India. Expert custom web development, autonomous AI agents, and custom AI tools engineered by Vicky (vickyiitp.tech).",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Sector 01",
+        "addressLocality": "Gaya",
+        "addressRegion": "Bihar",
+        "postalCode": "823001",
+        "addressCountry": "IN"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "24.7955",
+        "longitude": "84.9994"
+      },
+      "telephone": "+918102099678",
+      "priceRange": "$$",
+      "email": "devil.labs.contact@gmail.com",
+      "areaServed": [
+        { "@type": "AdministrativeArea", "name": "Gaya" },
+        { "@type": "AdministrativeArea", "name": "Patna" },
+        { "@type": "AdministrativeArea", "name": "Bihar" },
+        { "@type": "AdministrativeArea", "name": "India" }
+      ],
+      "subOrganization": [
+        {
+          "@type": "LocalBusiness",
+          "name": "Devil Labs Gaya Headquarters",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Sector 01",
+            "addressLocality": "Gaya",
+            "addressRegion": "Bihar",
+            "postalCode": "823001",
+            "addressCountry": "IN"
+          },
+          "telephone": "+918102099678"
         },
-        "geo": {
-          "@type": "GeoCoordinates",
-          "latitude": "24.7955",
-          "longitude": "84.9994"
-        },
-        "telephone": "+918102099678",
-        "priceRange": "$$",
-        "founder": {
-          "@type": "Person",
-          "@id": "https://vickyiitp.tech/#person",
-          "name": "Vicky Kumar",
-          "url": "https://vickyiitp.tech"
-        },
-        "sameAs": [
-          "https://instagram.com/devillabs",
-          "https://linkedin.com/company/devillabs"
-        ],
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "telephone": "+918102099678",
-          "contactType": "customer service",
-          "areaServed": ["IN", "Bihar", "Gaya"],
-          "availableLanguage": ["en", "hi"]
+        {
+          "@type": "LocalBusiness",
+          "name": "Devil Labs Patna Branch",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Boring Road",
+            "addressLocality": "Patna",
+            "addressRegion": "Bihar",
+            "postalCode": "800001",
+            "addressCountry": "IN"
+          },
+          "telephone": "+918102099678"
         }
-      };
-    } else if (cleanPath === '/about') {
-      schemaData = {
-        "@context": "https://schema.org",
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Devil Labs Custom Software Engineering Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Autonomous AI Agent Workflows",
+              "description": "Custom enterprise AI agents powered by LLMs (Gemini, OpenAI) for automated workflows, customer service, and real-time CRM data enrichment."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Custom Full-Stack Web Development",
+              "description": "High-performance React/Next.js frontends and Node.js backends featuring D3/Recharts data visualizations and zero-tech-debt architecture."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "WhatsApp Automation & CRM Integrations",
+              "description": "Intelligent messaging pipelines and automated marketing funnels connecting Meta Cloud API directly to internal business systems."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Cloud Architecture & VPS DevOps",
+              "description": "Secure virtual private server deployments, container scaling (Docker, Cloud Run), and proactive performance monitoring."
+            }
+          }
+        ]
+      },
+      "knowsAbout": [
+        "AI Agent Development",
+        "Autonomous AI Agents",
+        "Web Development",
+        "Custom Software Engineering",
+        "Enterprise DevOps",
+        "Full-Stack Development",
+        "SaaS Development",
+        "WhatsApp Automation",
+        "Next.js Development",
+        "Node.js Backend"
+      ],
+      "founder": {
         "@type": "Person",
-        "@id": "https://vickyiitp.tech/#person",
-        "name": "Vicky Kumar",
-        "url": "https://vickyiitp.tech",
-        "jobTitle": "Founder & Chief Technology Architect",
-        "worksFor": {
-          "@type": "ProfessionalService",
-          "@id": `${window.location.origin}/#organization`,
-          "name": "Devil Labs",
-          "url": window.location.origin
-        },
-        "alumniOf": {
-          "@type": "EducationalOrganization",
-          "name": "Indian Institute of Technology Patna",
-          "alternateName": "IIT Patna"
-        },
-        "sameAs": [
-          "https://linkedin.com/in/vickyiitp",
-          "https://github.com/vickyiitp",
-          "https://vickyiitp.tech",
-          "https://instagram.com/devillabs"
-        ],
-        "description": "Elite software engineer, full-stack tech architect, and founder of Devil Labs, leading digital acceleration in Bihar and India."
-      };
+        "@id": "https://vickyiitp.tech/#person"
+      },
+      "sameAs": [
+        "https://instagram.com/devillabs",
+        "https://linkedin.com/company/devillabs",
+        "https://github.com/Devil-Labs"
+      ]
+    };
+
+    // Founder Person Schema
+    const personSchema = {
+      "@type": "Person",
+      "@id": "https://vickyiitp.tech/#person",
+      "name": "Vicky Kumar",
+      "url": "https://vickyiitp.tech",
+      "jobTitle": "Founder & Chief Technology Architect",
+      "worksFor": {
+        "@id": `${baseUrl}/#organization`
+      },
+      "alumniOf": {
+        "@type": "EducationalOrganization",
+        "name": "Indian Institute of Technology Patna",
+        "alternateName": "IIT Patna"
+      },
+      "sameAs": [
+        "https://linkedin.com/in/vickyiitp",
+        "https://github.com/vickyiitp",
+        "https://vickyiitp.tech",
+        "https://instagram.com/devillabs"
+      ],
+      "description": "Elite software engineer, full-stack tech architect, and founder of Devil Labs, leading digital acceleration in Bihar and India."
+    };
+
+    // Breadcrumbs list
+    const breadcrumbList: any[] = [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": baseUrl
+      }
+    ];
+
+    let pageSegment = cleanPath.substring(1);
+    if (pageSegment) {
+      if (pageSegment.startsWith('services/')) {
+        breadcrumbList.push({
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Services",
+          "item": `${baseUrl}/services`
+        });
+        const slug = pageSegment.split('/')[1];
+        const service = getServiceBySlug(slug);
+        breadcrumbList.push({
+          "@type": "ListItem",
+          "position": 3,
+          "name": service ? service.title : slug.toUpperCase(),
+          "item": `${baseUrl}/services/${slug}`
+        });
+      } else {
+        breadcrumbList.push({
+          "@type": "ListItem",
+          "position": 2,
+          "name": pageSegment.charAt(0).toUpperCase() + pageSegment.slice(1),
+          "item": `${baseUrl}/${pageSegment}`
+        });
+      }
     }
 
-    if (schemaData) {
-      schemaScript.textContent = JSON.stringify(schemaData);
-    } else {
-      schemaScript.remove();
+    const breadcrumbSchema = {
+      "@type": "BreadcrumbList",
+      "@id": `${currentUrl}/#breadcrumb`,
+      "itemListElement": breadcrumbList
+    };
+
+    const graph: any[] = [
+      {
+        "@type": "WebPage",
+        "@id": `${currentUrl}/#webpage`,
+        "url": currentUrl,
+        "name": title,
+        "description": description,
+        "isPartOf": {
+          "@type": "WebSite",
+          "@id": `${baseUrl}/#website`,
+          "url": baseUrl,
+          "name": "Devil Labs",
+          "publisher": { "@id": `${baseUrl}/#organization` }
+        },
+        "breadcrumb": { "@id": `${currentUrl}/#breadcrumb` }
+      },
+      breadcrumbSchema,
+      orgSchema,
+      personSchema
+    ];
+
+    // FAQ schema for Pricing page
+    if (cleanPath === '/pricing') {
+      const faqSchema = {
+        "@type": "FAQPage",
+        "@id": `${currentUrl}/#faq`,
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Who owns the code upon final deployment?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "You do. Devil Labs operates as a work-for-hire project studio. Upon final clearance of your project invoice, 100% of intellectual property, code assets, database schemas, and associated server scripts are written directly to your secure repository."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is your average timeline for an MVP Build?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We average 2 to 4 weeks. By employing a context-aware development process (using advanced LLM accelerators like Cursor) and pre-optimized server configurations, we deliver pixel-perfect React frontends with incredible speed."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Are third-party API costs (like Gemini or OpenAI) included in the tier?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. All custom external integrations require you to register billing credentials directly. Our server-side configurations are structured to accept standard client keys via your environment files (.env) to maintain full server key privacy."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do you handle post-launch maintenance?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We include post-launch support with all individual builds (14 days for MVP, 30 days for Full-Stack + AI). If you require continuous system upgrades, telemetry audits, and maintenance, you can seamlessly migrate to our Retainer / Dedicated Team model."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What services do you provide for startup technology and enterprise software in India?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "As Bihar's premier tech architecture firm based in Gaya, we offer full-spectrum software development services for startups and enterprises across India (including Patna, Gaya, and major hubs like Bangalore and Delhi). Our offerings range from high-conversion landing pages, professional business websites, and scalable e-commerce systems to complex full-stack web applications, AI agents, WhatsApp automation, and custom CRM integrations."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do you specialize in Next.js and React full-stack SaaS development?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Our core engineering workflow leverages React, Next.js, and high-performance server-side architectures. We design lightweight, high-speed dashboards, SaaS platforms, and secure multi-user environments with robust backend systems, D3/Recharts data visualizations, and containerized Cloud Run, Render, or Vercel deployments."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do your autonomous AI Agents and Business Automation workflows work?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We engineer autonomous AI agents and automated workflows utilizing the Google GenAI SDK (Gemini API) and OpenAI APIs. Our systems handle automated data categorization, intelligent CRM routing, real-time lead generation, and custom WhatsApp automation triggers—helping Indian and global businesses run complex workflows 24/7 without manual intervention."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do you offer professional SEO services and page performance optimization?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Absolutely. Our UX engineering process is optimized for Core Web Vitals, targeting a Lighthouse Performance score of 95+. We integrate structured JSON-LD schema tags, semantic heading hierarchies, responsive layouts, image compression, and route prefetching, ensuring high rankings in both Google Search results and AI-powered Search Overview services (AEO/GEO) like ChatGPT, Claude, and Perplexity."
+            }
+          }
+        ]
+      };
+      graph.push(faqSchema);
     }
+
+    // Service specific schema
+    if (cleanPath.startsWith('/services/')) {
+      const slug = cleanPath.split('/')[2];
+      const service = getServiceBySlug(slug);
+      if (service) {
+        const serviceSchema = {
+          "@type": "Service",
+          "@id": `${currentUrl}/#service`,
+          "name": service.title,
+          "description": service.desc,
+          "category": service.category,
+          "provider": { "@id": `${baseUrl}/#organization` },
+          "areaServed": [
+            { "@type": "AdministrativeArea", "name": "Gaya" },
+            { "@type": "AdministrativeArea", "name": "Patna" },
+            { "@type": "AdministrativeArea", "name": "Bihar" },
+            { "@type": "AdministrativeArea", "name": "India" }
+          ]
+        };
+        graph.push(serviceSchema);
+      }
+    }
+
+    const finalSchema = {
+      "@context": "https://schema.org",
+      "@graph": graph
+    };
+
+    schemaScript.textContent = JSON.stringify(finalSchema, null, 2);
 
   }, [path]);
 

@@ -121,7 +121,7 @@ export default function Navigation({ currentPath, navigate }: NavigationProps) {
           id="brand-logo-btn"
           onMouseEnter={() => audioEngine.playHover()}
           onClick={() => { audioEngine.playClick(); navigate('/'); setIsOpen(false); }}
-          className="flex items-center space-x-2.5 group text-white font-bold tracking-tighter text-xl cursor-pointer bg-[#050505]/80 backdrop-blur-xl border border-white/10 px-4 py-2 sm:px-5 sm:py-2.5 rounded-full shadow-2xl hover:border-violet-500 transition-all duration-300 select-none"
+          className="flex items-center space-x-2.5 group text-white font-bold tracking-tighter text-xl cursor-pointer bg-[#050505]/80 backdrop-blur-xl border border-white/10 px-4 py-2 sm:px-5 sm:py-2.5 rounded-full shadow-2xl hover:border-violet-500 active:scale-95 transition-all duration-300 select-none"
         >
           <div className="relative flex items-center justify-center">
             <DevilLabsLogo className="w-5 h-5" glow />
@@ -139,7 +139,7 @@ export default function Navigation({ currentPath, navigate }: NavigationProps) {
                 key={item.path}
                 onMouseEnter={() => audioEngine.playHover()}
                 onClick={() => { audioEngine.playClick(); navigate(item.path); }}
-                className={`relative px-5 py-2 text-[10px] font-bold cursor-pointer transition-all duration-300 tracking-widest rounded-full text-gray-400 hover:text-white z-10`}
+                className={`relative px-5 py-2 text-[10px] font-bold cursor-pointer transition-all duration-300 tracking-widest rounded-full text-gray-400 hover:text-white active:scale-95 z-10`}
               >
                 {isActive && (
                   <motion.div
@@ -159,7 +159,7 @@ export default function Navigation({ currentPath, navigate }: NavigationProps) {
           <button
             onMouseEnter={() => audioEngine.playHover()}
             onClick={() => { audioEngine.playClick(); toggleCurrency(); }}
-            className="flex items-center justify-center w-10 h-10 bg-[#050505]/80 backdrop-blur-xl border border-white/10 rounded-full font-mono text-[10px] font-bold text-gray-400 hover:text-white hover:border-violet-500 transition-all cursor-pointer shadow-2xl"
+            className="flex items-center justify-center w-10 h-10 bg-[#050505]/80 backdrop-blur-xl border border-white/10 rounded-full font-mono text-[10px] font-bold text-gray-400 hover:text-white hover:border-violet-500 active:scale-95 transition-all cursor-pointer shadow-2xl"
           >
             {currency}
           </button>
@@ -167,7 +167,7 @@ export default function Navigation({ currentPath, navigate }: NavigationProps) {
             id="nav-cta-btn"
             onMouseEnter={() => audioEngine.playHover()}
             onClick={() => { audioEngine.playClick(); window.dispatchEvent(new CustomEvent('open-initialize-modal')); }}
-            className="group flex items-center space-x-2 bg-white text-black px-6 py-2.5 rounded-full font-bold text-[10px] uppercase tracking-widest hover:bg-violet-600 hover:text-white transition-all shadow-[0_0_20px_rgba(139,92,246,0)] hover:shadow-[0_0_20px_rgba(139,92,246,0.4)] cursor-pointer"
+            className="group flex items-center space-x-2 bg-white text-black px-6 py-2.5 rounded-full font-bold text-[10px] uppercase tracking-widest hover:bg-violet-600 hover:text-white active:scale-95 active:bg-violet-700 transition-all shadow-[0_0_20px_rgba(139,92,246,0)] hover:shadow-[0_0_20px_rgba(139,92,246,0.4)] cursor-pointer"
           >
             <span>INITIALIZE</span>
             <ArrowUpRight size={14} className="group-hover:text-white transition-colors" />
@@ -179,7 +179,7 @@ export default function Navigation({ currentPath, navigate }: NavigationProps) {
           <button
             onMouseEnter={() => audioEngine.playHover()}
             onClick={() => { audioEngine.playClick(); toggleCurrency(); }}
-            className="flex items-center justify-center w-12 h-12 bg-[#050505]/80 backdrop-blur-xl border border-white/10 rounded-full font-mono text-xs font-bold text-gray-400 hover:text-white hover:border-violet-500 transition-all cursor-pointer"
+            className="flex items-center justify-center w-12 h-12 bg-[#050505]/80 backdrop-blur-xl border border-white/10 rounded-full font-mono text-xs font-bold text-gray-400 hover:text-white hover:border-violet-500 active:scale-95 transition-all cursor-pointer"
           >
             {currency}
           </button>
@@ -187,7 +187,7 @@ export default function Navigation({ currentPath, navigate }: NavigationProps) {
             id="mobile-menu-toggle"
             onMouseEnter={() => audioEngine.playHover()}
             onClick={() => { audioEngine.playClick(); setIsOpen(!isOpen); }}
-            className="flex items-center justify-center w-12 h-12 bg-[#050505]/80 backdrop-blur-xl border border-white/10 rounded-full text-gray-400 hover:text-white hover:border-white/30 transition-all focus:outline-none cursor-pointer"
+            className="flex items-center justify-center w-12 h-12 bg-[#050505]/80 backdrop-blur-xl border border-white/10 rounded-full text-gray-400 hover:text-white hover:border-white/30 active:scale-95 transition-all focus:outline-none cursor-pointer"
             aria-label="Toggle menu"
           >
             {isOpen ? <X size={20} /> : <Menu size={20} />}
@@ -214,7 +214,7 @@ export default function Navigation({ currentPath, navigate }: NavigationProps) {
                   navigate(item.path);
                   setIsOpen(false);
                 }}
-                className={`text-left text-sm font-bold tracking-widest py-3 border-b border-white/5 cursor-pointer flex items-center justify-between ${isActive ? 'text-violet-400' : 'text-gray-400'}`}
+                className={`text-left text-sm font-bold tracking-widest py-3 border-b border-white/5 cursor-pointer flex items-center justify-between active:text-violet-400 active:pl-2 transition-all duration-200 ${isActive ? 'text-violet-400' : 'text-gray-400'}`}
               >
                 <span>{isActive ? `// ${item.label}` : item.name}</span>
                 <span className="text-xs text-gray-600">→</span>
@@ -227,7 +227,7 @@ export default function Navigation({ currentPath, navigate }: NavigationProps) {
               window.dispatchEvent(new CustomEvent('open-initialize-modal'));
               setIsOpen(false);
             }}
-            className="w-full py-4 bg-white text-black font-bold text-xs tracking-widest uppercase hover:bg-violet-600 hover:text-white transition-all text-center flex items-center justify-center space-x-2"
+            className="w-full py-4 bg-white text-black font-bold text-xs tracking-widest uppercase hover:bg-violet-600 hover:text-white active:scale-95 active:bg-violet-700 transition-all text-center flex items-center justify-center space-x-2"
           >
             <span>INITIALIZE PROJECT</span>
             <ArrowUpRight size={14} />
@@ -390,6 +390,41 @@ export function Footer({ navigate }: { navigate: (path: string) => void }) {
           )}
         </div>
 
+      </div>
+
+      {/* Dynamic Topic Cluster and Internal Linking Grid */}
+      <div className="max-w-7xl mx-auto border-t border-white/5 pt-12 pb-8 mb-8 relative z-10 text-[10px] tracking-wider font-mono">
+        <span className="text-white font-bold tracking-widest uppercase block mb-6 text-xs text-gray-400">// TOPIC CLUSTERS & ENGINEERING NODES</span>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-gray-600">
+          {/* Services Cluster */}
+          <div className="flex flex-col space-y-2">
+            <span className="text-gray-400 font-bold mb-2 uppercase tracking-widest">Core Service Offerings</span>
+            <button onClick={() => navigate('/services/ai-agents')} className="text-left hover:text-white transition-colors cursor-pointer">AUTONOMOUS AI AGENTS</button>
+            <button onClick={() => navigate('/services/fullstack')} className="text-left hover:text-white transition-colors cursor-pointer">CUSTOM FULL-STACK WEB APPS</button>
+            <button onClick={() => navigate('/services/ecommerce')} className="text-left hover:text-white transition-colors cursor-pointer">ENTERPRISE E-COMMERCE</button>
+            <button onClick={() => navigate('/services/automation')} className="text-left hover:text-white transition-colors cursor-pointer">WORKFLOW AUTOMATION & CRMS</button>
+            <button onClick={() => navigate('/services/vps')} className="text-left hover:text-white transition-colors cursor-pointer">VPS & CLOUD DEPLOYMENTS</button>
+          </div>
+          {/* Blog/Insights Cluster */}
+          <div className="flex flex-col space-y-2">
+            <span className="text-gray-400 font-bold mb-2 uppercase tracking-widest">Research & Lab Categories</span>
+            <button onClick={() => navigate('/insights?id=1')} className="text-left hover:text-white transition-colors cursor-pointer">SYSTEM ARCHITECTURE (LATENCY LABS)</button>
+            <button onClick={() => navigate('/insights?id=2')} className="text-left hover:text-white transition-colors cursor-pointer">AI SYSTEM GUARDRAILS</button>
+            <button onClick={() => navigate('/insights?id=3')} className="text-left hover:text-white transition-colors cursor-pointer">REAL-TIME STATE STREAMING</button>
+            <button onClick={() => navigate('/insights?id=4')} className="text-left hover:text-white transition-colors cursor-pointer">PROMPT HARDENING & CYBERSECURITY</button>
+            <button onClick={() => navigate('/insights?id=5')} className="text-left hover:text-white transition-colors cursor-pointer">VIBE CODING & ARCHITECTURAL DIRECTION</button>
+          </div>
+          {/* Tech Stack Cluster */}
+          <div className="flex flex-col space-y-2">
+            <span className="text-gray-400 font-bold mb-2 uppercase tracking-widest">Technology Stacks</span>
+            <span className="text-gray-500 hover:text-white transition-colors cursor-default">REACT 18 & NEXT.JS / VITE ENGINE</span>
+            <span className="text-gray-500 hover:text-white transition-colors cursor-default">TYPESCRIPT & MODERN ES-NEXT</span>
+            <span className="text-gray-500 hover:text-white transition-colors cursor-default">TAILWIND CSS & MOTION STYLING</span>
+            <span className="text-gray-500 hover:text-white transition-colors cursor-default">NODE.JS & EXPRESS BACKENDS</span>
+            <span className="text-gray-500 hover:text-white transition-colors cursor-default">GEMINI API / GOOGLE GENAI SDK</span>
+            <span className="text-gray-500 hover:text-white transition-colors cursor-default">DOCKER CONTAINERIZATION & CLOUD RUN</span>
+          </div>
+        </div>
       </div>
 
       <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center text-gray-700 text-[10px] tracking-widest font-bold border-t border-white/5 pt-8 mb-12 gap-4">

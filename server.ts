@@ -2,6 +2,8 @@ import express from "express";
 import path from "path";
 import { createServer as createViteServer } from "vite";
 import { serviceCategories } from "./src/data/services";
+import { articles } from "./src/data/insights";
+import { dispatchNotifications } from "./src/utils/notificationService";
 
 async function startServer() {
   const app = express();
@@ -12,22 +14,27 @@ async function startServer() {
   // API Routes
   app.post("/api/contact", async (req, res) => {
     try {
-      const { name, company, scope, budget, specs } = req.body;
+      const { name, email, phone, company, companySize, scope, budget, specs } = req.body;
       
-      // Email sending logic (e.g. using Resend, SendGrid) would go here
-      // const resendKey = process.env.RESEND_API_KEY;
-      
-      // WhatsApp messaging logic (e.g. using Twilio) would go here
-      // const twilioSid = process.env.TWILIO_ACCOUNT_SID;
+      const dispatchResults = await dispatchNotifications({
+        name: name || "Anonymous Client",
+        email: email || "unknown@domain.com",
+        phone: phone || "no-phone",
+        company: company || "Self",
+        companySize: companySize || "1",
+        scope: scope || "General Inquiry",
+        budget: budget || "Custom",
+        specs: specs || "No specifications provided."
+      });
 
-      console.log(`[Email Mock] Sending email to admin about new lead from ${name} (${company}) for ${scope}...`);
-      console.log(`[WhatsApp Mock] Sending WhatsApp message to admin about new lead...`);
-
-      // Mock successful response
-      res.json({ success: true, message: "Contact information sent via Email and WhatsApp successfully." });
-    } catch (error) {
+      res.json({ 
+        success: true, 
+        message: "Contact information received and dispatched successfully through live communication systems.",
+        results: dispatchResults
+      });
+    } catch (error: any) {
       console.error("Error processing contact form:", error);
-      res.status(500).json({ error: "Failed to process contact form" });
+      res.status(500).json({ error: "Failed to process contact form", details: error.message });
     }
   });
 
@@ -122,6 +129,20 @@ async function startServer() {
               xml += `  </url>\n`;
             }
           }
+        }
+      }
+    }
+
+    // Dynamic insights pages from data/insights.ts
+    if (Array.isArray(articles)) {
+      for (const article of articles) {
+        if (article && article.id) {
+          xml += `  <url>\n`;
+          xml += `    <loc>${baseUrl}/insights?id=${article.id}</loc>\n`;
+          xml += `    <lastmod>${currentDate}</lastmod>\n`;
+          xml += `    <changefreq>weekly</changefreq>\n`;
+          xml += `    <priority>0.6</priority>\n`;
+          xml += `  </url>\n`;
         }
       }
     }

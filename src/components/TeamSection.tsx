@@ -2,6 +2,7 @@ import { motion } from 'motion/react';
 import { Github, Linkedin, Globe, Cpu, Terminal, ArrowUpRight, Award, ShieldAlert, Sparkles, Code2 } from 'lucide-react';
 import { audioEngine } from '../lib/audio';
 import CyberFrame from './CyberFrame';
+import BlurredImage from './BlurredImage';
 
 interface Skill {
   name: string;
@@ -46,11 +47,12 @@ export default function TeamSection() {
               <div className="flex items-center justify-between">
                 <div className="relative">
                   <div className="absolute inset-0 bg-violet-600/20 rounded-2xl blur-xl opacity-70 group-hover:opacity-100 transition-opacity" />
-                  <img
+                  <BlurredImage
                     src="https://github.com/vickyiitp.png"
                     alt="Vicky Kumar"
                     referrerPolicy="no-referrer"
-                    className="w-24 h-24 sm:w-32 sm:h-32 rounded-2xl object-cover border border-white/10 relative z-10 transition-transform duration-500 group-hover:scale-[1.03]"
+                    loading="lazy"
+                    className="w-24 h-24 sm:w-32 sm:h-32 rounded-2xl border border-white/10 relative z-10 transition-transform duration-500 group-hover:scale-[1.03]"
                   />
                 </div>
                 

@@ -10,6 +10,14 @@ export default function BackgroundEffects() {
   const smoothY = useSpring(mouseY, { damping: 50, stiffness: 400 });
 
   useEffect(() => {
+    const isTouchDevice = typeof window !== 'undefined' && ('ontouchstart' in window || navigator.maxTouchPoints > 0 || window.innerWidth < 768);
+    if (isTouchDevice) {
+      // Set to static ambient center on mobile
+      mouseX.set(window.innerWidth / 2);
+      mouseY.set(window.innerHeight / 3);
+      return;
+    }
+
     const handleMouseMove = (e: MouseEvent) => {
       mouseX.set(e.clientX);
       mouseY.set(e.clientY);

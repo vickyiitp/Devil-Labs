@@ -29,10 +29,10 @@ export default function CyberFrame({ children, className = '', glowColor = 'viol
   return (
     <div className={`relative group border border-white/10 transition-all duration-500 bg-black/20 backdrop-blur-sm ${glowColors[glowColor]} ${className}`}>
       {/* Corner Brackets */}
-      <div className={`absolute -top-px -left-px w-4 h-4 border-t-2 border-l-2 ${accentColors[glowColor]} opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 pointer-events-none`} />
-      <div className={`absolute -top-px -right-px w-4 h-4 border-t-2 border-r-2 ${accentColors[glowColor]} opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 pointer-events-none`} />
-      <div className={`absolute -bottom-px -left-px w-4 h-4 border-b-2 border-l-2 ${accentColors[glowColor]} opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 pointer-events-none`} />
-      <div className={`absolute -bottom-px -right-px w-4 h-4 border-b-2 border-r-2 ${accentColors[glowColor]} opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 pointer-events-none`} />
+      <div className={`absolute -top-px -left-px w-4 h-4 border-t-2 border-l-2 ${accentColors[glowColor]} opacity-30 md:opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 pointer-events-none`} />
+      <div className={`absolute -top-px -right-px w-4 h-4 border-t-2 border-r-2 ${accentColors[glowColor]} opacity-30 md:opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 pointer-events-none`} />
+      <div className={`absolute -bottom-px -left-px w-4 h-4 border-b-2 border-l-2 ${accentColors[glowColor]} opacity-30 md:opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 pointer-events-none`} />
+      <div className={`absolute -bottom-px -right-px w-4 h-4 border-b-2 border-r-2 ${accentColors[glowColor]} opacity-30 md:opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 pointer-events-none`} />
       
       {/* Scanner Line */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none rounded-[inherit]">

@@ -149,7 +149,7 @@ export default function ProjectGallery() {
               <button
                 key={category}
                 onClick={() => setActiveCategory(category)}
-                className={`whitespace-nowrap px-5 py-2.5 rounded-full font-bold text-xs tracking-wide transition-all duration-300 ${
+                className={`whitespace-nowrap px-5 py-2.5 rounded-full font-bold text-xs tracking-wide transition-all duration-300 active:scale-95 ${
                   activeCategory === category
                     ? 'bg-white text-black shadow-lg'
                     : 'bg-white/5 text-gray-300 hover:bg-white/10 hover:text-white border border-white/10'
@@ -174,6 +174,7 @@ export default function ProjectGallery() {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.9 }}
+              whileTap={{ scale: 0.98 }}
               transition={{ duration: 0.3 }}
               key={project.id}
               className="group cursor-pointer"

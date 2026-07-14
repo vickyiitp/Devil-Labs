@@ -17,6 +17,10 @@ export default function CursorTrail() {
   const animationFrameId = useRef<number>();
 
   useEffect(() => {
+    // Skip cursor trail canvas on mobile or touch-enabled devices
+    const isTouchDevice = typeof window !== 'undefined' && ('ontouchstart' in window || navigator.maxTouchPoints > 0 || window.innerWidth < 768);
+    if (isTouchDevice) return;
+
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
