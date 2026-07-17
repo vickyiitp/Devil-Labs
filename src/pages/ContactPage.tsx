@@ -90,6 +90,7 @@ export default function ContactPage({ navigate }: ContactPageProps) {
   const [isConsentChecked, setIsConsentChecked] = useState(false);
   const [rateLimitSecondsLeft, setRateLimitSecondsLeft] = useState(0);
   const [rateLimitClicks, setRateLimitClicks] = useState(0);
+  const [loadedInfo, setLoadedInfo] = useState<{ service?: string; plan?: string; scope?: string } | null>(null);
 
   useEffect(() => {
     if (rateLimitSecondsLeft <= 0) {
@@ -106,14 +107,95 @@ export default function ContactPage({ navigate }: ContactPageProps) {
     // Parse URL parameters for scope auto-fill or check localStorage
     const params = new URLSearchParams(window.location.search);
     const scopeParam = params.get('scope');
-    const storedScope = localStorage.getItem('selectedPlanScope');
+    const serviceParam = params.get('service');
+    const planParam = params.get('plan');
     
+    // 1. Prefill scope
+    let initialScope = '';
     if (scopeParam) {
-      setFormData(prev => ({ ...prev, scope: scopeParam }));
+      initialScope = scopeParam;
       localStorage.setItem('selectedPlanScope', scopeParam); // keep it synced
-    } else if (storedScope) {
-      setFormData(prev => ({ ...prev, scope: storedScope }));
+    } else {
+      const storedScope = localStorage.getItem('selectedPlanScope');
+      if (storedScope) {
+        initialScope = storedScope;
+      } else {
+        const storedCategory = localStorage.getItem('selectedProjectCategory');
+        if (storedCategory && storedCategory !== 'All') {
+          const categoryToScopeMap: Record<string, string> = {
+            'Enterprise Systems': 'Retainer / Enterprise',
+            'E-Commerce': 'Web App',
+            'Web Architecture': 'Web App',
+            'Landing Pages': 'MVP Build (Starter)',
+            'Utilities': 'Web App',
+            'AI': 'AI Automation',
+            'Web': 'Web App',
+            'Infrastructure': 'Retainer / Enterprise'
+          };
+          initialScope = categoryToScopeMap[storedCategory] || '';
+        }
+      }
     }
+
+    // 2. Prefill budget based on plan choice
+    let initialBudget = '';
+    const activePlan = planParam || localStorage.getItem('selectedPlan');
+    if (activePlan) {
+      if (planParam) {
+        localStorage.setItem('selectedPlan', planParam);
+      }
+      if (activePlan.toLowerCase().includes('starter')) {
+        initialBudget = '$100 - $300';
+      } else if (activePlan.toLowerCase().includes('professional')) {
+        initialBudget = '$300 - $700';
+      } else if (activePlan.toLowerCase().includes('enterprise')) {
+        initialBudget = '$1,000+';
+      }
+    }
+
+    // 3. Prefill specifications / description text
+    const activeService = serviceParam || localStorage.getItem('selectedService');
+    if (serviceParam) {
+      localStorage.setItem('selectedService', serviceParam);
+    }
+
+    let initialSpecs = '';
+    if (activeService) {
+      if (activePlan) {
+        initialSpecs = `Inquiring about our "${activeService}" project using the "${activePlan}". We want to align this build with our organizational goals and request a technical brief detailing database topology, security compliance, and latency performance.`;
+      } else {
+        initialSpecs = `Inquiring about our custom "${activeService}" project. We want to align this build with our organizational goals and request a technical brief detailing database topology, security compliance, and latency performance.`;
+      }
+    } else {
+      const storedCategory = localStorage.getItem('selectedProjectCategory');
+      if (storedCategory && storedCategory !== 'All') {
+        initialSpecs = `Inquiring about custom high-scale "${storedCategory}" systems. We want to align this build with our organizational goals and request a technical brief detailing database topology, security compliance, and latency performance.`;
+      }
+    }
+
+    // Apply all values to formData
+    setFormData(prev => ({
+      ...prev,
+      ...(initialScope ? { scope: initialScope } : {}),
+      ...(initialBudget ? { budget: initialBudget } : {}),
+      ...(initialSpecs ? { specs: initialSpecs } : {})
+    }));
+
+    if (activeService || activePlan || initialScope) {
+      setLoadedInfo({
+        service: activeService || undefined,
+        plan: activePlan || undefined,
+        scope: initialScope || undefined
+      });
+    }
+
+    // Cleanup local storage items to prevent stale pre-fills on fresh page loads
+    return () => {
+      localStorage.removeItem('selectedPlanScope');
+      localStorage.removeItem('selectedService');
+      localStorage.removeItem('selectedPlan');
+      localStorage.removeItem('selectedProjectCategory');
+    };
   }, []);
 
   const scopes = [
@@ -318,6 +400,49 @@ ${formData.name}`;
               onSubmit={handleExecute} 
               className="space-y-10"
             >
+              {loadedInfo && (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="bg-violet-950/20 border border-violet-500/30 rounded-xl p-5 space-y-3 backdrop-blur-md relative overflow-hidden"
+                >
+                  {/* Subtle decorative glow */}
+                  <div className="absolute top-0 right-0 w-24 h-24 bg-violet-500/10 rounded-full blur-xl pointer-events-none" />
+                  
+                  <div className="flex items-center space-x-2">
+                    <CheckCircle className="w-4 h-4 text-emerald-400" />
+                    <span className="text-violet-300 font-mono text-[10px] uppercase tracking-[0.2em] font-semibold">
+                      Configuration Calibrated
+                    </span>
+                  </div>
+                  
+                  <div className="flex flex-wrap gap-2 pt-1">
+                    {loadedInfo.service && (
+                      <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-white/5 border border-white/10 text-xs font-mono text-white/90">
+                        <span className="text-violet-400 font-medium">Service:</span>
+                        <span className="text-white font-semibold">{loadedInfo.service}</span>
+                      </div>
+                    )}
+                    {loadedInfo.plan && (
+                      <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-white/5 border border-white/10 text-xs font-mono text-white/90">
+                        <span className="text-violet-400 font-medium">Plan:</span>
+                        <span className="text-emerald-400 font-semibold">{loadedInfo.plan}</span>
+                      </div>
+                    )}
+                    {loadedInfo.scope && (
+                      <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-white/5 border border-white/10 text-xs font-mono text-white/90">
+                        <span className="text-violet-400 font-medium">Scope:</span>
+                        <span className="text-white/80">{loadedInfo.scope}</span>
+                      </div>
+                    )}
+                  </div>
+                  
+                  <p className="text-[11px] text-gray-400 font-light leading-relaxed">
+                    The project scope, description, and budget fields have been automatically initialized based on your services selection. Feel free to adjust any parameter below.
+                  </p>
+                </motion.div>
+              )}
+
               {/* Name & Email */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
                 <div className="relative group">

@@ -64,7 +64,9 @@ export default function App() {
   const renderPage = () => {
     if (isNavigating) return <SkeletonLoader />;
 
-    switch (currentPath) {
+    const pathname = currentPath.split('?')[0];
+
+    switch (pathname) {
       case '/':
         return <LandingPage navigate={navigate} />;
       case '/services':
@@ -87,8 +89,8 @@ export default function App() {
       case '/legal/msa':
         return <MSAPage navigate={navigate} />;
       default:
-        if (currentPath.startsWith('/services/')) {
-          return <ServiceDetailPage navigate={navigate} slug={currentPath.split('/')[2]} />;
+        if (pathname.startsWith('/services/')) {
+          return <ServiceDetailPage navigate={navigate} slug={pathname.split('/')[2]} />;
         }
         return <LandingPage navigate={navigate} />;
     }

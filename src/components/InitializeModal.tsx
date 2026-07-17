@@ -111,8 +111,23 @@ export default function InitializeModal({ isOpen, onClose, navigate }: Initializ
       setEmail('');
       setPhoneNumber('');
       setCompanyName('');
-      setBudgetTier('');
-      setProjectBrief('');
+      
+      const prefillBrief = localStorage.getItem('devil_labs_prefill_brief');
+      if (prefillBrief) {
+        setProjectBrief(prefillBrief);
+        localStorage.removeItem('devil_labs_prefill_brief');
+      } else {
+        setProjectBrief('');
+      }
+
+      const prefillBudget = localStorage.getItem('devil_labs_prefill_budget');
+      if (prefillBudget) {
+        setBudgetTier(prefillBudget);
+        localStorage.removeItem('devil_labs_prefill_budget');
+      } else {
+        setBudgetTier('');
+      }
+
       setSubmitSuccess(false);
       setSubmitError(null);
       setDispatchDetails(null);

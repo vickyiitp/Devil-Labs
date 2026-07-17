@@ -40,7 +40,9 @@ export default function ServiceDetailPage({
 
   const handleInitiate = () => {
     localStorage.setItem('selectedPlanScope', data.contactValue);
-    navigate(`/contact?scope=${encodeURIComponent(data.contactValue)}`);
+    localStorage.setItem('selectedService', data.title);
+    localStorage.removeItem('selectedPlan'); // No plan selected, just the service
+    navigate(`/contact?scope=${encodeURIComponent(data.contactValue)}&service=${encodeURIComponent(data.title)}`);
   };
 
   const handlePlanSelect = (planName: string) => {
@@ -50,7 +52,9 @@ export default function ServiceDetailPage({
     if (planName.includes('Professional')) scopeStr = 'Full-Stack + AI (Professional)';
     if (planName.includes('Enterprise')) scopeStr = 'Retainer / Enterprise';
     localStorage.setItem('selectedPlanScope', scopeStr);
-    navigate(`/contact?scope=${encodeURIComponent(scopeStr)}`);
+    localStorage.setItem('selectedService', data.title);
+    localStorage.setItem('selectedPlan', planName);
+    navigate(`/contact?scope=${encodeURIComponent(scopeStr)}&service=${encodeURIComponent(data.title)}&plan=${encodeURIComponent(planName)}`);
   };
 
   return (
