@@ -246,385 +246,464 @@ ${clientName || 'Partner'}`;
     return `mailto:devil.labs.contact@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   };
 
-  if (!isOpen) return null;
-
   return (
     <AnimatePresence>
-      <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 overflow-y-auto">
-        {/* Backdrop glass blur overlay */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          onClick={onClose}
-          className="fixed inset-0 bg-[#020202]/95 backdrop-blur-xl pointer-events-auto"
-        />
+      {isOpen && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 overflow-y-auto">
+          {/* Backdrop glass blur overlay */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={onClose}
+            className="fixed inset-0 bg-stone-900/60 backdrop-blur-md pointer-events-auto"
+          />
 
-        {/* Modal Window */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95, y: 20 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0.95, y: 20 }}
-          transition={{ type: "spring", damping: 25, stiffness: 220 }}
-          className="relative w-full max-w-xl bg-[#080808] border border-white/10 rounded-3xl p-6 md:p-8 shadow-2xl z-10 overflow-hidden pointer-events-auto my-8"
-        >
-          {/* Futuristic ambient background glow */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-24 bg-violet-600/15 blur-3xl pointer-events-none rounded-full" />
-          <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-fuchsia-600/5 blur-3xl pointer-events-none rounded-full" />
-
-          {/* Close button */}
-          <button
-            onMouseEnter={() => audioEngine.playHover()}
-            onClick={() => { audioEngine.playClick(); onClose(); }}
-            className="absolute top-4 right-4 p-2 text-gray-500 hover:text-white hover:bg-white/5 transition-all rounded-full cursor-pointer z-20"
-            aria-label="Close modal"
+          {/* Modal Window */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: 20 }}
+            transition={{ type: "spring", damping: 25, stiffness: 220 }}
+            className="relative w-full max-w-xl p-6 md:p-8 z-10 overflow-hidden pointer-events-auto my-8 text-stone-800 clay-card"
           >
-            <X size={18} />
-          </button>
+            {/* Soft warm ambient background glow */}
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-24 bg-violet-200/40 blur-3xl pointer-events-none rounded-full" />
+            <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-rose-100/30 blur-3xl pointer-events-none rounded-full" />
 
-          {/* Header */}
-          <div className="space-y-2 mb-6">
-            <div className="inline-flex items-center space-x-2 px-2.5 py-1 bg-violet-500/10 border border-violet-500/20 rounded-full">
-              <span className="w-1.5 h-1.5 rounded-full bg-violet-400 animate-pulse" />
-              <span className="font-mono text-[8px] text-violet-300 tracking-[0.25em] uppercase font-bold">TRANSMISSION UPLINK v2.0</span>
+            {/* Close button */}
+            <button
+              onMouseEnter={() => audioEngine.playHover()}
+              onClick={() => { audioEngine.playClick(); onClose(); }}
+              className="absolute top-4 right-4 p-2 text-stone-400 hover:text-stone-700 hover:bg-stone-100 transition-all rounded-full cursor-pointer z-20"
+              aria-label="Close modal"
+            >
+              <X size={18} />
+            </button>
+
+            {/* Header */}
+            <div className="space-y-2 mb-6">
+              <div className="inline-flex items-center space-x-2 px-2.5 py-1 bg-violet-100 border border-violet-200/50 rounded-full">
+                <span className="w-1.5 h-1.5 rounded-full bg-violet-500 animate-pulse" />
+                <span className="font-mono text-[8px] text-violet-700 tracking-[0.25em] uppercase font-bold">TRANSMISSION UPLINK v2.0</span>
+              </div>
+              <h3 className="text-xl md:text-2xl font-display font-black tracking-tight text-stone-800 uppercase">
+                INITIALIZE PROJECT
+              </h3>
+              <p className="text-stone-600 text-xs font-sans leading-relaxed">
+                Connect with India's highest-tier autonomous software laboratory. Choose your transmission medium.
+              </p>
             </div>
-            <h3 className="text-xl md:text-2xl font-display font-black tracking-tight text-white uppercase">
-              INITIALIZE PROJECT
-            </h3>
-            <p className="text-gray-400 text-xs font-sans leading-relaxed">
-              Connect with India's highest-tier autonomous software laboratory. Choose your transmission medium.
-            </p>
-          </div>
 
-          {/* Tab Navigation */}
-          <div className="grid grid-cols-2 gap-2 bg-white/[0.02] border border-white/5 rounded-xl p-1 mb-6">
-            <button
-              onClick={() => { audioEngine.playClick(); setActiveTab('dispatch'); }}
-              className={`py-2 text-[10px] font-mono font-bold tracking-widest uppercase rounded-lg transition-all cursor-pointer ${
-                activeTab === 'dispatch'
-                  ? 'bg-violet-600 text-white shadow-lg shadow-violet-600/20'
-                  : 'text-gray-400 hover:text-white hover:bg-white/[0.02]'
-              }`}
-            >
-              TELEMETRY DISPATCH
-            </button>
-            <button
-              onClick={() => { audioEngine.playClick(); setActiveTab('hotlines'); }}
-              className={`py-2 text-[10px] font-mono font-bold tracking-widest uppercase rounded-lg transition-all cursor-pointer ${
-                activeTab === 'hotlines'
-                  ? 'bg-violet-600 text-white shadow-lg shadow-violet-600/20'
-                  : 'text-gray-400 hover:text-white hover:bg-white/[0.02]'
-              }`}
-            >
-              HOTLINE CHANNELS
-            </button>
-          </div>
+            {/* Tab Navigation */}
+            <div className="grid grid-cols-2 gap-2 p-1 mb-6 clay-inset rounded-2xl">
+              <button
+                onClick={() => { audioEngine.playClick(); setActiveTab('dispatch'); }}
+                className={`py-2.5 text-[10px] font-mono font-bold tracking-widest uppercase rounded-xl transition-all cursor-pointer ${
+                  activeTab === 'dispatch'
+                    ? 'clay-violet-solid'
+                    : 'text-stone-500 hover:text-stone-800'
+                }`}
+              >
+                TELEMETRY DISPATCH
+              </button>
+              <button
+                onClick={() => { audioEngine.playClick(); setActiveTab('hotlines'); }}
+                className={`py-2.5 text-[10px] font-mono font-bold tracking-widest uppercase rounded-xl transition-all cursor-pointer ${
+                  activeTab === 'hotlines'
+                    ? 'clay-violet-solid'
+                    : 'text-stone-500 hover:text-stone-800'
+                }`}
+              >
+                HOTLINE CHANNELS
+              </button>
+            </div>
 
-          {/* Tab Content */}
-          <div className="min-h-[250px]">
-            {activeTab === 'dispatch' && (
-              <div>
-                {!submitSuccess ? (
-                  <form onSubmit={handleTelemetrySubmit} className="space-y-4">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      {/* Name */}
-                      <div className="space-y-1">
-                        <label className="block text-[9px] font-mono text-gray-500 uppercase tracking-widest">// YOUR NAME *</label>
-                        <input
-                          type="text"
-                          required
-                          value={clientName}
-                          onChange={(e) => setClientName(e.target.value)}
-                          placeholder="E.G., JOHN DOE"
-                          className="w-full bg-[#050505] border border-white/10 rounded-xl px-3.5 py-2.5 text-xs font-mono text-white focus:outline-none focus:border-violet-500/50 transition-colors"
-                        />
-                      </div>
-
-                      {/* Email */}
-                      <div className="space-y-1">
-                        <label className="block text-[9px] font-mono text-gray-500 uppercase tracking-widest">// EMAIL ADDRESS *</label>
-                        <input
-                          type="email"
-                          required
-                          value={email}
-                          onChange={(e) => setEmail(e.target.value)}
-                          placeholder="E.G., JOHN@COMPANY.COM"
-                          className="w-full bg-[#050505] border border-white/10 rounded-xl px-3.5 py-2.5 text-xs font-mono text-white focus:outline-none focus:border-violet-500/50 transition-colors"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      {/* Phone - ALL NATIONS SELECTOR */}
-                      <div className="space-y-1">
-                        <label className="block text-[9px] font-mono text-gray-500 uppercase tracking-widest">// PHONE NUMBER *</label>
-                        <div className="flex space-x-1">
-                          <div className="relative">
-                            <select
-                              value={phonePrefix}
-                              onChange={(e) => setPhonePrefix(e.target.value)}
-                              className="appearance-none bg-[#050505] border border-white/10 rounded-xl px-2.5 py-2.5 text-xs font-mono text-white focus:outline-none focus:border-violet-500/50 transition-colors cursor-pointer h-full"
-                            >
-                              {COUNTRIES.map((c) => (
-                                <option key={c.code} value={c.dialCode} className="bg-[#111] text-white">
-                                  {c.flag} {c.dialCode} ({c.code})
-                                </option>
-                              ))}
-                            </select>
+            {/* Tab Content */}
+            <div className="min-h-[250px]">
+              {activeTab === 'dispatch' && (
+                <div>
+                  {!submitSuccess ? (
+                    <form onSubmit={handleTelemetrySubmit} className="space-y-4">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        {/* Name */}
+                        <div className="space-y-1 relative group/field">
+                          <div className="flex justify-between items-center">
+                            <label className="block text-[9px] font-mono text-stone-500 uppercase tracking-widest group-hover/field:text-violet-600 transition-colors duration-300">
+                              // INITIATOR IDENTITY *
+                            </label>
+                            {clientName && (
+                              <motion.span 
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                className="text-[8px] font-mono text-emerald-600 font-bold tracking-widest uppercase flex items-center gap-1"
+                              >
+                                <span className="w-1 h-1 rounded-full bg-emerald-500 animate-pulse" />
+                                READY
+                              </motion.span>
+                            )}
                           </div>
                           <input
-                            type="tel"
+                            type="text"
                             required
-                            value={phoneNumber}
-                            onChange={(e) => setPhoneNumber(e.target.value)}
-                            placeholder="PHONE NUMBER"
-                            className="flex-1 bg-[#050505] border border-white/10 rounded-xl px-3.5 py-2.5 text-xs font-mono text-white focus:outline-none focus:border-violet-500/50 transition-colors"
+                            value={clientName}
+                            onChange={(e) => setClientName(e.target.value)}
+                            placeholder="E.G., JOHN DOE"
+                            className="w-full px-3.5 py-2.5 text-xs font-mono text-stone-800 placeholder-stone-400 focus:outline-none focus:border-violet-400 focus:ring-1 focus:ring-violet-300/30 transition-all rounded-xl clay-inset uppercase"
+                          />
+                          {clientName.length > 2 && (
+                            <motion.div 
+                              initial={{ opacity: 0, y: -4 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              className="text-[8px] font-mono text-stone-400 uppercase tracking-wider pl-1 pt-0.5"
+                            >
+                              [ Identity: <span className="text-violet-600 font-bold">{clientName}</span> ]
+                            </motion.div>
+                          )}
+                        </div>
+
+                        {/* Email */}
+                        <div className="space-y-1 relative group/field">
+                          <div className="flex justify-between items-center">
+                            <label className="block text-[9px] font-mono text-stone-500 uppercase tracking-widest group-hover/field:text-violet-600 transition-colors duration-300">
+                              // SECURE UPLINK EMAIL *
+                            </label>
+                            {email && /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email) && (
+                              <motion.span 
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                className="text-[8px] font-mono text-emerald-600 font-bold tracking-widest uppercase flex items-center gap-1"
+                              >
+                                <span className="w-1 h-1 rounded-full bg-emerald-500 animate-pulse" />
+                                SMTP OK
+                              </motion.span>
+                            )}
+                          </div>
+                          <input
+                            type="email"
+                            required
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            placeholder="E.G., JOHN@COMPANY.COM"
+                            className="w-full px-3.5 py-2.5 text-xs font-mono text-stone-800 placeholder-stone-400 focus:outline-none focus:border-violet-400 focus:ring-1 focus:ring-violet-300/30 transition-all rounded-xl clay-inset uppercase"
+                          />
+                          {email && !/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email) && (
+                            <motion.div 
+                              initial={{ opacity: 0 }}
+                              animate={{ opacity: 1 }}
+                              className="text-[8px] font-mono text-amber-500 uppercase tracking-wider pl-1 pt-0.5"
+                            >
+                              [ Awaiting RFC-compliant address... ]
+                            </motion.div>
+                          )}
+                        </div>
+                      </div>
+
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        {/* Phone - ALL NATIONS SELECTOR */}
+                        <div className="space-y-1 relative group/field">
+                          <div className="flex justify-between items-center">
+                            <label className="block text-[9px] font-mono text-stone-500 uppercase tracking-widest group-hover/field:text-violet-600 transition-colors duration-300">
+                              // DIRECT HOTLINE *
+                            </label>
+                            {phoneNumber && /^\d{4,14}$/.test(phoneNumber.replace(/[\s\-()]/g, '')) && (
+                              <motion.span 
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                className="text-[8px] font-mono text-emerald-600 font-bold tracking-widest uppercase flex items-center gap-1"
+                              >
+                                <span className="w-1 h-1 rounded-full bg-emerald-500 animate-pulse" />
+                                COMM OK
+                              </motion.span>
+                            )}
+                          </div>
+                          <div className="flex space-x-1">
+                            <div className="relative">
+                              <select
+                                value={phonePrefix}
+                                onChange={(e) => setPhonePrefix(e.target.value)}
+                                className="appearance-none px-2.5 py-2.5 text-xs font-mono text-stone-800 focus:outline-none focus:border-violet-400 focus:ring-1 focus:ring-violet-300/30 transition-all rounded-xl clay-inset cursor-pointer h-full bg-[#faf9f6]"
+                              >
+                                {COUNTRIES.map((c) => (
+                                  <option key={c.code} value={c.dialCode} className="bg-[#fcfbf9] text-stone-800">
+                                    {c.flag} {c.dialCode} ({c.code})
+                                  </option>
+                                ))}
+                              </select>
+                            </div>
+                            <input
+                              type="tel"
+                              required
+                              value={phoneNumber}
+                              onChange={(e) => setPhoneNumber(e.target.value)}
+                              placeholder="PHONE NUMBER"
+                              className="flex-1 px-3.5 py-2.5 text-xs font-mono text-stone-800 placeholder-stone-400 focus:outline-none focus:border-violet-400 focus:ring-1 focus:ring-violet-300/30 transition-all rounded-xl clay-inset"
+                            />
+                          </div>
+                        </div>
+
+                        {/* Organization */}
+                        <div className="space-y-1 relative group/field">
+                          <div className="flex justify-between items-center">
+                            <label className="block text-[9px] font-mono text-stone-500 uppercase tracking-widest group-hover/field:text-violet-600 transition-colors duration-300">
+                              // ORGANIZATION NODE
+                            </label>
+                            {companyName && (
+                              <motion.span 
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                className="text-[8px] font-mono text-violet-600 font-bold tracking-widest uppercase flex items-center gap-1"
+                              >
+                                <span className="w-1 h-1 rounded-full bg-violet-500 animate-pulse" />
+                                NODE CAPTURED
+                              </motion.span>
+                            )}
+                          </div>
+                          <input
+                            type="text"
+                            value={companyName}
+                            onChange={(e) => setCompanyName(e.target.value)}
+                            placeholder="COMPANY NAME (OPTIONAL)"
+                            className="w-full px-3.5 py-2.5 text-xs font-mono text-stone-800 placeholder-stone-400 focus:outline-none focus:border-violet-400 focus:ring-1 focus:ring-violet-300/30 transition-all rounded-xl clay-inset uppercase"
                           />
                         </div>
                       </div>
 
-                      {/* Organization */}
-                      <div className="space-y-1">
-                        <label className="block text-[9px] font-mono text-gray-500 uppercase tracking-widest">// ORGANIZATION / COMPANY</label>
-                        <input
-                          type="text"
-                          value={companyName}
-                          onChange={(e) => setCompanyName(e.target.value)}
-                          placeholder="COMPANY NAME (OPTIONAL)"
-                          className="w-full bg-[#050505] border border-white/10 rounded-xl px-3.5 py-2.5 text-xs font-mono text-white focus:outline-none focus:border-violet-500/50 transition-colors"
+                      {/* Budget Tier upgraded according to pricing */}
+                      <div className="space-y-1 relative group/field">
+                        <div className="flex justify-between items-center">
+                          <label className="block text-[9px] font-mono text-stone-500 uppercase tracking-widest group-hover/field:text-violet-600 transition-colors duration-300">// CAPITAL EXPECTATION</label>
+                          <span className="text-[8px] font-mono text-violet-600 uppercase tracking-widest">Active in {currency}</span>
+                        </div>
+                        <select
+                          value={budgetTier}
+                          onChange={(e) => setBudgetTier(e.target.value)}
+                          className="w-full px-3.5 py-2.5 text-xs font-mono text-stone-800 focus:outline-none focus:border-violet-400 focus:ring-1 focus:ring-violet-300/30 transition-all rounded-xl clay-inset cursor-pointer bg-transparent"
+                        >
+                          <option value="" className="text-stone-400">Select budget allocation coordinates...</option>
+                          {budgetOptions.map((opt) => (
+                            <option key={opt.value} value={opt.value} className="bg-[#fcfbf9] text-stone-800">
+                              {opt.label}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+
+                      {/* Specifications */}
+                      <div className="space-y-1 relative group/field">
+                        <div className="flex justify-between items-center">
+                          <label className="block text-[9px] font-mono text-stone-500 uppercase tracking-widest group-hover/field:text-violet-600 transition-colors duration-300">// ARCHITECTURAL VISION SPECS</label>
+                          <span className="text-[8px] font-mono text-stone-400 uppercase tracking-widest">
+                            {projectBrief.length} CH
+                          </span>
+                        </div>
+                        <textarea
+                          value={projectBrief}
+                          onChange={(e) => setProjectBrief(e.target.value)}
+                          placeholder="CORE UTILITIES, DATABASE EXPECTATIONS, AND AI REQ..."
+                          rows={2}
+                          className="w-full px-3.5 py-2.5 text-xs font-mono text-stone-800 placeholder-stone-400 focus:outline-none focus:border-violet-400 focus:ring-1 focus:ring-violet-300/30 transition-all rounded-xl clay-inset resize-none placeholder:uppercase leading-relaxed"
                         />
                       </div>
-                    </div>
 
-                    {/* Budget Tier upgraded according to pricing */}
-                    <div className="space-y-1">
-                      <div className="flex justify-between items-center">
-                        <label className="block text-[9px] font-mono text-gray-500 uppercase tracking-widest">// BUDGET EXPECTATION</label>
-                        <span className="text-[8px] font-mono text-violet-400 uppercase tracking-widest">Pricing active in {currency}</span>
-                      </div>
-                      <select
-                        value={budgetTier}
-                        onChange={(e) => setBudgetTier(e.target.value)}
-                        className="w-full bg-[#050505] border border-white/10 rounded-xl px-3.5 py-2.5 text-xs font-mono text-white focus:outline-none focus:border-violet-500/50 transition-colors cursor-pointer"
-                      >
-                        <option value="" className="text-gray-500">Select budget allocation...</option>
-                        {budgetOptions.map((opt) => (
-                          <option key={opt.value} value={opt.value} className="bg-[#111] text-white">
-                            {opt.label}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-
-                    {/* Specifications */}
-                    <div className="space-y-1">
-                      <label className="block text-[9px] font-mono text-gray-500 uppercase tracking-widest">// PROJECT SPECIFICATIONS / REQUIREMENTS</label>
-                      <textarea
-                        value={projectBrief}
-                        onChange={(e) => setProjectBrief(e.target.value)}
-                        placeholder="TELL US ABOUT THE CUSTOM SOFTWARE OR AI WORKFLOW EXPECTATIONS..."
-                        rows={2}
-                        className="w-full bg-[#050505] border border-white/10 rounded-xl px-3.5 py-2.5 text-xs font-mono text-white focus:outline-none focus:border-violet-500/50 transition-colors resize-none placeholder:uppercase"
-                      />
-                    </div>
-
-                    {/* Error display */}
-                    {submitError && (
-                      <div className="flex items-center space-x-2 p-3 bg-red-500/10 border border-red-500/20 rounded-xl text-red-400 text-xs font-mono">
-                        <AlertTriangle size={14} className="shrink-0" />
-                        <span>{submitError}</span>
-                      </div>
-                    )}
-
-                    {/* Submit Button */}
-                    <div className="space-y-3">
-                      {rateLimitSecondsLeft > 0 && (
-                        <div className="flex items-center justify-between p-2.5 bg-violet-500/10 border border-violet-500/20 rounded-xl">
-                          <div className="flex items-center space-x-2 text-[9px] font-mono tracking-wider uppercase text-violet-400">
-                            <span className="w-1.5 h-1.5 rounded-full bg-violet-500 animate-ping" />
-                            <span>System Cooldown Active</span>
-                          </div>
-                          <span className="font-mono text-[10px] text-violet-400 font-bold">{rateLimitSecondsLeft}s remaining</span>
+                      {/* Error display */}
+                      {submitError && (
+                        <div className="flex items-center space-x-2 p-3 bg-red-50 border border-red-100 rounded-xl text-red-600 text-xs font-mono">
+                          <AlertTriangle size={14} className="shrink-0" />
+                          <span>{submitError}</span>
                         </div>
                       )}
 
-                      <button
-                        type="submit"
-                        disabled={isSubmitting}
-                        onMouseEnter={() => audioEngine.playHover()}
-                        className="w-full relative flex items-center justify-center py-3 bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 disabled:opacity-50 text-white font-mono text-xs font-bold tracking-[0.2em] uppercase rounded-xl transition-all duration-300 shadow-lg shadow-violet-600/20 cursor-pointer overflow-hidden group"
-                      >
-                        {isSubmitting ? (
-                          <div className="flex items-center space-x-2">
-                            <Loader2 size={14} className="animate-spin text-white" />
-                            <span>DISPATCHING TELEMETRY...</span>
-                          </div>
-                        ) : (
-                          <div className="flex items-center space-x-1.5">
-                            <Cpu size={14} className="group-hover:rotate-45 transition-transform" />
-                            <span>DISPATCH TELEMETRY PACKET</span>
+                      {/* Submit Button */}
+                      <div className="space-y-3">
+                        {rateLimitSecondsLeft > 0 && (
+                          <div className="flex items-center justify-between p-2.5 bg-violet-50 border border-violet-100 rounded-xl">
+                            <div className="flex items-center space-x-2 text-[9px] font-mono tracking-wider uppercase text-violet-600">
+                              <span className="w-1.5 h-1.5 rounded-full bg-violet-500 animate-ping" />
+                              <span>System Cooldown Active</span>
+                            </div>
+                            <span className="font-mono text-[10px] text-violet-600 font-bold">{rateLimitSecondsLeft}s remaining</span>
                           </div>
                         )}
-                      </button>
-                    </div>
-                  </form>
-                ) : (
-                  /* Success Feedback with precise dispatch telemetry statuses */
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    className="text-center py-8 space-y-6"
-                  >
-                    <div className="inline-flex items-center justify-center p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-emerald-400 mb-2">
-                      <CheckCircle size={40} className="animate-bounce" />
-                    </div>
-                    <div className="space-y-2">
-                      <h4 className="text-lg font-display font-black text-white uppercase tracking-tight">TRANSMISSION COMPLETED</h4>
-                      <p className="text-gray-400 text-xs max-w-sm mx-auto">
-                        Your project brief has bypassed filters and has been dispatched live across all registered channels.
-                      </p>
-                    </div>
 
-                    {/* Channel specific dispatch states */}
-                    <div className="max-w-md mx-auto bg-white/[0.02] border border-white/5 rounded-2xl p-4 text-left font-mono text-[9px] text-gray-500 space-y-2.5">
-                      <span className="font-bold text-gray-400 uppercase tracking-widest block mb-1">// DISPATCH PIPELINE REPORTS:</span>
-                      
-                      {/* Email reporter */}
-                      <div className="flex justify-between items-center border-b border-white/5 pb-1.5">
-                        <span className="flex items-center space-x-1.5"><Mail size={10} /> <span>SMTP SECURE MAIL:</span></span>
-                        {dispatchDetails?.email?.success ? (
-                          <span className="text-emerald-400 font-bold">● DISPATCHED</span>
-                        ) : (
-                          <span className="text-amber-500/80 font-bold">● STDOUT STANDBY (KEYS REQ)</span>
-                        )}
+                        <button
+                          type="submit"
+                          disabled={isSubmitting}
+                          onMouseEnter={() => audioEngine.playHover()}
+                          className="w-full relative flex items-center justify-center py-3.5 clay-violet-solid text-white font-mono text-xs font-bold tracking-[0.2em] uppercase rounded-full group"
+                        >
+                          {isSubmitting ? (
+                            <div className="flex items-center space-x-2">
+                              <Loader2 size={14} className="animate-spin text-white" />
+                              <span>DISPATCHING TELEMETRY...</span>
+                            </div>
+                          ) : (
+                            <div className="flex items-center space-x-1.5">
+                              <Cpu size={14} className="group-hover:rotate-45 transition-transform" />
+                              <span>DISPATCH TELEMETRY PACKET</span>
+                            </div>
+                          )}
+                        </button>
                       </div>
-
-                      {/* Telegram reporter */}
-                      <div className="flex justify-between items-center border-b border-white/5 pb-1.5">
-                        <span className="flex items-center space-x-1.5"><Globe size={10} /> <span>TELEGRAM BOT API:</span></span>
-                        {dispatchDetails?.telegram?.success ? (
-                          <span className="text-emerald-400 font-bold">● DISPATCHED</span>
-                        ) : (
-                          <span className="text-gray-600">● OFFLINE (ENV REQ)</span>
-                        )}
-                      </div>
-
-                      {/* WhatsApp reporter */}
-                      <div className="flex justify-between items-center border-b border-white/5 pb-1.5">
-                        <span className="flex items-center space-x-1.5"><MessageSquare size={10} /> <span>WHATSAPP BOT GATEWAY:</span></span>
-                        {dispatchDetails?.whatsapp?.success ? (
-                          <span className="text-emerald-400 font-bold">● DISPATCHED</span>
-                        ) : (
-                          <span className="text-gray-600">● OFFLINE (ENV REQ)</span>
-                        )}
-                      </div>
-
-                      {/* SMS reporter */}
-                      <div className="flex justify-between items-center">
-                        <span className="flex items-center space-x-1.5"><Shield size={10} /> <span>SMS BROADCAST:</span></span>
-                        {dispatchDetails?.sms?.success ? (
-                          <span className="text-emerald-400 font-bold">● DISPATCHED</span>
-                        ) : (
-                          <span className="text-gray-600">● OFFLINE (ENV REQ)</span>
-                        )}
-                      </div>
-                    </div>
-
-                    <button
-                      onClick={() => { audioEngine.playClick(); onClose(); }}
-                      className="px-6 py-2 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl font-mono text-[10px] text-white tracking-widest uppercase cursor-pointer"
+                    </form>
+                  ) : (
+                    /* Success Feedback with precise dispatch telemetry statuses */
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      className="text-center py-8 space-y-6"
                     >
-                      DISMISS TERMINAL
-                    </button>
-                  </motion.div>
-                )}
-              </div>
-            )}
+                      <div className="inline-flex items-center justify-center p-4 bg-emerald-50 border border-emerald-100 rounded-full text-emerald-600 mb-2">
+                        <CheckCircle size={40} className="animate-bounce" />
+                      </div>
+                      <div className="space-y-2">
+                        <h4 className="text-lg font-display font-black text-stone-800 uppercase tracking-tight">TRANSMISSION COMPLETED</h4>
+                        <p className="text-stone-600 text-xs max-w-sm mx-auto">
+                          Your project brief has bypassed filters and has been dispatched live across all registered channels.
+                        </p>
+                      </div>
 
-            {activeTab === 'hotlines' && (
-              <div className="space-y-4">
-                <p className="text-gray-400 text-xs font-sans mb-4">
-                  Prefer direct, real-time manual control? Select an option below to initiate a private consultation session immediately.
-                </p>
+                      {/* Channel specific dispatch states */}
+                      <div className="max-w-md mx-auto bg-[#f0ede6] border border-stone-200/50 rounded-2xl p-4 text-left font-mono text-[9px] text-stone-500 space-y-2.5 shadow-inner">
+                        <span className="font-bold text-stone-700 uppercase tracking-widest block mb-1">// DISPATCH PIPELINE REPORTS:</span>
+                        
+                        {/* Email reporter */}
+                        <div className="flex justify-between items-center border-b border-stone-200/30 pb-1.5">
+                          <span className="flex items-center space-x-1.5"><Mail size={10} /> <span>SMTP SECURE MAIL:</span></span>
+                          {dispatchDetails?.email?.success ? (
+                            <span className="text-emerald-600 font-bold">● DISPATCHED</span>
+                          ) : (
+                            <span className="text-stone-500 font-bold">● STDOUT STANDBY (KEYS REQ)</span>
+                          )}
+                        </div>
 
-                {/* WhatsApp hotline */}
-                <button
-                  onMouseEnter={() => audioEngine.playHover()}
-                  onClick={() => { audioEngine.playClick(); window.open(generateWhatsappUrl(), '_blank'); }}
-                  className="w-full flex items-center justify-between p-4 bg-emerald-500/5 hover:bg-emerald-500/10 border border-emerald-500/20 hover:border-emerald-500/40 rounded-2xl transition-all duration-300 group cursor-pointer text-left"
-                >
-                  <div className="flex items-start space-x-4">
-                    <div className="p-3 bg-emerald-500/10 text-emerald-400 rounded-xl group-hover:scale-110 transition-transform">
-                      <MessageSquare size={18} />
-                    </div>
-                    <div>
-                      <h4 className="text-sm font-bold text-white tracking-wide font-sans">
-                        INSTANT WHATSAPP CHAT
-                      </h4>
-                      <p className="text-[10px] text-emerald-400/80 font-mono tracking-wider uppercase mt-0.5">
-                        Direct Line to 91 81020 99678
-                      </p>
-                    </div>
-                  </div>
-                  <ArrowUpRight size={16} className="text-emerald-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                </button>
+                        {/* Telegram reporter */}
+                        <div className="flex justify-between items-center border-b border-stone-200/30 pb-1.5">
+                          <span className="flex items-center space-x-1.5"><Globe size={10} /> <span>TELEGRAM BOT API:</span></span>
+                          {dispatchDetails?.telegram?.success ? (
+                            <span className="text-emerald-600 font-bold">● DISPATCHED</span>
+                          ) : (
+                            <span className="text-stone-400">● OFFLINE (ENV REQ)</span>
+                          )}
+                        </div>
 
-                {/* Email hotline */}
-                <button
-                  onMouseEnter={() => audioEngine.playHover()}
-                  onClick={() => { audioEngine.playClick(); window.location.href = generateEmailUrl(); }}
-                  className="w-full flex items-center justify-between p-4 bg-violet-500/5 hover:bg-violet-500/10 border border-violet-500/20 hover:border-violet-500/40 rounded-2xl transition-all duration-300 group cursor-pointer text-left"
-                >
-                  <div className="flex items-start space-x-4">
-                    <div className="p-3 bg-violet-500/10 text-violet-400 rounded-xl group-hover:scale-110 transition-transform">
-                      <Mail size={18} />
-                    </div>
-                    <div>
-                      <h4 className="text-sm font-bold text-white tracking-wide font-sans">
-                        SECURE EMAIL TRANSMISSION
-                      </h4>
-                      <p className="text-[10px] text-violet-400/80 font-mono tracking-wider uppercase mt-0.5">
-                        devil.labs.contact@gmail.com
-                      </p>
-                    </div>
-                  </div>
-                  <ArrowUpRight size={16} className="text-violet-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                </button>
+                        {/* WhatsApp reporter */}
+                        <div className="flex justify-between items-center border-b border-stone-200/30 pb-1.5">
+                          <span className="flex items-center space-x-1.5"><MessageSquare size={10} /> <span>WHATSAPP BOT GATEWAY:</span></span>
+                          {dispatchDetails?.whatsapp?.success ? (
+                            <span className="text-emerald-600 font-bold">● DISPATCHED</span>
+                          ) : (
+                            <span className="text-stone-400">● OFFLINE (ENV REQ)</span>
+                          )}
+                        </div>
 
-                <div className="border-t border-white/5 pt-4 flex justify-between items-center font-mono text-[9px] text-gray-500">
-                  <span>PREFILL STRINGS GENERATED DYNAMICALLY</span>
-                  <button
-                    onClick={() => { audioEngine.playClick(); onClose(); navigate('/contact'); }}
-                    className="flex items-center space-x-1 hover:text-white transition-colors cursor-pointer"
-                  >
-                    <span>GO TO FULL PAGE</span>
-                    <ArrowUpRight size={10} />
-                  </button>
+                        {/* SMS reporter */}
+                        <div className="flex justify-between items-center">
+                          <span className="flex items-center space-x-1.5"><Shield size={10} /> <span>SMS BROADCAST:</span></span>
+                          {dispatchDetails?.sms?.success ? (
+                            <span className="text-emerald-600 font-bold">● DISPATCHED</span>
+                          ) : (
+                            <span className="text-stone-400">● OFFLINE (ENV REQ)</span>
+                          )}
+                        </div>
+                      </div>
+
+                      <button
+                        onClick={() => { audioEngine.playClick(); onClose(); }}
+                        className="px-6 py-2 bg-stone-100 hover:bg-stone-200 border border-stone-200/50 rounded-xl font-mono text-[10px] text-stone-700 tracking-widest uppercase cursor-pointer"
+                      >
+                        DISMISS TERMINAL
+                      </button>
+                    </motion.div>
+                  )}
                 </div>
-              </div>
-            )}
-          </div>
+              )}
 
-          {/* Footer */}
-          <div className="border-t border-white/5 pt-4 mt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
-            <div className="flex items-center space-x-2 text-[10px] text-gray-500 font-mono tracking-wider uppercase">
-              <Shield size={12} className="text-gray-600" />
-              <span>SECURED BY SSL ENDPOINTS</span>
+              {activeTab === 'hotlines' && (
+                <div className="space-y-4">
+                  <p className="text-stone-600 text-xs font-sans mb-4">
+                    Prefer direct, real-time manual control? Select an option below to initiate a private consultation session immediately.
+                  </p>
+
+                  {/* WhatsApp hotline */}
+                  <button
+                    onMouseEnter={() => audioEngine.playHover()}
+                    onClick={() => { audioEngine.playClick(); window.open(generateWhatsappUrl(), '_blank'); }}
+                    className="w-full flex items-center justify-between p-4 bg-emerald-50 hover:bg-emerald-100/50 border border-emerald-100 rounded-2xl transition-all duration-300 group cursor-pointer text-left shadow-sm"
+                  >
+                    <div className="flex items-start space-x-4">
+                      <div className="p-3 bg-emerald-100 text-emerald-600 rounded-xl group-hover:scale-110 transition-transform">
+                        <MessageSquare size={18} />
+                      </div>
+                      <div>
+                        <h4 className="text-sm font-bold text-stone-800 tracking-wide font-sans">
+                          INSTANT WHATSAPP CHAT
+                        </h4>
+                        <p className="text-[10px] text-emerald-600/80 font-mono tracking-wider uppercase mt-0.5">
+                          Direct Line to 91 81020 99678
+                        </p>
+                      </div>
+                    </div>
+                    <ArrowUpRight size={16} className="text-emerald-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                  </button>
+
+                  {/* Email hotline */}
+                  <button
+                    onMouseEnter={() => audioEngine.playHover()}
+                    onClick={() => { audioEngine.playClick(); window.location.href = generateEmailUrl(); }}
+                    className="w-full flex items-center justify-between p-4 bg-violet-50 hover:bg-violet-100/50 border border-violet-100 rounded-2xl transition-all duration-300 group cursor-pointer text-left shadow-sm"
+                  >
+                    <div className="flex items-start space-x-4">
+                      <div className="p-3 bg-violet-100 text-violet-600 rounded-xl group-hover:scale-110 transition-transform">
+                        <Mail size={18} />
+                      </div>
+                      <div>
+                        <h4 className="text-sm font-bold text-stone-800 tracking-wide font-sans">
+                          SECURE EMAIL TRANSMISSION
+                        </h4>
+                        <p className="text-[10px] text-violet-600/80 font-mono tracking-wider uppercase mt-0.5">
+                          devil.labs.contact@gmail.com
+                        </p>
+                      </div>
+                    </div>
+                    <ArrowUpRight size={16} className="text-violet-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                  </button>
+
+                  <div className="border-t border-stone-200/50 pt-4 flex justify-between items-center font-mono text-[9px] text-stone-500">
+                    <span>PREFILL STRINGS GENERATED DYNAMICALLY</span>
+                    <button
+                      onClick={() => { audioEngine.playClick(); onClose(); navigate('/contact'); }}
+                      className="flex items-center space-x-1 hover:text-stone-800 transition-colors cursor-pointer"
+                    >
+                      <span>GO TO FULL PAGE</span>
+                      <ArrowUpRight size={10} />
+                    </button>
+                  </div>
+                </div>
+              )}
             </div>
-            
-            <button
-              onMouseEnter={() => audioEngine.playHover()}
-              onClick={() => { audioEngine.playClick(); onClose(); navigate('/contact'); }}
-              className="flex items-center space-x-2 font-mono text-[10px] font-bold text-gray-400 hover:text-white tracking-widest uppercase transition-colors cursor-pointer"
-            >
-              <FileText size={12} className="text-violet-400" />
-              <span>GENERATE COMPREHENSIVE BRIEF</span>
-              <ArrowUpRight size={12} />
-            </button>
-          </div>
 
-        </motion.div>
-      </div>
+            {/* Footer */}
+            <div className="border-t border-stone-200/50 pt-4 mt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+              <div className="flex items-center space-x-2 text-[10px] text-stone-500 font-mono tracking-wider uppercase">
+                <Shield size={12} className="text-stone-400" />
+                <span>SECURED BY SSL ENDPOINTS</span>
+              </div>
+              
+              <button
+                onMouseEnter={() => audioEngine.playHover()}
+                onClick={() => { audioEngine.playClick(); onClose(); navigate('/contact'); }}
+                className="flex items-center space-x-2 font-mono text-[10px] font-bold text-stone-500 hover:text-stone-800 tracking-widest uppercase transition-colors cursor-pointer"
+              >
+                <FileText size={12} className="text-violet-500" />
+                <span>GENERATE COMPREHENSIVE BRIEF</span>
+                <ArrowUpRight size={12} />
+              </button>
+            </div>
+
+          </motion.div>
+        </div>
+      )}
     </AnimatePresence>
   );
 }

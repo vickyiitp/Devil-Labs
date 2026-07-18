@@ -134,7 +134,7 @@ export default function CommandPalette({ navigate }: CommandPaletteProps) {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsOpen(false)}
-              className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[200]"
+              className="fixed inset-0 bg-stone-900/30 backdrop-blur-sm z-[200]"
             />
             
             <div className="fixed inset-0 z-[201] flex items-start justify-center pt-[20vh] pointer-events-none px-4">
@@ -143,39 +143,39 @@ export default function CommandPalette({ navigate }: CommandPaletteProps) {
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95, y: -10 }}
                 transition={{ duration: 0.2, ease: "easeOut" }}
-                className="w-full max-w-2xl bg-[#0a0a0a] border border-white/10 shadow-2xl rounded-2xl overflow-hidden pointer-events-auto flex flex-col max-h-[60vh]"
+                className="w-full max-w-2xl bg-[#faf8f5] border border-stone-200/50 shadow-2xl rounded-3xl overflow-hidden pointer-events-auto flex flex-col max-h-[60vh] clay-card text-stone-800"
               >
                 {/* Header / Search Input */}
-                <div className="flex items-center px-4 py-4 border-b border-white/10 text-white">
-                  <Search size={20} className="text-gray-400 mr-3" />
+                <div className="flex items-center px-5 py-4 border-b border-stone-200/30 text-stone-800 bg-white">
+                  <Search size={20} className="text-stone-400 mr-3" />
                   <input
                     ref={inputRef}
                     type="text"
                     placeholder="Search documentation, services, or tools..."
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
-                    className="flex-grow bg-transparent border-none outline-none text-lg font-light placeholder-gray-600 focus:ring-0"
+                    className="flex-grow bg-transparent border-none outline-none text-base font-medium placeholder-stone-400 focus:ring-0 text-stone-850"
                   />
-                  <div className="flex items-center space-x-2 text-[10px] font-mono text-gray-500 bg-white/5 px-2 py-1 rounded">
-                    <Command size={12} />
+                  <div className="flex items-center space-x-2 text-[10px] font-mono text-stone-400 bg-stone-100 px-2.5 py-1 rounded-lg border border-stone-200/30">
+                    <Command size={11} />
                     <span>K</span>
                   </div>
-                  <button onClick={() => setIsOpen(false)} className="ml-4 text-gray-500 hover:text-white transition-colors">
+                  <button onClick={() => setIsOpen(false)} className="ml-4 text-stone-400 hover:text-stone-800 transition-colors">
                     <X size={20} />
                   </button>
                 </div>
 
                 {/* Results List */}
-                <div className="overflow-y-auto p-2 flex-grow scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent">
+                <div className="overflow-y-auto p-3 flex-grow scrollbar-thin scrollbar-thumb-stone-200 scrollbar-track-transparent">
                   {filteredItems.length > 0 ? (
-                    <div className="space-y-1 py-2">
+                    <div className="space-y-1 py-1">
                       {categoriesOrder.map(category => {
                         const catItems = filteredItems.filter(i => i.category === category);
                         if (catItems.length === 0) return null;
                         
                         return (
                           <div key={category} className="mb-4 last:mb-0">
-                            <div className="px-3 py-1 text-[10px] font-mono font-bold uppercase tracking-widest text-violet-400">
+                            <div className="px-3 py-1.5 text-[10px] font-mono font-bold uppercase tracking-widest text-violet-600">
                               {category}
                             </div>
                             {catItems.map((item, idx) => {
@@ -187,24 +187,24 @@ export default function CommandPalette({ navigate }: CommandPaletteProps) {
                                   key={idx}
                                   onClick={() => handleSelect(item.path)}
                                   onMouseEnter={() => setSelectedIndex(globalIndex)}
-                                  className={`w-full flex items-center justify-between px-3 py-3 rounded-lg transition-colors group text-left ${isSelected ? 'bg-white/10' : 'hover:bg-white/5'}`}
+                                  className={`w-full flex items-center justify-between px-3.5 py-3 rounded-2xl transition-colors group text-left ${isSelected ? 'bg-stone-100' : 'hover:bg-stone-50/50'}`}
                                 >
-                                  <div className="flex items-center space-x-3 flex-grow min-w-0">
-                                    <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-colors shrink-0 ${isSelected ? 'bg-violet-500/20 text-violet-400' : 'bg-white/5 text-gray-400 group-hover:text-violet-400'}`}>
+                                  <div className="flex items-center space-x-3.5 flex-grow min-w-0">
+                                    <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-colors shrink-0 ${isSelected ? 'bg-violet-100 text-violet-600' : 'bg-stone-100 text-stone-400 group-hover:text-violet-600'}`}>
                                       <Icon size={14} />
                                     </div>
                                     <div className="flex flex-col min-w-0">
-                                      <span className={`text-sm font-medium truncate transition-colors ${isSelected ? 'text-white' : 'text-gray-200 group-hover:text-white'}`}>
+                                      <span className={`text-sm font-bold truncate transition-colors ${isSelected ? 'text-stone-850' : 'text-stone-700 group-hover:text-stone-850'}`}>
                                         {item.title}
                                       </span>
                                       {item.description && (
-                                        <span className="text-[11px] text-gray-500 truncate mt-0.5 max-w-full font-light font-sans group-hover:text-gray-400">
+                                        <span className="text-[11px] text-stone-400 truncate mt-0.5 max-w-full font-light font-sans group-hover:text-stone-500">
                                           {item.description}
                                         </span>
                                       )}
                                     </div>
                                   </div>
-                                  <ArrowRight size={14} className={`shrink-0 transition-all transform ${isSelected ? 'text-white opacity-100 translate-x-0' : 'text-gray-600 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 group-hover:text-white'}`} />
+                                  <ArrowRight size={14} className={`shrink-0 transition-all transform ${isSelected ? 'text-stone-800 opacity-100 translate-x-0' : 'text-stone-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 group-hover:text-stone-800'}`} />
                                 </button>
                               );
                             })}
@@ -213,7 +213,7 @@ export default function CommandPalette({ navigate }: CommandPaletteProps) {
                       })}
                     </div>
                   ) : (
-                    <div className="p-12 text-center text-gray-500 space-y-4">
+                    <div className="p-12 text-center text-stone-400 space-y-4">
                       <Search size={32} className="mx-auto opacity-50" />
                       <p className="text-sm font-mono uppercase tracking-widest">No matching records found.</p>
                     </div>
@@ -221,11 +221,11 @@ export default function CommandPalette({ navigate }: CommandPaletteProps) {
                 </div>
                 
                 {/* Footer */}
-                <div className="px-4 py-3 border-t border-white/5 bg-black/50 text-[10px] font-mono text-gray-500 flex justify-between">
+                <div className="px-5 py-3 border-t border-stone-200/20 bg-stone-50 text-[10px] font-mono text-stone-400 flex justify-between">
                   <span>DEVIL LABS // OS</span>
                   <div className="flex space-x-4">
-                    <span><kbd className="font-sans px-1 py-0.5 bg-white/10 rounded">↑</kbd> <kbd className="font-sans px-1 py-0.5 bg-white/10 rounded">↓</kbd> Navigate</span>
-                    <span><kbd className="font-sans px-1 py-0.5 bg-white/10 rounded">↵</kbd> Select</span>
+                    <span><kbd className="font-sans px-1 py-0.5 bg-stone-200/40 border border-stone-200/50 rounded">↑</kbd> <kbd className="font-sans px-1 py-0.5 bg-stone-200/40 border border-stone-200/50 rounded">↓</kbd> Navigate</span>
+                    <span><kbd className="font-sans px-1 py-0.5 bg-stone-200/40 border border-stone-200/50 rounded">↵</kbd> Select</span>
                   </div>
                 </div>
               </motion.div>

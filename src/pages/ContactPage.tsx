@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { Send, Check, Mail, Calendar, MapPin, Phone, MessageCircle, Github, Linkedin, Instagram, Globe, ArrowUpRight, Shield, AlertTriangle, MessageSquare, Loader2, CheckCircle } from 'lucide-react';
+import { Send, Check, Mail, Calendar, MapPin, Phone, MessageCircle, Github, Linkedin, Instagram, Globe, ArrowUpRight, Shield, AlertTriangle, MessageSquare, Loader2, CheckCircle, Info } from 'lucide-react';
 import React, { useState, useEffect } from 'react';
 import { useCurrency } from '../contexts/CurrencyContext';
 
@@ -361,10 +361,10 @@ ${formData.name}`;
   const mailtoUrl = `mailto:devil.labs.contact@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
 
   return (
-    <div id="contact-page-root" className="pt-28 pb-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto min-h-screen relative overflow-hidden">
+    <div id="contact-page-root" className="pt-28 pb-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto min-h-screen relative overflow-hidden text-stone-800">
       {/* Abstract Background Blur */}
-      <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-violet-600/10 rounded-full blur-[120px] pointer-events-none -z-10 mix-blend-screen" />
-      <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-fuchsia-600/10 rounded-full blur-[100px] pointer-events-none -z-10 mix-blend-screen" />
+      <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-violet-600/5 rounded-full blur-[120px] pointer-events-none -z-10 mix-blend-multiply" />
+      <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-fuchsia-600/5 rounded-full blur-[100px] pointer-events-none -z-10 mix-blend-multiply" />
 
       {/* HEADER */}
       <section className="mb-20 text-center max-w-3xl mx-auto space-y-6">
@@ -372,7 +372,7 @@ ${formData.name}`;
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-violet-400 font-mono text-[10px] uppercase tracking-[0.3em] font-semibold block"
+          className="text-violet-600 font-mono text-[10px] uppercase tracking-[0.3em] font-semibold block"
         >
           Begin The Dialogue
         </motion.span>
@@ -380,10 +380,10 @@ ${formData.name}`;
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1 }}
-          className="font-display font-black text-5xl sm:text-7xl lg:text-8xl text-white tracking-tighter uppercase leading-[0.9]"
+          className="font-display font-black text-5xl sm:text-7xl lg:text-8xl text-stone-850 tracking-tighter uppercase leading-[0.9]"
         >
           Let's Build <br/>
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-white/80 to-violet-400 font-serif italic font-light lowercase text-6xl sm:text-8xl lg:text-9xl">something</span> <br/>
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 via-rose-500 to-amber-500 font-serif italic font-light lowercase text-6xl sm:text-8xl lg:text-9xl">something</span> <br/>
           Beautiful.
         </motion.h1>
       </section>
@@ -398,54 +398,69 @@ ${formData.name}`;
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               onSubmit={handleExecute} 
-              className="space-y-10"
+              className="p-8 sm:p-12 clay-card space-y-8 text-left"
             >
               {loadedInfo && (
                 <motion.div
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  className="bg-violet-950/20 border border-violet-500/30 rounded-xl p-5 space-y-3 backdrop-blur-md relative overflow-hidden"
+                  className="bg-violet-500/5 border border-violet-200/50 rounded-3xl p-6 space-y-3 relative overflow-hidden"
                 >
                   {/* Subtle decorative glow */}
                   <div className="absolute top-0 right-0 w-24 h-24 bg-violet-500/10 rounded-full blur-xl pointer-events-none" />
                   
                   <div className="flex items-center space-x-2">
-                    <CheckCircle className="w-4 h-4 text-emerald-400" />
-                    <span className="text-violet-300 font-mono text-[10px] uppercase tracking-[0.2em] font-semibold">
+                    <CheckCircle className="w-4 h-4 text-emerald-600" />
+                    <span className="text-violet-700 font-mono text-[10px] uppercase tracking-[0.2em] font-semibold">
                       Configuration Calibrated
                     </span>
                   </div>
                   
                   <div className="flex flex-wrap gap-2 pt-1">
                     {loadedInfo.service && (
-                      <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-white/5 border border-white/10 text-xs font-mono text-white/90">
-                        <span className="text-violet-400 font-medium">Service:</span>
-                        <span className="text-white font-semibold">{loadedInfo.service}</span>
+                      <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-stone-200/50 text-xs font-mono text-stone-700">
+                        <span className="text-violet-600 font-medium">Service:</span>
+                        <span className="text-stone-850 font-bold">{loadedInfo.service}</span>
                       </div>
                     )}
                     {loadedInfo.plan && (
-                      <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-white/5 border border-white/10 text-xs font-mono text-white/90">
-                        <span className="text-violet-400 font-medium">Plan:</span>
-                        <span className="text-emerald-400 font-semibold">{loadedInfo.plan}</span>
+                      <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-stone-200/50 text-xs font-mono text-stone-700">
+                        <span className="text-violet-600 font-medium">Plan:</span>
+                        <span className="text-emerald-600 font-bold">{loadedInfo.plan}</span>
                       </div>
                     )}
                     {loadedInfo.scope && (
-                      <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-white/5 border border-white/10 text-xs font-mono text-white/90">
-                        <span className="text-violet-400 font-medium">Scope:</span>
-                        <span className="text-white/80">{loadedInfo.scope}</span>
+                      <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-stone-200/50 text-xs font-mono text-stone-700">
+                        <span className="text-violet-600 font-medium">Scope:</span>
+                        <span className="text-stone-600">{loadedInfo.scope}</span>
                       </div>
                     )}
                   </div>
                   
-                  <p className="text-[11px] text-gray-400 font-light leading-relaxed">
+                  <p className="text-[11px] text-stone-500 font-light leading-relaxed">
                     The project scope, description, and budget fields have been automatically initialized based on your services selection. Feel free to adjust any parameter below.
                   </p>
                 </motion.div>
               )}
 
               {/* Name & Email */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
-                <div className="relative group">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div className="flex flex-col space-y-2 relative group/field">
+                  <div className="flex justify-between items-center">
+                    <label htmlFor="name" className="text-stone-700 font-mono text-xs uppercase tracking-widest font-bold group-hover/field:text-violet-600 transition-colors duration-300">
+                      // INITIATOR IDENTITY *
+                    </label>
+                    {formData.name && (
+                      <motion.span 
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        className="text-[10px] font-mono text-emerald-600 font-bold tracking-widest uppercase flex items-center gap-1"
+                      >
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                        VALID PAYLOAD
+                      </motion.span>
+                    )}
+                  </div>
                   <input
                     id="name"
                     name="name"
@@ -453,14 +468,35 @@ ${formData.name}`;
                     required
                     value={formData.name}
                     onChange={handleInputChange}
-                    placeholder=" "
-                    className="block w-full px-0 py-4 bg-transparent border-0 border-b-2 border-white/20 appearance-none focus:outline-none focus:ring-0 focus:border-violet-500 peer text-lg font-light text-white transition-colors"
+                    placeholder="VICKY KUMAR"
+                    className="w-full px-6 py-4 text-stone-800 font-mono text-xs tracking-wider focus:outline-none focus:border-violet-400 focus:ring-1 focus:ring-violet-300/30 transition-all rounded-full clay-inset uppercase placeholder-stone-400"
                   />
-                  <label htmlFor="name" className="absolute text-gray-400 text-sm duration-300 transform -translate-y-6 scale-75 top-4 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-violet-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
-                    Full Name
-                  </label>
+                  {formData.name.length > 2 && (
+                    <motion.div 
+                      initial={{ opacity: 0, y: -4 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="text-[9px] font-mono text-stone-400 uppercase tracking-wider pl-2 pt-0.5"
+                    >
+                      [ Identity registered as: <span className="text-violet-600 font-bold">{formData.name}</span> ]
+                    </motion.div>
+                  )}
                 </div>
-                <div className="relative group">
+                <div className="flex flex-col space-y-2 relative group/field">
+                  <div className="flex justify-between items-center">
+                    <label htmlFor="email" className="text-stone-700 font-mono text-xs uppercase tracking-widest font-bold group-hover/field:text-violet-600 transition-colors duration-300">
+                      // SECURE UPLINK EMAIL *
+                    </label>
+                    {formData.email && /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(formData.email) && (
+                      <motion.span 
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        className="text-[10px] font-mono text-emerald-600 font-bold tracking-widest uppercase flex items-center gap-1"
+                      >
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                        SMTP VERIFIED
+                      </motion.span>
+                    )}
+                  </div>
                   <input
                     id="email"
                     name="email"
@@ -468,32 +504,53 @@ ${formData.name}`;
                     required
                     value={formData.email}
                     onChange={handleInputChange}
-                    placeholder=" "
-                    className="block w-full px-0 py-4 bg-transparent border-0 border-b-2 border-white/20 appearance-none focus:outline-none focus:ring-0 focus:border-violet-500 peer text-lg font-light text-white transition-colors"
+                    placeholder="VICKY@DEVILLABS.TECH"
+                    className="w-full px-6 py-4 text-stone-800 font-mono text-xs tracking-wider focus:outline-none focus:border-violet-400 focus:ring-1 focus:ring-violet-300/30 transition-all rounded-full clay-inset uppercase placeholder-stone-400"
                   />
-                  <label htmlFor="email" className="absolute text-gray-400 text-sm duration-300 transform -translate-y-6 scale-75 top-4 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-violet-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
-                    Email Address
-                  </label>
+                  {formData.email && !/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(formData.email) && (
+                    <motion.div 
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      className="text-[9px] font-mono text-amber-500 uppercase tracking-wider pl-2 pt-0.5"
+                    >
+                      [ Awaiting RFC-compliant formatting... ]
+                    </motion.div>
+                  )}
                 </div>
               </div>
 
               {/* Phone & Company */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
-                <div className="relative group flex items-end">
-                  <div className="flex items-center space-x-1.5 border-b-2 border-white/20 pb-2.5 h-[62px]">
-                    <select
-                      value={phonePrefix}
-                      onChange={(e) => setPhonePrefix(e.target.value)}
-                      className="bg-transparent border-0 appearance-none focus:outline-none focus:ring-0 text-white font-mono text-base cursor-pointer hover:text-violet-400 transition-colors"
-                    >
-                      {COUNTRIES.map((c) => (
-                        <option key={c.code} value={c.dialCode} className="bg-[#111] text-white">
-                          {c.flag} {c.dialCode}
-                        </option>
-                      ))}
-                    </select>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div className="flex flex-col space-y-2 relative group/field">
+                  <div className="flex justify-between items-center">
+                    <label htmlFor="phone" className="text-stone-700 font-mono text-xs uppercase tracking-widest font-bold group-hover/field:text-violet-600 transition-colors duration-300">
+                      // DIRECT TELEPHONY COORDINATES *
+                    </label>
+                    {formData.phone && /^\d{4,14}$/.test(formData.phone.replace(/[\s\-()]/g, '')) && (
+                      <motion.span 
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        className="text-[10px] font-mono text-emerald-600 font-bold tracking-widest uppercase flex items-center gap-1"
+                      >
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                        TELEPHONY OK
+                      </motion.span>
+                    )}
                   </div>
-                  <div className="relative flex-1">
+                  <div className="flex gap-2">
+                    <div className="relative shrink-0">
+                      <select
+                        value={phonePrefix}
+                        onChange={(e) => setPhonePrefix(e.target.value)}
+                        className="px-4 py-4 text-stone-800 font-mono text-xs tracking-wider focus:outline-none focus:border-violet-400 focus:ring-1 focus:ring-violet-300/30 transition-all rounded-full clay-inset appearance-none cursor-pointer bg-transparent"
+                      >
+                        {COUNTRIES.map((c) => (
+                          <option key={c.code} value={c.dialCode} className="bg-[#fcfbf9] text-stone-850">
+                            {c.flag} {c.dialCode}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
                     <input
                       id="phone"
                       name="phone"
@@ -501,15 +558,36 @@ ${formData.name}`;
                       required
                       value={formData.phone}
                       onChange={handleInputChange}
-                      placeholder=" "
-                      className="block w-full pl-2 pr-0 py-4 bg-transparent border-0 border-b-2 border-white/20 appearance-none focus:outline-none focus:ring-0 focus:border-violet-500 peer text-lg font-light text-white transition-colors"
+                      placeholder="9876543210"
+                      className="w-full px-6 py-4 text-stone-800 font-mono text-xs tracking-wider focus:outline-none focus:border-violet-400 focus:ring-1 focus:ring-violet-300/30 transition-all rounded-full clay-inset uppercase placeholder-stone-400"
                     />
-                    <label htmlFor="phone" className="absolute text-gray-400 text-sm duration-300 transform -translate-y-6 scale-75 top-4 -z-10 origin-[0] peer-focus:left-2 peer-focus:text-violet-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 left-2">
-                      Phone Number
-                    </label>
                   </div>
+                  {formData.phone && !/^\d{4,14}$/.test(formData.phone.replace(/[\s\-()]/g, '')) && (
+                    <motion.div 
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      className="text-[9px] font-mono text-amber-500 uppercase tracking-wider pl-2 pt-0.5"
+                    >
+                      [ Feed numeric telecommunication coordinates... ]
+                    </motion.div>
+                  )}
                 </div>
-                <div className="relative group">
+                <div className="flex flex-col space-y-2 relative group/field">
+                  <div className="flex justify-between items-center">
+                    <label htmlFor="company" className="text-stone-700 font-mono text-xs uppercase tracking-widest font-bold group-hover/field:text-violet-600 transition-colors duration-300">
+                      // ORGANIZATION NODE *
+                    </label>
+                    {formData.company && (
+                      <motion.span 
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        className="text-[10px] font-mono text-violet-600 font-bold tracking-widest uppercase flex items-center gap-1"
+                      >
+                        <span className="w-1.5 h-1.5 rounded-full bg-violet-500 animate-pulse" />
+                        NODE BOUND
+                      </motion.span>
+                    )}
+                  </div>
                   <input
                     id="company"
                     name="company"
@@ -517,83 +595,106 @@ ${formData.name}`;
                     required
                     value={formData.company}
                     onChange={handleInputChange}
-                    placeholder=" "
-                    className="block w-full px-0 py-4 bg-transparent border-0 border-b-2 border-white/20 appearance-none focus:outline-none focus:ring-0 focus:border-violet-500 peer text-lg font-light text-white transition-colors"
+                    placeholder="DEVIL LABS"
+                    className="w-full px-6 py-4 text-stone-800 font-mono text-xs tracking-wider focus:outline-none focus:border-violet-400 focus:ring-1 focus:ring-violet-300/30 transition-all rounded-full clay-inset uppercase placeholder-stone-400"
                   />
-                  <label htmlFor="company" className="absolute text-gray-400 text-sm duration-300 transform -translate-y-6 scale-75 top-4 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-violet-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
-                    Organization
-                  </label>
                 </div>
               </div>
 
               {/* Company Size */}
-              <div className="relative group">
+              <div className="flex flex-col space-y-2">
+                <label htmlFor="companySize" className="text-stone-700 font-mono text-xs uppercase tracking-widest font-bold">
+                  Company Size
+                </label>
                 <select
                   id="companySize"
                   name="companySize"
                   required
                   value={formData.companySize}
                   onChange={handleInputChange}
-                  className="block w-full px-0 py-4 bg-transparent border-0 border-b-2 border-white/20 appearance-none focus:outline-none focus:ring-0 focus:border-violet-500 peer text-lg font-light text-white transition-colors cursor-pointer"
+                  className="w-full px-5 py-4 text-stone-800 font-mono text-xs tracking-wider focus:outline-none focus:border-violet-300/40 transition-all rounded-full clay-inset appearance-none cursor-pointer bg-transparent"
                 >
-                  <option value="" className="bg-[#050505] text-gray-600">Select company size...</option>
+                  <option value="" className="text-stone-400 bg-[#fdfcf9]">SELECT SIZE...</option>
                   {companySizes.map(sz => (
-                    <option key={sz.value} value={sz.value} className="bg-[#111] text-white py-2">
+                    <option key={sz.value} value={sz.value} className="text-stone-850 bg-[#fdfcf9]">
                       {sz.label}
                     </option>
                   ))}
                 </select>
-                <label htmlFor="companySize" className="absolute text-violet-400 text-xs font-mono uppercase tracking-widest duration-300 transform -translate-y-6 scale-75 top-4 -z-10 origin-[0]">
-                  Company Size
-                </label>
               </div>
 
               {/* Project Scope */}
-              <div className="relative group">
+              <div className="flex flex-col space-y-2 relative">
+                <label htmlFor="scope" className="text-stone-700 font-mono text-xs uppercase tracking-widest font-bold">
+                  Project Scope
+                </label>
                 <select
                   id="scope"
                   name="scope"
                   required
                   value={formData.scope}
                   onChange={handleInputChange}
-                  className="block w-full px-0 py-4 bg-transparent border-0 border-b-2 border-white/20 appearance-none focus:outline-none focus:ring-0 focus:border-violet-500 peer text-lg font-light text-white transition-colors cursor-pointer"
+                  className="w-full px-5 py-4 text-stone-800 font-mono text-xs tracking-wider focus:outline-none focus:border-violet-300/40 transition-all rounded-full clay-inset appearance-none cursor-pointer bg-transparent"
                 >
-                  <option value="" className="bg-[#050505] text-gray-600">Select an area of interest...</option>
+                  <option value="" className="text-stone-400 bg-[#fdfcf9]">SELECT SCOPE...</option>
                   {scopes.map(sc => (
-                    <option key={sc.value} value={sc.value} className="bg-[#111] text-white py-2">
+                    <option key={sc.value} value={sc.value} className="text-stone-850 bg-[#fdfcf9]">
                       {sc.label}
                     </option>
                   ))}
                 </select>
-                <label htmlFor="scope" className="absolute text-violet-400 text-xs font-mono uppercase tracking-widest duration-300 transform -translate-y-6 scale-75 top-4 -z-10 origin-[0]">
-                  Project Scope
-                </label>
+                {loadedInfo?.scope && (
+                  <div className="absolute right-4 top-1.5 flex items-center gap-1.5 text-[10px] font-mono text-emerald-700 bg-emerald-50 border border-emerald-200 px-2.5 py-1 rounded-full cursor-help group/tooltip z-10 transition-all hover:bg-emerald-100">
+                    <Info className="w-3.5 h-3.5" />
+                    <span className="hidden sm:inline">Captured</span>
+                    <span className="sm:hidden">Prefilled</span>
+                    
+                    {/* Tooltip */}
+                    <div className="absolute bottom-full mb-2 right-0 w-64 p-3 bg-white border border-stone-200 rounded-lg text-[11px] text-stone-600 font-sans leading-relaxed shadow-xl opacity-0 invisible group-hover/tooltip:opacity-100 group-hover/tooltip:visible transition-all duration-300 pointer-events-none">
+                      Your project scope interest was automatically initialized to <strong className="text-emerald-700">"{loadedInfo.scope}"</strong> based on the service category you selected.
+                    </div>
+                  </div>
+                )}
               </div>
 
               {/* Budget Tier */}
-              <div className="relative group">
+              <div className="flex flex-col space-y-2 relative">
+                <label htmlFor="budget" className="text-stone-700 font-mono text-xs uppercase tracking-widest font-bold">
+                  Budget Expectation ({currency})
+                </label>
                 <select
                   id="budget"
                   name="budget"
                   required
                   value={formData.budget}
                   onChange={handleInputChange}
-                  className="block w-full px-0 py-4 bg-transparent border-0 border-b-2 border-white/20 appearance-none focus:outline-none focus:ring-0 focus:border-violet-500 peer text-lg font-light text-white transition-colors cursor-pointer"
+                  className="w-full px-5 py-4 text-stone-800 font-mono text-xs tracking-wider focus:outline-none focus:border-violet-300/40 transition-all rounded-full clay-inset appearance-none cursor-pointer bg-transparent"
                 >
-                  <option value="" className="bg-[#050505] text-gray-600">Select a budget range...</option>
+                  <option value="" className="text-stone-400 bg-[#fdfcf9]">SELECT BUDGET...</option>
                   {budgetTiers.map(bt => (
-                    <option key={bt.value} value={bt.value} className="bg-[#111] text-white py-2">
+                    <option key={bt.value} value={bt.value} className="text-stone-850 bg-[#fdfcf9]">
                       {bt.label}
                     </option>
                   ))}
                 </select>
-                <label htmlFor="budget" className="absolute text-violet-400 text-xs font-mono uppercase tracking-widest duration-300 transform -translate-y-6 scale-75 top-4 -z-10 origin-[0]">
-                  Budget Expectation ({currency})
-                </label>
+                {loadedInfo?.plan && (
+                  <div className="absolute right-4 top-1.5 flex items-center gap-1.5 text-[10px] font-mono text-emerald-700 bg-emerald-50 border border-emerald-200 px-2.5 py-1 rounded-full cursor-help group/tooltip z-10 transition-all hover:bg-emerald-100">
+                    <Info className="w-3.5 h-3.5" />
+                    <span className="hidden sm:inline">Estimated</span>
+                    
+                    {/* Tooltip */}
+                    <div className="absolute bottom-full mb-2 right-0 w-64 p-3 bg-white border border-stone-200 rounded-lg text-[11px] text-stone-600 font-sans leading-relaxed shadow-xl opacity-0 invisible group-hover/tooltip:opacity-100 group-hover/tooltip:visible transition-all duration-300 pointer-events-none">
+                      The budget was set to <strong className="text-emerald-700">"{formData.budget}"</strong> matching the standard price tier of the plan (<strong className="text-emerald-700">"{loadedInfo.plan}"</strong>) you selected.
+                    </div>
+                  </div>
+                )}
               </div>
 
               {/* Project Specs */}
-              <div className="relative group pt-4">
+              <div className="flex flex-col space-y-2 relative">
+                <label htmlFor="specs" className="text-stone-700 font-mono text-xs uppercase tracking-widest font-bold">
+                  The Vision
+                </label>
                 <textarea
                   id="specs"
                   name="specs"
@@ -601,12 +702,20 @@ ${formData.name}`;
                   rows={4}
                   value={formData.specs}
                   onChange={handleInputChange}
-                  placeholder="Tell us about the vision, the goals, and the technical requirements..."
-                  className="block w-full px-0 py-4 bg-transparent border-0 border-b-2 border-white/20 appearance-none focus:outline-none focus:ring-0 focus:border-violet-500 peer text-lg font-light text-white transition-colors resize-none placeholder-gray-700"
+                  placeholder="TELL US ABOUT THE VISION, THE GOALS, AND THE TECHNICAL REQUIREMENTS..."
+                  className="w-full px-5 py-4 text-stone-800 font-mono text-xs tracking-wider focus:outline-none focus:border-violet-300/40 transition-all rounded-[24px] clay-inset resize-none uppercase placeholder-stone-400 leading-relaxed"
                 />
-                <label htmlFor="specs" className="absolute text-violet-400 text-xs font-mono uppercase tracking-widest duration-300 transform -translate-y-2 scale-75 top-0 -z-10 origin-[0]">
-                  The Vision
-                </label>
+                {(loadedInfo?.service || loadedInfo?.scope) && (
+                  <div className="absolute right-4 top-1.5 flex items-center gap-1.5 text-[10px] font-mono text-emerald-700 bg-emerald-50 border border-emerald-200 px-2.5 py-1 rounded-full cursor-help group/tooltip z-10 transition-all hover:bg-emerald-100">
+                    <Info className="w-3.5 h-3.5" />
+                    <span className="hidden sm:inline">Pre-drafted Outline</span>
+                    
+                    {/* Tooltip */}
+                    <div className="absolute bottom-full mb-2 right-0 w-64 p-3 bg-white border border-stone-200 rounded-lg text-[11px] text-stone-600 font-sans leading-relaxed shadow-xl opacity-0 invisible group-hover/tooltip:opacity-100 group-hover/tooltip:visible transition-all duration-300 pointer-events-none">
+                      We automatically generated a customized technical brief outline referencing your selected service (<strong className="text-emerald-700">"{loadedInfo.service || loadedInfo.scope}"</strong>) to save you drafting time.
+                    </div>
+                  </div>
+                )}
               </div>
 
               {/* Validation errors */}
@@ -614,7 +723,7 @@ ${formData.name}`;
                 <motion.div 
                   initial={{ opacity: 0, height: 0 }}
                   animate={{ opacity: 1, height: 'auto' }}
-                  className="p-4 bg-red-500/10 rounded-2xl text-red-400 text-sm font-light border border-red-500/20"
+                  className="p-4 bg-rose-50 border border-rose-150 rounded-2xl text-rose-700 text-sm font-light"
                 >
                   <ul className="list-disc list-inside space-y-1">
                     {errors.map((err, idx) => (
@@ -625,38 +734,38 @@ ${formData.name}`;
               )}
 
               {/* Legal Consent */}
-              <div className="flex items-start space-x-3 pt-4">
+              <div className="flex items-start space-x-3 pt-2">
                 <input
                   id="consent"
                   type="checkbox"
                   checked={isConsentChecked}
                   onChange={(e) => setIsConsentChecked(e.target.checked)}
-                  className="mt-1 flex-shrink-0 w-4 h-4 rounded border-white/20 bg-black/50 text-violet-500 focus:ring-violet-500 focus:ring-offset-black cursor-pointer transition-colors"
+                  className="mt-1 flex-shrink-0 w-4 h-4 rounded border-stone-300 text-violet-600 focus:ring-violet-500 cursor-pointer transition-colors"
                 />
-                <label htmlFor="consent" className="text-gray-400 text-xs font-mono leading-relaxed">
-                  I agree to the <button type="button" onClick={() => navigate('/legal/terms')} className="text-indigo-400 hover:text-white underline decoration-indigo-500/30 transition-colors">Terms of Service</button> and <button type="button" onClick={() => navigate('/legal/privacy')} className="text-indigo-400 hover:text-white underline decoration-indigo-500/30 transition-colors">Privacy Policy</button>, and understand that submission of this data is subject to the Devil Labs <button type="button" onClick={() => navigate('/legal/msa')} className="text-indigo-400 hover:text-white underline decoration-indigo-500/30 transition-colors">MSA</button>.
+                <label htmlFor="consent" className="text-stone-500 text-xs font-mono leading-relaxed">
+                  I agree to the <button type="button" onClick={() => navigate('/legal/terms')} className="text-indigo-600 hover:text-stone-850 underline decoration-indigo-500/30 transition-colors">Terms of Service</button> and <button type="button" onClick={() => navigate('/legal/privacy')} className="text-indigo-600 hover:text-stone-850 underline decoration-indigo-500/30 transition-colors">Privacy Policy</button>, and understand that submission of this data is subject to the Devil Labs <button type="button" onClick={() => navigate('/legal/msa')} className="text-indigo-600 hover:text-stone-850 underline decoration-indigo-500/30 transition-colors">MSA</button>.
                 </label>
               </div>
 
               {/* Action */}
-              <div className="pt-6 space-y-4">
+              <div className="pt-4 space-y-4">
                 {rateLimitSecondsLeft > 0 && (
-                  <div className="flex items-center justify-between p-3 bg-violet-500/10 border border-violet-500/20 rounded-xl">
-                    <div className="flex items-center space-x-2 text-[10px] font-mono tracking-wider uppercase text-violet-400">
+                  <div className="flex items-center justify-between p-3.5 bg-violet-500/10 border border-violet-500/20 rounded-xl">
+                    <div className="flex items-center space-x-2 text-[10px] font-mono tracking-wider uppercase text-violet-600">
                       <span className="w-2 h-2 rounded-full bg-violet-500 animate-ping" />
                       <span>Pipeline Cooldown Active</span>
                     </div>
-                    <span className="font-mono text-xs text-violet-400 font-bold">{rateLimitSecondsLeft}s remaining</span>
+                    <span className="font-mono text-xs text-violet-600 font-bold">{rateLimitSecondsLeft}s remaining</span>
                   </div>
                 )}
 
                 <button
                   type="submit"
                   disabled={loading || !isConsentChecked}
-                  className={`w-full sm:w-auto px-10 py-5 font-bold tracking-widest text-[10px] uppercase transition-all duration-500 flex items-center justify-center space-x-3 
+                  className={`w-full sm:w-auto px-10 py-5 font-bold tracking-widest text-xs uppercase transition-all duration-300 flex items-center justify-center space-x-3 rounded-full
                     ${isConsentChecked && !loading
-                      ? 'bg-white text-black hover:bg-violet-500 hover:text-white shadow-[0_0_40px_-10px_rgba(255,255,255,0.3)] hover:shadow-[0_0_40px_-10px_rgba(139,92,246,0.5)] cursor-pointer' 
-                      : 'bg-white/10 text-white/30 cursor-not-allowed border border-white/5'
+                      ? 'clay-violet-solid cursor-pointer' 
+                      : 'opacity-50 cursor-not-allowed border border-stone-200 bg-stone-100 text-stone-400 shadow-none'
                     }`}
                 >
                   <span>{loading ? 'INITIALIZING...' : 'INITIALIZE PROJECT'}</span>
@@ -669,7 +778,7 @@ ${formData.name}`;
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-              className="p-8 sm:p-16 rounded-[2rem] bg-white/5 border border-white/10 text-center space-y-8 backdrop-blur-xl relative overflow-hidden"
+              className="p-8 sm:p-12 rounded-[2rem] clay-card text-center space-y-8 relative overflow-hidden"
             >
               {/* Subtle flash effect */}
               <motion.div
@@ -683,14 +792,14 @@ ${formData.name}`;
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ type: "spring", stiffness: 200, damping: 20, delay: 0.1 }}
-                className="inline-flex items-center justify-center w-24 h-24 rounded-full bg-violet-500/20 text-violet-400 mx-auto border border-violet-500/30 relative"
+                className="inline-flex items-center justify-center w-24 h-24 rounded-full bg-violet-100 text-violet-600 mx-auto border border-violet-200 relative"
               >
                 <motion.div 
                    className="absolute inset-0 rounded-full bg-violet-500"
                    initial={{ scale: 0, opacity: 0.8 }}
                    animate={{ scale: 1.5, opacity: 0 }}
                    transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
-                />
+                 />
                 <motion.svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="40"
@@ -715,8 +824,7 @@ ${formData.name}`;
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4 }}
-                  data-text="SYSTEM SPECIFICATIONS DISPATCHED"
-                  className="text-white font-display font-black text-3xl md:text-4xl tracking-tighter uppercase glitch"
+                  className="text-stone-850 font-display font-black text-3xl md:text-4xl tracking-tighter uppercase"
                 >
                   TRANSMISSION COMPLETED
                 </motion.h3>
@@ -724,42 +832,42 @@ ${formData.name}`;
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.5 }}
-                  className="text-gray-400 text-sm font-mono max-w-md mx-auto leading-relaxed uppercase tracking-widest"
+                  className="text-stone-500 text-xs font-mono max-w-md mx-auto leading-relaxed uppercase tracking-widest"
                 >
                   YOUR PROJECT BRIEF HAS BYPASSED FILTERS AND HAS BEEN DISPATCHED LIVE ACROSS THE PIPELINE.
                 </motion.p>
 
                 {/* Live Channel Transmission Status Reporting */}
-                <div className="max-w-xl mx-auto bg-black/60 border border-white/5 rounded-2xl p-6 text-left font-mono text-xs text-gray-400 space-y-3">
-                  <span className="font-bold text-gray-300 uppercase tracking-widest block mb-2">// PIPELINE DISPATCH LOGS:</span>
+                <div className="max-w-xl mx-auto clay-card p-6 text-left font-mono text-xs text-stone-600 space-y-3">
+                  <span className="font-bold text-stone-800 uppercase tracking-widest block mb-2">// PIPELINE DISPATCH LOGS:</span>
                   
                   {/* Email reporter */}
-                  <div className="flex justify-between items-center border-b border-white/5 pb-2">
+                  <div className="flex justify-between items-center border-b border-stone-200/30 pb-2">
                     <span className="flex items-center space-x-2"><Mail size={12} /> <span>SMTP SECURE MAIL:</span></span>
                     {dispatchResults?.email?.success ? (
-                      <span className="text-emerald-400 font-bold">● DISPATCHED</span>
+                      <span className="text-emerald-600 font-bold">● DISPATCHED</span>
                     ) : (
-                      <span className="text-amber-500/80 font-bold">● STDOUT STANDBY (KEYS REQ)</span>
+                      <span className="text-amber-600 font-bold">● STDOUT STANDBY (KEYS REQ)</span>
                     )}
                   </div>
 
                   {/* Telegram reporter */}
-                  <div className="flex justify-between items-center border-b border-white/5 pb-2">
+                  <div className="flex justify-between items-center border-b border-stone-200/30 pb-2">
                     <span className="flex items-center space-x-2"><Globe size={12} /> <span>TELEGRAM BOT API:</span></span>
                     {dispatchResults?.telegram?.success ? (
-                      <span className="text-emerald-400 font-bold">● DISPATCHED</span>
+                      <span className="text-emerald-600 font-bold">● DISPATCHED</span>
                     ) : (
-                      <span className="text-gray-600">● OFFLINE (ENV REQ)</span>
+                      <span className="text-stone-400">● OFFLINE (ENV REQ)</span>
                     )}
                   </div>
 
                   {/* WhatsApp reporter */}
-                  <div className="flex justify-between items-center border-b border-white/5 pb-2">
+                  <div className="flex justify-between items-center border-b border-stone-200/30 pb-2">
                     <span className="flex items-center space-x-2"><MessageSquare size={12} /> <span>WHATSAPP BOT GATEWAY:</span></span>
                     {dispatchResults?.whatsapp?.success ? (
-                      <span className="text-emerald-400 font-bold">● DISPATCHED</span>
+                      <span className="text-emerald-600 font-bold">● DISPATCHED</span>
                     ) : (
-                      <span className="text-gray-600">● OFFLINE (ENV REQ)</span>
+                      <span className="text-stone-400">● OFFLINE (ENV REQ)</span>
                     )}
                   </div>
 
@@ -767,9 +875,9 @@ ${formData.name}`;
                   <div className="flex justify-between items-center">
                     <span className="flex items-center space-x-2"><Shield size={12} /> <span>SMS BROADCAST:</span></span>
                     {dispatchResults?.sms?.success ? (
-                      <span className="text-emerald-400 font-bold">● DISPATCHED</span>
+                      <span className="text-emerald-600 font-bold">● DISPATCHED</span>
                     ) : (
-                      <span className="text-gray-600">● OFFLINE (ENV REQ)</span>
+                      <span className="text-stone-400">● OFFLINE (ENV REQ)</span>
                     )}
                   </div>
                 </div>
@@ -778,9 +886,9 @@ ${formData.name}`;
                   initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.6 }}
-                  className="mt-8 border border-white/10 bg-black/50 p-6 rounded-2xl flex flex-col items-center max-w-xl mx-auto space-y-6"
+                  className="mt-8 clay-card p-6 flex flex-col items-center max-w-xl mx-auto space-y-6"
                 >
-                  <div className="flex items-center space-x-2 text-violet-400 font-mono text-xs uppercase tracking-widest">
+                  <div className="flex items-center space-x-2 text-violet-600 font-mono text-xs uppercase tracking-widest">
                      <span className="w-1.5 h-1.5 rounded-full bg-violet-500 animate-pulse" />
                      <span>MANUALLY ESCALATE OR DISPATCH VIA LOCAL LINK</span>
                   </div>
@@ -788,12 +896,12 @@ ${formData.name}`;
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
                     <a 
                       href={mailtoUrl}
-                      className="flex flex-col items-center justify-center p-5 bg-white/5 hover:bg-violet-600/10 border border-white/10 hover:border-violet-500/50 rounded-xl transition-all duration-300 group text-center space-y-3 cursor-pointer"
+                      className="flex flex-col items-center justify-center p-5 clay-button rounded-2xl transition-all duration-300 group text-center space-y-3 cursor-pointer"
                     >
-                      <Mail size={24} className="text-violet-400 group-hover:scale-110 transition-transform" />
+                      <Mail size={24} className="text-violet-600 group-hover:scale-110 transition-transform" />
                       <div>
-                        <div className="text-xs font-bold text-white font-mono tracking-wider">DISPATCH GMAIL BRIEF</div>
-                        <div className="text-[9px] text-gray-500 font-sans mt-1 leading-relaxed">Sends pre-populated brief directly to <br/><span className="text-violet-300">devil.labs.contact@gmail.com</span></div>
+                        <div className="text-xs font-bold text-stone-850 font-mono tracking-wider">DISPATCH GMAIL BRIEF</div>
+                        <div className="text-[9px] text-stone-500 font-sans mt-1 leading-relaxed">Sends pre-populated brief directly to <br/><span className="text-violet-600">devil.labs.contact@gmail.com</span></div>
                       </div>
                     </a>
 
@@ -801,17 +909,17 @@ ${formData.name}`;
                       href={whatsappUrl}
                       target="_blank"
                       rel="noreferrer"
-                      className="flex flex-col items-center justify-center p-5 bg-white/5 hover:bg-[#25D366]/10 border border-white/10 hover:border-[#25D366]/50 rounded-xl transition-all duration-300 group text-center space-y-3 cursor-pointer"
+                      className="flex flex-col items-center justify-center p-5 clay-button rounded-2xl transition-all duration-300 group text-center space-y-3 cursor-pointer"
                     >
-                      <MessageCircle size={24} className="text-[#25D366] group-hover:scale-110 transition-transform" />
+                      <MessageCircle size={24} className="text-emerald-600 group-hover:scale-110 transition-transform" />
                       <div>
-                        <div className="text-xs font-bold text-white font-mono tracking-wider">DISPATCH WHATSAPP BRIEF</div>
-                        <div className="text-[9px] text-gray-500 font-sans mt-1 leading-relaxed">Transmits details instantly to <br/><span className="text-emerald-400">+91 81020 99678</span></div>
+                        <div className="text-xs font-bold text-stone-850 font-mono tracking-wider">DISPATCH WHATSAPP BRIEF</div>
+                        <div className="text-[9px] text-stone-500 font-sans mt-1 leading-relaxed">Transmits details instantly to <br/><span className="text-emerald-600">+91 81020 99678</span></div>
                       </div>
                     </a>
                   </div>
 
-                  <p className="text-[10px] text-gray-500 font-mono tracking-wider uppercase leading-relaxed max-w-md">
+                  <p className="text-[10px] text-stone-500 font-mono tracking-wider uppercase leading-relaxed max-w-md">
                     * Transmitting via both channels ensures the fastest architectural review and immediate demo turnaround.
                   </p>
                 </motion.div>
@@ -821,7 +929,7 @@ ${formData.name}`;
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.7 }}
                 onClick={resetForm}
-                className="mt-8 text-[10px] font-bold tracking-widest text-violet-400 hover:text-white uppercase transition-all relative z-10 border-b border-violet-500/30 hover:border-white pb-1"
+                className="mt-8 text-[10px] font-bold tracking-widest text-violet-600 hover:text-stone-850 uppercase transition-all relative z-10 border-b border-violet-500/30 hover:border-stone-850 pb-1"
               >
                 INITIALIZE NEW TRANSMISSION
               </motion.button>
@@ -834,99 +942,99 @@ ${formData.name}`;
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="lg:col-span-5 space-y-12 pt-4 lg:pl-8 border-l-0 lg:border-l border-white/5"
+          className="lg:col-span-5 space-y-12 pt-4 lg:pl-8 border-l-0 lg:border-l border-stone-200/50"
         >
           <div className="space-y-8">
-            <h3 className="font-display text-2xl font-bold text-white tracking-tight">Direct Contact</h3>
-            <p className="text-gray-400 font-light text-base leading-relaxed">
+            <h3 className="font-display text-2xl font-bold text-stone-850 tracking-tight">Direct Contact</h3>
+            <p className="text-stone-500 font-light text-base leading-relaxed">
               Prefer a direct conversation? Feel free to reach out to us via email or book a call on our calendar.
             </p>
             
             <div className="space-y-6">
               <a href="tel:+918102099678" className="flex items-center space-x-6 group">
-                <div className="w-14 h-14 rounded-full bg-white/5 flex items-center justify-center text-gray-400 group-hover:bg-violet-500 group-hover:text-white transition-all duration-500 border border-white/10">
-                  <Phone size={20} />
+                <div className="w-14 h-14 rounded-full clay-button flex items-center justify-center text-stone-500 group-hover:bg-violet-600 group-hover:text-white transition-all duration-500">
+                  <Phone size={20} className="stroke-[1.5]" />
                 </div>
-                <div>
-                  <div className="text-xs font-mono text-gray-500 uppercase tracking-widest mb-1">Direct Call</div>
-                  <div className="text-white font-medium text-lg group-hover:text-violet-400 transition-colors">+91 81020 99678</div>
+                <div className="text-left">
+                  <div className="text-xs font-mono text-stone-400 uppercase tracking-widest mb-1">Direct Call</div>
+                  <div className="text-stone-850 font-bold text-lg group-hover:text-violet-600 transition-colors">+91 81020 99678</div>
                 </div>
               </a>
 
               <a href="https://wa.me/918102099678" target="_blank" rel="noreferrer" className="flex items-center space-x-6 group">
-                <div className="w-14 h-14 rounded-full bg-white/5 flex items-center justify-center text-gray-400 group-hover:bg-[#25D366] group-hover:text-white transition-all duration-500 border border-white/10">
-                  <MessageCircle size={20} />
+                <div className="w-14 h-14 rounded-full clay-button flex items-center justify-center text-stone-500 group-hover:bg-[#25D366] group-hover:text-white transition-all duration-500">
+                  <MessageCircle size={20} className="stroke-[1.5]" />
                 </div>
-                <div>
-                  <div className="text-xs font-mono text-gray-500 uppercase tracking-widest mb-1">WhatsApp</div>
-                  <div className="text-white font-medium text-lg group-hover:text-[#25D366] transition-colors">+91 81020 99678</div>
+                <div className="text-left">
+                  <div className="text-xs font-mono text-stone-400 uppercase tracking-widest mb-1">WhatsApp</div>
+                  <div className="text-stone-850 font-bold text-lg group-hover:text-[#25D366] transition-colors">+91 81020 99678</div>
                 </div>
               </a>
 
               <a href="mailto:devil.labs.contact@gmail.com" className="flex items-center space-x-6 group">
-                <div className="w-14 h-14 rounded-full bg-white/5 flex items-center justify-center text-gray-400 group-hover:bg-violet-500 group-hover:text-white transition-all duration-500 border border-white/10">
-                  <Mail size={20} />
+                <div className="w-14 h-14 rounded-full clay-button flex items-center justify-center text-stone-500 group-hover:bg-violet-600 group-hover:text-white transition-all duration-500">
+                  <Mail size={20} className="stroke-[1.5]" />
                 </div>
-                <div>
-                  <div className="text-xs font-mono text-gray-500 uppercase tracking-widest mb-1">Email Us</div>
-                  <div className="text-white font-medium text-lg group-hover:text-violet-400 transition-colors">devil.labs.contact@gmail.com</div>
+                <div className="text-left">
+                  <div className="text-xs font-mono text-stone-400 uppercase tracking-widest mb-1">Email Us</div>
+                  <div className="text-stone-850 font-bold text-lg group-hover:text-violet-600 transition-colors">devil.labs.contact@gmail.com</div>
                 </div>
               </a>
 
               <a href="https://calendly.com/devillabs" target="_blank" rel="noreferrer" className="flex items-center space-x-6 group">
-                <div className="w-14 h-14 rounded-full bg-white/5 flex items-center justify-center text-gray-400 group-hover:bg-violet-500 group-hover:text-white transition-all duration-500 border border-white/10">
-                  <Calendar size={20} />
+                <div className="w-14 h-14 rounded-full clay-button flex items-center justify-center text-stone-500 group-hover:bg-violet-600 group-hover:text-white transition-all duration-500">
+                  <Calendar size={20} className="stroke-[1.5]" />
                 </div>
-                <div>
-                  <div className="text-xs font-mono text-gray-500 uppercase tracking-widest mb-1">Book a Call</div>
-                  <div className="text-white font-medium text-lg group-hover:text-violet-400 transition-colors">calendly.com/devillabs</div>
+                <div className="text-left">
+                  <div className="text-xs font-mono text-stone-400 uppercase tracking-widest mb-1">Book a Call</div>
+                  <div className="text-stone-850 font-bold text-lg group-hover:text-violet-600 transition-colors">calendly.com/devillabs</div>
                 </div>
               </a>
 
               <div className="flex items-center space-x-6 pb-6">
-                <div className="w-14 h-14 rounded-full bg-white/5 flex items-center justify-center text-gray-400 border border-white/10">
-                  <MapPin size={20} />
+                <div className="w-14 h-14 rounded-full clay-button flex items-center justify-center text-stone-500">
+                  <MapPin size={20} className="stroke-[1.5]" />
                 </div>
-                <div>
-                  <div className="text-xs font-mono text-gray-500 uppercase tracking-widest mb-1">Location</div>
-                  <div className="text-white font-medium text-lg">San Francisco, CA</div>
+                <div className="text-left">
+                  <div className="text-xs font-mono text-stone-400 uppercase tracking-widest mb-1">Location</div>
+                  <div className="text-stone-850 font-bold text-lg">Gaya, Bihar, India</div>
                 </div>
               </div>
 
               {/* Network Platforms */}
-              <div className="space-y-4 pt-6 border-t border-white/5">
-                <h4 className="font-mono text-xs font-bold text-gray-400 uppercase tracking-[0.25em]">// NETWORK PLATFORMS</h4>
+              <div className="space-y-4 pt-6 border-t border-stone-200/50">
+                <h4 className="font-mono text-xs font-bold text-stone-400 uppercase tracking-[0.25em] text-left">// NETWORK PLATFORMS</h4>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <a href="https://github.com/Devil-Labs/" target="_blank" rel="noreferrer" className="flex items-center justify-between p-4 bg-white/5 hover:bg-violet-600/10 border border-white/5 hover:border-violet-500/30 rounded-xl transition-all duration-300 group">
+                  <a href="https://github.com/Devil-Labs/" target="_blank" rel="noreferrer" className="flex items-center justify-between p-4 clay-button rounded-xl transition-all duration-300 group">
                     <div className="flex items-center space-x-3">
-                      <Github size={16} className="text-gray-400 group-hover:text-violet-400 transition-colors" />
-                      <span className="text-xs text-white font-mono font-bold tracking-wider">GitHub Org</span>
+                      <Github size={16} className="text-stone-500 group-hover:text-violet-600 transition-colors" />
+                      <span className="text-xs text-stone-700 font-mono font-bold tracking-wider">GitHub Org</span>
                     </div>
-                    <ArrowUpRight size={14} className="text-gray-600 group-hover:text-violet-400 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all" />
+                    <ArrowUpRight size={14} className="text-stone-400 group-hover:text-violet-600 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all" />
                   </a>
 
-                   <a href="https://linkedin.com/company/devillabs" target="_blank" rel="noreferrer" className="flex items-center justify-between p-4 bg-white/5 hover:bg-violet-600/10 border border-white/5 hover:border-violet-500/30 rounded-xl transition-all duration-300 group">
+                   <a href="https://linkedin.com/company/devillabs" target="_blank" rel="noreferrer" className="flex items-center justify-between p-4 clay-button rounded-xl transition-all duration-300 group">
                     <div className="flex items-center space-x-3">
-                      <Linkedin size={16} className="text-gray-400 group-hover:text-violet-400 transition-colors" />
-                      <span className="text-xs text-white font-mono font-bold tracking-wider">LinkedIn</span>
+                      <Linkedin size={16} className="text-stone-500 group-hover:text-violet-600 transition-colors" />
+                      <span className="text-xs text-stone-700 font-mono font-bold tracking-wider">LinkedIn</span>
                     </div>
-                    <ArrowUpRight size={14} className="text-gray-600 group-hover:text-violet-400 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all" />
+                    <ArrowUpRight size={14} className="text-stone-400 group-hover:text-violet-600 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all" />
                   </a>
 
-                  <a href="https://instagram.com/devillabs" target="_blank" rel="noreferrer" className="flex items-center justify-between p-4 bg-white/5 hover:bg-violet-600/10 border border-white/5 hover:border-violet-500/30 rounded-xl transition-all duration-300 group">
+                  <a href="https://instagram.com/devillabs" target="_blank" rel="noreferrer" className="flex items-center justify-between p-4 clay-button rounded-xl transition-all duration-300 group">
                     <div className="flex items-center space-x-3">
-                      <Instagram size={16} className="text-gray-400 group-hover:text-violet-400 transition-colors" />
-                      <span className="text-xs text-white font-mono font-bold tracking-wider">Instagram</span>
+                      <Instagram size={16} className="text-stone-500 group-hover:text-violet-600 transition-colors" />
+                      <span className="text-xs text-stone-700 font-mono font-bold tracking-wider">Instagram</span>
                     </div>
-                    <ArrowUpRight size={14} className="text-gray-600 group-hover:text-violet-400 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all" />
+                    <ArrowUpRight size={14} className="text-stone-400 group-hover:text-violet-600 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all" />
                   </a>
 
-                  <a href="https://vickyiitp.tech" target="_blank" rel="noreferrer" className="flex items-center justify-between p-4 bg-white/5 hover:bg-violet-600/10 border border-white/5 hover:border-violet-500/30 rounded-xl transition-all duration-300 group">
+                  <a href="https://vickyiitp.tech" target="_blank" rel="noreferrer" className="flex items-center justify-between p-4 clay-button rounded-xl transition-all duration-300 group">
                     <div className="flex items-center space-x-3">
-                      <Globe size={16} className="text-gray-400 group-hover:text-violet-400 transition-colors" />
-                      <span className="text-xs text-white font-mono font-bold tracking-wider">Founder Site</span>
+                      <Globe size={16} className="text-stone-500 group-hover:text-violet-600 transition-colors" />
+                      <span className="text-xs text-stone-700 font-mono font-bold tracking-wider">Founder Site</span>
                     </div>
-                    <ArrowUpRight size={14} className="text-gray-600 group-hover:text-violet-400 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all" />
+                    <ArrowUpRight size={14} className="text-stone-400 group-hover:text-violet-600 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all" />
                   </a>
                 </div>
               </div>

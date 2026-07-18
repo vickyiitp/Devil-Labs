@@ -6,15 +6,15 @@
   --font-display: "Space Grotesk", sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
 
-  --color-brand-dark: #050505;
-  --color-brand-accent: #6d28d9;
-  --color-brand-glow: #8b5cf6;
+  --color-brand-dark: #f5f4ef;
+  --color-brand-accent: #7c3aed;
+  --color-brand-glow: #fda4af;
 }
 
-/* Custom styles for brutalist aesthetic */
+/* Custom styles for soft Neumorphism & Illustration-driven aesthetic */
 body {
-  background-color: #050505;
-  color: #ffffff;
+  background-color: #f5f4ef;
+  color: #2d2620;
   font-family: var(--font-sans);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
@@ -26,6 +26,205 @@ body {
 
 .font-mono {
   font-family: var(--font-mono);
+}
+
+/* Claymorphic & Soft UI shadow classes and smooth tactile effects */
+.neumorphic-card,
+.clay-card {
+  background: #fdfcf9 !important;
+  border: 1px solid rgba(255, 255, 255, 0.8) !important;
+  box-shadow: 
+    12px 16px 36px rgba(185, 175, 160, 0.12), 
+    -12px -16px 36px #ffffff, 
+    inset 6px 6px 12px rgba(255, 255, 255, 0.95), 
+    inset -6px -6px 12px rgba(185, 175, 160, 0.05) !important;
+  border-radius: 32px !important;
+  transition: all 0.55s cubic-bezier(0.175, 0.885, 0.32, 1.25) !important;
+}
+
+.neumorphic-card:hover,
+.clay-card:hover {
+  box-shadow: 
+    16px 22px 48px rgba(185, 175, 160, 0.16), 
+    -16px -22px 48px #ffffff, 
+    inset 6px 6px 12px rgba(255, 255, 255, 0.95), 
+    inset -6px -6px 12px rgba(185, 175, 160, 0.05) !important;
+  transform: translateY(-4px) scale(1.01);
+}
+
+.neumorphic-button,
+.clay-button {
+  background: #fdfcf9 !important;
+  border: 1px solid rgba(255, 255, 255, 0.9) !important;
+  box-shadow: 
+    6px 8px 20px rgba(185, 175, 160, 0.08), 
+    -6px -8px 20px #ffffff, 
+    inset 3px 3px 6px rgba(255, 255, 255, 0.95), 
+    inset -3px -3px 6px rgba(185, 175, 160, 0.05) !important;
+  color: #2d2620 !important;
+  border-radius: 20px !important;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.25) !important;
+}
+
+.neumorphic-button:hover,
+.clay-button:hover {
+  box-shadow: 
+    8px 12px 24px rgba(185, 175, 160, 0.14), 
+    -8px -12px 24px #ffffff, 
+    inset 3px 3px 6px rgba(255, 255, 255, 0.95), 
+    inset -3px -3px 6px rgba(185, 175, 160, 0.05) !important;
+  transform: translateY(-2px) scale(1.03);
+}
+
+.neumorphic-button:active,
+.clay-button:active {
+  box-shadow: 
+    inset 4px 4px 10px rgba(185, 175, 160, 0.1), 
+    inset -4px -4px 10px #ffffff !important;
+  transform: translateY(1px) scale(0.97);
+}
+
+.neumorphic-inset,
+.clay-inset {
+  background: #f4f2ec !important;
+  box-shadow: 
+    inset 6px 6px 14px rgba(185, 175, 160, 0.12), 
+    inset -6px -6px 14px #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.5) !important;
+  border-radius: 20px !important;
+}
+
+/* Saturated Colored Claymorphic classes for vibrant, soft 3D highlights */
+.clay-violet-solid {
+  background: linear-gradient(135deg, #a78bfa, #7c3aed) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  box-shadow: 
+    8px 12px 24px rgba(124, 58, 237, 0.22), 
+    -8px -12px 24px #ffffff, 
+    inset 4px 4px 8px rgba(255, 255, 255, 0.35), 
+    inset -4px -4px 8px rgba(0, 0, 0, 0.12) !important;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.25) !important;
+}
+.clay-violet-solid:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 
+    10px 16px 32px rgba(124, 58, 237, 0.28), 
+    -10px -16px 32px #ffffff, 
+    inset 4px 4px 8px rgba(255, 255, 255, 0.35), 
+    inset -4px -4px 8px rgba(0, 0, 0, 0.12) !important;
+}
+.clay-violet-solid:active {
+  transform: translateY(1px) scale(0.97);
+  box-shadow: 
+    inset 4px 4px 12px rgba(0, 0, 0, 0.2), 
+    inset -4px -4px 12px rgba(255, 255, 255, 0.15) !important;
+}
+
+.clay-rose-solid {
+  background: linear-gradient(135deg, #fda4af, #f43f5e) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  box-shadow: 
+    8px 12px 24px rgba(244, 63, 94, 0.22), 
+    -8px -12px 24px #ffffff, 
+    inset 4px 4px 8px rgba(255, 255, 255, 0.35), 
+    inset -4px -4px 8px rgba(0, 0, 0, 0.12) !important;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.25) !important;
+}
+.clay-rose-solid:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 
+    10px 16px 32px rgba(244, 63, 94, 0.28), 
+    -10px -16px 32px #ffffff, 
+    inset 4px 4px 8px rgba(255, 255, 255, 0.35), 
+    inset -4px -4px 8px rgba(0, 0, 0, 0.12) !important;
+}
+.clay-rose-solid:active {
+  transform: translateY(1px) scale(0.97);
+  box-shadow: 
+    inset 4px 4px 12px rgba(0, 0, 0, 0.2), 
+    inset -4px -4px 12px rgba(255, 255, 255, 0.15) !important;
+}
+
+.clay-amber-solid {
+  background: linear-gradient(135deg, #fcd34d, #f59e0b) !important;
+  color: #2d2620 !important;
+  border: 1px solid rgba(255, 255, 255, 0.4) !important;
+  box-shadow: 
+    8px 12px 24px rgba(245, 158, 11, 0.18), 
+    -8px -12px 24px #ffffff, 
+    inset 4px 4px 8px rgba(255, 255, 255, 0.5), 
+    inset -4px -4px 8px rgba(0, 0, 0, 0.08) !important;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.25) !important;
+}
+.clay-amber-solid:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 
+    10px 16px 32px rgba(245, 158, 11, 0.24), 
+    -10px -16px 32px #ffffff, 
+    inset 4px 4px 8px rgba(255, 255, 255, 0.5), 
+    inset -4px -4px 8px rgba(0, 0, 0, 0.08) !important;
+}
+.clay-amber-solid:active {
+  transform: translateY(1px) scale(0.97);
+  box-shadow: 
+    inset 4px 4px 12px rgba(0, 0, 0, 0.15), 
+    inset -4px -4px 12px rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Ensure common tags and classes are overridden for complete coverage */
+.bg-black,
+.bg-\[\#050505\],
+.bg-brand-dark,
+.bg-zinc-950,
+.bg-[#050505] {
+  background-color: #f5f4ef !important;
+  color: #2d2620 !important;
+}
+
+.text-white:not(.keep-white),
+.text-zinc-100:not(.keep-white),
+.text-stone-100:not(.keep-white) {
+  color: #2d2620 !important;
+}
+
+.keep-white,
+.text-white-force {
+  color: #ffffff !important;
+}
+
+.text-stone-100-force {
+  color: #f5f5f4 !important;
+}
+
+.text-stone-200-force {
+  color: #e7e5e4 !important;
+}
+
+.text-stone-300-force {
+  color: #d6d3d1 !important;
+}
+
+.text-gray-400,
+.text-gray-500,
+.text-zinc-400,
+.text-stone-400 {
+  color: #63574d !important;
+}
+
+.text-gray-600,
+.text-zinc-500,
+.text-stone-500 {
+  color: #7a6e63 !important;
+}
+
+.border-white\/10,
+.border-white\/5,
+.border-white\/20,
+.border-zinc-800,
+.border-stone-800 {
+  border-color: rgba(45, 38, 32, 0.08) !important;
 }
 
 /* Marquee infinite scroll keyframes */
@@ -46,53 +245,42 @@ body {
 
 /* Custom Scrollbars */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: #050505;
+  background: #f5f4ef;
 }
 ::-webkit-scrollbar-thumb {
-  background: #1a1a1a;
-  border: 2px solid #050505;
+  background: #dcdad4;
+  border: 3px solid #f5f4ef;
+  border-radius: 99px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #2d2d2d;
+  background: #c3c1ba;
 }
 
-/* Glowing utilities */
+/* Glowing utilities rewritten as soft shadows */
 .glow-border {
   transition: all 0.3s ease;
 }
 .glow-border:hover {
-  border-color: var(--color-brand-glow);
-  box-shadow: 0 0 20px rgba(139, 92, 246, 0.2);
+  border-color: rgba(124, 58, 237, 0.3);
+  box-shadow: 0 0 20px rgba(124, 58, 237, 0.1);
 }
 
-/* Terminal scanline simulation */
-.scanline::after {
-  content: " ";
-  display: block;
-  position: absolute;
-  top: 0; left: 0; bottom: 0; right: 0;
-  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-  z-index: 10;
-  background-size: 100% 2px, 3px 100%;
-  pointer-events: none;
-}
-
-/* Texture & brutalist effects */
+/* Custom illustrations background textures */
 .bg-noise {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
 .text-stroke-1 {
-  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
+  -webkit-text-stroke: 1px rgba(45, 38, 32, 0.1);
   color: transparent;
 }
 .text-stroke-1:hover {
-  -webkit-text-stroke: 1px rgba(139, 92, 246, 0.8);
-  color: rgba(139, 92, 246, 0.1);
+  -webkit-text-stroke: 1px rgba(124, 58, 237, 0.5);
+  color: rgba(124, 58, 237, 0.05);
 }
 
 .glitch {

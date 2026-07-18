@@ -9,109 +9,61 @@ export default function DevilLabsLogo({ className = "w-6 h-6", glow = false }: D
   return (
     <div className={`relative flex items-center justify-center ${className}`}>
       {glow && (
-        <div className="absolute inset-0 bg-violet-500/20 rounded-full blur-xl animate-pulse" />
+        <div className="absolute inset-0 bg-violet-300/30 rounded-full blur-lg animate-pulse" />
       )}
       <svg
         viewBox="0 0 120 120"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="w-full h-full transition-transform duration-300 group-hover:scale-110"
+        className="w-full h-full transition-transform duration-500 group-hover:rotate-12 group-hover:scale-110"
       >
         <defs>
-          {/* Metallic Silver Gradient */}
-          <linearGradient id="metal-silver" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#FFFFFF" />
-            <stop offset="30%" stopColor="#D8D8D8" />
-            <stop offset="70%" stopColor="#8A8A8A" />
-            <stop offset="100%" stopColor="#4F4F4F" />
+          <linearGradient id="logo-grad-1" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#7c3aed" />
+            <stop offset="50%" stopColor="#f472b6" />
+            <stop offset="100%" stopColor="#fbbf24" />
           </linearGradient>
           
-          {/* Violet Glow Gradient */}
-          <linearGradient id="brand-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#C084FC" />
-            <stop offset="50%" stopColor="#A855F7" />
-            <stop offset="100%" stopColor="#6366F1" />
-          </linearGradient>
-
-          {/* Core Metal Fill with dark reflections */}
-          <linearGradient id="logo-bevel" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor="#FFFFFF" />
-            <stop offset="40%" stopColor="#E2E8F0" />
-            <stop offset="70%" stopColor="#94A3B8" />
-            <stop offset="100%" stopColor="#475569" />
+          <linearGradient id="logo-grad-2" x1="0%" y1="100%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#38bdf8" />
+            <stop offset="50%" stopColor="#818cf8" />
+            <stop offset="100%" stopColor="#f472b6" />
           </linearGradient>
         </defs>
 
-        {/* Outer subtle drop shadow glow */}
-        <g filter="url(#glow)">
-          {/* Trident / Crown Spikes */}
-          {/* Left Spike */}
-          <path
-            d="M42 22 L34 44 L48 38 Z"
-            fill="url(#logo-bevel)"
-            stroke="rgba(255,255,255,0.2)"
-            strokeWidth="1"
-          />
-          {/* Right Spike */}
-          <path
-            d="M78 22 L86 44 L72 38 Z"
-            fill="url(#logo-bevel)"
-            stroke="rgba(255,255,255,0.2)"
-            strokeWidth="1"
-          />
-          {/* Center Main Spike */}
-          <path
-            d="M60 12 L50 44 L60 38 L70 44 Z"
-            fill="url(#logo-bevel)"
-            stroke="rgba(255,255,255,0.3)"
-            strokeWidth="1"
-          />
+        {/* Soft drop-shadow representation */}
+        <path
+          d="M25 60 C25 35, 55 20, 75 35 C95 50, 95 70, 75 85 C55 100, 25 85, 25 60"
+          stroke="rgba(45, 38, 32, 0.05)"
+          strokeWidth="16"
+          strokeLinecap="round"
+          fill="none"
+        />
 
-          {/* Left Block ('D' shape) */}
-          <path
-            d="M56 46 L34 46 L34 80 L56 96 Z"
-            fill="url(#logo-bevel)"
-            stroke="rgba(255,255,255,0.2)"
-            strokeWidth="1"
-          />
-          {/* Left Inner Cutout (making the D hollow) */}
-          <path
-            d="M48 54 L40 54 L40 76 L48 82 Z"
-            fill="#050505"
-            stroke="rgba(255,255,255,0.1)"
-            strokeWidth="1"
-          />
+        {/* Soft colorful back loop */}
+        <path
+          d="M25 60 C25 35, 55 20, 75 35 C95 50, 95 70, 75 85 C55 100, 25 85, 25 60 Z"
+          stroke="url(#logo-grad-2)"
+          strokeWidth="12"
+          strokeLinecap="round"
+          fill="none"
+          opacity="0.85"
+        />
 
-          {/* Right Block ('L' shape) */}
-          <path
-            d="M64 46 L86 46 L86 80 L64 96 Z"
-            fill="url(#logo-bevel)"
-            stroke="rgba(255,255,255,0.2)"
-            strokeWidth="1"
-          />
-          {/* Right Inner Cutout (making the L look like an L/U) */}
-          <path
-            d="M70 46 L70 76 L80 76 L80 46 Z"
-            fill="#050505"
-            stroke="rgba(255,255,255,0.1)"
-            strokeWidth="1"
-          />
-          
-          {/* Bevel highlights for shiny 3D look */}
-          <path
-            d="M60 12 L60 38"
-            stroke="#FFFFFF"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-          />
-          <path
-            d="M34 46 L34 80 M86 46 L86 80"
-            stroke="#FFFFFF"
-            strokeWidth="1"
-            opacity="0.8"
-          />
-        </g>
+        {/* Vibrant front loop overlapping beautifully */}
+        <path
+          d="M60 30 C75 20, 95 35, 95 60 C95 85, 65 100, 45 85 C25 70, 25 50, 45 35"
+          stroke="url(#logo-grad-1)"
+          strokeWidth="12"
+          strokeLinecap="round"
+          fill="none"
+        />
+
+        {/* Smiling creative center spark dot */}
+        <circle cx="60" cy="60" r="10" fill="#ffffff" />
+        <circle cx="60" cy="60" r="5" fill="#7c3aed" />
       </svg>
     </div>
   );
 }
+

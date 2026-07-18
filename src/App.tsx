@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import Navigation, { Footer } from './components/Navigation';
+import ClayTopicShowcase from './components/ClayTopicShowcase';
 import LandingPage from './pages/LandingPage';
 import ServicesPage from './pages/ServicesPage';
 import ServiceDetailPage from './pages/ServiceDetailPage';
@@ -99,7 +100,7 @@ export default function App() {
   return (
     <CurrencyProvider>
       <DebugProvider>
-        <div id="devil-labs-app-shell" className="min-h-screen bg-[#050505] text-white flex flex-col justify-between selection:bg-violet-500/30 selection:text-white">
+        <div id="devil-labs-app-shell" className="min-h-screen bg-[#f5f4ef] text-stone-850 flex flex-col justify-between selection:bg-violet-500/30 selection:text-stone-900">
         <SEO path={currentPath} />
         <ScrollProgress />
         <BackgroundEffects />
@@ -133,6 +134,13 @@ export default function App() {
             </AnimatePresence>
           </main>
         </div>
+
+        {/* Curated Claymorphic Design Disciplines Section (Sleek Pre-Footer Showcase) */}
+        {!['/legal/privacy', '/legal/terms', '/legal/msa'].includes(currentPath) && (
+          <div className="relative z-10">
+            <ClayTopicShowcase />
+          </div>
+        )}
 
         {/* Footer Element */}
         <div>
