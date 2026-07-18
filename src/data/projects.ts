@@ -20,7 +20,7 @@ export const CLIENT_PROJECTS: Project[] = [
   {
     id: 101,
     domain: "Web",
-    title: 'Nexus // Enterprise CRM',
+    title: 'Nexus ✦ Enterprise CRM',
     client: 'Confidential (FinTech)',
     category: 'SaaS & Business',
     isPro: true,
@@ -33,7 +33,7 @@ export const CLIENT_PROJECTS: Project[] = [
   {
     id: 102,
     domain: "AI",
-    title: 'Aura // Health Portal',
+    title: 'Aura ✦ Health Portal',
     client: 'Confidential (Healthcare)',
     category: 'AI & Automation',
     isPro: true,
@@ -46,7 +46,7 @@ export const CLIENT_PROJECTS: Project[] = [
   {
     id: 103,
     domain: "Infrastructure",
-    title: 'Vanguard // Analytics',
+    title: 'Vanguard ✦ Analytics',
     client: 'Confidential (Logistics)',
     category: 'SaaS & Business',
     isPro: true,
@@ -63,7 +63,7 @@ export const DEMO_PROJECTS: Project[] = [
   {
     id: 1,
     domain: "AI",
-    title: 'GeniusMVA // AI Analytics',
+    title: 'GeniusMVA ✦ AI Analytics',
     client: 'Demo',
     category: 'AI & Automation',
     likes: '842',
@@ -77,7 +77,7 @@ export const DEMO_PROJECTS: Project[] = [
   {
     id: 2,
     domain: "AI",
-    title: 'ThreadGenius // AI Content',
+    title: 'ThreadGenius ✦ AI Content',
     client: 'Demo',
     category: 'AI & Automation',
     likes: '621',
@@ -91,7 +91,7 @@ export const DEMO_PROJECTS: Project[] = [
   {
     id: 3,
     domain: "AI",
-    title: 'SkillSculpt AI // Learning',
+    title: 'SkillSculpt AI ✦ Learning',
     client: 'Demo',
     category: 'AI & Automation',
     likes: '459',
@@ -105,7 +105,7 @@ export const DEMO_PROJECTS: Project[] = [
   {
     id: 4,
     domain: "AI",
-    title: 'DevilFintech AI // FinTech Advisor',
+    title: 'DevilFintech AI ✦ FinTech Advisor',
     client: 'Demo',
     category: 'AI & Automation',
     likes: '312',
@@ -119,7 +119,7 @@ export const DEMO_PROJECTS: Project[] = [
   {
     id: 5,
     domain: "AI",
-    title: 'NoDepression AI // Wellness',
+    title: 'NoDepression AI ✦ Wellness',
     client: 'Demo',
     category: 'AI & Automation',
     likes: '891',
@@ -133,7 +133,7 @@ export const DEMO_PROJECTS: Project[] = [
   {
     id: 6,
     domain: "AI",
-    title: 'Resume AI // Builder',
+    title: 'Resume AI ✦ Builder',
     client: 'Demo',
     category: 'AI & Automation',
     likes: '1.2k',
@@ -149,7 +149,7 @@ export const DEMO_PROJECTS: Project[] = [
   {
     id: 7,
     domain: "Web",
-    title: 'Quiz App // Interactive',
+    title: 'Quiz App ✦ Interactive',
     client: 'Demo',
     category: 'EdTech & Learning',
     likes: '234',
@@ -163,7 +163,7 @@ export const DEMO_PROJECTS: Project[] = [
   {
     id: 8,
     domain: "Web",
-    title: 'EduStream // Classes App',
+    title: 'EduStream ✦ Classes App',
     client: 'Demo',
     category: 'EdTech & Learning',
     likes: '645',
@@ -177,7 +177,7 @@ export const DEMO_PROJECTS: Project[] = [
   {
     id: 9,
     domain: "Web",
-    title: 'Cosmic Genesis // EdArt',
+    title: 'Cosmic Genesis ✦ EdArt',
     client: 'Demo',
     category: 'EdTech & Learning',
     likes: '912',
@@ -191,7 +191,7 @@ export const DEMO_PROJECTS: Project[] = [
   {
     id: 10,
     domain: "Web",
-    title: 'TypeX // Typing AI',
+    title: 'TypeX ✦ Typing AI',
     client: 'Demo',
     category: 'EdTech & Learning',
     likes: '456',
@@ -207,7 +207,7 @@ export const DEMO_PROJECTS: Project[] = [
   {
     id: 11,
     domain: "Web",
-    title: 'Hisaab // Payments',
+    title: 'Hisaab ✦ Payments',
     client: 'Demo',
     category: 'SaaS & Business',
     likes: '534',
@@ -221,7 +221,7 @@ export const DEMO_PROJECTS: Project[] = [
   {
     id: 12,
     domain: "Web",
-    title: 'Invoice Flow // Automation',
+    title: 'Invoice Flow ✦ Automation',
     client: 'Demo',
     category: 'SaaS & Business',
     likes: '213',
@@ -235,7 +235,7 @@ export const DEMO_PROJECTS: Project[] = [
   {
     id: 13,
     domain: "Web",
-    title: 'ShivaTri // Startups',
+    title: 'ShivaTri ✦ Startups',
     client: 'Demo',
     category: 'SaaS & Business',
     likes: '432',
@@ -249,7 +249,7 @@ export const DEMO_PROJECTS: Project[] = [
   {
     id: 14,
     domain: "Web",
-    title: 'Bio-Hub // Linktree',
+    title: 'Bio-Hub ✦ Linktree',
     client: 'Demo',
     category: 'SaaS & Business',
     likes: '654',
@@ -263,7 +263,7 @@ export const DEMO_PROJECTS: Project[] = [
   {
     id: 15,
     domain: "Infrastructure",
-    title: 'DevScript // Tool Hub',
+    title: 'DevScript ✦ Tool Hub',
     client: 'Demo',
     category: 'SaaS & Business',
     likes: '1.5k',
@@ -277,7 +277,7 @@ export const DEMO_PROJECTS: Project[] = [
   {
     id: 16,
     domain: "Web",
-    title: 'QR Menu Generator // Tools',
+    title: 'QR Menu Generator ✦ Tools',
     client: 'Demo',
     category: 'SaaS & Business',
     likes: '342',
@@ -291,7 +291,7 @@ export const DEMO_PROJECTS: Project[] = [
   {
     id: 17,
     domain: "Web",
-    title: 'Developer Portfolio // Portfolio',
+    title: 'Developer Portfolio ✦ Portfolio',
     client: 'Demo',
     category: 'SaaS & Business',
     likes: '821',
@@ -307,7 +307,7 @@ export const DEMO_PROJECTS: Project[] = [
   {
     id: 18,
     domain: "Web",
-    title: 'Prop View // Real Estate',
+    title: 'Prop View ✦ Real Estate',
     client: 'Demo',
     category: 'Real Estate & Agency',
     likes: '512',
@@ -321,7 +321,7 @@ export const DEMO_PROJECTS: Project[] = [
   {
     id: 19,
     domain: "Web",
-    title: 'Menu Craft // Hospitality',
+    title: 'Menu Craft ✦ Hospitality',
     client: 'Demo',
     category: 'Real Estate & Agency',
     likes: '289',
@@ -335,7 +335,7 @@ export const DEMO_PROJECTS: Project[] = [
   {
     id: 20,
     domain: "Web",
-    title: 'Kishan Farm // E-Commerce',
+    title: 'Kishan Farm ✦ E-Commerce',
     client: 'Demo',
     category: 'Real Estate & Agency',
     likes: '621',
@@ -349,7 +349,7 @@ export const DEMO_PROJECTS: Project[] = [
   {
     id: 21,
     domain: "Web",
-    title: 'Fit Launch // Agency',
+    title: 'Fit Launch ✦ Agency',
     client: 'Demo',
     category: 'Real Estate & Agency',
     likes: '445',
@@ -363,7 +363,7 @@ export const DEMO_PROJECTS: Project[] = [
   {
     id: 22,
     domain: "Web",
-    title: 'Indigo Lens // 3D Agency',
+    title: 'Indigo Lens ✦ 3D Agency',
     client: 'Demo',
     category: 'Real Estate & Agency',
     likes: '891',
@@ -379,7 +379,7 @@ export const DEMO_PROJECTS: Project[] = [
   {
     id: 23,
     domain: "Web",
-    title: 'MindSpark Hub // Games',
+    title: 'MindSpark Hub ✦ Games',
     client: 'Demo',
     category: 'Utilities & Games',
     likes: '743',
@@ -393,7 +393,7 @@ export const DEMO_PROJECTS: Project[] = [
   {
     id: 24,
     domain: "Web",
-    title: 'Timer & Stopwatch // Tool',
+    title: 'Timer & Stopwatch ✦ Tool',
     client: 'Demo',
     category: 'Utilities & Games',
     likes: '122',
@@ -407,7 +407,7 @@ export const DEMO_PROJECTS: Project[] = [
   {
     id: 25,
     domain: "Infrastructure",
-    title: 'RapidGrab Video // Download',
+    title: 'RapidGrab Video ✦ Download',
     client: 'Demo',
     category: 'Utilities & Games',
     likes: '534',
@@ -421,7 +421,7 @@ export const DEMO_PROJECTS: Project[] = [
   {
     id: 26,
     domain: "Web",
-    title: 'Valentine Day Gift // Fun',
+    title: 'Valentine Day Gift ✦ Fun',
     client: 'Demo',
     category: 'Utilities & Games',
     likes: '892',

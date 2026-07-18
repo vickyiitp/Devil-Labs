@@ -20,14 +20,14 @@ export default function TermsPage({ navigate }: { navigate: (path: string) => vo
         
         <div className="space-y-12 text-sm leading-relaxed max-w-3xl">
           <section>
-            <h2 className="text-white text-lg font-bold mb-4 uppercase tracking-wider">// 1. ACCEPTANCE OF TERMS</h2>
+            <h2 className="text-white text-lg font-bold mb-4 uppercase tracking-wider">✦ 1. ACCEPTANCE OF TERMS</h2>
             <p className="mb-4">
               By engaging Devil Labs for software development, AI automation, or digital architecture services, you agree to be bound by these Terms of Service. These terms constitute a legally binding agreement between you (the "Client") and Devil Labs (the "Agency").
             </p>
           </section>
 
           <section>
-            <h2 className="text-white text-lg font-bold mb-4 uppercase tracking-wider">// 2. SCOPE OF SERVICES & PLANS</h2>
+            <h2 className="text-white text-lg font-bold mb-4 uppercase tracking-wider">✦ 2. SCOPE OF SERVICES & PLANS</h2>
             <p className="mb-3">
               We provide tailored digital solutions based on agreed-upon service plans (e.g., Starter, Professional, Enterprise). 
             </p>
@@ -38,28 +38,28 @@ export default function TermsPage({ navigate }: { navigate: (path: string) => vo
           </section>
 
           <section>
-            <h2 className="text-white text-lg font-bold mb-4 uppercase tracking-wider">// 3. PRICING & PAYMENT TERMS</h2>
+            <h2 className="text-white text-lg font-bold mb-4 uppercase tracking-wider">✦ 3. PRICING & PAYMENT TERMS</h2>
             <p className="mb-4">
               Payments are required as per the schedule defined in the service proposal. Standard payment structure is 50% upfront to initiate the project, and 50% upon successful deployment to production. We reserve the right to suspend services or withhold source code handovers if invoices are severely past due.
             </p>
           </section>
 
           <section>
-            <h2 className="text-white text-lg font-bold mb-4 uppercase tracking-wider">// 5. INTELLECTUAL PROPERTY RIGHTS</h2>
+            <h2 className="text-white text-lg font-bold mb-4 uppercase tracking-wider">✦ 5. INTELLECTUAL PROPERTY RIGHTS</h2>
             <p className="mb-4">
               Upon final payment clearing, all custom source code, assets, and intellectual property developed specifically for your project are transferred entirely to you. Devil Labs retains the right to use open-source modules, pre-existing proprietary frameworks, and general algorithms utilized across multiple projects. We also reserve the right to showcase the completed project in our portfolio, unless restricted by a specific Non-Disclosure Agreement (NDA).
             </p>
           </section>
 
           <section>
-            <h2 className="text-white text-lg font-bold mb-4 uppercase tracking-wider">// 6. WARRANTIES & LIABILITIES</h2>
+            <h2 className="text-white text-lg font-bold mb-4 uppercase tracking-wider">✦ 6. WARRANTIES & LIABILITIES</h2>
             <p className="mb-4">
               We engineer robust systems utilizing the latest industry standards. However, software relies on third-party APIs (e.g., LLMs, cloud hosts) which may change. Devil Labs is not liable for service interruptions caused by upstream provider failures, deprecations, or malicious external cyber attacks post-handover. Our liability is strictly limited to the total amount paid by the client for the specific project.
             </p>
           </section>
 
           <section>
-            <h2 className="text-white text-lg font-bold mb-4 uppercase tracking-wider">// 6. TERMINATION</h2>
+            <h2 className="text-white text-lg font-bold mb-4 uppercase tracking-wider">✦ 6. TERMINATION</h2>
             <p>
               Either party may terminate the agreement with written notice if the other party breaches material terms. In the event of early termination by the client, Devil Labs shall be compensated for all hours worked and resources allocated up to the termination date.
             </p>

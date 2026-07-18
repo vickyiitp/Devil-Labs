@@ -12,6 +12,8 @@ import IndustrySolutions from '../components/IndustrySolutions';
 import ScrollReveal from '../components/ScrollReveal';
 import ArchedHeroCarousel from '../components/ArchedHeroCarousel';
 import PolishedFeatureMarquee from '../components/PolishedFeatureMarquee';
+import Magnetic from '../components/Magnetic';
+import { HandDrawnCircle, HandDrawnUnderline, HandDrawnArrow, BlueprintStickyNote } from '../components/AestheticAnnotation';
 
 interface LandingPageProps {
   navigate: (path: string) => void;
@@ -100,7 +102,7 @@ export default function LandingPage({ navigate }: LandingPageProps) {
   ];
 
   return (
-    <div id="landing-page-root" className="pt-28 sm:pt-24 lg:pt-32">
+    <div id="landing-page-root" className="pt-20 xs:pt-24 sm:pt-24 lg:pt-32">
       {/* 1. HERO SECTION WITH INTEGRATED PORTAL AND AUDIO ENGINE */}
       <section 
         id="hero-section" 
@@ -131,7 +133,7 @@ export default function LandingPage({ navigate }: LandingPageProps) {
           '--mouse-y': '45%',
           '--spotlight-radius': '120px',
         } as React.CSSProperties}
-        className="relative flex flex-col justify-center px-4 sm:px-6 lg:px-12 pb-16 pt-4 md:pb-24 md:pt-0 overflow-hidden min-h-[100dvh] md:min-h-[90vh]"
+        className="relative flex flex-col justify-center px-4 sm:px-6 lg:px-12 pb-12 pt-2 md:pb-24 md:pt-0 overflow-hidden min-h-[100dvh] md:min-h-[90vh]"
       >
         {/* Dynamic Background Portal Layer */}
         <div className="absolute inset-0 z-0 pointer-events-none select-none">
@@ -186,7 +188,13 @@ export default function LandingPage({ navigate }: LandingPageProps) {
         <div className="max-w-7xl w-full mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center px-4 sm:px-6 lg:px-8">
           
           {/* LEFT COLUMN: Deep Technical Value Engine & Strategic Business Hook */}
-          <div className="lg:col-span-7 space-y-8 md:space-y-10 flex flex-col items-center lg:items-start text-center lg:text-left relative">
+          <motion.div
+            initial={{ opacity: 0, x: -40, y: 15 }}
+            whileInView={{ opacity: 1, x: 0, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ type: "spring", stiffness: 60, damping: 15 }}
+            className="lg:col-span-7 space-y-8 md:space-y-10 flex flex-col items-center lg:items-start text-center lg:text-left relative"
+          >
             
             {/* Elegant, minimalist badge tag */}
             <div className="flex items-center space-x-3 text-stone-600 font-sans text-xs font-semibold tracking-wider uppercase bg-[#faf8f5]/85 border border-stone-200/40 px-4 py-2 rounded-full shadow-sm">
@@ -245,7 +253,7 @@ export default function LandingPage({ navigate }: LandingPageProps) {
                   className="space-y-4 w-full flex flex-col lg:items-start items-center"
                 >
                   <motion.h1 
-                    className="text-[2.2rem] sm:text-[3.2rem] leading-[1.05] md:text-[4rem] lg:text-5xl xl:text-[4.6rem] font-display font-black tracking-tighter uppercase break-words flex flex-col lg:items-start items-center text-center lg:text-left w-full text-stone-800"
+                    className="text-[1.8rem] xs:text-[2.2rem] sm:text-[3.2rem] leading-[1.05] md:text-[4rem] lg:text-[3.6rem] xl:text-[4.6rem] font-display font-black tracking-tighter uppercase break-words flex flex-col lg:items-start items-center text-center lg:text-left w-full text-stone-800"
                   >
                     {heroMode === 'ai' ? (
                       <>
@@ -389,38 +397,39 @@ export default function LandingPage({ navigate }: LandingPageProps) {
               <span>{isHoveringHero ? 'Image portal unlocked. Exploring preview window.' : 'Gently move your cursor to explore our high-fidelity digital portal.'}</span>
             </div>
 
-          </div>
+          </motion.div>
 
           {/* RIGHT COLUMN: Interactive Client ROI & Impact Simulator Console */}
           <motion.div 
-            initial={{ opacity: 0, scale: 0.95, y: 15 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            initial={{ opacity: 0, scale: 0.95, y: 30 }}
+            whileInView={{ opacity: 1, scale: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ type: "spring", stiffness: 50, damping: 15, delay: 0.15 }}
             className="lg:col-span-5 w-full max-w-md mx-auto relative z-10"
           >
-            <div className="clay-card rounded-[32px] p-6 border border-stone-200/50 bg-[#faf9f5]/95 shadow-[12px_16px_45px_rgba(185,175,160,0.18),_-12px_-16px_45px_#ffffff] relative overflow-hidden backdrop-blur-md">
+            <div className="clay-card rounded-[28px] sm:rounded-[32px] p-4 sm:p-6 border border-stone-200/50 bg-[#faf9f5]/95 shadow-[12px_16px_45px_rgba(185,175,160,0.18),_-12px_-16px_45px_#ffffff] relative overflow-hidden backdrop-blur-md">
               {/* Top Accent Light bar */}
               <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-violet-500 via-rose-400 to-amber-400 opacity-80" />
               
-              <div className="flex items-center justify-between mb-6">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-4 mb-4 sm:mb-6">
                 <div className="flex items-center space-x-2">
                   <Activity size={15} className="text-violet-600 animate-pulse" />
-                  <span className="font-sans text-xs font-bold uppercase tracking-wider text-stone-700">Project ROI &amp; Value Estimator</span>
+                  <span className="font-sans text-[11px] sm:text-xs font-bold uppercase tracking-wider text-stone-700">Project ROI &amp; Value Estimator</span>
                 </div>
-                <span className="font-sans text-[10px] font-bold uppercase text-stone-500 bg-stone-100/90 px-3 py-1 rounded-full border border-stone-200/50">
+                <span className="font-sans text-[9px] sm:text-[10px] font-bold uppercase text-stone-500 bg-stone-100/90 px-2.5 py-1 rounded-full border border-stone-200/50 w-max">
                   Interactive Live Calc
                 </span>
               </div>
 
-              <div className="space-y-6">
+              <div className="space-y-5 sm:space-y-6">
                 {/* Slider 1: Monthly Active Users */}
                 <div className="space-y-2">
-                  <div className="flex justify-between items-center text-xs font-sans font-medium text-stone-700">
+                  <div className="flex flex-col xs:flex-row justify-between xs:items-center text-[11px] sm:text-xs font-sans font-medium text-stone-700 gap-1.5">
                     <span className="flex items-center gap-1.5">
                       <TrendingUp size={13} className="text-stone-500" />
                       Target Monthly Active Users
                     </span>
-                    <span className="font-bold text-violet-700 bg-violet-50 px-2.5 py-1 rounded-full border border-violet-100/60 text-xs">
+                    <span className="font-bold text-violet-700 bg-violet-50 px-2.5 py-0.5 sm:py-1 rounded-full border border-violet-100/60 text-[11px] sm:text-xs w-max self-start xs:self-auto">
                       {mau.toLocaleString()} Users
                     </span>
                   </div>
@@ -436,7 +445,7 @@ export default function LandingPage({ navigate }: LandingPageProps) {
                     }}
                     className="w-full h-2 bg-stone-200 rounded-full appearance-none cursor-pointer accent-violet-600 outline-none focus:ring-1 focus:ring-violet-400"
                   />
-                  <div className="flex justify-between text-[10px] font-sans text-stone-400 uppercase tracking-wide">
+                  <div className="flex justify-between text-[9px] sm:text-[10px] font-sans text-stone-400 uppercase tracking-wide">
                     <span>10K Users</span>
                     <span>500K Users</span>
                     <span>1M Users</span>
@@ -445,12 +454,12 @@ export default function LandingPage({ navigate }: LandingPageProps) {
 
                 {/* Slider 2: Current Tech Budget */}
                 <div className="space-y-2">
-                  <div className="flex justify-between items-center text-xs font-sans font-medium text-stone-700">
+                  <div className="flex flex-col xs:flex-row justify-between xs:items-center text-[11px] sm:text-xs font-sans font-medium text-stone-700 gap-1.5">
                     <span className="flex items-center gap-1.5">
                       <DollarSign size={13} className="text-stone-500" />
                       Current Monthly Tech Budget
                     </span>
-                    <span className="font-bold text-rose-600 bg-rose-50 px-2.5 py-1 rounded-full border border-rose-100/60 text-xs">
+                    <span className="font-bold text-rose-600 bg-rose-50 px-2.5 py-0.5 sm:py-1 rounded-full border border-rose-100/60 text-[11px] sm:text-xs w-max self-start xs:self-auto">
                       ${budget.toLocaleString()} USD
                     </span>
                   </div>
@@ -466,7 +475,7 @@ export default function LandingPage({ navigate }: LandingPageProps) {
                     }}
                     className="w-full h-2 bg-stone-200 rounded-full appearance-none cursor-pointer accent-rose-500 outline-none focus:ring-1 focus:ring-rose-400"
                   />
-                  <div className="flex justify-between text-[10px] font-sans text-stone-400 uppercase tracking-wide">
+                  <div className="flex justify-between text-[9px] sm:text-[10px] font-sans text-stone-400 uppercase tracking-wide">
                     <span>$2K / Month</span>
                     <span>$75K / Month</span>
                     <span>$150K / Month</span>
@@ -474,42 +483,42 @@ export default function LandingPage({ navigate }: LandingPageProps) {
                 </div>
 
                 {/* Impact Output Screen */}
-                <div className="p-5 bg-stone-100/70 border border-stone-200/50 rounded-2xl space-y-4 shadow-[inset_1px_1px_3px_rgba(0,0,0,0.02)]">
-                  <div className="grid grid-cols-2 gap-5">
+                <div className="p-4 sm:p-5 bg-stone-100/70 border border-stone-200/50 rounded-2xl space-y-4 shadow-[inset_1px_1px_3px_rgba(0,0,0,0.02)]">
+                  <div className="grid grid-cols-2 gap-4 sm:gap-5">
                     
                     {/* Metric 1 */}
-                    <div className="text-left space-y-1">
-                      <span className="font-sans text-[10px] text-stone-500 font-semibold uppercase tracking-wider block">Overhead Saved</span>
-                      <span className="text-xl sm:text-2xl font-display font-black text-stone-850 flex items-baseline">
+                    <div className="text-left space-y-0.5">
+                      <span className="font-sans text-[9px] sm:text-[10px] text-stone-500 font-semibold uppercase tracking-wider block">Overhead Saved</span>
+                      <span className="text-lg sm:text-2xl font-display font-black text-stone-850 flex items-baseline flex-wrap">
                         {Math.min(85, Math.round(62 + (mau / 12000)))}%
-                        <span className="text-[10px] text-stone-500 font-semibold ml-1.5">LESS</span>
+                        <span className="text-[9px] text-stone-500 font-semibold ml-1">LESS</span>
                       </span>
                     </div>
 
                     {/* Metric 2 */}
-                    <div className="text-left space-y-1">
-                      <span className="font-sans text-[10px] text-stone-500 font-semibold uppercase tracking-wider block">Setup Acceleration</span>
-                      <span className="text-xl sm:text-2xl font-display font-black text-stone-850 flex items-baseline">
+                    <div className="text-left space-y-0.5">
+                      <span className="font-sans text-[9px] sm:text-[10px] text-stone-500 font-semibold uppercase tracking-wider block">Setup Acceleration</span>
+                      <span className="text-lg sm:text-2xl font-display font-black text-stone-850 flex items-baseline flex-wrap">
                         {budget < 20000 ? '4.8x' : budget < 80000 ? '10.0x' : '12.4x'}
-                        <span className="text-[10px] text-stone-500 font-semibold ml-1.5">FASTER</span>
+                        <span className="text-[9px] text-stone-500 font-semibold ml-1">FASTER</span>
                       </span>
                     </div>
 
                     {/* Metric 3 */}
-                    <div className="text-left space-y-1">
-                      <span className="font-sans text-[10px] text-stone-500 font-semibold uppercase tracking-wider block">Network Delay Saved</span>
-                      <span className="text-xl sm:text-2xl font-display font-black text-stone-850 flex items-baseline">
+                    <div className="text-left space-y-0.5">
+                      <span className="font-sans text-[9px] sm:text-[10px] text-stone-500 font-semibold uppercase tracking-wider block">Network Delay Saved</span>
+                      <span className="text-lg sm:text-2xl font-display font-black text-stone-850 flex items-baseline flex-wrap">
                         -{Math.max(12, Math.round(180 - (mau / 4500)))}ms
-                        <span className="text-[10px] text-emerald-600 font-bold ml-1.5">FASTER</span>
+                        <span className="text-[9px] text-emerald-600 font-bold ml-1">FASTER</span>
                       </span>
                     </div>
 
                     {/* Metric 4 */}
-                    <div className="text-left space-y-1">
-                      <span className="font-sans text-[10px] text-stone-500 font-semibold uppercase tracking-wider block">Platform Uptime SLA</span>
-                      <span className="text-xl sm:text-2xl font-display font-black text-violet-700 flex items-baseline">
+                    <div className="text-left space-y-0.5">
+                      <span className="font-sans text-[9px] sm:text-[10px] text-stone-500 font-semibold uppercase tracking-wider block">Platform Uptime SLA</span>
+                      <span className="text-lg sm:text-2xl font-display font-black text-violet-700 flex items-baseline flex-wrap">
                         99.99%
-                        <span className="text-[10px] text-violet-600 font-bold ml-1.5">ACTIVE</span>
+                        <span className="text-[9px] text-violet-600 font-bold ml-1">ACTIVE</span>
                       </span>
                     </div>
 
@@ -614,14 +623,77 @@ export default function LandingPage({ navigate }: LandingPageProps) {
           <CyberFrame glowColor="fuchsia" className="space-y-6 sm:space-y-8 p-8 sm:p-12 md:p-16 rounded-2xl bg-[#fcfbf9]">
             <Cpu size={32} className="mx-auto text-violet-500/50 sm:w-10 sm:h-10" />
             <h2 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-display font-bold leading-tight tracking-tight uppercase text-stone-800">
-              We build <span className="text-violet-600">scalable architectures</span>, <br className="hidden sm:block" />
-              not fragile prototypes. <br/>
+              We build <HandDrawnCircle color="stroke-violet-500/85">scalable architectures</HandDrawnCircle>, <br className="hidden sm:block" />
+              not <HandDrawnUnderline color="stroke-rose-400/85">fragile prototypes</HandDrawnUnderline>. <br/>
             </h2>
             <p className="font-mono text-xs sm:text-sm tracking-widest text-stone-500 uppercase">
-              // Engineering Excellence
+              ✦ Engineering Excellence
             </p>
           </CyberFrame>
         </ScrollReveal>
+      </section>
+
+      {/* BRAND ARCHITECTURAL NOTES / STRATEGIC DECK */}
+      <section id="architectural-notes-deck" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-b border-stone-200/40 relative overflow-hidden md:overflow-visible">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1px] h-12 bg-stone-200/60 pointer-events-none" />
+        <div className="text-center mb-12 sm:mb-16">
+          <span className="text-violet-600 font-mono text-xs uppercase tracking-widest font-bold">✦ DEVIL LABS SPECIFICATIONS DECK</span>
+          <h3 className="text-2xl sm:text-4xl font-display font-black uppercase text-stone-800 tracking-tight mt-2">
+            Engineering &amp; System Annotations
+          </h3>
+          <p className="text-stone-500 text-xs sm:text-sm mt-3 max-w-lg mx-auto leading-relaxed">
+            Interactive, certified layout specifications illustrating our commitment to bleeding-edge, zero-leak software principles.
+          </p>
+        </div>
+
+        {/* Blueprint sticky notes grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative items-start">
+          {/* Curly Arrow pointing from note 1 to note 2 */}
+          <div className="hidden lg:block absolute left-[29%] top-6 w-[12%] h-[40px] z-20">
+            <HandDrawnArrow color="stroke-violet-300/70" direction="right" className="w-full h-full" />
+            <span className="absolute -top-4 left-1/2 -translate-x-1/2 text-[8px] font-mono text-stone-400 uppercase tracking-wider">[Sync Link]</span>
+          </div>
+          
+          {/* Curly Arrow pointing from note 2 to note 3 */}
+          <div className="hidden lg:block absolute left-[62%] top-16 w-[12%] h-[40px] z-20">
+            <HandDrawnArrow color="stroke-rose-300/70" direction="right" className="w-full h-full" />
+            <span className="absolute -top-4 left-1/2 -translate-x-1/2 text-[8px] font-mono text-stone-400 uppercase tracking-wider">[Verify Link]</span>
+          </div>
+
+          <BlueprintStickyNote
+            number="01"
+            title="LCP LATENCY RECLAMATION"
+            rotation={-2}
+            badgeColor="bg-violet-600 text-white"
+            notes={[
+              "Modular bundling completely strips unused ES module tree branches, reducing initial raw load size.",
+              "Aggressive pre-rendering of critical layout streams minimizes Largest Contentful Paint delays.",
+              "Edge node visual caching establishes worldwide server response times well under 100ms."
+            ]}
+          />
+          <BlueprintStickyNote
+            number="02"
+            title="SECURE CONTEXT PIPELINE"
+            rotation={1.5}
+            badgeColor="bg-rose-500 text-white"
+            notes={[
+              "Rigid server-side endpoints proxy critical APIs, fully securing third-party secrets from browsers.",
+              "Strict, RFC-compliant payload filtering shields database nodes from malicious payload injections.",
+              "Stereo-panned spatial audio loops verify authentication and transaction state changes."
+            ]}
+          />
+          <BlueprintStickyNote
+            number="03"
+            title="DETERMINISTIC AGENT SLA"
+            rotation={-1.2}
+            badgeColor="bg-amber-500 text-stone-950 font-black"
+            notes={[
+              "Self-correcting verification algorithms evaluate AI agent outputs deterministically in real-time.",
+              "Smooth, hardware-accelerated Framer-motion layout transitions prevent layout shifts during streams.",
+              "Active secondary container failovers preserve guaranteed 99.99% system availability."
+            ]}
+          />
+        </div>
       </section>
 
       {/* 3. VALUE PROPOSITION */}
@@ -689,7 +761,7 @@ export default function LandingPage({ navigate }: LandingPageProps) {
 
         <ScrollReveal className="max-w-4xl mx-auto">
           <div className="text-center relative z-10 space-y-10">
-            <span className="text-violet-600 font-mono text-xs uppercase tracking-widest font-semibold">// START YOUR PROJECT</span>
+            <span className="text-violet-600 font-mono text-xs uppercase tracking-widest font-semibold">✦ START YOUR PROJECT</span>
             <h2 className="text-4xl sm:text-6xl font-display font-extrabold text-stone-800 uppercase tracking-tighter">
               Ready to scale?<br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-rose-500">

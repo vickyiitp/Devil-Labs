@@ -195,12 +195,12 @@ export default function PricingPage({ navigate }: PricingPageProps) {
   ];
 
   return (
-    <div id="pricing-page-root" className="pt-28 pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-stone-800">
+    <div id="pricing-page-root" className="pt-20 xs:pt-24 sm:pt-28 lg:pt-32 pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-stone-800">
       {/* 1. HEADER */}
       <section id="pricing-header" className="mb-20 flex flex-col md:flex-row md:items-end md:justify-between gap-6 border-b border-stone-200/30 pb-10">
         <div className="space-y-4">
-          <span className="text-violet-600 font-mono text-xs uppercase tracking-widest font-semibold">// ENGAGEMENT MODELS</span>
-          <h1 className="font-display font-extrabold text-5xl sm:text-7xl text-stone-800 tracking-tighter uppercase leading-none">
+          <span className="text-violet-600 font-mono text-xs uppercase tracking-widest font-semibold">✦ ENGAGEMENT MODELS</span>
+          <h1 className="font-display font-extrabold text-4xl xs:text-5xl sm:text-7xl text-stone-800 tracking-tighter uppercase leading-none">
             SYSTEM TARIFFS.
           </h1>
           <p className="text-stone-600 text-base sm:text-lg max-w-2xl leading-relaxed">
@@ -234,18 +234,18 @@ export default function PricingPage({ navigate }: PricingPageProps) {
       </section>
 
       {/* 2. PRICING CARDS (3 columns) */}
-      <section id="pricing-cards-section" className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch mb-32">
-        {models.map((model) => (
+      <section id="pricing-cards-section" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch mb-32">
+        {models.map((model, idx) => (
           <motion.div
             id={`pricing-card-${model.title.toLowerCase().replace(/[^a-z0-9]/g, '')}`}
             key={model.title}
             whileHover={{ y: -6 }}
             transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-            className={`relative flex flex-col justify-between p-8 transition-all duration-300 rounded-[32px] clay-card ${
+            className={`relative flex flex-col justify-between p-6 sm:p-8 transition-all duration-300 rounded-[24px] sm:rounded-[32px] clay-card ${
               model.popular
                 ? 'border-violet-300 bg-[#fbf9f4] shadow-[12px_16px_40px_rgba(139,92,246,0.14),-12px_-16px_40px_#ffffff] lg:scale-105 z-10'
                 : 'border-stone-200/50'
-            }`}
+            } ${idx === 2 ? 'md:col-span-2 lg:col-span-1' : ''}`}
           >
             {/* Ribbon or Badge for Popular */}
             {model.popular && (
@@ -324,7 +324,7 @@ I would like to proceed with this architecture. Please provide further details.`
       <ScrollReveal>
         <section id="pricing-comparison" className="mb-32 overflow-x-auto">
           <div className="mb-10 text-center">
-            <span className="text-violet-600 font-mono text-xs uppercase tracking-widest font-semibold">// CAPABILITY MATRIX</span>
+            <span className="text-violet-600 font-mono text-xs uppercase tracking-widest font-semibold">✦ CAPABILITY MATRIX</span>
             <h2 className="font-display font-extrabold text-3xl text-stone-800 tracking-tighter uppercase mt-2">Compare Architectures</h2>
           </div>
           <div className="min-w-[800px] border border-stone-200/50 bg-[#faf8f5]/80 rounded-2xl overflow-hidden shadow-[5px_5px_15px_rgba(45,38,32,0.05),-5px_-5px_15px_#ffffff]">
@@ -560,7 +560,7 @@ I would like to proceed with an estimate for my project. Please provide further 
       <ScrollReveal delay={150}>
         <section id="pricing-faq-section" className="py-24 border-t border-stone-200/30 max-w-4xl mx-auto">
           <div className="text-center space-y-4 mb-16">
-            <span className="text-violet-600 font-mono text-xs uppercase tracking-widest font-semibold">// ACCREDITATION MEMORANDUM</span>
+            <span className="text-violet-600 font-mono text-xs uppercase tracking-widest font-semibold">✦ ACCREDITATION MEMORANDUM</span>
             <h2 className="font-display font-extrabold text-4xl text-stone-800 tracking-tight uppercase">ENGAGEMENT FAQ.</h2>
             <p className="text-stone-600 text-sm max-w-md mx-auto leading-relaxed">
               Transparent protocols regarding database assets, intellectual code rights, and release timelines.

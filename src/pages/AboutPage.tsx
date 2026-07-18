@@ -12,7 +12,7 @@ interface AboutPageProps {
 
 export default function AboutPage({ navigate }: AboutPageProps) {
   return (
-    <div className="pt-32 pb-24 px-4 sm:px-6 lg:px-8 max-w-[1200px] mx-auto min-h-screen text-stone-800">
+    <div className="pt-20 xs:pt-24 sm:pt-28 lg:pt-32 pb-24 px-4 sm:px-6 lg:px-8 max-w-[1200px] mx-auto min-h-screen text-stone-800">
       {/* Header */}
       <section className="mb-24">
         <motion.span 
@@ -20,16 +20,16 @@ export default function AboutPage({ navigate }: AboutPageProps) {
           animate={{ opacity: 1 }}
           className="text-violet-600 font-mono text-xs uppercase tracking-[0.3em] font-semibold block mb-6"
         >
-          04_ABOUT_US
+          ✦ ABOUT US
         </motion.span>
         <motion.h1 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1 }}
-          className="font-display font-black text-5xl sm:text-7xl lg:text-8xl text-stone-850 tracking-tighter uppercase leading-[0.9] mb-8"
+          className="font-display font-black text-4xl xs:text-5xl sm:text-7xl lg:text-8xl text-stone-850 tracking-tighter uppercase leading-[0.9] mb-8"
         >
           Redefining <br/>
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 via-rose-500 to-amber-500 font-serif italic font-light lowercase text-6xl sm:text-8xl lg:text-9xl">engineering</span> <br/>
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 via-rose-500 to-amber-500 font-serif italic font-light lowercase text-5xl xs:text-6xl sm:text-8xl lg:text-9xl">engineering</span> <br/>
           In India.
         </motion.h1>
       </section>

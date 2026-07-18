@@ -1,9 +1,10 @@
 import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X, Terminal, Cpu, ShieldAlert, ArrowUpRight, Github, Linkedin, Instagram, Globe, Check, Phone, Mail, MessageCircle } from 'lucide-react';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useCurrency } from '../contexts/CurrencyContext';
 import DevilLabsLogo from './DevilLabsLogo';
 import { audioEngine } from '../lib/audio';
+import Magnetic from './Magnetic';
 
 interface NavigationProps {
   currentPath: string;
@@ -156,22 +157,26 @@ export default function Navigation({ currentPath, navigate }: NavigationProps) {
 
         {/* Desktop CTA */}
         <div className="hidden md:flex items-center space-x-3">
-          <button
-            onMouseEnter={() => audioEngine.playHover()}
-            onClick={() => { audioEngine.playClick(); toggleCurrency(); }}
-            className="flex items-center justify-center w-11 h-11 clay-button rounded-full font-mono text-xs font-bold text-stone-500 hover:text-stone-900 hover:border-violet-300/40 cursor-pointer"
-          >
-            {currency}
-          </button>
-          <button
-            id="nav-cta-btn"
-            onMouseEnter={() => audioEngine.playHover()}
-            onClick={() => { audioEngine.playClick(); window.dispatchEvent(new CustomEvent('open-initialize-modal')); }}
-            className="group flex items-center space-x-2 clay-violet-solid px-6 py-3 rounded-full font-bold text-xs uppercase tracking-widest cursor-pointer"
-          >
-            <span>INITIALIZE</span>
-            <ArrowUpRight size={14} className="text-white" />
-          </button>
+          <Magnetic range={50} strength={0.3}>
+            <button
+              onMouseEnter={() => audioEngine.playHover()}
+              onClick={() => { audioEngine.playClick(); toggleCurrency(); }}
+              className="flex items-center justify-center w-11 h-11 clay-button rounded-full font-mono text-xs font-bold text-stone-500 hover:text-stone-900 hover:border-violet-300/40 cursor-pointer"
+            >
+              {currency}
+            </button>
+          </Magnetic>
+          <Magnetic range={60} strength={0.4}>
+            <button
+              id="nav-cta-btn"
+              onMouseEnter={() => audioEngine.playHover()}
+              onClick={() => { audioEngine.playClick(); window.dispatchEvent(new CustomEvent('open-initialize-modal')); }}
+              className="group flex items-center space-x-2 clay-violet-solid px-6 py-3 rounded-full font-bold text-xs uppercase tracking-widest cursor-pointer"
+            >
+              <span>INITIALIZE</span>
+              <ArrowUpRight size={14} className="text-white" />
+            </button>
+          </Magnetic>
         </div>
 
         {/* Mobile menu button */}
@@ -216,7 +221,7 @@ export default function Navigation({ currentPath, navigate }: NavigationProps) {
                 }}
                 className={`text-left text-sm font-bold tracking-widest py-3 border-b border-stone-100 cursor-pointer flex items-center justify-between active:text-violet-600 active:pl-2 transition-all duration-200 ${isActive ? 'text-violet-600' : 'text-stone-500'}`}
               >
-                <span>{isActive ? `// ${item.label}` : item.name}</span>
+                <span>{isActive ? `✦ ${item.label}` : item.name}</span>
                 <span className="text-xs text-stone-400">→</span>
               </button>
             );
@@ -265,10 +270,34 @@ export function Footer({ navigate }: { navigate: (path: string) => void }) {
     }
   };
 
+  const footerBrandingRef = useRef<HTMLDivElement>(null);
+  const [footerMouse, setFooterMouse] = useState({ x: 50, y: 50 });
+  const [isFooterHovered, setIsFooterHovered] = useState(false);
+  const [clickedLetters, setClickedLetters] = useState<number[]>([]);
+
+  const handleFooterMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!footerBrandingRef.current) return;
+    const rect = footerBrandingRef.current.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    setFooterMouse({ x, y });
+  };
+
+  const handleLetterClick = (index: number) => {
+    audioEngine.playClick();
+    if (clickedLetters.includes(index)) {
+      setClickedLetters(clickedLetters.filter(i => i !== index));
+    } else {
+      setClickedLetters([...clickedLetters, index]);
+    }
+  };
+
   const languages = ['EN', 'FR', 'DE', 'JP'];
 
   return (
     <footer id="site-footer" className="bg-[#f5f4ef] border-t border-stone-200/60 pt-20 pb-12 px-4 sm:px-6 lg:px-8 font-mono relative z-10 overflow-hidden">
+      {/* Subtle low-opacity background noise texture for brand consistency */}
+      <div className="absolute inset-0 pointer-events-none opacity-[0.02] bg-noise z-0" />
       
       {/* Newsletter & Links Section */}
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 relative z-10 mb-20 text-stone-500 text-xs">
@@ -394,7 +423,7 @@ export function Footer({ navigate }: { navigate: (path: string) => void }) {
 
       {/* Dynamic Topic Cluster and Internal Linking Grid */}
       <div className="max-w-7xl mx-auto border-t border-stone-200/40 pt-12 pb-8 mb-8 relative z-10 text-xs tracking-wider font-mono">
-        <span className="text-stone-800 font-bold tracking-widest uppercase block mb-6 text-xs">// TOPIC CLUSTERS & SERVICE NODES</span>
+        <span className="text-stone-800 font-bold tracking-widest uppercase block mb-6 text-xs">✦ TOPIC CLUSTERS & SERVICE NODES</span>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-stone-500">
           {/* Services Cluster */}
           <div className="flex flex-col space-y-2">
@@ -427,19 +456,139 @@ export function Footer({ navigate }: { navigate: (path: string) => void }) {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center text-stone-500 text-xs tracking-widest font-bold border-t border-stone-200/40 pt-8 mb-12 gap-4">
+      <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center text-stone-500 text-xs tracking-widest font-bold border-t border-stone-200/40 pt-8 mb-8 gap-4">
         <p>© {new Date().getFullYear()} DEVIL LABS. ALL RIGHTS RESERVED.</p>
         <p>SECURE TRANSMISSION ENDS</p>
       </div>
 
-      {/* Massive Beautiful Soft Gradient Branding text */}
-      <div className="w-full text-center relative z-0 pointer-events-none pb-4 pt-12 overflow-hidden flex justify-center">
-        <h2 
-          className="font-display text-[15vw] font-black tracking-tighter leading-none select-none whitespace-nowrap text-transparent"
-          style={{ WebkitTextStroke: '1.5px rgba(124, 58, 237, 0.08)', textShadow: '4px 4px 10px rgba(0,0,0,0.01)' }}
-        >
-          DEVIL LABS
-        </h2>
+      {/* Redesigned Premium Interactive Footer Branding Section */}
+      <div 
+        ref={footerBrandingRef}
+        onMouseMove={handleFooterMouseMove}
+        onMouseEnter={() => setIsFooterHovered(true)}
+        onMouseLeave={() => {
+          setIsFooterHovered(false);
+          setClickedLetters([]); // reset Easter egg on mouse leave for replayability
+        }}
+        className="w-full relative z-10 pb-8 pt-12 overflow-hidden flex flex-col items-center justify-center border border-stone-200/35 bg-[#FAF9F5]/90 rounded-[24px] sm:rounded-[32px] shadow-[inset_0_2px_12px_rgba(45,38,32,0.02),0_15px_35px_rgba(45,38,32,0.03)] cursor-crosshair group/branding transition-all duration-300"
+      >
+        {/* Subtle high-tech blueprint grid */}
+        <div className="absolute inset-0 opacity-[0.25] pointer-events-none bg-[linear-gradient(to_right,rgba(139,92,246,0.08)_1px,transparent_1px),linear-gradient(to_bottom,rgba(139,92,246,0.08)_1px,transparent_1px)] bg-[size:20px_20px]" />
+        
+        {/* Laser scanner effect */}
+        <motion.div 
+          className="absolute top-0 bottom-0 w-[1px] bg-gradient-to-b from-transparent via-violet-500/20 to-transparent pointer-events-none"
+          animate={{ left: ["0%", "100%", "0%"] }}
+          transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
+        />
+
+        {/* Dynamic ambient spotlight glow following mouse */}
+        <div 
+          className="absolute inset-0 pointer-events-none transition-opacity duration-500 blur-3xl opacity-0 group-hover/branding:opacity-100"
+          style={{
+            background: `radial-gradient(circle 200px at ${footerMouse.x}% ${footerMouse.y}%, rgba(139, 92, 246, 0.08), rgba(236, 72, 153, 0.05), transparent 70%)`
+          }}
+        />
+
+        {/* Technical Data Annotations / Framing borders */}
+        <div className="w-full max-w-6xl mx-auto flex justify-between items-center px-6 text-[9px] sm:text-[10px] text-stone-400 font-mono tracking-widest uppercase pointer-events-none relative z-10 mb-2">
+          <div className="flex items-center space-x-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-violet-400 animate-pulse" />
+            <span>[ GEO: 24.79° N, 85.00° E ]</span>
+          </div>
+          <div className="hidden md:block text-stone-300">✦ ARTISANAL DESIGN x SYSTEM ENGINEERING ✦</div>
+          <div>[ REVISION: V3.4.2-GOLD ]</div>
+        </div>
+
+        {/* Giant Typography Sculpting Container */}
+        <div className="flex flex-wrap justify-center items-center select-none relative z-10 font-display font-black tracking-tighter text-[11vw] leading-none py-6 transition-all duration-300">
+          {"DEVIL LABS".split("").map((char, index) => {
+            if (char === " ") {
+              return <span key={index} className="w-[4vw]" />;
+            }
+            const isClicked = clickedLetters.includes(index);
+            return (
+              <motion.span
+                key={index}
+                onClick={() => handleLetterClick(index)}
+                className="inline-block relative cursor-pointer font-black select-none px-0.5"
+                style={{
+                  WebkitTextStroke: isClicked 
+                    ? '2.5px rgb(139, 92, 246)' 
+                    : '1.5px rgba(124, 58, 237, 0.15)',
+                  textShadow: isClicked 
+                    ? '0 10px 25px rgba(139, 92, 246, 0.35)' 
+                    : '1px 1px 5px rgba(0,0,0,0.01)',
+                  color: isClicked ? '#7c3aed' : 'transparent',
+                  transformStyle: "preserve-3d",
+                }}
+                initial={{ y: 20, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{
+                  type: "spring",
+                  stiffness: 110,
+                  damping: 15,
+                  delay: index * 0.03,
+                }}
+                whileHover={{
+                  scale: 1.15,
+                  y: -10,
+                  color: "#7c3aed",
+                  WebkitTextStroke: '2.5px #ec4899',
+                  textShadow: '0 15px 35px rgba(139, 92, 246, 0.45), 0 0 15px rgba(236, 72, 153, 0.2)',
+                }}
+              >
+                {char}
+                
+                {/* Under-letter subtle shadow */}
+                <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4/5 h-[3px] bg-stone-900/5 rounded-full blur-[2px] opacity-0 group-hover/branding:opacity-100 transition-opacity pointer-events-none scale-x-50" />
+              </motion.span>
+            );
+          })}
+        </div>
+
+        {/* Interactive hints / Easter Egg message */}
+        <div className="relative z-10 h-8 flex items-center justify-center font-mono text-[9px] sm:text-xs tracking-widest text-center px-4">
+          <AnimatePresence mode="wait">
+            {clickedLetters.length === 9 ? (
+              <motion.button
+                key="unlocked"
+                onClick={() => {
+                  navigate('/contact');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+                initial={{ opacity: 0, scale: 0.9, y: 10 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.9, y: -10 }}
+                className="text-white font-bold bg-gradient-to-r from-violet-600 to-rose-500 hover:scale-105 active:scale-95 px-5 py-2 rounded-full shadow-lg border border-violet-400/20 flex items-center space-x-2 cursor-pointer transition-transform duration-200"
+              >
+                <span>✦ DEVIL MODE ENGAGED. CONTACT FOUNDER NOW ➜ ✦</span>
+              </motion.button>
+            ) : (
+              <motion.p
+                key="hint"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 0.6 }}
+                className="text-stone-400 group-hover/branding:text-violet-600 group-hover/branding:opacity-100 transition-all duration-300 font-medium"
+              >
+                {clickedLetters.length > 0 
+                  ? `[ SYS HARMONICS: ${clickedLetters.length}/9 CHANNELS TRIGGERED ]` 
+                  : "✦ HOVER TO ILLUMINATE // CLICK ALL LETTERS TO ACTIVATE HIGHER RESONANCE ✦"
+                }
+              </motion.p>
+            )}
+          </AnimatePresence>
+        </div>
+
+        {/* Small detail: Bottom diagnostic values */}
+        <div className="w-full max-w-6xl mx-auto flex justify-between items-center px-6 text-[8px] sm:text-[9px] text-stone-300 font-mono tracking-widest uppercase pointer-events-none mt-4 relative z-10">
+          <div>[ POWER: OPTIMIZED ]</div>
+          <div className="flex items-center space-x-1.5">
+            <span className="inline-block w-1.5 h-1.5 rounded-full bg-emerald-400" />
+            <span>[ DEVIL_LABS_OS // ONLINE ]</span>
+          </div>
+        </div>
       </div>
     </footer>
   );

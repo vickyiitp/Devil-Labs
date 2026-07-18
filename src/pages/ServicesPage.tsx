@@ -19,11 +19,11 @@ export default function ServicesPage({ navigate }: ServicesPageProps) {
   ];
 
   return (
-    <div id="services-page-root" className="pt-28 pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-stone-800">
+    <div id="services-page-root" className="pt-20 xs:pt-24 sm:pt-28 lg:pt-32 pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-stone-800">
       {/* 1. HEADER */}
       <section id="services-header" className="mb-20 space-y-4">
-        <span className="text-violet-600 font-mono text-xs uppercase tracking-widest font-semibold">// OUR CAPABILITIES</span>
-        <h1 className="font-display font-extrabold text-5xl sm:text-7xl text-stone-800 tracking-tighter uppercase leading-none">
+        <span className="text-violet-600 font-mono text-xs uppercase tracking-widest font-semibold">✦ OUR CAPABILITIES</span>
+        <h1 className="font-display font-extrabold text-4xl xs:text-5xl sm:text-7xl text-stone-800 tracking-tighter uppercase leading-none">
           SYSTEMATIC<br className="sm:hidden" /> ARCHITECTURE.
         </h1>
         <p className="text-stone-600 text-base sm:text-lg max-w-2xl leading-relaxed">
@@ -99,7 +99,7 @@ export default function ServicesPage({ navigate }: ServicesPageProps) {
                 <div className="space-y-4">
                   <div className="flex items-center justify-between font-mono">
                     <span className="text-[10px] text-violet-600 font-bold tracking-widest">{item.badge}</span>
-                    <span className="text-xs text-stone-400 font-black">//{item.id}</span>
+                    <span className="text-xs text-stone-400 font-black">• {item.id}</span>
                   </div>
                   <h3 className="font-display font-black text-lg text-stone-800 group-hover:text-violet-600 transition-colors tracking-tight uppercase">
                     {item.title}
@@ -128,7 +128,7 @@ export default function ServicesPage({ navigate }: ServicesPageProps) {
             <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 border-b border-stone-200/30 pb-6">
               <div>
                 <span className="text-violet-600 font-mono text-xs uppercase tracking-widest font-semibold block mb-2">
-                  // {String(catIdx + 1).padStart(2, '0')}_CATEGORY
+                  ✦ Category {String(catIdx + 1).padStart(2, '0')}
                 </span>
                 <h2 className="font-display font-extrabold text-4xl text-stone-800 tracking-tight uppercase">
                   {category.title}
@@ -191,7 +191,7 @@ export default function ServicesPage({ navigate }: ServicesPageProps) {
       <ScrollReveal delay={100}>
         <section id="tech-stack-deep-dive-section" className="py-24 border-t border-stone-200/30">
           <div className="text-center space-y-4 mb-16">
-            <span className="text-violet-600 font-mono text-xs uppercase tracking-widest font-semibold">// PRODUCTION TOOLKIT</span>
+            <span className="text-violet-600 font-mono text-xs uppercase tracking-widest font-semibold">✦ PRODUCTION TOOLKIT</span>
             <h2 className="font-display font-extrabold text-4xl sm:text-5xl text-stone-800 tracking-tight uppercase">OUR ENGINE STACK.</h2>
             <p className="text-stone-600 text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
               We operate with surgical precision. We handpick, audit, and configure only the most advanced systems available to developer circles.
@@ -227,7 +227,7 @@ export default function ServicesPage({ navigate }: ServicesPageProps) {
       {/* 4. CTA */}
       <ScrollReveal delay={150}>
         <section id="services-cta-section" className="clay-card p-8 sm:p-16 flex flex-col items-center text-center space-y-6 max-w-4xl mx-auto mt-24">
-          <span className="text-violet-600 font-mono text-xs uppercase tracking-widest font-semibold">// ARCHITECTURAL BLUEPRINT</span>
+          <span className="text-violet-600 font-mono text-xs uppercase tracking-widest font-semibold">✦ ARCHITECTURAL BLUEPRINT</span>
           <h2 className="font-display font-extrabold text-3xl sm:text-5xl text-stone-800 uppercase tracking-tighter leading-tight">
             Need a custom stack?<br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-rose-500">Talk to our engineers.</span>

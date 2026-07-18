@@ -80,7 +80,7 @@ const CARDS: CardData[] = [
 
 export default function ArchedHeroCarousel() {
   const [scrollOffset, setScrollOffset] = useState(2.5);
-  const [dimensions, setDimensions] = useState({ width: 1200, isMobile: false });
+  const [dimensions, setDimensions] = useState({ width: 1200, isMobile: false, isSmallMobile: false });
 
   // Update dimensions for responsive scaling of the arch
   useEffect(() => {
@@ -88,7 +88,8 @@ export default function ArchedHeroCarousel() {
       const w = window.innerWidth;
       setDimensions({
         width: w,
-        isMobile: w < 768
+        isMobile: w < 768,
+        isSmallMobile: w < 480
       });
     };
     
@@ -111,10 +112,11 @@ export default function ArchedHeroCarousel() {
 
   // Determine carousel spatial dimensions
   const isMobile = dimensions.isMobile;
-  const radius = isMobile ? 380 : 850; // The radius of the arch
-  const angleSpacing = isMobile ? 22 : 16; // spacing angle in degrees
-  const cardWidth = isMobile ? 150 : 250;
-  const cardHeight = isMobile ? 220 : 360;
+  const isSmallMobile = dimensions.isSmallMobile;
+  const radius = isSmallMobile ? 260 : isMobile ? 340 : 850; // The radius of the arch
+  const angleSpacing = isSmallMobile ? 18 : isMobile ? 20 : 16; // spacing angle in degrees
+  const cardWidth = isSmallMobile ? 110 : isMobile ? 130 : 250;
+  const cardHeight = isSmallMobile ? 160 : isMobile ? 190 : 360;
 
   return (
     <div className="relative w-full overflow-hidden select-none py-12 md:py-20 flex flex-col items-center justify-center min-h-[300px] md:min-h-[500px]">

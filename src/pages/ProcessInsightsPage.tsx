@@ -49,7 +49,7 @@ export default function ProcessInsightsPage({ navigate }: ProcessInsightsPagePro
   }, []);
 
   return (
-    <div className="pt-32 pb-24 px-4 sm:px-6 lg:px-8 max-w-[1600px] mx-auto min-h-screen text-stone-800 relative">
+    <div className="pt-20 xs:pt-24 sm:pt-28 lg:pt-32 pb-24 px-4 sm:px-6 lg:px-8 max-w-[1600px] mx-auto min-h-screen text-stone-800 relative">
       
       {/* Decorative Matrix & Alignment Marks */}
       <div className="absolute top-24 left-10 text-xs text-violet-500/30 select-none pointer-events-none hidden xl:block font-mono">
@@ -72,8 +72,8 @@ export default function ProcessInsightsPage({ navigate }: ProcessInsightsPagePro
           <Sparkles size={12} className="animate-pulse" />
           <span>DevOps & Intelligence Core</span>
         </div>
-        <h1 className="font-display text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter uppercase mb-6 text-stone-850">
-          THE LAB <span className="text-violet-600 font-light font-serif italic">//</span> ENGINE & INSIGHTS
+        <h1 className="font-display text-3xl xs:text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter uppercase mb-6 text-stone-850">
+          THE LAB <span className="text-violet-600 font-light font-serif italic">✦</span> ENGINE & INSIGHTS
         </h1>
         <p className="text-stone-600 max-w-2xl mx-auto leading-relaxed text-sm font-sans font-light">
           A synchronized workspace displaying our high-velocity development cycle and deep research notes on agentic systems, full-stack micro-architecture, and cloud deployments.
@@ -197,7 +197,7 @@ export default function ProcessInsightsPage({ navigate }: ProcessInsightsPagePro
           >
             <div className="border-b border-stone-200/30 pb-4 mb-8 flex items-center justify-between">
               <div className="text-left">
-                <span className="text-xs text-violet-600 font-mono font-bold block">// DEPLOYMENT PIPELINE</span>
+                <span className="text-xs text-violet-600 font-mono font-bold block">✦ DEPLOYMENT PIPELINE</span>
                 <h2 className="text-2xl font-display font-extrabold text-stone-800 uppercase tracking-tight">The Engine Room</h2>
               </div>
               <span className="text-xs text-stone-500 font-mono uppercase tracking-widest bg-white/80 border border-stone-200/40 px-3 py-1.5 rounded-full shadow-sm font-bold">
@@ -230,7 +230,7 @@ export default function ProcessInsightsPage({ navigate }: ProcessInsightsPagePro
 
             {/* Tech Velocity Advantages Panel */}
             <div className="pt-8 border-t border-stone-200/30 text-left">
-              <h3 className="text-xs font-mono font-bold text-stone-400 tracking-[0.2em] uppercase mb-6">// INTEGRATED VELOCITY PRINCIPLES</h3>
+              <h3 className="text-xs font-mono font-bold text-stone-400 tracking-[0.2em] uppercase mb-6">✦ INTEGRATED VELOCITY PRINCIPLES</h3>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <div className="p-5 bg-[#fdfcf9] border border-stone-200/40 rounded-2xl hover:border-violet-300 shadow-sm transition-all">
                   <Zap className="text-violet-600 mb-3 animate-pulse" size={16} />
@@ -267,7 +267,7 @@ export default function ProcessInsightsPage({ navigate }: ProcessInsightsPagePro
           >
             <div className="border-b border-stone-200/30 pb-4 mb-8 flex items-center justify-between">
               <div className="text-left">
-                <span className="text-xs text-violet-600 font-mono font-bold block">// INTEL & RESEARCH</span>
+                <span className="text-xs text-violet-600 font-mono font-bold block">✦ INTEL & RESEARCH</span>
                 <h2 className="text-2xl font-display font-extrabold text-stone-800 uppercase tracking-tight">Lab Notes</h2>
               </div>
               <span className="text-xs text-stone-500 font-mono uppercase tracking-widest bg-white/80 border border-stone-200/40 px-3 py-1.5 rounded-full shadow-sm font-bold">
@@ -381,7 +381,7 @@ export default function ProcessInsightsPage({ navigate }: ProcessInsightsPagePro
           <div className="absolute top-0 right-0 w-32 h-32 bg-violet-100/30 rounded-full blur-3xl" />
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
             <div className="space-y-2">
-              <span className="text-xs text-violet-600 font-bold tracking-widest uppercase block">// LEAD ARCHITECTURE VALIDATION</span>
+              <span className="text-xs text-violet-600 font-bold tracking-widest uppercase block">✦ LEAD ARCHITECTURE VALIDATION</span>
               <p className="text-sm text-stone-600 italic font-sans leading-relaxed font-light">
                 "Devil Labs operates at the absolute peak of modern software velocity. Their secure, type-safe full-stack micro-architecture allowed our product team to launch and scale instantly."
               </p>
@@ -418,7 +418,7 @@ export default function ProcessInsightsPage({ navigate }: ProcessInsightsPagePro
                       <div className="flex items-center justify-between border-b border-stone-200/30 pb-4 mb-6">
                         <div className="flex items-center space-x-2 text-violet-600 font-mono">
                           <Terminal size={14} />
-                          <span className="text-xs tracking-widest font-bold uppercase">{art.tag} // DECRYPTED</span>
+                          <span className="text-xs tracking-widest font-bold uppercase">{art.tag} ✦ DECRYPTED</span>
                         </div>
                         <button 
                           onClick={() => setSelectedArticle(null)}

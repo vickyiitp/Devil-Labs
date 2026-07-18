@@ -285,10 +285,10 @@ ${clientName || 'Partner'}`;
             <div className="space-y-2 mb-6">
               <div className="inline-flex items-center space-x-2 px-2.5 py-1 bg-violet-100 border border-violet-200/50 rounded-full">
                 <span className="w-1.5 h-1.5 rounded-full bg-violet-500 animate-pulse" />
-                <span className="font-mono text-[8px] text-violet-700 tracking-[0.25em] uppercase font-bold">TRANSMISSION UPLINK v2.0</span>
+                <span className="font-mono text-[8px] text-violet-700 tracking-[0.25em] uppercase font-bold">Project Consultation Portal</span>
               </div>
               <h3 className="text-xl md:text-2xl font-display font-black tracking-tight text-stone-800 uppercase">
-                INITIALIZE PROJECT
+                Initialize Project
               </h3>
               <p className="text-stone-600 text-xs font-sans leading-relaxed">
                 Connect with India's highest-tier autonomous software laboratory. Choose your transmission medium.
@@ -305,7 +305,7 @@ ${clientName || 'Partner'}`;
                     : 'text-stone-500 hover:text-stone-800'
                 }`}
               >
-                TELEMETRY DISPATCH
+                Send Project Inquiry
               </button>
               <button
                 onClick={() => { audioEngine.playClick(); setActiveTab('hotlines'); }}
@@ -315,7 +315,7 @@ ${clientName || 'Partner'}`;
                     : 'text-stone-500 hover:text-stone-800'
                 }`}
               >
-                HOTLINE CHANNELS
+                Direct Contact Channels
               </button>
             </div>
 
@@ -330,7 +330,7 @@ ${clientName || 'Partner'}`;
                         <div className="space-y-1 relative group/field">
                           <div className="flex justify-between items-center">
                             <label className="block text-[9px] font-mono text-stone-500 uppercase tracking-widest group-hover/field:text-violet-600 transition-colors duration-300">
-                              // INITIATOR IDENTITY *
+                              Your Full Name *
                             </label>
                             {clientName && (
                               <motion.span 
@@ -357,7 +357,7 @@ ${clientName || 'Partner'}`;
                               animate={{ opacity: 1, y: 0 }}
                               className="text-[8px] font-mono text-stone-400 uppercase tracking-wider pl-1 pt-0.5"
                             >
-                              [ Identity: <span className="text-violet-600 font-bold">{clientName}</span> ]
+                              [ Name: <span className="text-violet-600 font-bold">{clientName}</span> ]
                             </motion.div>
                           )}
                         </div>
@@ -366,7 +366,7 @@ ${clientName || 'Partner'}`;
                         <div className="space-y-1 relative group/field">
                           <div className="flex justify-between items-center">
                             <label className="block text-[9px] font-mono text-stone-500 uppercase tracking-widest group-hover/field:text-violet-600 transition-colors duration-300">
-                              // SECURE UPLINK EMAIL *
+                              Your Email Address *
                             </label>
                             {email && /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email) && (
                               <motion.span 
@@ -375,7 +375,7 @@ ${clientName || 'Partner'}`;
                                 className="text-[8px] font-mono text-emerald-600 font-bold tracking-widest uppercase flex items-center gap-1"
                               >
                                 <span className="w-1 h-1 rounded-full bg-emerald-500 animate-pulse" />
-                                SMTP OK
+                                EMAIL OK
                               </motion.span>
                             )}
                           </div>
@@ -393,7 +393,7 @@ ${clientName || 'Partner'}`;
                               animate={{ opacity: 1 }}
                               className="text-[8px] font-mono text-amber-500 uppercase tracking-wider pl-1 pt-0.5"
                             >
-                              [ Awaiting RFC-compliant address... ]
+                              [ Awaiting email address... ]
                             </motion.div>
                           )}
                         </div>
@@ -404,7 +404,7 @@ ${clientName || 'Partner'}`;
                         <div className="space-y-1 relative group/field">
                           <div className="flex justify-between items-center">
                             <label className="block text-[9px] font-mono text-stone-500 uppercase tracking-widest group-hover/field:text-violet-600 transition-colors duration-300">
-                              // DIRECT HOTLINE *
+                              Direct Contact Number *
                             </label>
                             {phoneNumber && /^\d{4,14}$/.test(phoneNumber.replace(/[\s\-()]/g, '')) && (
                               <motion.span 
@@ -446,7 +446,7 @@ ${clientName || 'Partner'}`;
                         <div className="space-y-1 relative group/field">
                           <div className="flex justify-between items-center">
                             <label className="block text-[9px] font-mono text-stone-500 uppercase tracking-widest group-hover/field:text-violet-600 transition-colors duration-300">
-                              // ORGANIZATION NODE
+                              Company or Organization
                             </label>
                             {companyName && (
                               <motion.span 
@@ -455,7 +455,7 @@ ${clientName || 'Partner'}`;
                                 className="text-[8px] font-mono text-violet-600 font-bold tracking-widest uppercase flex items-center gap-1"
                               >
                                 <span className="w-1 h-1 rounded-full bg-violet-500 animate-pulse" />
-                                NODE CAPTURED
+                                NODAL ID CAPTURED
                               </motion.span>
                             )}
                           </div>
@@ -472,7 +472,7 @@ ${clientName || 'Partner'}`;
                       {/* Budget Tier upgraded according to pricing */}
                       <div className="space-y-1 relative group/field">
                         <div className="flex justify-between items-center">
-                          <label className="block text-[9px] font-mono text-stone-500 uppercase tracking-widest group-hover/field:text-violet-600 transition-colors duration-300">// CAPITAL EXPECTATION</label>
+                          <label className="block text-[9px] font-mono text-stone-500 uppercase tracking-widest group-hover/field:text-violet-600 transition-colors duration-300">Estimated Project Budget</label>
                           <span className="text-[8px] font-mono text-violet-600 uppercase tracking-widest">Active in {currency}</span>
                         </div>
                         <select
@@ -480,7 +480,7 @@ ${clientName || 'Partner'}`;
                           onChange={(e) => setBudgetTier(e.target.value)}
                           className="w-full px-3.5 py-2.5 text-xs font-mono text-stone-800 focus:outline-none focus:border-violet-400 focus:ring-1 focus:ring-violet-300/30 transition-all rounded-xl clay-inset cursor-pointer bg-transparent"
                         >
-                          <option value="" className="text-stone-400">Select budget allocation coordinates...</option>
+                          <option value="" className="text-stone-400">Select estimated project budget...</option>
                           {budgetOptions.map((opt) => (
                             <option key={opt.value} value={opt.value} className="bg-[#fcfbf9] text-stone-800">
                               {opt.label}
@@ -492,7 +492,7 @@ ${clientName || 'Partner'}`;
                       {/* Specifications */}
                       <div className="space-y-1 relative group/field">
                         <div className="flex justify-between items-center">
-                          <label className="block text-[9px] font-mono text-stone-500 uppercase tracking-widest group-hover/field:text-violet-600 transition-colors duration-300">// ARCHITECTURAL VISION SPECS</label>
+                          <label className="block text-[9px] font-mono text-stone-500 uppercase tracking-widest group-hover/field:text-violet-600 transition-colors duration-300">Project Vision & Requirements</label>
                           <span className="text-[8px] font-mono text-stone-400 uppercase tracking-widest">
                             {projectBrief.length} CH
                           </span>
@@ -500,7 +500,7 @@ ${clientName || 'Partner'}`;
                         <textarea
                           value={projectBrief}
                           onChange={(e) => setProjectBrief(e.target.value)}
-                          placeholder="CORE UTILITIES, DATABASE EXPECTATIONS, AND AI REQ..."
+                          placeholder="Tell us about your core needs, database requirements, or AI expectations..."
                           rows={2}
                           className="w-full px-3.5 py-2.5 text-xs font-mono text-stone-800 placeholder-stone-400 focus:outline-none focus:border-violet-400 focus:ring-1 focus:ring-violet-300/30 transition-all rounded-xl clay-inset resize-none placeholder:uppercase leading-relaxed"
                         />
@@ -535,12 +535,12 @@ ${clientName || 'Partner'}`;
                           {isSubmitting ? (
                             <div className="flex items-center space-x-2">
                               <Loader2 size={14} className="animate-spin text-white" />
-                              <span>DISPATCHING TELEMETRY...</span>
+                              <span>Submitting Inquiry...</span>
                             </div>
                           ) : (
                             <div className="flex items-center space-x-1.5">
                               <Cpu size={14} className="group-hover:rotate-45 transition-transform" />
-                              <span>DISPATCH TELEMETRY PACKET</span>
+                              <span>Submit Project Inquiry</span>
                             </div>
                           )}
                         </button>
@@ -557,15 +557,15 @@ ${clientName || 'Partner'}`;
                         <CheckCircle size={40} className="animate-bounce" />
                       </div>
                       <div className="space-y-2">
-                        <h4 className="text-lg font-display font-black text-stone-800 uppercase tracking-tight">TRANSMISSION COMPLETED</h4>
+                        <h4 className="text-lg font-display font-black text-stone-800 uppercase tracking-tight">Inquiry Submitted</h4>
                         <p className="text-stone-600 text-xs max-w-sm mx-auto">
-                          Your project brief has bypassed filters and has been dispatched live across all registered channels.
+                          Your project brief has been successfully received and routed to our team.
                         </p>
                       </div>
 
                       {/* Channel specific dispatch states */}
                       <div className="max-w-md mx-auto bg-[#f0ede6] border border-stone-200/50 rounded-2xl p-4 text-left font-mono text-[9px] text-stone-500 space-y-2.5 shadow-inner">
-                        <span className="font-bold text-stone-700 uppercase tracking-widest block mb-1">// DISPATCH PIPELINE REPORTS:</span>
+                        <span className="font-bold text-stone-700 uppercase tracking-widest block mb-1">INQUIRY TRANSMISSION STATUS:</span>
                         
                         {/* Email reporter */}
                         <div className="flex justify-between items-center border-b border-stone-200/30 pb-1.5">
@@ -573,7 +573,7 @@ ${clientName || 'Partner'}`;
                           {dispatchDetails?.email?.success ? (
                             <span className="text-emerald-600 font-bold">● DISPATCHED</span>
                           ) : (
-                            <span className="text-stone-500 font-bold">● STDOUT STANDBY (KEYS REQ)</span>
+                            <span className="text-stone-500 font-bold">● STANDBY (LOCAL INBOX REQ)</span>
                           )}
                         </div>
 
@@ -612,7 +612,7 @@ ${clientName || 'Partner'}`;
                         onClick={() => { audioEngine.playClick(); onClose(); }}
                         className="px-6 py-2 bg-stone-100 hover:bg-stone-200 border border-stone-200/50 rounded-xl font-mono text-[10px] text-stone-700 tracking-widest uppercase cursor-pointer"
                       >
-                        DISMISS TERMINAL
+                        CLOSE WINDOW
                       </button>
                     </motion.div>
                   )}

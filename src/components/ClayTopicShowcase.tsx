@@ -104,39 +104,41 @@ interface MagneticClayCardProps {
 
 function MagneticClayCard({ topic, onSelect, renderCodePreview }: MagneticClayCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
-  const [coords, setCoords] = useState({ x: 0, y: 0, rX: 0, rY: 0 });
+  const [coords, setCoords] = useState({ x: 0, y: 0, rX: 0, rY: 0, glareX: 50, glareY: 50 });
   const [isHovered, setIsHovered] = useState(false);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!cardRef.current) return;
     const rect = cardRef.current.getBoundingClientRect();
     
-    // Calculate cursor position relative to the card's center
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-    const mouseX = e.clientX;
-    const mouseY = e.clientY;
+    // Calculate cursor position relative to the card's boundaries
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
     
-    // Distances from center
-    const distanceX = mouseX - centerX;
-    const distanceY = mouseY - centerY;
+    // Convert to normalized percentage from center (-0.5 to 0.5)
+    const xPct = (mouseX / rect.width) - 0.5;
+    const yPct = (mouseY / rect.height) - 0.5;
     
-    // Dampen the movement (magnetic pull strength: max 12px translation and 6deg rotation)
-    const maxTranslate = 12; 
-    const maxRotate = 6;
+    // Calculate 3D tilt angles (premium 3D physical tilt, max 14 degrees)
+    const maxRotate = 14;
+    const targetRotateX = -yPct * maxRotate;
+    const targetRotateY = xPct * maxRotate;
     
-    const targetX = (distanceX / (rect.width / 2)) * maxTranslate;
-    const targetY = (distanceY / (rect.height / 2)) * maxTranslate;
+    // Slight translation (magnetic pull translation, max 8px)
+    const maxTranslate = 8;
+    const targetX = xPct * maxTranslate;
+    const targetY = yPct * maxTranslate;
     
-    const targetRotateX = -(distanceY / (rect.height / 2)) * maxRotate;
-    const targetRotateY = (distanceX / (rect.width / 2)) * maxRotate;
+    // Glare coordinates as percentage (0 to 100)
+    const glareX = (mouseX / rect.width) * 100;
+    const glareY = (mouseY / rect.height) * 100;
     
-    setCoords({ x: targetX, y: targetY, rX: targetRotateX, rY: targetRotateY });
+    setCoords({ x: targetX, y: targetY, rX: targetRotateX, rY: targetRotateY, glareX, glareY });
   };
 
   const handleMouseLeave = () => {
     setIsHovered(false);
-    setCoords({ x: 0, y: 0, rX: 0, rY: 0 });
+    setCoords({ x: 0, y: 0, rX: 0, rY: 0, glareX: 50, glareY: 50 });
   };
 
   const handleMouseEnter = () => {
@@ -150,7 +152,7 @@ function MagneticClayCard({ topic, onSelect, renderCodePreview }: MagneticClayCa
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onClick={() => onSelect(topic)}
-      style={{ perspective: 1000 }}
+      style={{ perspective: 1200 }}
       className="h-[450px] relative"
     >
       <motion.div
@@ -159,26 +161,46 @@ function MagneticClayCard({ topic, onSelect, renderCodePreview }: MagneticClayCa
           y: coords.y,
           rotateX: coords.rX,
           rotateY: coords.rY,
-          scale: isHovered ? 1.015 : 1,
+          scale: isHovered ? 1.025 : 1,
           boxShadow: isHovered 
-            ? "25px 30px 65px rgba(185, 175, 160, 0.25), -25px -30px 65px #ffffff"
+            ? `${-coords.rY * 1.8}px ${coords.rX * 1.8 + 25}px 60px rgba(185, 175, 160, 0.32), -8px -8px 40px #ffffff`
             : "0px 10px 30px rgba(185, 175, 160, 0.08)"
         }}
         transition={{ 
           type: "spring", 
-          stiffness: 120, 
-          damping: 14, 
+          stiffness: 150, 
+          damping: 18, 
           mass: 0.1
+        }}
+        style={{
+          transformStyle: "preserve-3d",
         }}
         className="clay-card rounded-[32px] p-6 flex flex-col justify-between h-full relative overflow-hidden group cursor-pointer text-left w-full h-full"
       >
-        {/* Image / Code-rendered graphic container */}
-        <div className="w-full h-[200px] rounded-[24px] overflow-hidden mb-6 relative">
+        {/* Dynamic glossy reflection / glare sheet */}
+        {isHovered && (
+          <div 
+            className="absolute inset-0 pointer-events-none rounded-[32px] z-30 transition-opacity duration-350"
+            style={{
+              background: `radial-gradient(circle 220px at ${coords.glareX}% ${coords.glareY}%, rgba(255, 255, 255, 0.18), transparent 80%)`,
+              mixBlendMode: 'overlay',
+            }}
+          />
+        )}
+
+        {/* 3D Elevated Layer 1: Image / Code-rendered graphic container */}
+        <div 
+          style={{ transform: "translateZ(35px)", transformStyle: "preserve-3d" }}
+          className="w-full h-[200px] rounded-[24px] overflow-hidden mb-6 relative shadow-md transition-shadow duration-300 group-hover:shadow-xl"
+        >
           {renderCodePreview(topic.previewType, isHovered)}
         </div>
 
-        {/* Text section */}
-        <div className="space-y-4 flex-grow flex flex-col justify-between">
+        {/* 3D Elevated Layer 2: Text details and bullets */}
+        <div 
+          style={{ transform: "translateZ(20px)" }}
+          className="space-y-4 flex-grow flex flex-col justify-between"
+        >
           <div>
             {/* Header line & badge */}
             <div className="flex items-center justify-between">

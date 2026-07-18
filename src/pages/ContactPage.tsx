@@ -361,7 +361,7 @@ ${formData.name}`;
   const mailtoUrl = `mailto:devil.labs.contact@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
 
   return (
-    <div id="contact-page-root" className="pt-28 pb-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto min-h-screen relative overflow-hidden text-stone-800">
+    <div id="contact-page-root" className="pt-20 xs:pt-24 sm:pt-28 lg:pt-32 pb-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto min-h-screen relative overflow-hidden text-stone-800">
       {/* Abstract Background Blur */}
       <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-violet-600/5 rounded-full blur-[120px] pointer-events-none -z-10 mix-blend-multiply" />
       <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-fuchsia-600/5 rounded-full blur-[100px] pointer-events-none -z-10 mix-blend-multiply" />
@@ -380,10 +380,10 @@ ${formData.name}`;
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1 }}
-          className="font-display font-black text-5xl sm:text-7xl lg:text-8xl text-stone-850 tracking-tighter uppercase leading-[0.9]"
+          className="font-display font-black text-4xl xs:text-5xl sm:text-7xl lg:text-8xl text-stone-850 tracking-tighter uppercase leading-[0.9]"
         >
           Let's Build <br/>
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 via-rose-500 to-amber-500 font-serif italic font-light lowercase text-6xl sm:text-8xl lg:text-9xl">something</span> <br/>
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 via-rose-500 to-amber-500 font-serif italic font-light lowercase text-5xl xs:text-6xl sm:text-8xl lg:text-9xl">something</span> <br/>
           Beautiful.
         </motion.h1>
       </section>
@@ -448,7 +448,7 @@ ${formData.name}`;
                 <div className="flex flex-col space-y-2 relative group/field">
                   <div className="flex justify-between items-center">
                     <label htmlFor="name" className="text-stone-700 font-mono text-xs uppercase tracking-widest font-bold group-hover/field:text-violet-600 transition-colors duration-300">
-                      // INITIATOR IDENTITY *
+                      ✦ INITIATOR IDENTITY *
                     </label>
                     {formData.name && (
                       <motion.span 
@@ -484,7 +484,7 @@ ${formData.name}`;
                 <div className="flex flex-col space-y-2 relative group/field">
                   <div className="flex justify-between items-center">
                     <label htmlFor="email" className="text-stone-700 font-mono text-xs uppercase tracking-widest font-bold group-hover/field:text-violet-600 transition-colors duration-300">
-                      // SECURE UPLINK EMAIL *
+                      ✦ SECURE UPLINK EMAIL *
                     </label>
                     {formData.email && /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(formData.email) && (
                       <motion.span 
@@ -524,7 +524,7 @@ ${formData.name}`;
                 <div className="flex flex-col space-y-2 relative group/field">
                   <div className="flex justify-between items-center">
                     <label htmlFor="phone" className="text-stone-700 font-mono text-xs uppercase tracking-widest font-bold group-hover/field:text-violet-600 transition-colors duration-300">
-                      // DIRECT TELEPHONY COORDINATES *
+                      ✦ DIRECT TELEPHONY COORDINATES *
                     </label>
                     {formData.phone && /^\d{4,14}$/.test(formData.phone.replace(/[\s\-()]/g, '')) && (
                       <motion.span 
@@ -575,7 +575,7 @@ ${formData.name}`;
                 <div className="flex flex-col space-y-2 relative group/field">
                   <div className="flex justify-between items-center">
                     <label htmlFor="company" className="text-stone-700 font-mono text-xs uppercase tracking-widest font-bold group-hover/field:text-violet-600 transition-colors duration-300">
-                      // ORGANIZATION NODE *
+                      ✦ ORGANIZATION NODE *
                     </label>
                     {formData.company && (
                       <motion.span 
@@ -839,7 +839,7 @@ ${formData.name}`;
 
                 {/* Live Channel Transmission Status Reporting */}
                 <div className="max-w-xl mx-auto clay-card p-6 text-left font-mono text-xs text-stone-600 space-y-3">
-                  <span className="font-bold text-stone-800 uppercase tracking-widest block mb-2">// PIPELINE DISPATCH LOGS:</span>
+                  <span className="font-bold text-stone-800 uppercase tracking-widest block mb-2">✦ PIPELINE DISPATCH LOGS:</span>
                   
                   {/* Email reporter */}
                   <div className="flex justify-between items-center border-b border-stone-200/30 pb-2">
@@ -1003,7 +1003,7 @@ ${formData.name}`;
 
               {/* Network Platforms */}
               <div className="space-y-4 pt-6 border-t border-stone-200/50">
-                <h4 className="font-mono text-xs font-bold text-stone-400 uppercase tracking-[0.25em] text-left">// NETWORK PLATFORMS</h4>
+                <h4 className="font-mono text-xs font-bold text-stone-400 uppercase tracking-[0.25em] text-left">✦ NETWORK PLATFORMS</h4>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <a href="https://github.com/Devil-Labs/" target="_blank" rel="noreferrer" className="flex items-center justify-between p-4 clay-button rounded-xl transition-all duration-300 group">
                     <div className="flex items-center space-x-3">

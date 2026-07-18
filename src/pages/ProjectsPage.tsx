@@ -32,7 +32,7 @@ const CloudyBlueprintNote = ({
         <div className="flex items-center justify-between border-b border-stone-200/30 pb-2.5 mb-3 font-mono text-[9px] uppercase tracking-[0.2em] text-stone-400">
           <span className="flex items-center gap-1.5">
             <span className="w-1.5 h-1.5 rounded-full bg-violet-500 animate-pulse" />
-            SPEC-NOTE // V03
+            SPEC-NOTE ✦ V03
           </span>
           <span>DEVIL CORE ENG.</span>
         </div>
@@ -166,7 +166,7 @@ export default function ProjectsPage({ navigate }: ProjectsPageProps) {
   }, []);
 
   return (
-    <div className="pt-32 pb-24 px-4 sm:px-6 lg:px-8 max-w-[1400px] mx-auto min-h-screen relative overflow-hidden text-stone-800">
+    <div className="pt-20 xs:pt-24 sm:pt-28 lg:pt-32 pb-24 px-4 sm:px-6 lg:px-8 max-w-[1400px] mx-auto min-h-screen relative overflow-hidden text-stone-800">
       
       {/* Real-time telemetry notification toast */}
       <AnimatePresence>
@@ -325,7 +325,7 @@ export default function ProjectsPage({ navigate }: ProjectsPageProps) {
                       whileInView={{ opacity: 1, x: 0, y: 0 }}
                       viewport={{ once: true, margin: "-120px" }}
                       transition={{ type: "spring", stiffness: 40, damping: 14, delay: 0.05 }}
-                      className={`col-span-1 md:col-span-7 ${isEven ? 'md:order-1' : 'md:order-2'}`}
+                      className={`col-span-1 md:col-span-7 order-1 ${isEven ? 'md:order-1' : 'md:order-2'}`}
                     >
                       <div className="p-4 rounded-3xl bg-[#fcfbf9] border border-stone-200/50 shadow-[8px_8px_20px_rgba(45,38,32,0.05),-8px_-8px_20px_#ffffff] hover:scale-[1.01] transition-all duration-300 h-full flex flex-col justify-between">
                         {/* Browser Mockup */}
@@ -383,7 +383,7 @@ export default function ProjectsPage({ navigate }: ProjectsPageProps) {
                       whileInView={{ opacity: 1, x: 0, y: 0 }}
                       viewport={{ once: true, margin: "-120px" }}
                       transition={{ type: "spring", stiffness: 40, damping: 14, delay: 0.12 }}
-                      className={`col-span-1 md:col-span-5 ${isEven ? 'md:order-2' : 'md:order-1'}`}
+                      className={`col-span-1 md:col-span-5 order-2 ${isEven ? 'md:order-2' : 'md:order-1'}`}
                     >
                       <CloudyBlueprintNote project={project} onPrefill={handlePrefillContact} />
                     </motion.div>
@@ -423,7 +423,7 @@ export default function ProjectsPage({ navigate }: ProjectsPageProps) {
                       whileInView={{ opacity: 1, x: 0, y: 0 }}
                       viewport={{ once: true, margin: "-120px" }}
                       transition={{ type: "spring", stiffness: 40, damping: 14, delay: 0.05 }}
-                      className={`col-span-1 md:col-span-7 ${isEven ? 'md:order-1' : 'md:order-2'}`}
+                      className={`col-span-1 md:col-span-7 order-1 ${isEven ? 'md:order-1' : 'md:order-2'}`}
                     >
                       <div className="p-4 rounded-3xl bg-[#fcfbf9] border border-stone-200/50 shadow-[8px_8px_20px_rgba(45,38,32,0.05),-8px_-8px_20px_#ffffff] h-full flex flex-col hover:scale-[1.01] transition-all duration-300">
                         {/* Browser Frame */}
@@ -464,7 +464,7 @@ export default function ProjectsPage({ navigate }: ProjectsPageProps) {
                               <project.icon size={16} className="text-stone-600" />
                             </div>
                             <div>
-                              <h4 className="text-stone-850 text-sm font-bold tracking-tight">{project.title.split('//')[0]}</h4>
+                              <h4 className="text-stone-850 text-sm font-bold tracking-tight">{project.title.split('✦')[0].trim()}</h4>
                               <div className="flex items-center space-x-2 mt-0.5">
                                 <span className="text-stone-500 text-xs">{project.tech}</span>
                                 {project.isPro && (
@@ -494,7 +494,7 @@ export default function ProjectsPage({ navigate }: ProjectsPageProps) {
                       whileInView={{ opacity: 1, x: 0, y: 0 }}
                       viewport={{ once: true, margin: "-120px" }}
                       transition={{ type: "spring", stiffness: 40, damping: 14, delay: 0.12 }}
-                      className={`col-span-1 md:col-span-5 ${isEven ? 'md:order-2' : 'md:order-1'}`}
+                      className={`col-span-1 md:col-span-5 order-2 ${isEven ? 'md:order-2' : 'md:order-1'}`}
                     >
                       <CloudyBlueprintNote project={project} onPrefill={handlePrefillContact} />
                     </motion.div>
