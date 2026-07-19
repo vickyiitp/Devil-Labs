@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'motion/react';
-import { ArrowUpRight, Check, HelpCircle, ChevronDown, ChevronUp, Zap, Sparkles, Sliders, Clock, Users, DollarSign } from 'lucide-react';
+import { ArrowUpRight, Check, HelpCircle, ChevronDown, ChevronUp, Zap, Sparkles, Sliders, Clock, Users, DollarSign, Layout, Globe, ShoppingCart, Cpu, Bot } from 'lucide-react';
 import { useState, useMemo, useEffect } from 'react';
 import { useCurrency } from '../contexts/CurrencyContext';
 import ScrollReveal from '../components/ScrollReveal';
@@ -249,9 +249,9 @@ export default function PricingPage({ navigate }: PricingPageProps) {
           >
             {/* Ribbon or Badge for Popular */}
             {model.popular && (
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-violet-600 to-rose-500 text-white font-mono text-[9px] uppercase tracking-widest font-bold flex items-center space-x-1.5 shadow-sm rounded-full">
-                <Sparkles size={10} className="animate-spin-slow" />
-                <span>MOST POPULAR ARCHITECTURE</span>
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-violet-600 to-rose-500 keep-white font-mono text-[9px] uppercase tracking-widest font-bold flex items-center space-x-1.5 shadow-sm rounded-full">
+                <Sparkles size={10} className="animate-spin-slow text-white-force" />
+                <span className="text-white-force">MOST POPULAR ARCHITECTURE</span>
               </div>
             )}
 
@@ -365,16 +365,30 @@ I would like to proceed with this architecture. Please provide further details.`
       {/* NEW: INTERACTIVE ESTIMATION TOOL */}
       <ScrollReveal delay={100}>
         <section id="pricing-calculator" className="mb-32 clay-card relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-violet-200/10 rounded-full blur-3xl pointer-events-none -z-10" />
+          <div className="absolute top-0 right-0 w-96 h-96 bg-violet-600/5 rounded-full blur-3xl pointer-events-none -z-10" />
           
-          <div className="p-8 sm:p-12 border-b border-stone-200/30">
-            <div className="flex items-center space-x-3 mb-4">
-              <Sliders size={20} className="text-violet-600" />
-              <h2 className="font-display font-extrabold text-2xl text-stone-800 uppercase tracking-tight">Interactive Estimator</h2>
+          <div className="p-8 sm:p-12 border-b border-stone-200/30 bg-stone-50/35">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div className="space-y-1.5 text-left">
+                <div className="flex items-center space-x-2.5">
+                  <span className="p-2 bg-violet-100 rounded-xl text-violet-600">
+                    <Sliders size={18} />
+                  </span>
+                  <span className="text-violet-600 font-mono text-xs uppercase tracking-widest font-black">✦ ESTIMATION SUITE</span>
+                </div>
+                <h2 className="font-display font-black text-2xl xs:text-3xl text-stone-850 uppercase tracking-tight mt-1">Interactive Estimator</h2>
+                <p className="text-stone-600 text-sm max-w-xl leading-relaxed">
+                  Toggle configurations below to simulate an architectural deployment. Values are rough projections and scale with complexity.
+                </p>
+              </div>
+              <div className="bg-violet-50 border border-violet-100 px-4 py-2.5 rounded-2xl flex items-center space-x-2 shrink-0 self-start sm:self-center">
+                <span className="flex h-2 w-2 relative">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-violet-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-violet-500"></span>
+                </span>
+                <span className="font-mono text-[9px] font-bold text-violet-700 uppercase tracking-widest">REAL-TIME TELEMETRY</span>
+              </div>
             </div>
-            <p className="text-stone-600 text-sm max-w-xl leading-relaxed">
-              Toggle configurations below to simulate an architectural deployment. Values are rough projections and scale with complexity.
-            </p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12">
@@ -382,28 +396,35 @@ I would like to proceed with this architecture. Please provide further details.`
             <div className="lg:col-span-7 p-8 sm:p-12 space-y-10 border-r-0 lg:border-r border-b lg:border-b-0 border-stone-200/30">
               
               {/* Base Tier */}
-              <div className="space-y-4">
-                <span className="text-stone-400 font-mono text-[10px] uppercase tracking-widest font-bold">01_BASE_ARCHITECTURE</span>
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+              <div className="space-y-4 text-left">
+                <div className="flex items-center space-x-2">
+                  <span className="font-mono text-[10px] text-stone-400 uppercase tracking-widest font-black">01_BASE_ARCHITECTURE</span>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {[
-                    { id: 'landing-pages', label: 'Landing Pages' },
-                    { id: 'business-website', label: 'Business Web' },
-                    { id: 'ecommerce', label: 'E-Commerce' },
-                    { id: 'fullstack', label: 'Custom App' },
-                    { id: 'ai-agents', label: 'AI Agents' }
-                  ].map(tier => (
-                    <button
-                      key={tier.id}
-                      onClick={() => setCalcTier(tier.id as any)}
-                      className={`py-3 px-4 text-xs font-mono tracking-wide rounded-xl transition-all border cursor-pointer ${
-                        calcTier === tier.id 
-                          ? 'bg-gradient-to-r from-violet-600 to-rose-500 border-transparent text-white shadow-md' 
-                          : 'bg-[#f0ede6] border-stone-200/50 text-stone-600 hover:border-stone-400 shadow-inner'
-                      }`}
-                    >
-                      {tier.label}
-                    </button>
-                  ))}
+                    { id: 'landing-pages', label: 'Landing Pages', icon: Layout },
+                    { id: 'business-website', label: 'Business Web', icon: Globe },
+                    { id: 'ecommerce', label: 'E-Commerce', icon: ShoppingCart },
+                    { id: 'fullstack', label: 'Custom App', icon: Cpu },
+                    { id: 'ai-agents', label: 'AI Agents', icon: Bot }
+                  ].map(tier => {
+                    const IconComp = tier.icon;
+                    const isActive = calcTier === tier.id;
+                    return (
+                      <button
+                        key={tier.id}
+                        onClick={() => setCalcTier(tier.id as any)}
+                        className={`p-3.5 text-xs font-mono tracking-wide rounded-xl transition-all border cursor-pointer flex items-center space-x-3 text-left ${
+                          isActive 
+                            ? 'bg-gradient-to-r from-violet-600 to-rose-500 border-transparent text-white-force shadow-md shadow-violet-500/10 scale-[1.01]' 
+                            : 'bg-[#faf8f5] border-stone-200/60 text-stone-700 hover:border-violet-300 hover:bg-violet-50/50 hover:text-violet-700 hover:shadow-sm'
+                        }`}
+                      >
+                        <IconComp size={15} className={isActive ? 'text-white-force' : 'text-stone-400'} />
+                        <span className="font-bold">{tier.label}</span>
+                      </button>
+                    );
+                  })}
                 </div>
               </div>
 
@@ -413,120 +434,153 @@ I would like to proceed with this architecture. Please provide further details.`
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: 'auto' }}
                     exit={{ opacity: 0, height: 0 }}
-                    className="space-y-4 overflow-hidden mt-10"
+                    className="space-y-4 overflow-hidden mt-10 text-left"
                   >
-                    <span className="text-stone-400 font-mono text-[10px] uppercase tracking-widest font-bold">02_SYSTEM_COMPLEXITY</span>
+                    <span className="text-stone-400 font-mono text-[10px] uppercase tracking-widest font-black">02_SYSTEM_COMPLEXITY</span>
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                       {[
-                        { id: 'small', label: 'Lean / Focused' },
-                        { id: 'medium', label: 'Standard Scale' },
-                        { id: 'large', label: 'Enterprise Grade' }
-                      ].map(scope => (
-                        <button
-                          key={scope.id}
-                          onClick={() => setCalcScope(scope.id as any)}
-                          className={`py-3 px-4 text-xs font-mono tracking-wide rounded-xl transition-all border cursor-pointer ${
-                            calcScope === scope.id 
-                              ? 'bg-stone-800 text-white border-transparent shadow-md' 
-                              : 'bg-[#f0ede6] border-stone-200/50 text-stone-600 hover:border-stone-400 shadow-inner'
-                          }`}
-                        >
-                          {scope.label}
-                        </button>
-                      ))}
+                        { id: 'small', label: 'Lean / Focused', desc: 'Pre-production MVP build with essential features.' },
+                        { id: 'medium', label: 'Standard Scale', desc: 'Production-ready with custom backend and scaling.' },
+                        { id: 'large', label: 'Enterprise Grade', desc: 'Fully optimized with continuous SLA and audits.' }
+                      ].map(scope => {
+                        const isActive = calcScope === scope.id;
+                        return (
+                          <button
+                            key={scope.id}
+                            onClick={() => setCalcScope(scope.id as any)}
+                            className={`p-4 text-left rounded-xl transition-all border cursor-pointer flex flex-col justify-between h-full ${
+                              isActive 
+                                ? 'bg-stone-900 border-transparent text-white-force shadow-md shadow-stone-850/20 scale-[1.01]' 
+                                : 'bg-[#faf8f5] border-stone-200/60 text-stone-700 hover:border-violet-300 hover:bg-violet-50/50 hover:text-violet-700 hover:shadow-sm'
+                            }`}
+                          >
+                            <span className={`text-xs font-mono tracking-wide font-black uppercase mb-1.5 ${isActive ? 'text-white-force' : 'text-stone-850'}`}>
+                              {scope.label}
+                            </span>
+                            <span className={`text-[10px] font-sans leading-relaxed ${isActive ? 'text-stone-300-force' : 'text-stone-500'}`}>
+                              {scope.desc}
+                            </span>
+                          </button>
+                        );
+                      })}
                     </div>
                   </motion.div>
               </AnimatePresence>
 
               {/* Add-ons */}
-              <div className="space-y-4 mt-10">
-                <span className="text-stone-400 font-mono text-[10px] uppercase tracking-widest font-bold">03_ADDITIONAL_MODULES</span>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div className="space-y-4 mt-10 text-left">
+                <span className="text-stone-400 font-mono text-[10px] uppercase tracking-widest font-black">03_ADDITIONAL_MODULES</span>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                   <button
                     onClick={() => toggleAddon('ai')}
                     disabled={calcTier === 'ai-agents'}
-                    className={`flex items-center justify-between p-4 border rounded-xl transition-all text-left cursor-pointer ${
+                    className={`flex items-center justify-between p-4 border rounded-xl transition-all text-left cursor-pointer h-full ${
                       calcTier === 'ai-agents' 
-                        ? 'opacity-40 cursor-not-allowed border-stone-200/30 bg-transparent' 
+                        ? 'opacity-40 cursor-not-allowed border-stone-200/30 bg-stone-100/30 text-stone-400' 
                         : calcAddons.includes('ai') 
-                          ? 'border-violet-300 bg-violet-50 text-violet-700' 
-                          : 'border-stone-200/50 bg-[#fcfbf9] text-stone-600 hover:border-stone-400'
+                          ? 'border-violet-300 bg-violet-50/70 text-violet-800 shadow-sm' 
+                          : 'border-stone-200/60 bg-[#faf8f5] text-stone-700 hover:border-violet-300 hover:bg-violet-50/50 hover:text-violet-700 hover:shadow-sm'
                     }`}
                   >
-                    <span className="font-mono text-xs">AI Integrations</span>
-                    {calcTier === 'ai-agents' ? <span className="text-[9px] uppercase text-violet-600 font-bold">INCLUDED</span> : <div className={`w-3 h-3 rounded-full border ${calcAddons.includes('ai') ? 'bg-violet-600 border-violet-600' : 'border-stone-400'}`} />}
+                    <div className="flex flex-col pr-2">
+                      <span className="font-mono text-xs font-bold uppercase mb-1">AI Integrations</span>
+                      <span className="text-[10px] font-sans text-stone-500 leading-normal">Gemini-powered NLP features and autonomous pipeline integrations.</span>
+                    </div>
+                    {calcTier === 'ai-agents' ? (
+                      <span className="text-[8px] uppercase text-violet-600 font-black bg-violet-50 px-2 py-0.5 rounded-md border border-violet-200 shrink-0 self-start">INCLUDED</span>
+                    ) : (
+                      <div className={`w-4.5 h-4.5 rounded-full border flex items-center justify-center transition-all shrink-0 self-start mt-0.5 ${calcAddons.includes('ai') ? 'bg-violet-600 border-violet-600 text-white-force' : 'border-stone-300 bg-white'}`}>
+                        {calcAddons.includes('ai') && <Check size={10} className="text-white-force font-bold" />}
+                      </div>
+                    )}
                   </button>
+
                   <button
                     onClick={() => toggleAddon('motion')}
-                    className={`flex items-center justify-between p-4 border rounded-xl transition-all text-left cursor-pointer ${
+                    className={`flex items-center justify-between p-4 border rounded-xl transition-all text-left cursor-pointer h-full ${
                       calcAddons.includes('motion') 
-                        ? 'border-violet-300 bg-violet-50 text-violet-700' 
-                        : 'border-stone-200/50 bg-[#fcfbf9] text-stone-600 hover:border-stone-400'
+                        ? 'border-violet-300 bg-violet-50/70 text-violet-800 shadow-sm' 
+                        : 'border-stone-200/60 bg-[#faf8f5] text-stone-700 hover:border-violet-300 hover:bg-violet-50/50 hover:text-violet-700 hover:shadow-sm'
                     }`}
                   >
-                    <span className="font-mono text-xs">WebGL / Complex Motion</span>
-                    <div className={`w-3 h-3 rounded-full border ${calcAddons.includes('motion') ? 'bg-violet-600 border-violet-600' : 'border-stone-400'}`} />
+                    <div className="flex flex-col pr-2">
+                      <span className="font-mono text-xs font-bold uppercase mb-1">Complex Motion</span>
+                      <span className="text-[10px] font-sans text-stone-500 leading-normal">Interactive 3D WebGL canvases, fluid vector systems, motion transitions.</span>
+                    </div>
+                    <div className={`w-4.5 h-4.5 rounded-full border flex items-center justify-center transition-all shrink-0 self-start mt-0.5 ${calcAddons.includes('motion') ? 'bg-violet-600 border-violet-600 text-white-force' : 'border-stone-300 bg-white'}`}>
+                      {calcAddons.includes('motion') && <Check size={10} className="text-white-force font-bold" />}
+                    </div>
                   </button>
+
                   <button
                     onClick={() => toggleAddon('priority')}
-                    className={`flex items-center justify-between p-4 border rounded-xl transition-all text-left cursor-pointer ${
+                    className={`flex items-center justify-between p-4 border rounded-xl transition-all text-left cursor-pointer h-full ${
                       calcAddons.includes('priority') 
-                        ? 'border-violet-300 bg-violet-50 text-violet-700' 
-                        : 'border-stone-200/50 bg-[#fcfbf9] text-stone-600 hover:border-stone-400'
+                        ? 'border-violet-300 bg-violet-50/70 text-violet-800 shadow-sm' 
+                        : 'border-stone-200/60 bg-[#faf8f5] text-stone-700 hover:border-violet-300 hover:bg-violet-50/50 hover:text-violet-700 hover:shadow-sm'
                     }`}
                   >
-                    <span className="font-mono text-xs">Priority SLA Support</span>
-                    <div className={`w-3 h-3 rounded-full border ${calcAddons.includes('priority') ? 'bg-violet-600 border-violet-600' : 'border-stone-400'}`} />
+                    <div className="flex flex-col pr-2">
+                      <span className="font-mono text-xs font-bold uppercase mb-1">Priority SLA</span>
+                      <span className="text-[10px] font-sans text-stone-500 leading-normal">Accelerated timeline, weekly core telemetry reports, 24-hr priority chat.</span>
+                    </div>
+                    <div className={`w-4.5 h-4.5 rounded-full border flex items-center justify-center transition-all shrink-0 self-start mt-0.5 ${calcAddons.includes('priority') ? 'bg-violet-600 border-violet-600 text-white-force' : 'border-stone-300 bg-white'}`}>
+                      {calcAddons.includes('priority') && <Check size={10} className="text-white-force font-bold" />}
+                    </div>
                   </button>
                 </div>
               </div>
 
             </div>
 
-            {/* Results Output */}
-            <div className="lg:col-span-5 bg-[#faf8f5] p-8 sm:p-12 flex flex-col justify-between shadow-inner rounded-b-3xl lg:rounded-b-none lg:rounded-r-3xl">
-              <div className="space-y-10">
+            {/* Results Output - Obsidian Sleek Dark Console */}
+            <div className="lg:col-span-5 bg-[#171513] p-8 sm:p-12 flex flex-col justify-between shadow-xl rounded-b-3xl lg:rounded-b-none lg:rounded-r-3xl border-t lg:border-t-0 lg:border-l border-stone-800 relative overflow-hidden text-left">
+              <div className="absolute -bottom-10 -right-10 w-64 h-64 bg-violet-500/10 rounded-full blur-3xl pointer-events-none" />
+              <div className="absolute -top-10 -left-10 w-40 h-40 bg-rose-500/5 rounded-full blur-3xl pointer-events-none" />
+
+              <div className="space-y-10 relative z-10">
                 {/* Cost */}
-                <div>
-                  <div className="flex items-center space-x-2 text-stone-400 font-mono text-[10px] uppercase tracking-widest font-bold mb-2">
-                    <DollarSign size={14} />
-                    <span>ESTIMATED INVESTMENT</span>
+                <div className="space-y-1.5">
+                  <div className="flex items-center space-x-2 text-stone-400-force font-mono text-[10px] uppercase tracking-widest font-black">
+                    <DollarSign size={14} className="text-violet-400" />
+                    <span className="text-stone-400-force">ESTIMATED INVESTMENT</span>
                   </div>
-                  <div className="text-4xl sm:text-5xl font-display font-black text-stone-800 tracking-tighter">
+                  <div className="text-4xl sm:text-5xl font-display font-black text-white-force tracking-tighter bg-gradient-to-r from-white-force to-stone-200-force bg-clip-text">
                     {estimation.priceStr}
                   </div>
                 </div>
 
                 {/* Timeline */}
-                <div>
-                  <div className="flex items-center space-x-2 text-stone-400 font-mono text-[10px] uppercase tracking-widest font-bold mb-2">
-                    <Clock size={14} />
-                    <span>PROJECTED TIMELINE</span>
+                <div className="space-y-1.5">
+                  <div className="flex items-center space-x-2 text-stone-400-force font-mono text-[10px] uppercase tracking-widest font-black">
+                    <Clock size={14} className="text-violet-400" />
+                    <span className="text-stone-400-force">PROJECTED TIMELINE</span>
                   </div>
-                  <div className="text-2xl font-mono text-stone-700">
+                  <div className="text-2xl font-mono text-stone-100-force font-black">
                     {estimation.timelineStr}
                   </div>
                 </div>
 
                 {/* Resources */}
-                <div>
-                  <div className="flex items-center space-x-2 text-stone-400 font-mono text-[10px] uppercase tracking-widest font-bold mb-3">
-                    <Users size={14} />
-                    <span>TEAM ALLOCATION</span>
+                <div className="space-y-3">
+                  <div className="flex items-center space-x-2 text-stone-400-force font-mono text-[10px] uppercase tracking-widest font-black">
+                    <Users size={14} className="text-violet-400" />
+                    <span className="text-stone-400-force">TEAM ALLOCATION</span>
                   </div>
-                  <ul className="space-y-2">
+                  <ul className="space-y-2.5">
                     {estimation.resources.map((res, i) => (
-                      <li key={i} className="flex items-center space-x-2 text-sm text-stone-600 font-sans">
-                        <div className="w-1.5 h-1.5 rounded-full bg-violet-500" />
-                        <span>{res}</span>
+                      <li key={i} className="flex items-center space-x-2.5 text-xs text-stone-300-force font-sans">
+                        <div className="w-1.5 h-1.5 rounded-full bg-violet-400 animate-pulse" />
+                        <span className="text-stone-300-force">{res}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
               </div>
 
-              <div className="pt-8 mt-8 border-t border-stone-200/30">
+              <div className="pt-8 mt-8 border-t border-stone-800 relative z-10">
                 <button 
+                  id="estimator-proceed-btn"
                   onClick={() => {
                     let scopeStr = 'Other';
                     if (['landing-pages', 'business-website', 'ecommerce', 'fullstack'].includes(calcTier)) {
@@ -546,7 +600,7 @@ I would like to proceed with an estimate for my project. Please provide further 
                     const whatsappUrl = `https://wa.me/918102099678?text=${encodedMessage}`;
                     window.open(whatsappUrl, '_blank');
                   }}
-                  className="w-full py-4 bg-stone-900 text-white font-mono font-bold text-xs uppercase tracking-widest rounded-xl hover:bg-violet-600 hover:scale-102 transition-all shadow-md cursor-pointer"
+                  className="w-full py-4 bg-gradient-to-r from-violet-600 to-rose-500 text-white-force font-mono font-bold text-xs uppercase tracking-widest rounded-xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 shadow-[0_10px_20px_rgba(124,58,237,0.3)] hover:shadow-[0_15px_30px_rgba(124,58,237,0.5)] cursor-pointer"
                 >
                   PROCEED WITH ESTIMATE
                 </button>

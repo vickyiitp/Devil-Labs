@@ -31,6 +31,72 @@ export default function ServicesPage({ navigate }: ServicesPageProps) {
         </p>
       </section>
 
+      {/* 2. COMPREHENSIVE SERVICE GRID */}
+      <section id="services-grid-section" className="space-y-32 mb-32">
+        {serviceCategories.map((category, catIdx) => (
+          <div key={category.id} className="relative">
+            <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 border-b border-stone-200/30 pb-6">
+              <div>
+                <span className="text-violet-600 font-mono text-xs uppercase tracking-widest font-semibold block mb-2">
+                  ✦ Category {String(catIdx + 1).padStart(2, '0')}
+                </span>
+                <h2 className="font-display font-extrabold text-4xl text-stone-800 tracking-tight uppercase">
+                  {category.title}
+                </h2>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              {category.items.map((service, idx) => {
+                const Icon = service.icon;
+                return (
+                  <motion.div
+                    role="button"
+                    tabIndex={0}
+                    aria-label={`View details for ${service.title}`}
+                    key={service.slug}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    transition={{ duration: 0.5, delay: idx * 0.1 }}
+                    onClick={() => navigate(`/services/${service.slug}`)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        navigate(`/services/${service.slug}`);
+                      }
+                    }}
+                    className="group p-6 flex flex-col justify-between cursor-pointer hover:border-violet-300/40 hover:scale-[1.025] relative overflow-hidden text-left clay-card"
+                  >
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-violet-100/30 rounded-full blur-2xl transform translate-x-1/2 -translate-y-1/2 group-hover:bg-violet-200/50 transition-all" />
+                    
+                    <div className="space-y-6 relative z-10">
+                      <div className="w-12 h-12 rounded-full bg-stone-100 border border-stone-200/50 flex items-center justify-center group-hover:bg-gradient-to-r group-hover:from-violet-600 group-hover:to-rose-500 group-hover:border-transparent group-hover:text-white text-stone-500 transition-all duration-500">
+                        <Icon size={20} />
+                      </div>
+                      
+                      <div>
+                        <h3 className="font-display font-bold text-xl text-stone-800 mb-2 tracking-tight group-hover:text-violet-600 transition-colors">
+                          {service.title}
+                        </h3>
+                        <p className="text-stone-500 text-sm leading-relaxed font-light">
+                          {service.simpleDesc}
+                        </p>
+                      </div>
+                    </div>
+                    
+                    <div className="mt-8 pt-4 border-t border-stone-200/20 flex items-center justify-between text-stone-400 group-hover:text-stone-700 transition-colors relative z-10">
+                      <span className="font-mono text-[10px] uppercase tracking-widest">Explore Specs</span>
+                      <ArrowUpRight size={14} className="transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </div>
+        ))}
+      </section>
+
       {/* 1.5 DIRECT CONSULT-TO-DEMO SWIPING PIPELINE */}
       <ScrollReveal>
         <section className="mb-28 p-8 clay-card relative overflow-hidden">
@@ -120,72 +186,6 @@ export default function ServicesPage({ navigate }: ServicesPageProps) {
           <PolishedFeatureMarquee />
         </section>
       </ScrollReveal>
-
-      {/* 2. COMPREHENSIVE SERVICE GRID */}
-      <section id="services-grid-section" className="space-y-32 mb-32">
-        {serviceCategories.map((category, catIdx) => (
-          <div key={category.id} className="relative">
-            <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 border-b border-stone-200/30 pb-6">
-              <div>
-                <span className="text-violet-600 font-mono text-xs uppercase tracking-widest font-semibold block mb-2">
-                  ✦ Category {String(catIdx + 1).padStart(2, '0')}
-                </span>
-                <h2 className="font-display font-extrabold text-4xl text-stone-800 tracking-tight uppercase">
-                  {category.title}
-                </h2>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-              {category.items.map((service, idx) => {
-                const Icon = service.icon;
-                return (
-                  <motion.div
-                    role="button"
-                    tabIndex={0}
-                    aria-label={`View details for ${service.title}`}
-                    key={service.slug}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-50px" }}
-                    transition={{ duration: 0.5, delay: idx * 0.1 }}
-                    onClick={() => navigate(`/services/${service.slug}`)}
-                    onKeyDown={(e) => {
-                      if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault();
-                        navigate(`/services/${service.slug}`);
-                      }
-                    }}
-                    className="group p-6 flex flex-col justify-between cursor-pointer hover:border-violet-300/40 hover:scale-[1.025] relative overflow-hidden text-left clay-card"
-                  >
-                    <div className="absolute top-0 right-0 w-32 h-32 bg-violet-100/30 rounded-full blur-2xl transform translate-x-1/2 -translate-y-1/2 group-hover:bg-violet-200/50 transition-all" />
-                    
-                    <div className="space-y-6 relative z-10">
-                      <div className="w-12 h-12 rounded-full bg-stone-100 border border-stone-200/50 flex items-center justify-center group-hover:bg-gradient-to-r group-hover:from-violet-600 group-hover:to-rose-500 group-hover:border-transparent group-hover:text-white text-stone-500 transition-all duration-500">
-                        <Icon size={20} />
-                      </div>
-                      
-                      <div>
-                        <h3 className="font-display font-bold text-xl text-stone-800 mb-2 tracking-tight group-hover:text-violet-600 transition-colors">
-                          {service.title}
-                        </h3>
-                        <p className="text-stone-500 text-sm leading-relaxed font-light">
-                          {service.simpleDesc}
-                        </p>
-                      </div>
-                    </div>
-                    
-                    <div className="mt-8 pt-4 border-t border-stone-200/20 flex items-center justify-between text-stone-400 group-hover:text-stone-700 transition-colors relative z-10">
-                      <span className="font-mono text-[10px] uppercase tracking-widest">Explore Specs</span>
-                      <ArrowUpRight size={14} className="transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                    </div>
-                  </motion.div>
-                );
-              })}
-            </div>
-          </div>
-        ))}
-      </section>
 
       {/* 3. TECH STACK DEEP DIVE */}
       <ScrollReveal delay={100}>
