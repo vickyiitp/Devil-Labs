@@ -59,22 +59,22 @@ export default function ServiceDetailPage({
   };
 
   return (
-    <div className="pt-28 pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-stone-800">
+    <div className="pt-28 pb-24 px-4 md:px-8 max-w-7xl mx-auto text-stone-800">
       <div className="mb-16">
         <button
           onClick={() => navigate("/services")}
-          className="text-stone-500 hover:text-stone-900 font-mono text-xs tracking-widest uppercase mb-8 flex items-center space-x-2 transition-colors clay-button px-4 py-2"
+          className="text-stone-500 hover:text-stone-900 font-sans text-xs font-bold tracking-widest uppercase mb-8 flex items-center space-x-2 transition-colors clay-button px-4 py-2 cursor-pointer"
         >
           <ArrowLeft size={12} className="text-violet-600" />
-          <span>BACK TO CAPABILITIES</span>
+          <span>BACK TO SERVICES</span>
         </button>
 
         <div className="flex flex-col md:flex-row md:items-start justify-between gap-12">
           <div className="max-w-3xl space-y-4">
-            <span className="text-violet-600 font-mono text-xs uppercase tracking-widest font-semibold block">
-              // {data.subtitle}
+            <span className="text-violet-600 font-sans text-xs uppercase tracking-widest font-extrabold block">
+              ✦ {data.subtitle}
             </span>
-            <h1 className="font-display font-extrabold text-5xl sm:text-7xl text-stone-850 tracking-tighter uppercase leading-none">
+            <h1 className="font-display font-extrabold text-3xl xs:text-4xl sm:text-6xl md:text-7xl text-stone-850 tracking-tighter uppercase leading-none break-words max-w-full">
               {data.title}
             </h1>
             <p className="text-stone-600 text-base sm:text-lg leading-relaxed mt-6 max-w-2xl">
@@ -84,16 +84,16 @@ export default function ServiceDetailPage({
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-20">
         {data.features.map((feature: any, idx: number) => {
           let statusColor = "text-emerald-600 bg-emerald-500";
-          let statusLabel = "Active";
+          let statusLabel = "Production Ready";
           if (feature.status === "maintenance") {
             statusColor = "text-amber-600 bg-amber-500";
-            statusLabel = "Maintenance";
+            statusLabel = "Managed Service";
           } else if (feature.status === "beta") {
             statusColor = "text-violet-600 bg-violet-400";
-            statusLabel = "Beta Deploy";
+            statusLabel = "Available Feature";
           }
 
           return (
@@ -103,14 +103,14 @@ export default function ServiceDetailPage({
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="p-8 clay-card relative overflow-hidden group text-left"
+              className="p-6 md:p-8 clay-card relative overflow-hidden group text-left"
             >
               <div className="absolute top-4 right-4 flex items-center space-x-2 bg-stone-100/80 px-2.5 py-1 rounded-full border border-stone-200/40">
                 <span
                   className={`w-1.5 h-1.5 rounded-full ${statusColor.split(" ")[1]} animate-pulse`}
                 />
                 <span
-                  className={`text-xs ${statusColor.split(" ")[0]} font-mono tracking-widest uppercase font-bold`}
+                  className={`text-[10px] ${statusColor.split(" ")[0]} font-sans tracking-widest uppercase font-extrabold`}
                 >
                   {statusLabel}
                 </span>
@@ -139,7 +139,7 @@ export default function ServiceDetailPage({
               Service Plans
             </h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6 max-w-6xl mx-auto">
             {data.plans.map((plan: any, idx: number) => (
               <motion.div
                 key={idx}
@@ -147,11 +147,7 @@ export default function ServiceDetailPage({
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className={`p-8 rounded-[32px] clay-card relative flex flex-col justify-between text-left ${
-                  plan.highlight 
-                    ? 'border-violet-300 bg-[#fbf9f4] shadow-[12px_16px_40px_rgba(139,92,246,0.12),-12px_-16px_40px_#ffffff]' 
-                    : ''
-                }`}
+                className={`p-6 md:p-8 rounded-[32px] clay-card relative flex flex-col justify-between text-left ${ plan.highlight ? 'border-violet-300 bg-[#fbf9f4] shadow-[12px_16px_40px_rgba(139,92,246,0.12),-12px_-16px_40px_#ffffff]' : '' }`}
               >
                 {plan.highlight && (
                   <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-violet-600 text-white font-mono text-xs uppercase tracking-widest px-3 py-1.5 rounded-full font-bold shadow-sm">
@@ -218,7 +214,7 @@ export default function ServiceDetailPage({
             {data.faqs.map((faq: any, idx: number) => (
               <details
                 key={idx}
-                className="group p-6 cursor-pointer rounded-[24px] clay-card hover:scale-[1.01] transition-all duration-300"
+                className="group p-6 md:p-8 cursor-pointer rounded-[24px] clay-card hover:scale-[1.01] transition-all duration-300"
               >
                 <summary className="font-display font-extrabold text-lg text-stone-800 list-none flex justify-between items-center outline-none select-none">
                   <span>{faq.q}</span>
@@ -247,27 +243,26 @@ export default function ServiceDetailPage({
         <PolishedFeatureMarquee />
       </div>
 
-      <div className="p-8 sm:p-16 flex flex-col items-center text-center space-y-6 max-w-4xl mx-auto relative overflow-hidden clay-card bg-gradient-to-br from-[#faf9f5] to-[#fdfcf9]">
+      <div className="p-6 md:p-8 flex flex-col items-center text-center space-y-6 max-w-4xl mx-auto relative overflow-hidden clay-card bg-gradient-to-br from-[#faf9f5] to-[#fdfcf9]">
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-64 h-32 bg-violet-200/20 blur-[100px] pointer-events-none" />
 
-        <span className="text-violet-600 font-mono text-xs uppercase tracking-widest font-bold relative z-10">
-          // INITIALIZE THIS SYSTEM
+        <span className="text-violet-600 font-sans text-xs uppercase tracking-widest font-extrabold relative z-10">
+          ✦ GET STARTED WITH THIS SERVICE
         </span>
         <h2 className="font-display font-extrabold text-3xl sm:text-5xl text-stone-850 uppercase tracking-tighter leading-tight relative z-10">
-          Ready to deploy <br />
+          Ready to launch <br />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-rose-500 font-serif italic font-light lowercase">
-            this architecture?
+            this solution?
           </span>
         </h2>
         <p className="text-stone-500 text-sm max-w-md leading-relaxed relative z-10 font-sans font-light">
-          Uplink your requirements. Our system will pre-fill the transmission
-          packet for {data.title}.
+          Get in touch with our team. We'll pre-fill your inquiry form for {data.title} so we can get straight to work.
         </p>
         <button
           onClick={handleInitiate}
-          className="px-8 py-4 clay-violet-solid font-mono font-bold text-xs uppercase tracking-[0.2em] hover:scale-105 transition-all duration-300 flex items-center space-x-3 cursor-pointer shadow-md relative z-10"
+          className="px-8 py-4 clay-violet-solid font-sans font-bold text-xs uppercase tracking-[0.2em] hover:scale-105 transition-all duration-300 flex items-center space-x-3 cursor-pointer shadow-md relative z-10"
         >
-          <span>AUTO-FILL TRANSMISSION</span>
+          <span>START INQUIRY</span>
           <ArrowUpRight size={16} />
         </button>
       </div>

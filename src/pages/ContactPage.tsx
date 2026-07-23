@@ -2,6 +2,7 @@ import { motion } from 'motion/react';
 import { Send, Check, Mail, Calendar, MapPin, Phone, MessageCircle, Github, Linkedin, Instagram, Globe, ArrowUpRight, Shield, AlertTriangle, MessageSquare, Loader2, CheckCircle, Info } from 'lucide-react';
 import React, { useState, useEffect } from 'react';
 import { useCurrency } from '../contexts/CurrencyContext';
+import FormSuccessAnimation from '../components/FormSuccessAnimation';
 
 interface ContactPageProps {
   navigate: (path: string) => void;
@@ -361,7 +362,7 @@ ${formData.name}`;
   const mailtoUrl = `mailto:devil.labs.contact@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
 
   return (
-    <div id="contact-page-root" className="pt-20 xs:pt-24 sm:pt-28 lg:pt-32 pb-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto min-h-screen relative overflow-hidden text-stone-800">
+    <div id="contact-page-root" className="pt-20 xs:pt-24 sm:pt-28 lg:pt-32 pb-32 px-4 md:px-8 max-w-7xl mx-auto min-h-screen relative overflow-hidden text-stone-800">
       {/* Abstract Background Blur */}
       <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-violet-600/5 rounded-full blur-[120px] pointer-events-none -z-10 mix-blend-multiply" />
       <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-fuchsia-600/5 rounded-full blur-[100px] pointer-events-none -z-10 mix-blend-multiply" />
@@ -380,10 +381,10 @@ ${formData.name}`;
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1 }}
-          className="font-display font-black text-4xl xs:text-5xl sm:text-7xl lg:text-8xl text-stone-850 tracking-tighter uppercase leading-[0.9]"
+          className="font-display font-black text-3xl xs:text-4xl sm:text-6xl md:text-7xl lg:text-8xl text-stone-850 tracking-tighter uppercase leading-[0.9] break-words max-w-full"
         >
           Let's Build <br/>
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 via-rose-500 to-amber-500 font-serif italic font-light lowercase text-5xl xs:text-6xl sm:text-8xl lg:text-9xl">something</span> <br/>
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 via-rose-500 to-amber-500 font-serif italic font-light lowercase text-3xl xs:text-4xl sm:text-7xl md:text-8xl lg:text-9xl break-words max-w-full">something</span> <br/>
           Beautiful.
         </motion.h1>
       </section>
@@ -398,7 +399,7 @@ ${formData.name}`;
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               onSubmit={handleExecute} 
-              className="p-8 sm:p-12 clay-card space-y-8 text-left"
+              className="p-6 md:p-8 clay-card space-y-8 text-left"
             >
               {loadedInfo && (
                 <motion.div
@@ -774,134 +775,33 @@ ${formData.name}`;
               </div>
             </motion.form>
           ) : (
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.95, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-              className="p-8 sm:p-12 rounded-[2rem] clay-card text-center space-y-8 relative overflow-hidden"
-            >
-              {/* Subtle flash effect */}
-              <motion.div
-                initial={{ opacity: 1 }}
-                animate={{ opacity: 0 }}
-                transition={{ duration: 1, ease: "easeOut" }}
-                className="absolute inset-0 bg-violet-500/20 pointer-events-none"
-              />
-              
-              <motion.div 
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ type: "spring", stiffness: 200, damping: 20, delay: 0.1 }}
-                className="inline-flex items-center justify-center w-24 h-24 rounded-full bg-violet-100 text-violet-600 mx-auto border border-violet-200 relative"
-              >
-                <motion.div 
-                   className="absolute inset-0 rounded-full bg-violet-500"
-                   initial={{ scale: 0, opacity: 0.8 }}
-                   animate={{ scale: 1.5, opacity: 0 }}
-                   transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
-                 />
-                <motion.svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="40"
-                  height="40"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="3"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <motion.path
-                    initial={{ pathLength: 0 }}
-                    animate={{ pathLength: 1 }}
-                    transition={{ duration: 0.5, delay: 0.3, ease: "easeOut" }}
-                    d="M20 6 9 17l-5-5"
-                  />
-                </motion.svg>
-              </motion.div>
-              <div className="space-y-4 relative z-10">
-                <motion.h3 
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4 }}
-                  className="text-stone-850 font-display font-black text-3xl md:text-4xl tracking-tighter uppercase"
-                >
-                  TRANSMISSION COMPLETED
-                </motion.h3>
-                <motion.p 
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5 }}
-                  className="text-stone-500 text-xs font-mono max-w-md mx-auto leading-relaxed uppercase tracking-widest"
-                >
-                  YOUR PROJECT BRIEF HAS BYPASSED FILTERS AND HAS BEEN DISPATCHED LIVE ACROSS THE PIPELINE.
-                </motion.p>
-
-                {/* Live Channel Transmission Status Reporting */}
-                <div className="max-w-xl mx-auto clay-card p-6 text-left font-mono text-xs text-stone-600 space-y-3">
-                  <span className="font-bold text-stone-800 uppercase tracking-widest block mb-2">✦ PIPELINE DISPATCH LOGS:</span>
-                  
-                  {/* Email reporter */}
-                  <div className="flex justify-between items-center border-b border-stone-200/30 pb-2">
-                    <span className="flex items-center space-x-2"><Mail size={12} /> <span>SMTP SECURE MAIL:</span></span>
-                    {dispatchResults?.email?.success ? (
-                      <span className="text-emerald-600 font-bold">● DISPATCHED</span>
-                    ) : (
-                      <span className="text-amber-600 font-bold">● STDOUT STANDBY (KEYS REQ)</span>
-                    )}
-                  </div>
-
-                  {/* Telegram reporter */}
-                  <div className="flex justify-between items-center border-b border-stone-200/30 pb-2">
-                    <span className="flex items-center space-x-2"><Globe size={12} /> <span>TELEGRAM BOT API:</span></span>
-                    {dispatchResults?.telegram?.success ? (
-                      <span className="text-emerald-600 font-bold">● DISPATCHED</span>
-                    ) : (
-                      <span className="text-stone-400">● OFFLINE (ENV REQ)</span>
-                    )}
-                  </div>
-
-                  {/* WhatsApp reporter */}
-                  <div className="flex justify-between items-center border-b border-stone-200/30 pb-2">
-                    <span className="flex items-center space-x-2"><MessageSquare size={12} /> <span>WHATSAPP BOT GATEWAY:</span></span>
-                    {dispatchResults?.whatsapp?.success ? (
-                      <span className="text-emerald-600 font-bold">● DISPATCHED</span>
-                    ) : (
-                      <span className="text-stone-400">● OFFLINE (ENV REQ)</span>
-                    )}
-                  </div>
-
-                  {/* SMS reporter */}
-                  <div className="flex justify-between items-center">
-                    <span className="flex items-center space-x-2"><Shield size={12} /> <span>SMS BROADCAST:</span></span>
-                    {dispatchResults?.sms?.success ? (
-                      <span className="text-emerald-600 font-bold">● DISPATCHED</span>
-                    ) : (
-                      <span className="text-stone-400">● OFFLINE (ENV REQ)</span>
-                    )}
-                  </div>
-                </div>
-                
+            <FormSuccessAnimation
+              title="TRANSMISSION COMPLETED"
+              subtitle="YOUR PROJECT BRIEF HAS BYPASSED FILTERS AND HAS BEEN DISPATCHED LIVE ACROSS THE PIPELINE."
+              dispatchResults={dispatchResults}
+              onReset={resetForm}
+              resetButtonText="INITIALIZE NEW BRIEF"
+              extraInfo={
                 <motion.div
                   initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.6 }}
-                  className="mt-8 clay-card p-6 flex flex-col items-center max-w-xl mx-auto space-y-6"
+                  transition={{ delay: 0.8 }}
+                  className="mt-6 clay-card p-6 md:p-8 flex flex-col items-center max-w-xl mx-auto space-y-4 border border-stone-200/40"
                 >
-                  <div className="flex items-center space-x-2 text-violet-600 font-mono text-xs uppercase tracking-widest">
-                     <span className="w-1.5 h-1.5 rounded-full bg-violet-500 animate-pulse" />
-                     <span>MANUALLY ESCALATE OR DISPATCH VIA LOCAL LINK</span>
+                  <div className="flex items-center space-x-2 text-violet-600 font-mono text-[10px] uppercase tracking-widest font-bold">
+                    <span className="w-1.5 h-1.5 rounded-full bg-violet-500 animate-pulse" />
+                    <span>DIRECT LOCAL LINK DISPATCH</span>
                   </div>
                   
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full">
                     <a 
                       href={mailtoUrl}
-                      className="flex flex-col items-center justify-center p-5 clay-button rounded-2xl transition-all duration-300 group text-center space-y-3 cursor-pointer"
+                      className="flex flex-col items-center justify-center p-4 clay-button rounded-2xl transition-all duration-300 group text-center space-y-2 cursor-pointer"
                     >
-                      <Mail size={24} className="text-violet-600 group-hover:scale-110 transition-transform" />
+                      <Mail size={20} className="text-violet-600 group-hover:scale-110 transition-transform" />
                       <div>
                         <div className="text-xs font-bold text-stone-850 font-mono tracking-wider">DISPATCH GMAIL BRIEF</div>
-                        <div className="text-[9px] text-stone-500 font-sans mt-1 leading-relaxed">Sends pre-populated brief directly to <br/><span className="text-violet-600">devil.labs.contact@gmail.com</span></div>
+                        <div className="text-[9px] text-stone-500 font-sans mt-0.5 leading-relaxed">Direct email to <span className="text-violet-600">devil.labs.contact@gmail.com</span></div>
                       </div>
                     </a>
 
@@ -909,31 +809,22 @@ ${formData.name}`;
                       href={whatsappUrl}
                       target="_blank"
                       rel="noreferrer"
-                      className="flex flex-col items-center justify-center p-5 clay-button rounded-2xl transition-all duration-300 group text-center space-y-3 cursor-pointer"
+                      className="flex flex-col items-center justify-center p-4 clay-button rounded-2xl transition-all duration-300 group text-center space-y-2 cursor-pointer"
                     >
-                      <MessageCircle size={24} className="text-emerald-600 group-hover:scale-110 transition-transform" />
+                      <MessageCircle size={20} className="text-emerald-600 group-hover:scale-110 transition-transform" />
                       <div>
                         <div className="text-xs font-bold text-stone-850 font-mono tracking-wider">DISPATCH WHATSAPP BRIEF</div>
-                        <div className="text-[9px] text-stone-500 font-sans mt-1 leading-relaxed">Transmits details instantly to <br/><span className="text-emerald-600">+91 81020 99678</span></div>
+                        <div className="text-[9px] text-stone-500 font-sans mt-0.5 leading-relaxed">Direct WhatsApp to <span className="text-emerald-600">+91 81020 99678</span></div>
                       </div>
                     </a>
                   </div>
 
-                  <p className="text-[10px] text-stone-500 font-mono tracking-wider uppercase leading-relaxed max-w-md">
-                    * Transmitting via both channels ensures the fastest architectural review and immediate demo turnaround.
+                  <p className="text-[9px] text-stone-400 font-mono tracking-wider uppercase leading-relaxed max-w-md">
+                    * Dual-channel dispatch ensures immediate engineering review and fast turnaround.
                   </p>
                 </motion.div>
-              </div>
-              <motion.button
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.7 }}
-                onClick={resetForm}
-                className="mt-8 text-[10px] font-bold tracking-widest text-violet-600 hover:text-stone-850 uppercase transition-all relative z-10 border-b border-violet-500/30 hover:border-stone-850 pb-1"
-              >
-                INITIALIZE NEW TRANSMISSION
-              </motion.button>
-            </motion.div>
+              }
+            />
           )}
         </div>
 

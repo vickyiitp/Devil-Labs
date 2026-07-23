@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { X, Mail, MessageSquare, ArrowUpRight, FileText, Sparkles, Shield, Cpu, Loader2, CheckCircle, AlertTriangle, Globe } from 'lucide-react';
 import { audioEngine } from '../lib/audio';
 import { useCurrency } from '../contexts/CurrencyContext';
+import FormSuccessAnimation from './FormSuccessAnimation';
 
 interface InitializeModalProps {
   isOpen: boolean;
@@ -547,74 +548,17 @@ ${clientName || 'Partner'}`;
                       </div>
                     </form>
                   ) : (
-                    /* Success Feedback with precise dispatch telemetry statuses */
-                    <motion.div
-                      initial={{ opacity: 0, scale: 0.95 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      className="text-center py-8 space-y-6"
-                    >
-                      <div className="inline-flex items-center justify-center p-4 bg-emerald-50 border border-emerald-100 rounded-full text-emerald-600 mb-2">
-                        <CheckCircle size={40} className="animate-bounce" />
-                      </div>
-                      <div className="space-y-2">
-                        <h4 className="text-lg font-display font-black text-stone-800 uppercase tracking-tight">Inquiry Submitted</h4>
-                        <p className="text-stone-600 text-xs max-w-sm mx-auto">
-                          Your project brief has been successfully received and routed to our team.
-                        </p>
-                      </div>
-
-                      {/* Channel specific dispatch states */}
-                      <div className="max-w-md mx-auto bg-[#f0ede6] border border-stone-200/50 rounded-2xl p-4 text-left font-mono text-[9px] text-stone-500 space-y-2.5 shadow-inner">
-                        <span className="font-bold text-stone-700 uppercase tracking-widest block mb-1">INQUIRY TRANSMISSION STATUS:</span>
-                        
-                        {/* Email reporter */}
-                        <div className="flex justify-between items-center border-b border-stone-200/30 pb-1.5">
-                          <span className="flex items-center space-x-1.5"><Mail size={10} /> <span>SMTP SECURE MAIL:</span></span>
-                          {dispatchDetails?.email?.success ? (
-                            <span className="text-emerald-600 font-bold">● DISPATCHED</span>
-                          ) : (
-                            <span className="text-stone-500 font-bold">● STANDBY (LOCAL INBOX REQ)</span>
-                          )}
-                        </div>
-
-                        {/* Telegram reporter */}
-                        <div className="flex justify-between items-center border-b border-stone-200/30 pb-1.5">
-                          <span className="flex items-center space-x-1.5"><Globe size={10} /> <span>TELEGRAM BOT API:</span></span>
-                          {dispatchDetails?.telegram?.success ? (
-                            <span className="text-emerald-600 font-bold">● DISPATCHED</span>
-                          ) : (
-                            <span className="text-stone-400">● OFFLINE (ENV REQ)</span>
-                          )}
-                        </div>
-
-                        {/* WhatsApp reporter */}
-                        <div className="flex justify-between items-center border-b border-stone-200/30 pb-1.5">
-                          <span className="flex items-center space-x-1.5"><MessageSquare size={10} /> <span>WHATSAPP BOT GATEWAY:</span></span>
-                          {dispatchDetails?.whatsapp?.success ? (
-                            <span className="text-emerald-600 font-bold">● DISPATCHED</span>
-                          ) : (
-                            <span className="text-stone-400">● OFFLINE (ENV REQ)</span>
-                          )}
-                        </div>
-
-                        {/* SMS reporter */}
-                        <div className="flex justify-between items-center">
-                          <span className="flex items-center space-x-1.5"><Shield size={10} /> <span>SMS BROADCAST:</span></span>
-                          {dispatchDetails?.sms?.success ? (
-                            <span className="text-emerald-600 font-bold">● DISPATCHED</span>
-                          ) : (
-                            <span className="text-stone-400">● OFFLINE (ENV REQ)</span>
-                          )}
-                        </div>
-                      </div>
-
-                      <button
-                        onClick={() => { audioEngine.playClick(); onClose(); }}
-                        className="px-6 py-2 bg-stone-100 hover:bg-stone-200 border border-stone-200/50 rounded-xl font-mono text-[10px] text-stone-700 tracking-widest uppercase cursor-pointer"
-                      >
-                        CLOSE WINDOW
-                      </button>
-                    </motion.div>
+                    <FormSuccessAnimation
+                      title="INQUIRY SUBMITTED"
+                      subtitle="YOUR PROJECT BRIEF HAS BEEN SUCCESSFULLY RECEIVED AND ROUTED TO OUR ARCHITECTURE TEAM."
+                      dispatchResults={dispatchDetails}
+                      onReset={() => {
+                        audioEngine.playClick();
+                        setSubmitSuccess(false);
+                        onClose();
+                      }}
+                      resetButtonText="CLOSE WINDOW"
+                    />
                   )}
                 </div>
               )}

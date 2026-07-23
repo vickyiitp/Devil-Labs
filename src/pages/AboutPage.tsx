@@ -12,7 +12,7 @@ interface AboutPageProps {
 
 export default function AboutPage({ navigate }: AboutPageProps) {
   return (
-    <div className="pt-20 xs:pt-24 sm:pt-28 lg:pt-32 pb-24 px-4 sm:px-6 lg:px-8 max-w-[1200px] mx-auto min-h-screen text-stone-800">
+    <div className="pt-20 xs:pt-24 sm:pt-28 lg:pt-32 pb-24 px-4 md:px-8 max-w-7xl mx-auto min-h-screen text-stone-800">
       {/* Header */}
       <section className="mb-24">
         <motion.span 
@@ -26,10 +26,10 @@ export default function AboutPage({ navigate }: AboutPageProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1 }}
-          className="font-display font-black text-4xl xs:text-5xl sm:text-7xl lg:text-8xl text-stone-850 tracking-tighter uppercase leading-[0.9] mb-8"
+          className="font-display font-black text-3xl xs:text-4xl sm:text-6xl md:text-7xl lg:text-8xl text-stone-850 tracking-tighter uppercase leading-[0.9] mb-8 break-words max-w-full"
         >
           Redefining <br/>
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 via-rose-500 to-amber-500 font-serif italic font-light lowercase text-5xl xs:text-6xl sm:text-8xl lg:text-9xl">engineering</span> <br/>
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 via-rose-500 to-amber-500 font-serif italic font-light lowercase text-3xl xs:text-4xl sm:text-7xl md:text-8xl lg:text-9xl break-words max-w-full">engineering</span> <br/>
           In India.
         </motion.h1>
       </section>
@@ -76,7 +76,7 @@ export default function AboutPage({ navigate }: AboutPageProps) {
           <ScrollReveal delay={250}>
             <div className="pt-8 border-t border-stone-200/50">
               <h3 className="text-stone-850 font-bold mb-6 text-sm">Core Statistics</h3>
-              <div className="grid grid-cols-2 gap-8 text-left">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 text-left">
                 <div>
                   <div className="text-3xl font-display font-black text-stone-850">#1</div>
                   <div className="text-xs text-stone-400 mt-1 font-mono tracking-widest uppercase">IN BIHAR FOR TECH SERVICES</div>
@@ -101,19 +101,19 @@ export default function AboutPage({ navigate }: AboutPageProps) {
             <div className="pt-8 border-t border-stone-200/50">
               <h3 className="text-stone-850 font-bold mb-6 text-sm">ARCHITECTURAL MANIFESTO</h3>
               <div className="space-y-6">
-                <div className="p-5 clay-card bg-[#faf9f5] border border-stone-200/40 rounded-[24px]">
+                <div className="p-6 md:p-8 clay-card bg-[#faf9f5] border border-stone-200/40 rounded-[24px]">
                   <h4 className="text-xs font-black text-violet-700 tracking-wider uppercase mb-1">01 / TYPESAFE DETERMINISM</h4>
                   <p className="text-xs text-stone-500 normal-case leading-relaxed font-sans">
                     We eliminate common runtime vulnerabilities before compile-time. Every data entity, service interface, and micro-routing barrier is protected by absolute typing, ensuring bulletproof system consistency.
                   </p>
                 </div>
-                <div className="p-5 clay-card bg-[#faf9f5] border border-stone-200/40 rounded-[24px]">
+                <div className="p-6 md:p-8 clay-card bg-[#faf9f5] border border-stone-200/40 rounded-[24px]">
                   <h4 className="text-xs font-black text-violet-700 tracking-wider uppercase mb-1">02 / HYPER-OPTIMIZED EDGE SPEED</h4>
                   <p className="text-xs text-stone-500 normal-case leading-relaxed font-sans">
                     We enforce tight performance standards on every single client payload. Our code is micro-compiled, minified, and delivered using Edge computing caches to ensure immediate time-to-interactive profiles.
                   </p>
                 </div>
-                <div className="p-5 clay-card bg-[#faf9f5] border border-stone-200/40 rounded-[24px]">
+                <div className="p-6 md:p-8 clay-card bg-[#faf9f5] border border-stone-200/40 rounded-[24px]">
                   <h4 className="text-xs font-black text-violet-700 tracking-wider uppercase mb-1">03 / ZERO-TRUST ENVELOPE PROTECTION</h4>
                   <p className="text-xs text-stone-500 normal-case leading-relaxed font-sans">
                     All inputs and network payloads undergo sanitization layers prior to persistent storage write. By employing cryptographic tokenization, state exposure risks are thoroughly minimized.
@@ -127,7 +127,7 @@ export default function AboutPage({ navigate }: AboutPageProps) {
         {/* RIGHT COLUMN: Sidebar Links & Info */}
         <div className="lg:col-span-5 space-y-8">
           <ScrollReveal delay={200}>
-            <div className="p-8 clay-card flex flex-col space-y-8 text-left">
+            <div className="p-6 md:p-8 clay-card flex flex-col space-y-8 text-left">
               <div className="flex flex-col items-center justify-center p-6 border-b border-stone-200/30 pb-8">
                 <div className="relative group mb-4">
                   <div className="absolute inset-0 bg-gradient-to-tr from-violet-300 to-rose-300 rounded-full blur-md opacity-50 group-hover:opacity-75 transition-opacity duration-300" />

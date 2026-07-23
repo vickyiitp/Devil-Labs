@@ -105,7 +105,7 @@ export default function PricingPage({ navigate }: PricingPageProps) {
   const models = [
     {
       title: "MVP Build (Starter)",
-      tagline: "FAST PRODUCT SHIPMENT",
+      tagline: "STARTER BUILD",
       price: (currency === 'INR') ? "₹8,500" : "$229",
       priceBasis: "per deployment",
       description: "Ideal for small businesses establishing their first digital footprint.",
@@ -117,13 +117,13 @@ export default function PricingPage({ navigate }: PricingPageProps) {
         "Social Media Links",
         "14-day production support period"
       ],
-      cta: "INITIALIZE MVP UPLINK",
+      cta: "START MVP BUILD",
       popular: false,
       scope: "MVP Build (Starter)"
     },
     {
       title: "Full-Stack + AI (Professional)",
-      tagline: "AUTONOMOUS & DATA ENGINES",
+      tagline: "MOST POPULAR",
       price: (currency === 'INR') ? "₹28,900" : "$729",
       priceBasis: "per architecture",
       description: "Comprehensive solution for growing brands requiring custom logic and design.",
@@ -135,13 +135,13 @@ export default function PricingPage({ navigate }: PricingPageProps) {
         "Advanced Analytics & Tracking",
         "30-day dedicated engineering support"
       ],
-      cta: "INITIALIZE SECURE SYSTEM",
+      cta: "START PRO BUILD",
       popular: true,
       scope: "Full-Stack + AI (Professional)"
     },
     {
       title: "Retainer / Enterprise",
-      tagline: "CONTINUOUS AUTOMATION SCALE",
+      tagline: "SCALE & RETAINER",
       price: (currency === 'INR') ? "₹47,000+" : "$1,199+",
       priceBasis: "per sprint period",
       description: "Fully custom architecture with advanced AI automation for high-volume operations.",
@@ -153,7 +153,7 @@ export default function PricingPage({ navigate }: PricingPageProps) {
         "Weekly database & security audits",
         "Priority Tech Support & Infinite SLA"
       ],
-      cta: "INITIALIZE PARTNERSHIP",
+      cta: "CONTACT ENTERPRISE",
       popular: false,
       scope: "Retainer / Enterprise"
     }
@@ -195,16 +195,16 @@ export default function PricingPage({ navigate }: PricingPageProps) {
   ];
 
   return (
-    <div id="pricing-page-root" className="pt-20 xs:pt-24 sm:pt-28 lg:pt-32 pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-stone-800">
+    <div id="pricing-page-root" className="pt-20 xs:pt-24 sm:pt-28 lg:pt-32 pb-24 px-4 md:px-8 max-w-7xl mx-auto text-stone-800">
       {/* 1. HEADER */}
       <section id="pricing-header" className="mb-20 flex flex-col md:flex-row md:items-end md:justify-between gap-6 border-b border-stone-200/30 pb-10">
         <div className="space-y-4">
-          <span className="text-violet-600 font-mono text-xs uppercase tracking-widest font-semibold">✦ ENGAGEMENT MODELS</span>
-          <h1 className="font-display font-extrabold text-4xl xs:text-5xl sm:text-7xl text-stone-800 tracking-tighter uppercase leading-none">
-            SYSTEM TARIFFS.
+          <span className="text-violet-600 font-sans text-xs uppercase tracking-widest font-extrabold">✦ PRICING &amp; TIER PLANS</span>
+          <h1 className="font-display font-extrabold text-3xl xs:text-4xl sm:text-6xl md:text-7xl text-stone-800 tracking-tighter uppercase leading-none break-words max-w-full">
+            TRANSPARENT PRICING.
           </h1>
-          <p className="text-stone-600 text-base sm:text-lg max-w-2xl leading-relaxed">
-            Clear scope. Zero bloated sales contracts. We provide fully-mapped engagement brackets to fit your technical goals.
+          <p className="text-stone-600 text-base sm:text-lg max-w-2xl leading-relaxed font-sans">
+            Clear scope. Zero hidden fees or bloated sales contracts. We provide fully-mapped engagement brackets to fit your business goals.
           </p>
         </div>
 
@@ -212,7 +212,7 @@ export default function PricingPage({ navigate }: PricingPageProps) {
         <div className="flex items-center space-x-1.5 bg-[#f0ede6] border border-stone-200/50 p-1 rounded-xl w-full sm:w-auto self-start sm:self-center md:self-end shadow-inner">
           <button
             onClick={() => setCurrency('USD')}
-            className={`flex-1 sm:flex-initial px-5 py-2.5 font-mono text-[10px] font-bold tracking-widest uppercase rounded-lg transition-all duration-200 cursor-pointer ${
+            className={`flex-1 sm:flex-initial px-5 py-2.5 font-sans text-[10px] font-bold tracking-widest uppercase rounded-lg transition-all duration-200 cursor-pointer ${
               currency === 'USD'
                 ? 'bg-[#fcfbf9] text-stone-800 shadow-md font-black'
                 : 'text-stone-500 hover:text-stone-800'
@@ -222,7 +222,7 @@ export default function PricingPage({ navigate }: PricingPageProps) {
           </button>
           <button
             onClick={() => setCurrency('INR')}
-            className={`flex-1 sm:flex-initial px-5 py-2.5 font-mono text-[10px] font-bold tracking-widest uppercase rounded-lg transition-all duration-200 cursor-pointer ${
+            className={`flex-1 sm:flex-initial px-5 py-2.5 font-sans text-[10px] font-bold tracking-widest uppercase rounded-lg transition-all duration-200 cursor-pointer ${
               currency === 'INR'
                 ? 'bg-[#fcfbf9] text-stone-800 shadow-md font-black'
                 : 'text-stone-500 hover:text-stone-800'
@@ -234,36 +234,32 @@ export default function PricingPage({ navigate }: PricingPageProps) {
       </section>
 
       {/* 2. PRICING CARDS (3 columns) */}
-      <section id="pricing-cards-section" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch mb-32">
+      <section id="pricing-cards-section" className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6 items-stretch mb-32">
         {models.map((model, idx) => (
           <motion.div
             id={`pricing-card-${model.title.toLowerCase().replace(/[^a-z0-9]/g, '')}`}
             key={model.title}
             whileHover={{ y: -6 }}
             transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-            className={`relative flex flex-col justify-between p-6 sm:p-8 transition-all duration-300 rounded-[24px] sm:rounded-[32px] clay-card ${
-              model.popular
-                ? 'border-violet-300 bg-[#fbf9f4] shadow-[12px_16px_40px_rgba(139,92,246,0.14),-12px_-16px_40px_#ffffff] lg:scale-105 z-10'
-                : 'border-stone-200/50'
-            } ${idx === 2 ? 'md:col-span-2 lg:col-span-1' : ''}`}
+            className={`relative flex flex-col justify-between p-6 md:p-8 transition-all duration-300 rounded-[24px] sm:rounded-[32px] clay-card ${ model.popular ? 'border-violet-300 bg-[#fbf9f4] shadow-[12px_16px_40px_rgba(139,92,246,0.14),-12px_-16px_40px_#ffffff] lg:scale-105 z-10' : 'border-stone-200/50' } ${idx === 2 ? 'md:col-span-2 lg:col-span-1' : ''}`}
           >
             {/* Ribbon or Badge for Popular */}
             {model.popular && (
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-violet-600 to-rose-500 keep-white font-mono text-[9px] uppercase tracking-widest font-bold flex items-center space-x-1.5 shadow-sm rounded-full">
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-violet-600 to-rose-500 keep-white font-sans text-[9px] uppercase tracking-widest font-extrabold flex items-center space-x-1.5 shadow-sm rounded-full">
                 <Sparkles size={10} className="animate-spin-slow text-white-force" />
-                <span className="text-white-force">MOST POPULAR ARCHITECTURE</span>
+                <span className="text-white-force">MOST POPULAR CHOICE</span>
               </div>
             )}
 
             <div className="space-y-6">
-              <div className="space-y-2 font-mono">
-                <span className="text-violet-600 text-[10px] tracking-widest font-bold uppercase">{model.tagline}</span>
+              <div className="space-y-2 font-sans">
+                <span className="text-violet-600 text-[10px] tracking-widest font-extrabold uppercase">{model.tagline}</span>
                 <h3 className="font-display font-extrabold text-2xl text-stone-800 tracking-tight">{model.title}</h3>
               </div>
 
               <div className="flex items-baseline space-x-2 border-b border-stone-200/30 pb-6">
                 <span className="text-4xl sm:text-5xl font-display font-black text-stone-800 tracking-tighter">{model.price}</span>
-                <span className="text-stone-400 font-mono text-xs uppercase">{model.priceBasis}</span>
+                <span className="text-stone-400 font-sans text-xs uppercase font-bold">{model.priceBasis}</span>
               </div>
 
               <p className="text-stone-600 text-xs sm:text-sm leading-relaxed font-sans">
@@ -271,8 +267,8 @@ export default function PricingPage({ navigate }: PricingPageProps) {
               </p>
 
               <div className="space-y-3 pt-4 border-t border-stone-200/30">
-                <h4 className="text-[10px] font-mono font-bold text-stone-400 uppercase tracking-widest">Included Scope:</h4>
-                <ul className="space-y-2 text-xs sm:text-sm text-stone-700">
+                <h4 className="text-[10px] font-sans font-extrabold text-stone-400 uppercase tracking-widest">Included Scope:</h4>
+                <ul className="space-y-2 text-xs sm:text-sm text-stone-700 font-sans">
                   {model.features.map((feat) => (
                     <li key={feat} className="flex items-start space-x-2.5">
                       <Check size={12} className="text-violet-600 mt-1 flex-shrink-0" />
@@ -299,7 +295,7 @@ I would like to proceed with this architecture. Please provide further details.`
                   const whatsappUrl = `https://wa.me/918102099678?text=${encodedMessage}`;
                   window.open(whatsappUrl, '_blank');
                 }}
-                className={`w-full py-3.5 font-mono font-bold text-xs uppercase tracking-widest rounded-full transition-all duration-300 flex items-center justify-center space-x-2 cursor-pointer ${
+                className={`w-full py-3.5 font-sans font-bold text-xs uppercase tracking-widest rounded-full transition-all duration-300 flex items-center justify-center space-x-2 cursor-pointer ${
                   model.popular
                     ? 'clay-violet-solid'
                     : 'clay-button'
@@ -322,17 +318,18 @@ I would like to proceed with this architecture. Please provide further details.`
 
       {/* FEATURE COMPARISON TABLE */}
       <ScrollReveal>
-        <section id="pricing-comparison" className="mb-32 overflow-x-auto">
+        <section id="pricing-comparison" className="mb-32 w-full max-w-full overflow-hidden">
           <div className="mb-10 text-center">
-            <span className="text-violet-600 font-mono text-xs uppercase tracking-widest font-semibold">✦ CAPABILITY MATRIX</span>
-            <h2 className="font-display font-extrabold text-3xl text-stone-800 tracking-tighter uppercase mt-2">Compare Architectures</h2>
+            <span className="text-violet-600 font-sans text-xs uppercase tracking-widest font-extrabold">✦ FEATURE COMPARISON</span>
+            <h2 className="font-display font-extrabold text-3xl text-stone-800 tracking-tighter uppercase mt-2">Compare Plans</h2>
           </div>
-          <div className="min-w-[800px] border border-stone-200/50 bg-[#faf8f5]/80 rounded-2xl overflow-hidden shadow-[5px_5px_15px_rgba(45,38,32,0.05),-5px_-5px_15px_#ffffff]">
+          <div className="w-full overflow-x-auto pb-4">
+            <div className="min-w-[800px] border border-stone-200/50 bg-[#faf8f5]/80 rounded-2xl overflow-hidden shadow-[5px_5px_15px_rgba(45,38,32,0.05),-5px_-5px_15px_#ffffff]">
             <div className="grid grid-cols-4 border-b border-stone-200/30 bg-[#f0ede6]/50">
-              <div className="p-6 font-mono text-xs text-stone-500 uppercase tracking-widest font-bold flex items-end">Feature Set</div>
-              <div className="p-6 font-display text-lg text-stone-800 font-bold text-center">MVP Build<br/><span className="text-sm font-mono text-stone-400 font-normal">{(currency === 'INR') ? '₹8,500' : '$229'}</span></div>
-              <div className="p-6 font-display text-lg text-stone-800 font-bold text-center border-x border-stone-200/20 bg-violet-50">Full-Stack + AI<br/><span className="text-sm font-mono text-violet-600 font-normal">{(currency === 'INR') ? '₹28,900' : '$729'}</span></div>
-              <div className="p-6 font-display text-lg text-stone-800 font-bold text-center">Enterprise<br/><span className="text-sm font-mono text-stone-400 font-normal">{(currency === 'INR') ? '₹47,000+' : '$1,199+'}</span></div>
+              <div className="p-6 font-sans text-xs text-stone-500 uppercase tracking-widest font-extrabold flex items-end">Feature Set</div>
+              <div className="p-6 font-display text-lg text-stone-800 font-bold text-center">MVP Build<br/><span className="text-sm font-sans text-stone-400 font-normal">{(currency === 'INR') ? '₹8,500' : '$229'}</span></div>
+              <div className="p-6 font-display text-lg text-stone-800 font-bold text-center border-x border-stone-200/20 bg-violet-50">Full-Stack + AI<br/><span className="text-sm font-sans text-violet-600 font-normal">{(currency === 'INR') ? '₹28,900' : '$729'}</span></div>
+              <div className="p-6 font-display text-lg text-stone-800 font-bold text-center">Enterprise<br/><span className="text-sm font-sans text-stone-400 font-normal">{(currency === 'INR') ? '₹47,000+' : '$1,199+'}</span></div>
             </div>
             
             {[
@@ -346,7 +343,7 @@ I would like to proceed with this architecture. Please provide further details.`
               { name: 'Support SLA', starter: '14-day production', pro: '30-day dedicated', enterprise: 'Infinite Priority' }
             ].map((row, idx) => (
               <div key={idx} className="grid grid-cols-4 border-b border-stone-200/20 hover:bg-stone-50 transition-colors">
-                <div className="p-4 px-6 font-mono text-xs text-stone-600">{row.name}</div>
+                <div className="p-4 px-6 font-sans text-xs text-stone-600 font-semibold">{row.name}</div>
                 <div className="p-4 px-6 flex justify-center items-center text-sm font-sans text-stone-500">
                   {typeof row.starter === 'boolean' ? (row.starter ? <Check size={16} className="text-emerald-500" /> : <span className="text-stone-300">-</span>) : row.starter}
                 </div>
@@ -358,13 +355,14 @@ I would like to proceed with this architecture. Please provide further details.`
                 </div>
               </div>
             ))}
+            </div>
           </div>
         </section>
       </ScrollReveal>
 
       {/* NEW: INTERACTIVE ESTIMATION TOOL */}
       <ScrollReveal delay={100}>
-        <section id="pricing-calculator" className="mb-32 clay-card relative overflow-hidden">
+        <section id="pricing-calculator" className="mb-32 clay-card relative overflow-hidden p-6 md:p-8">
           <div className="absolute top-0 right-0 w-96 h-96 bg-violet-600/5 rounded-full blur-3xl pointer-events-none -z-10" />
           
           <div className="p-8 sm:p-12 border-b border-stone-200/30 bg-stone-50/35">
@@ -374,11 +372,11 @@ I would like to proceed with this architecture. Please provide further details.`
                   <span className="p-2 bg-violet-100 rounded-xl text-violet-600">
                     <Sliders size={18} />
                   </span>
-                  <span className="text-violet-600 font-mono text-xs uppercase tracking-widest font-black">✦ ESTIMATION SUITE</span>
+                  <span className="text-violet-600 font-sans text-xs uppercase tracking-widest font-extrabold">✦ PRICING ESTIMATOR</span>
                 </div>
                 <h2 className="font-display font-black text-2xl xs:text-3xl text-stone-850 uppercase tracking-tight mt-1">Interactive Estimator</h2>
-                <p className="text-stone-600 text-sm max-w-xl leading-relaxed">
-                  Toggle configurations below to simulate an architectural deployment. Values are rough projections and scale with complexity.
+                <p className="text-stone-600 text-sm max-w-xl leading-relaxed font-sans">
+                  Select your options below to estimate your custom project build. Final scope and pricing are confirmed during initial consultation.
                 </p>
               </div>
               <div className="bg-violet-50 border border-violet-100 px-4 py-2.5 rounded-2xl flex items-center space-x-2 shrink-0 self-start sm:self-center">
@@ -386,7 +384,7 @@ I would like to proceed with this architecture. Please provide further details.`
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-violet-400 opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-violet-500"></span>
                 </span>
-                <span className="font-mono text-[9px] font-bold text-violet-700 uppercase tracking-widest">REAL-TIME TELEMETRY</span>
+                <span className="font-sans text-[9px] font-extrabold text-violet-700 uppercase tracking-widest">LIVE ESTIMATOR</span>
               </div>
             </div>
           </div>
@@ -398,7 +396,7 @@ I would like to proceed with this architecture. Please provide further details.`
               {/* Base Tier */}
               <div className="space-y-4 text-left">
                 <div className="flex items-center space-x-2">
-                  <span className="font-mono text-[10px] text-stone-400 uppercase tracking-widest font-black">01_BASE_ARCHITECTURE</span>
+                  <span className="font-sans text-[10px] text-stone-400 uppercase tracking-widest font-extrabold">01 SELECT SERVICE</span>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {[
@@ -414,7 +412,7 @@ I would like to proceed with this architecture. Please provide further details.`
                       <button
                         key={tier.id}
                         onClick={() => setCalcTier(tier.id as any)}
-                        className={`p-3.5 text-xs font-mono tracking-wide rounded-xl transition-all border cursor-pointer flex items-center space-x-3 text-left ${
+                        className={`p-3.5 text-xs font-sans tracking-wide rounded-xl transition-all border cursor-pointer flex items-center space-x-3 text-left ${
                           isActive 
                             ? 'bg-gradient-to-r from-violet-600 to-rose-500 border-transparent text-white-force shadow-md shadow-violet-500/10 scale-[1.01]' 
                             : 'bg-[#faf8f5] border-stone-200/60 text-stone-700 hover:border-violet-300 hover:bg-violet-50/50 hover:text-violet-700 hover:shadow-sm'
@@ -436,8 +434,8 @@ I would like to proceed with this architecture. Please provide further details.`
                     exit={{ opacity: 0, height: 0 }}
                     className="space-y-4 overflow-hidden mt-10 text-left"
                   >
-                    <span className="text-stone-400 font-mono text-[10px] uppercase tracking-widest font-black">02_SYSTEM_COMPLEXITY</span>
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    <span className="text-stone-400 font-sans text-[10px] uppercase tracking-widest font-extrabold">02 SELECT COMPLEXITY</span>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
                       {[
                         { id: 'small', label: 'Lean / Focused', desc: 'Pre-production MVP build with essential features.' },
                         { id: 'medium', label: 'Standard Scale', desc: 'Production-ready with custom backend and scaling.' },
@@ -469,8 +467,8 @@ I would like to proceed with this architecture. Please provide further details.`
 
               {/* Add-ons */}
               <div className="space-y-4 mt-10 text-left">
-                <span className="text-stone-400 font-mono text-[10px] uppercase tracking-widest font-black">03_ADDITIONAL_MODULES</span>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <span className="text-stone-400 font-sans text-[10px] uppercase tracking-widest font-extrabold">03 ADD OPTIONAL FEATURES</span>
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
                   <button
                     onClick={() => toggleAddon('ai')}
                     disabled={calcTier === 'ai-agents'}
@@ -483,7 +481,7 @@ I would like to proceed with this architecture. Please provide further details.`
                     }`}
                   >
                     <div className="flex flex-col pr-2">
-                      <span className="font-mono text-xs font-bold uppercase mb-1">AI Integrations</span>
+                      <span className="font-sans text-xs font-bold uppercase mb-1">AI Integrations</span>
                       <span className="text-[10px] font-sans text-stone-500 leading-normal">Gemini-powered NLP features and autonomous pipeline integrations.</span>
                     </div>
                     {calcTier === 'ai-agents' ? (
@@ -504,7 +502,7 @@ I would like to proceed with this architecture. Please provide further details.`
                     }`}
                   >
                     <div className="flex flex-col pr-2">
-                      <span className="font-mono text-xs font-bold uppercase mb-1">Complex Motion</span>
+                      <span className="font-sans text-xs font-bold uppercase mb-1">Complex Motion</span>
                       <span className="text-[10px] font-sans text-stone-500 leading-normal">Interactive 3D WebGL canvases, fluid vector systems, motion transitions.</span>
                     </div>
                     <div className={`w-4.5 h-4.5 rounded-full border flex items-center justify-center transition-all shrink-0 self-start mt-0.5 ${calcAddons.includes('motion') ? 'bg-violet-600 border-violet-600 text-white-force' : 'border-stone-300 bg-white'}`}>
@@ -521,8 +519,8 @@ I would like to proceed with this architecture. Please provide further details.`
                     }`}
                   >
                     <div className="flex flex-col pr-2">
-                      <span className="font-mono text-xs font-bold uppercase mb-1">Priority SLA</span>
-                      <span className="text-[10px] font-sans text-stone-500 leading-normal">Accelerated timeline, weekly core telemetry reports, 24-hr priority chat.</span>
+                      <span className="font-sans text-xs font-bold uppercase mb-1">Priority SLA</span>
+                      <span className="text-[10px] font-sans text-stone-500 leading-normal">Accelerated timeline, weekly core progress reports, 24-hr priority chat.</span>
                     </div>
                     <div className={`w-4.5 h-4.5 rounded-full border flex items-center justify-center transition-all shrink-0 self-start mt-0.5 ${calcAddons.includes('priority') ? 'bg-violet-600 border-violet-600 text-white-force' : 'border-stone-300 bg-white'}`}>
                       {calcAddons.includes('priority') && <Check size={10} className="text-white-force font-bold" />}
@@ -541,7 +539,7 @@ I would like to proceed with this architecture. Please provide further details.`
               <div className="space-y-10 relative z-10">
                 {/* Cost */}
                 <div className="space-y-1.5">
-                  <div className="flex items-center space-x-2 text-stone-400-force font-mono text-[10px] uppercase tracking-widest font-black">
+                  <div className="flex items-center space-x-2 text-stone-400-force font-sans text-[10px] uppercase tracking-widest font-extrabold">
                     <DollarSign size={14} className="text-violet-400" />
                     <span className="text-stone-400-force">ESTIMATED INVESTMENT</span>
                   </div>
@@ -552,18 +550,18 @@ I would like to proceed with this architecture. Please provide further details.`
 
                 {/* Timeline */}
                 <div className="space-y-1.5">
-                  <div className="flex items-center space-x-2 text-stone-400-force font-mono text-[10px] uppercase tracking-widest font-black">
+                  <div className="flex items-center space-x-2 text-stone-400-force font-sans text-[10px] uppercase tracking-widest font-extrabold">
                     <Clock size={14} className="text-violet-400" />
                     <span className="text-stone-400-force">PROJECTED TIMELINE</span>
                   </div>
-                  <div className="text-2xl font-mono text-stone-100-force font-black">
+                  <div className="text-2xl font-sans text-stone-100-force font-black">
                     {estimation.timelineStr}
                   </div>
                 </div>
 
                 {/* Resources */}
                 <div className="space-y-3">
-                  <div className="flex items-center space-x-2 text-stone-400-force font-mono text-[10px] uppercase tracking-widest font-black">
+                  <div className="flex items-center space-x-2 text-stone-400-force font-sans text-[10px] uppercase tracking-widest font-extrabold">
                     <Users size={14} className="text-violet-400" />
                     <span className="text-stone-400-force">TEAM ALLOCATION</span>
                   </div>
@@ -600,9 +598,9 @@ I would like to proceed with an estimate for my project. Please provide further 
                     const whatsappUrl = `https://wa.me/918102099678?text=${encodedMessage}`;
                     window.open(whatsappUrl, '_blank');
                   }}
-                  className="w-full py-4 bg-gradient-to-r from-violet-600 to-rose-500 text-white-force font-mono font-bold text-xs uppercase tracking-widest rounded-xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 shadow-[0_10px_20px_rgba(124,58,237,0.3)] hover:shadow-[0_15px_30px_rgba(124,58,237,0.5)] cursor-pointer"
+                  className="w-full py-4 bg-gradient-to-r from-violet-600 to-rose-500 text-white-force font-sans font-extrabold text-xs uppercase tracking-widest rounded-xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 shadow-[0_10px_20px_rgba(124,58,237,0.3)] hover:shadow-[0_15px_30px_rgba(124,58,237,0.5)] cursor-pointer"
                 >
-                  PROCEED WITH ESTIMATE
+                  REQUEST THIS ESTIMATE
                 </button>
               </div>
             </div>
@@ -614,10 +612,10 @@ I would like to proceed with an estimate for my project. Please provide further 
       <ScrollReveal delay={150}>
         <section id="pricing-faq-section" className="py-24 border-t border-stone-200/30 max-w-4xl mx-auto">
           <div className="text-center space-y-4 mb-16">
-            <span className="text-violet-600 font-mono text-xs uppercase tracking-widest font-semibold">✦ ACCREDITATION MEMORANDUM</span>
-            <h2 className="font-display font-extrabold text-4xl text-stone-800 tracking-tight uppercase">ENGAGEMENT FAQ.</h2>
-            <p className="text-stone-600 text-sm max-w-md mx-auto leading-relaxed">
-              Transparent protocols regarding database assets, intellectual code rights, and release timelines.
+            <span className="text-violet-600 font-sans text-xs uppercase tracking-widest font-extrabold">✦ FREQUENTLY ASKED QUESTIONS</span>
+            <h2 className="font-display font-extrabold text-4xl text-stone-800 tracking-tight uppercase">FREQUENTLY ASKED QUESTIONS.</h2>
+            <p className="text-stone-600 text-sm max-w-md mx-auto leading-relaxed font-sans">
+              Clear answers regarding code ownership, delivery timelines, post-launch support, and custom AI integrations.
             </p>
           </div>
 

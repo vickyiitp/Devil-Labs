@@ -1,7 +1,7 @@
 import { motion } from 'motion/react';
 import { ShoppingCart, LineChart, Stethoscope, Briefcase, Zap, Bot, ArrowRight, ShieldCheck } from 'lucide-react';
 import CyberFrame from './CyberFrame';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 const industries = [
   {
@@ -142,6 +142,93 @@ const industries = [
   }
 ];
 
+function IndustryCard({ ind, idx }: { ind: any; idx: number; key?: React.Key }) {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const [rotate, setRotate] = useState({ x: 0, y: 0 });
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!cardRef.current) return;
+    const card = cardRef.current;
+    const rect = card.getBoundingClientRect();
+    const width = rect.width;
+    const height = rect.height;
+    const mouseX = e.clientX - rect.left - width / 2;
+    const mouseY = e.clientY - rect.top - height / 2;
+    
+    // Max rotation 12 degrees for dynamic response
+    const rX = -(mouseY / (height / 2)) * 12;
+    const rY = (mouseX / (width / 2)) * 12;
+    
+    setRotate({ x: rX, y: rY });
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+    setRotate({ x: 0, y: 0 });
+  };
+
+  const Preview = ind.preview;
+
+  return (
+    <motion.div
+      ref={cardRef}
+      onMouseMove={handleMouseMove}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={handleMouseLeave}
+      initial={{ opacity: 0, y: 50, rotateX: 20, rotateY: -15, scale: 0.94 }}
+      whileInView={{ opacity: 1, y: 0, rotateX: 0, rotateY: 0, scale: 1 }}
+      viewport={{ once: true, margin: "-80px" }}
+      transition={{ 
+        type: "spring",
+        stiffness: 70,
+        damping: 18,
+        delay: idx * 0.12 
+      }}
+      style={{ 
+        perspective: 1200,
+        transformStyle: "preserve-3d"
+      }}
+      animate={isHovered ? {
+        rotateX: rotate.x,
+        rotateY: rotate.y,
+        scale: 1.04,
+        z: 25
+      } : {
+        rotateX: 0,
+        rotateY: 0,
+        scale: 1,
+        z: 0
+      }}
+      className="group h-full flex flex-col cursor-pointer"
+    >
+      <CyberFrame className="flex flex-col p-6 h-full bg-[#0a0a0a] transition-all duration-300 hover:bg-[#111] hover:border-violet-500/30 shadow-2xl relative overflow-hidden">
+        {/* Soft interactive glowing backdrop for premium 3D-feel */}
+        {isHovered && (
+          <motion.div 
+            layoutId={`glow-${ind.id}`}
+            className="absolute -inset-24 bg-[radial-gradient(circle_at_center,rgba(139,92,246,0.15)_0%,transparent_60%)] pointer-events-none z-0"
+            transition={{ type: "spring", stiffness: 100, damping: 20 }}
+          />
+        )}
+
+        <div className="flex items-center space-x-3 mb-4 relative z-10">
+          <div className="p-2 bg-white/5 rounded-lg border border-white/10 group-hover:border-violet-500/40 transition-colors">
+            <ind.icon size={20} className="text-white group-hover:text-violet-400 transition-colors" />
+          </div>
+          <h3 className="font-bold text-lg text-white font-display">{ind.title}</h3>
+        </div>
+        <p className="text-xs text-gray-400 mb-6 flex-grow relative z-10">{ind.desc}</p>
+        
+        {/* Mini UI Container with 3D Depth translation */}
+        <div className="h-40 w-full mt-auto relative z-10 group-hover:translate-z-[20px] transition-transform duration-300">
+          <Preview />
+        </div>
+      </CyberFrame>
+    </motion.div>
+  );
+}
+
 export default function IndustrySolutions() {
   return (
     <section className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-b border-white/5">
@@ -154,35 +241,10 @@ export default function IndustrySolutions() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {industries.map((ind, idx) => {
-          const Preview = ind.preview;
-          return (
-            <motion.div
-              key={ind.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="group h-full flex flex-col"
-            >
-              <CyberFrame className="flex flex-col p-6 h-full bg-[#0a0a0a] transition-colors hover:bg-[#111]">
-                <div className="flex items-center space-x-3 mb-4">
-                  <div className="p-2 bg-white/5 rounded-lg border border-white/10 group-hover:border-violet-500/30 transition-colors">
-                    <ind.icon size={20} className="text-white group-hover:text-violet-400 transition-colors" />
-                  </div>
-                  <h3 className="font-bold text-lg text-white font-display">{ind.title}</h3>
-                </div>
-                <p className="text-xs text-gray-400 mb-6 flex-grow">{ind.desc}</p>
-                
-                {/* Mini UI Container */}
-                <div className="h-40 w-full mt-auto relative z-10 group-hover:scale-[1.02] transition-transform duration-300">
-                  <Preview />
-                </div>
-              </CyberFrame>
-            </motion.div>
-          );
-        })}
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6">
+        {industries.map((ind, idx) => (
+          <IndustryCard key={ind.id} ind={ind} idx={idx} />
+        ))}
       </div>
 
       <div className="mt-16 text-center">

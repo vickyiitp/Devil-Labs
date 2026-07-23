@@ -13,6 +13,9 @@ import TermsPage from './pages/TermsPage';
 import MSAPage from './pages/MSAPage';
 import ProjectsPage from './pages/ProjectsPage';
 import AboutPage from './pages/AboutPage';
+import ProductsPage from './pages/ProductsPage';
+import SolutionsPage from './pages/SolutionsPage';
+import ResourcesPage from './pages/ResourcesPage';
 import SkeletonLoader from './components/SkeletonLoader';
 import BackgroundEffects from './components/BackgroundEffects';
 import ScrollProgress from './components/ScrollProgress';
@@ -72,9 +75,17 @@ export default function App() {
         return <LandingPage navigate={navigate} />;
       case '/services':
         return <ServicesPage navigate={navigate} />;
+      case '/products':
+        return <ProductsPage navigate={navigate} />;
+      case '/solutions':
+        return <SolutionsPage navigate={navigate} />;
       case '/work':
+      case '/projects':
         return <ProjectsPage navigate={navigate} />;
+      case '/resources':
+        return <ResourcesPage navigate={navigate} />;
       case '/about':
+      case '/company':
         return <AboutPage navigate={navigate} />;
       case '/pricing':
         return <PricingPage navigate={navigate} />;

@@ -5,6 +5,7 @@ import { useCurrency } from '../contexts/CurrencyContext';
 import DevilLabsLogo from './DevilLabsLogo';
 import { audioEngine } from '../lib/audio';
 import Magnetic from './Magnetic';
+import FooterOrbitalCTA from './FooterOrbitalCTA';
 
 interface NavigationProps {
   currentPath: string;
@@ -20,6 +21,37 @@ export default function Navigation({ currentPath, navigate }: NavigationProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   const [activeSlide, setActiveSlide] = useState(0);
+
+  const [scrolled, setScrolled] = useState(false);
+  const [visible, setVisible] = useState(true);
+  const lastScrollY = useRef(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      if (currentScrollY > 30) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+
+      if (currentScrollY < 15) {
+        setVisible(true);
+      } else if (currentScrollY > lastScrollY.current + 5) {
+        // scrolling down - hide header
+        setVisible(false);
+      } else if (currentScrollY < lastScrollY.current - 5) {
+        // scrolling up - show header
+        setVisible(true);
+      }
+      
+      lastScrollY.current = currentScrollY;
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const slides = [
     "PROCESS: 01. CONSULT ➜ 02. WORK ON IDEA ➜ 03. INTERACTIVE DEMO ➜ 04. PRODUCTION DEPLOY",
@@ -37,13 +69,13 @@ export default function Navigation({ currentPath, navigate }: NavigationProps) {
   }, []);
 
   const navItems = [
-    { name: 'SERVICES', path: '/services', label: '01_SERVICES' },
-    { name: 'WORK', path: '/work', label: '02_WORK' },
-    { name: 'PROCESS', path: '/process', label: '03_PROCESS' },
-    { name: 'INSIGHTS', path: '/insights', label: '04_INSIGHTS' },
-    { name: 'ABOUT', path: '/about', label: '05_ABOUT' },
-    { name: 'PRICING', path: '/pricing', label: '06_PRICING' },
-    { name: 'CONTACT', path: '/contact', label: '07_CONTACT' },
+    { name: 'SERVICES', path: '/services', label: '01 Services' },
+    { name: 'PRODUCTS', path: '/products', label: '02 Products' },
+    { name: 'SOLUTIONS', path: '/solutions', label: '03 Solutions' },
+    { name: 'PROJECTS', path: '/projects', label: '04 Projects' },
+    { name: 'RESOURCES', path: '/resources', label: '05 Resources' },
+    { name: 'COMPANY', path: '/company', label: '06 Company' },
+    { name: 'CONTACT', path: '/contact', label: '07 Contact' },
   ];
 
   return (
@@ -51,7 +83,10 @@ export default function Navigation({ currentPath, navigate }: NavigationProps) {
       {/* 0. HIGH-CONVERTING TOP INFO BAR */}
       <div 
         id="header-top-bar" 
-        className="fixed top-0 left-0 w-full h-[48px] md:h-12 bg-[#faf8f5]/90 backdrop-blur-xl border-b border-stone-200/40 z-[60] flex items-center justify-between px-4 sm:px-6 lg:px-8 text-xs tracking-widest font-bold text-stone-500 font-mono select-none"
+        className="fixed top-0 left-0 w-full h-[48px] md:h-12 bg-[#faf8f5]/90 backdrop-blur-xl border-b border-stone-200/40 z-[60] flex items-center justify-between px-4 sm:px-6 lg:px-8 text-xs tracking-widest font-bold text-stone-500 font-sans select-none transition-transform duration-500 ease-in-out"
+        style={{
+          transform: scrolled ? 'translateY(-100%)' : 'translateY(0)'
+        }}
       >
         {/* Left Side: Email & Tel */}
         <div className="flex items-center space-x-6">
@@ -115,7 +150,14 @@ export default function Navigation({ currentPath, navigate }: NavigationProps) {
         </div>
       </div>
 
-      <header id="site-header" className="fixed top-[48px] md:top-12 left-0 w-full z-50 pointer-events-none font-mono pt-2 sm:pt-3 md:pt-4">
+      <header 
+        id="site-header" 
+        className="fixed left-0 w-full z-50 pointer-events-none font-sans transition-all duration-500 ease-in-out pt-2 sm:pt-3 md:pt-4"
+        style={{
+          top: scrolled ? '0px' : '48px',
+          transform: visible ? 'translateY(0)' : 'translateY(-120%)'
+        }}
+      >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between pointer-events-auto">
         {/* Brand Logo */}
         <button
@@ -161,7 +203,7 @@ export default function Navigation({ currentPath, navigate }: NavigationProps) {
             <button
               onMouseEnter={() => audioEngine.playHover()}
               onClick={() => { audioEngine.playClick(); toggleCurrency(); }}
-              className="flex items-center justify-center w-11 h-11 clay-button rounded-full font-mono text-xs font-bold text-stone-500 hover:text-stone-900 hover:border-violet-300/40 cursor-pointer"
+              className="flex items-center justify-center w-11 h-11 clay-button rounded-full font-sans text-xs font-bold text-stone-500 hover:text-stone-900 hover:border-violet-300/40 cursor-pointer"
             >
               {currency}
             </button>
@@ -184,7 +226,7 @@ export default function Navigation({ currentPath, navigate }: NavigationProps) {
           <button
             onMouseEnter={() => audioEngine.playHover()}
             onClick={() => { audioEngine.playClick(); toggleCurrency(); }}
-            className="flex items-center justify-center w-12 h-12 bg-[#fcfbf9]/90 backdrop-blur-xl border border-stone-200/50 rounded-full font-mono text-xs font-bold text-stone-500 hover:text-stone-900 active:scale-95 transition-all cursor-pointer"
+            className="flex items-center justify-center w-12 h-12 bg-[#fcfbf9]/90 backdrop-blur-xl border border-stone-200/50 rounded-full font-sans text-xs font-bold text-stone-500 hover:text-stone-900 active:scale-95 transition-all cursor-pointer"
           >
             {currency}
           </button>
@@ -249,27 +291,6 @@ export function Footer({ navigate }: { navigate: (path: string) => void }) {
   const [email, setEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
 
-  useEffect(() => {
-    const savedLang = localStorage.getItem('devil-labs-lang');
-    if (savedLang) {
-      setLang(savedLang);
-    }
-  }, []);
-
-  const handleLangChange = (newLang: string) => {
-    setLang(newLang);
-    localStorage.setItem('devil-labs-lang', newLang);
-  };
-
-  const handleSubscribe = (e: React.FormEvent) => {
-    e.preventDefault();
-    if(email) {
-      setSubscribed(true);
-      setEmail('');
-      setTimeout(() => setSubscribed(false), 5000);
-    }
-  };
-
   const footerBrandingRef = useRef<HTMLDivElement>(null);
   const [footerMouse, setFooterMouse] = useState({ x: 50, y: 50 });
   const [isFooterHovered, setIsFooterHovered] = useState(false);
@@ -292,15 +313,36 @@ export function Footer({ navigate }: { navigate: (path: string) => void }) {
     }
   };
 
+  useEffect(() => {
+    const savedLang = localStorage.getItem('devil-labs-lang');
+    if (savedLang) {
+      setLang(savedLang);
+    }
+  }, []);
+
+  const handleLangChange = (newLang: string) => {
+    setLang(newLang);
+    localStorage.setItem('devil-labs-lang', newLang);
+  };
+
+  const handleSubscribe = (e: React.FormEvent) => {
+    e.preventDefault();
+    if(email) {
+      setSubscribed(true);
+      setEmail('');
+      setTimeout(() => setSubscribed(false), 5000);
+    }
+  };
+
   const languages = ['EN', 'FR', 'DE', 'JP'];
 
   return (
-    <footer id="site-footer" className="bg-[#f5f4ef] border-t border-stone-200/60 pt-20 pb-12 px-4 sm:px-6 lg:px-8 font-mono relative z-10 overflow-hidden">
+    <footer id="site-footer" className="bg-[#f5f4ef] border-t border-stone-200/60 pt-20 pb-12 px-4 sm:px-6 lg:px-8 font-sans relative z-10 overflow-hidden">
       {/* Subtle low-opacity background noise texture for brand consistency */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.02] bg-noise z-0" />
       
       {/* Newsletter & Links Section */}
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 relative z-10 mb-20 text-stone-500 text-xs">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 md:gap-12 relative z-10 mb-20 text-stone-500 text-xs">
         
         {/* Brand Info */}
         <div className="flex flex-col space-y-4">
@@ -313,8 +355,7 @@ export function Footer({ navigate }: { navigate: (path: string) => void }) {
             BUILDING THE ARCHITECTURE OF TOMORROW.
           </p>
           <div className="flex items-center space-x-2 text-emerald-700 border border-emerald-200 bg-emerald-50 px-3 py-1.5 w-max rounded-full shadow-sm">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-            <span className="text-xs tracking-widest font-bold">SYSTEMS ONLINE</span>
+            <span className="text-xs tracking-widest font-black">ACTIVE</span>
           </div>
         </div>
 
@@ -322,11 +363,11 @@ export function Footer({ navigate }: { navigate: (path: string) => void }) {
         <div className="flex flex-col space-y-3 font-bold tracking-widest text-xs">
           <span className="text-stone-800 mb-2 font-display">INDEX</span>
           <button onClick={() => navigate('/services')} className="text-left hover:text-violet-600 hover:pl-2 transition-all duration-300">SERVICES</button>
-          <button onClick={() => navigate('/work')} className="text-left hover:text-violet-600 hover:pl-2 transition-all duration-300">WORK</button>
-          <button onClick={() => navigate('/process')} className="text-left hover:text-violet-600 hover:pl-2 transition-all duration-300">PROCESS</button>
-          <button onClick={() => navigate('/insights')} className="text-left hover:text-violet-600 hover:pl-2 transition-all duration-300">INSIGHTS</button>
-          <button onClick={() => navigate('/about')} className="text-left hover:text-violet-600 hover:pl-2 transition-all duration-300">ABOUT</button>
-          <button onClick={() => navigate('/pricing')} className="text-left hover:text-violet-600 hover:pl-2 transition-all duration-300">PRICING</button>
+          <button onClick={() => navigate('/products')} className="text-left hover:text-violet-600 hover:pl-2 transition-all duration-300">PRODUCTS</button>
+          <button onClick={() => navigate('/solutions')} className="text-left hover:text-violet-600 hover:pl-2 transition-all duration-300">SOLUTIONS</button>
+          <button onClick={() => navigate('/projects')} className="text-left hover:text-violet-600 hover:pl-2 transition-all duration-300">PROJECTS</button>
+          <button onClick={() => navigate('/resources')} className="text-left hover:text-violet-600 hover:pl-2 transition-all duration-300">RESOURCES</button>
+          <button onClick={() => navigate('/company')} className="text-left hover:text-violet-600 hover:pl-2 transition-all duration-300">COMPANY</button>
           <button onClick={() => navigate('/contact')} className="text-left hover:text-violet-600 hover:pl-2 transition-all duration-300">CONTACT</button>
         </div>
 
@@ -396,15 +437,15 @@ export function Footer({ navigate }: { navigate: (path: string) => void }) {
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="bg-[#faf8f5] border border-stone-200/50 rounded-full px-4 py-3 text-stone-800 text-xs font-mono placeholder-stone-400 focus:outline-none focus:border-violet-300 shadow-inner w-full"
+              className="bg-[#faf8f5] border border-stone-200/50 rounded-full px-4 py-3 text-stone-800 text-xs font-sans placeholder-stone-400 focus:outline-none focus:border-violet-300 shadow-inner w-full font-bold"
               disabled={subscribed}
             />
             <button 
               type="submit" 
               disabled={subscribed}
-              className="bg-gradient-to-r from-violet-600 to-rose-500 hover:shadow-md hover:scale-101 text-white px-4 py-3 rounded-full text-xs font-bold tracking-widest transition-all duration-300 text-center uppercase"
+              className="bg-gradient-to-r from-violet-600 to-rose-500 hover:shadow-md hover:scale-101 text-white px-4 py-3 rounded-full text-xs font-black tracking-widest transition-all duration-300 text-center uppercase"
             >
-              {subscribed ? 'TRANSMISSION INITIALIZED' : 'INITIALIZE UPLINK'}
+              {subscribed ? 'SUBSCRIBED' : 'SUBSCRIBE'}
             </button>
           </form>
           {subscribed && (
@@ -422,9 +463,9 @@ export function Footer({ navigate }: { navigate: (path: string) => void }) {
       </div>
 
       {/* Dynamic Topic Cluster and Internal Linking Grid */}
-      <div className="max-w-7xl mx-auto border-t border-stone-200/40 pt-12 pb-8 mb-8 relative z-10 text-xs tracking-wider font-mono">
-        <span className="text-stone-800 font-bold tracking-widest uppercase block mb-6 text-xs">✦ TOPIC CLUSTERS & SERVICE NODES</span>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-stone-500">
+      <div className="max-w-7xl mx-auto border-t border-stone-200/40 pt-12 pb-8 mb-8 relative z-10 text-xs tracking-wider font-sans font-extrabold">
+        <span className="text-stone-800 font-black tracking-widest uppercase block mb-6 text-xs">✦ TOPIC CLUSTERS & SERVICE NODES</span>
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6 text-stone-500">
           {/* Services Cluster */}
           <div className="flex flex-col space-y-2">
             <span className="text-stone-700 font-bold mb-2 uppercase tracking-widest">Core Service Offerings</span>
@@ -456,9 +497,9 @@ export function Footer({ navigate }: { navigate: (path: string) => void }) {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center text-stone-500 text-xs tracking-widest font-bold border-t border-stone-200/40 pt-8 mb-8 gap-4">
+      <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center text-stone-500 text-xs tracking-widest font-black border-t border-stone-200/40 pt-8 mb-8 gap-4">
         <p>© {new Date().getFullYear()} DEVIL LABS. ALL RIGHTS RESERVED.</p>
-        <p>SECURE TRANSMISSION ENDS</p>
+        <p>HIGH-FIDELITY DESIGN &amp; DEVELOPMENT</p>
       </div>
 
       {/* Redesigned Premium Interactive Footer Branding Section */}
@@ -491,65 +532,107 @@ export function Footer({ navigate }: { navigate: (path: string) => void }) {
         />
 
         {/* Technical Data Annotations / Framing borders */}
-        <div className="w-full max-w-6xl mx-auto flex justify-between items-center px-6 text-[9px] sm:text-[10px] text-stone-400 font-mono tracking-widest uppercase pointer-events-none relative z-10 mb-2">
+        <div className="w-full max-w-6xl mx-auto flex justify-between items-center px-6 text-[9px] sm:text-[10px] text-stone-400 font-sans tracking-widest uppercase pointer-events-none relative z-10 mb-2 font-black">
           <div className="flex items-center space-x-2">
             <span className="w-1.5 h-1.5 rounded-full bg-violet-400 animate-pulse" />
-            <span>[ GEO: 24.79° N, 85.00° E ]</span>
+            <span>DEVIL LABS</span>
           </div>
-          <div className="hidden md:block text-stone-300">✦ ARTISANAL DESIGN x SYSTEM ENGINEERING ✦</div>
-          <div>[ REVISION: V3.4.2-GOLD ]</div>
+          <div className="hidden md:block text-stone-300">✦ ARTISANAL DESIGN &amp; CODE ✦</div>
+          <div>OFFICIAL VERSION</div>
         </div>
 
         {/* Giant Typography Sculpting Container */}
-        <div className="flex flex-wrap justify-center items-center select-none relative z-10 font-display font-black tracking-tighter text-[11vw] leading-none py-6 transition-all duration-300">
-          {"DEVIL LABS".split("").map((char, index) => {
-            if (char === " ") {
-              return <span key={index} className="w-[4vw]" />;
-            }
-            const isClicked = clickedLetters.includes(index);
-            return (
-              <motion.span
-                key={index}
-                onClick={() => handleLetterClick(index)}
-                className="inline-block relative cursor-pointer font-black select-none px-0.5"
-                style={{
-                  WebkitTextStroke: isClicked 
-                    ? '2.5px rgb(139, 92, 246)' 
-                    : '1.5px rgba(124, 58, 237, 0.15)',
-                  textShadow: isClicked 
-                    ? '0 10px 25px rgba(139, 92, 246, 0.35)' 
-                    : '1px 1px 5px rgba(0,0,0,0.01)',
-                  color: isClicked ? '#7c3aed' : 'transparent',
-                  transformStyle: "preserve-3d",
-                }}
-                initial={{ y: 20, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{
-                  type: "spring",
-                  stiffness: 110,
-                  damping: 15,
-                  delay: index * 0.03,
-                }}
-                whileHover={{
-                  scale: 1.15,
-                  y: -10,
-                  color: "#7c3aed",
-                  WebkitTextStroke: '2.5px #ec4899',
-                  textShadow: '0 15px 35px rgba(139, 92, 246, 0.45), 0 0 15px rgba(236, 72, 153, 0.2)',
-                }}
-              >
-                {char}
-                
-                {/* Under-letter subtle shadow */}
-                <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4/5 h-[3px] bg-stone-900/5 rounded-full blur-[2px] opacity-0 group-hover/branding:opacity-100 transition-opacity pointer-events-none scale-x-50" />
-              </motion.span>
-            );
-          })}
+        <div className="flex flex-wrap justify-center items-center select-none relative z-10 font-display font-black tracking-tighter text-[7.5vw] xs:text-[8.5vw] sm:text-[9.5vw] lg:text-[10.5vw] leading-none py-6 transition-all duration-300 max-w-full px-2 overflow-hidden gap-x-[2.5vw] gap-y-2">
+          {/* Word 1: DEVIL */}
+          <div className="flex items-center whitespace-nowrap">
+            {"DEVIL".split("").map((char, index) => {
+              const isClicked = clickedLetters.includes(index);
+              return (
+                <motion.span
+                  key={`devil-${index}`}
+                  onClick={() => handleLetterClick(index)}
+                  className="inline-block relative cursor-pointer font-black select-none px-0.5"
+                  style={{
+                    WebkitTextStroke: isClicked 
+                      ? '2.5px rgb(139, 92, 246)' 
+                      : '1.5px rgba(124, 58, 237, 0.15)',
+                    textShadow: isClicked 
+                      ? '0 10px 25px rgba(139, 92, 246, 0.35)' 
+                      : '1px 1px 5px rgba(0,0,0,0.01)',
+                    color: isClicked ? '#7c3aed' : 'transparent',
+                    transformStyle: "preserve-3d",
+                  }}
+                  initial={{ y: 20, opacity: 0 }}
+                  whileInView={{ y: 0, opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 110,
+                    damping: 15,
+                    delay: index * 0.03,
+                  }}
+                  whileHover={{
+                    scale: 1.15,
+                    y: -10,
+                    color: "#7c3aed",
+                    WebkitTextStroke: '2.5px #ec4899',
+                    textShadow: '0 15px 35px rgba(139, 92, 246, 0.45), 0 0 15px rgba(236, 72, 153, 0.2)',
+                  }}
+                >
+                  {char}
+                  <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4/5 h-[3px] bg-stone-900/5 rounded-full blur-[2px] opacity-0 group-hover/branding:opacity-100 transition-opacity pointer-events-none scale-x-50" />
+                </motion.span>
+              );
+            })}
+          </div>
+
+          {/* Word 2: LABS */}
+          <div className="flex items-center whitespace-nowrap">
+            {"LABS".split("").map((char, index) => {
+              const letterIndex = index + 6;
+              const isClicked = clickedLetters.includes(letterIndex);
+              return (
+                <motion.span
+                  key={`labs-${index}`}
+                  onClick={() => handleLetterClick(letterIndex)}
+                  className="inline-block relative cursor-pointer font-black select-none px-0.5"
+                  style={{
+                    WebkitTextStroke: isClicked 
+                      ? '2.5px rgb(139, 92, 246)' 
+                      : '1.5px rgba(124, 58, 237, 0.15)',
+                    textShadow: isClicked 
+                      ? '0 10px 25px rgba(139, 92, 246, 0.35)' 
+                      : '1px 1px 5px rgba(0,0,0,0.01)',
+                    color: isClicked ? '#7c3aed' : 'transparent',
+                    transformStyle: "preserve-3d",
+                  }}
+                  initial={{ y: 20, opacity: 0 }}
+                  whileInView={{ y: 0, opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 110,
+                    damping: 15,
+                    delay: letterIndex * 0.03,
+                  }}
+                  whileHover={{
+                    scale: 1.15,
+                    y: -10,
+                    color: "#7c3aed",
+                    WebkitTextStroke: '2.5px #ec4899',
+                    textShadow: '0 15px 35px rgba(139, 92, 246, 0.45), 0 0 15px rgba(236, 72, 153, 0.2)',
+                  }}
+                >
+                  {char}
+                  <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4/5 h-[3px] bg-stone-900/5 rounded-full blur-[2px] opacity-0 group-hover/branding:opacity-100 transition-opacity pointer-events-none scale-x-50" />
+                </motion.span>
+              );
+            })}
+          </div>
         </div>
 
         {/* Interactive hints / Easter Egg message */}
-        <div className="relative z-10 h-8 flex items-center justify-center font-mono text-[9px] sm:text-xs tracking-widest text-center px-4">
+        <div className="relative z-10 h-8 flex items-center justify-center font-sans text-[9px] sm:text-xs tracking-widest text-center px-4 font-extrabold">
           <AnimatePresence mode="wait">
             {clickedLetters.length === 9 ? (
               <motion.button
@@ -563,18 +646,18 @@ export function Footer({ navigate }: { navigate: (path: string) => void }) {
                 exit={{ opacity: 0, scale: 0.9, y: -10 }}
                 className="text-white font-bold bg-gradient-to-r from-violet-600 to-rose-500 hover:scale-105 active:scale-95 px-5 py-2 rounded-full shadow-lg border border-violet-400/20 flex items-center space-x-2 cursor-pointer transition-transform duration-200"
               >
-                <span>✦ DEVIL MODE ENGAGED. CONTACT FOUNDER NOW ➜ ✦</span>
+                <span>✦ UNLOCKED • CONTACT FOUNDERS ➜ ✦</span>
               </motion.button>
             ) : (
               <motion.p
                 key="hint"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 0.6 }}
-                className="text-stone-400 group-hover/branding:text-violet-600 group-hover/branding:opacity-100 transition-all duration-300 font-medium"
+                className="text-stone-400 group-hover/branding:text-violet-600 group-hover/branding:opacity-100 transition-all duration-300 font-black uppercase text-[10px] sm:text-xs text-center break-words px-4 w-full max-w-full"
               >
                 {clickedLetters.length > 0 
-                  ? `[ SYS HARMONICS: ${clickedLetters.length}/9 CHANNELS TRIGGERED ]` 
-                  : "✦ HOVER TO ILLUMINATE // CLICK ALL LETTERS TO ACTIVATE HIGHER RESONANCE ✦"
+                  ? `Harmonics: ${clickedLetters.length}/9 segments activated` 
+                  : "✦ Hover to illuminate • Select all letters to reveal direct contact ✦"
                 }
               </motion.p>
             )}
@@ -582,11 +665,11 @@ export function Footer({ navigate }: { navigate: (path: string) => void }) {
         </div>
 
         {/* Small detail: Bottom diagnostic values */}
-        <div className="w-full max-w-6xl mx-auto flex justify-between items-center px-6 text-[8px] sm:text-[9px] text-stone-300 font-mono tracking-widest uppercase pointer-events-none mt-4 relative z-10">
-          <div>[ POWER: OPTIMIZED ]</div>
+        <div className="w-full max-w-6xl mx-auto flex justify-between items-center px-6 text-[8px] sm:text-[9px] text-stone-300 font-sans tracking-widest uppercase pointer-events-none mt-4 relative z-10 font-bold">
+          <div>Optimized</div>
           <div className="flex items-center space-x-1.5">
             <span className="inline-block w-1.5 h-1.5 rounded-full bg-emerald-400" />
-            <span>[ DEVIL_LABS_OS // ONLINE ]</span>
+            <span>Active</span>
           </div>
         </div>
       </div>

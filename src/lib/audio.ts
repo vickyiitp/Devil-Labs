@@ -277,6 +277,36 @@ class AudioEngine {
       osc.stop(now + 0.18);
     } catch (e) {}
   }
+
+  // Play a celebratory ascending chime sound on success
+  public playSuccess() {
+    if (this.isMuted) return;
+    this.init();
+    if (!this.ctx) return;
+
+    try {
+      const now = this.ctx.currentTime;
+      const notes = [523.25, 659.25, 783.99, 1046.50];
+      notes.forEach((freq, idx) => {
+        if (!this.ctx) return;
+        const osc = this.ctx.createOscillator();
+        const gainNode = this.ctx.createGain();
+
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, now + idx * 0.07);
+
+        gainNode.gain.setValueAtTime(0, now + idx * 0.07);
+        gainNode.gain.linearRampToValueAtTime(0.04, now + idx * 0.07 + 0.01);
+        gainNode.gain.exponentialRampToValueAtTime(0.0001, now + idx * 0.07 + 0.35);
+
+        osc.connect(gainNode);
+        gainNode.connect(this.ctx.destination);
+
+        osc.start(now + idx * 0.07);
+        osc.stop(now + idx * 0.07 + 0.38);
+      });
+    } catch (e) {}
+  }
 }
 
 export const audioEngine = new AudioEngine();

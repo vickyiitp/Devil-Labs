@@ -27,11 +27,11 @@ export default function SocialProofMarquee() {
             return (
               <div
                 key={index}
-                className="flex items-center space-x-4 text-white tracking-widest text-xs font-bold uppercase font-mono"
+                className="flex items-center space-x-4 text-white tracking-widest text-xs font-bold uppercase font-sans"
               >
                 <Icon size={16} className="text-black" />
                 <span>{item.text}</span>
-                <span className="text-violet-400">///</span>
+                <span className="text-violet-300">✦</span>
               </div>
             );
           })}

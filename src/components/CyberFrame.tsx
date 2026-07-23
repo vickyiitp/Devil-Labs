@@ -22,7 +22,7 @@ export default function CyberFrame({ children, className = '', glowColor = 'viol
   };
 
   return (
-    <div className={`relative group overflow-hidden clay-card rounded-[24px] ${className}`}>
+    <div className={`relative group overflow-hidden interactive-clay-card rounded-[24px] ${className} p-6 md:p-8`}>
       {/* Playful top organic colored accent line */}
       <div className={`absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r ${pastelAccents[glowColor]} opacity-90`} />
       

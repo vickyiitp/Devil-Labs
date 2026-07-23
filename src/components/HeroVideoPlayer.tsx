@@ -5,10 +5,10 @@ export default function HeroVideoPlayer() {
   const [loaded, setLoaded] = useState(false);
 
   return (
-    <div className="w-full h-full relative rounded-2xl overflow-hidden bg-[#050505] border border-white/10 flex items-center justify-center shadow-2xl group">
+    <div className="w-full max-w-full h-full relative rounded-2xl overflow-hidden bg-[#050505] border border-white/10 flex items-center justify-center shadow-2xl group">
       
       {!loaded && (
-        <div className="absolute inset-0 bg-[#050505] z-10 p-6 flex flex-col justify-end">
+        <div className="absolute inset-0 bg-[#050505] z-10 p-6 flex flex-col justify-end max-w-full">
           <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/5 to-transparent animate-[shimmer_1.5s_infinite]" />
           <div className="w-1/3 h-4 bg-white/5 border border-white/10 rounded-sm mb-4" />
           <div className="w-1/2 h-4 bg-white/5 border border-white/10 rounded-sm" />
@@ -20,7 +20,7 @@ export default function HeroVideoPlayer() {
         loop
         muted
         playsInline
-        className={`absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity duration-700 ${loaded ? 'opacity-70' : 'opacity-0'}`}
+        className={`absolute inset-0 w-full h-full object-cover max-w-full opacity-70 group-hover:opacity-100 transition-opacity duration-700 ${loaded ? 'opacity-70' : 'opacity-0'}`}
         src="https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-a-technological-network-31626-large.mp4"
         onCanPlayThrough={() => setLoaded(true)}
       />

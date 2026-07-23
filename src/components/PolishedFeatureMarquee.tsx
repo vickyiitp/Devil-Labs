@@ -288,11 +288,11 @@ export default function PolishedFeatureMarquee() {
                 }}
               >
                 {/* Background image preview container with soft overlay */}
-                <div className="absolute top-0 right-0 w-24 h-24 sm:w-32 sm:h-32 rounded-full overflow-hidden opacity-10 pointer-events-none mix-blend-multiply transition-transform duration-700 hover:scale-110">
+                <div className="absolute top-0 right-0 w-24 h-24 sm:w-32 sm:h-32 rounded-full overflow-hidden opacity-10 pointer-events-none mix-blend-multiply transition-transform duration-700 hover:scale-110 max-w-full">
                   <img 
                     src={card.bgImage} 
                     alt={card.category} 
-                    className="w-full h-full object-cover grayscale"
+                    className="w-full h-full object-cover max-w-full grayscale"
                     referrerPolicy="no-referrer"
                   />
                 </div>
@@ -380,8 +380,8 @@ export default function PolishedFeatureMarquee() {
                   {React.createElement(selectedCard.icon, { size: 22 })}
                 </div>
                 <div>
-                  <span className="font-mono text-[10px] text-violet-600 font-bold tracking-widest uppercase block">
-                    {selectedCard.category} // SYSTEM MODULE
+                  <span className="font-sans text-[10px] text-violet-600 font-bold tracking-widest uppercase block">
+                    {selectedCard.category} • CAPABILITY MODULE
                   </span>
                   <h3 className="font-display font-black text-2xl uppercase tracking-tight text-stone-800">
                     {selectedCard.category}
@@ -390,8 +390,8 @@ export default function PolishedFeatureMarquee() {
               </div>
 
               <div className="p-4 bg-stone-50 rounded-2xl border border-stone-200/40">
-                <span className="font-mono text-[9px] font-bold text-stone-400 uppercase tracking-wider block mb-1">
-                  CURRENT STANDARDS DEFINITION
+                <span className="font-sans text-[9px] font-bold text-stone-400 uppercase tracking-wider block mb-1">
+                  OVERVIEW &amp; FOCUS
                 </span>
                 <p className="text-stone-700 text-xs sm:text-sm leading-relaxed">
                   {selectedCard.desc}
@@ -399,16 +399,16 @@ export default function PolishedFeatureMarquee() {
               </div>
 
               <div className="space-y-3">
-                <span className="font-mono text-[10px] font-bold text-stone-400 uppercase tracking-widest block">
-                  INCLUDED SPECS & METRIC METADATA:
+                <span className="font-sans text-[10px] font-bold text-stone-400 uppercase tracking-widest block">
+                  INCLUDED CAPABILITIES &amp; DELIVERABLES:
                 </span>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {selectedCard.features.map((feat, idx) => (
                     <div key={idx} className="flex items-start space-x-2.5 p-3 rounded-xl bg-stone-100/50 border border-stone-200/20">
                       <CheckCircle2 size={14} className="text-violet-600 mt-0.5 flex-shrink-0" />
                       <div className="space-y-0.5">
-                        <span className="font-mono text-[10px] font-bold text-stone-800 uppercase block">{feat}</span>
-                        <span className="text-[9px] text-stone-500 block leading-tight">Guaranteed standard deliverable.</span>
+                        <span className="font-sans text-[10px] font-bold text-stone-800 uppercase block">{feat}</span>
+                        <span className="text-[9px] text-stone-500 block leading-tight">Guaranteed deliverable.</span>
                       </div>
                     </div>
                   ))}
@@ -416,14 +416,14 @@ export default function PolishedFeatureMarquee() {
               </div>
 
               <div className="pt-4 border-t border-stone-200/40 flex justify-between items-center">
-                <span className="font-mono text-[9px] text-stone-400 uppercase">
-                  Status: PRODUCTION COMPLIANT
+                <span className="font-sans text-[9px] text-stone-400 uppercase">
+                  Status: Available
                 </span>
                 <button
                   onClick={() => setSelectedCard(null)}
-                  className="px-6 py-2.5 bg-stone-800 hover:bg-stone-900 text-white-force font-mono text-[10px] font-bold uppercase tracking-widest rounded-full transition-colors cursor-pointer"
+                  className="px-6 py-2.5 bg-stone-800 hover:bg-stone-900 text-white-force font-sans text-[10px] font-bold uppercase tracking-widest rounded-full transition-colors cursor-pointer"
                 >
-                  DISMISS SPECS
+                  Close
                 </button>
               </div>
             </div>

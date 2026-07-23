@@ -25,7 +25,7 @@ const FloatingGlassBadge = ({ projectId }: { projectId: number }) => {
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-violet-400 opacity-75"></span>
             <span className="relative inline-flex rounded-full h-3 w-3 bg-violet-500"></span>
           </div>
-          <span className="font-mono text-[10px] font-black text-white uppercase tracking-widest">LIVE BLUEPRINT ONLINE</span>
+          <span className="font-mono text-[10px] font-black text-white uppercase tracking-widest">LIVE DEMO ONLINE</span>
         </motion.div>
       );
     case 2:
@@ -209,31 +209,31 @@ const CloudyBlueprintNote = ({
 
       <div>
         {/* Spec note header */}
-        <div className="flex items-center justify-between border-b border-stone-200/30 pb-2.5 mb-3 font-mono text-[9px] uppercase tracking-[0.2em] text-stone-400">
+        <div className="flex items-center justify-between border-b border-stone-200/30 pb-2.5 mb-3 font-sans text-[9px] uppercase tracking-[0.2em] text-stone-400 font-extrabold">
           <span className="flex items-center gap-1.5">
             <span className="w-1.5 h-1.5 rounded-full bg-violet-500 animate-pulse" />
-            SPEC-NOTE ✦ V03
+            PROJECT BRIEF
           </span>
-          <span>DEVIL CORE ENG.</span>
+          <span>DEVIL LABS</span>
         </div>
 
         {/* Note title */}
         <h4 className="text-stone-800 font-display font-bold text-xs sm:text-sm uppercase tracking-wide mb-1 flex items-center gap-2">
           <span>☁️</span> {project.category || 'System Architecture'} Brief
         </h4>
-        <p className="text-[11px] font-mono italic text-stone-500 leading-relaxed mb-4">
-          "This deployment functions as an active live-state sandbox showcasing enterprise modularity, zero-latency rendering, and secure API caching workflows optimized for {project.category} solutions."
+        <p className="text-[11px] font-sans text-stone-600 leading-relaxed mb-4">
+          "This production release showcases modern modularity, high performance, and seamless user experience tailored for {project.category} solutions."
         </p>
 
         {/* Miniature cloudy book schema notes */}
         <div className="bg-[#faf8f5]/80 border border-stone-200/30 rounded-xl p-3 mb-4">
-          <div className="font-mono text-[10px] text-violet-700 flex items-center gap-1.5 mb-1.5 font-bold uppercase tracking-wider">
-            <span>⚙️</span> STACK & SECURITY SPEC:
+          <div className="font-sans text-[10px] text-violet-700 flex items-center gap-1.5 mb-1.5 font-bold uppercase tracking-wider">
+            <span>⚙️</span> TECH &amp; SECURITY SPEC:
           </div>
-          <div className="font-mono text-[9px] text-stone-500 space-y-1">
-            <div>• GATEWAY: Secure reverse proxy mapping</div>
-            <div>• CACHING: Edge state cache / static regeneration</div>
-            <div>• DEPLOY: Org-controlled and verified under Dev-Core</div>
+          <div className="font-sans text-[10px] text-stone-500 space-y-1">
+            <div>• GATEWAY: High-speed edge routing</div>
+            <div>• PERFORMANCE: Optimized caching &amp; instant load times</div>
+            <div>• SECURITY: Fully verified production standards</div>
           </div>
         </div>
       </div>
@@ -241,9 +241,9 @@ const CloudyBlueprintNote = ({
       {/* Auto fill Action Trigger */}
       <button
         onClick={(e) => onPrefill(project.category, project.title, e)}
-        className="w-full py-2.5 px-3 bg-violet-50 hover:bg-violet-100 border border-violet-200 hover:border-violet-300 text-violet-700 font-mono text-[9px] font-bold uppercase tracking-[0.18em] transition-all duration-300 rounded-xl flex items-center justify-center space-x-2 cursor-pointer select-none shadow-sm"
+        className="w-full py-2.5 px-3 bg-violet-50 hover:bg-violet-100 border border-violet-200 hover:border-violet-300 text-violet-700 font-sans text-[10px] font-extrabold uppercase tracking-[0.18em] transition-all duration-300 rounded-xl flex items-center justify-center space-x-2 cursor-pointer select-none shadow-sm"
       >
-        <span>⚡ AUTO-FILL ORCHESTRATION BRIEF</span>
+        <span>⚡ AUTO-FILL INQUIRY FORM</span>
       </button>
     </div>
   );
@@ -416,7 +416,7 @@ export default function ProjectsPage({ navigate }: ProjectsPageProps) {
   };
 
   return (
-    <div className="pt-20 xs:pt-24 sm:pt-28 lg:pt-32 pb-24 px-4 sm:px-6 lg:px-8 max-w-[1400px] mx-auto min-h-screen relative overflow-hidden text-stone-800">
+    <div className="pt-20 xs:pt-24 sm:pt-28 lg:pt-32 pb-24 px-4 md:px-8 max-w-7xl mx-auto min-h-screen relative overflow-hidden text-stone-800">
       
       {/* Real-time telemetry notification toast */}
       <AnimatePresence>
@@ -462,18 +462,18 @@ export default function ProjectsPage({ navigate }: ProjectsPageProps) {
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         className="max-w-4xl mx-auto text-center mb-10 relative z-10"
       >
-        <div className="inline-flex items-center space-x-2 text-violet-600 font-mono text-[10px] uppercase tracking-[0.3em] mb-6">
+        <div className="inline-flex items-center space-x-2 text-violet-600 font-sans text-[10px] uppercase tracking-[0.3em] font-extrabold mb-6">
           <span className="w-2 h-2 rounded-full bg-violet-500 animate-pulse" />
-          <span>PRODUCTION DIRECTORY</span>
+          <span>PORTFOLIO &amp; DEMOS</span>
         </div>
-        <h1 className="text-4xl sm:text-6xl lg:text-7xl font-display font-black tracking-tighter uppercase mb-6 leading-[0.95] text-stone-800">
-          Unified <br />
+        <h1 className="text-3xl xs:text-4xl sm:text-6xl lg:text-7xl font-display font-black tracking-tighter uppercase mb-6 leading-[0.95] text-stone-800 break-words max-w-full">
+          FEATURED <br />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 via-rose-500 to-amber-500">
-            Architectures
+            PROJECTS
           </span>
         </h1>
         <p className="text-stone-600 font-sans text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
-          Navigate our active production deployments. Select from our organic categories, then swipe or use our remote console triggers to inspect blueprints horizontally without extensive vertical scrolling.
+          Explore our live production demos and featured client applications. Filter by category to view detailed briefs, tech stacks, and live interactive previews.
         </p>
 
         {/* Primary Toggle & Auto-fill Info Row */}
@@ -481,7 +481,7 @@ export default function ProjectsPage({ navigate }: ProjectsPageProps) {
           <div className="inline-flex p-1 bg-[#f0ede6] border border-stone-200/50 rounded-full shadow-inner">
             <button
               onClick={() => handleSectionChange('demo')}
-              className={`relative px-6 py-2.5 text-[10px] font-mono font-bold tracking-[0.2em] uppercase rounded-full transition-colors cursor-pointer ${section === 'demo' ? 'text-stone-850 font-black' : 'text-stone-500 hover:text-stone-850'}`}
+              className={`relative px-6 py-2.5 text-[10px] font-sans font-bold tracking-[0.2em] uppercase rounded-full transition-colors cursor-pointer ${section === 'demo' ? 'text-stone-850 font-black' : 'text-stone-500 hover:text-stone-850'}`}
             >
               {section === 'demo' && (
                 <motion.div layoutId="work-toggle" className="absolute inset-0 bg-[#fcfbf9] border border-stone-200/30 rounded-full shadow-md" />
@@ -490,17 +490,17 @@ export default function ProjectsPage({ navigate }: ProjectsPageProps) {
             </button>
             <button
               onClick={() => handleSectionChange('client')}
-              className={`relative px-6 py-2.5 text-[10px] font-mono font-bold tracking-[0.2em] uppercase rounded-full transition-colors cursor-pointer ${section === 'client' ? 'text-stone-850 font-black' : 'text-stone-500 hover:text-stone-850'}`}
+              className={`relative px-6 py-2.5 text-[10px] font-sans font-bold tracking-[0.2em] uppercase rounded-full transition-colors cursor-pointer ${section === 'client' ? 'text-stone-850 font-black' : 'text-stone-500 hover:text-stone-850'}`}
             >
               {section === 'client' && (
                 <motion.div layoutId="work-toggle" className="absolute inset-0 bg-[#fcfbf9] border border-stone-200/30 rounded-full shadow-md" />
               )}
-              <span className="relative z-10">Client Private</span>
+              <span className="relative z-10">Client Projects</span>
             </button>
           </div>
           
-          <div className="text-[9px] font-mono tracking-widest text-violet-700 uppercase flex items-center gap-2 bg-violet-50 px-4 py-1.5 rounded-full border border-violet-200">
-            <span>💡</span> CLICK THE AUTO-FILL BRIEF BUTTON ON ANY SPEC NOTE TO POPULATE THE CONTACT FORM INSTANTLY
+          <div className="text-[9px] font-sans tracking-widest text-violet-700 uppercase font-extrabold flex items-center gap-2 bg-violet-50 px-4 py-1.5 rounded-full border border-violet-200">
+            <span>💡</span> CLICK "AUTO-FILL INQUIRY FORM" ON ANY BRIEF TO PRE-FILL YOUR CONTACT MESSAGE INSTANTLY
           </div>
         </div>
 
@@ -511,7 +511,7 @@ export default function ProjectsPage({ navigate }: ProjectsPageProps) {
               <button
                 key={category}
                 onClick={() => handleCategoryChange(category)}
-                className={`whitespace-nowrap px-5 py-2 rounded-full font-mono text-[10px] font-bold tracking-widest uppercase transition-all duration-300 border cursor-pointer ${
+                className={`whitespace-nowrap px-5 py-2 rounded-full font-sans text-[10px] font-bold tracking-widest uppercase transition-all duration-300 border cursor-pointer ${
                   activeCategory === category
                     ? 'bg-gradient-to-r from-violet-600 to-rose-500 text-white shadow-md border-transparent'
                     : 'bg-[#fcfbf9] text-stone-600 hover:bg-white hover:text-stone-850 border-stone-200/50 shadow-sm'
@@ -530,21 +530,21 @@ export default function ProjectsPage({ navigate }: ProjectsPageProps) {
           <div className="p-6 bg-violet-50/50 border border-violet-200 rounded-[24px] shadow-[4px_4px_12px_rgba(45,38,32,0.03)] backdrop-blur-md">
             <div className="flex flex-col sm:flex-row items-center justify-between gap-6 text-left">
               <div>
-                <h4 className="text-stone-850 font-mono text-xs uppercase tracking-widest font-bold mb-1 flex items-center gap-2">
+                <h4 className="text-stone-850 font-sans text-xs uppercase tracking-widest font-extrabold mb-1 flex items-center gap-2">
                   <Terminal size={14} className="text-violet-600" />
-                  SECURE COHESION DIRECTORY
+                  PRIVATE CLIENT PORTFOLIO
                 </h4>
                 <p className="text-xs text-stone-600 font-sans leading-relaxed">
-                  Client deployments are configured inside isolated Docker sandboxes and privately routed through secure GitHub pipelines. Contact our deployment core to request sandbox access keypairs.
+                  Client applications are built with strict privacy and enterprise security. Explore our public GitHub organization or contact us for private project walk-throughs.
                 </p>
               </div>
               <a 
                 href="https://github.com/Devil-Labs/" 
                 target="_blank" 
                 rel="noreferrer"
-                className="px-5 py-2.5 bg-stone-900 hover:bg-stone-800 text-white font-mono text-[10px] font-bold tracking-widest uppercase transition-all shrink-0 rounded-xl shadow-md flex items-center space-x-2 cursor-pointer"
+                className="px-5 py-2.5 bg-stone-900 hover:bg-stone-800 text-white font-sans text-[10px] font-bold tracking-widest uppercase transition-all shrink-0 rounded-xl shadow-md flex items-center space-x-2 cursor-pointer"
               >
-                <span>ORGANIZATION REPO</span>
+                <span>GITHUB REPOSITORY</span>
                 <ArrowUpRight size={14} />
               </a>
             </div>

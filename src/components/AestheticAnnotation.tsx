@@ -184,37 +184,37 @@ export function BlueprintStickyNote({
       viewport={{ once: true, margin: "-40px" }}
       transition={{ type: "spring", stiffness: 140, damping: 16 }}
       style={{ rotate: `${rotation}deg` }}
-      className={`clay-card p-5 relative overflow-hidden bg-white/95 border border-stone-200/55 rounded-2xl shadow-sm text-left ${className}`}
+      className={`clay-card p-6 md:p-8 relative overflow-hidden bg-white/95 border border-stone-200/55 rounded-2xl shadow-sm text-left ${className}`}
     >
       {/* Drafting/Blueprint grid overlay background */}
       <div className="absolute inset-0 bg-[radial-gradient(#e4e1d8_1px,transparent_1px)] bg-[size:12px_12px] opacity-40 pointer-events-none" />
       
       {/* Drafting Corner Crosshair Marks */}
-      <div className="absolute top-2 left-2 text-[9px] text-stone-300 select-none font-mono font-bold pointer-events-none">+</div>
-      <div className="absolute top-2 right-2 text-[9px] text-stone-300 select-none font-mono font-bold pointer-events-none">+</div>
-      <div className="absolute bottom-2 left-2 text-[9px] text-stone-300 select-none font-mono font-bold pointer-events-none">+</div>
-      <div className="absolute bottom-2 right-2 text-[9px] text-stone-300 select-none font-mono font-bold pointer-events-none">+</div>
+      <div className="absolute top-2 left-2 text-[9px] text-stone-300 select-none font-sans font-bold pointer-events-none">+</div>
+      <div className="absolute top-2 right-2 text-[9px] text-stone-300 select-none font-sans font-bold pointer-events-none">+</div>
+      <div className="absolute bottom-2 left-2 text-[9px] text-stone-300 select-none font-sans font-bold pointer-events-none">+</div>
+      <div className="absolute bottom-2 right-2 text-[9px] text-stone-300 select-none font-sans font-bold pointer-events-none">+</div>
 
       {/* Header Bar */}
-      <div className="flex items-center justify-between mb-4 relative z-10 font-mono text-[10px] tracking-widest font-black border-b border-stone-100 pb-2">
+      <div className="flex items-center justify-between mb-4 relative z-10 font-sans text-[10px] tracking-widest font-black border-b border-stone-100 pb-2">
         <div className="flex items-center space-x-1.5 text-stone-400">
           <span className="w-1.5 h-1.5 bg-violet-500 rounded-full animate-pulse" />
-          <span>[NOTATION_{number}]</span>
+          <span>PILLAR {number}</span>
         </div>
-        <span className={`px-2 py-0.5 text-[8px] rounded uppercase font-bold tracking-wider ${badgeColor}`}>
-          VERIFIED BY LAB
+        <span className={`px-2 py-0.5 text-[8px] rounded uppercase font-black tracking-wider ${badgeColor}`}>
+          Verified
         </span>
       </div>
 
       {/* Content */}
       <div className="relative z-10 space-y-3.5">
         <h4 className="font-display font-black text-stone-850 uppercase tracking-tight text-xs flex items-center gap-1.5">
-          <span className="text-violet-600 font-mono text-[10px]">#</span> {title}
+          <span className="text-violet-600 font-sans text-[10px]">•</span> {title}
         </h4>
         <ul className="space-y-2 text-[11px] text-stone-500 leading-relaxed font-sans">
           {notes.map((note, index) => (
             <li key={index} className="flex items-start gap-1.5 group/note hover:text-stone-800 transition-colors">
-              <span className="text-violet-600 font-mono font-bold mt-0.5 shrink-0 select-none">›</span>
+              <span className="text-violet-600 font-sans font-black mt-0.5 shrink-0 select-none">›</span>
               <span className="font-normal">{note}</span>
             </li>
           ))}
@@ -222,9 +222,9 @@ export function BlueprintStickyNote({
       </div>
 
       {/* Aesthetic Tech Status Line */}
-      <div className="mt-4 pt-2.5 border-t border-stone-100/50 flex items-center justify-between text-[8px] font-mono text-stone-400 tracking-widest uppercase relative z-10">
-        <span>DEVIL_LABS_METRIC_OK</span>
-        <span className="font-bold text-emerald-600">SYS_A_LOCK</span>
+      <div className="mt-4 pt-2.5 border-t border-stone-100/50 flex items-center justify-between text-[8px] font-sans text-stone-400 tracking-widest uppercase relative z-10 font-bold">
+        <span>Design Specification</span>
+        <span className="font-bold text-violet-600">Verified</span>
       </div>
     </motion.div>
   );

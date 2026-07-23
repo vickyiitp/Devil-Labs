@@ -49,7 +49,7 @@ export default function ProcessInsightsPage({ navigate }: ProcessInsightsPagePro
   }, []);
 
   return (
-    <div className="pt-20 xs:pt-24 sm:pt-28 lg:pt-32 pb-24 px-4 sm:px-6 lg:px-8 max-w-[1600px] mx-auto min-h-screen text-stone-800 relative">
+    <div className="pt-20 xs:pt-24 sm:pt-28 lg:pt-32 pb-24 px-4 md:px-8 max-w-7xl mx-auto min-h-screen text-stone-800 relative">
       
       {/* Decorative Matrix & Alignment Marks */}
       <div className="absolute top-24 left-10 text-xs text-violet-500/30 select-none pointer-events-none hidden xl:block font-mono">
@@ -72,7 +72,7 @@ export default function ProcessInsightsPage({ navigate }: ProcessInsightsPagePro
           <Sparkles size={12} className="animate-pulse" />
           <span>DevOps & Intelligence Core</span>
         </div>
-        <h1 className="font-display text-3xl xs:text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter uppercase mb-6 text-stone-850">
+        <h1 className="font-display text-3xl xs:text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter uppercase mb-6 text-stone-850 break-words max-w-full">
           THE LAB <span className="text-violet-600 font-light font-serif italic">✦</span> ENGINE & INSIGHTS
         </h1>
         <p className="text-stone-600 max-w-2xl mx-auto leading-relaxed text-sm font-sans font-light">
@@ -85,9 +85,9 @@ export default function ProcessInsightsPage({ navigate }: ProcessInsightsPagePro
         initial={{ opacity: 0, scale: 0.98 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5, delay: 0.2 }}
-        className="grid grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto mb-16 relative"
+        className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 md:gap-6 max-w-5xl mx-auto mb-16 relative"
       >
-        <div className="clay-card p-5 relative overflow-hidden group hover:scale-[1.02] transition-all text-left">
+        <div className="clay-card p-6 md:p-8 relative overflow-hidden group hover:scale-[1.02] transition-all text-left">
           <div className="absolute top-0 right-0 w-24 h-24 bg-violet-100/30 rounded-full blur-xl" />
           <div className="flex items-center justify-between text-stone-400 mb-2 font-mono">
             <span className="text-xs tracking-wider uppercase font-bold">AGENT PERFORMANCE</span>
@@ -105,7 +105,7 @@ export default function ProcessInsightsPage({ navigate }: ProcessInsightsPagePro
           </div>
         </div>
 
-        <div className="clay-card p-5 relative overflow-hidden group hover:scale-[1.02] transition-all text-left">
+        <div className="clay-card p-6 md:p-8 relative overflow-hidden group hover:scale-[1.02] transition-all text-left">
           <div className="absolute top-0 right-0 w-24 h-24 bg-violet-100/30 rounded-full blur-xl" />
           <div className="flex items-center justify-between text-stone-400 mb-2 font-mono">
             <span className="text-xs tracking-wider uppercase font-bold">UPLINK LATENCY</span>
@@ -120,7 +120,7 @@ export default function ProcessInsightsPage({ navigate }: ProcessInsightsPagePro
           </div>
         </div>
 
-        <div className="clay-card p-5 relative overflow-hidden group hover:scale-[1.02] transition-all text-left">
+        <div className="clay-card p-6 md:p-8 relative overflow-hidden group hover:scale-[1.02] transition-all text-left">
           <div className="absolute top-0 right-0 w-24 h-24 bg-violet-100/30 rounded-full blur-xl" />
           <div className="flex items-center justify-between text-stone-400 mb-2 font-mono">
             <span className="text-xs tracking-wider uppercase font-bold">LOGIC THROUGHPUT</span>
@@ -134,7 +134,7 @@ export default function ProcessInsightsPage({ navigate }: ProcessInsightsPagePro
           </div>
         </div>
 
-        <div className="clay-card p-5 relative overflow-hidden group hover:scale-[1.02] transition-all text-left">
+        <div className="clay-card p-6 md:p-8 relative overflow-hidden group hover:scale-[1.02] transition-all text-left">
           <div className="absolute top-0 right-0 w-24 h-24 bg-violet-100/30 rounded-full blur-xl" />
           <div className="flex items-center justify-between text-stone-400 mb-2 font-mono">
             <span className="text-xs tracking-wider uppercase font-bold">SECURITY STATE</span>
@@ -212,7 +212,7 @@ export default function ProcessInsightsPage({ navigate }: ProcessInsightsPagePro
                   {/* Indicator Dot */}
                   <div className="absolute -left-[31px] top-2 w-2 h-2 rounded-full bg-[#fdfcf9] border-2 border-violet-600 group-hover:bg-violet-400 transition-colors z-10" />
                   
-                  <div className="p-6 clay-card hover:scale-[1.01] hover:border-violet-300 transition-all relative overflow-hidden">
+                  <div className="p-6 md:p-8 clay-card hover:scale-[1.01] hover:border-violet-300 transition-all relative overflow-hidden">
                     <div className="absolute top-0 right-0 w-12 h-12 bg-stone-100/80 flex items-center justify-center font-mono font-bold text-stone-400 select-none text-base border-l border-b border-stone-200/20">
                       {step.id}
                     </div>
@@ -231,7 +231,7 @@ export default function ProcessInsightsPage({ navigate }: ProcessInsightsPagePro
             {/* Tech Velocity Advantages Panel */}
             <div className="pt-8 border-t border-stone-200/30 text-left">
               <h3 className="text-xs font-mono font-bold text-stone-400 tracking-[0.2em] uppercase mb-6">✦ INTEGRATED VELOCITY PRINCIPLES</h3>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
                 <div className="p-5 bg-[#fdfcf9] border border-stone-200/40 rounded-2xl hover:border-violet-300 shadow-sm transition-all">
                   <Zap className="text-violet-600 mb-3 animate-pulse" size={16} />
                   <h4 className="text-stone-800 text-xs font-bold uppercase mb-1">AI Speed</h4>
@@ -281,7 +281,7 @@ export default function ProcessInsightsPage({ navigate }: ProcessInsightsPagePro
                 <div 
                   key={article.id}
                   onClick={() => setSelectedArticle(article.id)}
-                  className="p-6 clay-card hover:border-violet-300 hover:scale-[1.01] transition-all cursor-pointer group flex flex-col justify-between"
+                  className="p-6 md:p-8 clay-card hover:border-violet-300 hover:scale-[1.01] transition-all cursor-pointer group flex flex-col justify-between"
                 >
                   <div>
                     <div className="flex items-center justify-between mb-3 font-mono">
@@ -304,7 +304,7 @@ export default function ProcessInsightsPage({ navigate }: ProcessInsightsPagePro
             </div>
 
             {/* Featured Abstract Art Area in Insights Column */}
-            <div className="clay-card p-6 relative overflow-hidden">
+            <div className="clay-card p-6 md:p-8 relative overflow-hidden">
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 border border-violet-200 rounded-full animate-pulse" />
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 border border-violet-100 rounded-full animate-pulse" />
               <div className="relative z-10 text-center py-6">
@@ -335,10 +335,10 @@ export default function ProcessInsightsPage({ navigate }: ProcessInsightsPagePro
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6 mb-16">
           {testimonials.map((t, idx) => (
             <div key={idx} className="h-full">
-              <div className="p-6 clay-card hover:scale-[1.01] hover:border-violet-300 transition-all flex flex-col justify-between h-full text-left">
+              <div className="p-6 md:p-8 clay-card hover:scale-[1.01] hover:border-violet-300 transition-all flex flex-col justify-between h-full text-left">
                 <div>
                   <div className="flex items-center justify-between mb-6">
                     <div className="flex items-center space-x-1">
@@ -376,7 +376,7 @@ export default function ProcessInsightsPage({ navigate }: ProcessInsightsPagePro
           initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="p-8 clay-card relative overflow-hidden font-mono text-left"
+          className="p-6 md:p-8 clay-card relative overflow-hidden font-mono text-left"
         >
           <div className="absolute top-0 right-0 w-32 h-32 bg-violet-100/30 rounded-full blur-3xl" />
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
@@ -459,7 +459,7 @@ export default function ProcessInsightsPage({ navigate }: ProcessInsightsPagePro
       </AnimatePresence>
 
       {/* Terminal Subscribe */}
-      <div className="clay-card py-12 px-6 max-w-4xl mx-auto mt-24 text-left">
+      <div className="clay-card py-12 px-6 max-w-4xl mx-auto mt-24 text-left p-6 md:p-8">
         <div className="flex items-center space-x-3 mb-6 text-stone-400 font-mono">
           <Terminal size={18} className="text-violet-600" />
           <span className="text-xs uppercase tracking-widest font-bold">Secure Intel Transmission Line</span>

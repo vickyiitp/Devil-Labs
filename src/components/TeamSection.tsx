@@ -23,9 +23,9 @@ export default function TeamSection() {
         <span className="text-violet-600 font-mono text-[10px] uppercase tracking-[0.3em] font-semibold block mb-4">
           05_PRINCIPAL_ARCHITECT
         </span>
-        <h2 className="font-display font-black text-4xl sm:text-6xl text-stone-850 tracking-tighter uppercase leading-[0.9]">
+        <h2 className="font-display font-black text-3xl xs:text-4xl sm:text-6xl text-stone-850 tracking-tighter uppercase leading-[0.9]">
           LEADERSHIP <br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 via-rose-500 to-amber-500 font-serif italic font-light lowercase text-5xl sm:text-7xl">
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 via-rose-500 to-amber-500 font-serif italic font-light lowercase text-4xl xs:text-5xl sm:text-7xl">
             systems engineer
           </span>
         </h2>

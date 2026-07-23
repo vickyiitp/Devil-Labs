@@ -65,13 +65,13 @@ export default function BentoGrid({ onNavigateContact }: { onNavigateContact: ()
   ];
 
   return (
-    <div id="bento-box-grid-root" className="grid grid-cols-1 md:grid-cols-3 gap-6 text-stone-800">
+    <div id="bento-box-grid-root" className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6 text-stone-800">
       {/* Box 1: Aether Core (Takes 2 columns on desktop) */}
       <motion.div
         id="bento-card-aether"
         whileHover={{ y: -4 }}
         whileTap={{ scale: 0.98 }}
-        className="md:col-span-2 relative overflow-hidden flex flex-col justify-between group cursor-pointer clay-card hover:border-violet-300/40"
+        className="md:col-span-2 relative overflow-hidden flex flex-col justify-between group cursor-pointer interactive-clay-card hover:border-violet-300/40 p-6 md:p-8"
         onMouseEnter={() => setActiveId('01')}
         onMouseLeave={() => setActiveId(null)}
       >
@@ -111,7 +111,7 @@ export default function BentoGrid({ onNavigateContact }: { onNavigateContact: ()
         id="bento-card-krypton"
         whileHover={{ y: -4 }}
         whileTap={{ scale: 0.98 }}
-        className="relative overflow-hidden flex flex-col justify-between group cursor-pointer clay-card hover:border-blue-300/40"
+        className="relative overflow-hidden flex flex-col justify-between group cursor-pointer interactive-clay-card hover:border-blue-300/40 p-6 md:p-8"
         onMouseEnter={() => setActiveId('02')}
         onMouseLeave={() => setActiveId(null)}
       >
@@ -151,7 +151,7 @@ export default function BentoGrid({ onNavigateContact }: { onNavigateContact: ()
         id="bento-card-synthesis"
         whileHover={{ y: -4 }}
         whileTap={{ scale: 0.98 }}
-        className="relative overflow-hidden flex flex-col justify-between group cursor-pointer clay-card hover:border-fuchsia-300/40"
+        className="relative overflow-hidden flex flex-col justify-between group cursor-pointer interactive-clay-card hover:border-fuchsia-300/40 p-6 md:p-8"
         onMouseEnter={() => setActiveId('03')}
         onMouseLeave={() => setActiveId(null)}
       >
@@ -191,7 +191,7 @@ export default function BentoGrid({ onNavigateContact }: { onNavigateContact: ()
         id="bento-card-vesper"
         whileHover={{ y: -4 }}
         whileTap={{ scale: 0.98 }}
-        className="md:col-span-2 relative overflow-hidden flex flex-col justify-between group cursor-pointer clay-card hover:border-emerald-300/40"
+        className="md:col-span-2 relative overflow-hidden flex flex-col justify-between group cursor-pointer interactive-clay-card hover:border-emerald-300/40 p-6 md:p-8"
         onMouseEnter={() => setActiveId('04')}
         onMouseLeave={() => setActiveId(null)}
       >
@@ -227,7 +227,7 @@ export default function BentoGrid({ onNavigateContact }: { onNavigateContact: ()
       </motion.div>
 
       {/* CTA Bento Box */}
-      <div id="bento-box-cta" className="md:col-span-3 clay-card p-8 sm:p-12 flex flex-col md:flex-row items-center justify-between gap-8 mt-4 text-left">
+      <div id="bento-box-cta" className="md:col-span-3 interactive-clay-card p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-8 mt-4 text-left">
         <div className="space-y-3 text-left max-w-xl">
           <div className="inline-flex items-center space-x-2 px-3 py-1 bg-violet-50 border border-violet-200 text-violet-700 font-mono text-[10px] uppercase rounded-full">
             <Zap size={10} />
