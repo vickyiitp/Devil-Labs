@@ -254,30 +254,30 @@ export default function Creative3DStage({ playClick, playHover }: Creative3DStag
   return (
     <div 
       id="website-walkthrough-video-root" 
-      className="clay-card rounded-[32px] border border-stone-200/50 bg-[#faf9f5]/95 shadow-[12px_16px_45px_rgba(185,175,160,0.18)] overflow-hidden flex flex-col h-full min-h-[520px] lg:min-h-[530px] relative text-left p-6 md:p-8"
+      className="rounded-[32px] border border-stone-800 bg-stone-900/90 shadow-[0_20px_60px_rgba(0,0,0,0.7)] backdrop-blur-xl overflow-hidden flex flex-col h-full min-h-[520px] lg:min-h-[530px] relative text-left p-6 md:p-8"
     >
       {/* Top professional gradient bar */}
       <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-violet-600 via-fuchsia-500 to-rose-400 opacity-90 z-20" />
 
       {/* Professional Player Top Telemetry Header */}
-      <div className="p-4 sm:p-5 border-b border-stone-200/40 bg-stone-50/50 flex flex-col gap-2.5 z-10">
+      <div className="p-4 sm:p-5 border-b border-stone-800 bg-stone-950/80 flex flex-col gap-2.5 z-10">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            <Layers2 size={14} className="text-violet-600 animate-spin-slow" />
-            <span className="font-mono text-[10px] font-black uppercase tracking-widest text-stone-850">
+            <Layers2 size={14} className="text-violet-400 animate-spin-slow" />
+            <span className="font-mono text-[10px] font-black uppercase tracking-widest text-stone-100">
               ✦ WEB ARCHITECTURE VISUALIZER
             </span>
           </div>
-          <div className="flex items-center space-x-1.5 bg-violet-50 px-2.5 py-1 rounded-full border border-violet-100/60">
-            <span className="w-1.5 h-1.5 rounded-full bg-violet-600 animate-ping" />
-            <span className="font-mono text-[9px] font-black uppercase text-violet-700 tracking-wide">
+          <div className="flex items-center space-x-1.5 bg-violet-950/60 px-2.5 py-1 rounded-full border border-violet-800/50">
+            <span className="w-1.5 h-1.5 rounded-full bg-violet-400 animate-ping" />
+            <span className="font-mono text-[9px] font-black uppercase text-violet-300 tracking-wide">
               ● AUTO RUNTIME PREVIEW
             </span>
           </div>
         </div>
 
         {/* Tab Controls representing actual website processes */}
-        <div className="grid grid-cols-5 gap-1 bg-stone-100 p-0.5 rounded-xl border border-stone-200/30">
+        <div className="grid grid-cols-5 gap-1 bg-stone-900 p-0.5 rounded-xl border border-stone-800">
           {WALKTHROUGH_PAGES.map((page, idx) => {
             const isActive = activeIdx === idx;
             return (
@@ -286,8 +286,8 @@ export default function Creative3DStage({ playClick, playHover }: Creative3DStag
                 onClick={() => handleTimelineClick(idx)}
                 className={`py-1.5 text-[8px] sm:text-[9.5px] font-mono font-bold uppercase rounded-lg transition-all duration-300 cursor-pointer ${
                   isActive 
-                    ? 'bg-[#fcfbf9] text-violet-700 shadow-sm border border-stone-200/40 scale-[1.01]' 
-                    : 'text-stone-500 hover:text-stone-850 hover:bg-stone-50'
+                    ? 'bg-violet-600/30 text-violet-300 shadow-sm border border-violet-500/40 scale-[1.01]' 
+                    : 'text-stone-400 hover:text-stone-100 hover:bg-stone-800/60'
                 }`}
               >
                 {page.name.split(' ')[0]}
@@ -680,22 +680,22 @@ export default function Creative3DStage({ playClick, playHover }: Creative3DStag
       </div>
 
       {/* Professional Player Bottom Dashboard Controls */}
-      <div className="p-4 border-t border-stone-200/40 bg-stone-50 flex flex-col gap-3 z-10 text-stone-700">
+      <div className="p-4 border-t border-stone-800 bg-stone-950/90 flex flex-col gap-3 z-10 text-stone-300">
         
         {/* Seekable Playback Timer Track */}
         <div className="w-full flex items-center space-x-3">
-          <span className="font-mono text-[9px] text-stone-500 select-none">
+          <span className="font-mono text-[9px] text-stone-400 select-none">
             {formatTime(currentElapsedSeconds)}
           </span>
           
-          <div className="flex-1 h-2 bg-stone-200 rounded-full relative overflow-hidden">
+          <div className="flex-1 h-2 bg-stone-800 rounded-full relative overflow-hidden">
             <div 
               className="absolute inset-y-0 left-0 bg-gradient-to-r from-violet-600 to-rose-500 transition-all duration-100 ease-linear rounded-full"
               style={{ width: `${((activeIdx * SECONDS_PER_SLIDE) + (progress / 100 * SECONDS_PER_SLIDE)) / TOTAL_DURATION * 100}%` }}
             />
           </div>
 
-          <span className="font-mono text-[9px] text-stone-500 select-none">
+          <span className="font-mono text-[9px] text-stone-400 select-none">
             {formatTime(TOTAL_DURATION)}
           </span>
         </div>
@@ -705,7 +705,7 @@ export default function Creative3DStage({ playClick, playHover }: Creative3DStag
           <div className="flex items-center space-x-3">
             <button 
               onClick={() => { playClick(); handlePrev(); }}
-              className="p-1.5 hover:bg-stone-200/80 rounded-lg text-stone-600 hover:text-stone-900 transition-all cursor-pointer"
+              className="p-1.5 hover:bg-stone-800 rounded-lg text-stone-400 hover:text-stone-100 transition-all cursor-pointer"
               title="Previous Chapter"
             >
               <SkipBack size={14} />
@@ -713,7 +713,7 @@ export default function Creative3DStage({ playClick, playHover }: Creative3DStag
 
             <button 
               onClick={() => { playClick(); setIsPlaying(!isPlaying); }}
-              className="p-2 bg-stone-900 text-white rounded-full hover:scale-105 active:scale-95 transition-all shadow-md cursor-pointer flex items-center justify-center"
+              className="p-2 bg-violet-600 text-white rounded-full hover:bg-violet-500 hover:scale-105 active:scale-95 transition-all shadow-md cursor-pointer flex items-center justify-center"
               title={isPlaying ? 'Pause Autoplay' : 'Start Autoplay'}
             >
               {isPlaying ? <Pause size={14} /> : <Play size={14} className="translate-x-[0.5px]" />}
@@ -721,7 +721,7 @@ export default function Creative3DStage({ playClick, playHover }: Creative3DStag
 
             <button 
               onClick={() => { playClick(); handleNext(); }}
-              className="p-1.5 hover:bg-stone-200/80 rounded-lg text-stone-600 hover:text-stone-900 transition-all cursor-pointer"
+              className="p-1.5 hover:bg-stone-800 rounded-lg text-stone-400 hover:text-stone-100 transition-all cursor-pointer"
               title="Next Chapter"
             >
               <SkipForward size={14} />
@@ -729,8 +729,8 @@ export default function Creative3DStage({ playClick, playHover }: Creative3DStag
           </div>
 
           <div className="flex items-center space-x-1">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping" />
-            <span className="font-mono text-[8px] text-stone-500 uppercase tracking-widest font-black">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
+            <span className="font-mono text-[8px] text-stone-400 uppercase tracking-widest font-black">
               LIVE PREVIEW ONLINE
             </span>
           </div>

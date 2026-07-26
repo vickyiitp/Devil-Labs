@@ -1,133 +1,148 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- Core Pages -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+                            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+  <!-- Core High-Priority Pages -->
   <url>
-    <loc>https://devillabs.co/</loc>
-    <lastmod>2026-07-10</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://devillabs.dev/</loc>
+    <lastmod>2026-07-26</lastmod>
+    <changefreq>daily</changefreq>
     <priority>1.00</priority>
   </url>
   <url>
-    <loc>https://devillabs.co/services</loc>
-    <lastmod>2026-07-10</lastmod>
+    <loc>https://devillabs.dev/services</loc>
+    <lastmod>2026-07-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://devillabs.dev/about</loc>
+    <lastmod>2026-07-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
   </url>
   <url>
-    <loc>https://devillabs.co/work</loc>
-    <lastmod>2026-07-10</lastmod>
+    <loc>https://devillabs.dev/pricing</loc>
+    <lastmod>2026-07-26</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.80</priority>
+    <priority>0.90</priority>
   </url>
   <url>
-    <loc>https://devillabs.co/about</loc>
-    <lastmod>2026-07-10</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://devillabs.dev/work</loc>
+    <lastmod>2026-07-26</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://devillabs.co/process</loc>
-    <lastmod>2026-07-10</lastmod>
+    <loc>https://devillabs.dev/process</loc>
+    <lastmod>2026-07-26</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.80</priority>
+    <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://devillabs.co/insights</loc>
-    <lastmod>2026-07-10</lastmod>
+    <loc>https://devillabs.dev/insights</loc>
+    <lastmod>2026-07-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://devillabs.co/pricing</loc>
-    <lastmod>2026-07-10</lastmod>
+    <loc>https://devillabs.dev/resources</loc>
+    <lastmod>2026-07-26</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://devillabs.co/contact</loc>
-    <lastmod>2026-07-10</lastmod>
+    <loc>https://devillabs.dev/faq</loc>
+    <lastmod>2026-07-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://devillabs.dev/contact</loc>
+    <lastmod>2026-07-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.90</priority>
   </url>
 
-  <!-- Service Subpages -->
+  <!-- Service Subpages & Specialized Offerings -->
   <url>
-    <loc>https://devillabs.co/services/landing-pages</loc>
-    <lastmod>2026-07-10</lastmod>
+    <loc>https://devillabs.dev/services/landing-pages</loc>
+    <lastmod>2026-07-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://devillabs.co/services/business-website</loc>
-    <lastmod>2026-07-10</lastmod>
+    <loc>https://devillabs.dev/services/business-website</loc>
+    <lastmod>2026-07-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://devillabs.co/services/ecommerce</loc>
-    <lastmod>2026-07-10</lastmod>
+    <loc>https://devillabs.dev/services/ecommerce</loc>
+    <lastmod>2026-07-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://devillabs.co/services/fullstack</loc>
-    <lastmod>2026-07-10</lastmod>
+    <loc>https://devillabs.dev/services/fullstack</loc>
+    <lastmod>2026-07-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://devillabs.dev/services/ai-agents</loc>
+    <lastmod>2026-07-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://devillabs.dev/services/ai-tools</loc>
+    <lastmod>2026-07-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://devillabs.co/services/ai-agents</loc>
-    <lastmod>2026-07-10</lastmod>
+    <loc>https://devillabs.dev/services/automation</loc>
+    <lastmod>2026-07-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://devillabs.dev/services/cloud-hosting</loc>
+    <lastmod>2026-07-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://devillabs.co/services/ai-tools</loc>
-    <lastmod>2026-07-10</lastmod>
+    <loc>https://devillabs.dev/services/web-apps</loc>
+    <lastmod>2026-07-26</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.75</priority>
+    <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://devillabs.co/services/automation</loc>
-    <lastmod>2026-07-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.75</priority>
-  </url>
-  <url>
-    <loc>https://devillabs.co/services/cloud-hosting</loc>
-    <lastmod>2026-07-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.75</priority>
-  </url>
-  <url>
-    <loc>https://devillabs.co/services/web-apps</loc>
-    <lastmod>2026-07-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.75</priority>
-  </url>
-  <url>
-    <loc>https://devillabs.co/services/vps</loc>
-    <lastmod>2026-07-10</lastmod>
+    <loc>https://devillabs.dev/services/vps</loc>
+    <lastmod>2026-07-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
 
-  <!-- Legal Subpages -->
+  <!-- Legal & Compliance Policies -->
   <url>
-    <loc>https://devillabs.co/legal/privacy</loc>
-    <lastmod>2026-07-10</lastmod>
+    <loc>https://devillabs.dev/legal/privacy</loc>
+    <lastmod>2026-07-26</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.30</priority>
   </url>
   <url>
-    <loc>https://devillabs.co/legal/terms</loc>
-    <lastmod>2026-07-10</lastmod>
+    <loc>https://devillabs.dev/legal/terms</loc>
+    <lastmod>2026-07-26</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.30</priority>
   </url>
   <url>
-    <loc>https://devillabs.co/legal/msa</loc>
-    <lastmod>2026-07-10</lastmod>
+    <loc>https://devillabs.dev/legal/msa</loc>
+    <lastmod>2026-07-26</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.30</priority>
   </url>

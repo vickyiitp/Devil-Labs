@@ -143,7 +143,15 @@ export default function CommandPalette({ navigate }: CommandPaletteProps) {
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95, y: -10 }}
                 transition={{ duration: 0.2, ease: "easeOut" }}
-                className="w-full max-w-2xl bg-[#faf8f5] border border-stone-200/50 shadow-2xl rounded-3xl overflow-hidden pointer-events-auto flex flex-col max-h-[60vh] clay-card text-stone-800 p-6 md:p-8"
+                drag="y"
+                dragConstraints={{ top: 0, bottom: 0 }}
+                dragElastic={0.8}
+                onDragEnd={(e, info) => {
+                  if (info.offset.y > 100 || info.offset.y < -100) {
+                    setIsOpen(false);
+                  }
+                }}
+                className="w-full max-w-2xl bg-[#faf8f5] border border-stone-200/50 shadow-2xl rounded-3xl overflow-hidden pointer-events-auto flex flex-col max-h-[60vh] clay-card text-stone-800 p-6 md:p-8 touch-pan-x"
               >
                 {/* Header / Search Input */}
                 <div className="flex items-center px-5 py-4 border-b border-stone-200/30 text-stone-800 bg-white">

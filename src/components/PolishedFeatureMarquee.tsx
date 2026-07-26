@@ -39,7 +39,7 @@ const FEATURE_CARDS: FeatureCard[] = [
     ],
     type: "purple",
     icon: Laptop,
-    bgImage: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=400&q=80"
+    bgImage: "/src/assets/images/hero_builder_cityscape_1784785823510.jpg"
   },
   {
     id: 2,
@@ -54,7 +54,7 @@ const FEATURE_CARDS: FeatureCard[] = [
     ],
     type: "rose",
     icon: Palette,
-    bgImage: "https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=400&q=80"
+    bgImage: "/src/assets/images/hero_intelligent_systems_1784785833146.jpg"
   },
   {
     id: 3,
@@ -69,7 +69,7 @@ const FEATURE_CARDS: FeatureCard[] = [
     ],
     type: "amber",
     icon: Layers,
-    bgImage: "https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=400&q=80"
+    bgImage: "/src/assets/images/hero_problem_chaos_1784785846477.jpg"
   },
   {
     id: 4,
@@ -84,7 +84,7 @@ const FEATURE_CARDS: FeatureCard[] = [
     ],
     type: "indigo",
     icon: Type,
-    bgImage: "https://images.unsplash.com/photo-1561070791-26c113006238?auto=format&fit=crop&w=400&q=80"
+    bgImage: "/src/assets/images/hero_builder_cityscape_1784785823510.jpg"
   },
   {
     id: 5,
@@ -99,7 +99,7 @@ const FEATURE_CARDS: FeatureCard[] = [
     ],
     type: "emerald",
     icon: Cpu,
-    bgImage: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=400&q=80"
+    bgImage: "/src/assets/images/hero_intelligent_systems_1784785833146.jpg"
   },
   {
     id: 6,
@@ -114,7 +114,7 @@ const FEATURE_CARDS: FeatureCard[] = [
     ],
     type: "cyan",
     icon: Database,
-    bgImage: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=400&q=80"
+    bgImage: "/src/assets/images/hero_problem_chaos_1784785846477.jpg"
   },
   {
     id: 7,
@@ -129,7 +129,7 @@ const FEATURE_CARDS: FeatureCard[] = [
     ],
     type: "orange",
     icon: TrendingUp,
-    bgImage: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=400&q=80"
+    bgImage: "/src/assets/images/hero_builder_cityscape_1784785823510.jpg"
   },
   {
     id: 8,
@@ -144,7 +144,7 @@ const FEATURE_CARDS: FeatureCard[] = [
     ],
     type: "dark",
     icon: CloudLightning,
-    bgImage: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=400&q=80"
+    bgImage: "/src/assets/images/hero_intelligent_systems_1784785833146.jpg"
   }
 ];
 

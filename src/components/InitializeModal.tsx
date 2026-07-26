@@ -266,7 +266,15 @@ ${clientName || 'Partner'}`;
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ type: "spring", damping: 25, stiffness: 220 }}
-            className="relative w-full max-w-xl p-6 md:p-8 z-10 overflow-hidden pointer-events-auto my-8 text-stone-800 clay-card"
+            drag="y"
+            dragConstraints={{ top: 0, bottom: 0 }}
+            dragElastic={0.8}
+            onDragEnd={(e, info) => {
+              if (info.offset.y > 100) {
+                onClose();
+              }
+            }}
+            className="relative w-full max-w-xl p-6 md:p-8 z-10 overflow-hidden pointer-events-auto my-8 text-stone-800 clay-card touch-pan-x"
           >
             {/* Soft warm ambient background glow */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-24 bg-violet-200/40 blur-3xl pointer-events-none rounded-full" />

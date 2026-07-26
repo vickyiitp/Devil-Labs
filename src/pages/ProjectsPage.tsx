@@ -425,7 +425,15 @@ export default function ProjectsPage({ navigate }: ProjectsPageProps) {
             initial={{ opacity: 0, y: -50, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -20, scale: 0.9 }}
-            className="fixed top-24 left-1/2 -translate-x-1/2 z-50 bg-stone-900 border border-stone-800 text-white font-mono text-[11px] uppercase tracking-wider py-3 px-6 rounded-full shadow-2xl flex items-center gap-2"
+            drag="x"
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={0.8}
+            onDragEnd={(e, info) => {
+              if (Math.abs(info.offset.x) > 100) {
+                setTelemetryMessage(null);
+              }
+            }}
+            className="fixed top-24 left-1/2 -translate-x-1/2 z-50 bg-stone-900 border border-stone-800 text-white font-mono text-[11px] uppercase tracking-wider py-3 px-6 rounded-full shadow-2xl flex items-center gap-2 touch-pan-y"
           >
             <span className="w-2 h-2 rounded-full bg-violet-400 animate-ping" />
             <span>{telemetryMessage}</span>

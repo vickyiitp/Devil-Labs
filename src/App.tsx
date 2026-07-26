@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { useState, useEffect, useRef, ReactNode } from 'react';
+import { motion, AnimatePresence, useScroll, useTransform } from 'motion/react';
 import Navigation, { Footer } from './components/Navigation';
 import ClayTopicShowcase from './components/ClayTopicShowcase';
 import LandingPage from './pages/LandingPage';
@@ -53,6 +53,25 @@ function usePath() {
   };
 
   return [path, navigate, isNavigating] as const;
+}
+
+
+function ScrollSection({ children, className = "" }: { children: ReactNode, className?: string }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start 0.95", "start 0.5"]
+  });
+  
+  const opacity = useTransform(scrollYProgress, [0, 1], [0, 1]);
+  const y = useTransform(scrollYProgress, [0, 1], [40, 0]);
+  const scale = useTransform(scrollYProgress, [0, 1], [0.98, 1]);
+  
+  return (
+    <motion.div ref={ref} style={{ opacity, y, scale }} className={`w-full relative z-10 ${className}`}>
+      {children}
+    </motion.div>
+  );
 }
 
 export default function App() {
@@ -119,16 +138,19 @@ export default function App() {
         
         <div className="relative z-10">
           {/* Navigation Header */}
-          <div>
+          <ScrollSection>
             <Navigation currentPath={currentPath} navigate={navigate} />
-          </div>
+          </ScrollSection>
 
           {/* Navigational Breadcrumb Trail */}
-          <Breadcrumb currentPath={currentPath} navigate={navigate} />
+          <ScrollSection>
+            <Breadcrumb currentPath={currentPath} navigate={navigate} />
+          </ScrollSection>
 
           {/* Dynamic Main Page Container */}
           <main id="main-content" className="flex-grow">
-            <AnimatePresence mode="wait">
+            <ScrollSection>
+              <AnimatePresence mode="wait">
               <motion.div
                 key={currentPath + (isNavigating ? '-loading' : '-ready')}
                 initial={{ opacity: 0, scale: 0.97, y: 15 }}
@@ -143,25 +165,22 @@ export default function App() {
                 {renderPage()}
               </motion.div>
             </AnimatePresence>
+          
+            </ScrollSection>
           </main>
         </div>
 
         {/* Curated Claymorphic Design Disciplines Section (Sleek Pre-Footer Showcase) */}
         {!['/legal/privacy', '/legal/terms', '/legal/msa'].includes(currentPath) && (
-          <div className="relative z-10">
+          <ScrollSection>
             <ClayTopicShowcase />
-          </div>
+          </ScrollSection>
         )}
 
         {/* Footer Element with Scroll-Triggered Reveal Animation */}
-        <motion.div
-          initial={{ opacity: 0, y: 35 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.1 }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        >
+        <ScrollSection>
           <Footer navigate={navigate} />
-        </motion.div>
+        </ScrollSection>
         <FloatingContact />
         <InitializeModal 
           isOpen={isInitializeModalOpen} 

@@ -34,7 +34,7 @@ const DISCIPLINES: DisciplineCard[] = [
     metric: 'latency < 120ms',
     status: 'OPTIMIZED',
     tech: 'TypeScript, OpenAI SDK, VectorDb Cache',
-    bgImage: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80',
+    bgImage: '/src/assets/images/hero_builder_cityscape_1784785823510.jpg',
     glowColor: 'rgba(139, 92, 246, 0.4)', // Violet glow
     xOffset: -380,
     yOffset: 35,
@@ -49,7 +49,7 @@ const DISCIPLINES: DisciplineCard[] = [
     metric: 'AAA contrast ratio',
     status: 'CERTIFIED',
     tech: 'Tailwind v4, Framer Motion, Inter Font',
-    bgImage: 'https://images.unsplash.com/photo-1541701494587-cb58502866ab?auto=format&fit=crop&w=800&q=80',
+    bgImage: '/src/assets/images/hero_intelligent_systems_1784785833146.jpg',
     glowColor: 'rgba(236, 72, 153, 0.4)', // Pink/Rose glow
     xOffset: -230,
     yOffset: 10,
@@ -64,7 +64,7 @@ const DISCIPLINES: DisciplineCard[] = [
     metric: 'throughput 1.2k/s',
     status: 'ACTIVE',
     tech: 'Express Webhooks, Twilio SDK, Cron Nodes',
-    bgImage: 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=800&q=80',
+    bgImage: '/src/assets/images/hero_problem_chaos_1784785846477.jpg',
     glowColor: 'rgba(245, 158, 11, 0.4)', // Amber glow
     xOffset: -80,
     yOffset: 0,
@@ -79,7 +79,7 @@ const DISCIPLINES: DisciplineCard[] = [
     metric: '99.99% uptime',
     status: 'ONLINE',
     tech: 'Docker, Prometheus Monitoring, VPS Backup',
-    bgImage: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80',
+    bgImage: '/src/assets/images/hero_builder_cityscape_1784785823510.jpg',
     glowColor: 'rgba(16, 185, 129, 0.4)', // Emerald glow
     xOffset: 80,
     yOffset: 0,
@@ -94,7 +94,7 @@ const DISCIPLINES: DisciplineCard[] = [
     metric: '100% lighthouse score',
     status: 'VERIFIED',
     tech: 'Next.js App Router, Edge Cache, Schema.org',
-    bgImage: 'https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=800&q=80',
+    bgImage: '/src/assets/images/hero_intelligent_systems_1784785833146.jpg',
     glowColor: 'rgba(59, 130, 246, 0.4)', // Blue glow
     xOffset: 230,
     yOffset: 10,
@@ -109,7 +109,7 @@ const DISCIPLINES: DisciplineCard[] = [
     metric: 'SHA-256 encrypted',
     status: 'SHIELDED',
     tech: 'Drizzle ORM, Node-Crypto, Next.js Actions',
-    bgImage: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80',
+    bgImage: '/src/assets/images/hero_problem_chaos_1784785846477.jpg',
     glowColor: 'rgba(20, 184, 166, 0.4)', // Teal glow
     xOffset: 380,
     yOffset: 35,

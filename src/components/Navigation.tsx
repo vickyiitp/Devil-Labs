@@ -27,7 +27,19 @@ export default function Navigation({ currentPath, navigate }: NavigationProps) {
   const lastScrollY = useRef(0);
 
   useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
+
+  useEffect(() => {
     const handleScroll = () => {
+      if (isOpen) return;
       const currentScrollY = window.scrollY;
       
       if (currentScrollY > 30) {
@@ -51,7 +63,7 @@ export default function Navigation({ currentPath, navigate }: NavigationProps) {
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [isOpen]);
 
   const slides = [
     "PROCESS: 01. CONSULT ➜ 02. WORK ON IDEA ➜ 03. INTERACTIVE DEMO ➜ 04. PRODUCTION DEPLOY",
@@ -222,66 +234,198 @@ export default function Navigation({ currentPath, navigate }: NavigationProps) {
         </div>
 
         {/* Mobile menu button */}
-        <div className="md:hidden flex items-center space-x-3">
+        <div className="md:hidden flex items-center space-x-2.5 pointer-events-auto">
           <button
+            type="button"
             onMouseEnter={() => audioEngine.playHover()}
             onClick={() => { audioEngine.playClick(); toggleCurrency(); }}
-            className="flex items-center justify-center w-12 h-12 bg-[#fcfbf9]/90 backdrop-blur-xl border border-stone-200/50 rounded-full font-sans text-xs font-bold text-stone-500 hover:text-stone-900 active:scale-95 transition-all cursor-pointer"
+            className="flex items-center justify-center min-w-[44px] min-h-[44px] px-3 bg-[#fcfbf9]/95 backdrop-blur-xl border border-stone-200/80 rounded-full font-sans text-xs font-bold text-stone-700 hover:text-stone-900 active:scale-95 transition-all cursor-pointer shadow-sm"
           >
             {currency}
           </button>
           <button
             id="mobile-menu-toggle"
+            type="button"
             onMouseEnter={() => audioEngine.playHover()}
             onClick={() => { audioEngine.playClick(); setIsOpen(!isOpen); }}
-            className="flex items-center justify-center w-12 h-12 bg-[#fcfbf9]/90 backdrop-blur-xl border border-stone-200/50 rounded-full text-stone-500 hover:text-stone-900 active:scale-95 transition-all focus:outline-none cursor-pointer"
-            aria-label="Toggle menu"
+            className="flex items-center justify-center min-w-[44px] min-h-[44px] px-3 bg-gradient-to-r from-violet-600 to-indigo-600 text-white rounded-full active:scale-95 transition-all focus:outline-none cursor-pointer shadow-md font-sans text-xs font-extrabold uppercase tracking-wider space-x-1.5"
+            aria-label="Toggle mobile menu"
           >
-            {isOpen ? <X size={20} /> : <Menu size={20} />}
+            {isOpen ? <X size={18} /> : <Menu size={18} />}
+            <span className="text-[11px] font-bold">{isOpen ? 'CLOSE' : 'MENU'}</span>
           </button>
         </div>
       </div>
+    </header>
 
-      {/* Mobile Menu */}
+    {/* Mobile Full Slide-out Drawer & Overlay */}
+    <AnimatePresence>
       {isOpen && (
-        <motion.div
-          id="mobile-menu"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          className="md:hidden bg-[#fcfbf9] border-b border-stone-200/40 absolute top-20 left-0 w-full px-6 py-8 flex flex-col space-y-6 pointer-events-auto shadow-xl"
-        >
-          {navItems.map((item) => {
-            const isActive = currentPath === item.path;
-            return (
+        <>
+          {/* Backdrop Blur Overlay */}
+          <motion.div
+            key="mobile-drawer-backdrop"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            onClick={() => setIsOpen(false)}
+            className="fixed inset-0 bg-stone-950/80 backdrop-blur-md z-[100] md:hidden cursor-pointer"
+          />
+
+          {/* Slide-out Drawer Panel */}
+          <motion.div
+            key="mobile-drawer-panel"
+            initial={{ x: '100%' }}
+            animate={{ x: 0 }}
+            exit={{ x: '100%' }}
+            transition={{ type: 'spring', damping: 28, stiffness: 300 }}
+            id="mobile-drawer"
+            className="fixed top-0 right-0 bottom-0 w-[88%] max-w-sm bg-stone-950 text-white z-[101] md:hidden shadow-2xl flex flex-col justify-between border-l border-stone-800/80 overflow-y-auto font-sans"
+          >
+            {/* Drawer Header */}
+            <div className="p-5 border-b border-stone-800/80 flex items-center justify-between shrink-0 bg-stone-950/90 backdrop-blur-md">
+              <div 
+                onClick={() => { audioEngine.playClick(); navigate('/'); setIsOpen(false); }}
+                className="flex items-center space-x-2.5 cursor-pointer"
+              >
+                <DevilLabsLogo className="w-5 h-5 text-violet-400" glow />
+                <span className="font-display font-black text-sm tracking-tight text-white uppercase">DEVIL LABS</span>
+              </div>
+
+              <div className="flex items-center space-x-2">
+                <button
+                  type="button"
+                  onClick={toggleCurrency}
+                  className="px-3 py-1.5 rounded-full bg-stone-900 border border-stone-700/80 text-stone-300 font-mono text-xs font-bold hover:text-white"
+                >
+                  {currency}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setIsOpen(false)}
+                  className="w-10 h-10 rounded-full bg-stone-900 border border-stone-700/80 text-stone-300 hover:text-white flex items-center justify-center cursor-pointer active:scale-95 transition-transform"
+                  aria-label="Close menu"
+                >
+                  <X size={18} />
+                </button>
+              </div>
+            </div>
+
+            {/* Nav Items List */}
+            <div className="px-5 py-6 space-y-2.5 flex-1 overflow-y-auto">
+              <div className="text-[10px] font-mono font-black uppercase text-stone-500 tracking-widest mb-3 px-1">
+                NAVIGATION DIRECTORY
+              </div>
+
+              {navItems.map((item) => {
+                const isActive = currentPath === item.path;
+                return (
+                  <button
+                    id={`mobile-nav-item-${item.name.toLowerCase()}`}
+                    key={item.path}
+                    type="button"
+                    onClick={() => {
+                      audioEngine.playClick();
+                      navigate(item.path);
+                      setIsOpen(false);
+                    }}
+                    className={`w-full min-h-[48px] text-left px-4 py-3 rounded-2xl font-sans font-extrabold text-xs sm:text-sm tracking-wider uppercase flex items-center justify-between cursor-pointer transition-all active:scale-98 ${
+                      isActive 
+                        ? 'bg-violet-600 text-white shadow-[0_0_20px_rgba(139,92,246,0.4)]' 
+                        : 'bg-stone-900/70 text-stone-300 hover:bg-stone-800/80 border border-stone-800/80 hover:text-white'
+                    }`}
+                  >
+                    <span>{item.name}</span>
+                    <span className={`text-xs ${isActive ? 'text-amber-300' : 'text-stone-500'}`}>
+                      {item.label.split(' ')[0]} →
+                    </span>
+                  </button>
+                );
+              })}
+
+              {/* Primary Call to Action */}
               <button
-                id={`mobile-nav-item-${item.name.toLowerCase()}`}
-                key={item.path}
+                id="mobile-drawer-cta-btn"
+                type="button"
                 onClick={() => {
-                  navigate(item.path);
+                  audioEngine.playClick();
+                  window.dispatchEvent(new CustomEvent('open-initialize-modal'));
                   setIsOpen(false);
                 }}
-                className={`text-left text-sm font-bold tracking-widest py-3 border-b border-stone-100 cursor-pointer flex items-center justify-between active:text-violet-600 active:pl-2 transition-all duration-200 ${isActive ? 'text-violet-600' : 'text-stone-500'}`}
+                className="w-full mt-4 min-h-[50px] py-3.5 bg-gradient-to-r from-violet-600 via-fuchsia-600 to-amber-500 text-white font-sans font-black text-xs tracking-widest uppercase rounded-2xl shadow-[0_0_25px_rgba(139,92,246,0.4)] flex items-center justify-center space-x-2 cursor-pointer active:scale-98 transition-transform"
               >
-                <span>{isActive ? `✦ ${item.label}` : item.name}</span>
-                <span className="text-xs text-stone-400">→</span>
+                <span>INITIALIZE PROJECT</span>
+                <ArrowUpRight size={16} />
               </button>
-            );
-          })}
-          <button
-            id="mobile-nav-cta-btn"
-            onClick={() => {
-              window.dispatchEvent(new CustomEvent('open-initialize-modal'));
-              setIsOpen(false);
-            }}
-            className="w-full py-4 bg-gradient-to-r from-violet-600 to-rose-500 text-white font-bold text-xs tracking-widest uppercase rounded-full hover:scale-102 active:scale-95 transition-all text-center flex items-center justify-center space-x-2"
-          >
-            <span>INITIALIZE PROJECT</span>
-            <ArrowUpRight size={14} />
-          </button>
-        </motion.div>
+            </div>
+
+            {/* Social Contact Links Panel inside Drawer */}
+            <div className="p-5 border-t border-stone-800/80 bg-stone-900/60 shrink-0 space-y-3">
+              <div className="text-[10px] font-mono font-bold uppercase text-stone-400 tracking-widest flex items-center justify-between">
+                <span>CONNECT WITH US</span>
+                <span className="text-emerald-400 text-[9px] uppercase font-bold flex items-center gap-1">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                  ONLINE 24/7
+                </span>
+              </div>
+
+              <div className="grid grid-cols-2 gap-2">
+                {/* WhatsApp */}
+                <a
+                  href="https://wa.me/918102099678?text=Hi%20Devil%20Labs%2C%20I%20would%20like%20to%20consult%20on%20a%20project%20idea%21"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-2 px-3 py-2.5 rounded-xl bg-[#25D366]/20 border border-[#25D366]/40 text-[#25D366] hover:bg-[#25D366]/30 transition-all text-xs font-bold font-sans active:scale-95"
+                >
+                  <MessageCircle size={15} className="shrink-0" />
+                  <span className="truncate">WhatsApp</span>
+                </a>
+
+                {/* LinkedIn */}
+                <a
+                  href="https://linkedin.com/company/devillabs"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-2 px-3 py-2.5 rounded-xl bg-[#0077B5]/20 border border-[#0077B5]/40 text-[#0077B5] hover:bg-[#0077B5]/30 transition-all text-xs font-bold font-sans active:scale-95"
+                >
+                  <Linkedin size={15} className="shrink-0" />
+                  <span className="truncate">LinkedIn</span>
+                </a>
+
+                {/* Instagram */}
+                <a
+                  href="https://instagram.com/devillabs"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-2 px-3 py-2.5 rounded-xl bg-pink-500/20 border border-pink-500/40 text-pink-400 hover:bg-pink-500/30 transition-all text-xs font-bold font-sans active:scale-95"
+                >
+                  <Instagram size={15} className="shrink-0" />
+                  <span className="truncate">Instagram</span>
+                </a>
+
+                {/* Email */}
+                <a
+                  href="mailto:devil.labs.contact@gmail.com?subject=Project%20Inquiry%20-%20Devil%20Labs"
+                  className="flex items-center space-x-2 px-3 py-2.5 rounded-xl bg-stone-900 border border-stone-800 text-stone-200 hover:bg-stone-800 transition-all text-xs font-bold font-sans active:scale-95"
+                >
+                  <Mail size={15} className="shrink-0 text-violet-400" />
+                  <span className="truncate">Email Us</span>
+                </a>
+              </div>
+
+              <div className="pt-2 flex items-center justify-between text-[10px] font-mono text-stone-400 border-t border-stone-800/60">
+                <span>📍 Gaya &amp; Patna, Bihar</span>
+                <a href="tel:+918102099678" className="text-stone-300 hover:text-white flex items-center space-x-1 font-bold">
+                  <Phone size={10} className="text-emerald-400" />
+                  <span>+91 81020 99678</span>
+                </a>
+              </div>
+            </div>
+          </motion.div>
+        </>
       )}
-    </header>
+    </AnimatePresence>
     </>
   );
 }
