@@ -89,15 +89,20 @@ async function startServer() {
     const staticPages = [
       { path: "/", priority: "1.0", changefreq: "daily" },
       { path: "/services", priority: "0.9", changefreq: "weekly" },
-      { path: "/work", priority: "0.9", changefreq: "weekly" },
+      { path: "/products", priority: "0.9", changefreq: "weekly" },
+      { path: "/solutions", priority: "0.9", changefreq: "weekly" },
+      { path: "/projects", priority: "0.9", changefreq: "weekly" },
+      { path: "/resources", priority: "0.8", changefreq: "weekly" },
       { path: "/about", priority: "0.9", changefreq: "weekly" },
       { path: "/pricing", priority: "0.8", changefreq: "weekly" },
       { path: "/contact", priority: "0.8", changefreq: "monthly" },
       { path: "/process", priority: "0.7", changefreq: "monthly" },
-      { path: "/insights", priority: "0.7", changefreq: "weekly" },
-      { path: "/legal/privacy", priority: "0.3", changefreq: "monthly" },
-      { path: "/legal/terms", priority: "0.3", changefreq: "monthly" },
-      { path: "/legal/msa", priority: "0.3", changefreq: "monthly" },
+      { path: "/work", priority: "0.85", changefreq: "weekly" },
+      { path: "/insights", priority: "0.75", changefreq: "weekly" },
+      { path: "/faq", priority: "0.75", changefreq: "weekly" },
+      { path: "/legal/privacy", priority: "0.3", changefreq: "yearly" },
+      { path: "/legal/terms", priority: "0.3", changefreq: "yearly" },
+      { path: "/legal/msa", priority: "0.3", changefreq: "yearly" },
     ];
 
     const currentDate = new Date().toISOString().split("T")[0];

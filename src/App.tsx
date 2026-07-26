@@ -136,16 +136,12 @@ export default function App() {
         <BackgroundEffects />
         <CommandPalette navigate={navigate} />
         
-        <div className="relative z-10">
-          {/* Navigation Header */}
-          <ScrollSection>
-            <Navigation currentPath={currentPath} navigate={navigate} />
-          </ScrollSection>
+        {/* Navigation Header - Fixed at root level for immediate clickability & visibility */}
+        <Navigation currentPath={currentPath} navigate={navigate} />
 
+        <div className="relative z-10">
           {/* Navigational Breadcrumb Trail */}
-          <ScrollSection>
-            <Breadcrumb currentPath={currentPath} navigate={navigate} />
-          </ScrollSection>
+          <Breadcrumb currentPath={currentPath} navigate={navigate} />
 
           {/* Dynamic Main Page Container */}
           <main id="main-content" className="flex-grow">

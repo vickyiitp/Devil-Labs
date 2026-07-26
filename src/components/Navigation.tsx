@@ -95,7 +95,7 @@ export default function Navigation({ currentPath, navigate }: NavigationProps) {
       {/* 0. HIGH-CONVERTING TOP INFO BAR */}
       <div 
         id="header-top-bar" 
-        className="fixed top-0 left-0 w-full h-[48px] md:h-12 bg-[#faf8f5]/90 backdrop-blur-xl border-b border-stone-200/40 z-[60] flex items-center justify-between px-4 sm:px-6 lg:px-8 text-xs tracking-widest font-bold text-stone-500 font-sans select-none transition-transform duration-500 ease-in-out"
+        className="fixed top-0 left-0 w-full h-[48px] md:h-12 bg-[#faf8f5]/90 backdrop-blur-xl border-b border-stone-200/40 z-[60] flex items-center justify-between px-4 sm:px-6 lg:px-8 text-xs tracking-widest font-bold text-stone-500 font-sans select-none transition-transform duration-500 ease-in-out pointer-events-auto"
         style={{
           transform: scrolled ? 'translateY(-100%)' : 'translateY(0)'
         }}
