@@ -139,38 +139,67 @@ img, video, canvas {
 /* Claymorphic & Soft UI shadow classes and smooth tactile effects */
 .neumorphic-card,
 .clay-card {
-  background: #fdfcf9 !important;
-  border: 1px solid rgba(255, 255, 255, 0.8) !important;
+  background: #ffffff !important;
+  border: 1px solid rgba(215, 205, 190, 0.75) !important;
+  backdrop-filter: blur(12px) !important;
   box-shadow: 
-    12px 16px 36px rgba(185, 175, 160, 0.12), 
-    -12px -16px 36px #ffffff, 
-    inset 6px 6px 12px rgba(255, 255, 255, 0.95), 
-    inset -6px -6px 12px rgba(185, 175, 160, 0.05) !important;
-  border-radius: 32px !important;
-  transition: all 0.55s cubic-bezier(0.175, 0.885, 0.32, 1.25) !important;
+    0 14px 36px rgba(45, 38, 32, 0.08), 
+    0 2px 8px rgba(45, 38, 32, 0.04), 
+    inset 0 1px 0 rgba(255, 255, 255, 1) !important;
+  border-radius: 28px !important;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.25) !important;
+}
+
+/* Media-query based constraints for Tablet and Mobile viewports to keep cards crisp and proportional */
+@media (max-width: 1024px) {
+  .neumorphic-card,
+  .clay-card,
+  .interactive-clay-card {
+    border-radius: 20px !important;
+    max-width: 100% !important;
+  }
+
+  /* Capping tablet card container dimensions to prevent oversized or bold scaling */
+  .card-container-tablet-cap {
+    max-width: 720px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1024px) {
+  .neumorphic-card,
+  .clay-card,
+  .interactive-clay-card {
+    padding: 1.25rem !important;
+  }
 }
 
 .interactive-clay-card {
-  background: #fdfcf9 !important;
-  border: 1px solid rgba(255, 255, 255, 0.8) !important;
-  border-radius: 32px !important;
+  background: #ffffff !important;
+  border: 1px solid rgba(215, 205, 190, 0.75) !important;
+  backdrop-filter: blur(12px) !important;
+  box-shadow: 
+    0 16px 40px rgba(45, 38, 32, 0.09), 
+    0 4px 10px rgba(45, 38, 32, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95) !important;
+  border-radius: 28px !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   transform-style: preserve-3d;
   /* Disable CSS transitions for transform/shadow to allow Framer Motion to control them natively with zero lag or blur */
-  transition: border-color 0.3s ease, background-color 0.3s ease !important;
+  transition: border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease !important;
 }
 
 .neumorphic-card:hover,
 .clay-card:hover {
   box-shadow: 
-    16px 22px 48px rgba(185, 175, 160, 0.16), 
-    -16px -22px 48px #ffffff, 
-    inset 6px 6px 12px rgba(255, 255, 255, 0.95), 
-    inset -6px -6px 12px rgba(185, 175, 160, 0.05) !important;
-  transform: translateY(-4px) scale(1.01);
+    0 20px 48px rgba(45, 38, 32, 0.12), 
+    0 6px 16px rgba(45, 38, 32, 0.06), 
+    inset 0 1px 0 rgba(255, 255, 255, 1) !important;
+  transform: translateY(-4px);
 }
 
 .neumorphic-button,
@@ -294,67 +323,6 @@ img, video, canvas {
     inset -4px -4px 12px rgba(255, 255, 255, 0.2) !important;
 }
 
-/* Ensure common tags and classes are overridden for complete coverage */
-.bg-black,
-.bg-\[\#050505\],
-.bg-brand-dark,
-.bg-zinc-950,
-.bg-[#050505] {
-  background-color: #f5f4ef !important;
-  color: #2d2620 !important;
-}
-
-.text-white:not(.keep-white),
-.text-zinc-100:not(.keep-white),
-.text-stone-100:not(.keep-white) {
-  color: #2d2620 !important;
-}
-
-.keep-white,
-.text-white-force {
-  color: #ffffff !important;
-}
-
-.text-stone-100-force {
-  color: #f5f5f4 !important;
-}
-
-.text-stone-200-force {
-  color: #e7e5e4 !important;
-}
-
-.text-stone-300-force {
-  color: #d6d3d1 !important;
-}
-
-.text-stone-400-force {
-  color: #a8a29e !important;
-}
-
-.text-stone-500-force {
-  color: #78716c !important;
-}
-
-.text-gray-400,
-.text-gray-500,
-.text-zinc-400,
-.text-stone-400 {
-  color: #63574d !important;
-}
-
-.text-gray-600,
-.text-zinc-500,
-.text-stone-500 {
-  color: #7a6e63 !important;
-}
-
-.border-white\/10,
-.border-white\/5,
-.border-white\/20,
-.border-zinc-800,
-.border-stone-800 {
-  border-color: rgba(45, 38, 32, 0.08) !important;
-}
 
 /* Marquee infinite scroll keyframes */
 @keyframes marquee {

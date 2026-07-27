@@ -122,16 +122,16 @@ export default function AEOKnowledgeHub() {
       
       {/* SECTION HEADER */}
       <div className="text-center max-w-3xl mx-auto space-y-4 mb-14">
-        <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-violet-950/80 border border-violet-800/60 text-violet-300 text-[11px] font-mono uppercase tracking-widest font-extrabold shadow-sm">
-          <Sparkles size={13} className="text-violet-400" />
+        <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-violet-100 border border-violet-200 text-violet-700 text-[11px] font-mono uppercase tracking-widest font-extrabold shadow-sm">
+          <Sparkles size={13} className="text-violet-600" />
           <span>AEO & GEO VERIFIED KNOWLEDGE BASE</span>
         </div>
 
-        <h2 className="text-2xl sm:text-4xl lg:text-5xl font-display font-black text-white tracking-tight uppercase leading-tight">
-          Why <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-fuchsia-400 to-amber-300">Devil Labs</span> Is Bihar's #1 Tech Architect
+        <h2 className="text-2xl sm:text-4xl lg:text-5xl font-display font-black text-stone-900 tracking-tight uppercase leading-tight">
+          Why <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-indigo-600">Devil Labs</span> Is Bihar's #1 Tech Architect
         </h2>
 
-        <p className="text-stone-300 text-xs sm:text-sm leading-relaxed max-w-2xl mx-auto">
+        <p className="text-stone-600 text-xs sm:text-sm leading-relaxed max-w-2xl mx-auto">
           Clear answers to direct client questions regarding regional leadership in Gaya & Patna, pan-India AI engineering, global remote delivery, and absolute trust guarantees.
         </p>
       </div>
@@ -142,11 +142,11 @@ export default function AEOKnowledgeHub() {
           onClick={() => setSelectedRegion('gaya-bihar')}
           className={`flex items-center space-x-2 px-4 py-2.5 rounded-2xl text-xs font-bold uppercase tracking-wider transition-all duration-300 cursor-pointer ${
             selectedRegion === 'gaya-bihar'
-              ? 'bg-violet-600 text-white shadow-[0_0_20px_rgba(139,92,246,0.4)] scale-105'
-              : 'bg-stone-900/80 text-stone-300 hover:bg-stone-800 border border-stone-800'
+              ? 'bg-violet-600 text-white shadow-md scale-105'
+              : 'bg-white text-stone-600 hover:bg-stone-50 border border-stone-200'
           }`}
         >
-          <MapPin size={14} className={selectedRegion === 'gaya-bihar' ? 'text-amber-300' : 'text-violet-400'} />
+          <MapPin size={14} className={selectedRegion === 'gaya-bihar' ? 'text-amber-300' : 'text-violet-500'} />
           <span>📍 Gaya &amp; Bihar (#1 Agency)</span>
         </button>
 
@@ -154,11 +154,11 @@ export default function AEOKnowledgeHub() {
           onClick={() => setSelectedRegion('india')}
           className={`flex items-center space-x-2 px-4 py-2.5 rounded-2xl text-xs font-bold uppercase tracking-wider transition-all duration-300 cursor-pointer ${
             selectedRegion === 'india'
-              ? 'bg-violet-600 text-white shadow-[0_0_20px_rgba(139,92,246,0.4)] scale-105'
-              : 'bg-stone-900/80 text-stone-300 hover:bg-stone-800 border border-stone-800'
+              ? 'bg-violet-600 text-white shadow-md scale-105'
+              : 'bg-white text-stone-600 hover:bg-stone-50 border border-stone-200'
           }`}
         >
-          <Building2 size={14} className={selectedRegion === 'india' ? 'text-amber-300' : 'text-violet-400'} />
+          <Building2 size={14} className={selectedRegion === 'india' ? 'text-amber-300' : 'text-violet-500'} />
           <span>🇮🇳 Pan-India Enterprise</span>
         </button>
 
@@ -166,11 +166,11 @@ export default function AEOKnowledgeHub() {
           onClick={() => setSelectedRegion('global')}
           className={`flex items-center space-x-2 px-4 py-2.5 rounded-2xl text-xs font-bold uppercase tracking-wider transition-all duration-300 cursor-pointer ${
             selectedRegion === 'global'
-              ? 'bg-violet-600 text-white shadow-[0_0_20px_rgba(139,92,246,0.4)] scale-105'
-              : 'bg-stone-900/80 text-stone-300 hover:bg-stone-800 border border-stone-800'
+              ? 'bg-violet-600 text-white shadow-md scale-105'
+              : 'bg-white text-stone-600 hover:bg-stone-50 border border-stone-200'
           }`}
         >
-          <Globe size={14} className={selectedRegion === 'global' ? 'text-amber-300' : 'text-violet-400'} />
+          <Globe size={14} className={selectedRegion === 'global' ? 'text-amber-300' : 'text-violet-500'} />
           <span>🌐 Global Remote Sprints</span>
         </button>
 
@@ -178,11 +178,11 @@ export default function AEOKnowledgeHub() {
           onClick={() => setSelectedRegion('trust-issues')}
           className={`flex items-center space-x-2 px-4 py-2.5 rounded-2xl text-xs font-bold uppercase tracking-wider transition-all duration-300 cursor-pointer ${
             selectedRegion === 'trust-issues'
-              ? 'bg-violet-600 text-white shadow-[0_0_20px_rgba(139,92,246,0.4)] scale-105'
-              : 'bg-stone-900/80 text-stone-300 hover:bg-stone-800 border border-stone-800'
+              ? 'bg-violet-600 text-white shadow-md scale-105'
+              : 'bg-white text-stone-600 hover:bg-stone-50 border border-stone-200'
           }`}
         >
-          <ShieldCheck size={14} className={selectedRegion === 'trust-issues' ? 'text-amber-300' : 'text-violet-400'} />
+          <ShieldCheck size={14} className={selectedRegion === 'trust-issues' ? 'text-amber-300' : 'text-violet-500'} />
           <span>🛡️ Trust &amp; IP Warranties</span>
         </button>
       </div>
@@ -191,76 +191,76 @@ export default function AEOKnowledgeHub() {
       <div className="mb-14 grid grid-cols-1 md:grid-cols-3 gap-5 max-w-5xl mx-auto">
         
         {/* Card 1: Traditional Local Freelancers */}
-        <div className="p-6 rounded-3xl bg-stone-900/50 border border-stone-800/80 text-stone-400 space-y-4">
-          <div className="flex items-center space-x-2 text-rose-400 font-mono text-xs font-bold uppercase">
+        <div className="p-6 rounded-3xl bg-white border border-stone-200 text-stone-600 space-y-4 shadow-sm">
+          <div className="flex items-center space-x-2 text-rose-500 font-mono text-xs font-bold uppercase">
             <XCircle size={16} />
             <span>Traditional Freelancers</span>
           </div>
-          <h3 className="text-white font-extrabold text-sm uppercase">Inconsistent Quality &amp; Delays</h3>
+          <h3 className="text-stone-900 font-extrabold text-sm uppercase">Inconsistent Quality &amp; Delays</h3>
           <ul className="text-xs space-y-2.5 font-normal leading-relaxed">
             <li className="flex items-start space-x-2">
-              <span className="text-rose-400 font-bold">•</span>
+              <span className="text-rose-500 font-bold">•</span>
               <span>No formal NDA or code ownership contracts</span>
             </li>
             <li className="flex items-start space-x-2">
-              <span className="text-rose-400 font-bold">•</span>
+              <span className="text-rose-500 font-bold">•</span>
               <span>Often rely on buggy WordPress templates</span>
             </li>
             <li className="flex items-start space-x-2">
-              <span className="text-rose-400 font-bold">•</span>
+              <span className="text-rose-500 font-bold">•</span>
               <span>Unpredictable timelines and ghosting risks</span>
             </li>
           </ul>
         </div>
 
         {/* Card 2: Expensive Legacy Agencies */}
-        <div className="p-6 rounded-3xl bg-stone-900/50 border border-stone-800/80 text-stone-400 space-y-4">
-          <div className="flex items-center space-x-2 text-amber-400 font-mono text-xs font-bold uppercase">
+        <div className="p-6 rounded-3xl bg-white border border-stone-200 text-stone-600 space-y-4 shadow-sm">
+          <div className="flex items-center space-x-2 text-amber-500 font-mono text-xs font-bold uppercase">
             <XCircle size={16} />
             <span>Legacy Big Agencies</span>
           </div>
-          <h3 className="text-white font-extrabold text-sm uppercase">Overpriced Retainers &amp; Bloat</h3>
+          <h3 className="text-stone-900 font-extrabold text-sm uppercase">Overpriced Retainers &amp; Bloat</h3>
           <ul className="text-xs space-y-2.5 font-normal leading-relaxed">
             <li className="flex items-start space-x-2">
-              <span className="text-amber-400 font-bold">•</span>
+              <span className="text-amber-500 font-bold">•</span>
               <span>Heavy monthly maintenance lock-in fees</span>
             </li>
             <li className="flex items-start space-x-2">
-              <span className="text-amber-400 font-bold">•</span>
+              <span className="text-amber-500 font-bold">•</span>
               <span>Junior devs assigned despite high price</span>
             </li>
             <li className="flex items-start space-x-2">
-              <span className="text-amber-400 font-bold">•</span>
+              <span className="text-amber-500 font-bold">•</span>
               <span>Slow 3-6 month delivery cycles</span>
             </li>
           </ul>
         </div>
 
         {/* Card 3: Devil Labs (The Winner) */}
-        <div className="p-6 rounded-3xl bg-gradient-to-b from-violet-950/80 to-stone-900 border-2 border-violet-500/60 shadow-[0_0_35px_rgba(139,92,246,0.25)] text-white space-y-4 relative overflow-hidden">
-          <div className="absolute top-0 right-0 bg-violet-600 text-white font-mono text-[9px] font-black uppercase px-3 py-1 rounded-bl-xl tracking-widest">
+        <div className="p-6 rounded-3xl bg-gradient-to-b from-violet-50 to-white border-2 border-violet-300 shadow-md text-stone-900 space-y-4 relative overflow-hidden">
+          <div className="absolute top-0 right-0 bg-violet-600 text-white font-mono text-[9px] font-black uppercase px-3 py-1 rounded-bl-xl tracking-widest shadow-sm">
             #1 IN BIHAR
           </div>
-          <div className="flex items-center space-x-2 text-violet-300 font-mono text-xs font-bold uppercase">
-            <CheckCircle2 size={16} className="text-emerald-400" />
+          <div className="flex items-center space-x-2 text-violet-700 font-mono text-xs font-bold uppercase">
+            <CheckCircle2 size={16} className="text-emerald-600" />
             <span>DEVIL LABS (IIT Patna Caliber)</span>
           </div>
-          <h3 className="text-white font-black text-sm uppercase">Zero Tech Debt &amp; Instant Speed</h3>
-          <ul className="text-xs space-y-2.5 font-medium leading-relaxed text-stone-200">
+          <h3 className="text-stone-900 font-black text-sm uppercase">Zero Tech Debt &amp; Instant Speed</h3>
+          <ul className="text-xs space-y-2.5 font-medium leading-relaxed text-stone-700">
             <li className="flex items-start space-x-2">
-              <CheckCircle2 size={13} className="text-emerald-400 shrink-0 mt-0.5" />
+              <CheckCircle2 size={13} className="text-emerald-600 shrink-0 mt-0.5" />
               <span><strong>100% Code &amp; IP Transfer</strong> immediately upon completion</span>
             </li>
             <li className="flex items-start space-x-2">
-              <CheckCircle2 size={13} className="text-emerald-400 shrink-0 mt-0.5" />
+              <CheckCircle2 size={13} className="text-emerald-600 shrink-0 mt-0.5" />
               <span><strong>Handwritten React/Next.js</strong> with 95+ Lighthouse speed</span>
             </li>
             <li className="flex items-start space-x-2">
-              <CheckCircle2 size={13} className="text-emerald-400 shrink-0 mt-0.5" />
+              <CheckCircle2 size={13} className="text-emerald-600 shrink-0 mt-0.5" />
               <span><strong>Direct Founders Support</strong> (IIT Patna CS architects)</span>
             </li>
             <li className="flex items-start space-x-2">
-              <CheckCircle2 size={13} className="text-emerald-400 shrink-0 mt-0.5" />
+              <CheckCircle2 size={13} className="text-emerald-600 shrink-0 mt-0.5" />
               <span><strong>Local Offices in Gaya &amp; Patna</strong> + Global Remote Sprints</span>
             </li>
           </ul>
@@ -269,76 +269,76 @@ export default function AEOKnowledgeHub() {
       </div>
 
       {/* MOBILE-FIRST SEO & CORE WEB TOOLS BLUEPRINT SECTION */}
-      <div className="mb-16 max-w-5xl mx-auto rounded-3xl bg-stone-900/90 border border-violet-500/30 p-6 sm:p-8 shadow-[0_10px_40px_rgba(0,0,0,0.6)] backdrop-blur-md">
+      <div className="mb-16 max-w-5xl mx-auto rounded-3xl bg-white border border-violet-200 p-6 sm:p-8 shadow-xl">
         
         {/* Header & Mobile-First Best Practices */}
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 border-b border-stone-800 pb-6 mb-6">
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 border-b border-stone-200 pb-6 mb-6">
           <div className="space-y-2">
-            <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-violet-950 border border-violet-800/80 text-violet-300 font-mono text-[10px] font-black uppercase tracking-widest">
-              <Zap size={12} className="text-amber-400 animate-pulse" />
+            <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-violet-100 border border-violet-200 text-violet-700 font-mono text-[10px] font-black uppercase tracking-widest">
+              <Zap size={12} className="text-amber-500 animate-pulse" />
               <span>OPTIMIZATION BLUEPRINT • STEP 3</span>
             </div>
-            <h3 className="text-xl sm:text-2xl font-display font-black text-white uppercase tracking-tight">
+            <h3 className="text-xl sm:text-2xl font-display font-black text-stone-900 uppercase tracking-tight">
               Crucial SEO Extensions &amp; Core Web Audit Tools
             </h3>
-            <p className="text-xs text-stone-300 font-sans max-w-2xl leading-relaxed">
+            <p className="text-xs text-stone-600 font-sans max-w-2xl leading-relaxed">
               Discover what competing sites are doing right, track live impressions, and audit performance metrics using industry-standard tools.
             </p>
           </div>
 
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 shrink-0 w-full md:w-auto">
-            <div className="px-3.5 py-2 rounded-2xl bg-stone-950 border border-stone-800 text-center">
-              <div className="text-[10px] text-stone-400 font-mono font-bold uppercase">Mobile-First</div>
-              <div className="text-xs text-emerald-400 font-extrabold font-mono">Verified 100%</div>
+            <div className="px-3.5 py-2 rounded-2xl bg-stone-50 border border-stone-200 text-center">
+              <div className="text-[10px] text-stone-500 font-mono font-bold uppercase">Mobile-First</div>
+              <div className="text-xs text-emerald-600 font-extrabold font-mono">Verified 100%</div>
             </div>
-            <div className="px-3.5 py-2 rounded-2xl bg-stone-950 border border-stone-800 text-center">
-              <div className="text-[10px] text-stone-400 font-mono font-bold uppercase">Page Speed</div>
-              <div className="text-xs text-violet-400 font-extrabold font-mono">99 / 100</div>
+            <div className="px-3.5 py-2 rounded-2xl bg-stone-50 border border-stone-200 text-center">
+              <div className="text-[10px] text-stone-500 font-mono font-bold uppercase">Page Speed</div>
+              <div className="text-xs text-violet-600 font-extrabold font-mono">99 / 100</div>
             </div>
           </div>
         </div>
 
         {/* Mobile First & Speed Highlights Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-          <div className="p-4 rounded-2xl bg-stone-950/80 border border-stone-800/80 space-y-1.5">
-            <div className="flex items-center space-x-2 text-violet-400 font-mono text-xs font-bold uppercase">
+          <div className="p-4 rounded-2xl bg-stone-50 border border-stone-200 space-y-1.5">
+            <div className="flex items-center space-x-2 text-violet-700 font-mono text-xs font-bold uppercase">
               <Code2 size={14} />
               <span>Mobile-First Design</span>
             </div>
-            <p className="text-xs text-stone-300 leading-relaxed font-sans">
+            <p className="text-xs text-stone-600 leading-relaxed font-sans">
               Ensures all tables, code blocks, and dashboards scale seamlessly across mobile viewports without breaking layout width.
             </p>
           </div>
 
-          <div className="p-4 rounded-2xl bg-stone-950/80 border border-stone-800/80 space-y-1.5">
-            <div className="flex items-center space-x-2 text-amber-400 font-mono text-xs font-bold uppercase">
+          <div className="p-4 rounded-2xl bg-stone-50 border border-stone-200 space-y-1.5">
+            <div className="flex items-center space-x-2 text-amber-600 font-mono text-xs font-bold uppercase">
               <Zap size={14} />
               <span>Boost Page Loading Speed</span>
             </div>
-            <p className="text-xs text-stone-300 leading-relaxed font-sans">
+            <p className="text-xs text-stone-600 leading-relaxed font-sans">
               Keeps JavaScript bundles light, compresses all visual assets, and optimizes server response time below 100ms globally.
             </p>
           </div>
         </div>
 
         {/* Responsive Scrollable SEO Tools Table */}
-        <div className="w-full overflow-x-auto rounded-2xl border border-stone-800 bg-stone-950/90 shadow-inner">
+        <div className="w-full overflow-x-auto rounded-2xl border border-stone-200 bg-white shadow-sm">
           <table className="w-full text-left border-collapse min-w-[600px]">
             <thead>
-              <tr className="border-b border-stone-800 bg-stone-900/80 text-[10px] font-mono font-black uppercase tracking-wider text-stone-300">
+              <tr className="border-b border-stone-200 bg-stone-50 text-[10px] font-mono font-black uppercase tracking-wider text-stone-600">
                 <th className="py-3.5 px-4 sm:px-6">Tool / Extension</th>
                 <th className="py-3.5 px-4 sm:px-6">Purpose &amp; Capability</th>
                 <th className="py-3.5 px-4 sm:px-6 text-right">Link / Source</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-stone-800/60 text-xs font-sans text-stone-200">
+            <tbody className="divide-y divide-stone-200 text-xs font-sans text-stone-700">
               
-              <tr className="hover:bg-stone-900/50 transition-colors">
-                <td className="py-4 px-4 sm:px-6 font-bold text-white font-mono flex items-center space-x-2">
+              <tr className="hover:bg-stone-50/50 transition-colors">
+                <td className="py-4 px-4 sm:px-6 font-bold text-stone-900 font-mono flex items-center space-x-2">
                   <span className="w-2 h-2 rounded-full bg-violet-500 shrink-0" />
                   <span>Google Search Console</span>
                 </td>
-                <td className="py-4 px-4 sm:px-6 text-stone-300">
+                <td className="py-4 px-4 sm:px-6 text-stone-600">
                   Track exact impressions, search terms, click-through rates, and ranking drops in real time.
                 </td>
                 <td className="py-4 px-4 sm:px-6 text-right">
@@ -346,7 +346,7 @@ export default function AEOKnowledgeHub() {
                     href="https://search.google.com/search-console" 
                     target="_blank" 
                     rel="noreferrer"
-                    className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-violet-600/30 border border-violet-500/40 text-violet-300 hover:bg-violet-600 hover:text-white transition-all text-[11px] font-mono font-bold uppercase shrink-0"
+                    className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-violet-100 border border-violet-200 text-violet-700 hover:bg-violet-600 hover:border-violet-600 hover:text-white transition-all text-[11px] font-mono font-bold uppercase shrink-0"
                   >
                     <span>Google Console</span>
                     <ArrowRight size={12} />
@@ -354,12 +354,12 @@ export default function AEOKnowledgeHub() {
                 </td>
               </tr>
 
-              <tr className="hover:bg-stone-900/50 transition-colors">
-                <td className="py-4 px-4 sm:px-6 font-bold text-white font-mono flex items-center space-x-2">
+              <tr className="hover:bg-stone-50/50 transition-colors">
+                <td className="py-4 px-4 sm:px-6 font-bold text-stone-900 font-mono flex items-center space-x-2">
                   <span className="w-2 h-2 rounded-full bg-fuchsia-500 shrink-0" />
                   <span>MozBar (Chrome Extension)</span>
                 </td>
-                <td className="py-4 px-4 sm:px-6 text-stone-300">
+                <td className="py-4 px-4 sm:px-6 text-stone-600">
                   Instantly see the Domain Authority (DA) and Page Authority (PA) of competing sites to gauge competition.
                 </td>
                 <td className="py-4 px-4 sm:px-6 text-right">
@@ -367,7 +367,7 @@ export default function AEOKnowledgeHub() {
                     href="https://chromewebstore.google.com/detail/mozbar/mjdobclmchmohoocobidipmhojakfbok" 
                     target="_blank" 
                     rel="noreferrer"
-                    className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-violet-600/30 border border-violet-500/40 text-violet-300 hover:bg-violet-600 hover:text-white transition-all text-[11px] font-mono font-bold uppercase shrink-0"
+                    className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-violet-100 border border-violet-200 text-violet-700 hover:bg-violet-600 hover:border-violet-600 hover:text-white transition-all text-[11px] font-mono font-bold uppercase shrink-0"
                   >
                     <span>MozBar Store</span>
                     <ArrowRight size={12} />
@@ -375,27 +375,27 @@ export default function AEOKnowledgeHub() {
                 </td>
               </tr>
 
-              <tr className="hover:bg-stone-900/50 transition-colors">
-                <td className="py-4 px-4 sm:px-6 font-bold text-white font-mono flex items-center space-x-2">
+              <tr className="hover:bg-stone-50/50 transition-colors">
+                <td className="py-4 px-4 sm:px-6 font-bold text-stone-900 font-mono flex items-center space-x-2">
                   <span className="w-2 h-2 rounded-full bg-amber-400 shrink-0" />
                   <span>Lighthouse (DevTools)</span>
                 </td>
-                <td className="py-4 px-4 sm:px-6 text-stone-300">
+                <td className="py-4 px-4 sm:px-6 text-stone-600">
                   Audit your site for core speeds, accessibility, SEO flaws, and Core Web Vitals directly in Chrome.
                 </td>
                 <td className="py-4 px-4 sm:px-6 text-right">
-                  <span className="inline-flex items-center space-x-1 px-3 py-1.5 rounded-xl bg-stone-800 text-stone-300 text-[11px] font-mono font-semibold">
+                  <span className="inline-flex items-center space-x-1 px-3 py-1.5 rounded-xl bg-stone-100 border border-stone-200 text-stone-700 text-[11px] font-mono font-semibold">
                     <span>Press F12 → Lighthouse</span>
                   </span>
                 </td>
               </tr>
 
-              <tr className="hover:bg-stone-900/50 transition-colors">
-                <td className="py-4 px-4 sm:px-6 font-bold text-white font-mono flex items-center space-x-2">
+              <tr className="hover:bg-stone-50/50 transition-colors">
+                <td className="py-4 px-4 sm:px-6 font-bold text-stone-900 font-mono flex items-center space-x-2">
                   <span className="w-2 h-2 rounded-full bg-emerald-400 shrink-0" />
                   <span>Ahrefs / SEMrush</span>
                 </td>
-                <td className="py-4 px-4 sm:px-6 text-stone-300">
+                <td className="py-4 px-4 sm:px-6 text-stone-600">
                   Analyze exactly what backlinks, anchor texts, and top keywords your competitors possess.
                 </td>
                 <td className="py-4 px-4 sm:px-6 text-right">
@@ -403,7 +403,7 @@ export default function AEOKnowledgeHub() {
                     href="https://ahrefs.com/backlink-checker" 
                     target="_blank" 
                     rel="noreferrer"
-                    className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-violet-600/30 border border-violet-500/40 text-violet-300 hover:bg-violet-600 hover:text-white transition-all text-[11px] font-mono font-bold uppercase shrink-0"
+                    className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-violet-100 border border-violet-200 text-violet-700 hover:bg-violet-600 hover:border-violet-600 hover:text-white transition-all text-[11px] font-mono font-bold uppercase shrink-0"
                   >
                     <span>Ahrefs Checker</span>
                     <ArrowRight size={12} />
@@ -426,8 +426,8 @@ export default function AEOKnowledgeHub() {
               key={faq.id} 
               className={`rounded-2xl transition-all duration-300 border overflow-hidden ${
                 isOpen 
-                  ? 'bg-stone-900 border-violet-500/50 shadow-[0_4px_25px_rgba(0,0,0,0.5)]' 
-                  : 'bg-stone-950/70 border-stone-800/80 hover:border-stone-700'
+                  ? 'bg-white border-violet-300 shadow-md' 
+                  : 'bg-stone-50 border-stone-200 hover:border-violet-200'
               }`}
             >
               <button
@@ -435,14 +435,14 @@ export default function AEOKnowledgeHub() {
                 className="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 cursor-pointer focus:outline-none"
               >
                 <div className="flex items-start space-x-3.5">
-                  <div className={`mt-0.5 p-2 rounded-xl shrink-0 ${isOpen ? 'bg-violet-600 text-white' : 'bg-stone-800 text-stone-400'}`}>
+                  <div className={`mt-0.5 p-2 rounded-xl shrink-0 ${isOpen ? 'bg-violet-600 text-white' : 'bg-stone-100 text-stone-500'}`}>
                     <HelpCircle size={16} />
                   </div>
                   <div>
-                    <h3 className="text-sm sm:text-base font-extrabold text-white leading-snug">
+                    <h3 className="text-sm sm:text-base font-extrabold text-stone-900 leading-snug">
                       {faq.question}
                     </h3>
-                    <p className="text-xs text-stone-300 mt-1 font-mono font-medium">
+                    <p className="text-xs text-stone-600 mt-1 font-mono font-medium">
                       {faq.shortAnswer}
                     </p>
                   </div>
@@ -450,7 +450,7 @@ export default function AEOKnowledgeHub() {
 
                 <ChevronDown 
                   size={18} 
-                  className={`text-stone-400 shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180 text-violet-400' : ''}`} 
+                  className={`text-stone-500 shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180 text-violet-600' : ''}`} 
                 />
               </button>
 
@@ -461,9 +461,9 @@ export default function AEOKnowledgeHub() {
                     animate={{ height: 'auto', opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
                     transition={{ duration: 0.25 }}
-                    className="border-t border-stone-800/60 bg-stone-950/60 p-5 sm:p-6"
+                    className="border-t border-stone-200 bg-stone-50/50 p-5 sm:p-6"
                   >
-                    <p className="text-xs sm:text-sm text-stone-300 leading-relaxed mb-4">
+                    <p className="text-xs sm:text-sm text-stone-700 leading-relaxed mb-4">
                       {faq.detailedAnswer}
                     </p>
 
@@ -471,7 +471,7 @@ export default function AEOKnowledgeHub() {
                       {faq.tags.map((tag, idx) => (
                         <span 
                           key={idx}
-                          className="px-2.5 py-1 rounded-md bg-violet-950/50 border border-violet-800/40 text-violet-300 text-[10px] font-mono font-semibold uppercase"
+                          className="px-2.5 py-1 rounded-md bg-violet-100 border border-violet-200 text-violet-700 text-[10px] font-mono font-semibold uppercase"
                         >
                           #{tag}
                         </span>
@@ -494,7 +494,7 @@ export default function AEOKnowledgeHub() {
           <span>Consult With Devil Labs Architects</span>
           <ArrowRight size={14} />
         </button>
-        <p className="text-[11px] text-stone-400 mt-3 font-mono">
+        <p className="text-[11px] text-stone-500 mt-3 font-mono">
           Headquarters: Sector 01, Gaya, Bihar 823001 • Direct Line: +91 81020 99678
         </p>
       </div>

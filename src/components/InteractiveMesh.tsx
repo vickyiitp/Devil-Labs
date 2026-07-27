@@ -66,7 +66,7 @@ export default function InteractiveMesh() {
       <div className="absolute inset-0 bg-gradient-to-tr from-violet-500/10 to-transparent pointer-events-none mix-blend-screen" />
       
       {/* Badge */}
-      <div className="absolute bottom-6 right-6 px-3 py-1.5 bg-black/50 backdrop-blur-md border border-white/10 rounded font-mono text-[10px] text-gray-400 tracking-widest uppercase">
+      <div className="absolute bottom-6 right-6 px-3 py-1.5 bg-white/90 backdrop-blur-md border border-stone-200 rounded font-mono text-[10px] text-stone-600 tracking-widest uppercase">
         [ Core Alpha // Devil Labs ]
       </div>
     </div>

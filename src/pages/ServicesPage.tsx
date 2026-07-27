@@ -46,7 +46,7 @@ export default function ServicesPage({ navigate }: ServicesPageProps) {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6 max-w-sm md:max-w-2xl xl:max-w-none mx-auto">
               {category.items.map((service, idx) => {
                 const Icon = service.icon;
                 return (
@@ -127,7 +127,7 @@ export default function ServicesPage({ navigate }: ServicesPageProps) {
           </div>
 
           {/* Swipe Ticker */}
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6 max-w-sm md:max-w-2xl xl:max-w-none mx-auto">
             {[
               {
                 id: "01",
@@ -198,7 +198,7 @@ export default function ServicesPage({ navigate }: ServicesPageProps) {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6 max-w-sm md:max-w-2xl xl:max-w-none mx-auto">
             {tools.map((tool) => {
               const Icon = tool.icon;
               return (

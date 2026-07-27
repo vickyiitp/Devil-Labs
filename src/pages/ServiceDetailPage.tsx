@@ -84,7 +84,7 @@ export default function ServiceDetailPage({
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-20">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-20 max-w-sm md:max-w-2xl mx-auto">
         {data.features.map((feature: any, idx: number) => {
           let statusColor = "text-emerald-600 bg-emerald-500";
           let statusLabel = "Production Ready";

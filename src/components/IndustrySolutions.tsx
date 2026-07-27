@@ -10,24 +10,24 @@ const industries = [
     icon: ShoppingCart,
     desc: 'Autonomous inventory management & personalization engines.',
     preview: () => (
-      <div className="flex flex-col space-y-3 p-3 bg-white/5 rounded-lg border border-white/10 h-full">
+      <div className="flex flex-col space-y-3 p-3 bg-stone-50 rounded-lg border border-stone-200 h-full shadow-inner">
         <div className="flex justify-between items-center mb-2">
-          <div className="w-16 h-3 bg-white/20 rounded-full" />
-          <div className="w-6 h-6 rounded-full bg-violet-500/20 flex items-center justify-center">
-            <Bot size={12} className="text-violet-400" />
+          <div className="w-16 h-3 bg-stone-200 rounded-full" />
+          <div className="w-6 h-6 rounded-full bg-violet-100 flex items-center justify-center">
+            <Bot size={12} className="text-violet-700" />
           </div>
         </div>
         <div className="flex space-x-2">
-          <div className="w-1/3 aspect-square bg-white/10 rounded-md" />
+          <div className="w-1/3 aspect-square bg-stone-200 rounded-md" />
           <div className="w-2/3 flex flex-col space-y-2">
-            <div className="w-full h-2 bg-white/20 rounded-full" />
-            <div className="w-2/3 h-2 bg-white/10 rounded-full" />
-            <div className="mt-auto w-1/2 h-4 bg-emerald-500/20 text-emerald-400 text-[8px] flex items-center justify-center rounded uppercase font-bold">In Stock</div>
+            <div className="w-full h-2 bg-stone-300 rounded-full" />
+            <div className="w-2/3 h-2 bg-stone-200 rounded-full" />
+            <div className="mt-auto w-1/2 h-4 bg-emerald-100 text-emerald-700 text-[8px] flex items-center justify-center rounded uppercase font-bold">In Stock</div>
           </div>
         </div>
-        <div className="mt-auto pt-2 border-t border-white/10 flex justify-between items-center">
-          <span className="text-[9px] text-gray-500 font-mono">Dynamic Pricing Active</span>
-          <Zap size={10} className="text-fuchsia-400" />
+        <div className="mt-auto pt-2 border-t border-stone-200 flex justify-between items-center">
+          <span className="text-[9px] text-stone-500 font-mono">Dynamic Pricing Active</span>
+          <Zap size={10} className="text-fuchsia-500" />
         </div>
       </div>
     )
@@ -50,13 +50,13 @@ const industries = [
       }, []);
 
       return (
-        <div className="flex flex-col space-y-3 p-3 bg-white/5 rounded-lg border border-white/10 h-full relative overflow-hidden">
+        <div className="flex flex-col space-y-3 p-3 bg-stone-50 rounded-lg border border-stone-200 h-full relative overflow-hidden shadow-inner">
           <div className="flex justify-between items-end mb-2">
             <div>
-              <div className="text-[10px] text-gray-400 font-mono uppercase mb-1">Portfolio Alpha</div>
-              <div className="text-lg font-bold text-white font-mono">$124.5K</div>
+              <div className="text-[10px] text-stone-500 font-mono uppercase mb-1">Portfolio Alpha</div>
+              <div className="text-lg font-bold text-stone-900 font-mono">$124.5K</div>
             </div>
-            <div className="text-[10px] text-emerald-400 font-bold bg-emerald-400/10 px-1.5 py-0.5 rounded flex items-center">
+            <div className="text-[10px] text-emerald-700 font-bold bg-emerald-100 px-1.5 py-0.5 rounded flex items-center">
               +14.2%
             </div>
           </div>
@@ -65,15 +65,15 @@ const industries = [
               <motion.div 
                 key={i}
                 layout
-                className="w-full bg-violet-500/40 rounded-t-sm"
+                className="w-full bg-violet-400 rounded-t-sm"
                 style={{ height: `${p}%` }}
               />
             ))}
           </div>
           <div className="absolute top-2 right-2 flex space-x-1">
-             <span className="w-1.5 h-1.5 rounded-full bg-red-500/50" />
-             <span className="w-1.5 h-1.5 rounded-full bg-yellow-500/50" />
-             <span className="w-1.5 h-1.5 rounded-full bg-green-500/50" />
+             <span className="w-1.5 h-1.5 rounded-full bg-red-400" />
+             <span className="w-1.5 h-1.5 rounded-full bg-yellow-400" />
+             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
           </div>
         </div>
       );
@@ -85,26 +85,26 @@ const industries = [
     icon: Stethoscope,
     desc: 'HIPAA-compliant triage bots & patient data processing.',
     preview: () => (
-      <div className="flex flex-col p-3 bg-white/5 rounded-lg border border-white/10 h-full">
-        <div className="flex items-center space-x-2 mb-3 pb-2 border-b border-white/10">
-          <ShieldCheck size={14} className="text-blue-400" />
-          <span className="text-[10px] font-bold text-blue-400 uppercase tracking-widest">Secured Data</span>
+      <div className="flex flex-col p-3 bg-stone-50 rounded-lg border border-stone-200 h-full shadow-inner">
+        <div className="flex items-center space-x-2 mb-3 pb-2 border-b border-stone-200">
+          <ShieldCheck size={14} className="text-blue-600" />
+          <span className="text-[10px] font-bold text-blue-600 uppercase tracking-widest">Secured Data</span>
         </div>
         <div className="space-y-2 flex-grow">
-          <div className="w-full bg-black/50 p-2 rounded flex items-start space-x-2 border border-white/5">
-            <div className="w-4 h-4 rounded-full bg-gray-600 shrink-0" />
+          <div className="w-full bg-white p-2 rounded flex items-start space-x-2 border border-stone-200 shadow-sm">
+            <div className="w-4 h-4 rounded-full bg-stone-300 shrink-0" />
             <div className="space-y-1 w-full">
-              <div className="w-1/2 h-1.5 bg-white/30 rounded-full" />
-              <div className="w-3/4 h-1.5 bg-white/10 rounded-full" />
+              <div className="w-1/2 h-1.5 bg-stone-200 rounded-full" />
+              <div className="w-3/4 h-1.5 bg-stone-100 rounded-full" />
             </div>
           </div>
-          <div className="w-full bg-blue-500/10 p-2 rounded flex items-start space-x-2 border border-blue-500/20">
-            <div className="w-4 h-4 rounded-full bg-blue-500/30 flex items-center justify-center shrink-0">
-              <Bot size={8} className="text-blue-400" />
+          <div className="w-full bg-blue-50 p-2 rounded flex items-start space-x-2 border border-blue-100 shadow-sm">
+            <div className="w-4 h-4 rounded-full bg-blue-100 flex items-center justify-center shrink-0">
+              <Bot size={8} className="text-blue-600" />
             </div>
             <div className="space-y-1 w-full">
-              <div className="w-full h-1.5 bg-blue-400/50 rounded-full" />
-              <div className="w-2/3 h-1.5 bg-blue-400/30 rounded-full" />
+              <div className="w-full h-1.5 bg-blue-300 rounded-full" />
+              <div className="w-2/3 h-1.5 bg-blue-200 rounded-full" />
             </div>
           </div>
         </div>
@@ -117,23 +117,23 @@ const industries = [
     icon: Briefcase,
     desc: 'Automated onboarding, multi-tenant DBs, & billing AI.',
     preview: () => (
-      <div className="flex flex-col p-3 bg-white/5 rounded-lg border border-white/10 h-full">
+      <div className="flex flex-col p-3 bg-stone-50 rounded-lg border border-stone-200 h-full shadow-inner">
         <div className="grid grid-cols-2 gap-2 mb-2">
-          <div className="bg-white/5 p-2 rounded border border-white/5">
-            <div className="text-[8px] text-gray-500 uppercase">Users</div>
-            <div className="text-xs font-bold font-mono">1,024</div>
+          <div className="bg-white p-2 rounded border border-stone-200 shadow-sm">
+            <div className="text-[8px] text-stone-500 uppercase">Users</div>
+            <div className="text-xs font-bold font-mono text-stone-900">1,024</div>
           </div>
-          <div className="bg-white/5 p-2 rounded border border-white/5">
-            <div className="text-[8px] text-gray-500 uppercase">MRR</div>
-            <div className="text-xs font-bold font-mono text-emerald-400">$42k</div>
+          <div className="bg-white p-2 rounded border border-stone-200 shadow-sm">
+            <div className="text-[8px] text-stone-500 uppercase">MRR</div>
+            <div className="text-xs font-bold font-mono text-emerald-600">$42k</div>
           </div>
         </div>
         <div className="mt-auto space-y-1.5">
-          <div className="text-[9px] text-gray-400 uppercase font-mono mb-1">Active Workflows</div>
+          <div className="text-[9px] text-stone-500 uppercase font-mono mb-1">Active Workflows</div>
           {[1, 2, 3].map((i) => (
-            <div key={i} className="w-full h-4 bg-black/40 rounded flex items-center px-2 space-x-2">
-              <div className="w-1.5 h-1.5 rounded-full bg-fuchsia-400 animate-pulse" style={{ animationDelay: `${i * 0.2}s` }} />
-              <div className="h-1 bg-white/20 rounded-full flex-grow" />
+            <div key={i} className="w-full h-4 bg-white border border-stone-200 rounded flex items-center px-2 space-x-2 shadow-sm">
+              <div className="w-1.5 h-1.5 rounded-full bg-fuchsia-500 animate-pulse" style={{ animationDelay: `${i * 0.2}s` }} />
+              <div className="h-1 bg-stone-200 rounded-full flex-grow" />
             </div>
           ))}
         </div>
@@ -202,23 +202,23 @@ function IndustryCard({ ind, idx }: { ind: any; idx: number; key?: React.Key }) 
       }}
       className="group h-full flex flex-col cursor-pointer"
     >
-      <CyberFrame className="flex flex-col p-6 h-full bg-[#0a0a0a] transition-all duration-300 hover:bg-[#111] hover:border-violet-500/30 shadow-2xl relative overflow-hidden">
+      <CyberFrame className="flex flex-col p-6 h-full bg-white transition-all duration-300 hover:border-violet-500/30 border border-stone-200/60 shadow-xl relative overflow-hidden rounded-2xl">
         {/* Soft interactive glowing backdrop for premium 3D-feel */}
         {isHovered && (
           <motion.div 
             layoutId={`glow-${ind.id}`}
-            className="absolute -inset-24 bg-[radial-gradient(circle_at_center,rgba(139,92,246,0.15)_0%,transparent_60%)] pointer-events-none z-0"
+            className="absolute -inset-24 bg-[radial-gradient(circle_at_center,rgba(139,92,246,0.05)_0%,transparent_60%)] pointer-events-none z-0"
             transition={{ type: "spring", stiffness: 100, damping: 20 }}
           />
         )}
 
         <div className="flex items-center space-x-3 mb-4 relative z-10">
-          <div className="p-2 bg-white/5 rounded-lg border border-white/10 group-hover:border-violet-500/40 transition-colors">
-            <ind.icon size={20} className="text-white group-hover:text-violet-400 transition-colors" />
+          <div className="p-2 bg-stone-50 rounded-lg border border-stone-200 group-hover:border-violet-200 transition-colors shadow-sm">
+            <ind.icon size={20} className="text-stone-700 group-hover:text-violet-700 transition-colors" />
           </div>
-          <h3 className="font-bold text-lg text-white font-display">{ind.title}</h3>
+          <h3 className="font-bold text-lg text-stone-900 font-display">{ind.title}</h3>
         </div>
-        <p className="text-xs text-gray-400 mb-6 flex-grow relative z-10">{ind.desc}</p>
+        <p className="text-xs text-stone-600 mb-6 flex-grow relative z-10">{ind.desc}</p>
         
         {/* Mini UI Container with 3D Depth translation */}
         <div className="h-40 w-full mt-auto relative z-10 group-hover:translate-z-[20px] transition-transform duration-300">
@@ -231,24 +231,24 @@ function IndustryCard({ ind, idx }: { ind: any; idx: number; key?: React.Key }) 
 
 export default function IndustrySolutions() {
   return (
-    <section className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-b border-white/5">
+    <section className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-b border-stone-200/60">
       <div className="text-center mb-16 md:mb-24">
-        <h2 className="text-3xl sm:text-5xl font-display font-extrabold text-white tracking-tight mb-4">
-          Solutions Engineered By <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-fuchsia-500">Industry</span>
+        <h2 className="text-3xl sm:text-5xl font-display font-extrabold text-stone-900 tracking-tight mb-4 uppercase">
+          Solutions Engineered By <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-indigo-600">Industry</span>
         </h2>
-        <p className="text-gray-400 text-sm sm:text-base max-w-2xl mx-auto">
+        <p className="text-stone-600 text-sm sm:text-base max-w-2xl mx-auto">
           We do not rely on generic templates. We build bespoke UI components, AI agent logic, and automation workflows tailored strictly to your sector's operational reality.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 justify-center max-w-sm sm:max-w-3xl lg:max-w-none mx-auto">
         {industries.map((ind, idx) => (
           <IndustryCard key={ind.id} ind={ind} idx={idx} />
         ))}
       </div>
 
       <div className="mt-16 text-center">
-        <a href="/contact" className="inline-flex items-center space-x-2 text-xs font-mono font-bold uppercase tracking-widest text-violet-400 hover:text-white transition-colors">
+        <a href="/contact" className="inline-flex items-center space-x-2 text-xs font-mono font-bold uppercase tracking-widest text-violet-700 hover:text-violet-900 transition-colors">
           <span>Discuss your industry needs</span>
           <ArrowRight size={14} />
         </a>

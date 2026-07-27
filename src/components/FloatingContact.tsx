@@ -44,9 +44,9 @@ export default function FloatingContact() {
       name: 'Email Us',
       href: 'mailto:devil.labs.contact@gmail.com',
       icon: Mail,
-      bgColor: 'bg-stone-900',
-      textColor: 'text-white',
-      hoverBorder: 'hover:border-stone-500',
+      bgColor: 'bg-stone-100',
+      textColor: 'text-stone-700',
+      hoverBorder: 'hover:border-stone-300',
       label: 'Send Direct Email',
       isExternal: false,
     },
@@ -73,14 +73,14 @@ export default function FloatingContact() {
             exit={{ opacity: 0, y: 15, scale: 0.92 }}
             transition={{ duration: 0.2, ease: 'easeOut' }}
             id="widget-menu"
-            className="flex flex-col space-y-2.5 mb-3 items-end p-3 rounded-2xl bg-stone-950/95 border border-stone-800 shadow-[0_10px_35px_rgba(0,0,0,0.7)] backdrop-blur-md w-56 sm:w-60"
+            className="flex flex-col space-y-2.5 mb-3 items-end p-3 rounded-2xl bg-white/95 border border-stone-200 shadow-[0_10px_35px_rgba(0,0,0,0.1)] backdrop-blur-md w-56 sm:w-60"
           >
-            <div className="w-full pb-2 border-b border-stone-800/80 px-2 flex items-center justify-between">
-              <span className="text-[10px] font-mono font-black uppercase text-stone-400 tracking-wider flex items-center gap-1">
-                <Sparkles size={11} className="text-violet-400" />
+            <div className="w-full pb-2 border-b border-stone-200/80 px-2 flex items-center justify-between">
+              <span className="text-[10px] font-mono font-black uppercase text-stone-500 tracking-wider flex items-center gap-1">
+                <Sparkles size={11} className="text-violet-600" />
                 <span>Connect With Us</span>
               </span>
-              <span className="text-[9px] font-mono text-emerald-400 font-bold bg-emerald-950/80 px-2 py-0.5 rounded-full border border-emerald-800/60">
+              <span className="text-[9px] font-mono text-emerald-600 font-bold bg-emerald-100 px-2 py-0.5 rounded-full border border-emerald-200">
                 Online 24/7
               </span>
             </div>

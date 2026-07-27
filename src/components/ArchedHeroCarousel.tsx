@@ -7,6 +7,10 @@ import {
 } from 'lucide-react';
 import { audioEngine } from '../lib/audio';
 
+import heroImg1 from '../assets/images/hero_builder_cityscape_1784785823510.jpg';
+import heroImg2 from '../assets/images/hero_intelligent_systems_1784785833146.jpg';
+import heroImg3 from '../assets/images/hero_problem_chaos_1784785846477.jpg';
+
 interface DisciplineCard {
   id: number;
   title: string;
@@ -34,7 +38,7 @@ const DISCIPLINES: DisciplineCard[] = [
     metric: 'latency < 120ms',
     status: 'OPTIMIZED',
     tech: 'TypeScript, OpenAI SDK, VectorDb Cache',
-    bgImage: '/src/assets/images/hero_builder_cityscape_1784785823510.jpg',
+    bgImage: heroImg1,
     glowColor: 'rgba(139, 92, 246, 0.4)', // Violet glow
     xOffset: -380,
     yOffset: 35,
@@ -49,7 +53,7 @@ const DISCIPLINES: DisciplineCard[] = [
     metric: 'AAA contrast ratio',
     status: 'CERTIFIED',
     tech: 'Tailwind v4, Framer Motion, Inter Font',
-    bgImage: '/src/assets/images/hero_intelligent_systems_1784785833146.jpg',
+    bgImage: heroImg2,
     glowColor: 'rgba(236, 72, 153, 0.4)', // Pink/Rose glow
     xOffset: -230,
     yOffset: 10,
@@ -64,7 +68,7 @@ const DISCIPLINES: DisciplineCard[] = [
     metric: 'throughput 1.2k/s',
     status: 'ACTIVE',
     tech: 'Express Webhooks, Twilio SDK, Cron Nodes',
-    bgImage: '/src/assets/images/hero_problem_chaos_1784785846477.jpg',
+    bgImage: heroImg3,
     glowColor: 'rgba(245, 158, 11, 0.4)', // Amber glow
     xOffset: -80,
     yOffset: 0,
@@ -79,7 +83,7 @@ const DISCIPLINES: DisciplineCard[] = [
     metric: '99.99% uptime',
     status: 'ONLINE',
     tech: 'Docker, Prometheus Monitoring, VPS Backup',
-    bgImage: '/src/assets/images/hero_builder_cityscape_1784785823510.jpg',
+    bgImage: heroImg1,
     glowColor: 'rgba(16, 185, 129, 0.4)', // Emerald glow
     xOffset: 80,
     yOffset: 0,
@@ -94,7 +98,7 @@ const DISCIPLINES: DisciplineCard[] = [
     metric: '100% lighthouse score',
     status: 'VERIFIED',
     tech: 'Next.js App Router, Edge Cache, Schema.org',
-    bgImage: '/src/assets/images/hero_intelligent_systems_1784785833146.jpg',
+    bgImage: heroImg2,
     glowColor: 'rgba(59, 130, 246, 0.4)', // Blue glow
     xOffset: 230,
     yOffset: 10,
@@ -109,7 +113,7 @@ const DISCIPLINES: DisciplineCard[] = [
     metric: 'SHA-256 encrypted',
     status: 'SHIELDED',
     tech: 'Drizzle ORM, Node-Crypto, Next.js Actions',
-    bgImage: '/src/assets/images/hero_problem_chaos_1784785846477.jpg',
+    bgImage: heroImg3,
     glowColor: 'rgba(20, 184, 166, 0.4)', // Teal glow
     xOffset: 380,
     yOffset: 35,
@@ -186,44 +190,44 @@ export default function ArchedHeroCarousel() {
         <div className="w-full space-y-6 px-4 z-10">
           
           {/* Centralized Glass console showcase details */}
-          <div className="clay-card p-6 md:p-8 bg-stone-900 border-stone-950 text-[#faf8f5] text-left relative overflow-hidden rounded-2xl shadow-xl">
-            <div className="flex justify-between items-center mb-4 border-b border-stone-800 pb-3 font-sans">
+          <div className="clay-card p-6 md:p-8 bg-white border-stone-200/60 text-stone-900 text-left relative overflow-hidden rounded-2xl shadow-xl">
+            <div className="flex justify-between items-center mb-4 border-b border-stone-100 pb-3 font-sans">
               <div className="flex items-center space-x-2">
-                <Laptop size={13} className="text-violet-400" />
-                <span className="text-[9px] tracking-widest text-stone-400 font-black uppercase">CAPABILITIES</span>
+                <Laptop size={13} className="text-violet-600" />
+                <span className="text-[9px] tracking-widest text-stone-500 font-black uppercase">CAPABILITIES</span>
               </div>
-              <div className="flex items-center space-x-1.5 text-[8px] text-emerald-400 font-black">
+              <div className="flex items-center space-x-1.5 text-[8px] text-emerald-500 font-black">
                 <span>{tickerTime}</span>
               </div>
             </div>
 
             <div className="space-y-3 font-sans">
-              <span className="text-[8px] text-violet-400 font-black tracking-widest uppercase block">
+              <span className="text-[8px] text-violet-600 font-black tracking-widest uppercase block">
                 {displayCard.subtitle}
               </span>
-              <h4 className="font-display font-black text-xl text-white tracking-tight uppercase leading-none">
+              <h4 className="font-display font-black text-xl text-stone-900 tracking-tight uppercase leading-none">
                 {displayCard.title}
               </h4>
-              <p className="text-stone-400 text-xs leading-relaxed font-light">
+              <p className="text-stone-600 text-xs leading-relaxed font-light">
                 {displayCard.desc}
               </p>
               
               <div className="pt-2 flex flex-wrap gap-2 text-[8px] uppercase tracking-widest font-black">
-                <span className="bg-stone-850 px-2 py-0.5 rounded border border-stone-800 text-violet-300">
+                <span className="bg-stone-50 px-2 py-0.5 rounded border border-stone-200 text-violet-700">
                   {displayCard.metric}
                 </span>
-                <span className="bg-stone-850 px-2 py-0.5 rounded border border-stone-800 text-emerald-400">
+                <span className="bg-stone-50 px-2 py-0.5 rounded border border-stone-200 text-emerald-600">
                   {displayCard.tech.split(',')[0]}
                 </span>
-                <span className="bg-stone-850 px-2 py-0.5 rounded border border-stone-800 text-stone-300">
+                <span className="bg-stone-50 px-2 py-0.5 rounded border border-stone-200 text-stone-600">
                   {displayCard.status}
                 </span>
               </div>
             </div>
           </div>
 
-          {/* Interactive touch-friendly image cards list */}
-          <div className="grid grid-cols-2 gap-4">
+          {/* Interactive touch-friendly image cards list for Mobile / Tablet */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
             {DISCIPLINES.map((card) => {
               const isActive = displayCard.id === card.id;
               return (
@@ -234,10 +238,10 @@ export default function ArchedHeroCarousel() {
                     setActiveAutoId(card.id);
                     audioEngine.playClick();
                   }}
-                  className={`relative aspect-[3/4] rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 border ${
+                  className={`relative h-[160px] sm:h-[200px] rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 border ${
                     isActive 
-                      ? 'border-violet-500 shadow-lg scale-[1.03] ring-2 ring-violet-500/20' 
-                      : 'border-stone-200/50 hover:border-stone-400'
+                      ? 'border-violet-500 shadow-xl scale-[1.02] ring-2 ring-violet-500/30' 
+                      : 'border-stone-200 hover:border-stone-300 bg-stone-100'
                   }`}
                 >
                   {/* Card Background Image */}
@@ -247,18 +251,18 @@ export default function ArchedHeroCarousel() {
                     referrerPolicy="no-referrer"
                     className="absolute inset-0 w-full h-full object-cover max-w-full transition-transform duration-500 hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-950/40 to-black/30" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-white via-white/70 to-white/30" />
                   
                   {/* Floating labels inside card */}
-                  <div className="absolute inset-0 p-3 flex flex-col justify-between text-left">
-                    <span className="font-mono text-[7px] bg-white/10 backdrop-blur-md px-1.5 py-0.5 rounded-full text-white font-bold w-fit uppercase tracking-wider border border-white/10">
+                  <div className="absolute inset-0 p-2.5 sm:p-3 flex flex-col justify-between text-left">
+                    <span className="font-mono text-[7px] bg-white/90 backdrop-blur-md px-1.5 py-0.5 rounded-md text-stone-900 font-bold w-fit uppercase tracking-wider border border-stone-200">
                       {card.tag}
                     </span>
                     <div>
-                      <span className="font-mono text-[6px] text-violet-300 block leading-none uppercase tracking-widest mb-1">
+                      <span className="font-mono text-[6px] sm:text-[7px] text-violet-600 block leading-none uppercase tracking-widest mb-1 font-bold">
                         {card.subtitle.split('//')[0]}
                       </span>
-                      <h5 className="font-display font-black text-[11px] text-white uppercase tracking-tight leading-tight">
+                      <h5 className="font-display font-black text-[10px] sm:text-[12px] text-stone-900 uppercase tracking-tight leading-tight">
                         {card.title}
                       </h5>
                     </div>
@@ -314,19 +318,19 @@ export default function ArchedHeroCarousel() {
 
           {/* PREMIUM FLOATING SPECIFICATION CONTROL DOCK */}
           <div className="mt-8 w-full max-w-4xl px-6 relative z-30">
-            <div className="clay-card bg-stone-900/95 border-stone-950 p-6 md:p-8 rounded-3xl relative overflow-hidden shadow-2xl border flex items-center justify-between text-left">
+            <div className="clay-card bg-white border-stone-200/60 p-6 md:p-8 rounded-3xl relative overflow-hidden shadow-2xl border flex items-center justify-between text-left">
               {/* Subtle background matrix scanlines */}
-              <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.01)_1px,transparent_1px)] bg-[size:100%_4px] pointer-events-none opacity-40" />
-              <div className="absolute -top-12 -left-12 w-32 h-32 bg-violet-500/10 rounded-full blur-2xl pointer-events-none" />
-              <div className="absolute -bottom-12 -right-12 w-32 h-32 bg-rose-500/10 rounded-full blur-2xl pointer-events-none" />
+              <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:100%_4px] pointer-events-none opacity-40" />
+              <div className="absolute -top-12 -left-12 w-32 h-32 bg-violet-600/10 rounded-full blur-2xl pointer-events-none" />
+              <div className="absolute -bottom-12 -right-12 w-32 h-32 bg-rose-600/10 rounded-full blur-2xl pointer-events-none" />
 
               <div className="flex-1 space-y-3 pr-8 relative z-10">
                 <div className="flex items-center space-x-3 font-sans">
-                  <span className="text-[9px] text-violet-400 font-black tracking-[0.25em] uppercase px-2 py-0.5 bg-stone-800 rounded border border-stone-750">
+                  <span className="text-[9px] text-violet-700 font-black tracking-[0.25em] uppercase px-2 py-0.5 bg-stone-100 rounded border border-stone-200">
                     CAPABILITY 0{displayCard.id}
                   </span>
-                  <div className="h-px w-20 bg-stone-800" />
-                  <span className="text-[8px] text-emerald-400 font-black flex items-center space-x-1 uppercase">
+                  <div className="h-px w-20 bg-stone-200" />
+                  <span className="text-[8px] text-emerald-600 font-black flex items-center space-x-1 uppercase">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping mr-1" />
                     {displayCard.status}
                   </span>
@@ -340,10 +344,10 @@ export default function ArchedHeroCarousel() {
                     exit={{ opacity: 0, x: 8 }}
                     transition={{ duration: 0.25, ease: "easeOut" }}
                   >
-                    <h4 className="font-display font-black text-2xl text-white tracking-tight uppercase leading-none">
+                    <h4 className="font-display font-black text-2xl text-stone-900 tracking-tight uppercase leading-none">
                       {displayCard.title}
                     </h4>
-                    <p className="text-stone-400 text-xs sm:text-sm leading-relaxed font-light mt-1.5">
+                    <p className="text-stone-600 text-xs sm:text-sm leading-relaxed font-light mt-1.5">
                       {displayCard.desc}
                     </p>
                   </motion.div>
@@ -351,12 +355,12 @@ export default function ArchedHeroCarousel() {
               </div>
 
               {/* Specification stats deck column */}
-              <div className="flex flex-col space-y-2 border-l border-stone-800 pl-8 relative z-10 shrink-0 min-w-[200px] font-sans">
+              <div className="flex flex-col space-y-2 border-l border-stone-200 pl-8 relative z-10 shrink-0 min-w-[200px] font-sans">
                 <div className="space-y-0.5">
                   <span className="text-[7.5px] text-stone-500 uppercase tracking-widest font-black block">
                     TECHNOLOGY
                   </span>
-                  <span className="text-[9.5px] font-black text-stone-300 uppercase truncate max-w-[180px] block font-sans">
+                  <span className="text-[9.5px] font-black text-stone-700 uppercase truncate max-w-[180px] block font-sans">
                     {displayCard.tech.split(',').slice(0, 2).join(', ')}
                   </span>
                 </div>
@@ -364,7 +368,7 @@ export default function ArchedHeroCarousel() {
                   <span className="text-[7.5px] text-stone-500 uppercase tracking-widest font-black block">
                     METRIC
                   </span>
-                  <span className="text-[9.5px] font-black text-violet-400 uppercase block font-sans">
+                  <span className="text-[9.5px] font-black text-violet-700 uppercase block font-sans">
                     ✦ {displayCard.metric}
                   </span>
                 </div>
@@ -485,7 +489,7 @@ function Interactive3DCardWrapper({
         style={{
           transformStyle: "preserve-3d"
         }}
-        className={`w-[210px] h-[310px] rounded-[24px] overflow-hidden border cursor-pointer relative flex flex-col justify-between p-5 text-left transition-all duration-300 ${
+        className={`w-[225px] h-[330px] rounded-[24px] overflow-hidden border cursor-pointer relative flex flex-col justify-between p-5 text-left transition-all duration-300 ${
           isActive 
             ? 'border-white/20' 
             : 'border-stone-200/40'
@@ -526,7 +530,7 @@ function Interactive3DCardWrapper({
 
         {/* Top bar indicators inside cards */}
         <div className="relative z-10 flex items-center justify-between pointer-events-none font-sans" style={{ transform: "translateZ(30px)" }}>
-          <span className="text-[8px] bg-black/60 backdrop-blur-md px-2 py-0.5 rounded border border-white/15 text-white/95 font-black tracking-widest uppercase">
+          <span className="text-[8px] bg-white/80 backdrop-blur-md px-2 py-0.5 rounded border border-stone-200 text-stone-900 font-black tracking-widest uppercase">
             {card.tag}
           </span>
           {isAutoActive && (
@@ -542,15 +546,15 @@ function Interactive3DCardWrapper({
           style={{ transform: "translateZ(45px)", transformStyle: "preserve-3d" }}
           className="space-y-1 relative z-10 pointer-events-none font-sans"
         >
-          <span className="text-[8px] text-violet-300 block tracking-widest uppercase font-black">
+          <span className="text-[8px] text-violet-600 block tracking-widest uppercase font-black">
             {card.subtitle}
           </span>
-          <h4 className="font-display font-black text-base text-white uppercase tracking-tight leading-tight group-hover:text-violet-400 transition-colors">
+          <h4 className="font-display font-black text-base text-stone-900 uppercase tracking-tight leading-tight group-hover:text-violet-600 transition-colors">
             {card.title}
           </h4>
-          <div className="flex justify-between items-center text-[7px] text-white/50 pt-2 border-t border-white/10 mt-2 font-black">
+          <div className="flex justify-between items-center text-[7px] text-stone-500 pt-2 border-t border-stone-200 mt-2 font-black">
             <span>{card.metric}</span>
-            <span className="text-white/30">✦ CAPABILITY</span>
+            <span className="text-stone-400">✦ CAPABILITY</span>
           </div>
         </div>
       </motion.div>

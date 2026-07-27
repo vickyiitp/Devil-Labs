@@ -304,7 +304,7 @@ export default function FormSuccessAnimation({
             <button
               type="button"
               onClick={onReset}
-              className="px-8 py-4 bg-stone-900 hover:bg-stone-850 text-white font-mono text-xs font-bold tracking-[0.2em] uppercase rounded-full transition-all shadow-md hover:shadow-lg flex items-center justify-center space-x-2.5 mx-auto cursor-pointer"
+              className="px-8 py-4 bg-white hover:bg-stone-50 border border-stone-200 text-stone-900 font-mono text-xs font-bold tracking-[0.2em] uppercase rounded-full transition-all shadow-md hover:shadow-lg flex items-center justify-center space-x-2.5 mx-auto cursor-pointer"
             >
               <RefreshCw size={13} className="text-violet-400" />
               <span>{resetButtonText}</span>

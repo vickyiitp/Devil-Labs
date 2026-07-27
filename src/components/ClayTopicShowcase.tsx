@@ -856,7 +856,7 @@ export default function ClayTopicShowcase() {
       {/* DETAILED CLAY TOPIC SPECIFICATION MODAL */}
       <AnimatePresence>
         {selectedTopic && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/30 backdrop-blur-md">
             <motion.div 
               initial={{ opacity: 0, scale: 0.95, y: 15 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -918,7 +918,7 @@ export default function ClayTopicShowcase() {
                   </span>
                   <button
                     onClick={() => setSelectedTopic(null)}
-                    className="px-6 py-2.5 bg-stone-800 hover:bg-stone-900 text-white-force text-[10px] font-black uppercase tracking-widest rounded-full transition-colors cursor-pointer"
+                    className="px-6 py-2.5 bg-white hover:bg-stone-50 border border-stone-200 text-stone-900 text-[10px] font-black uppercase tracking-widest rounded-full transition-colors cursor-pointer"
                   >
                     CLOSE SPECS
                   </button>

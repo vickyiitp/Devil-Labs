@@ -211,6 +211,14 @@ export default function PolishedFeatureMarquee() {
           accent: 'from-orange-600 to-amber-500',
           glow: 'shadow-orange-200/50'
         };
+      case 'dark':
+        return {
+          bg: 'bg-stone-50/90 border-stone-200/50 hover:border-stone-400',
+          badge: 'bg-stone-200 text-stone-700',
+          text: 'text-stone-900',
+          accent: 'from-stone-600 to-stone-900',
+          glow: 'shadow-stone-200/50'
+        };
       default:
         return {
           bg: 'bg-[#18181b]/95 border-zinc-700/50 hover:border-zinc-500 text-stone-100',
@@ -359,7 +367,7 @@ export default function PolishedFeatureMarquee() {
 
       {/* DETAIL MODAL OVERLAY */}
       {selectedCard && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/30 backdrop-blur-md">
           <motion.div 
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -421,7 +429,7 @@ export default function PolishedFeatureMarquee() {
                 </span>
                 <button
                   onClick={() => setSelectedCard(null)}
-                  className="px-6 py-2.5 bg-stone-800 hover:bg-stone-900 text-white-force font-sans text-[10px] font-bold uppercase tracking-widest rounded-full transition-colors cursor-pointer"
+                  className="px-6 py-2.5 bg-white hover:bg-stone-50 border border-stone-200 text-stone-900 font-sans text-[10px] font-bold uppercase tracking-widest rounded-full transition-colors cursor-pointer"
                 >
                   Close
                 </button>

@@ -19,13 +19,13 @@ const FloatingGlassBadge = ({ projectId }: { projectId: number }) => {
           animate={{ y: [0, -10, 0], rotate: [0, 4, 0] }}
           transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
           style={{ transformStyle: 'preserve-3d', transform: 'translateZ(50px)' }}
-          className="absolute -top-5 -left-5 z-40 bg-stone-950/90 backdrop-blur-md border border-violet-500/40 px-3.5 py-2 rounded-2xl shadow-[0_15px_35px_rgba(139,92,246,0.3)] flex items-center space-x-2.5 pointer-events-none select-none"
+          className="absolute -top-5 -left-5 z-40 bg-white/90 backdrop-blur-md border border-violet-500/40 px-3.5 py-2 rounded-2xl shadow-[0_15px_35px_rgba(139,92,246,0.3)] flex items-center space-x-2.5 pointer-events-none select-none"
         >
           <div className="relative flex h-3 w-3">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-violet-400 opacity-75"></span>
             <span className="relative inline-flex rounded-full h-3 w-3 bg-violet-500"></span>
           </div>
-          <span className="font-mono text-[10px] font-black text-white uppercase tracking-widest">LIVE DEMO ONLINE</span>
+          <span className="font-mono text-[10px] font-black text-stone-800 uppercase tracking-widest">LIVE DEMO ONLINE</span>
         </motion.div>
       );
     case 2:
@@ -36,8 +36,8 @@ const FloatingGlassBadge = ({ projectId }: { projectId: number }) => {
           style={{ transformStyle: 'preserve-3d', transform: 'translateZ(60px)' }}
           className="absolute -bottom-8 -right-4 z-40 bg-gradient-to-tr from-fuchsia-600/90 to-rose-500/90 backdrop-blur-lg border border-white/20 p-3.5 rounded-[22px] shadow-[0_12px_30px_rgba(236,72,153,0.35)] flex flex-col items-start pointer-events-none text-left max-w-[140px] select-none"
         >
-          <span className="font-mono text-[8px] text-white/80 uppercase tracking-widest font-extrabold mb-0.5">E-COMMERCE SYSTEM</span>
-          <span className="font-display font-black text-xs text-white tracking-tight leading-none uppercase">STAGING STABLE</span>
+          <span className="font-mono text-[8px] text-stone-800/80 uppercase tracking-widest font-extrabold mb-0.5">E-COMMERCE SYSTEM</span>
+          <span className="font-display font-black text-xs text-stone-800 tracking-tight leading-none uppercase">STAGING STABLE</span>
         </motion.div>
       );
     case 3:
@@ -46,13 +46,13 @@ const FloatingGlassBadge = ({ projectId }: { projectId: number }) => {
           animate={{ y: [0, -12, 0], rotate: [0, 3, 0] }}
           transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
           style={{ transformStyle: 'preserve-3d', transform: 'translateZ(55px)' }}
-          className="absolute -top-8 -right-5 z-40 bg-stone-950/95 backdrop-blur-md border border-violet-500/30 p-4 rounded-3xl shadow-[0_20px_40px_rgba(168,85,247,0.25)] flex flex-col pointer-events-none text-left select-none"
+          className="absolute -top-8 -right-5 z-40 bg-white/95 backdrop-blur-md border border-violet-500/30 p-4 rounded-3xl shadow-[0_20px_40px_rgba(168,85,247,0.25)] flex flex-col pointer-events-none text-left select-none"
         >
           <div className="flex items-center space-x-1.5 mb-1">
             <span className="text-emerald-400 text-xs animate-pulse">●</span>
             <span className="font-mono text-[9px] text-emerald-400 tracking-wider font-bold">100% SECURE</span>
           </div>
-          <span className="font-display font-extrabold text-xs text-stone-200 leading-none tracking-tight">RAPID EDGE ROUTING</span>
+          <span className="font-display font-extrabold text-xs text-stone-800 leading-none tracking-tight">RAPID EDGE ROUTING</span>
         </motion.div>
       );
     case 4:
@@ -75,8 +75,8 @@ const FloatingGlassBadge = ({ projectId }: { projectId: number }) => {
           style={{ transformStyle: 'preserve-3d', transform: 'translateZ(50px)' }}
           className="absolute -top-7 -left-5 z-40 bg-gradient-to-r from-violet-600/90 to-blue-600/90 backdrop-blur-md border border-white/10 px-4.5 py-2 rounded-full shadow-[0_15px_30px_rgba(59,130,246,0.3)] flex items-center space-x-2 pointer-events-none select-none"
         >
-          <span className="text-white text-xs animate-bounce">⚡</span>
-          <span className="font-mono text-[9px] font-bold text-white tracking-widest uppercase">BIO-HUB INTERACTION</span>
+          <span className="text-stone-800 text-xs animate-bounce">⚡</span>
+          <span className="font-mono text-[9px] font-bold text-stone-800 tracking-widest uppercase">BIO-HUB INTERACTION</span>
         </motion.div>
       );
     default:
@@ -85,10 +85,10 @@ const FloatingGlassBadge = ({ projectId }: { projectId: number }) => {
           animate={{ y: [0, 9, 0], rotate: [0, 2, 0] }}
           transition={{ duration: 5.8, repeat: Infinity, ease: "easeInOut" }}
           style={{ transformStyle: 'preserve-3d', transform: 'translateZ(40px)' }}
-          className="absolute -bottom-6 -right-3 z-40 bg-stone-950/90 backdrop-blur-xl border border-stone-800 px-4 py-2 rounded-full shadow-lg flex items-center space-x-2 pointer-events-none select-none"
+          className="absolute -bottom-6 -right-3 z-40 bg-white/90 backdrop-blur-xl border border-stone-200 px-4 py-2 rounded-full shadow-lg flex items-center space-x-2 pointer-events-none select-none"
         >
           <div className="w-2 h-2 rounded-full bg-violet-400 animate-pulse" />
-          <span className="font-mono text-[9px] font-bold text-gray-300 uppercase tracking-widest">STABLE PORTFOLIO DIRECT</span>
+          <span className="font-mono text-[9px] font-bold text-stone-600 uppercase tracking-widest">STABLE PORTFOLIO DIRECT</span>
         </motion.div>
       );
   }
@@ -209,7 +209,7 @@ const CloudyBlueprintNote = ({
 
       <div>
         {/* Spec note header */}
-        <div className="flex items-center justify-between border-b border-stone-200/30 pb-2.5 mb-3 font-sans text-[9px] uppercase tracking-[0.2em] text-stone-400 font-extrabold">
+        <div className="flex items-center justify-between border-b border-stone-200/30 pb-2.5 mb-3 font-sans text-[9px] uppercase tracking-[0.2em] text-stone-500 font-extrabold">
           <span className="flex items-center gap-1.5">
             <span className="w-1.5 h-1.5 rounded-full bg-violet-500 animate-pulse" />
             PROJECT BRIEF
@@ -433,7 +433,7 @@ export default function ProjectsPage({ navigate }: ProjectsPageProps) {
                 setTelemetryMessage(null);
               }
             }}
-            className="fixed top-24 left-1/2 -translate-x-1/2 z-50 bg-stone-900 border border-stone-800 text-white font-mono text-[11px] uppercase tracking-wider py-3 px-6 rounded-full shadow-2xl flex items-center gap-2 touch-pan-y"
+            className="fixed top-24 left-1/2 -translate-x-1/2 z-50 bg-white border border-stone-200 text-stone-800 font-mono text-[11px] uppercase tracking-wider py-3 px-6 rounded-full shadow-xl flex items-center gap-2 touch-pan-y"
           >
             <span className="w-2 h-2 rounded-full bg-violet-400 animate-ping" />
             <span>{telemetryMessage}</span>
@@ -550,7 +550,7 @@ export default function ProjectsPage({ navigate }: ProjectsPageProps) {
                 href="https://github.com/Devil-Labs/" 
                 target="_blank" 
                 rel="noreferrer"
-                className="px-5 py-2.5 bg-stone-900 hover:bg-stone-800 text-white font-sans text-[10px] font-bold tracking-widest uppercase transition-all shrink-0 rounded-xl shadow-md flex items-center space-x-2 cursor-pointer"
+                className="px-5 py-2.5 bg-white hover:bg-stone-50 border border-stone-200 text-stone-800 font-sans text-[10px] font-bold tracking-widest uppercase transition-all shrink-0 rounded-xl shadow-md flex items-center space-x-2 cursor-pointer"
               >
                 <span>GITHUB REPOSITORY</span>
                 <ArrowUpRight size={14} />
@@ -569,7 +569,7 @@ export default function ProjectsPage({ navigate }: ProjectsPageProps) {
             <div className="absolute top-1/2 -translate-y-1/2 -left-2 md:-left-16 z-30 hidden sm:block">
               <button
                 onClick={handlePrevProject}
-                className="w-12 h-12 rounded-full bg-stone-900/95 hover:bg-violet-600/90 border border-stone-800 hover:border-violet-500/50 text-white flex items-center justify-center transition-all duration-300 shadow-[0_8px_30px_rgb(0,0,0,0.15)] hover:shadow-[0_0_20px_rgba(139,92,246,0.4)] group active:scale-95 cursor-pointer"
+                className="w-12 h-12 rounded-full bg-white/95 hover:bg-stone-50 border border-stone-200 hover:border-violet-300 text-stone-800 flex items-center justify-center transition-all duration-300 shadow-md hover:shadow-[0_0_20px_rgba(139,92,246,0.2)] group active:scale-95 cursor-pointer"
                 aria-label="Previous Project"
               >
                 <span className="transform group-hover:-translate-x-0.5 transition-transform text-lg font-bold">←</span>
@@ -578,7 +578,7 @@ export default function ProjectsPage({ navigate }: ProjectsPageProps) {
             <div className="absolute top-1/2 -translate-y-1/2 -right-2 md:-right-16 z-30 hidden sm:block">
               <button
                 onClick={handleNextProject}
-                className="w-12 h-12 rounded-full bg-stone-900/95 hover:bg-violet-600/90 border border-stone-800 hover:border-violet-500/50 text-white flex items-center justify-center transition-all duration-300 shadow-[0_8px_30px_rgb(0,0,0,0.15)] hover:shadow-[0_0_20px_rgba(139,92,246,0.4)] group active:scale-95 cursor-pointer"
+                className="w-12 h-12 rounded-full bg-white/95 hover:bg-stone-50 border border-stone-200 hover:border-violet-300 text-stone-800 flex items-center justify-center transition-all duration-300 shadow-md hover:shadow-[0_0_20px_rgba(139,92,246,0.2)] group active:scale-95 cursor-pointer"
                 aria-label="Next Project"
               >
                 <span className="transform group-hover:translate-x-0.5 transition-transform text-lg font-bold">→</span>
@@ -592,14 +592,14 @@ export default function ProjectsPage({ navigate }: ProjectsPageProps) {
           <div className="flex sm:hidden justify-end gap-3 mb-4">
             <button
               onClick={handlePrevProject}
-              className="w-10 h-10 rounded-full bg-stone-900/90 border border-stone-800 text-white flex items-center justify-center active:scale-95"
+              className="w-10 h-10 rounded-full bg-white/90 border border-stone-200 text-stone-800 flex items-center justify-center shadow-sm active:scale-95"
               aria-label="Previous Project"
             >
               <span>←</span>
             </button>
             <button
               onClick={handleNextProject}
-              className="w-10 h-10 rounded-full bg-stone-900/90 border border-violet-500/30 text-white flex items-center justify-center active:scale-95"
+              className="w-10 h-10 rounded-full bg-white/90 border border-stone-200 text-stone-800 flex items-center justify-center shadow-sm active:scale-95"
               aria-label="Next Project"
             >
               <span>→</span>
@@ -645,7 +645,7 @@ export default function ProjectsPage({ navigate }: ProjectsPageProps) {
                               /* Private Project Preview Lock Screen */
                               <div className="relative flex-grow w-full overflow-hidden bg-stone-50 flex items-center justify-center">
                                 <div className="absolute inset-0 bg-gradient-to-br from-stone-100/30 to-stone-50/80 flex flex-col items-center justify-center p-6 text-center z-10">
-                                  <Lock size={32} className="text-stone-400 mb-3" />
+                                  <Lock size={32} className="text-stone-500 mb-3" />
                                   <div className="text-stone-800 font-display font-bold text-lg uppercase tracking-wider mb-2">Development Phase</div>
                                   <div className="bg-stone-150 text-stone-600 px-3 py-1 rounded-full text-[10px] font-mono uppercase tracking-widest border border-stone-200/50">
                                     Private Gateway Active
@@ -700,7 +700,7 @@ export default function ProjectsPage({ navigate }: ProjectsPageProps) {
                               </div>
                               
                               {section === 'client' ? (
-                                <div className="text-stone-400 text-[10px] font-mono uppercase tracking-wider">
+                                <div className="text-stone-500 text-[10px] font-mono uppercase tracking-wider">
                                   Encrypted Gateway
                                 </div>
                               ) : (
@@ -769,7 +769,7 @@ export default function ProjectsPage({ navigate }: ProjectsPageProps) {
             {/* Quick telemetry helper label */}
             <div className="mt-4 font-mono text-[9px] text-stone-500 uppercase tracking-widest flex items-center gap-2">
               <span>DEPLOYMENT 0{activeProjectIndex + 1} OF 0{activeProjects.length}</span>
-              <span className="text-stone-300">•</span>
+              <span className="text-stone-500">•</span>
               <span>AUTO-FILL ORCHESTRATION SYNC RE-ROUTE</span>
             </div>
           </div>

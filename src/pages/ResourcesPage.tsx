@@ -124,7 +124,7 @@ export default function ResourcesPage({ navigate }: { navigate: (path: string) =
               onClick={() => setActiveTab(tab.id as any)}
               className={`px-4 py-2 rounded-full text-xs font-mono font-bold tracking-wider uppercase transition-all cursor-pointer ${
                 activeTab === tab.id 
-                  ? 'bg-stone-900 text-[#faf8f5] shadow-sm' 
+                  ? 'bg-white border border-stone-200 text-stone-800 shadow-sm' 
                   : 'bg-stone-100 hover:bg-stone-200/60 text-stone-600'
               }`}
             >
@@ -142,12 +142,12 @@ export default function ResourcesPage({ navigate }: { navigate: (path: string) =
             onChange={(e) => setSearchQuery(e.target.value)}
             className="w-full bg-[#fdfcf9] border border-stone-250/60 rounded-full pl-10 pr-4 py-2.5 text-xs text-stone-800 font-mono placeholder-stone-400 focus:outline-none focus:border-violet-300 shadow-inner"
           />
-          <Search size={14} className="text-stone-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+          <Search size={14} className="text-stone-600 absolute left-3.5 top-1/2 -translate-y-1/2" />
         </div>
       </div>
 
       {/* 3. DYNAMIC RESOURCE DEPOSITORY GRID */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-20">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-20 max-w-sm md:max-w-2xl mx-auto">
         <AnimatePresence mode="popLayout">
           {filteredResources.map((item, idx) => (
             <motion.div
@@ -161,7 +161,7 @@ export default function ResourcesPage({ navigate }: { navigate: (path: string) =
             >
               <div>
                 {/* Meta Tags bar */}
-                <div className="flex items-center justify-between text-[10px] font-mono uppercase tracking-widest font-bold text-stone-400 mb-6">
+                <div className="flex items-center justify-between text-[10px] font-mono uppercase tracking-widest font-bold text-stone-600 mb-6">
                   <span className="text-violet-600">{item.type}</span>
                   <div className="flex items-center space-x-2">
                     <span>{item.date}</span>
@@ -178,13 +178,13 @@ export default function ResourcesPage({ navigate }: { navigate: (path: string) =
                   {item.desc}
                 </p>
 
-                <div className="text-[10px] font-mono text-stone-400 uppercase tracking-widest font-bold">
+                <div className="text-[10px] font-mono text-stone-600 uppercase tracking-widest font-bold">
                   AUTHOR: <span className="text-stone-750">{item.author}</span>
                 </div>
               </div>
 
               {/* Action row footer */}
-              <div className="pt-6 mt-6 border-t border-stone-200/20 flex items-center justify-between text-stone-500 hover:text-stone-900 transition-colors">
+              <div className="pt-6 mt-6 border-t border-stone-200/20 flex items-center justify-between text-stone-600 hover:text-stone-900 transition-colors">
                 {item.downloadable ? (
                   <button 
                     onClick={() => {
@@ -196,14 +196,14 @@ export default function ResourcesPage({ navigate }: { navigate: (path: string) =
                     <span>DOWNLOAD PACK</span>
                   </button>
                 ) : (
-                  <span className="text-xs font-mono font-bold uppercase tracking-wider text-stone-400">
+                  <span className="text-xs font-mono font-bold uppercase tracking-wider text-stone-600">
                     READ SPECIFICATION
                   </span>
                 )}
                 
                 <button
                   onClick={() => alert(`Navigating to detailed specification: ${item.title}`)}
-                  className="w-8 h-8 rounded-full bg-stone-100 hover:bg-violet-50 text-stone-500 hover:text-violet-600 border border-stone-200/30 flex items-center justify-center transition-all cursor-pointer"
+                  className="w-8 h-8 rounded-full bg-stone-100 hover:bg-violet-50 text-stone-600 hover:text-violet-600 border border-stone-200/30 flex items-center justify-center transition-all cursor-pointer"
                 >
                   <ArrowRight size={14} />
                 </button>
@@ -213,26 +213,26 @@ export default function ResourcesPage({ navigate }: { navigate: (path: string) =
         </AnimatePresence>
 
         {filteredResources.length === 0 && (
-          <div className="col-span-full py-16 text-center text-stone-400 font-mono text-xs uppercase tracking-widest">
+          <div className="col-span-full py-16 text-center text-stone-600 font-mono text-xs uppercase tracking-widest">
             No matching resources found in our depository. Try adjusting your query parameters.
           </div>
         )}
       </div>
 
       {/* 4. API SPECIFICATION INTERACTIVE DEMO ACCORDION */}
-      <section className="bg-stone-900 text-[#faf8f5] rounded-3xl p-6 sm:p-10 mb-20 text-left relative overflow-hidden">
+      <section className="bg-white border border-stone-200 text-stone-800 rounded-3xl p-6 sm:p-10 mb-20 text-left relative overflow-hidden">
         <div className="absolute inset-0 bg-noise opacity-[0.03] pointer-events-none" />
         <div className="max-w-3xl space-y-4">
-          <span className="text-violet-400 font-mono text-[9px] uppercase tracking-widest font-black">✦ TECHNICAL INTERFACE</span>
-          <h2 className="font-display font-black text-2xl sm:text-3xl uppercase tracking-tighter text-white">THE DEVIL LABS API</h2>
-          <p className="text-stone-300 text-sm leading-relaxed font-sans font-light">
+          <span className="text-violet-600 font-mono text-[9px] uppercase tracking-widest font-black">✦ TECHNICAL INTERFACE</span>
+          <h2 className="font-display font-black text-2xl sm:text-3xl uppercase tracking-tighter text-stone-900">THE DEVIL LABS API</h2>
+          <p className="text-stone-600 text-sm leading-relaxed font-sans font-light">
             Developers can directly deploy our automated workflows, WhatsApp responders, and CRM integrations via standard microservices webhooks. Check out our standardized endpoint layout:
           </p>
           
-          <div className="rounded-xl p-4 bg-stone-950 font-mono text-xs text-stone-350 border border-stone-800 space-y-2 overflow-x-auto">
-            <div><span className="text-emerald-400 font-bold">POST</span> https://api.devillabs.dev/v2/workflows/initialize</div>
-            <div><span className="text-stone-500">Headers:</span> Authorization: Bearer DL_SEC_...</div>
-            <div className="text-stone-400 mt-2">
+          <div className="rounded-xl p-4 bg-stone-50 font-mono text-xs text-stone-600 border border-stone-200 space-y-2 overflow-x-auto">
+            <div><span className="text-emerald-600 font-bold">POST</span> https://api.devillabs.dev/v2/workflows/initialize</div>
+            <div><span className="text-stone-600">Headers:</span> Authorization: Bearer DL_SEC_...</div>
+            <div className="text-stone-600 mt-2">
               {"{"} <br/>
               &nbsp;&nbsp;&quot;workflowId&quot;: &quot;whatsapp_auto_reply&quot;,<br/>
               &nbsp;&nbsp;&quot;targetPayload&quot;: {"{ &quot;recipient&quot;: &quot;+918102099678&quot; }"} <br/>
@@ -268,10 +268,10 @@ export default function ResourcesPage({ navigate }: { navigate: (path: string) =
           <button 
             type="submit" 
             disabled={subscribed}
-            className="px-6 py-3 bg-stone-900 hover:bg-stone-800 text-[#faf8f5] text-xs font-mono font-bold uppercase tracking-widest rounded-full transition-all cursor-pointer shadow-md flex items-center justify-center space-x-2"
+            className="px-6 py-3 bg-white hover:bg-stone-50 border border-stone-200 text-stone-800 text-xs font-mono font-bold uppercase tracking-widest rounded-full transition-all cursor-pointer shadow-md flex items-center justify-center space-x-2"
           >
             <span>{subscribed ? 'CONNECTED' : 'SUBSCRIBE'}</span>
-            <CheckCircle size={14} className={subscribed ? 'text-emerald-400' : 'text-stone-400'} />
+            <CheckCircle size={14} className={subscribed ? 'text-emerald-600' : 'text-stone-600'} />
           </button>
         </form>
 

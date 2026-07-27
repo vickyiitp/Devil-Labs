@@ -34,7 +34,7 @@ export default function TeamSection() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch max-w-sm md:max-w-2xl lg:max-w-none mx-auto">
         {/* Left Column: Visual Card/Display */}
         <div className="lg:col-span-5 h-full">
           <div className="p-8 bg-[#fcfbf9] border border-stone-200/50 rounded-[32px] shadow-[8px_8px_20px_rgba(45,38,32,0.05),-8px_-8px_20px_#ffffff] h-full flex flex-col justify-between relative overflow-hidden group">
@@ -195,7 +195,7 @@ export default function TeamSection() {
                 <Award size={12} />
                 IIT PATNA ALUMNUS
               </span>
-              <span className="text-stone-300">•</span>
+              <span className="text-stone-400">•</span>
               <span className="flex items-center gap-1 text-fuchsia-600">
                 <ShieldAlert size={12} />
                 SECURED BY END-TO-END CRYPTO PROTOCOLS

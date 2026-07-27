@@ -190,10 +190,10 @@ export function BlueprintStickyNote({
       <div className="absolute inset-0 bg-[radial-gradient(#e4e1d8_1px,transparent_1px)] bg-[size:12px_12px] opacity-40 pointer-events-none" />
       
       {/* Drafting Corner Crosshair Marks */}
-      <div className="absolute top-2 left-2 text-[9px] text-stone-300 select-none font-sans font-bold pointer-events-none">+</div>
-      <div className="absolute top-2 right-2 text-[9px] text-stone-300 select-none font-sans font-bold pointer-events-none">+</div>
-      <div className="absolute bottom-2 left-2 text-[9px] text-stone-300 select-none font-sans font-bold pointer-events-none">+</div>
-      <div className="absolute bottom-2 right-2 text-[9px] text-stone-300 select-none font-sans font-bold pointer-events-none">+</div>
+      <div className="absolute top-2 left-2 text-[9px] text-stone-400 select-none font-sans font-bold pointer-events-none">+</div>
+      <div className="absolute top-2 right-2 text-[9px] text-stone-400 select-none font-sans font-bold pointer-events-none">+</div>
+      <div className="absolute bottom-2 left-2 text-[9px] text-stone-400 select-none font-sans font-bold pointer-events-none">+</div>
+      <div className="absolute bottom-2 right-2 text-[9px] text-stone-400 select-none font-sans font-bold pointer-events-none">+</div>
 
       {/* Header Bar */}
       <div className="flex items-center justify-between mb-4 relative z-10 font-sans text-[10px] tracking-widest font-black border-b border-stone-100 pb-2">

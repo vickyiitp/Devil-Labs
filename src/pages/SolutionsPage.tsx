@@ -123,7 +123,7 @@ export default function SolutionsPage({ navigate }: { navigate: (path: string) =
         
         {/* Industry selection left col */}
         <div className="lg:col-span-4 space-y-2 lg:sticky lg:top-28">
-          <span className="text-[10px] font-sans uppercase tracking-widest text-stone-400 font-extrabold block mb-4">
+          <span className="text-[10px] font-sans uppercase tracking-widest text-stone-500 font-extrabold block mb-4">
             ✦ SELECT YOUR INDUSTRY
           </span>
           {solutionsData.map((item) => {
@@ -135,13 +135,13 @@ export default function SolutionsPage({ navigate }: { navigate: (path: string) =
                 onClick={() => setActiveSolution(item.id)}
                 className={`w-full flex items-center justify-between p-4.5 rounded-2xl border text-left transition-all cursor-pointer ${
                   isActive 
-                    ? 'bg-stone-900 border-stone-950 text-[#faf8f5] shadow-md' 
+                    ? 'bg-white border-stone-200 text-stone-800 shadow-md' 
                     : 'bg-stone-100/60 border-stone-200/50 hover:bg-stone-100 text-stone-600 hover:text-stone-900'
                 }`}
               >
                 <div className="flex items-center space-x-3.5">
                   <div className={`w-9 h-9 rounded-full flex items-center justify-center transition-colors ${
-                    isActive ? 'bg-[#faf8f5]/15 text-violet-400' : 'bg-stone-200 text-stone-500'
+                    isActive ? 'bg-[#faf8f5]/15 text-violet-600' : 'bg-stone-200 text-stone-500'
                   }`}>
                     <Icon size={16} />
                   </div>
@@ -216,7 +216,7 @@ export default function SolutionsPage({ navigate }: { navigate: (path: string) =
 
               {/* Core Features Specs */}
               <div className="space-y-3.5">
-                <span className="text-[10px] font-sans uppercase tracking-widest text-stone-400 font-extrabold block">
+                <span className="text-[10px] font-sans uppercase tracking-widest text-stone-500 font-extrabold block">
                   ✦ KEY FEATURES
                 </span>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6.5">
@@ -231,7 +231,7 @@ export default function SolutionsPage({ navigate }: { navigate: (path: string) =
 
               {/* Technology Stack Tags */}
               <div className="space-y-2.5 pt-4 border-t border-stone-200/30">
-                <span className="text-[10px] font-sans uppercase tracking-widest text-stone-400 font-extrabold block">
+                <span className="text-[10px] font-sans uppercase tracking-widest text-stone-500 font-extrabold block">
                   ✦ TECHNOLOGIES &amp; PLATFORMS
                 </span>
                 <div className="flex flex-wrap gap-2">
@@ -245,13 +245,13 @@ export default function SolutionsPage({ navigate }: { navigate: (path: string) =
 
               {/* Action buttons */}
               <div className="pt-6 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
-                <div className="flex items-center space-x-2 font-sans text-[10px] text-stone-400 font-bold uppercase tracking-wider">
+                <div className="flex items-center space-x-2 font-sans text-[10px] text-stone-500 font-bold uppercase tracking-wider">
                   <Activity size={14} className="text-violet-600 animate-pulse" />
                   <span>Custom integration available</span>
                 </div>
                 <button
                   onClick={() => window.dispatchEvent(new CustomEvent('open-initialize-modal'))}
-                  className="flex items-center justify-center space-x-2 px-6 py-3 rounded-full bg-stone-900 hover:bg-stone-800 text-[#faf8f5] text-xs font-sans font-bold uppercase tracking-widest shadow-md transition-all cursor-pointer"
+                  className="flex items-center justify-center space-x-2 px-6 py-3 rounded-full bg-white hover:bg-stone-50 border border-stone-200 text-stone-800 text-xs font-sans font-bold uppercase tracking-widest shadow-md transition-all cursor-pointer"
                 >
                   <span>Request This Solution</span>
                   <ArrowRight size={13} />
@@ -264,15 +264,15 @@ export default function SolutionsPage({ navigate }: { navigate: (path: string) =
       </div>
 
       {/* 3. BUSINESS VALUE HIGHLIGHT FOR CLIENT JOURNEYS */}
-      <section className="bg-stone-900 text-[#faf8f5] rounded-3xl p-8 sm:p-12 relative overflow-hidden text-left shadow-xl">
+      <section className="bg-white border border-stone-200 text-stone-800 rounded-3xl p-8 sm:p-12 relative overflow-hidden text-left shadow-xl">
         <div className="absolute inset-0 bg-noise opacity-5 pointer-events-none" />
         <div className="absolute -right-16 -bottom-16 w-64 h-64 bg-violet-600/10 rounded-full blur-3xl pointer-events-none" />
         <div className="max-w-2xl space-y-6 relative z-10">
-          <span className="text-violet-400 font-sans text-[9px] uppercase tracking-widest font-extrabold">✦ TAILORED SOLUTIONS</span>
-          <h2 className="font-display font-black text-3xl sm:text-4xl uppercase tracking-tighter leading-none text-white">
+          <span className="text-violet-600 font-sans text-[9px] uppercase tracking-widest font-extrabold">✦ TAILORED SOLUTIONS</span>
+          <h2 className="font-display font-black text-3xl sm:text-4xl uppercase tracking-tighter leading-none text-stone-900">
             NEED A CUSTOM INDUSTRY SOLUTION?
           </h2>
-          <p className="text-stone-300 text-sm leading-relaxed font-sans font-light">
+          <p className="text-stone-600 text-sm leading-relaxed font-sans font-light">
             Looking for a custom automation pipeline, full-stack application, or real-time dashboard designed around your specific business operations? At Devil Labs, we build secure, scalable solutions that integrate seamlessly with your existing tools.
           </p>
           <button

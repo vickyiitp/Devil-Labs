@@ -184,8 +184,8 @@ export default function Navigation({ currentPath, navigate }: NavigationProps) {
           <span className="font-display tracking-tight text-stone-800 text-xs sm:text-sm whitespace-nowrap group-hover:text-violet-600 transition-colors duration-300">DEVIL LABS</span>
         </button>
 
-        {/* Desktop Nav - Floating Pill */}
-        <nav id="desktop-nav" className="hidden md:flex items-center bg-[#fdfcf9]/95 backdrop-blur-xl border border-white/80 px-2 py-1.5 rounded-full shadow-[8px_10px_24px_rgba(185,175,160,0.08),-8px_-10px_24px_#ffffff,inset_3px_3px_6px_rgba(255,255,255,0.95)] relative">
+        {/* Desktop Nav - Floating Pill (Visible on XL screens to fit perfectly without screen collision) */}
+        <nav id="desktop-nav" className="hidden xl:flex items-center bg-[#fdfcf9]/95 backdrop-blur-xl border border-white/80 px-2 py-1.5 rounded-full shadow-[8px_10px_24px_rgba(185,175,160,0.08),-8px_-10px_24px_#ffffff,inset_3px_3px_6px_rgba(255,255,255,0.95)] relative">
           {navItems.map((item) => {
             const isActive = currentPath === item.path;
             return (
@@ -194,12 +194,12 @@ export default function Navigation({ currentPath, navigate }: NavigationProps) {
                 key={item.path}
                 onMouseEnter={() => audioEngine.playHover()}
                 onClick={() => { audioEngine.playClick(); navigate(item.path); }}
-                className={`relative px-5 py-2.5 text-xs font-bold cursor-pointer transition-all duration-300 tracking-widest rounded-full text-stone-500 hover:text-stone-900 active:scale-95 z-10`}
+                className={`relative px-4 py-2 text-[11px] font-bold cursor-pointer transition-all duration-300 tracking-widest rounded-full text-stone-600 hover:text-stone-900 active:scale-95 z-10`}
               >
                 {isActive && (
                   <motion.div
                     layoutId="active-nav-pill"
-                    className="absolute inset-0 bg-violet-50/60 border border-violet-100/50 rounded-full -z-10 shadow-[inset_1px_1px_3px_rgba(255,255,255,0.8)]"
+                    className="absolute inset-0 bg-violet-50/80 border border-violet-100/80 rounded-full -z-10 shadow-[inset_1px_1px_3px_rgba(255,255,255,0.8)]"
                     transition={{ type: "spring", stiffness: 380, damping: 30 }}
                   />
                 )}
@@ -210,7 +210,7 @@ export default function Navigation({ currentPath, navigate }: NavigationProps) {
         </nav>
 
         {/* Desktop CTA */}
-        <div className="hidden md:flex items-center space-x-3">
+        <div className="hidden xl:flex items-center space-x-3">
           <Magnetic range={50} strength={0.3}>
             <button
               onMouseEnter={() => audioEngine.playHover()}
@@ -233,8 +233,8 @@ export default function Navigation({ currentPath, navigate }: NavigationProps) {
           </Magnetic>
         </div>
 
-        {/* Mobile menu button */}
-        <div className="md:hidden flex items-center space-x-2.5 pointer-events-auto">
+        {/* Mobile & Tablet menu button */}
+        <div className="xl:hidden flex items-center space-x-2.5 pointer-events-auto">
           <button
             type="button"
             onMouseEnter={() => audioEngine.playHover()}
@@ -270,7 +270,7 @@ export default function Navigation({ currentPath, navigate }: NavigationProps) {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
             onClick={() => setIsOpen(false)}
-            className="fixed inset-0 bg-stone-950/80 backdrop-blur-md z-[100] md:hidden cursor-pointer"
+            className="fixed inset-0 bg-stone-900/40 backdrop-blur-md z-[100] xl:hidden cursor-pointer"
           />
 
           {/* Slide-out Drawer Panel */}
@@ -281,30 +281,30 @@ export default function Navigation({ currentPath, navigate }: NavigationProps) {
             exit={{ x: '100%' }}
             transition={{ type: 'spring', damping: 28, stiffness: 300 }}
             id="mobile-drawer"
-            className="fixed top-0 right-0 bottom-0 w-[88%] max-w-sm bg-stone-950 text-white z-[101] md:hidden shadow-2xl flex flex-col justify-between border-l border-stone-800/80 overflow-y-auto font-sans"
+            className="fixed top-0 right-0 bottom-0 w-[88%] max-w-sm bg-white text-stone-900 z-[101] xl:hidden shadow-2xl flex flex-col justify-between border-l border-stone-200 overflow-y-auto font-sans"
           >
             {/* Drawer Header */}
-            <div className="p-5 border-b border-stone-800/80 flex items-center justify-between shrink-0 bg-stone-950/90 backdrop-blur-md">
+            <div className="p-5 border-b border-stone-200 flex items-center justify-between shrink-0 bg-stone-50">
               <div 
                 onClick={() => { audioEngine.playClick(); navigate('/'); setIsOpen(false); }}
                 className="flex items-center space-x-2.5 cursor-pointer"
               >
-                <DevilLabsLogo className="w-5 h-5 text-violet-400" glow />
-                <span className="font-display font-black text-sm tracking-tight text-white uppercase">DEVIL LABS</span>
+                <DevilLabsLogo className="w-5 h-5 text-violet-600" glow />
+                <span className="font-display font-black text-sm tracking-tight text-stone-900 uppercase">DEVIL LABS</span>
               </div>
 
               <div className="flex items-center space-x-2">
                 <button
                   type="button"
                   onClick={toggleCurrency}
-                  className="px-3 py-1.5 rounded-full bg-stone-900 border border-stone-700/80 text-stone-300 font-mono text-xs font-bold hover:text-white"
+                  className="px-3 py-1.5 rounded-full bg-stone-100 border border-stone-200 text-stone-600 font-mono text-xs font-bold hover:text-stone-900"
                 >
                   {currency}
                 </button>
                 <button
                   type="button"
                   onClick={() => setIsOpen(false)}
-                  className="w-10 h-10 rounded-full bg-stone-900 border border-stone-700/80 text-stone-300 hover:text-white flex items-center justify-center cursor-pointer active:scale-95 transition-transform"
+                  className="w-10 h-10 rounded-full bg-stone-100 border border-stone-200 text-stone-600 hover:text-stone-900 flex items-center justify-center cursor-pointer active:scale-95 transition-transform"
                   aria-label="Close menu"
                 >
                   <X size={18} />
@@ -333,11 +333,11 @@ export default function Navigation({ currentPath, navigate }: NavigationProps) {
                     className={`w-full min-h-[48px] text-left px-4 py-3 rounded-2xl font-sans font-extrabold text-xs sm:text-sm tracking-wider uppercase flex items-center justify-between cursor-pointer transition-all active:scale-98 ${
                       isActive 
                         ? 'bg-violet-600 text-white shadow-[0_0_20px_rgba(139,92,246,0.4)]' 
-                        : 'bg-stone-900/70 text-stone-300 hover:bg-stone-800/80 border border-stone-800/80 hover:text-white'
+                        : 'bg-stone-50 text-stone-600 hover:bg-stone-100 hover:text-stone-900 border border-stone-200'
                     }`}
                   >
                     <span>{item.name}</span>
-                    <span className={`text-xs ${isActive ? 'text-amber-300' : 'text-stone-500'}`}>
+                    <span className={`text-xs ${isActive ? 'text-amber-300' : 'text-stone-400'}`}>
                       {item.label.split(' ')[0]} →
                     </span>
                   </button>
@@ -361,10 +361,10 @@ export default function Navigation({ currentPath, navigate }: NavigationProps) {
             </div>
 
             {/* Social Contact Links Panel inside Drawer */}
-            <div className="p-5 border-t border-stone-800/80 bg-stone-900/60 shrink-0 space-y-3">
-              <div className="text-[10px] font-mono font-bold uppercase text-stone-400 tracking-widest flex items-center justify-between">
+            <div className="p-5 border-t border-stone-200 bg-stone-50 shrink-0 space-y-3">
+              <div className="text-[10px] font-mono font-bold uppercase text-stone-500 tracking-widest flex items-center justify-between">
                 <span>CONNECT WITH US</span>
-                <span className="text-emerald-400 text-[9px] uppercase font-bold flex items-center gap-1">
+                <span className="text-emerald-600 text-[9px] uppercase font-bold flex items-center gap-1">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
                   ONLINE 24/7
                 </span>
@@ -407,17 +407,17 @@ export default function Navigation({ currentPath, navigate }: NavigationProps) {
                 {/* Email */}
                 <a
                   href="mailto:devil.labs.contact@gmail.com?subject=Project%20Inquiry%20-%20Devil%20Labs"
-                  className="flex items-center space-x-2 px-3 py-2.5 rounded-xl bg-stone-900 border border-stone-800 text-stone-200 hover:bg-stone-800 transition-all text-xs font-bold font-sans active:scale-95"
+                  className="flex items-center space-x-2 px-3 py-2.5 rounded-xl bg-white border border-stone-200 text-stone-600 hover:bg-stone-100 hover:text-stone-900 transition-all text-xs font-bold font-sans active:scale-95 shadow-sm"
                 >
-                  <Mail size={15} className="shrink-0 text-violet-400" />
+                  <Mail size={15} className="shrink-0 text-violet-600" />
                   <span className="truncate">Email Us</span>
                 </a>
               </div>
 
-              <div className="pt-2 flex items-center justify-between text-[10px] font-mono text-stone-400 border-t border-stone-800/60">
+              <div className="pt-2 flex items-center justify-between text-[10px] font-mono text-stone-500 border-t border-stone-200">
                 <span>📍 Gaya &amp; Patna, Bihar</span>
-                <a href="tel:+918102099678" className="text-stone-300 hover:text-white flex items-center space-x-1 font-bold">
-                  <Phone size={10} className="text-emerald-400" />
+                <a href="tel:+918102099678" className="text-stone-600 hover:text-stone-900 flex items-center space-x-1 font-bold">
+                  <Phone size={10} className="text-emerald-500" />
                   <span>+91 81020 99678</span>
                 </a>
               </div>
@@ -681,7 +681,7 @@ export function Footer({ navigate }: { navigate: (path: string) => void }) {
             <span className="w-1.5 h-1.5 rounded-full bg-violet-400 animate-pulse" />
             <span>DEVIL LABS</span>
           </div>
-          <div className="hidden md:block text-stone-300">✦ ARTISANAL DESIGN &amp; CODE ✦</div>
+          <div className="hidden md:block text-stone-400">✦ ARTISANAL DESIGN &amp; CODE ✦</div>
           <div>OFFICIAL VERSION</div>
         </div>
 
@@ -809,7 +809,7 @@ export function Footer({ navigate }: { navigate: (path: string) => void }) {
         </div>
 
         {/* Small detail: Bottom diagnostic values */}
-        <div className="w-full max-w-6xl mx-auto flex justify-between items-center px-6 text-[8px] sm:text-[9px] text-stone-300 font-sans tracking-widest uppercase pointer-events-none mt-4 relative z-10 font-bold">
+        <div className="w-full max-w-6xl mx-auto flex justify-between items-center px-6 text-[8px] sm:text-[9px] text-stone-400 font-sans tracking-widest uppercase pointer-events-none mt-4 relative z-10 font-bold">
           <div>Optimized</div>
           <div className="flex items-center space-x-1.5">
             <span className="inline-block w-1.5 h-1.5 rounded-full bg-emerald-400" />

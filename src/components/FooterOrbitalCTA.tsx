@@ -149,7 +149,7 @@ export default function FooterOrbitalCTA({ navigate }: FooterOrbitalCTAProps) {
           <Radio size={10} className="text-violet-400 animate-pulse" />
           <span>STUDIO NETWORK ACTIVE</span>
         </div>
-        <div className="hidden sm:block text-stone-300">✦ RADIAL SOLUTIONS & DESIGNS ✦</div>
+        <div className="hidden sm:block text-stone-400">✦ RADIAL SOLUTIONS & DESIGNS ✦</div>
         <div>SERVICES // 06</div>
       </div>
 
@@ -222,7 +222,7 @@ export default function FooterOrbitalCTA({ navigate }: FooterOrbitalCTAProps) {
                         <span className="font-mono text-[7px] text-stone-400 uppercase tracking-widest leading-none mb-0.5">
                           {card.subtitle}
                         </span>
-                        <h4 className="font-display font-black text-[11px] text-stone-850 uppercase tracking-tight leading-none mt-1">
+                        <h4 className="font-display font-black text-[11px] text-stone-900 uppercase tracking-tight leading-none mt-1">
                           {card.title}
                         </h4>
                       </div>
@@ -254,7 +254,7 @@ export default function FooterOrbitalCTA({ navigate }: FooterOrbitalCTAProps) {
                 key={card.id}
                 whileTap={{ scale: 0.97 }}
                 onClick={() => handleCardClick(card.link)}
-                className="p-3.5 rounded-xl border border-stone-200 bg-white shadow-sm text-left flex flex-col justify-between space-y-2 cursor-pointer active:border-stone-800 transition-colors"
+                className="p-3.5 rounded-xl border border-stone-200 bg-white shadow-sm text-left flex flex-col justify-between space-y-2 cursor-pointer active:border-stone-400 transition-colors"
               >
                 <div className="flex justify-between items-center">
                   <span className="font-mono text-[7px] text-stone-400 uppercase tracking-widest">
@@ -292,7 +292,7 @@ export default function FooterOrbitalCTA({ navigate }: FooterOrbitalCTAProps) {
             className="px-10 py-5 rounded-full relative flex flex-col items-center justify-center text-center cursor-pointer transition-all duration-300"
           >
             {/* Soft-Claymorphic Shadow and Gradient Background */}
-            <div className="absolute inset-0 rounded-full bg-[#FAF9F5] border-2 border-stone-850 shadow-[0_8px_32px_rgba(0,0,0,0.08),inset_0_4px_12px_rgba(255,255,255,0.8),inset_0_-4px_12px_rgba(0,0,0,0.03)] z-0" />
+            <div className="absolute inset-0 rounded-full bg-[#FAF9F5] border-2 border-stone-200 shadow-[0_8px_32px_rgba(0,0,0,0.08),inset_0_4px_12px_rgba(255,255,255,0.8),inset_0_-4px_12px_rgba(0,0,0,0.03)] z-0" />
 
             {/* Glowing Aura Ring */}
             <div className={`absolute -inset-1 rounded-full bg-gradient-to-r from-violet-500 to-rose-500 opacity-20 blur-md transition-all duration-500 ${isCenterHovered ? 'scale-110 opacity-35' : 'scale-100'}`} />
@@ -305,7 +305,7 @@ export default function FooterOrbitalCTA({ navigate }: FooterOrbitalCTAProps) {
                 ✦ WORK WITH DEVIL LABS
               </span>
               <div className="flex items-center space-x-2">
-                <span className="font-display font-black text-xl sm:text-2xl text-stone-850 tracking-tight uppercase leading-none">
+                <span className="font-display font-black text-xl sm:text-2xl text-stone-900 tracking-tight uppercase leading-none">
                   LET'S TALK
                 </span>
                 <ArrowRight size={16} className="text-violet-600 group-hover/orbital:translate-x-1.5 transition-transform" />

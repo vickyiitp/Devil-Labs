@@ -331,7 +331,7 @@ export default function TypographySpecimen() {
                       onClick={() => setPgFontFamily(f.val)}
                       className={`px-2 py-2 text-[9px] font-bold rounded-lg border text-center transition-all cursor-pointer uppercase ${
                         pgFontFamily === f.val 
-                          ? 'bg-stone-900 text-white-force border-stone-950' 
+                          ? 'bg-violet-600 text-white border-violet-700' 
                           : 'bg-stone-50 border-stone-200 text-stone-600 hover:bg-stone-100'
                       }`}
                     >
@@ -356,7 +356,7 @@ export default function TypographySpecimen() {
                       onClick={() => setPgFontWeight(w.val)}
                       className={`px-1.5 py-1.5 text-[9px] font-bold rounded-lg border text-center transition-all cursor-pointer uppercase ${
                         pgFontWeight === w.val 
-                          ? 'bg-stone-900 text-white-force border-stone-950' 
+                          ? 'bg-violet-600 text-white border-violet-700' 
                           : 'bg-stone-50 border-stone-200 text-stone-600 hover:bg-stone-100'
                       }`}
                     >
@@ -433,29 +433,29 @@ export default function TypographySpecimen() {
 
             {/* Live Sandbox Canvas */}
             <div className="lg:col-span-8 flex flex-col justify-between space-y-6">
-              <div className="clay-card p-6 md:p-8 bg-stone-900 border-stone-950 text-white-force rounded-3xl shadow-xl flex flex-col justify-between relative min-h-[440px] flex-grow">
+              <div className="clay-card p-6 md:p-8 bg-white border border-stone-200/60 text-stone-900 rounded-3xl shadow-xl flex flex-col justify-between relative min-h-[440px] flex-grow">
                 
                 {/* Visual grid markings */}
-                <div className="absolute top-4 left-4 w-3 h-3 border-t border-l border-white/20" />
-                <div className="absolute top-4 right-4 w-3 h-3 border-t border-r border-white/20" />
-                <div className="absolute bottom-4 left-4 w-3 h-3 border-b border-l border-white/20" />
-                <div className="absolute bottom-4 right-4 w-3 h-3 border-b border-r border-white/20" />
+                <div className="absolute top-4 left-4 w-3 h-3 border-t border-l border-stone-300" />
+                <div className="absolute top-4 right-4 w-3 h-3 border-t border-r border-stone-300" />
+                <div className="absolute bottom-4 left-4 w-3 h-3 border-b border-l border-stone-300" />
+                <div className="absolute bottom-4 right-4 w-3 h-3 border-b border-r border-stone-300" />
 
                 {/* Spec metadata */}
-                <div className="flex items-center justify-between pb-4 border-b border-white/10 text-left">
+                <div className="flex items-center justify-between pb-4 border-b border-stone-200/50 text-left">
                   <div className="space-y-0.5">
-                    <span className="text-[8px] text-violet-400 font-mono uppercase tracking-widest font-black">LIVE EXPERIMENTATION PLATFORM</span>
-                    <h4 className="font-display font-black text-xs text-white uppercase tracking-tight">Active Canvas Sandbox</h4>
+                    <span className="text-[8px] text-violet-600 font-mono uppercase tracking-widest font-black">LIVE EXPERIMENTATION PLATFORM</span>
+                    <h4 className="font-display font-black text-xs text-stone-850 uppercase tracking-tight">Active Canvas Sandbox</h4>
                   </div>
                   <div className="flex space-x-1">
-                    <span className="w-2 h-2 rounded-full bg-rose-500" />
-                    <span className="w-2 h-2 rounded-full bg-amber-500" />
-                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                    <span className="w-2 h-2 rounded-full bg-rose-400" />
+                    <span className="w-2 h-2 rounded-full bg-amber-400" />
+                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
                   </div>
                 </div>
 
                 {/* Text render panel */}
-                <div className="py-12 flex items-center justify-center flex-grow overflow-hidden text-center min-h-[200px]">
+                <div className="py-12 flex items-center justify-center flex-grow overflow-hidden text-center min-h-[200px] bg-stone-50/50 rounded-2xl border border-stone-200/30 my-4">
                   <div 
                     style={{
                       fontFamily: pgFontFamily,
@@ -464,33 +464,33 @@ export default function TypographySpecimen() {
                       lineHeight: pgLineHeight,
                       letterSpacing: `${pgLetterSpacing}em`,
                     }}
-                    className="w-full break-words transition-all duration-150 text-white-force"
+                    className="w-full break-words transition-all duration-150 text-stone-900"
                   >
                     {customText || 'DEVIL LABS DESIGN SYSTEM'}
                   </div>
                 </div>
 
                 {/* Generated Code Output */}
-                <div className="pt-4 border-t border-white/10 text-left">
+                <div className="pt-4 border-t border-stone-200/50 text-left">
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-[8px] text-stone-400 font-mono uppercase tracking-widest font-bold block">TAILWIND / INLINE SPEC CODE</span>
                     <button
                       onClick={() => copyToClipboard(`style={{ fontFamily: "${pgFontFamily}", fontWeight: "${pgFontWeight}", fontSize: "${pgFontSize}px", lineHeight: ${pgLineHeight}, letterSpacing: "${pgLetterSpacing}em" }}`)}
-                      className="text-[9px] font-mono text-violet-400 hover:text-violet-300 flex items-center gap-1 transition-colors cursor-pointer"
+                      className="text-[9px] font-mono text-violet-600 hover:text-violet-500 flex items-center gap-1 transition-colors cursor-pointer"
                     >
-                      {copied ? <Check size={11} className="text-emerald-400" /> : <Copy size={11} />}
+                      {copied ? <Check size={11} className="text-emerald-600" /> : <Copy size={11} />}
                       <span>Copy React Style Props</span>
                     </button>
                   </div>
                   
-                  <div className="bg-black/40 border border-white/5 rounded-xl p-3 font-mono text-[9px] text-stone-300 overflow-x-auto select-all max-w-full">
+                  <div className="bg-stone-50 border border-stone-200/50 rounded-xl p-3 font-mono text-[9px] text-stone-600 overflow-x-auto select-all max-w-full">
                     {`// Editorial Output Code\n`}
-                    <span className="text-emerald-400">{`<div`}</span>
+                    <span className="text-emerald-700">{`<div`}</span>
                     {` style={{`}
-                    <span className="text-violet-300">{` fontFamily: "${pgFontFamily}", fontWeight: "${pgFontWeight}", fontSize: "${pgFontSize}px", lineHeight: ${pgLineHeight}, letterSpacing: "${pgLetterSpacing}em"`}</span>
+                    <span className="text-violet-700">{` fontFamily: "${pgFontFamily}", fontWeight: "${pgFontWeight}", fontSize: "${pgFontSize}px", lineHeight: ${pgLineHeight}, letterSpacing: "${pgLetterSpacing}em"`}</span>
                     {` }}>`}
-                    <span className="text-white-force">{customText || 'DEVIL LABS DESIGN SYSTEM'}</span>
-                    <span className="text-emerald-400">{`</div>`}</span>
+                    <span className="text-stone-900">{customText || 'DEVIL LABS DESIGN SYSTEM'}</span>
+                    <span className="text-emerald-700">{`</div>`}</span>
                   </div>
                 </div>
 

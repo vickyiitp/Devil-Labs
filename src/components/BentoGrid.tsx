@@ -65,7 +65,7 @@ export default function BentoGrid({ onNavigateContact }: { onNavigateContact: ()
   ];
 
   return (
-    <div id="bento-box-grid-root" className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6 text-stone-800">
+    <div id="bento-box-grid-root" className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6 text-stone-800 max-w-sm md:max-w-2xl xl:max-w-none mx-auto">
       {/* Box 1: Aether Core (Takes 2 columns on desktop) */}
       <motion.div
         id="bento-card-aether"

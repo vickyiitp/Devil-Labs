@@ -10,7 +10,7 @@ export default function IframeWithSkeleton({ src, title }: IframeWithSkeletonPro
   const [loaded, setLoaded] = useState(false);
 
   return (
-    <div className="absolute inset-0 w-full h-full bg-[#050505]">
+    <div className="absolute inset-0 w-full h-full bg-white">
       {/* Skeleton / Loading State */}
       {!loaded && (
         <div className="absolute inset-0 p-8 flex flex-col space-y-6 z-0">

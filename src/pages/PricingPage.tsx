@@ -234,7 +234,7 @@ export default function PricingPage({ navigate }: PricingPageProps) {
       </section>
 
       {/* 2. PRICING CARDS (3 columns) */}
-      <section id="pricing-cards-section" className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6 items-stretch mb-32">
+      <section id="pricing-cards-section" className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6 items-stretch mb-32 max-w-sm md:max-w-3xl xl:max-w-none mx-auto">
         {models.map((model, idx) => (
           <motion.div
             id={`pricing-card-${model.title.toLowerCase().replace(/[^a-z0-9]/g, '')}`}
@@ -259,7 +259,7 @@ export default function PricingPage({ navigate }: PricingPageProps) {
 
               <div className="flex items-baseline space-x-2 border-b border-stone-200/30 pb-6">
                 <span className="text-4xl sm:text-5xl font-display font-black text-stone-800 tracking-tighter">{model.price}</span>
-                <span className="text-stone-400 font-sans text-xs uppercase font-bold">{model.priceBasis}</span>
+                <span className="text-stone-500 font-sans text-xs uppercase font-bold">{model.priceBasis}</span>
               </div>
 
               <p className="text-stone-600 text-xs sm:text-sm leading-relaxed font-sans">
@@ -267,7 +267,7 @@ export default function PricingPage({ navigate }: PricingPageProps) {
               </p>
 
               <div className="space-y-3 pt-4 border-t border-stone-200/30">
-                <h4 className="text-[10px] font-sans font-extrabold text-stone-400 uppercase tracking-widest">Included Scope:</h4>
+                <h4 className="text-[10px] font-sans font-extrabold text-stone-500 uppercase tracking-widest">Included Scope:</h4>
                 <ul className="space-y-2 text-xs sm:text-sm text-stone-700 font-sans">
                   {model.features.map((feat) => (
                     <li key={feat} className="flex items-start space-x-2.5">
@@ -327,9 +327,9 @@ I would like to proceed with this architecture. Please provide further details.`
             <div className="min-w-[800px] border border-stone-200/50 bg-[#faf8f5]/80 rounded-2xl overflow-hidden shadow-[5px_5px_15px_rgba(45,38,32,0.05),-5px_-5px_15px_#ffffff]">
             <div className="grid grid-cols-4 border-b border-stone-200/30 bg-[#f0ede6]/50">
               <div className="p-6 font-sans text-xs text-stone-500 uppercase tracking-widest font-extrabold flex items-end">Feature Set</div>
-              <div className="p-6 font-display text-lg text-stone-800 font-bold text-center">MVP Build<br/><span className="text-sm font-sans text-stone-400 font-normal">{(currency === 'INR') ? '₹8,500' : '$229'}</span></div>
+              <div className="p-6 font-display text-lg text-stone-800 font-bold text-center">MVP Build<br/><span className="text-sm font-sans text-stone-500 font-normal">{(currency === 'INR') ? '₹8,500' : '$229'}</span></div>
               <div className="p-6 font-display text-lg text-stone-800 font-bold text-center border-x border-stone-200/20 bg-violet-50">Full-Stack + AI<br/><span className="text-sm font-sans text-violet-600 font-normal">{(currency === 'INR') ? '₹28,900' : '$729'}</span></div>
-              <div className="p-6 font-display text-lg text-stone-800 font-bold text-center">Enterprise<br/><span className="text-sm font-sans text-stone-400 font-normal">{(currency === 'INR') ? '₹47,000+' : '$1,199+'}</span></div>
+              <div className="p-6 font-display text-lg text-stone-800 font-bold text-center">Enterprise<br/><span className="text-sm font-sans text-stone-500 font-normal">{(currency === 'INR') ? '₹47,000+' : '$1,199+'}</span></div>
             </div>
             
             {[
@@ -345,13 +345,13 @@ I would like to proceed with this architecture. Please provide further details.`
               <div key={idx} className="grid grid-cols-4 border-b border-stone-200/20 hover:bg-stone-50 transition-colors">
                 <div className="p-4 px-6 font-sans text-xs text-stone-600 font-semibold">{row.name}</div>
                 <div className="p-4 px-6 flex justify-center items-center text-sm font-sans text-stone-500">
-                  {typeof row.starter === 'boolean' ? (row.starter ? <Check size={16} className="text-emerald-500" /> : <span className="text-stone-300">-</span>) : row.starter}
+                  {typeof row.starter === 'boolean' ? (row.starter ? <Check size={16} className="text-emerald-500" /> : <span className="text-stone-500">-</span>) : row.starter}
                 </div>
                 <div className="p-4 px-6 flex justify-center items-center text-sm font-sans text-stone-800 border-x border-stone-200/20 bg-violet-50/20">
-                  {typeof row.pro === 'boolean' ? (row.pro ? <Check size={16} className="text-violet-600" /> : <span className="text-stone-300">-</span>) : row.pro}
+                  {typeof row.pro === 'boolean' ? (row.pro ? <Check size={16} className="text-violet-600" /> : <span className="text-stone-500">-</span>) : row.pro}
                 </div>
                 <div className="p-4 px-6 flex justify-center items-center text-sm font-sans text-stone-500">
-                  {typeof row.enterprise === 'boolean' ? (row.enterprise ? <Check size={16} className="text-emerald-500" /> : <span className="text-stone-300">-</span>) : row.enterprise}
+                  {typeof row.enterprise === 'boolean' ? (row.enterprise ? <Check size={16} className="text-emerald-500" /> : <span className="text-stone-500">-</span>) : row.enterprise}
                 </div>
               </div>
             ))}
@@ -396,7 +396,7 @@ I would like to proceed with this architecture. Please provide further details.`
               {/* Base Tier */}
               <div className="space-y-4 text-left">
                 <div className="flex items-center space-x-2">
-                  <span className="font-sans text-[10px] text-stone-400 uppercase tracking-widest font-extrabold">01 SELECT SERVICE</span>
+                  <span className="font-sans text-[10px] text-stone-500 uppercase tracking-widest font-extrabold">01 SELECT SERVICE</span>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {[
@@ -418,7 +418,7 @@ I would like to proceed with this architecture. Please provide further details.`
                             : 'bg-[#faf8f5] border-stone-200/60 text-stone-700 hover:border-violet-300 hover:bg-violet-50/50 hover:text-violet-700 hover:shadow-sm'
                         }`}
                       >
-                        <IconComp size={15} className={isActive ? 'text-white-force' : 'text-stone-400'} />
+                        <IconComp size={15} className={isActive ? 'text-white-force' : 'text-stone-500'} />
                         <span className="font-bold">{tier.label}</span>
                       </button>
                     );
@@ -434,7 +434,7 @@ I would like to proceed with this architecture. Please provide further details.`
                     exit={{ opacity: 0, height: 0 }}
                     className="space-y-4 overflow-hidden mt-10 text-left"
                   >
-                    <span className="text-stone-400 font-sans text-[10px] uppercase tracking-widest font-extrabold">02 SELECT COMPLEXITY</span>
+                    <span className="text-stone-500 font-sans text-[10px] uppercase tracking-widest font-extrabold">02 SELECT COMPLEXITY</span>
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
                       {[
                         { id: 'small', label: 'Lean / Focused', desc: 'Pre-production MVP build with essential features.' },
@@ -448,14 +448,14 @@ I would like to proceed with this architecture. Please provide further details.`
                             onClick={() => setCalcScope(scope.id as any)}
                             className={`p-4 text-left rounded-xl transition-all border cursor-pointer flex flex-col justify-between h-full ${
                               isActive 
-                                ? 'bg-stone-900 border-transparent text-white-force shadow-md shadow-stone-850/20 scale-[1.01]' 
+                                ? 'bg-white border-stone-200 text-stone-800 shadow-md shadow-stone-200/50 scale-[1.01]' 
                                 : 'bg-[#faf8f5] border-stone-200/60 text-stone-700 hover:border-violet-300 hover:bg-violet-50/50 hover:text-violet-700 hover:shadow-sm'
                             }`}
                           >
                             <span className={`text-xs font-mono tracking-wide font-black uppercase mb-1.5 ${isActive ? 'text-white-force' : 'text-stone-850'}`}>
                               {scope.label}
                             </span>
-                            <span className={`text-[10px] font-sans leading-relaxed ${isActive ? 'text-stone-300-force' : 'text-stone-500'}`}>
+                            <span className={`text-[10px] font-sans leading-relaxed ${isActive ? 'text-stone-600' : 'text-stone-500'}`}>
                               {scope.desc}
                             </span>
                           </button>
@@ -467,14 +467,14 @@ I would like to proceed with this architecture. Please provide further details.`
 
               {/* Add-ons */}
               <div className="space-y-4 mt-10 text-left">
-                <span className="text-stone-400 font-sans text-[10px] uppercase tracking-widest font-extrabold">03 ADD OPTIONAL FEATURES</span>
+                <span className="text-stone-500 font-sans text-[10px] uppercase tracking-widest font-extrabold">03 ADD OPTIONAL FEATURES</span>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
                   <button
                     onClick={() => toggleAddon('ai')}
                     disabled={calcTier === 'ai-agents'}
                     className={`flex items-center justify-between p-4 border rounded-xl transition-all text-left cursor-pointer h-full ${
                       calcTier === 'ai-agents' 
-                        ? 'opacity-40 cursor-not-allowed border-stone-200/30 bg-stone-100/30 text-stone-400' 
+                        ? 'opacity-40 cursor-not-allowed border-stone-200/30 bg-stone-100/30 text-stone-500' 
                         : calcAddons.includes('ai') 
                           ? 'border-violet-300 bg-violet-50/70 text-violet-800 shadow-sm' 
                           : 'border-stone-200/60 bg-[#faf8f5] text-stone-700 hover:border-violet-300 hover:bg-violet-50/50 hover:text-violet-700 hover:shadow-sm'
@@ -532,51 +532,51 @@ I would like to proceed with this architecture. Please provide further details.`
             </div>
 
             {/* Results Output - Obsidian Sleek Dark Console */}
-            <div className="lg:col-span-5 bg-[#171513] p-8 sm:p-12 flex flex-col justify-between shadow-xl rounded-b-3xl lg:rounded-b-none lg:rounded-r-3xl border-t lg:border-t-0 lg:border-l border-stone-800 relative overflow-hidden text-left">
+            <div className="lg:col-span-5 bg-white p-8 sm:p-12 flex flex-col justify-between shadow-xl rounded-b-3xl lg:rounded-b-none lg:rounded-r-3xl border-t lg:border-t-0 lg:border-l border-stone-200 relative overflow-hidden text-left">
               <div className="absolute -bottom-10 -right-10 w-64 h-64 bg-violet-500/10 rounded-full blur-3xl pointer-events-none" />
               <div className="absolute -top-10 -left-10 w-40 h-40 bg-rose-500/5 rounded-full blur-3xl pointer-events-none" />
 
               <div className="space-y-10 relative z-10">
                 {/* Cost */}
                 <div className="space-y-1.5">
-                  <div className="flex items-center space-x-2 text-stone-400-force font-sans text-[10px] uppercase tracking-widest font-extrabold">
+                  <div className="flex items-center space-x-2 text-stone-500 font-sans text-[10px] uppercase tracking-widest font-extrabold">
                     <DollarSign size={14} className="text-violet-400" />
-                    <span className="text-stone-400-force">ESTIMATED INVESTMENT</span>
+                    <span className="text-stone-500">ESTIMATED INVESTMENT</span>
                   </div>
-                  <div className="text-4xl sm:text-5xl font-display font-black text-white-force tracking-tighter bg-gradient-to-r from-white-force to-stone-200-force bg-clip-text">
+                  <div className="text-4xl sm:text-5xl font-display font-black text-stone-900 tracking-tighter">
                     {estimation.priceStr}
                   </div>
                 </div>
 
                 {/* Timeline */}
                 <div className="space-y-1.5">
-                  <div className="flex items-center space-x-2 text-stone-400-force font-sans text-[10px] uppercase tracking-widest font-extrabold">
+                  <div className="flex items-center space-x-2 text-stone-500 font-sans text-[10px] uppercase tracking-widest font-extrabold">
                     <Clock size={14} className="text-violet-400" />
-                    <span className="text-stone-400-force">PROJECTED TIMELINE</span>
+                    <span className="text-stone-500">PROJECTED TIMELINE</span>
                   </div>
-                  <div className="text-2xl font-sans text-stone-100-force font-black">
+                  <div className="text-2xl font-sans text-stone-800 font-black">
                     {estimation.timelineStr}
                   </div>
                 </div>
 
                 {/* Resources */}
                 <div className="space-y-3">
-                  <div className="flex items-center space-x-2 text-stone-400-force font-sans text-[10px] uppercase tracking-widest font-extrabold">
+                  <div className="flex items-center space-x-2 text-stone-500 font-sans text-[10px] uppercase tracking-widest font-extrabold">
                     <Users size={14} className="text-violet-400" />
-                    <span className="text-stone-400-force">TEAM ALLOCATION</span>
+                    <span className="text-stone-500">TEAM ALLOCATION</span>
                   </div>
                   <ul className="space-y-2.5">
                     {estimation.resources.map((res, i) => (
-                      <li key={i} className="flex items-center space-x-2.5 text-xs text-stone-300-force font-sans">
+                      <li key={i} className="flex items-center space-x-2.5 text-xs text-stone-600 font-sans">
                         <div className="w-1.5 h-1.5 rounded-full bg-violet-400 animate-pulse" />
-                        <span className="text-stone-300-force">{res}</span>
+                        <span className="text-stone-600">{res}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
               </div>
 
-              <div className="pt-8 mt-8 border-t border-stone-800 relative z-10">
+              <div className="pt-8 mt-8 border-t border-stone-200 relative z-10">
                 <button 
                   id="estimator-proceed-btn"
                   onClick={() => {

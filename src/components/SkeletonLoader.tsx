@@ -50,12 +50,12 @@ export default function SkeletonLoader() {
         </motion.div>
 
         {/* Content Skeletons - Brutalist Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6 max-w-sm md:max-w-2xl xl:max-w-none mx-auto">
           {[1, 2, 3, 4, 5, 6].map((i) => (
             <motion.div 
               key={i} 
               variants={itemVariants}
-              className="aspect-square sm:aspect-auto sm:h-80 bg-black/40 border border-white/10 p-6 flex flex-col justify-between relative overflow-hidden group"
+              className="aspect-square sm:aspect-auto sm:h-80 bg-stone-50 border border-stone-200 p-6 flex flex-col justify-between relative overflow-hidden group"
             >
               {/* Shimmer effect */}
               <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/5 to-transparent animate-[shimmer_1.5s_infinite]" style={{ animationDelay: `${i * 0.1}s` }} />

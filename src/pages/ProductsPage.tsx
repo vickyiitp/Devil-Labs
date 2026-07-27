@@ -173,7 +173,7 @@ export default function ProductsPage({ navigate }: { navigate: (path: string) =>
             onClick={() => setActiveTab(tab.id as any)}
             className={`px-4.5 py-2 rounded-full text-xs font-sans font-bold tracking-wider uppercase transition-all cursor-pointer ${
               activeTab === tab.id 
-                ? 'bg-stone-900 text-[#faf8f5] shadow-sm' 
+                ? 'bg-white border border-stone-200 text-stone-800 shadow-sm' 
                 : 'bg-stone-100 hover:bg-stone-200/60 text-stone-600'
             }`}
           >
@@ -183,7 +183,7 @@ export default function ProductsPage({ navigate }: { navigate: (path: string) =>
       </div>
 
       {/* 3. PRODUCT SPECIFICATIONS CATALOG */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-20">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 max-w-sm md:max-w-2xl mx-auto mb-20">
         <AnimatePresence mode="popLayout">
           {filteredProducts.map((product) => (
             <motion.div
@@ -197,7 +197,7 @@ export default function ProductsPage({ navigate }: { navigate: (path: string) =>
             >
               <div>
                 {/* Meta details badge bar */}
-                <div className="flex items-center justify-between mb-6 text-[10px] font-mono uppercase tracking-widest font-bold text-stone-400">
+                <div className="flex items-center justify-between mb-6 text-[10px] font-mono uppercase tracking-widest font-bold text-stone-500">
                   <span className="bg-stone-100 px-2.5 py-1 rounded-full text-stone-600 border border-stone-200/30">
                     {product.category}
                   </span>
@@ -233,7 +233,7 @@ export default function ProductsPage({ navigate }: { navigate: (path: string) =>
 
                 {/* Bulletproof architectural specs list */}
                 <div className="space-y-2.5 mb-8">
-                  <span className="text-[10px] font-sans uppercase tracking-widest text-stone-400 font-extrabold block mb-1">
+                  <span className="text-[10px] font-sans uppercase tracking-widest text-stone-500 font-extrabold block mb-1">
                     ✦ KEY FEATURES &amp; CAPABILITIES
                   </span>
                   {product.features.map((feature, idx) => (
@@ -248,12 +248,12 @@ export default function ProductsPage({ navigate }: { navigate: (path: string) =>
               {/* Action and buy footer */}
               <div className="pt-6 border-t border-stone-200/30 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
                 <div className="text-left">
-                  <span className="text-[9px] font-sans text-stone-400 uppercase tracking-widest font-extrabold block">
+                  <span className="text-[9px] font-sans text-stone-500 uppercase tracking-widest font-extrabold block">
                     PRICE STARTS AT
                   </span>
                   <div className="flex items-baseline space-x-1">
                     <span className="text-stone-850 font-display text-2xl font-black">${product.pricing.single}</span>
-                    <span className="text-stone-400 font-sans text-[10px] uppercase tracking-wider font-bold">/ single developer</span>
+                    <span className="text-stone-500 font-sans text-[10px] uppercase tracking-wider font-bold">/ single developer</span>
                   </div>
                 </div>
 
@@ -356,7 +356,7 @@ export default function ProductsPage({ navigate }: { navigate: (path: string) =>
                           : 'border-stone-250/50 hover:bg-stone-50/40'
                       }`}
                     >
-                      <span className="font-sans text-[10px] text-stone-400 uppercase tracking-wider font-extrabold">SINGLE DEV</span>
+                      <span className="font-sans text-[10px] text-stone-500 uppercase tracking-wider font-extrabold">SINGLE DEV</span>
                       <span className="text-xl font-display font-black text-stone-850 mt-1">${selectedProduct.pricing.single}</span>
                     </button>
                     <button
@@ -367,7 +367,7 @@ export default function ProductsPage({ navigate }: { navigate: (path: string) =>
                           : 'border-stone-250/50 hover:bg-stone-50/40'
                       }`}
                     >
-                      <span className="font-sans text-[10px] text-stone-400 uppercase tracking-wider font-extrabold">TEAM LICENSE</span>
+                      <span className="font-sans text-[10px] text-stone-500 uppercase tracking-wider font-extrabold">TEAM LICENSE</span>
                       <span className="text-xl font-display font-black text-stone-850 mt-1">${selectedProduct.pricing.team}</span>
                     </button>
                   </div>
@@ -375,7 +375,7 @@ export default function ProductsPage({ navigate }: { navigate: (path: string) =>
                   {/* Payment Details Form */}
                   <div className="space-y-3">
                     <div>
-                      <label className="text-[10px] font-sans uppercase tracking-widest text-stone-400 font-extrabold block mb-1.5">Your Email Address</label>
+                      <label className="text-[10px] font-sans uppercase tracking-widest text-stone-500 font-extrabold block mb-1.5">Your Email Address</label>
                       <input 
                         type="email" 
                         required
@@ -384,9 +384,9 @@ export default function ProductsPage({ navigate }: { navigate: (path: string) =>
                       />
                     </div>
                     <div>
-                      <label className="text-[10px] font-sans uppercase tracking-widest text-stone-400 font-extrabold block mb-1.5">Billing Information</label>
+                      <label className="text-[10px] font-sans uppercase tracking-widest text-stone-500 font-extrabold block mb-1.5">Billing Information</label>
                       <div className="flex items-center space-x-2 bg-stone-50 border border-stone-200/70 rounded-full px-4 py-2.5 text-xs text-stone-500 font-sans">
-                        <ShieldCheck size={14} className="text-stone-400 flex-shrink-0" />
+                        <ShieldCheck size={14} className="text-stone-500 flex-shrink-0" />
                         <span>Protected by 256-bit encrypted checkout</span>
                       </div>
                     </div>
@@ -402,7 +402,7 @@ export default function ProductsPage({ navigate }: { navigate: (path: string) =>
                     </button>
                     <button
                       onClick={confirmPurchaseMock}
-                      className="flex-2 py-3 rounded-full bg-stone-900 hover:bg-stone-800 text-[#faf8f5] text-xs font-sans font-bold uppercase tracking-widest shadow-md transition-all cursor-pointer text-center"
+                      className="flex-2 py-3 rounded-full bg-white hover:bg-stone-50 border border-stone-200 text-stone-800 text-xs font-sans font-bold uppercase tracking-widest shadow-md transition-all cursor-pointer text-center"
                     >
                       COMPLETE PURCHASE
                     </button>
