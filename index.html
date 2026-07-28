@@ -1,31 +1,217 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y0HBFPX40D"></script>
+    <!-- Deferred Google Analytics & Tag Manager for Maximum PageSpeed & Core Web Vitals -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+      
+      function initAnalytics() {
+        if (window.analyticsInitialized) return;
+        window.analyticsInitialized = true;
 
-      gtag('config', 'G-Y0HBFPX40D');
+        var gscript = document.createElement('script');
+        gscript.async = true;
+        gscript.src = 'https://www.googletagmanager.com/gtag/js?id=G-Y0HBFPX40D';
+        document.head.appendChild(gscript);
+
+        gtag('js', new Date());
+        gtag('config', 'G-Y0HBFPX40D');
+
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-KS6KK25C');
+      }
+
+      if ('requestIdleCallback' in window) {
+        window.addEventListener('load', function() {
+          requestIdleCallback(initAnalytics, { timeout: 3500 });
+        });
+      } else {
+        window.addEventListener('load', function() {
+          setTimeout(initAnalytics, 2500);
+        });
+      }
+      ['click', 'touchstart', 'scroll'].forEach(function(evt) {
+        window.addEventListener(evt, initAnalytics, { once: true, passive: true });
+      });
     </script>
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-KS6KK25C');</script>
-    <!-- End Google Tag Manager -->
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Devil Labs | Top AI Automation &amp; Full-Stack Web Development Agency in India</title>
-    <link rel="icon" type="image/png" href="https://github.com/Devil-Labs.png" />
     
+    <!-- Core SEO Meta Tags -->
+    <meta name="description" content="Devil Labs (devillabs.dev) is India's premier web development agency and AI automation architecture firm. Engineered by Vicky (vickyiitp.tech, IIT Patna) for custom web development, autonomous AI agents, and enterprise software." />
+    <meta name="keywords" content="devil labs, devillabs, devillabs.dev, devil labs agency, devil labs web agency, web agency, software development company, AI automation agency, Devil Labs Bihar, Devil Labs Gaya, vickyiitp, Vicky Kumar IIT Patna, top web agency India, custom software engineering" />
+    <meta name="author" content="Devil Labs - Vicky Kumar (vickyiitp.tech)" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="slurp" content="index, follow" />
+    <meta name="duckduckbot" content="index, follow" />
+    <meta name="baiduspider" content="index, follow" />
+    <meta name="yandex" content="index, follow" />
+    
+    <!-- Canonical, AMP & Sitemap -->
+    <link rel="canonical" href="https://devillabs.dev/" />
+    <link rel="amphtml" href="https://devillabs.dev/amp-services.html" />
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="https://devillabs.dev/sitemap.xml" />
+    <link rel="icon" type="image/png" href="https://github.com/Devil-Labs.png" />
+
+    <!-- OpenGraph Meta Tags for Social & Search Engine Indexing -->
+    <meta property="og:title" content="Devil Labs | Top AI Automation &amp; Full-Stack Web Development Agency in India" />
+    <meta property="og:description" content="Devil Labs (devillabs.dev) is India's premier web development agency and AI automation architecture firm. Expert custom web apps, autonomous AI agents, and custom enterprise software." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://devillabs.dev/" />
+    <meta property="og:image" content="https://github.com/Devil-Labs.png" />
+    <meta property="og:site_name" content="Devil Labs" />
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Devil Labs | Top AI Automation &amp; Web Development Agency" />
+    <meta name="twitter:description" content="Devil Labs (devillabs.dev) is India's premier web development agency and AI automation architecture firm." />
+    <meta name="twitter:image" content="https://github.com/Devil-Labs.png" />
+
     <!-- Core Web Vitals & Resource Preloading -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="dns-prefetch" href="https://images.unsplash.com" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&family=Syne:wght@600;700;800&family=Lora:ital,wght@0,400;1,400&display=swap" media="print" onload="this.media='all'" />
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&family=Syne:wght@600;700;800&family=Lora:ital,wght@0,400;1,400&display=swap" />
+    </noscript>
+
+    <!-- Static Structured Data (JSON-LD) for Search Engine Crawlers & AI LLMs -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://devillabs.dev/#organization",
+          "name": "Devil Labs",
+          "alternateName": [
+            "devillabs",
+            "devillabs.dev",
+            "Devil Labs Agency",
+            "Devil Labs Web Agency",
+            "Devil Labs AI",
+            "Devil Labs India"
+          ],
+          "url": "https://devillabs.dev/",
+          "logo": "https://github.com/Devil-Labs.png",
+          "image": "https://github.com/Devil-Labs.png",
+          "description": "Devil Labs (devillabs.dev) is India's premier web agency and AI automation engineering firm. Founded by Vicky Kumar (vickyiitp.tech, IIT Patna) specializing in custom web apps, autonomous AI agents, and enterprise IT services.",
+          "telephone": "+918102099678",
+          "email": "devil.labs.contact@gmail.com",
+          "founder": {
+            "@type": "Person",
+            "@id": "https://vickyiitp.tech/#person",
+            "name": "Vicky Kumar",
+            "jobTitle": "Founder & Principal Software Architect",
+            "alumniOf": "Indian Institute of Technology Patna (IIT Patna)",
+            "url": "https://vickyiitp.tech"
+          },
+          "sameAs": [
+            "https://linkedin.com/company/devillabs",
+            "https://github.com/Devil-Labs",
+            "https://instagram.com/devillabs",
+            "https://vickyiitp.tech"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://devillabs.dev/#website",
+          "url": "https://devillabs.dev/",
+          "name": "Devil Labs",
+          "alternateName": ["devillabs", "devillabs.dev", "Devil Labs Web Agency"],
+          "publisher": { "@id": "https://devillabs.dev/#organization" }
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://devillabs.dev/#webpage",
+          "url": "https://devillabs.dev/",
+          "name": "Devil Labs | Top AI Automation & Full-Stack Web Development Agency",
+          "description": "Official homepage of Devil Labs (devillabs.dev) - Premier web development agency and AI engineering firm in India.",
+          "isPartOf": { "@id": "https://devillabs.dev/#website" },
+          "about": { "@id": "https://devillabs.dev/#organization" }
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://devillabs.dev/services#webpage",
+          "url": "https://devillabs.dev/services",
+          "name": "Engineering & Development Services | Devil Labs",
+          "description": "Custom web development, AI automation architecture, mobile app engineering, and cloud infrastructure services.",
+          "isPartOf": { "@id": "https://devillabs.dev/#website" }
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://devillabs.dev/products#webpage",
+          "url": "https://devillabs.dev/products",
+          "name": "Proprietary Software Products & AI Agents | Devil Labs",
+          "description": "Production-ready AI tools, developer platforms, and enterprise automation software engineered by Devil Labs.",
+          "isPartOf": { "@id": "https://devillabs.dev/#website" }
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://devillabs.dev/solutions#webpage",
+          "url": "https://devillabs.dev/solutions",
+          "name": "Industry Solutions & Enterprise Architectures | Devil Labs",
+          "description": "Tailored software solutions for Healthcare, FinTech, E-Commerce, Logistics, and SaaS enterprises.",
+          "isPartOf": { "@id": "https://devillabs.dev/#website" }
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://devillabs.dev/projects#webpage",
+          "url": "https://devillabs.dev/projects",
+          "name": "Project Portfolio & Case Studies | Devil Labs",
+          "description": "Explore featured client work, web applications, and AI integrations delivered by Devil Labs.",
+          "isPartOf": { "@id": "https://devillabs.dev/#website" }
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://devillabs.dev/pricing#webpage",
+          "url": "https://devillabs.dev/pricing",
+          "name": "Transparent Pricing & Development Estimates | Devil Labs",
+          "description": "Clear tier-based pricing for web applications, AI integrations, and full-stack enterprise development.",
+          "isPartOf": { "@id": "https://devillabs.dev/#website" }
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://devillabs.dev/about#webpage",
+          "url": "https://devillabs.dev/about",
+          "name": "About Devil Labs | Team, Mission & Engineering Values",
+          "description": "Learn about Devil Labs, founded by Vicky Kumar (IIT Patna CS alumnus) to build world-class digital experiences.",
+          "isPartOf": { "@id": "https://devillabs.dev/#website" }
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://devillabs.dev/contact#webpage",
+          "url": "https://devillabs.dev/contact",
+          "name": "Contact & Project Transmission | Devil Labs",
+          "description": "Get in touch with Devil Labs engineers to start your web app, AI automation, or software engineering project.",
+          "isPartOf": { "@id": "https://devillabs.dev/#website" }
+        },
+        {
+          "@type": "Service",
+          "name": "AI Automation Architecture & Agentic Systems",
+          "provider": { "@id": "https://devillabs.dev/#organization" },
+          "description": "Custom autonomous AI agents, LLM pipelines, and automated business workflow systems.",
+          "areaServed": "Global"
+        },
+        {
+          "@type": "Service",
+          "name": "Full-Stack Web Application Development",
+          "provider": { "@id": "https://devillabs.dev/#organization" },
+          "description": "High-performance React, TypeScript, Next.js, and Node.js custom web application engineering.",
+          "areaServed": "Global"
+        }
+      ]
+    }
+    </script>
   </head>
   <body>
     <!-- Google Tag Manager (noscript) -->

@@ -28,6 +28,7 @@ export default function HeroVideoPlayer() {
         loop
         muted
         playsInline
+        preload="metadata"
         className={`absolute inset-0 w-full h-full object-cover max-w-full transition-opacity duration-700 ${loaded ? 'opacity-85 group-hover:opacity-100' : 'opacity-0'}`}
         src="https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-a-technological-network-31626-large.mp4"
         onCanPlayThrough={() => setLoaded(true)}

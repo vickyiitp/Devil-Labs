@@ -47,7 +47,7 @@ export default function BackgroundEffects() {
   return (
     <>
       <CursorTrail />
-      {/* Premium Floating Soft Abstract Orbs (Living Background Mesh) */}
+      {/* Premium Floating Soft Abstract Orbs (Living Background Mesh - Desktop Only for Maximum Mobile Performance) */}
       <motion.div
         animate={{
           x: [0, 50, -30, 0],
@@ -59,7 +59,7 @@ export default function BackgroundEffects() {
           repeat: Infinity,
           ease: "easeInOut"
         }}
-        className="fixed top-1/4 right-[10%] w-[450px] h-[450px] rounded-full bg-violet-600/10 blur-[120px] pointer-events-none -z-10 transform-gpu"
+        className="hidden md:block fixed top-1/4 right-[10%] w-[450px] h-[450px] rounded-full bg-violet-600/10 blur-[120px] pointer-events-none -z-10 transform-gpu"
       />
       <motion.div
         animate={{
@@ -72,7 +72,7 @@ export default function BackgroundEffects() {
           repeat: Infinity,
           ease: "easeInOut"
         }}
-        className="fixed bottom-1/3 left-[5%] w-[500px] h-[500px] rounded-full bg-blue-600/10 blur-[150px] pointer-events-none -z-10 transform-gpu"
+        className="hidden md:block fixed bottom-1/3 left-[5%] w-[500px] h-[500px] rounded-full bg-blue-600/10 blur-[150px] pointer-events-none -z-10 transform-gpu"
       />
       <motion.div
         animate={{
@@ -85,7 +85,7 @@ export default function BackgroundEffects() {
           repeat: Infinity,
           ease: "easeInOut"
         }}
-        className="fixed top-1/2 left-[40%] w-[350px] h-[350px] rounded-full bg-indigo-500/10 blur-[100px] pointer-events-none -z-10 transform-gpu"
+        className="hidden md:block fixed top-1/2 left-[40%] w-[350px] h-[350px] rounded-full bg-indigo-500/10 blur-[100px] pointer-events-none -z-10 transform-gpu"
       />
 
       {/* Floating stars/particles */}

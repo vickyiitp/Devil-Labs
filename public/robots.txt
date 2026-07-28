@@ -1,8 +1,65 @@
-# Robots.txt for Devil Labs (devillabs.dev)
+# ==============================================================================
+# Devil Labs (https://devillabs.dev) - Official Robots.txt
+# Global Search Engines, Browsers, AI Models, & Web Indexers Configuration
+# ==============================================================================
+
+# Global Permission Directive - Allow All Standard Browsers, Search Engines & Scrapers
 User-agent: *
 Allow: /
+Disallow: /admin/api/
+Disallow: /.env
+Disallow: /.git
+Disallow: /config/
+Disallow: /wp-admin/
+Disallow: /phpmyadmin/
+Disallow: /*.json$
+Allow: /search.json
+Allow: /sitemap.xml
+Allow: /robots.txt
+Allow: /llms.txt
 
-# Optimize accessibility for AI-powered Search Engines & Web Crawlers (AEO / GEO)
+# ------------------------------------------------------------------------------
+# Major Search Engine Indexers (Global)
+# ------------------------------------------------------------------------------
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Googlebot-Mobile
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+User-agent: Sogou
+Allow: /
+
+User-agent: Exabot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+# ------------------------------------------------------------------------------
+# Generative AI, LLMs, & Conversational Search Crawlers (AEO / GEO)
+# ------------------------------------------------------------------------------
 User-agent: GPTBot
 Allow: /
 
@@ -21,8 +78,68 @@ Allow: /
 User-agent: Claude-Web
 Allow: /
 
+User-agent: ClaudeBot
+Allow: /
+
 User-agent: OAI-SearchBot
 Allow: /
 
-# Sitemap Directives
+User-agent: Bytespider
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: Cohere-ai
+Allow: /
+
+User-agent: Diffbot
+Allow: /
+
+User-agent: FacebookExternalHit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+# ------------------------------------------------------------------------------
+# Cyber-Security Defense: Block Malicious Vulnerability Scanners & Exploit Tools
+# ------------------------------------------------------------------------------
+User-agent: sqlmap
+Disallow: /
+
+User-agent: nikto
+Disallow: /
+
+User-agent: wpscan
+Disallow: /
+
+User-agent: dirbuster
+Disallow: /
+
+User-agent: masscan
+Disallow: /
+
+User-agent: havij
+Disallow: /
+
+User-agent: acunetix
+Disallow: /
+
+User-agent: nessus
+Disallow: /
+
+User-agent: zgrab
+Disallow: /
+
+# ------------------------------------------------------------------------------
+# Sitemaps & LLM Information Endpoints
+# ------------------------------------------------------------------------------
 Sitemap: https://devillabs.dev/sitemap.xml
+Sitemap: https://devillabs.dev/llms.txt

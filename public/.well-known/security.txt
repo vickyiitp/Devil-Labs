@@ -1,0 +1,6 @@
+Contact: mailto:devil.labs.contact@gmail.com
+Contact: tel:+918102099678
+Canonical: https://devillabs.dev/.well-known/security.txt
+Preferred-Languages: en
+Policy: https://devillabs.dev/privacy
+Hiring: https://devillabs.dev/contact

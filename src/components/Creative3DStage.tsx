@@ -109,10 +109,29 @@ export default function Creative3DStage({ playClick, playHover }: Creative3DStag
 
   const activePage = WALKTHROUGH_PAGES[activeIdx];
 
+  const [isInView, setIsInView] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
+      setIsInView(true);
+      return;
+    }
+    const el = stageRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry.isIntersecting);
+      },
+      { threshold: 0.1 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   // Auto-playing timer core
   useEffect(() => {
     let interval: NodeJS.Timeout;
-    if (isPlaying) {
+    if (isPlaying && isInView && document.visibilityState === 'visible') {
       interval = setInterval(() => {
         setProgress((prev) => {
           if (prev >= 100) {
@@ -125,7 +144,7 @@ export default function Creative3DStage({ playClick, playHover }: Creative3DStag
       }, 100);
     }
     return () => clearInterval(interval);
-  }, [isPlaying, activeIdx]);
+  }, [isPlaying, activeIdx, isInView]);
 
   // Handle virtual cursor auto-movement sequence to make it look like a video walkthrough!
   useEffect(() => {

@@ -1,22 +1,8 @@
-import { useState, useEffect, useRef, ReactNode } from 'react';
+import { useState, useEffect, useRef, ReactNode, lazy, Suspense } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'motion/react';
 import Navigation, { Footer } from './components/Navigation';
 import ClayTopicShowcase from './components/ClayTopicShowcase';
 import LandingPage from './pages/LandingPage';
-import ServicesPage from './pages/ServicesPage';
-import ServiceDetailPage from './pages/ServiceDetailPage';
-import PricingPage from './pages/PricingPage';
-import ContactPage from './pages/ContactPage';
-import ProcessInsightsPage from './pages/ProcessInsightsPage';
-import PrivacyPage from './pages/PrivacyPage';
-import TermsPage from './pages/TermsPage';
-import MSAPage from './pages/MSAPage';
-import ProjectsPage from './pages/ProjectsPage';
-import AboutPage from './pages/AboutPage';
-import ProductsPage from './pages/ProductsPage';
-import SolutionsPage from './pages/SolutionsPage';
-import ResourcesPage from './pages/ResourcesPage';
-import AdminPage from './pages/AdminPage';
 import SkeletonLoader from './components/SkeletonLoader';
 import BackgroundEffects from './components/BackgroundEffects';
 import ScrollProgress from './components/ScrollProgress';
@@ -28,9 +14,24 @@ import { DebugProvider } from './components/DebugContext';
 import { CurrencyProvider } from './contexts/CurrencyContext';
 import InitializeModal from './components/InitializeModal';
 
+// Code split all secondary routes for fast initial page load & high Lighthouse score
+const ServicesPage = lazy(() => import('./pages/ServicesPage'));
+const ServiceDetailPage = lazy(() => import('./pages/ServiceDetailPage'));
+const PricingPage = lazy(() => import('./pages/PricingPage'));
+const ContactPage = lazy(() => import('./pages/ContactPage'));
+const ProcessInsightsPage = lazy(() => import('./pages/ProcessInsightsPage'));
+const PrivacyPage = lazy(() => import('./pages/PrivacyPage'));
+const TermsPage = lazy(() => import('./pages/TermsPage'));
+const MSAPage = lazy(() => import('./pages/MSAPage'));
+const ProjectsPage = lazy(() => import('./pages/ProjectsPage'));
+const AboutPage = lazy(() => import('./pages/AboutPage'));
+const ProductsPage = lazy(() => import('./pages/ProductsPage'));
+const SolutionsPage = lazy(() => import('./pages/SolutionsPage'));
+const ResourcesPage = lazy(() => import('./pages/ResourcesPage'));
+const AdminPage = lazy(() => import('./pages/AdminPage'));
+
 function usePath() {
   const [path, setPath] = useState(window.location.pathname || '/');
-  const [isNavigating, setIsNavigating] = useState(false);
 
   useEffect(() => {
     const handlePopState = () => {
@@ -42,18 +43,12 @@ function usePath() {
 
   const navigate = (to: string) => {
     if (to === path) return;
-    setIsNavigating(true);
     window.history.pushState({}, '', to);
     setPath(to);
     window.scrollTo({ top: 0, behavior: 'instant' });
-    
-    // Simulate data fetching delay to show skeleton
-    setTimeout(() => {
-      setIsNavigating(false);
-    }, 800); // 800ms loading state
   };
 
-  return [path, navigate, isNavigating] as const;
+  return [path, navigate] as const;
 }
 
 
@@ -76,7 +71,7 @@ function ScrollSection({ children, className = "" }: { children: ReactNode, clas
 }
 
 export default function App() {
-  const [currentPath, navigate, isNavigating] = usePath();
+  const [currentPath, navigate] = usePath();
   const [isInitializeModalOpen, setIsInitializeModalOpen] = useState(false);
 
   useEffect(() => {
@@ -90,8 +85,6 @@ export default function App() {
   }, []);
 
   const renderPage = () => {
-    if (isNavigating) return <SkeletonLoader />;
-
     const pathname = currentPath.split('?')[0];
 
     switch (pathname) {
@@ -155,17 +148,19 @@ export default function App() {
             <ScrollSection>
               <AnimatePresence mode="wait">
               <motion.div
-                key={currentPath + (isNavigating ? '-loading' : '-ready')}
-                initial={{ opacity: 0, scale: 0.97, y: 15 }}
+                key={currentPath}
+                initial={{ opacity: 0, scale: 0.98, y: 10 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 1.02, y: -15 }}
+                exit={{ opacity: 0, scale: 1.01, y: -10 }}
                 transition={{ 
-                  duration: 0.45, 
-                  ease: [0.16, 1, 0.3, 1] // Custom ultra-smooth cubic bezier mimicking premium desktop OS shells
+                  duration: 0.3, 
+                  ease: [0.16, 1, 0.3, 1]
                 }}
                 className="w-full flex-grow flex flex-col justify-between"
               >
-                {renderPage()}
+                <Suspense fallback={<SkeletonLoader />}>
+                  {renderPage()}
+                </Suspense>
               </motion.div>
             </AnimatePresence>
           
