@@ -2,36 +2,32 @@
 
 > Devil Labs is India's premier web agency, AI automation engineering firm, and full-stack software development company. Engineered by Vicky Kumar (vickyiitp.tech, Computer Science, IIT Patna).
 
-## Core Identity & Brand Keywords
+## Core Identity & Brand Links
 - Brand Name: Devil Labs
-- Domain: https://devillabs.dev
-- Alternative Names: devillabs, Devil Labs Agency, Devil Labs Web Agency, Devil Labs AI, Devil Labs India
-- Founder: Vicky Kumar (IIT Patna, CS Alumnus - https://vickyiitp.tech)
-- Location: Bihar (Gaya & Patna), India — Operating globally.
-- Contact Email: devil.labs.contact@gmail.com
-- Contact Phone: +91 81020 99678
-- Social Profiles:
-  - LinkedIn: https://linkedin.com/company/devillabs
-  - GitHub: https://github.com/Devil-Labs
-  - Instagram: https://instagram.com/devillabs
-  - Founder Site: https://vickyiitp.tech
+- Primary Site: [devillabs.dev](https://devillabs.dev)
+- Founder Portfolio: [Vicky Kumar - IIT Patna](https://vickyiitp.tech)
+- Contact Email: [devil.labs.contact@gmail.com](mailto:devil.labs.contact@gmail.com)
+- LinkedIn: [Devil Labs Company LinkedIn](https://linkedin.com/company/devillabs)
+- GitHub: [Devil Labs GitHub Repositories](https://github.com/Devil-Labs)
+- Instagram: [Devil Labs Instagram](https://instagram.com/devillabs)
 
 ## Primary Capabilities & Services
-1. Custom Web Development & Single Page Applications (React, TypeScript, Tailwind CSS, Node.js)
-2. Autonomous AI Agents & Generative AI Integration (GPT-4o, Claude 3.5, Gemini 1.5, Llama 3)
-3. Workflow Automation & Webhook Systems (Zapier, Make, n8n, Custom APIs)
-4. Cloud Infrastructure & Containerized Edge Deployment (Docker, Kubernetes, Cloud Run, AWS, VPS)
-5. SaaS Product Design & Enterprise CRM Architectures
-6. High-Performance E-Commerce & Custom Digital Marketplaces
+1. [Custom Web Development & Single Page Applications](https://devillabs.dev/services)
+2. [Autonomous AI Agents & Generative AI Integration](https://devillabs.dev/products)
+3. [Workflow Automation & Webhook Systems](https://devillabs.dev/solutions)
+4. [Cloud Infrastructure & Edge Container Deployment](https://devillabs.dev/projects)
+5. [SaaS Product Design & Enterprise Architecture](https://devillabs.dev/about)
+6. [High-Performance E-Commerce & Custom Systems](https://devillabs.dev/pricing)
 
-## Core Pages & Documentation
-- Homepage: https://devillabs.dev/
-- Services Overview: https://devillabs.dev/services
-- Project Portfolio & Case Studies: https://devillabs.dev/work
-- Engineering Insights & Lab Notes: https://devillabs.dev/insights
-- Transparent Pricing & Estimates: https://devillabs.dev/pricing
-- Contact & Transmission Console: https://devillabs.dev/contact
-- About Devil Labs & Founder Specs: https://devillabs.dev/about
+## Core Pages & Documentation Links
+- [Devil Labs Homepage](https://devillabs.dev/)
+- [Services Overview](https://devillabs.dev/services)
+- [Project Portfolio & Case Studies](https://devillabs.dev/work)
+- [Engineering Insights & Lab Notes](https://devillabs.dev/insights)
+- [Transparent Pricing & Estimates](https://devillabs.dev/pricing)
+- [Contact & Project Transmission Console](https://devillabs.dev/contact)
+- [About Devil Labs & Founder Specifications](https://devillabs.dev/about)
+- [Accelerated Mobile Services (AMP)](https://devillabs.dev/amp-services.html)
 
 ## Verification & Trust Signals
 - 99.9% System Uptime SLA

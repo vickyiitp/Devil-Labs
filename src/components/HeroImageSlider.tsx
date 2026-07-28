@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 
-import heroImg1 from '../assets/images/hero_builder_cityscape_1784785823510.jpg';
-import heroImg2 from '../assets/images/hero_intelligent_systems_1784785833146.jpg';
-import heroImg3 from '../assets/images/hero_problem_chaos_1784785846477.jpg';
+import heroImg1 from '../assets/images/hero_builder_cityscape_1784785823510.webp';
+import heroImg2 from '../assets/images/hero_intelligent_systems_1784785833146.webp';
+import heroImg3 from '../assets/images/hero_problem_chaos_1784785846477.webp';
 
 const IMAGES = [heroImg1, heroImg2, heroImg3];
 

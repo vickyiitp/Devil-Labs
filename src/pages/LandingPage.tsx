@@ -774,7 +774,7 @@ export default function LandingPage({ navigate }: LandingPageProps) {
 
                   <div className={`p-3 rounded-xl border font-sans text-xs font-black shrink-0 ${
                     isActive 
-                      ? 'bg-violet-50 border-violet-100 text-violet-400' 
+                      ? 'bg-violet-950 border-violet-600 text-violet-100' 
                       : 'bg-[#111] border-white/10 text-stone-400'
                   }`}>
                     {item.number}

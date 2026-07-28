@@ -229,11 +229,11 @@ export default function BentoGrid({ onNavigateContact }: { onNavigateContact: ()
       {/* CTA Bento Box */}
       <div id="bento-box-cta" className="md:col-span-3 interactive-clay-card p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-8 mt-4 text-left">
         <div className="space-y-3 text-left max-w-xl">
-          <div className="inline-flex items-center space-x-2 px-3 py-1 bg-violet-50 border border-violet-200 text-violet-400 font-mono text-[10px] uppercase rounded-full">
+          <div className="inline-flex items-center space-x-2 px-3 py-1 bg-violet-950 border border-violet-800 text-violet-200 font-mono text-[10px] uppercase rounded-full">
             <Zap size={10} />
             <span>CUSTOM ENGAGEMENT</span>
           </div>
-          <h4 className="font-display font-extrabold text-2xl sm:text-3xl text-stone-100 tracking-tight uppercase leading-[1.1]">Need custom system engineering?</h4>
+          <h3 className="font-display font-extrabold text-2xl sm:text-3xl text-stone-100 tracking-tight uppercase leading-[1.1]">Need custom system engineering?</h3>
           <p className="text-stone-400 text-xs sm:text-sm leading-relaxed normal-case">
             We partner with a limited roster of companies quarterly. Let's design, code, and deploy your custom solution.
           </p>

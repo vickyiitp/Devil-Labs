@@ -14,6 +14,10 @@ import {
   Info
 } from 'lucide-react';
 
+import heroImg1 from '../assets/images/hero_builder_cityscape_1784785823510.webp';
+import heroImg2 from '../assets/images/hero_intelligent_systems_1784785833146.webp';
+import heroImg3 from '../assets/images/hero_problem_chaos_1784785846477.webp';
+
 interface FeatureCard {
   id: number;
   category: string;
@@ -39,7 +43,7 @@ const FEATURE_CARDS: FeatureCard[] = [
     ],
     type: "purple",
     icon: Laptop,
-    bgImage: "/src/assets/images/hero_builder_cityscape_1784785823510.jpg"
+    bgImage: heroImg1
   },
   {
     id: 2,
@@ -54,7 +58,7 @@ const FEATURE_CARDS: FeatureCard[] = [
     ],
     type: "rose",
     icon: Palette,
-    bgImage: "/src/assets/images/hero_intelligent_systems_1784785833146.jpg"
+    bgImage: heroImg2
   },
   {
     id: 3,
@@ -69,7 +73,7 @@ const FEATURE_CARDS: FeatureCard[] = [
     ],
     type: "amber",
     icon: Layers,
-    bgImage: "/src/assets/images/hero_problem_chaos_1784785846477.jpg"
+    bgImage: heroImg3
   },
   {
     id: 4,
@@ -84,7 +88,7 @@ const FEATURE_CARDS: FeatureCard[] = [
     ],
     type: "indigo",
     icon: Type,
-    bgImage: "/src/assets/images/hero_builder_cityscape_1784785823510.jpg"
+    bgImage: heroImg1
   },
   {
     id: 5,
@@ -99,7 +103,7 @@ const FEATURE_CARDS: FeatureCard[] = [
     ],
     type: "emerald",
     icon: Cpu,
-    bgImage: "/src/assets/images/hero_intelligent_systems_1784785833146.jpg"
+    bgImage: heroImg2
   },
   {
     id: 6,
@@ -114,7 +118,7 @@ const FEATURE_CARDS: FeatureCard[] = [
     ],
     type: "cyan",
     icon: Database,
-    bgImage: "/src/assets/images/hero_problem_chaos_1784785846477.jpg"
+    bgImage: heroImg3
   },
   {
     id: 7,
@@ -129,7 +133,7 @@ const FEATURE_CARDS: FeatureCard[] = [
     ],
     type: "orange",
     icon: TrendingUp,
-    bgImage: "/src/assets/images/hero_builder_cityscape_1784785823510.jpg"
+    bgImage: heroImg1
   },
   {
     id: 8,
@@ -144,7 +148,7 @@ const FEATURE_CARDS: FeatureCard[] = [
     ],
     type: "dark",
     icon: CloudLightning,
-    bgImage: "/src/assets/images/hero_intelligent_systems_1784785833146.jpg"
+    bgImage: heroImg2
   }
 ];
 

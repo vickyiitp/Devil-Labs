@@ -7,9 +7,9 @@ import {
 } from 'lucide-react';
 import { audioEngine } from '../lib/audio';
 
-import heroImg1 from '../assets/images/hero_builder_cityscape_1784785823510.jpg';
-import heroImg2 from '../assets/images/hero_intelligent_systems_1784785833146.jpg';
-import heroImg3 from '../assets/images/hero_problem_chaos_1784785846477.jpg';
+import heroImg1 from '../assets/images/hero_builder_cityscape_1784785823510.webp';
+import heroImg2 from '../assets/images/hero_intelligent_systems_1784785833146.webp';
+import heroImg3 from '../assets/images/hero_problem_chaos_1784785846477.webp';
 
 interface DisciplineCard {
   id: number;
@@ -205,9 +205,9 @@ export default function ArchedHeroCarousel() {
               <span className="text-[8px] text-violet-600 font-black tracking-widest uppercase block">
                 {displayCard.subtitle}
               </span>
-              <h4 className="font-display font-black text-xl text-white tracking-tight uppercase leading-none">
+              <h3 className="font-display font-black text-xl text-white tracking-tight uppercase leading-none">
                 {displayCard.title}
-              </h4>
+              </h3>
               <p className="text-stone-300 text-xs leading-relaxed font-light">
                 {displayCard.desc}
               </p>
@@ -346,9 +346,9 @@ export default function ArchedHeroCarousel() {
                     exit={{ opacity: 0, x: 8 }}
                     transition={{ duration: 0.25, ease: "easeOut" }}
                   >
-                    <h4 className="font-display font-black text-2xl text-white tracking-tight uppercase leading-none">
+                    <h3 className="font-display font-black text-2xl text-white tracking-tight uppercase leading-none">
                       {displayCard.title}
-                    </h4>
+                    </h3>
                     <p className="text-stone-300 text-xs sm:text-sm leading-relaxed font-light mt-1.5">
                       {displayCard.desc}
                     </p>
@@ -553,9 +553,9 @@ function Interactive3DCardWrapper({
           <span className="text-[8px] text-violet-600 block tracking-widest uppercase font-black">
             {card.subtitle}
           </span>
-          <h4 className="font-display font-black text-base text-white uppercase tracking-tight leading-tight group-hover:text-violet-600 transition-colors">
+          <h3 className="font-display font-black text-base text-white uppercase tracking-tight leading-tight group-hover:text-violet-600 transition-colors">
             {card.title}
-          </h4>
+          </h3>
           <div className="flex justify-between items-center text-[7px] text-stone-400 pt-2 border-t border-white/10 mt-2 font-black">
             <span>{card.metric}</span>
             <span className="text-stone-400">✦ CAPABILITY</span>

@@ -154,10 +154,10 @@ export default function Navigation({ currentPath, navigate }: NavigationProps) {
             href="https://wa.me/918102099678?text=Hi%20Devil%20Labs%2C%20I%20would%20like%20to%20consult%20on%20a%20project%20idea%21" 
             target="_blank"
             rel="noreferrer"
-            className="flex items-center space-x-1.5 text-emerald-600 border border-emerald-200 bg-emerald-50 px-2.5 py-1 rounded-full hover:bg-emerald-100/60 hover:border-emerald-300 transition-all shadow-[0_2px_6px_rgba(16,185,129,0.1)]"
+            className="flex items-center space-x-1.5 text-emerald-950 border border-emerald-300 bg-emerald-100 px-2.5 py-1 rounded-full hover:bg-emerald-200 hover:border-emerald-400 transition-all shadow-[0_2px_6px_rgba(16,185,129,0.1)]"
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-            <span className="text-xs tracking-widest font-black uppercase">TALK INSTANTLY</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse" />
+            <span className="text-xs tracking-widest font-black uppercase text-emerald-950">TALK INSTANTLY</span>
           </a>
         </div>
       </div>
