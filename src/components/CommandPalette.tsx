@@ -134,7 +134,7 @@ export default function CommandPalette({ navigate }: CommandPaletteProps) {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsOpen(false)}
-              className="fixed inset-0 bg-stone-900/30 backdrop-blur-sm z-[200]"
+              className="fixed inset-0 bg-white/20/30 backdrop-blur-sm z-[200]"
             />
             
             <div className="fixed inset-0 z-[201] flex items-start justify-center pt-[20vh] pointer-events-none px-4">
@@ -151,10 +151,10 @@ export default function CommandPalette({ navigate }: CommandPaletteProps) {
                     setIsOpen(false);
                   }
                 }}
-                className="w-full max-w-2xl bg-[#faf8f5] border border-stone-200/50 shadow-2xl rounded-3xl overflow-hidden pointer-events-auto flex flex-col max-h-[60vh] clay-card text-stone-800 p-6 md:p-8 touch-pan-x"
+                className="w-full max-w-2xl bg-[#0a0a0a] border border-white/10/50 shadow-2xl rounded-3xl overflow-hidden pointer-events-auto flex flex-col max-h-[60vh] clay-card text-stone-100 p-6 md:p-8 touch-pan-x"
               >
                 {/* Header / Search Input */}
-                <div className="flex items-center px-5 py-4 border-b border-stone-200/30 text-stone-800 bg-white">
+                <div className="flex items-center px-5 py-4 border-b border-white/10/30 text-stone-100 bg-[#050505]">
                   <Search size={20} className="text-stone-400 mr-3" />
                   <input
                     ref={inputRef}
@@ -162,13 +162,13 @@ export default function CommandPalette({ navigate }: CommandPaletteProps) {
                     placeholder="Search documentation, services, or tools..."
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
-                    className="flex-grow bg-transparent border-none outline-none text-base font-medium placeholder-stone-400 focus:ring-0 text-stone-850"
+                    className="flex-grow bg-transparent border-none outline-none text-base font-medium placeholder-stone-400 focus:ring-0 text-stone-100"
                   />
-                  <div className="flex items-center space-x-2 text-[10px] font-mono text-stone-400 bg-stone-100 px-2.5 py-1 rounded-lg border border-stone-200/30">
+                  <div className="flex items-center space-x-2 text-[10px] font-mono text-stone-400 bg-[#111] px-2.5 py-1 rounded-lg border border-white/10/30">
                     <Command size={11} />
                     <span>K</span>
                   </div>
-                  <button onClick={() => setIsOpen(false)} className="ml-4 text-stone-400 hover:text-stone-800 transition-colors">
+                  <button onClick={() => setIsOpen(false)} className="ml-4 text-stone-400 hover:text-stone-100 transition-colors">
                     <X size={20} />
                   </button>
                 </div>
@@ -195,24 +195,24 @@ export default function CommandPalette({ navigate }: CommandPaletteProps) {
                                   key={idx}
                                   onClick={() => handleSelect(item.path)}
                                   onMouseEnter={() => setSelectedIndex(globalIndex)}
-                                  className={`w-full flex items-center justify-between px-3.5 py-3 rounded-2xl transition-colors group text-left ${isSelected ? 'bg-stone-100' : 'hover:bg-stone-50/50'}`}
+                                  className={`w-full flex items-center justify-between px-3.5 py-3 rounded-2xl transition-colors group text-left ${isSelected ? 'bg-[#111]' : 'hover:bg-[#0a0a0a]/50'}`}
                                 >
                                   <div className="flex items-center space-x-3.5 flex-grow min-w-0">
-                                    <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-colors shrink-0 ${isSelected ? 'bg-violet-100 text-violet-600' : 'bg-stone-100 text-stone-400 group-hover:text-violet-600'}`}>
+                                    <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-colors shrink-0 ${isSelected ? 'bg-violet-100 text-violet-600' : 'bg-[#111] text-stone-400 group-hover:text-violet-600'}`}>
                                       <Icon size={14} />
                                     </div>
                                     <div className="flex flex-col min-w-0">
-                                      <span className={`text-sm font-bold truncate transition-colors ${isSelected ? 'text-stone-850' : 'text-stone-700 group-hover:text-stone-850'}`}>
+                                      <span className={`text-sm font-bold truncate transition-colors ${isSelected ? 'text-stone-100' : 'text-stone-300 group-hover:text-stone-100'}`}>
                                         {item.title}
                                       </span>
                                       {item.description && (
-                                        <span className="text-[11px] text-stone-400 truncate mt-0.5 max-w-full font-light font-sans group-hover:text-stone-500">
+                                        <span className="text-[11px] text-stone-400 truncate mt-0.5 max-w-full font-light font-sans group-hover:text-stone-400">
                                           {item.description}
                                         </span>
                                       )}
                                     </div>
                                   </div>
-                                  <ArrowRight size={14} className={`shrink-0 transition-all transform ${isSelected ? 'text-stone-800 opacity-100 translate-x-0' : 'text-stone-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 group-hover:text-stone-800'}`} />
+                                  <ArrowRight size={14} className={`shrink-0 transition-all transform ${isSelected ? 'text-stone-100 opacity-100 translate-x-0' : 'text-stone-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 group-hover:text-stone-100'}`} />
                                 </button>
                               );
                             })}
@@ -229,11 +229,11 @@ export default function CommandPalette({ navigate }: CommandPaletteProps) {
                 </div>
                 
                 {/* Footer */}
-                <div className="px-5 py-3 border-t border-stone-200/20 bg-stone-50 text-[10px] font-mono text-stone-400 flex justify-between">
+                <div className="px-5 py-3 border-t border-white/10/20 bg-[#0a0a0a] text-[10px] font-mono text-stone-400 flex justify-between">
                   <span>DEVIL LABS // OS</span>
                   <div className="flex space-x-4">
-                    <span><kbd className="font-sans px-1 py-0.5 bg-stone-200/40 border border-stone-200/50 rounded">↑</kbd> <kbd className="font-sans px-1 py-0.5 bg-stone-200/40 border border-stone-200/50 rounded">↓</kbd> Navigate</span>
-                    <span><kbd className="font-sans px-1 py-0.5 bg-stone-200/40 border border-stone-200/50 rounded">↵</kbd> Select</span>
+                    <span><kbd className="font-sans px-1 py-0.5 bg-white/10/40 border border-white/10/50 rounded">↑</kbd> <kbd className="font-sans px-1 py-0.5 bg-white/10/40 border border-white/10/50 rounded">↓</kbd> Navigate</span>
+                    <span><kbd className="font-sans px-1 py-0.5 bg-white/10/40 border border-white/10/50 rounded">↵</kbd> Select</span>
                   </div>
                 </div>
               </motion.div>

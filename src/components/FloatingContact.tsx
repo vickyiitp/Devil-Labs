@@ -44,9 +44,9 @@ export default function FloatingContact() {
       name: 'Email Us',
       href: 'mailto:devil.labs.contact@gmail.com',
       icon: Mail,
-      bgColor: 'bg-stone-100',
-      textColor: 'text-stone-700',
-      hoverBorder: 'hover:border-stone-300',
+      bgColor: 'bg-[#111]',
+      textColor: 'text-stone-300',
+      hoverBorder: 'hover:border-white/20',
       label: 'Send Direct Email',
       isExternal: false,
     },
@@ -73,10 +73,10 @@ export default function FloatingContact() {
             exit={{ opacity: 0, y: 15, scale: 0.92 }}
             transition={{ duration: 0.2, ease: 'easeOut' }}
             id="widget-menu"
-            className="flex flex-col space-y-2.5 mb-3 items-end p-3 rounded-2xl bg-white/95 border border-stone-200 shadow-[0_10px_35px_rgba(0,0,0,0.1)] backdrop-blur-md w-56 sm:w-60"
+            className="flex flex-col space-y-2.5 mb-3 items-end p-3 rounded-2xl bg-[#050505]/95 border border-white/10 shadow-[0_10px_35px_rgba(0,0,0,0.1)] backdrop-blur-md w-56 sm:w-60"
           >
-            <div className="w-full pb-2 border-b border-stone-200/80 px-2 flex items-center justify-between">
-              <span className="text-[10px] font-mono font-black uppercase text-stone-500 tracking-wider flex items-center gap-1">
+            <div className="w-full pb-2 border-b border-white/10 px-2 flex items-center justify-between">
+              <span className="text-[10px] font-mono font-black uppercase text-stone-400 tracking-wider flex items-center gap-1">
                 <Sparkles size={11} className="text-violet-600" />
                 <span>Connect With Us</span>
               </span>

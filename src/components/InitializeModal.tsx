@@ -257,7 +257,7 @@ ${clientName || 'Partner'}`;
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 bg-stone-900/60 backdrop-blur-md pointer-events-auto"
+            className="fixed inset-0 bg-white/20/60 backdrop-blur-md pointer-events-auto"
           />
 
           {/* Modal Window */}
@@ -274,7 +274,7 @@ ${clientName || 'Partner'}`;
                 onClose();
               }
             }}
-            className="relative w-full max-w-xl p-6 md:p-8 z-10 overflow-hidden pointer-events-auto my-8 text-stone-800 clay-card touch-pan-x"
+            className="relative w-full max-w-xl p-6 md:p-8 z-10 overflow-hidden pointer-events-auto my-8 text-stone-100 clay-card touch-pan-x"
           >
             {/* Soft warm ambient background glow */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-24 bg-violet-200/40 blur-3xl pointer-events-none rounded-full" />
@@ -284,7 +284,7 @@ ${clientName || 'Partner'}`;
             <button
               onMouseEnter={() => audioEngine.playHover()}
               onClick={() => { audioEngine.playClick(); onClose(); }}
-              className="absolute top-4 right-4 p-2 text-stone-400 hover:text-stone-700 hover:bg-stone-100 transition-all rounded-full cursor-pointer z-20"
+              className="absolute top-4 right-4 p-2 text-stone-400 hover:text-stone-300 hover:bg-[#111] transition-all rounded-full cursor-pointer z-20"
               aria-label="Close modal"
             >
               <X size={18} />
@@ -294,12 +294,12 @@ ${clientName || 'Partner'}`;
             <div className="space-y-2 mb-6">
               <div className="inline-flex items-center space-x-2 px-2.5 py-1 bg-violet-100 border border-violet-200/50 rounded-full">
                 <span className="w-1.5 h-1.5 rounded-full bg-violet-500 animate-pulse" />
-                <span className="font-mono text-[8px] text-violet-700 tracking-[0.25em] uppercase font-bold">Project Consultation Portal</span>
+                <span className="font-mono text-[8px] text-violet-400 tracking-[0.25em] uppercase font-bold">Project Consultation Portal</span>
               </div>
-              <h3 className="text-xl md:text-2xl font-display font-black tracking-tight text-stone-800 uppercase">
+              <h3 className="text-xl md:text-2xl font-display font-black tracking-tight text-stone-100 uppercase">
                 Initialize Project
               </h3>
-              <p className="text-stone-600 text-xs font-sans leading-relaxed">
+              <p className="text-stone-300 text-xs font-sans leading-relaxed">
                 Connect with India's highest-tier autonomous software laboratory. Choose your transmission medium.
               </p>
             </div>
@@ -311,7 +311,7 @@ ${clientName || 'Partner'}`;
                 className={`py-2.5 text-[10px] font-mono font-bold tracking-widest uppercase rounded-xl transition-all cursor-pointer ${
                   activeTab === 'dispatch'
                     ? 'clay-violet-solid'
-                    : 'text-stone-500 hover:text-stone-800'
+                    : 'text-stone-400 hover:text-stone-100'
                 }`}
               >
                 Send Project Inquiry
@@ -321,7 +321,7 @@ ${clientName || 'Partner'}`;
                 className={`py-2.5 text-[10px] font-mono font-bold tracking-widest uppercase rounded-xl transition-all cursor-pointer ${
                   activeTab === 'hotlines'
                     ? 'clay-violet-solid'
-                    : 'text-stone-500 hover:text-stone-800'
+                    : 'text-stone-400 hover:text-stone-100'
                 }`}
               >
                 Direct Contact Channels
@@ -338,7 +338,7 @@ ${clientName || 'Partner'}`;
                         {/* Name */}
                         <div className="space-y-1 relative group/field">
                           <div className="flex justify-between items-center">
-                            <label className="block text-[9px] font-mono text-stone-500 uppercase tracking-widest group-hover/field:text-violet-600 transition-colors duration-300">
+                            <label className="block text-[9px] font-mono text-stone-400 uppercase tracking-widest group-hover/field:text-violet-600 transition-colors duration-300">
                               Your Full Name *
                             </label>
                             {clientName && (
@@ -358,7 +358,7 @@ ${clientName || 'Partner'}`;
                             value={clientName}
                             onChange={(e) => setClientName(e.target.value)}
                             placeholder="E.G., JOHN DOE"
-                            className="w-full px-3.5 py-2.5 text-xs font-mono text-stone-800 placeholder-stone-400 focus:outline-none focus:border-violet-400 focus:ring-1 focus:ring-violet-300/30 transition-all rounded-xl clay-inset uppercase"
+                            className="w-full px-3.5 py-2.5 text-xs font-mono text-stone-100 placeholder-stone-400 focus:outline-none focus:border-violet-400 focus:ring-1 focus:ring-violet-300/30 transition-all rounded-xl clay-inset uppercase"
                           />
                           {clientName.length > 2 && (
                             <motion.div 
@@ -374,7 +374,7 @@ ${clientName || 'Partner'}`;
                         {/* Email */}
                         <div className="space-y-1 relative group/field">
                           <div className="flex justify-between items-center">
-                            <label className="block text-[9px] font-mono text-stone-500 uppercase tracking-widest group-hover/field:text-violet-600 transition-colors duration-300">
+                            <label className="block text-[9px] font-mono text-stone-400 uppercase tracking-widest group-hover/field:text-violet-600 transition-colors duration-300">
                               Your Email Address *
                             </label>
                             {email && /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email) && (
@@ -394,7 +394,7 @@ ${clientName || 'Partner'}`;
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             placeholder="E.G., JOHN@COMPANY.COM"
-                            className="w-full px-3.5 py-2.5 text-xs font-mono text-stone-800 placeholder-stone-400 focus:outline-none focus:border-violet-400 focus:ring-1 focus:ring-violet-300/30 transition-all rounded-xl clay-inset uppercase"
+                            className="w-full px-3.5 py-2.5 text-xs font-mono text-stone-100 placeholder-stone-400 focus:outline-none focus:border-violet-400 focus:ring-1 focus:ring-violet-300/30 transition-all rounded-xl clay-inset uppercase"
                           />
                           {email && !/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email) && (
                             <motion.div 
@@ -412,7 +412,7 @@ ${clientName || 'Partner'}`;
                         {/* Phone - ALL NATIONS SELECTOR */}
                         <div className="space-y-1 relative group/field">
                           <div className="flex justify-between items-center">
-                            <label className="block text-[9px] font-mono text-stone-500 uppercase tracking-widest group-hover/field:text-violet-600 transition-colors duration-300">
+                            <label className="block text-[9px] font-mono text-stone-400 uppercase tracking-widest group-hover/field:text-violet-600 transition-colors duration-300">
                               Direct Contact Number *
                             </label>
                             {phoneNumber && /^\d{4,14}$/.test(phoneNumber.replace(/[\s\-()]/g, '')) && (
@@ -431,10 +431,10 @@ ${clientName || 'Partner'}`;
                               <select
                                 value={phonePrefix}
                                 onChange={(e) => setPhonePrefix(e.target.value)}
-                                className="appearance-none px-2.5 py-2.5 text-xs font-mono text-stone-800 focus:outline-none focus:border-violet-400 focus:ring-1 focus:ring-violet-300/30 transition-all rounded-xl clay-inset cursor-pointer h-full bg-[#faf9f6]"
+                                className="appearance-none px-2.5 py-2.5 text-xs font-mono text-stone-100 focus:outline-none focus:border-violet-400 focus:ring-1 focus:ring-violet-300/30 transition-all rounded-xl clay-inset cursor-pointer h-full bg-[#faf9f6]"
                               >
                                 {COUNTRIES.map((c) => (
-                                  <option key={c.code} value={c.dialCode} className="bg-[#fcfbf9] text-stone-800">
+                                  <option key={c.code} value={c.dialCode} className="bg-[#0d0d12] text-stone-100">
                                     {c.flag} {c.dialCode} ({c.code})
                                   </option>
                                 ))}
@@ -446,7 +446,7 @@ ${clientName || 'Partner'}`;
                               value={phoneNumber}
                               onChange={(e) => setPhoneNumber(e.target.value)}
                               placeholder="PHONE NUMBER"
-                              className="flex-1 px-3.5 py-2.5 text-xs font-mono text-stone-800 placeholder-stone-400 focus:outline-none focus:border-violet-400 focus:ring-1 focus:ring-violet-300/30 transition-all rounded-xl clay-inset"
+                              className="flex-1 px-3.5 py-2.5 text-xs font-mono text-stone-100 placeholder-stone-400 focus:outline-none focus:border-violet-400 focus:ring-1 focus:ring-violet-300/30 transition-all rounded-xl clay-inset"
                             />
                           </div>
                         </div>
@@ -454,7 +454,7 @@ ${clientName || 'Partner'}`;
                         {/* Organization */}
                         <div className="space-y-1 relative group/field">
                           <div className="flex justify-between items-center">
-                            <label className="block text-[9px] font-mono text-stone-500 uppercase tracking-widest group-hover/field:text-violet-600 transition-colors duration-300">
+                            <label className="block text-[9px] font-mono text-stone-400 uppercase tracking-widest group-hover/field:text-violet-600 transition-colors duration-300">
                               Company or Organization
                             </label>
                             {companyName && (
@@ -473,7 +473,7 @@ ${clientName || 'Partner'}`;
                             value={companyName}
                             onChange={(e) => setCompanyName(e.target.value)}
                             placeholder="COMPANY NAME (OPTIONAL)"
-                            className="w-full px-3.5 py-2.5 text-xs font-mono text-stone-800 placeholder-stone-400 focus:outline-none focus:border-violet-400 focus:ring-1 focus:ring-violet-300/30 transition-all rounded-xl clay-inset uppercase"
+                            className="w-full px-3.5 py-2.5 text-xs font-mono text-stone-100 placeholder-stone-400 focus:outline-none focus:border-violet-400 focus:ring-1 focus:ring-violet-300/30 transition-all rounded-xl clay-inset uppercase"
                           />
                         </div>
                       </div>
@@ -481,17 +481,17 @@ ${clientName || 'Partner'}`;
                       {/* Budget Tier upgraded according to pricing */}
                       <div className="space-y-1 relative group/field">
                         <div className="flex justify-between items-center">
-                          <label className="block text-[9px] font-mono text-stone-500 uppercase tracking-widest group-hover/field:text-violet-600 transition-colors duration-300">Estimated Project Budget</label>
+                          <label className="block text-[9px] font-mono text-stone-400 uppercase tracking-widest group-hover/field:text-violet-600 transition-colors duration-300">Estimated Project Budget</label>
                           <span className="text-[8px] font-mono text-violet-600 uppercase tracking-widest">Active in {currency}</span>
                         </div>
                         <select
                           value={budgetTier}
                           onChange={(e) => setBudgetTier(e.target.value)}
-                          className="w-full px-3.5 py-2.5 text-xs font-mono text-stone-800 focus:outline-none focus:border-violet-400 focus:ring-1 focus:ring-violet-300/30 transition-all rounded-xl clay-inset cursor-pointer bg-transparent"
+                          className="w-full px-3.5 py-2.5 text-xs font-mono text-stone-100 focus:outline-none focus:border-violet-400 focus:ring-1 focus:ring-violet-300/30 transition-all rounded-xl clay-inset cursor-pointer bg-transparent"
                         >
                           <option value="" className="text-stone-400">Select estimated project budget...</option>
                           {budgetOptions.map((opt) => (
-                            <option key={opt.value} value={opt.value} className="bg-[#fcfbf9] text-stone-800">
+                            <option key={opt.value} value={opt.value} className="bg-[#0d0d12] text-stone-100">
                               {opt.label}
                             </option>
                           ))}
@@ -501,7 +501,7 @@ ${clientName || 'Partner'}`;
                       {/* Specifications */}
                       <div className="space-y-1 relative group/field">
                         <div className="flex justify-between items-center">
-                          <label className="block text-[9px] font-mono text-stone-500 uppercase tracking-widest group-hover/field:text-violet-600 transition-colors duration-300">Project Vision & Requirements</label>
+                          <label className="block text-[9px] font-mono text-stone-400 uppercase tracking-widest group-hover/field:text-violet-600 transition-colors duration-300">Project Vision & Requirements</label>
                           <span className="text-[8px] font-mono text-stone-400 uppercase tracking-widest">
                             {projectBrief.length} CH
                           </span>
@@ -511,7 +511,7 @@ ${clientName || 'Partner'}`;
                           onChange={(e) => setProjectBrief(e.target.value)}
                           placeholder="Tell us about your core needs, database requirements, or AI expectations..."
                           rows={2}
-                          className="w-full px-3.5 py-2.5 text-xs font-mono text-stone-800 placeholder-stone-400 focus:outline-none focus:border-violet-400 focus:ring-1 focus:ring-violet-300/30 transition-all rounded-xl clay-inset resize-none placeholder:uppercase leading-relaxed"
+                          className="w-full px-3.5 py-2.5 text-xs font-mono text-stone-100 placeholder-stone-400 focus:outline-none focus:border-violet-400 focus:ring-1 focus:ring-violet-300/30 transition-all rounded-xl clay-inset resize-none placeholder:uppercase leading-relaxed"
                         />
                       </div>
 
@@ -573,7 +573,7 @@ ${clientName || 'Partner'}`;
 
               {activeTab === 'hotlines' && (
                 <div className="space-y-4">
-                  <p className="text-stone-600 text-xs font-sans mb-4">
+                  <p className="text-stone-300 text-xs font-sans mb-4">
                     Prefer direct, real-time manual control? Select an option below to initiate a private consultation session immediately.
                   </p>
 
@@ -581,51 +581,51 @@ ${clientName || 'Partner'}`;
                   <button
                     onMouseEnter={() => audioEngine.playHover()}
                     onClick={() => { audioEngine.playClick(); window.open(generateWhatsappUrl(), '_blank'); }}
-                    className="w-full flex items-center justify-between p-4 bg-emerald-50 hover:bg-emerald-100/50 border border-emerald-100 rounded-2xl transition-all duration-300 group cursor-pointer text-left shadow-sm"
+                    className="w-full flex items-center justify-between p-4 bg-emerald-950/40 hover:bg-emerald-900/50 border border-emerald-500/30 rounded-2xl transition-all duration-300 group cursor-pointer text-left shadow-sm"
                   >
                     <div className="flex items-start space-x-4">
-                      <div className="p-3 bg-emerald-100 text-emerald-600 rounded-xl group-hover:scale-110 transition-transform">
+                      <div className="p-3 bg-emerald-900/60 text-emerald-400 rounded-xl group-hover:scale-110 transition-transform">
                         <MessageSquare size={18} />
                       </div>
                       <div>
-                        <h4 className="text-sm font-bold text-stone-800 tracking-wide font-sans">
+                        <h4 className="text-sm font-bold text-stone-100 tracking-wide font-sans">
                           INSTANT WHATSAPP CHAT
                         </h4>
-                        <p className="text-[10px] text-emerald-600/80 font-mono tracking-wider uppercase mt-0.5">
+                        <p className="text-[10px] text-emerald-400 font-mono tracking-wider uppercase mt-0.5">
                           Direct Line to 91 81020 99678
                         </p>
                       </div>
                     </div>
-                    <ArrowUpRight size={16} className="text-emerald-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                    <ArrowUpRight size={16} className="text-emerald-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                   </button>
 
                   {/* Email hotline */}
                   <button
                     onMouseEnter={() => audioEngine.playHover()}
                     onClick={() => { audioEngine.playClick(); window.location.href = generateEmailUrl(); }}
-                    className="w-full flex items-center justify-between p-4 bg-violet-50 hover:bg-violet-100/50 border border-violet-100 rounded-2xl transition-all duration-300 group cursor-pointer text-left shadow-sm"
+                    className="w-full flex items-center justify-between p-4 bg-violet-950/40 hover:bg-violet-900/50 border border-violet-500/30 rounded-2xl transition-all duration-300 group cursor-pointer text-left shadow-sm"
                   >
                     <div className="flex items-start space-x-4">
-                      <div className="p-3 bg-violet-100 text-violet-600 rounded-xl group-hover:scale-110 transition-transform">
+                      <div className="p-3 bg-violet-900/60 text-violet-400 rounded-xl group-hover:scale-110 transition-transform">
                         <Mail size={18} />
                       </div>
                       <div>
-                        <h4 className="text-sm font-bold text-stone-800 tracking-wide font-sans">
+                        <h4 className="text-sm font-bold text-stone-100 tracking-wide font-sans">
                           SECURE EMAIL TRANSMISSION
                         </h4>
-                        <p className="text-[10px] text-violet-600/80 font-mono tracking-wider uppercase mt-0.5">
+                        <p className="text-[10px] text-violet-400 font-mono tracking-wider uppercase mt-0.5">
                           devil.labs.contact@gmail.com
                         </p>
                       </div>
                     </div>
-                    <ArrowUpRight size={16} className="text-violet-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                    <ArrowUpRight size={16} className="text-violet-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                   </button>
 
-                  <div className="border-t border-stone-200/50 pt-4 flex justify-between items-center font-mono text-[9px] text-stone-500">
+                  <div className="border-t border-white/10/50 pt-4 flex justify-between items-center font-mono text-[9px] text-stone-400">
                     <span>PREFILL STRINGS GENERATED DYNAMICALLY</span>
                     <button
                       onClick={() => { audioEngine.playClick(); onClose(); navigate('/contact'); }}
-                      className="flex items-center space-x-1 hover:text-stone-800 transition-colors cursor-pointer"
+                      className="flex items-center space-x-1 hover:text-stone-100 transition-colors cursor-pointer"
                     >
                       <span>GO TO FULL PAGE</span>
                       <ArrowUpRight size={10} />
@@ -636,8 +636,8 @@ ${clientName || 'Partner'}`;
             </div>
 
             {/* Footer */}
-            <div className="border-t border-stone-200/50 pt-4 mt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
-              <div className="flex items-center space-x-2 text-[10px] text-stone-500 font-mono tracking-wider uppercase">
+            <div className="border-t border-white/10/50 pt-4 mt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+              <div className="flex items-center space-x-2 text-[10px] text-stone-400 font-mono tracking-wider uppercase">
                 <Shield size={12} className="text-stone-400" />
                 <span>SECURED BY SSL ENDPOINTS</span>
               </div>
@@ -645,7 +645,7 @@ ${clientName || 'Partner'}`;
               <button
                 onMouseEnter={() => audioEngine.playHover()}
                 onClick={() => { audioEngine.playClick(); onClose(); navigate('/contact'); }}
-                className="flex items-center space-x-2 font-mono text-[10px] font-bold text-stone-500 hover:text-stone-800 tracking-widest uppercase transition-colors cursor-pointer"
+                className="flex items-center space-x-2 font-mono text-[10px] font-bold text-stone-400 hover:text-stone-100 tracking-widest uppercase transition-colors cursor-pointer"
               >
                 <FileText size={12} className="text-violet-500" />
                 <span>GENERATE COMPREHENSIVE BRIEF</span>

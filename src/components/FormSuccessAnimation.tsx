@@ -151,7 +151,7 @@ export default function FormSuccessAnimation({
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: [0, 1.3, 1], opacity: 1 }}
             transition={{ delay: 0.7, duration: 0.4 }}
-            className="absolute -top-1 -right-1 bg-amber-400 text-stone-900 p-1.5 rounded-full shadow-lg border border-white"
+            className="absolute -top-1 -right-1 bg-amber-400 text-white p-1.5 rounded-full shadow-lg border border-white"
           >
             <Sparkles size={14} className="animate-spin-slow" />
           </motion.div>
@@ -165,7 +165,7 @@ export default function FormSuccessAnimation({
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
-          className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-emerald-700 text-[10px] font-mono tracking-widest uppercase font-bold shadow-xs"
+          className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-emerald-400 text-[10px] font-mono tracking-widest uppercase font-bold shadow-xs"
         >
           <span className="relative flex h-2 w-2">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
@@ -178,7 +178,7 @@ export default function FormSuccessAnimation({
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.45 }}
-          className="text-stone-850 font-display font-black text-2xl sm:text-4xl tracking-tighter uppercase"
+          className="text-stone-100 font-display font-black text-2xl sm:text-4xl tracking-tighter uppercase"
         >
           {title}
         </motion.h3>
@@ -187,7 +187,7 @@ export default function FormSuccessAnimation({
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}
-          className="text-stone-500 text-xs font-mono leading-relaxed uppercase tracking-widest max-w-md mx-auto"
+          className="text-stone-400 text-xs font-mono leading-relaxed uppercase tracking-widest max-w-md mx-auto"
         >
           {subtitle}
         </motion.p>
@@ -197,10 +197,10 @@ export default function FormSuccessAnimation({
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6 }}
-          className="clay-card p-6 md:p-8 text-left font-mono text-xs text-stone-600 space-y-3 mt-6 border border-stone-200/40"
+          className="clay-card p-6 md:p-8 text-left font-mono text-xs text-stone-300 space-y-3 mt-6 border border-white/10"
         >
-          <div className="flex items-center justify-between border-b border-stone-200/40 pb-2">
-            <span className="font-bold text-stone-850 uppercase tracking-widest text-[10px] flex items-center gap-1.5">
+          <div className="flex items-center justify-between border-b border-white/10 pb-2">
+            <span className="font-bold text-stone-100 uppercase tracking-widest text-[10px] flex items-center gap-1.5">
               <ShieldCheck size={14} className="text-violet-600" />
               <span>PIPELINE DISPATCH LOGS</span>
             </span>
@@ -216,7 +216,7 @@ export default function FormSuccessAnimation({
             transition={{ delay: 0.65 }}
             className="flex justify-between items-center text-[11px]"
           >
-            <span className="flex items-center space-x-2 text-stone-700">
+            <span className="flex items-center space-x-2 text-stone-300">
               <Mail size={12} className="text-violet-600" />
               <span>SMTP SECURE MAIL:</span>
             </span>
@@ -238,7 +238,7 @@ export default function FormSuccessAnimation({
             transition={{ delay: 0.72 }}
             className="flex justify-between items-center text-[11px]"
           >
-            <span className="flex items-center space-x-2 text-stone-700">
+            <span className="flex items-center space-x-2 text-stone-300">
               <Globe size={12} className="text-sky-600" />
               <span>TELEGRAM BOT API:</span>
             </span>
@@ -260,7 +260,7 @@ export default function FormSuccessAnimation({
             transition={{ delay: 0.79 }}
             className="flex justify-between items-center text-[11px]"
           >
-            <span className="flex items-center space-x-2 text-stone-700">
+            <span className="flex items-center space-x-2 text-stone-300">
               <MessageSquare size={12} className="text-emerald-600" />
               <span>WHATSAPP GATEWAY:</span>
             </span>
@@ -276,7 +276,7 @@ export default function FormSuccessAnimation({
           </motion.div>
 
           {/* Signal wave indicator */}
-          <div className="pt-2 border-t border-stone-200/30 flex items-center justify-between text-[9px] text-stone-400">
+          <div className="pt-2 border-t border-white/10/30 flex items-center justify-between text-[9px] text-stone-400">
             <span>RECEIPT GUARANTEED</span>
             <div className="flex items-center space-x-1">
               {[0.4, 0.8, 0.6, 1.0, 0.5, 0.9, 0.3].map((h, i) => (
@@ -304,7 +304,7 @@ export default function FormSuccessAnimation({
             <button
               type="button"
               onClick={onReset}
-              className="px-8 py-4 bg-white hover:bg-stone-50 border border-stone-200 text-stone-900 font-mono text-xs font-bold tracking-[0.2em] uppercase rounded-full transition-all shadow-md hover:shadow-lg flex items-center justify-center space-x-2.5 mx-auto cursor-pointer"
+              className="px-8 py-4 bg-[#050505] hover:bg-[#0a0a0a] border border-white/10 text-white font-mono text-xs font-bold tracking-[0.2em] uppercase rounded-full transition-all shadow-md hover:shadow-lg flex items-center justify-center space-x-2.5 mx-auto cursor-pointer"
             >
               <RefreshCw size={13} className="text-violet-400" />
               <span>{resetButtonText}</span>

@@ -277,7 +277,7 @@ function MagneticClayCard({
           WebkitBackfaceVisibility: "hidden",
           WebkitFontSmoothing: "subpixel-antialiased",
         }}
-        className={`interactive-clay-card rounded-[32px] p-6 md:p-8 flex flex-col justify-between h-full relative overflow-hidden group cursor-pointer text-left w-full border ${ isAutoHighlighted ? 'border-violet-400 bg-gradient-to-tr from-[#faf9f5] via-[#faf9f5] to-violet-50/20 shadow-[inset_0_0_20px_rgba(139,92,246,0.02)]' : 'border-stone-200/40 bg-[#faf9f5]' }`}
+        className={`interactive-clay-card rounded-[32px] p-6 md:p-8 flex flex-col justify-between h-full relative overflow-hidden group cursor-pointer text-left w-full border ${ isAutoHighlighted ? 'border-violet-400 bg-gradient-to-tr from-[#0a0a0e] via-[#0a0a0e] to-violet-50/20 shadow-[inset_0_0_20px_rgba(139,92,246,0.02)]' : 'border-white/10 bg-[#0a0a0a]' }`}
       >
         {/* Animated outer glowing pulse when auto-highlighted */}
         {isAutoHighlighted && (
@@ -323,7 +323,7 @@ function MagneticClayCard({
         {/* Sequence Badge Indicator */}
         {isAutoHighlighted && !isHovered && (
           <div className="absolute top-2.5 left-5 z-20 flex items-center space-x-1 bg-violet-600 text-white-force px-2.5 py-0.5 rounded-full text-[7px] font-sans font-black tracking-widest uppercase shadow-sm">
-            <span className="w-1 h-1 rounded-full bg-white animate-ping" />
+            <span className="w-1 h-1 rounded-full bg-[#050505] animate-ping" />
             <span>DEMO MODE</span>
           </div>
         )}
@@ -354,13 +354,13 @@ function MagneticClayCard({
           <div>
             {/* Header line & badge */}
             <div className="flex items-center justify-between" style={{ transform: `translateZ(15px) translateX(${coords.rY * 0.2}px) translateY(${-coords.rX * 0.2}px)` }}>
-              <span className="font-sans text-[10px] font-semibold tracking-wider text-stone-500 uppercase">
+              <span className="font-sans text-[10px] font-semibold tracking-wider text-stone-400 uppercase">
                 {topic.subtitle}
               </span>
               <span className={`font-sans text-[9px] font-bold tracking-wider px-2.5 py-0.5 rounded-full uppercase transition-all duration-300 ${
                 isAutoHighlighted 
                   ? 'text-white-force bg-violet-600 shadow-md scale-105' 
-                  : 'text-violet-700 bg-violet-100/60'
+                  : 'text-violet-400 bg-violet-100/60'
               }`}>
                 {topic.badge}
               </span>
@@ -369,7 +369,7 @@ function MagneticClayCard({
             {/* Title with sleek hover shift */}
             <h3 
               style={{ transform: `translateZ(55px) translateX(${coords.rY * 1.1}px) translateY(${-coords.rX * 1.1}px)` }}
-              className="font-display font-black text-xl lg:text-2xl uppercase tracking-tight text-stone-800 mt-1 flex items-center justify-between break-words w-full"
+              className="font-display font-black text-xl lg:text-2xl uppercase tracking-tight text-stone-100 mt-1 flex items-center justify-between break-words w-full"
             >
               <span className="truncate max-w-[90%]">{topic.title}</span>
               <ArrowUpRight size={14} className={`text-stone-400 group-hover:text-violet-600 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300 flex-shrink-0 ${
@@ -380,7 +380,7 @@ function MagneticClayCard({
             {/* Descriptive text */}
             <p 
               style={{ transform: `translateZ(25px) translateX(${coords.rY * 0.5}px) translateY(${-coords.rX * 0.5}px)` }}
-              className={`text-stone-500 leading-relaxed font-sans font-normal mt-1.5 ${
+              className={`text-stone-400 leading-relaxed font-sans font-normal mt-1.5 ${
                 isMobile ? 'text-xs sm:text-sm' : 'text-[11px] line-clamp-2'
               }`}
             >
@@ -391,7 +391,7 @@ function MagneticClayCard({
           {/* Bullet points mapping with slight depth */}
           <div 
             style={{ transform: `translateZ(30px) translateX(${coords.rY * 0.8}px) translateY(${-coords.rX * 0.8}px)` }}
-            className={`grid grid-cols-1 gap-1.5 border-t border-stone-200/45 mt-auto ${
+            className={`grid grid-cols-1 gap-1.5 border-t border-white/10/45 mt-auto ${
               isMobile ? 'pt-3.5' : 'pt-2.5'
             }`}
           >
@@ -400,7 +400,7 @@ function MagneticClayCard({
                 <CheckCircle2 size={11} className={`shrink-0 transition-transform duration-300 ${
                   isAutoHighlighted ? 'text-violet-600 scale-110 animate-pulse' : 'text-violet-600'
                 }`} />
-                <span className="text-stone-700 font-sans text-[11px] font-semibold leading-tight">
+                <span className="text-stone-300 font-sans text-[11px] font-semibold leading-tight">
                   {bullet}
                 </span>
               </div>
@@ -462,7 +462,7 @@ export default function ClayTopicShowcase() {
                 <div className="w-2 h-2 rounded-full bg-amber-500/80" />
                 <div className="w-2 h-2 rounded-full bg-emerald-500/80" />
               </div>
-              <div className="bg-white/5 rounded px-2 py-0.5 text-[7px] text-zinc-400 font-black">
+              <div className="bg-[#050505]/5 rounded px-2 py-0.5 text-[7px] text-zinc-400 font-black">
                 devil-labs.com/dashboard
               </div>
               <div className="w-3" />
@@ -470,12 +470,12 @@ export default function ClayTopicShowcase() {
             {/* Content area */}
             <div className="grid grid-cols-3 gap-2 flex-grow font-sans">
               {/* Left mini stats sidebar */}
-              <div className="col-span-1 bg-white/5 rounded-lg p-1.5 flex flex-col justify-between border border-white/5">
+              <div className="col-span-1 bg-[#050505]/5 rounded-lg p-1.5 flex flex-col justify-between border border-white/5">
                 <span className="text-[6px] text-violet-400 font-black tracking-wider uppercase block">STATUS</span>
                 <div className="space-y-1">
-                  <div className="h-1 bg-white/10 rounded w-full" />
-                  <div className="h-1 bg-white/10 rounded w-4/5" />
-                  <div className="h-1 bg-white/10 rounded w-3/5" />
+                  <div className="h-1 bg-[#050505]/10 rounded w-full" />
+                  <div className="h-1 bg-[#050505]/10 rounded w-4/5" />
+                  <div className="h-1 bg-[#050505]/10 rounded w-3/5" />
                 </div>
                 <div className="flex items-center space-x-1 font-black">
                   <span className="w-1 h-1 rounded-full bg-emerald-400 animate-pulse" />
@@ -483,7 +483,7 @@ export default function ClayTopicShowcase() {
                 </div>
               </div>
               {/* Center interactive charts */}
-              <div className="col-span-2 bg-white/5 rounded-lg p-2 flex flex-col justify-between border border-white/5 relative overflow-hidden">
+              <div className="col-span-2 bg-[#050505]/5 rounded-lg p-2 flex flex-col justify-between border border-white/5 relative overflow-hidden">
                 <div className="flex items-center justify-between mb-1 font-black">
                   <span className="text-[6px] text-zinc-400 uppercase">PERFORMANCE</span>
                   <span className="text-[8px] text-emerald-400">+28.4%</span>
@@ -532,7 +532,7 @@ export default function ClayTopicShowcase() {
               <div className="absolute w-10 h-10 rounded-full bg-gradient-to-tr from-rose-500 to-pink-500 opacity-20 filter blur-xs" />
               
               {/* Core focal dot */}
-              <div className="w-2.5 h-2.5 rounded-full bg-white shadow-[0_0_8px_#ffffff]" />
+              <div className="w-2.5 h-2.5 rounded-full bg-[#050505] shadow-[0_0_8px_#ffffff]" />
             </motion.div>
 
             {/* Bottom brand lockup */}
@@ -557,13 +557,13 @@ export default function ClayTopicShowcase() {
               <div className="flex justify-between items-center px-1 pt-2 mb-2 font-black">
                 <span className="text-[5px] text-white/50">9:41 AM</span>
                 <div className="flex space-x-0.5 items-center">
-                  <div className="w-1.5 h-1 bg-white/50 rounded-xs" />
-                  <div className="w-1 h-1 bg-white/50 rounded-xs" />
+                  <div className="w-1.5 h-1 bg-[#050505]/50 rounded-xs" />
+                  <div className="w-1 h-1 bg-[#050505]/50 rounded-xs" />
                 </div>
               </div>
 
               {/* Premium Workspace UI */}
-              <div className="flex-grow bg-white/[0.03] rounded-xl p-1.5 flex flex-col justify-between border border-white/5 relative overflow-hidden">
+              <div className="flex-grow bg-[#050505]/[0.03] rounded-xl p-1.5 flex flex-col justify-between border border-white/5 relative overflow-hidden">
                 {/* Active user profile */}
                 <div className="flex items-center space-x-1">
                   <div className="w-4 h-4 rounded-full bg-gradient-to-tr from-amber-400 to-orange-500 flex items-center justify-center text-[5px] font-bold text-white-force">
@@ -577,24 +577,24 @@ export default function ClayTopicShowcase() {
 
                 {/* Simulated workspace buttons */}
                 <div className="space-y-1 my-2 font-black">
-                  <div className="bg-white/5 rounded-md p-1 flex items-center justify-between border border-white/5">
+                  <div className="bg-[#050505]/5 rounded-md p-1 flex items-center justify-between border border-white/5">
                     <span className="text-[4.5px] text-zinc-400">UPDATES</span>
                     <div className="w-3 h-1.5 rounded-full bg-amber-500 relative">
                       <motion.div 
-                        className="w-1.5 h-1.5 rounded-full bg-white absolute top-0" 
+                        className="w-1.5 h-1.5 rounded-full bg-[#050505] absolute top-0" 
                         animate={{ left: isActive ? "6px" : "0px" }}
                         transition={{ type: "spring", stiffness: 200 }}
                       />
                     </div>
                   </div>
-                  <div className="bg-white/5 rounded-md p-1 flex items-center justify-between border border-white/5">
+                  <div className="bg-[#050505]/5 rounded-md p-1 flex items-center justify-between border border-white/5">
                     <span className="text-[4.5px] text-zinc-400">SESSION</span>
                     <span className="text-[4.5px] text-amber-400">ACTIVE</span>
                   </div>
                 </div>
 
                 {/* Bottom navigation pill */}
-                <div className="h-1 bg-white/10 rounded w-8 mx-auto" />
+                <div className="h-1 bg-[#050505]/10 rounded w-8 mx-auto" />
               </div>
             </div>
           </div>
@@ -602,12 +602,12 @@ export default function ClayTopicShowcase() {
 
       case 'typography':
         return (
-          <div className="relative w-full h-full bg-[#fdfcf9] rounded-2xl border border-stone-200 overflow-hidden flex flex-col justify-between p-3.5 shadow-xl">
+          <div className="relative w-full h-full bg-[#0d0d12] rounded-2xl border border-white/10 overflow-hidden flex flex-col justify-between p-3.5 shadow-xl">
             {/* Grid layout */}
             <div className="absolute inset-0 bg-[radial-gradient(#0000000a_1px,transparent_1px)] [background-size:10px_10px] opacity-40" />
             
             {/* Top metrics tags */}
-            <div className="relative z-10 flex justify-between items-center text-[5px] font-sans text-stone-400 font-black border-b border-stone-200/50 pb-1.5">
+            <div className="relative z-10 flex justify-between items-center text-[5px] font-sans text-stone-400 font-black border-b border-white/10/50 pb-1.5">
               <span>DESIGN GRID // SPEC 04</span>
               <span>DEVIL LABS</span>
             </div>
@@ -622,14 +622,14 @@ export default function ClayTopicShowcase() {
               </h3>
               <div className="flex items-center space-x-1.5 mt-0.5">
                 <span className="h-0.5 bg-teal-500 rounded-full w-8" />
-                <span className="text-[6px] font-sans text-stone-500 font-black uppercase tracking-widest">
+                <span className="text-[6px] font-sans text-stone-400 font-black uppercase tracking-widest">
                   EDITORIAL STYLE // 2026
                 </span>
               </div>
             </div>
 
             {/* Bottom alignment diagnostics */}
-            <div className="relative z-10 flex justify-between items-center text-[5px] font-sans text-stone-400 font-black pt-1.5 border-t border-stone-200/50">
+            <div className="relative z-10 flex justify-between items-center text-[5px] font-sans text-stone-400 font-black pt-1.5 border-t border-white/10/50">
               <span className="text-teal-600">TRACKING: -0.04em</span>
               <span>KERNING: ACTIVE</span>
             </div>
@@ -638,7 +638,7 @@ export default function ClayTopicShowcase() {
 
       case 'print':
         return (
-          <div className="relative w-full h-full bg-[#faf9f5] rounded-2xl border border-stone-200 overflow-hidden flex flex-col justify-between p-3 shadow-xl font-sans">
+          <div className="relative w-full h-full bg-[#0a0a0a] rounded-2xl border border-white/10 overflow-hidden flex flex-col justify-between p-3 shadow-xl font-sans">
             {/* Bleed indicators / Crop marks on the four corners */}
             <div className="absolute top-1 left-1 w-2 h-2 border-t border-l border-stone-400" />
             <div className="absolute top-1 right-1 w-2 h-2 border-t border-r border-stone-400" />
@@ -646,8 +646,8 @@ export default function ClayTopicShowcase() {
             <div className="absolute bottom-1 right-1 w-2 h-2 border-b border-r border-stone-400" />
 
             {/* Grid guidelines overlay */}
-            <div className="absolute inset-x-2 top-1/2 -translate-y-1/2 border-t border-dashed border-stone-300/40" />
-            <div className="absolute inset-y-2 left-1/2 -translate-x-1/2 border-l border-dashed border-stone-300/40" />
+            <div className="absolute inset-x-2 top-1/2 -translate-y-1/2 border-t border-dashed border-white/20/40" />
+            <div className="absolute inset-y-2 left-1/2 -translate-x-1/2 border-l border-dashed border-white/20/40" />
 
             {/* Content area */}
             <div className="relative z-10 flex-grow flex flex-col justify-between">
@@ -665,9 +665,9 @@ export default function ClayTopicShowcase() {
                   <Printer size={16} className="text-white-force animate-pulse" />
                 </div>
                 <div className="flex flex-col justify-center space-y-1">
-                  <span className="text-[7px] font-sans font-bold uppercase tracking-tight text-stone-800 leading-none font-black">EDITORIAL STANDARD</span>
+                  <span className="text-[7px] font-sans font-bold uppercase tracking-tight text-stone-100 leading-none font-black">EDITORIAL STANDARD</span>
                   <span className="text-[5px] text-stone-400 uppercase tracking-widest leading-none font-black">ISSUE 30</span>
-                  <div className="h-1 bg-stone-200 rounded w-16" />
+                  <div className="h-1 bg-white/10 rounded w-16" />
                 </div>
               </div>
 
@@ -744,7 +744,7 @@ export default function ClayTopicShowcase() {
   };
 
   return (
-    <div className="w-full py-20 md:py-28 bg-[#faf9f5] border-t border-b border-stone-200/50 relative overflow-hidden">
+    <div className="w-full py-20 md:py-28 bg-[#0a0a0a] border-t border-b border-white/10/50 relative overflow-hidden">
       {/* Soft overlay grids */}
       <div className="absolute top-0 left-0 w-full h-full bg-[linear-gradient(rgba(185,175,160,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(185,175,160,0.04)_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
 
@@ -756,10 +756,10 @@ export default function ClayTopicShowcase() {
             <Sparkles size={12} className="animate-spin-slow" />
             <span>CORE DESIGN & ART DIRECTION DISCIPLINES</span>
           </span>
-          <h2 className="font-display font-black text-3xl xs:text-4xl sm:text-5xl text-stone-850 uppercase tracking-tighter leading-none break-words max-w-full">
+          <h2 className="font-display font-black text-3xl xs:text-4xl sm:text-5xl text-stone-100 uppercase tracking-tighter leading-none break-words max-w-full">
             curated premium disciplines
           </h2>
-          <p className="text-stone-500 text-xs sm:text-sm font-sans max-w-xl mx-auto leading-relaxed uppercase tracking-wider">
+          <p className="text-stone-400 text-xs sm:text-sm font-sans max-w-xl mx-auto leading-relaxed uppercase tracking-wider">
             A harmonious spectrum of high-end design capabilities. No cookie-cutter templates. Every element is crafted to reflect top-trending visual standard structures.
           </p>
         </div>
@@ -800,8 +800,8 @@ export default function ClayTopicShowcase() {
             <div className="absolute inset-0 bg-[radial-gradient(circle_500px_at_50%_50%,rgba(139,92,246,0.02),transparent_70%)] pointer-events-none" />
             
             {/* Symmetrical Orbit Rings */}
-            <div className="absolute w-[800px] h-[500px] rounded-full border border-dashed border-stone-200/40 pointer-events-none z-0" />
-            <div className="absolute w-[600px] h-[360px] rounded-full border border-double border-stone-200/20 pointer-events-none z-0" />
+            <div className="absolute w-[800px] h-[500px] rounded-full border border-dashed border-white/10 pointer-events-none z-0" />
+            <div className="absolute w-[600px] h-[360px] rounded-full border border-double border-white/10/20 pointer-events-none z-0" />
 
             {/* Central Orbital Pulse Core pill button */}
             <motion.div 
@@ -856,41 +856,41 @@ export default function ClayTopicShowcase() {
       {/* DETAILED CLAY TOPIC SPECIFICATION MODAL */}
       <AnimatePresence>
         {selectedTopic && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/30 backdrop-blur-md">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-white/20/30 backdrop-blur-md">
             <motion.div 
               initial={{ opacity: 0, scale: 0.95, y: 15 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 15 }}
-              className="bg-[#faf8f4] border border-stone-200 max-w-xl w-full rounded-[40px] p-8 shadow-2xl relative text-left"
+              className="bg-[#faf8f4] border border-white/10 max-w-xl w-full rounded-[40px] p-8 shadow-2xl relative text-left"
             >
               {/* Modal Close Button */}
               <button 
                 onClick={() => setSelectedTopic(null)}
-                className="absolute top-6 right-6 w-8 h-8 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-600 font-bold flex items-center justify-center text-xs transition-colors cursor-pointer"
+                className="absolute top-6 right-6 w-8 h-8 rounded-full bg-[#111] hover:bg-white/10 text-stone-300 font-bold flex items-center justify-center text-xs transition-colors cursor-pointer"
               >
                 ✕
               </button>
 
-              <div className="space-y-6 text-stone-800 font-sans">
+              <div className="space-y-6 text-stone-100 font-sans">
                 <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 rounded-3xl bg-stone-800 text-white-force flex items-center justify-center shadow-md">
+                  <div className="w-12 h-12 rounded-3xl bg-white/10 text-white-force flex items-center justify-center shadow-md">
                     {React.createElement(selectedTopic.icon, { size: 22 })}
                   </div>
                   <div>
                     <span className="text-[10px] text-violet-600 font-black tracking-widest uppercase block">
                       {selectedTopic.subtitle} // STUDIO DISCIPLINE
                     </span>
-                    <h3 className="font-display font-black text-2xl uppercase tracking-tight text-stone-800">
+                    <h3 className="font-display font-black text-2xl uppercase tracking-tight text-stone-100">
                       {selectedTopic.title}
                     </h3>
                   </div>
                 </div>
 
-                <div className="p-4 bg-stone-50 rounded-2xl border border-stone-200/40">
+                <div className="p-4 bg-[#0a0a0a] rounded-2xl border border-white/10">
                   <span className="text-[9px] font-black text-stone-400 uppercase tracking-wider block mb-1">
                     DELIVERY SPECIFICATIONS
                   </span>
-                  <p className="text-stone-700 text-xs sm:text-sm leading-relaxed">
+                  <p className="text-stone-300 text-xs sm:text-sm leading-relaxed">
                     {selectedTopic.description}
                   </p>
                 </div>
@@ -901,24 +901,24 @@ export default function ClayTopicShowcase() {
                   </span>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     {selectedTopic.bullets.map((bullet, idx) => (
-                      <div key={idx} className="flex items-start space-x-2.5 p-3 rounded-xl bg-stone-100/50 border border-stone-200/20">
+                      <div key={idx} className="flex items-start space-x-2.5 p-3 rounded-xl bg-[#111]/50 border border-white/10/20">
                         <CheckCircle2 size={14} className="text-violet-600 mt-0.5 flex-shrink-0" />
                         <div className="space-y-0.5">
-                          <span className="text-[10px] font-black text-stone-800 uppercase block">{bullet}</span>
-                          <span className="text-[9px] text-stone-500 block leading-tight">Guaranteed in deliverable catalog.</span>
+                          <span className="text-[10px] font-black text-stone-100 uppercase block">{bullet}</span>
+                          <span className="text-[9px] text-stone-400 block leading-tight">Guaranteed in deliverable catalog.</span>
                         </div>
                       </div>
                     ))}
                   </div>
                 </div>
 
-                <div className="pt-4 border-t border-stone-200/40 flex justify-between items-center font-sans">
+                <div className="pt-4 border-t border-white/10 flex justify-between items-center font-sans">
                   <span className="text-[9px] text-stone-400 uppercase font-black">
                     STUDIO CREATIVE STANDARD
                   </span>
                   <button
                     onClick={() => setSelectedTopic(null)}
-                    className="px-6 py-2.5 bg-white hover:bg-stone-50 border border-stone-200 text-stone-900 text-[10px] font-black uppercase tracking-widest rounded-full transition-colors cursor-pointer"
+                    className="px-6 py-2.5 bg-[#050505] hover:bg-[#0a0a0a] border border-white/10 text-white text-[10px] font-black uppercase tracking-widest rounded-full transition-colors cursor-pointer"
                   >
                     CLOSE SPECS
                   </button>

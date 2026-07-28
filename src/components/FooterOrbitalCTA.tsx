@@ -132,7 +132,7 @@ export default function FooterOrbitalCTA({ navigate }: FooterOrbitalCTAProps) {
 
   return (
     <div 
-      className="w-full relative py-12 px-4 sm:px-6 lg:px-8 mt-12 mb-8 overflow-visible flex flex-col items-center justify-center border border-stone-200/35 bg-[#FAF9F5]/90 rounded-[28px] sm:rounded-[36px] shadow-[inset_0_2px_12px_rgba(45,38,32,0.02),0_15px_35px_rgba(45,38,32,0.03)] group/orbital transition-all duration-300"
+      className="w-full relative py-12 px-4 sm:px-6 lg:px-8 mt-12 mb-8 overflow-visible flex flex-col items-center justify-center border border-white/10/35 bg-[#FAF9F5]/90 rounded-[28px] sm:rounded-[36px] shadow-[inset_0_2px_12px_rgba(45,38,32,0.02),0_15px_35px_rgba(45,38,32,0.03)] group/orbital transition-all duration-300"
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
@@ -140,8 +140,8 @@ export default function FooterOrbitalCTA({ navigate }: FooterOrbitalCTAProps) {
       <div className="absolute inset-0 opacity-[0.22] pointer-events-none bg-[linear-gradient(to_right,rgba(139,92,246,0.08)_1px,transparent_1px),linear-gradient(to_bottom,rgba(139,92,246,0.08)_1px,transparent_1px)] bg-[size:24px_24px] rounded-[28px] sm:rounded-[36px]" />
 
       {/* Decorative orbital guide circles matching sketch layout */}
-      <div className="absolute w-[440px] h-[440px] border border-dashed border-stone-200/40 rounded-full pointer-events-none hidden lg:block" />
-      <div className="absolute w-[620px] h-[620px] border border-dashed border-stone-200/20 rounded-full pointer-events-none hidden lg:block" />
+      <div className="absolute w-[440px] h-[440px] border border-dashed border-white/10 rounded-full pointer-events-none hidden lg:block" />
+      <div className="absolute w-[620px] h-[620px] border border-dashed border-white/10/20 rounded-full pointer-events-none hidden lg:block" />
 
       {/* Outer Annotations */}
       <div className="w-full max-w-6xl mx-auto flex justify-between items-center px-4 text-[9px] text-stone-400 font-sans tracking-widest uppercase pointer-events-none relative z-10 mb-4 select-none font-black">
@@ -212,8 +212,8 @@ export default function FooterOrbitalCTA({ navigate }: FooterOrbitalCTAProps) {
                     }}
                     onMouseLeave={() => setHoveredCardId(null)}
                     onClick={() => handleCardClick(card.link)}
-                    className={`w-[175px] h-[115px] p-4 rounded-2xl border bg-white/95 cursor-pointer relative flex flex-col justify-between text-left transition-all duration-300 ${
-                      isCardHovered ? 'border-stone-800' : 'border-stone-200/80 hover:border-stone-400'
+                    className={`w-[175px] h-[115px] p-4 rounded-2xl border bg-[#050505]/95 cursor-pointer relative flex flex-col justify-between text-left transition-all duration-300 ${
+                      isCardHovered ? 'border-stone-800' : 'border-white/10 hover:border-stone-400'
                     }`}
                   >
                     {/* Top row */}
@@ -222,7 +222,7 @@ export default function FooterOrbitalCTA({ navigate }: FooterOrbitalCTAProps) {
                         <span className="font-mono text-[7px] text-stone-400 uppercase tracking-widest leading-none mb-0.5">
                           {card.subtitle}
                         </span>
-                        <h4 className="font-display font-black text-[11px] text-stone-900 uppercase tracking-tight leading-none mt-1">
+                        <h4 className="font-display font-black text-[11px] text-white uppercase tracking-tight leading-none mt-1">
                           {card.title}
                         </h4>
                       </div>
@@ -232,7 +232,7 @@ export default function FooterOrbitalCTA({ navigate }: FooterOrbitalCTAProps) {
                     </div>
 
                     {/* Bottom row desc */}
-                    <p className="text-[9px] text-stone-500 leading-normal font-sans font-medium line-clamp-2">
+                    <p className="text-[9px] text-stone-400 leading-normal font-sans font-medium line-clamp-2">
                       {card.desc}
                     </p>
 
@@ -254,7 +254,7 @@ export default function FooterOrbitalCTA({ navigate }: FooterOrbitalCTAProps) {
                 key={card.id}
                 whileTap={{ scale: 0.97 }}
                 onClick={() => handleCardClick(card.link)}
-                className="p-3.5 rounded-xl border border-stone-200 bg-white shadow-sm text-left flex flex-col justify-between space-y-2 cursor-pointer active:border-stone-400 transition-colors"
+                className="p-3.5 rounded-xl border border-white/10 bg-[#050505] shadow-sm text-left flex flex-col justify-between space-y-2 cursor-pointer active:border-stone-400 transition-colors"
               >
                 <div className="flex justify-between items-center">
                   <span className="font-mono text-[7px] text-stone-400 uppercase tracking-widest">
@@ -265,10 +265,10 @@ export default function FooterOrbitalCTA({ navigate }: FooterOrbitalCTAProps) {
                   </div>
                 </div>
                 <div>
-                  <h4 className="font-display font-black text-[10px] text-stone-800 tracking-tight leading-none uppercase">
+                  <h4 className="font-display font-black text-[10px] text-stone-100 tracking-tight leading-none uppercase">
                     {card.title}
                   </h4>
-                  <p className="text-[8px] text-stone-500 mt-1 font-sans leading-tight">
+                  <p className="text-[8px] text-stone-400 mt-1 font-sans leading-tight">
                     {card.desc}
                   </p>
                 </div>
@@ -292,7 +292,7 @@ export default function FooterOrbitalCTA({ navigate }: FooterOrbitalCTAProps) {
             className="px-10 py-5 rounded-full relative flex flex-col items-center justify-center text-center cursor-pointer transition-all duration-300"
           >
             {/* Soft-Claymorphic Shadow and Gradient Background */}
-            <div className="absolute inset-0 rounded-full bg-[#FAF9F5] border-2 border-stone-200 shadow-[0_8px_32px_rgba(0,0,0,0.08),inset_0_4px_12px_rgba(255,255,255,0.8),inset_0_-4px_12px_rgba(0,0,0,0.03)] z-0" />
+            <div className="absolute inset-0 rounded-full bg-[#FAF9F5] border-2 border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.08),inset_0_4px_12px_rgba(255,255,255,0.8),inset_0_-4px_12px_rgba(0,0,0,0.03)] z-0" />
 
             {/* Glowing Aura Ring */}
             <div className={`absolute -inset-1 rounded-full bg-gradient-to-r from-violet-500 to-rose-500 opacity-20 blur-md transition-all duration-500 ${isCenterHovered ? 'scale-110 opacity-35' : 'scale-100'}`} />
@@ -305,7 +305,7 @@ export default function FooterOrbitalCTA({ navigate }: FooterOrbitalCTAProps) {
                 ✦ WORK WITH DEVIL LABS
               </span>
               <div className="flex items-center space-x-2">
-                <span className="font-display font-black text-xl sm:text-2xl text-stone-900 tracking-tight uppercase leading-none">
+                <span className="font-display font-black text-xl sm:text-2xl text-white tracking-tight uppercase leading-none">
                   LET'S TALK
                 </span>
                 <ArrowRight size={16} className="text-violet-600 group-hover/orbital:translate-x-1.5 transition-transform" />

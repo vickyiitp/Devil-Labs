@@ -157,73 +157,73 @@ export default function PolishedFeatureMarquee() {
     switch (type) {
       case 'purple':
         return {
-          bg: 'bg-violet-50/90 border-violet-200/50 hover:border-violet-400',
-          badge: 'bg-violet-100 text-violet-700',
-          text: 'text-violet-900',
+          bg: 'bg-[#0d0d12]/90 border-violet-500/30 hover:border-violet-400',
+          badge: 'bg-violet-950/60 text-violet-300 border border-violet-500/30',
+          text: 'text-stone-100',
           accent: 'from-violet-600 to-indigo-500',
-          glow: 'shadow-violet-200/50'
+          glow: 'shadow-violet-900/30'
         };
       case 'rose':
         return {
-          bg: 'bg-rose-50/90 border-rose-200/50 hover:border-rose-400',
-          badge: 'bg-rose-100 text-rose-700',
-          text: 'text-rose-900',
+          bg: 'bg-[#0d0d12]/90 border-rose-500/30 hover:border-rose-400',
+          badge: 'bg-rose-950/60 text-rose-300 border border-rose-500/30',
+          text: 'text-stone-100',
           accent: 'from-rose-600 to-pink-500',
-          glow: 'shadow-rose-200/50'
+          glow: 'shadow-rose-900/30'
         };
       case 'amber':
         return {
-          bg: 'bg-amber-50/90 border-amber-200/50 hover:border-amber-400',
-          badge: 'bg-amber-100 text-amber-700',
-          text: 'text-amber-900',
+          bg: 'bg-[#0d0d12]/90 border-amber-500/30 hover:border-amber-400',
+          badge: 'bg-amber-950/60 text-amber-300 border border-amber-500/30',
+          text: 'text-stone-100',
           accent: 'from-amber-600 to-yellow-500',
-          glow: 'shadow-amber-200/50'
+          glow: 'shadow-amber-900/30'
         };
       case 'indigo':
         return {
-          bg: 'bg-indigo-50/90 border-indigo-200/50 hover:border-indigo-400',
-          badge: 'bg-indigo-100 text-indigo-700',
-          text: 'text-indigo-900',
+          bg: 'bg-[#0d0d12]/90 border-indigo-500/30 hover:border-indigo-400',
+          badge: 'bg-indigo-950/60 text-indigo-300 border border-indigo-500/30',
+          text: 'text-stone-100',
           accent: 'from-indigo-600 to-violet-500',
-          glow: 'shadow-indigo-200/50'
+          glow: 'shadow-indigo-900/30'
         };
       case 'emerald':
         return {
-          bg: 'bg-emerald-50/90 border-emerald-200/50 hover:border-emerald-400',
-          badge: 'bg-emerald-100 text-emerald-700',
-          text: 'text-emerald-900',
+          bg: 'bg-[#0d0d12]/90 border-emerald-500/30 hover:border-emerald-400',
+          badge: 'bg-emerald-950/60 text-emerald-300 border border-emerald-500/30',
+          text: 'text-stone-100',
           accent: 'from-emerald-600 to-teal-500',
-          glow: 'shadow-emerald-200/50'
+          glow: 'shadow-emerald-900/30'
         };
       case 'cyan':
         return {
-          bg: 'bg-cyan-50/90 border-cyan-200/50 hover:border-cyan-400',
-          badge: 'bg-cyan-100 text-cyan-700',
-          text: 'text-cyan-900',
+          bg: 'bg-[#0d0d12]/90 border-cyan-500/30 hover:border-cyan-400',
+          badge: 'bg-cyan-950/60 text-cyan-300 border border-cyan-500/30',
+          text: 'text-stone-100',
           accent: 'from-cyan-600 to-blue-500',
-          glow: 'shadow-cyan-200/50'
+          glow: 'shadow-cyan-900/30'
         };
       case 'orange':
         return {
-          bg: 'bg-orange-50/90 border-orange-200/50 hover:border-orange-400',
-          badge: 'bg-orange-100 text-orange-700',
-          text: 'text-orange-900',
+          bg: 'bg-[#0d0d12]/90 border-orange-500/30 hover:border-orange-400',
+          badge: 'bg-orange-950/60 text-orange-300 border border-orange-500/30',
+          text: 'text-stone-100',
           accent: 'from-orange-600 to-amber-500',
-          glow: 'shadow-orange-200/50'
+          glow: 'shadow-orange-900/30'
         };
       case 'dark':
         return {
-          bg: 'bg-stone-50/90 border-stone-200/50 hover:border-stone-400',
-          badge: 'bg-stone-200 text-stone-700',
-          text: 'text-stone-900',
+          bg: 'bg-[#0a0a0a]/90 border-white/10 hover:border-stone-400',
+          badge: 'bg-white/10 text-stone-300',
+          text: 'text-white',
           accent: 'from-stone-600 to-stone-900',
-          glow: 'shadow-stone-200/50'
+          glow: 'shadow-stone-900/50'
         };
       default:
         return {
           bg: 'bg-[#18181b]/95 border-zinc-700/50 hover:border-zinc-500 text-stone-100',
           badge: 'bg-zinc-800 text-zinc-300',
-          text: 'text-white-force',
+          text: 'text-stone-100',
           accent: 'from-zinc-700 to-zinc-900',
           glow: 'shadow-zinc-900/50'
         };
@@ -234,7 +234,7 @@ export default function PolishedFeatureMarquee() {
   const items = [...FEATURE_CARDS, ...FEATURE_CARDS, ...FEATURE_CARDS];
 
   return (
-    <div className="w-full py-16 md:py-24 bg-[#FAF8F5]/40 rounded-[40px] border border-stone-200/40 shadow-inner overflow-hidden relative">
+    <div className="w-full py-16 md:py-24 bg-[#0a0a0e]/80 rounded-[40px] border border-white/10 shadow-inner overflow-hidden relative">
       {/* Decorative top background elements */}
       <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] opacity-40 pointer-events-none" />
 
@@ -245,10 +245,10 @@ export default function PolishedFeatureMarquee() {
               <Sparkles size={12} className="animate-spin-slow" />
               <span>DELIVERABLE SPECIFICATIONS</span>
             </span>
-            <h2 className="font-display font-black text-3xl sm:text-4xl text-stone-800 uppercase tracking-tight leading-none">
+            <h2 className="font-display font-black text-3xl sm:text-4xl text-stone-100 uppercase tracking-tight leading-none">
               WHAT IS INCLUDED IN THE AMOUNT?
             </h2>
-            <p className="text-stone-500 text-xs sm:text-sm font-sans max-w-2xl leading-relaxed">
+            <p className="text-stone-400 text-xs sm:text-sm font-sans max-w-2xl leading-relaxed">
               We detail exactly what you are purchasing. There are no hidden fees or scope ambiguities. Scroll horizontally or hover to inspect specific item features.
             </p>
           </div>
@@ -327,13 +327,13 @@ export default function PolishedFeatureMarquee() {
                   </div>
 
                   {/* Main Paragraph Description */}
-                  <p className="text-stone-600 text-[11px] sm:text-xs leading-relaxed font-sans font-normal mb-6">
+                  <p className="text-stone-300 text-[11px] sm:text-xs leading-relaxed font-sans font-normal mb-6">
                     {card.desc}
                   </p>
                 </div>
 
                 {/* Scope deliverables checklist */}
-                <div className="space-y-2 border-t border-stone-200/30 pt-4">
+                <div className="space-y-2 border-t border-white/10/30 pt-4">
                   <span className="text-[9px] font-mono font-bold text-stone-400 uppercase tracking-widest block mb-2">
                     Scope Deliverables:
                   </span>
@@ -341,7 +341,7 @@ export default function PolishedFeatureMarquee() {
                     {card.features.map((feat, fIdx) => (
                       <div key={fIdx} className="flex items-center space-x-2">
                         <CheckCircle2 size={11} className="text-violet-600 flex-shrink-0" />
-                        <span className="text-stone-700 font-mono text-[10px] leading-none uppercase font-semibold">
+                        <span className="text-stone-300 font-mono text-[10px] leading-none uppercase font-semibold">
                           {feat}
                         </span>
                       </div>
@@ -367,22 +367,22 @@ export default function PolishedFeatureMarquee() {
 
       {/* DETAIL MODAL OVERLAY */}
       {selectedCard && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/30 backdrop-blur-md">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-white/20/30 backdrop-blur-md">
           <motion.div 
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
-            className="bg-[#faf8f4] border border-stone-200 max-w-lg w-full rounded-[40px] p-8 shadow-2xl relative text-left"
+            className="bg-[#faf8f4] border border-white/10 max-w-lg w-full rounded-[40px] p-8 shadow-2xl relative text-left"
           >
             {/* Modal close */}
             <button 
               onClick={() => setSelectedCard(null)}
-              className="absolute top-6 right-6 w-8 h-8 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-600 font-bold flex items-center justify-center text-xs transition-colors cursor-pointer"
+              className="absolute top-6 right-6 w-8 h-8 rounded-full bg-[#111] hover:bg-white/10 text-stone-300 font-bold flex items-center justify-center text-xs transition-colors cursor-pointer"
             >
               ✕
             </button>
 
-            <div className="space-y-6 text-stone-800">
+            <div className="space-y-6 text-stone-100">
               <div className="flex items-center space-x-4">
                 <div className={`w-12 h-12 rounded-3xl bg-gradient-to-br ${getThemeClasses(selectedCard.type).accent} text-white-force flex items-center justify-center shadow-md`}>
                   {React.createElement(selectedCard.icon, { size: 22 })}
@@ -391,17 +391,17 @@ export default function PolishedFeatureMarquee() {
                   <span className="font-sans text-[10px] text-violet-600 font-bold tracking-widest uppercase block">
                     {selectedCard.category} • CAPABILITY MODULE
                   </span>
-                  <h3 className="font-display font-black text-2xl uppercase tracking-tight text-stone-800">
+                  <h3 className="font-display font-black text-2xl uppercase tracking-tight text-stone-100">
                     {selectedCard.category}
                   </h3>
                 </div>
               </div>
 
-              <div className="p-4 bg-stone-50 rounded-2xl border border-stone-200/40">
+              <div className="p-4 bg-[#0a0a0a] rounded-2xl border border-white/10">
                 <span className="font-sans text-[9px] font-bold text-stone-400 uppercase tracking-wider block mb-1">
                   OVERVIEW &amp; FOCUS
                 </span>
-                <p className="text-stone-700 text-xs sm:text-sm leading-relaxed">
+                <p className="text-stone-300 text-xs sm:text-sm leading-relaxed">
                   {selectedCard.desc}
                 </p>
               </div>
@@ -412,24 +412,24 @@ export default function PolishedFeatureMarquee() {
                 </span>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {selectedCard.features.map((feat, idx) => (
-                    <div key={idx} className="flex items-start space-x-2.5 p-3 rounded-xl bg-stone-100/50 border border-stone-200/20">
+                    <div key={idx} className="flex items-start space-x-2.5 p-3 rounded-xl bg-[#111]/50 border border-white/10/20">
                       <CheckCircle2 size={14} className="text-violet-600 mt-0.5 flex-shrink-0" />
                       <div className="space-y-0.5">
-                        <span className="font-sans text-[10px] font-bold text-stone-800 uppercase block">{feat}</span>
-                        <span className="text-[9px] text-stone-500 block leading-tight">Guaranteed deliverable.</span>
+                        <span className="font-sans text-[10px] font-bold text-stone-100 uppercase block">{feat}</span>
+                        <span className="text-[9px] text-stone-400 block leading-tight">Guaranteed deliverable.</span>
                       </div>
                     </div>
                   ))}
                 </div>
               </div>
 
-              <div className="pt-4 border-t border-stone-200/40 flex justify-between items-center">
+              <div className="pt-4 border-t border-white/10 flex justify-between items-center">
                 <span className="font-sans text-[9px] text-stone-400 uppercase">
                   Status: Available
                 </span>
                 <button
                   onClick={() => setSelectedCard(null)}
-                  className="px-6 py-2.5 bg-white hover:bg-stone-50 border border-stone-200 text-stone-900 font-sans text-[10px] font-bold uppercase tracking-widest rounded-full transition-colors cursor-pointer"
+                  className="px-6 py-2.5 bg-[#050505] hover:bg-[#0a0a0a] border border-white/10 text-white font-sans text-[10px] font-bold uppercase tracking-widest rounded-full transition-colors cursor-pointer"
                 >
                   Close
                 </button>

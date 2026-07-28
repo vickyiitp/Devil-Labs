@@ -136,17 +136,18 @@ img, video, canvas {
   font-family: var(--font-mono);
 }
 
-/* Claymorphic & Soft UI shadow classes and smooth tactile effects */
+/* Claymorphic & Obsidian Glass UI shadow classes and smooth tactile effects */
 .neumorphic-card,
 .clay-card {
-  background: #ffffff !important;
-  border: 1px solid rgba(215, 205, 190, 0.75) !important;
-  backdrop-filter: blur(12px) !important;
+  background: rgba(15, 15, 18, 0.85) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(16px) !important;
   box-shadow: 
-    0 14px 36px rgba(45, 38, 32, 0.08), 
-    0 2px 8px rgba(45, 38, 32, 0.04), 
-    inset 0 1px 0 rgba(255, 255, 255, 1) !important;
+    0 14px 36px rgba(0, 0, 0, 0.6), 
+    0 2px 8px rgba(0, 0, 0, 0.4), 
+    inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
   border-radius: 28px !important;
+  color: #f5f5f5 !important;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.25) !important;
 }
 
@@ -176,151 +177,142 @@ img, video, canvas {
 }
 
 .interactive-clay-card {
-  background: #ffffff !important;
-  border: 1px solid rgba(215, 205, 190, 0.75) !important;
-  backdrop-filter: blur(12px) !important;
+  background: rgba(18, 18, 22, 0.85) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(16px) !important;
   box-shadow: 
-    0 16px 40px rgba(45, 38, 32, 0.09), 
-    0 4px 10px rgba(45, 38, 32, 0.04),
-    inset 0 1px 0 rgba(255, 255, 255, 0.95) !important;
+    0 16px 40px rgba(0, 0, 0, 0.65), 
+    0 4px 10px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
   border-radius: 28px !important;
+  color: #f5f5f5 !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   transform-style: preserve-3d;
-  /* Disable CSS transitions for transform/shadow to allow Framer Motion to control them natively with zero lag or blur */
   transition: border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease !important;
 }
 
 .neumorphic-card:hover,
 .clay-card:hover {
+  border-color: rgba(139, 92, 246, 0.4) !important;
   box-shadow: 
-    0 20px 48px rgba(45, 38, 32, 0.12), 
-    0 6px 16px rgba(45, 38, 32, 0.06), 
-    inset 0 1px 0 rgba(255, 255, 255, 1) !important;
+    0 20px 48px rgba(0, 0, 0, 0.8), 
+    0 0 24px rgba(139, 92, 246, 0.2), 
+    inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
   transform: translateY(-4px);
 }
 
 .neumorphic-button,
 .clay-button {
-  background: #fdfcf9 !important;
-  border: 1px solid rgba(255, 255, 255, 0.9) !important;
+  background: #141418 !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
   box-shadow: 
-    6px 8px 20px rgba(185, 175, 160, 0.08), 
-    -6px -8px 20px #ffffff, 
-    inset 3px 3px 6px rgba(255, 255, 255, 0.95), 
-    inset -3px -3px 6px rgba(185, 175, 160, 0.05) !important;
-  color: #2d2620 !important;
+    0 4px 16px rgba(0, 0, 0, 0.5), 
+    inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+  color: #ffffff !important;
   border-radius: 20px !important;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.25) !important;
 }
 
 .neumorphic-button:hover,
 .clay-button:hover {
+  background: #1c1c24 !important;
+  border-color: rgba(139, 92, 246, 0.5) !important;
   box-shadow: 
-    8px 12px 24px rgba(185, 175, 160, 0.14), 
-    -8px -12px 24px #ffffff, 
-    inset 3px 3px 6px rgba(255, 255, 255, 0.95), 
-    inset -3px -3px 6px rgba(185, 175, 160, 0.05) !important;
-  transform: translateY(-2px) scale(1.03);
+    0 8px 24px rgba(139, 92, 246, 0.3), 
+    inset 0 1px 0 rgba(255, 255, 255, 0.25) !important;
+  transform: translateY(-2px) scale(1.02);
 }
 
 .neumorphic-button:active,
 .clay-button:active {
   box-shadow: 
-    inset 4px 4px 10px rgba(185, 175, 160, 0.1), 
-    inset -4px -4px 10px #ffffff !important;
-  transform: translateY(1px) scale(0.97);
+    inset 2px 2px 8px rgba(0, 0, 0, 0.8), 
+    inset -1px -1px 4px rgba(255, 255, 255, 0.05) !important;
+  transform: translateY(1px) scale(0.98);
 }
 
 .neumorphic-inset,
 .clay-inset {
-  background: #f4f2ec !important;
+  background: #0a0a0d !important;
   box-shadow: 
-    inset 6px 6px 14px rgba(185, 175, 160, 0.12), 
-    inset -6px -6px 14px #ffffff !important;
-  border: 1px solid rgba(255, 255, 255, 0.5) !important;
+    inset 3px 3px 10px rgba(0, 0, 0, 0.8), 
+    inset -1px -1px 4px rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
   border-radius: 20px !important;
+  color: #f5f5f5 !important;
 }
 
 /* Saturated Colored Claymorphic classes for vibrant, soft 3D highlights */
 .clay-violet-solid {
-  background: linear-gradient(135deg, #a78bfa, #7c3aed) !important;
+  background: linear-gradient(135deg, #8b5cf6, #6d28d9) !important;
   color: #ffffff !important;
   border: 1px solid rgba(255, 255, 255, 0.3) !important;
   box-shadow: 
-    8px 12px 24px rgba(124, 58, 237, 0.22), 
-    -8px -12px 24px #ffffff, 
-    inset 4px 4px 8px rgba(255, 255, 255, 0.35), 
-    inset -4px -4px 8px rgba(0, 0, 0, 0.12) !important;
+    0 8px 24px rgba(124, 58, 237, 0.4), 
+    inset 0 1px 0 rgba(255, 255, 255, 0.35), 
+    inset 0 -2px 4px rgba(0, 0, 0, 0.3) !important;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.25) !important;
 }
 .clay-violet-solid:hover {
   transform: translateY(-2px) scale(1.03);
   box-shadow: 
-    10px 16px 32px rgba(124, 58, 237, 0.28), 
-    -10px -16px 32px #ffffff, 
-    inset 4px 4px 8px rgba(255, 255, 255, 0.35), 
-    inset -4px -4px 8px rgba(0, 0, 0, 0.12) !important;
+    0 12px 32px rgba(124, 58, 237, 0.5), 
+    inset 0 1px 0 rgba(255, 255, 255, 0.4), 
+    inset 0 -2px 4px rgba(0, 0, 0, 0.3) !important;
 }
 .clay-violet-solid:active {
   transform: translateY(1px) scale(0.97);
   box-shadow: 
-    inset 4px 4px 12px rgba(0, 0, 0, 0.2), 
-    inset -4px -4px 12px rgba(255, 255, 255, 0.15) !important;
+    inset 2px 2px 8px rgba(0, 0, 0, 0.4) !important;
 }
 
 .clay-rose-solid {
-  background: linear-gradient(135deg, #fda4af, #f43f5e) !important;
+  background: linear-gradient(135deg, #f43f5e, #be123c) !important;
   color: #ffffff !important;
   border: 1px solid rgba(255, 255, 255, 0.3) !important;
   box-shadow: 
-    8px 12px 24px rgba(244, 63, 94, 0.22), 
-    -8px -12px 24px #ffffff, 
-    inset 4px 4px 8px rgba(255, 255, 255, 0.35), 
-    inset -4px -4px 8px rgba(0, 0, 0, 0.12) !important;
+    0 8px 24px rgba(244, 63, 94, 0.4), 
+    inset 0 1px 0 rgba(255, 255, 255, 0.35), 
+    inset 0 -2px 4px rgba(0, 0, 0, 0.3) !important;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.25) !important;
 }
 .clay-rose-solid:hover {
   transform: translateY(-2px) scale(1.03);
   box-shadow: 
-    10px 16px 32px rgba(244, 63, 94, 0.28), 
-    -10px -16px 32px #ffffff, 
-    inset 4px 4px 8px rgba(255, 255, 255, 0.35), 
-    inset -4px -4px 8px rgba(0, 0, 0, 0.12) !important;
+    0 12px 32px rgba(244, 63, 94, 0.5), 
+    inset 0 1px 0 rgba(255, 255, 255, 0.4), 
+    inset 0 -2px 4px rgba(0, 0, 0, 0.3) !important;
 }
 .clay-rose-solid:active {
   transform: translateY(1px) scale(0.97);
   box-shadow: 
-    inset 4px 4px 12px rgba(0, 0, 0, 0.2), 
-    inset -4px -4px 12px rgba(255, 255, 255, 0.15) !important;
+    inset 2px 2px 8px rgba(0, 0, 0, 0.4) !important;
 }
 
 .clay-amber-solid {
-  background: linear-gradient(135deg, #fcd34d, #f59e0b) !important;
-  color: #2d2620 !important;
+  background: linear-gradient(135deg, #f59e0b, #d97706) !important;
+  color: #000000 !important;
   border: 1px solid rgba(255, 255, 255, 0.4) !important;
   box-shadow: 
-    8px 12px 24px rgba(245, 158, 11, 0.18), 
-    -8px -12px 24px #ffffff, 
-    inset 4px 4px 8px rgba(255, 255, 255, 0.5), 
-    inset -4px -4px 8px rgba(0, 0, 0, 0.08) !important;
+    0 8px 24px rgba(245, 158, 11, 0.35), 
+    inset 0 1px 0 rgba(255, 255, 255, 0.5), 
+    inset 0 -2px 4px rgba(0, 0, 0, 0.2) !important;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.25) !important;
 }
 .clay-amber-solid:hover {
   transform: translateY(-2px) scale(1.03);
   box-shadow: 
-    10px 16px 32px rgba(245, 158, 11, 0.24), 
-    -10px -16px 32px #ffffff, 
-    inset 4px 4px 8px rgba(255, 255, 255, 0.5), 
-    inset -4px -4px 8px rgba(0, 0, 0, 0.08) !important;
+    0 12px 32px rgba(245, 158, 11, 0.45), 
+    inset 0 1px 0 rgba(255, 255, 255, 0.6), 
+    inset 0 -2px 4px rgba(0, 0, 0, 0.2) !important;
 }
 .clay-amber-solid:active {
   transform: translateY(1px) scale(0.97);
   box-shadow: 
-    inset 4px 4px 12px rgba(0, 0, 0, 0.15), 
-    inset -4px -4px 12px rgba(255, 255, 255, 0.2) !important;
+    inset 2px 2px 8px rgba(0, 0, 0, 0.3) !important;
 }
 
 
@@ -617,3 +609,30 @@ img, video, canvas {
 
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.animate-gradient { animation: gradient 8s ease infinite; }
+
+@keyframes text-shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.text-shimmer {
+  background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.7) 50%, rgba(255,255,255,0) 100%);
+  background-size: 200% auto;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: text-shimmer 3s linear infinite;
+}
+body { background-color: #050505; color: #fff; }
+
+@layer base {
+  *:focus-visible {
+    @apply outline-none ring-2 ring-violet-500 ring-offset-2 ring-offset-[#050505];
+  }
+}

@@ -18,7 +18,7 @@ export default function HeroImageSlider() {
   }, []);
 
   return (
-    <div className="absolute inset-0 overflow-hidden bg-white pointer-events-none rounded-[inherit]">
+    <div className="absolute inset-0 overflow-hidden bg-[#050505] pointer-events-none rounded-[inherit]">
       
       {/* Background Images with Ken Burns effect */}
       <AnimatePresence mode="popLayout">

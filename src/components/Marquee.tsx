@@ -18,7 +18,7 @@ export default function Marquee() {
   const marqueeItems = [...items, ...items, ...items, ...items];
 
   return (
-    <div id="tech-stack-marquee-wrapper" className="relative w-full overflow-hidden bg-stone-50/80 border-y border-stone-200/50 py-8">
+    <div id="tech-stack-marquee-wrapper" className="relative w-full overflow-hidden bg-[#0a0a0a]/80 border-y border-white/10/50 py-8">
       {/* Absolute fades on edges */}
       <div className="absolute top-0 left-0 w-24 sm:w-48 h-full bg-gradient-to-r from-[#050505] to-transparent z-10 pointer-events-none" />
       <div className="absolute top-0 right-0 w-24 sm:w-48 h-full bg-gradient-to-l from-[#050505] to-transparent z-10 pointer-events-none" />
@@ -30,7 +30,7 @@ export default function Marquee() {
             return (
               <div
                 key={index}
-                className="flex items-center space-x-3 text-gray-500 hover:text-stone-900 transition-colors duration-300 font-mono tracking-widest text-sm"
+                className="flex items-center space-x-3 text-gray-500 hover:text-white transition-colors duration-300 font-mono tracking-widest text-sm"
               >
                 <Icon size={18} className="text-violet-500/80" />
                 <span className="font-semibold">{item.name}</span>

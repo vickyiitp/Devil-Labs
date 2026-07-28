@@ -5,6 +5,7 @@ import {
   ShieldCheck, ArrowRight, Download, Eye, CheckCircle, Zap, DollarSign,
   Package, Code, Share2
 } from 'lucide-react';
+import StaggeredHeading from '../components/StaggeredHeading';
 
 interface Product {
   id: string;
@@ -149,32 +150,30 @@ export default function ProductsPage({ navigate }: { navigate: (path: string) =>
   };
 
   return (
-    <div id="products-page-root" className="pt-20 xs:pt-24 sm:pt-28 lg:pt-32 pb-24 px-4 md:px-8 max-w-7xl mx-auto text-stone-800">
+    <div id="products-page-root" className="pt-20 xs:pt-24 sm:pt-28 lg:pt-32 pb-24 px-4 md:px-8 max-w-7xl mx-auto text-stone-100">
       
       {/* 1. HEADER DIVISION */}
       <section id="products-header" className="mb-16 space-y-4">
-        <div className="flex items-center space-x-2 text-violet-600 font-sans text-xs uppercase tracking-widest font-extrabold">
+        <div className="flex items-center space-x-2 text-violet-400 font-sans text-xs uppercase tracking-widest font-extrabold">
           <Package size={14} />
           <span>✦ DIGITAL PRODUCTS &amp; ASSETS</span>
         </div>
-        <h1 className="font-display font-extrabold text-3xl xs:text-4xl sm:text-6xl md:text-7xl text-stone-800 tracking-tighter uppercase leading-none break-words max-w-full">
-          PREMIUM SOFTWARE<br />&amp; DEVELOPER ASSETS.
-        </h1>
-        <p className="text-stone-600 text-base sm:text-lg max-w-3xl leading-relaxed font-sans">
+        <StaggeredHeading text="PREMIUM SOFTWARE & DEVELOPER ASSETS." className="font-display font-extrabold text-3xl xs:text-4xl sm:text-6xl md:text-7xl text-stone-100 tracking-tighter uppercase leading-none break-words max-w-full" />
+        <p className="text-stone-300 text-base sm:text-lg max-w-3xl leading-relaxed font-sans">
           We design production-ready Next.js starter templates, developer SDKs, AI agent microservices, and design systems to boost your launch velocity. Built with clean architecture and production-tested code.
         </p>
       </section>
 
       {/* 2. DYNAMIC FILTER NAVIGATION */}
-      <div className="flex flex-wrap gap-2.5 border-b border-stone-200/55 pb-6 mb-12">
+      <div className="flex flex-wrap gap-2.5 border-b border-white/10/55 pb-6 mb-12">
         {tabs.map((tab) => (
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id as any)}
             className={`px-4.5 py-2 rounded-full text-xs font-sans font-bold tracking-wider uppercase transition-all cursor-pointer ${
               activeTab === tab.id 
-                ? 'bg-white border border-stone-200 text-stone-800 shadow-sm' 
-                : 'bg-stone-100 hover:bg-stone-200/60 text-stone-600'
+                ? 'bg-[#050505] border border-white/10 text-stone-100 shadow-sm' 
+                : 'bg-[#111] hover:bg-white/10 text-stone-300'
             }`}
           >
             {tab.name}
@@ -197,22 +196,22 @@ export default function ProductsPage({ navigate }: { navigate: (path: string) =>
             >
               <div>
                 {/* Meta details badge bar */}
-                <div className="flex items-center justify-between mb-6 text-[10px] font-mono uppercase tracking-widest font-bold text-stone-500">
-                  <span className="bg-stone-100 px-2.5 py-1 rounded-full text-stone-600 border border-stone-200/30">
+                <div className="flex items-center justify-between mb-6 text-[10px] font-mono uppercase tracking-widest font-bold text-stone-400">
+                  <span className="bg-[#111] px-2.5 py-1 rounded-full text-stone-300 border border-white/10/30">
                     {product.category}
                   </span>
                   <div className="flex items-center space-x-3">
                     <span>★ {product.rating}</span>
-                    <span className="w-1.5 h-1.5 rounded-full bg-stone-300" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-white/20" />
                     <span>{product.salesCount}</span>
                   </div>
                 </div>
 
-                <h3 className="font-display font-black text-2xl sm:text-3xl text-stone-850 tracking-tight mb-2 uppercase">
+                <h3 className="font-display font-black text-2xl sm:text-3xl text-stone-100 tracking-tight mb-2 uppercase">
                   {product.name}
                 </h3>
                 
-                <p className="text-stone-600 text-sm leading-relaxed mb-6 font-sans">
+                <p className="text-stone-300 text-sm leading-relaxed mb-6 font-sans">
                   {product.desc}
                 </p>
 
@@ -226,18 +225,18 @@ export default function ProductsPage({ navigate }: { navigate: (path: string) =>
                     </div>
                     <pre className="whitespace-pre-wrap">{product.screenshotText}</pre>
                   </div>
-                  <div className="absolute top-4 right-4 bg-[#faf8f5]/10 backdrop-blur-md border border-[#faf8f5]/10 rounded-lg p-1.5 opacity-60 hover:opacity-100 transition-opacity">
+                  <div className="absolute top-4 right-4 bg-[#0a0a0a]/10 backdrop-blur-md border border-[#0a0a0e]/10 rounded-lg p-1.5 opacity-60 hover:opacity-100 transition-opacity">
                     <Code size={13} className="text-white" />
                   </div>
                 </div>
 
                 {/* Bulletproof architectural specs list */}
                 <div className="space-y-2.5 mb-8">
-                  <span className="text-[10px] font-sans uppercase tracking-widest text-stone-500 font-extrabold block mb-1">
+                  <span className="text-[10px] font-sans uppercase tracking-widest text-stone-400 font-extrabold block mb-1">
                     ✦ KEY FEATURES &amp; CAPABILITIES
                   </span>
                   {product.features.map((feature, idx) => (
-                    <div key={idx} className="flex items-start space-x-2 text-stone-600 text-xs font-sans">
+                    <div key={idx} className="flex items-start space-x-2 text-stone-300 text-xs font-sans">
                       <CheckCircle size={14} className="text-violet-600 mt-0.5 flex-shrink-0" />
                       <span>{feature}</span>
                     </div>
@@ -246,21 +245,21 @@ export default function ProductsPage({ navigate }: { navigate: (path: string) =>
               </div>
 
               {/* Action and buy footer */}
-              <div className="pt-6 border-t border-stone-200/30 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
+              <div className="pt-6 border-t border-white/10/30 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
                 <div className="text-left">
-                  <span className="text-[9px] font-sans text-stone-500 uppercase tracking-widest font-extrabold block">
+                  <span className="text-[9px] font-sans text-stone-400 uppercase tracking-widest font-extrabold block">
                     PRICE STARTS AT
                   </span>
                   <div className="flex items-baseline space-x-1">
-                    <span className="text-stone-850 font-display text-2xl font-black">${product.pricing.single}</span>
-                    <span className="text-stone-500 font-sans text-[10px] uppercase tracking-wider font-bold">/ single developer</span>
+                    <span className="text-stone-100 font-display text-2xl font-black">${product.pricing.single}</span>
+                    <span className="text-stone-400 font-sans text-[10px] uppercase tracking-wider font-bold">/ single developer</span>
                   </div>
                 </div>
 
                 <div className="flex items-center space-x-2.5">
                   <a 
                     href={product.docsUrl}
-                    className="flex-1 sm:flex-none flex items-center justify-center space-x-1.5 px-4 py-2.5 rounded-full border border-stone-200/60 hover:border-stone-300 hover:bg-stone-50 text-stone-600 text-xs font-sans font-bold uppercase tracking-wider transition-all"
+                    className="flex-1 sm:flex-none flex items-center justify-center space-x-1.5 px-4 py-2.5 rounded-full border border-white/10 hover:border-white/20 hover:bg-[#0a0a0a] text-stone-300 text-xs font-sans font-bold uppercase tracking-wider transition-all"
                   >
                     <BookOpen size={13} />
                     <span>DOCS</span>
@@ -268,7 +267,7 @@ export default function ProductsPage({ navigate }: { navigate: (path: string) =>
 
                   <button
                     onClick={() => handlePurchase(product)}
-                    className="flex-1 sm:flex-none flex items-center justify-center space-x-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-violet-600 to-rose-500 hover:from-violet-700 hover:to-rose-600 text-[#faf8f5] text-xs font-sans font-bold uppercase tracking-wider shadow-md transition-all cursor-pointer"
+                    className="flex-1 sm:flex-none flex items-center justify-center space-x-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-violet-600 to-rose-500 hover:from-violet-700 hover:to-rose-600 text-[#0a0a0e] text-xs font-sans font-bold uppercase tracking-wider shadow-md transition-all cursor-pointer"
                   >
                     <ShoppingBag size={13} />
                     <span>PURCHASE</span>
@@ -281,24 +280,24 @@ export default function ProductsPage({ navigate }: { navigate: (path: string) =>
       </div>
 
       {/* 4. MODULAR PRICING LICENSE INFO CARD */}
-      <section id="licensing-standards" className="bg-[#f0eee6]/60 border border-stone-200/40 rounded-3xl p-8 sm:p-10 mb-20 text-left">
+      <section id="licensing-standards" className="bg-[#111116] border border-white/10 rounded-3xl p-8 sm:p-10 mb-20 text-left">
         <div className="max-w-3xl space-y-4">
-          <span className="text-violet-600 font-sans text-[10px] uppercase tracking-widest font-extrabold">✦ LICENSING &amp; SOURCE ACCESS</span>
-          <h2 className="font-display font-black text-2xl text-stone-850 uppercase tracking-tight">DEVIL LABS LICENSING &amp; SUPPORT</h2>
-          <p className="text-stone-600 text-sm leading-relaxed font-sans">
+          <span className="text-violet-400 font-sans text-[10px] uppercase tracking-widest font-extrabold">✦ LICENSING &amp; SOURCE ACCESS</span>
+          <h2 className="font-display font-black text-2xl text-stone-100 uppercase tracking-tight">DEVIL LABS LICENSING &amp; SUPPORT</h2>
+          <p className="text-stone-300 text-sm leading-relaxed font-sans">
             Every digital product we release is built to production standards. All purchases include lifetime access, full source code, clear documentation, and direct email support for updates.
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-4 text-xs font-sans font-bold text-stone-600 uppercase tracking-wider">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-4 text-xs font-sans font-bold text-stone-300 uppercase tracking-wider">
             <div className="flex items-center space-x-2">
-              <ShieldCheck size={14} className="text-violet-600" />
+              <ShieldCheck size={14} className="text-violet-400" />
               <span>Commercial License</span>
             </div>
             <div className="flex items-center space-x-2">
-              <Zap size={14} className="text-violet-600" />
+              <Zap size={14} className="text-violet-400" />
               <span>Lifetime Updates</span>
             </div>
             <div className="flex items-center space-x-2">
-              <Share2 size={14} className="text-violet-600" />
+              <Share2 size={14} className="text-violet-400" />
               <span>Full Source Code</span>
             </div>
           </div>
@@ -315,7 +314,7 @@ export default function ProductsPage({ navigate }: { navigate: (path: string) =>
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setSelectedProduct(null)}
-              className="absolute inset-0 bg-stone-900/40 backdrop-blur-md"
+              className="absolute inset-0 bg-black/80 backdrop-blur-md"
             />
 
             {/* Modal Body */}
@@ -323,27 +322,27 @@ export default function ProductsPage({ navigate }: { navigate: (path: string) =>
               initial={{ opacity: 0, scale: 0.95, y: 15 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 15 }}
-              className="bg-[#faf8f5] border border-stone-200 max-w-lg w-full rounded-3xl p-6 sm:p-8 shadow-2xl relative z-10 text-left overflow-hidden"
+              className="bg-[#0a0a0a] border border-white/10 max-w-lg w-full rounded-3xl p-6 sm:p-8 shadow-2xl relative z-10 text-left overflow-hidden"
             >
               {/* Top ambient color ring */}
               <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-violet-600 to-rose-500" />
 
               {purchased ? (
                 <div className="text-center py-8 space-y-4">
-                  <div className="w-16 h-16 rounded-full bg-emerald-100 flex items-center justify-center mx-auto text-emerald-600 border border-emerald-200">
+                  <div className="w-16 h-16 rounded-full bg-emerald-950/80 flex items-center justify-center mx-auto text-emerald-400 border border-emerald-500/30">
                     <CheckCircle size={32} />
                   </div>
-                  <h3 className="font-display font-black text-2xl text-stone-850 uppercase tracking-tight">PURCHASE COMPLETE</h3>
-                  <p className="text-stone-600 text-sm font-sans max-w-sm mx-auto">
+                  <h3 className="font-display font-black text-2xl text-stone-100 uppercase tracking-tight">PURCHASE COMPLETE</h3>
+                  <p className="text-stone-300 text-sm font-sans max-w-sm mx-auto">
                     Thank you! Your license key, documentation access, and download link have been sent to your registered email address.
                   </p>
                 </div>
               ) : (
                 <div className="space-y-6">
                   <div>
-                    <span className="text-violet-600 font-sans text-[9px] uppercase tracking-widest font-extrabold block mb-1">SECURE CHECKOUT</span>
-                    <h3 className="font-display font-black text-2xl text-stone-850 uppercase tracking-tight">{selectedProduct.name}</h3>
-                    <p className="text-stone-500 text-xs mt-1 font-sans uppercase tracking-widest font-bold">{selectedProduct.license}</p>
+                    <span className="text-violet-400 font-sans text-[9px] uppercase tracking-widest font-extrabold block mb-1">SECURE CHECKOUT</span>
+                    <h3 className="font-display font-black text-2xl text-stone-100 uppercase tracking-tight">{selectedProduct.name}</h3>
+                    <p className="text-stone-400 text-xs mt-1 font-sans uppercase tracking-widest font-bold">{selectedProduct.license}</p>
                   </div>
 
                   {/* Tier Choice */}
@@ -352,41 +351,41 @@ export default function ProductsPage({ navigate }: { navigate: (path: string) =>
                       onClick={() => setPurchaseTier('single')}
                       className={`p-4 rounded-2xl border text-left flex flex-col justify-between transition-all cursor-pointer ${
                         purchaseTier === 'single'
-                          ? 'border-violet-600 bg-violet-50/20 shadow-sm'
-                          : 'border-stone-250/50 hover:bg-stone-50/40'
+                          ? 'border-violet-500/60 bg-violet-950/50 shadow-md'
+                          : 'border-white/10 hover:bg-[#111118]'
                       }`}
                     >
-                      <span className="font-sans text-[10px] text-stone-500 uppercase tracking-wider font-extrabold">SINGLE DEV</span>
-                      <span className="text-xl font-display font-black text-stone-850 mt-1">${selectedProduct.pricing.single}</span>
+                      <span className="font-sans text-[10px] text-stone-400 uppercase tracking-wider font-extrabold">SINGLE DEV</span>
+                      <span className="text-xl font-display font-black text-stone-100 mt-1">${selectedProduct.pricing.single}</span>
                     </button>
                     <button
                       onClick={() => setPurchaseTier('team')}
                       className={`p-4 rounded-2xl border text-left flex flex-col justify-between transition-all cursor-pointer ${
                         purchaseTier === 'team'
-                          ? 'border-violet-600 bg-violet-50/20 shadow-sm'
-                          : 'border-stone-250/50 hover:bg-stone-50/40'
+                          ? 'border-violet-500/60 bg-violet-950/50 shadow-md'
+                          : 'border-white/10 hover:bg-[#111118]'
                       }`}
                     >
-                      <span className="font-sans text-[10px] text-stone-500 uppercase tracking-wider font-extrabold">TEAM LICENSE</span>
-                      <span className="text-xl font-display font-black text-stone-850 mt-1">${selectedProduct.pricing.team}</span>
+                      <span className="font-sans text-[10px] text-stone-400 uppercase tracking-wider font-extrabold">TEAM LICENSE</span>
+                      <span className="text-xl font-display font-black text-stone-100 mt-1">${selectedProduct.pricing.team}</span>
                     </button>
                   </div>
 
                   {/* Payment Details Form */}
                   <div className="space-y-3">
                     <div>
-                      <label className="text-[10px] font-sans uppercase tracking-widest text-stone-500 font-extrabold block mb-1.5">Your Email Address</label>
+                      <label className="text-[10px] font-sans uppercase tracking-widest text-stone-400 font-extrabold block mb-1.5">Your Email Address</label>
                       <input 
                         type="email" 
                         required
                         placeholder="you@yourcompany.com"
-                        className="bg-stone-50 border border-stone-200/70 rounded-full px-4 py-2.5 text-stone-800 text-xs font-sans placeholder-stone-400 focus:outline-none focus:border-violet-300 w-full"
+                        className="bg-[#0a0a0a] border border-white/10 rounded-full px-4 py-2.5 text-stone-100 text-xs font-sans placeholder-stone-400 focus:outline-none focus:border-violet-300 w-full"
                       />
                     </div>
                     <div>
-                      <label className="text-[10px] font-sans uppercase tracking-widest text-stone-500 font-extrabold block mb-1.5">Billing Information</label>
-                      <div className="flex items-center space-x-2 bg-stone-50 border border-stone-200/70 rounded-full px-4 py-2.5 text-xs text-stone-500 font-sans">
-                        <ShieldCheck size={14} className="text-stone-500 flex-shrink-0" />
+                      <label className="text-[10px] font-sans uppercase tracking-widest text-stone-400 font-extrabold block mb-1.5">Billing Information</label>
+                      <div className="flex items-center space-x-2 bg-[#0a0a0a] border border-white/10 rounded-full px-4 py-2.5 text-xs text-stone-400 font-sans">
+                        <ShieldCheck size={14} className="text-stone-400 flex-shrink-0" />
                         <span>Protected by 256-bit encrypted checkout</span>
                       </div>
                     </div>
@@ -396,13 +395,13 @@ export default function ProductsPage({ navigate }: { navigate: (path: string) =>
                   <div className="flex items-center space-x-3 pt-4">
                     <button
                       onClick={() => setSelectedProduct(null)}
-                      className="flex-1 py-3 rounded-full border border-stone-200/60 hover:bg-stone-50 text-stone-600 text-xs font-sans font-bold uppercase tracking-wider transition-all cursor-pointer"
+                      className="flex-1 py-3 rounded-full border border-white/10 hover:bg-[#0a0a0a] text-stone-300 text-xs font-sans font-bold uppercase tracking-wider transition-all cursor-pointer"
                     >
                       CANCEL
                     </button>
                     <button
                       onClick={confirmPurchaseMock}
-                      className="flex-2 py-3 rounded-full bg-white hover:bg-stone-50 border border-stone-200 text-stone-800 text-xs font-sans font-bold uppercase tracking-widest shadow-md transition-all cursor-pointer text-center"
+                      className="flex-2 py-3 rounded-full bg-[#050505] hover:bg-[#0a0a0a] border border-white/10 text-stone-100 text-xs font-sans font-bold uppercase tracking-widest shadow-md transition-all cursor-pointer text-center"
                     >
                       COMPLETE PURCHASE
                     </button>

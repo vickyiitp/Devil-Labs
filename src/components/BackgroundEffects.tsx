@@ -50,7 +50,7 @@ export default function BackgroundEffects() {
           repeat: Infinity,
           ease: "easeInOut"
         }}
-        className="fixed top-1/4 right-[10%] w-[350px] h-[350px] rounded-full bg-violet-200/25 blur-[100px] pointer-events-none -z-10"
+        className="fixed top-1/4 right-[10%] w-[450px] h-[450px] rounded-full bg-violet-600/10 blur-[120px] pointer-events-none -z-10"
       />
       <motion.div
         animate={{
@@ -63,7 +63,7 @@ export default function BackgroundEffects() {
           repeat: Infinity,
           ease: "easeInOut"
         }}
-        className="fixed bottom-1/3 left-[5%] w-[400px] h-[400px] rounded-full bg-rose-200/20 blur-[120px] pointer-events-none -z-10"
+        className="fixed bottom-1/3 left-[5%] w-[500px] h-[500px] rounded-full bg-blue-600/10 blur-[150px] pointer-events-none -z-10"
       />
       <motion.div
         animate={{
@@ -76,12 +76,36 @@ export default function BackgroundEffects() {
           repeat: Infinity,
           ease: "easeInOut"
         }}
-        className="fixed top-1/2 left-[40%] w-[300px] h-[300px] rounded-full bg-amber-150/15 blur-[90px] pointer-events-none -z-10"
+        className="fixed top-1/2 left-[40%] w-[350px] h-[350px] rounded-full bg-indigo-500/10 blur-[100px] pointer-events-none -z-10"
       />
+
+      {/* Floating stars/particles */}
+      {[...Array(30)].map((_, i) => (
+        <motion.div
+          key={i}
+          animate={{
+            y: [-20, -120],
+            opacity: [0, 0.8, 0],
+            scale: [0.5, Math.random() * 2 + 1, 0.5]
+          }}
+          transition={{
+            duration: Math.random() * 8 + 6,
+            repeat: Infinity,
+            delay: Math.random() * 8,
+            ease: "linear"
+          }}
+          className="fixed w-[2px] h-[2px] bg-white rounded-full blur-[0.5px] pointer-events-none z-0"
+          style={{
+            left: `${Math.random() * 100}vw`,
+            top: `${Math.random() * 100}vh`,
+            boxShadow: "0 0 10px 2px rgba(255,255,255,0.4)"
+          }}
+        />
+      ))}
 
       {/* Dynamic Ambient Glow Follower */}
       <motion.div
-        className="fixed top-0 left-0 w-[300px] h-[300px] sm:w-[500px] sm:h-[500px] bg-gradient-to-br from-violet-200/25 to-rose-200/20 rounded-full blur-[80px] pointer-events-none z-0 mix-blend-normal"
+        className="fixed top-0 left-0 w-[400px] h-[400px] sm:w-[600px] sm:h-[600px] bg-gradient-to-br from-violet-600/15 to-blue-600/15 rounded-full blur-[100px] pointer-events-none z-0 mix-blend-screen"
         style={{
           x: smoothX,
           y: smoothY,
@@ -89,8 +113,11 @@ export default function BackgroundEffects() {
           translateY: '-50%'
         }}
       />
+      {/* Grid Overlay */}
+      <div className="fixed inset-0 z-50 pointer-events-none opacity-[0.03] bg-[linear-gradient(rgba(255,255,255,1)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,1)_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,black_40%,transparent_100%)]" />
+      
       {/* Organic Cardstock Texture Overlay */}
-      <div className="fixed inset-0 z-50 pointer-events-none opacity-[0.015] bg-noise" />
+      <div className="fixed inset-0 z-50 pointer-events-none opacity-[0.04] bg-noise" />
     </>
   );
 }

@@ -195,27 +195,27 @@ export default function PricingPage({ navigate }: PricingPageProps) {
   ];
 
   return (
-    <div id="pricing-page-root" className="pt-20 xs:pt-24 sm:pt-28 lg:pt-32 pb-24 px-4 md:px-8 max-w-7xl mx-auto text-stone-800">
+    <div id="pricing-page-root" className="pt-20 xs:pt-24 sm:pt-28 lg:pt-32 pb-24 px-4 md:px-8 max-w-7xl mx-auto text-stone-100">
       {/* 1. HEADER */}
-      <section id="pricing-header" className="mb-20 flex flex-col md:flex-row md:items-end md:justify-between gap-6 border-b border-stone-200/30 pb-10">
+      <section id="pricing-header" className="mb-20 flex flex-col md:flex-row md:items-end md:justify-between gap-6 border-b border-white/10/30 pb-10">
         <div className="space-y-4">
           <span className="text-violet-600 font-sans text-xs uppercase tracking-widest font-extrabold">✦ PRICING &amp; TIER PLANS</span>
-          <h1 className="font-display font-extrabold text-3xl xs:text-4xl sm:text-6xl md:text-7xl text-stone-800 tracking-tighter uppercase leading-none break-words max-w-full">
+          <h1 className="font-display font-extrabold text-3xl xs:text-4xl sm:text-6xl md:text-7xl text-stone-100 tracking-tighter uppercase leading-none break-words max-w-full">
             TRANSPARENT PRICING.
           </h1>
-          <p className="text-stone-600 text-base sm:text-lg max-w-2xl leading-relaxed font-sans">
+          <p className="text-stone-300 text-base sm:text-lg max-w-2xl leading-relaxed font-sans">
             Clear scope. Zero hidden fees or bloated sales contracts. We provide fully-mapped engagement brackets to fit your business goals.
           </p>
         </div>
 
         {/* Dynamic Currency Switcher */}
-        <div className="flex items-center space-x-1.5 bg-[#f0ede6] border border-stone-200/50 p-1 rounded-xl w-full sm:w-auto self-start sm:self-center md:self-end shadow-inner">
+        <div className="flex items-center space-x-1.5 bg-[#0a0a0e]/80 border border-white/10 p-1 rounded-xl w-full sm:w-auto self-start sm:self-center md:self-end shadow-inner">
           <button
             onClick={() => setCurrency('USD')}
             className={`flex-1 sm:flex-initial px-5 py-2.5 font-sans text-[10px] font-bold tracking-widest uppercase rounded-lg transition-all duration-200 cursor-pointer ${
               currency === 'USD'
-                ? 'bg-[#fcfbf9] text-stone-800 shadow-md font-black'
-                : 'text-stone-500 hover:text-stone-800'
+                ? 'bg-violet-600 text-white shadow-md font-black'
+                : 'text-stone-400 hover:text-stone-100'
             }`}
           >
             USD ($)
@@ -224,8 +224,8 @@ export default function PricingPage({ navigate }: PricingPageProps) {
             onClick={() => setCurrency('INR')}
             className={`flex-1 sm:flex-initial px-5 py-2.5 font-sans text-[10px] font-bold tracking-widest uppercase rounded-lg transition-all duration-200 cursor-pointer ${
               currency === 'INR'
-                ? 'bg-[#fcfbf9] text-stone-800 shadow-md font-black'
-                : 'text-stone-500 hover:text-stone-800'
+                ? 'bg-violet-600 text-white shadow-md font-black'
+                : 'text-stone-400 hover:text-stone-100'
             }`}
           >
             INR (₹)
@@ -241,7 +241,7 @@ export default function PricingPage({ navigate }: PricingPageProps) {
             key={model.title}
             whileHover={{ y: -6 }}
             transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-            className={`relative flex flex-col justify-between p-6 md:p-8 transition-all duration-300 rounded-[24px] sm:rounded-[32px] clay-card ${ model.popular ? 'border-violet-300 bg-[#fbf9f4] shadow-[12px_16px_40px_rgba(139,92,246,0.14),-12px_-16px_40px_#ffffff] lg:scale-105 z-10' : 'border-stone-200/50' } ${idx === 2 ? 'md:col-span-2 lg:col-span-1' : ''}`}
+            className={`relative flex flex-col justify-between p-6 md:p-8 transition-all duration-300 rounded-[24px] sm:rounded-[32px] clay-card ${ model.popular ? 'border-violet-500/60 bg-violet-950/40 shadow-2xl lg:scale-105 z-10' : 'border-white/10' } ${idx === 2 ? 'md:col-span-2 lg:col-span-1' : ''}`}
           >
             {/* Ribbon or Badge for Popular */}
             {model.popular && (
@@ -254,21 +254,21 @@ export default function PricingPage({ navigate }: PricingPageProps) {
             <div className="space-y-6">
               <div className="space-y-2 font-sans">
                 <span className="text-violet-600 text-[10px] tracking-widest font-extrabold uppercase">{model.tagline}</span>
-                <h3 className="font-display font-extrabold text-2xl text-stone-800 tracking-tight">{model.title}</h3>
+                <h3 className="font-display font-extrabold text-2xl text-stone-100 tracking-tight">{model.title}</h3>
               </div>
 
-              <div className="flex items-baseline space-x-2 border-b border-stone-200/30 pb-6">
-                <span className="text-4xl sm:text-5xl font-display font-black text-stone-800 tracking-tighter">{model.price}</span>
-                <span className="text-stone-500 font-sans text-xs uppercase font-bold">{model.priceBasis}</span>
+              <div className="flex items-baseline space-x-2 border-b border-white/10/30 pb-6">
+                <span className="text-4xl sm:text-5xl font-display font-black text-stone-100 tracking-tighter">{model.price}</span>
+                <span className="text-stone-400 font-sans text-xs uppercase font-bold">{model.priceBasis}</span>
               </div>
 
-              <p className="text-stone-600 text-xs sm:text-sm leading-relaxed font-sans">
+              <p className="text-stone-300 text-xs sm:text-sm leading-relaxed font-sans">
                 {model.description}
               </p>
 
-              <div className="space-y-3 pt-4 border-t border-stone-200/30">
-                <h4 className="text-[10px] font-sans font-extrabold text-stone-500 uppercase tracking-widest">Included Scope:</h4>
-                <ul className="space-y-2 text-xs sm:text-sm text-stone-700 font-sans">
+              <div className="space-y-3 pt-4 border-t border-white/10/30">
+                <h4 className="text-[10px] font-sans font-extrabold text-stone-400 uppercase tracking-widest">Included Scope:</h4>
+                <ul className="space-y-2 text-xs sm:text-sm text-stone-300 font-sans">
                   {model.features.map((feat) => (
                     <li key={feat} className="flex items-start space-x-2.5">
                       <Check size={12} className="text-violet-600 mt-1 flex-shrink-0" />
@@ -279,7 +279,7 @@ export default function PricingPage({ navigate }: PricingPageProps) {
               </div>
             </div>
 
-            <div className="pt-8 mt-8 border-t border-stone-200/30">
+            <div className="pt-8 mt-8 border-t border-white/10/30">
               <button
                 id={`pricing-card-cta-${model.title.toLowerCase().replace(/[^a-z0-9]/g, '')}`}
                 onClick={() => {
@@ -321,15 +321,15 @@ I would like to proceed with this architecture. Please provide further details.`
         <section id="pricing-comparison" className="mb-32 w-full max-w-full overflow-hidden">
           <div className="mb-10 text-center">
             <span className="text-violet-600 font-sans text-xs uppercase tracking-widest font-extrabold">✦ FEATURE COMPARISON</span>
-            <h2 className="font-display font-extrabold text-3xl text-stone-800 tracking-tighter uppercase mt-2">Compare Plans</h2>
+            <h2 className="font-display font-extrabold text-3xl text-stone-100 tracking-tighter uppercase mt-2">Compare Plans</h2>
           </div>
           <div className="w-full overflow-x-auto pb-4">
-            <div className="min-w-[800px] border border-stone-200/50 bg-[#faf8f5]/80 rounded-2xl overflow-hidden shadow-[5px_5px_15px_rgba(45,38,32,0.05),-5px_-5px_15px_#ffffff]">
-            <div className="grid grid-cols-4 border-b border-stone-200/30 bg-[#f0ede6]/50">
-              <div className="p-6 font-sans text-xs text-stone-500 uppercase tracking-widest font-extrabold flex items-end">Feature Set</div>
-              <div className="p-6 font-display text-lg text-stone-800 font-bold text-center">MVP Build<br/><span className="text-sm font-sans text-stone-500 font-normal">{(currency === 'INR') ? '₹8,500' : '$229'}</span></div>
-              <div className="p-6 font-display text-lg text-stone-800 font-bold text-center border-x border-stone-200/20 bg-violet-50">Full-Stack + AI<br/><span className="text-sm font-sans text-violet-600 font-normal">{(currency === 'INR') ? '₹28,900' : '$729'}</span></div>
-              <div className="p-6 font-display text-lg text-stone-800 font-bold text-center">Enterprise<br/><span className="text-sm font-sans text-stone-500 font-normal">{(currency === 'INR') ? '₹47,000+' : '$1,199+'}</span></div>
+            <div className="min-w-[800px] border border-white/10/50 bg-[#0a0a0a]/80 rounded-2xl overflow-hidden shadow-2xl">
+            <div className="grid grid-cols-4 border-b border-white/10/30 bg-[#111116]">
+              <div className="p-6 font-sans text-xs text-stone-400 uppercase tracking-widest font-extrabold flex items-end">Feature Set</div>
+              <div className="p-6 font-display text-lg text-stone-100 font-bold text-center">MVP Build<br/><span className="text-sm font-sans text-stone-400 font-normal">{(currency === 'INR') ? '₹8,500' : '$229'}</span></div>
+              <div className="p-6 font-display text-lg text-stone-100 font-bold text-center border-x border-white/10/20 bg-violet-950/50">Full-Stack + AI<br/><span className="text-sm font-sans text-violet-400 font-normal">{(currency === 'INR') ? '₹28,900' : '$729'}</span></div>
+              <div className="p-6 font-display text-lg text-stone-100 font-bold text-center">Enterprise<br/><span className="text-sm font-sans text-stone-400 font-normal">{(currency === 'INR') ? '₹47,000+' : '$1,199+'}</span></div>
             </div>
             
             {[
@@ -342,16 +342,16 @@ I would like to proceed with this architecture. Please provide further details.`
               { name: 'AI Integration', starter: false, pro: false, enterprise: 'Gemini / OpenAI Agents' },
               { name: 'Support SLA', starter: '14-day production', pro: '30-day dedicated', enterprise: 'Infinite Priority' }
             ].map((row, idx) => (
-              <div key={idx} className="grid grid-cols-4 border-b border-stone-200/20 hover:bg-stone-50 transition-colors">
-                <div className="p-4 px-6 font-sans text-xs text-stone-600 font-semibold">{row.name}</div>
-                <div className="p-4 px-6 flex justify-center items-center text-sm font-sans text-stone-500">
-                  {typeof row.starter === 'boolean' ? (row.starter ? <Check size={16} className="text-emerald-500" /> : <span className="text-stone-500">-</span>) : row.starter}
+              <div key={idx} className="grid grid-cols-4 border-b border-white/10/20 hover:bg-[#111118] transition-colors">
+                <div className="p-4 px-6 font-sans text-xs text-stone-300 font-semibold">{row.name}</div>
+                <div className="p-4 px-6 flex justify-center items-center text-sm font-sans text-stone-400">
+                  {typeof row.starter === 'boolean' ? (row.starter ? <Check size={16} className="text-emerald-400" /> : <span className="text-stone-500">-</span>) : row.starter}
                 </div>
-                <div className="p-4 px-6 flex justify-center items-center text-sm font-sans text-stone-800 border-x border-stone-200/20 bg-violet-50/20">
-                  {typeof row.pro === 'boolean' ? (row.pro ? <Check size={16} className="text-violet-600" /> : <span className="text-stone-500">-</span>) : row.pro}
+                <div className="p-4 px-6 flex justify-center items-center text-sm font-sans text-stone-100 border-x border-white/10/20 bg-violet-950/30">
+                  {typeof row.pro === 'boolean' ? (row.pro ? <Check size={16} className="text-violet-400" /> : <span className="text-stone-500">-</span>) : row.pro}
                 </div>
-                <div className="p-4 px-6 flex justify-center items-center text-sm font-sans text-stone-500">
-                  {typeof row.enterprise === 'boolean' ? (row.enterprise ? <Check size={16} className="text-emerald-500" /> : <span className="text-stone-500">-</span>) : row.enterprise}
+                <div className="p-4 px-6 flex justify-center items-center text-sm font-sans text-stone-400">
+                  {typeof row.enterprise === 'boolean' ? (row.enterprise ? <Check size={16} className="text-emerald-400" /> : <span className="text-stone-500">-</span>) : row.enterprise}
                 </div>
               </div>
             ))}
@@ -363,40 +363,40 @@ I would like to proceed with this architecture. Please provide further details.`
       {/* NEW: INTERACTIVE ESTIMATION TOOL */}
       <ScrollReveal delay={100}>
         <section id="pricing-calculator" className="mb-32 clay-card relative overflow-hidden p-6 md:p-8">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-violet-600/5 rounded-full blur-3xl pointer-events-none -z-10" />
+          <div className="absolute top-0 right-0 w-96 h-96 bg-violet-600/10 rounded-full blur-3xl pointer-events-none -z-10" />
           
-          <div className="p-8 sm:p-12 border-b border-stone-200/30 bg-stone-50/35">
+          <div className="p-8 sm:p-12 border-b border-white/10/30 bg-[#0a0a0a]/35">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div className="space-y-1.5 text-left">
                 <div className="flex items-center space-x-2.5">
-                  <span className="p-2 bg-violet-100 rounded-xl text-violet-600">
+                  <span className="p-2 bg-violet-900/40 border border-violet-500/30 rounded-xl text-violet-400">
                     <Sliders size={18} />
                   </span>
-                  <span className="text-violet-600 font-sans text-xs uppercase tracking-widest font-extrabold">✦ PRICING ESTIMATOR</span>
+                  <span className="text-violet-400 font-sans text-xs uppercase tracking-widest font-extrabold">✦ PRICING ESTIMATOR</span>
                 </div>
-                <h2 className="font-display font-black text-2xl xs:text-3xl text-stone-850 uppercase tracking-tight mt-1">Interactive Estimator</h2>
-                <p className="text-stone-600 text-sm max-w-xl leading-relaxed font-sans">
+                <h2 className="font-display font-black text-2xl xs:text-3xl text-stone-100 uppercase tracking-tight mt-1">Interactive Estimator</h2>
+                <p className="text-stone-300 text-sm max-w-xl leading-relaxed font-sans">
                   Select your options below to estimate your custom project build. Final scope and pricing are confirmed during initial consultation.
                 </p>
               </div>
-              <div className="bg-violet-50 border border-violet-100 px-4 py-2.5 rounded-2xl flex items-center space-x-2 shrink-0 self-start sm:self-center">
+              <div className="bg-violet-950/60 border border-violet-500/30 px-4 py-2.5 rounded-2xl flex items-center space-x-2 shrink-0 self-start sm:self-center">
                 <span className="flex h-2 w-2 relative">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-violet-400 opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-violet-500"></span>
                 </span>
-                <span className="font-sans text-[9px] font-extrabold text-violet-700 uppercase tracking-widest">LIVE ESTIMATOR</span>
+                <span className="font-sans text-[9px] font-extrabold text-violet-300 uppercase tracking-widest">LIVE ESTIMATOR</span>
               </div>
             </div>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12">
             {/* Controls */}
-            <div className="lg:col-span-7 p-8 sm:p-12 space-y-10 border-r-0 lg:border-r border-b lg:border-b-0 border-stone-200/30">
+            <div className="lg:col-span-7 p-8 sm:p-12 space-y-10 border-r-0 lg:border-r border-b lg:border-b-0 border-white/10/30">
               
               {/* Base Tier */}
               <div className="space-y-4 text-left">
                 <div className="flex items-center space-x-2">
-                  <span className="font-sans text-[10px] text-stone-500 uppercase tracking-widest font-extrabold">01 SELECT SERVICE</span>
+                  <span className="font-sans text-[10px] text-stone-400 uppercase tracking-widest font-extrabold">01 SELECT SERVICE</span>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {[
@@ -415,10 +415,10 @@ I would like to proceed with this architecture. Please provide further details.`
                         className={`p-3.5 text-xs font-sans tracking-wide rounded-xl transition-all border cursor-pointer flex items-center space-x-3 text-left ${
                           isActive 
                             ? 'bg-gradient-to-r from-violet-600 to-rose-500 border-transparent text-white-force shadow-md shadow-violet-500/10 scale-[1.01]' 
-                            : 'bg-[#faf8f5] border-stone-200/60 text-stone-700 hover:border-violet-300 hover:bg-violet-50/50 hover:text-violet-700 hover:shadow-sm'
+                            : 'bg-[#0a0a0a] border-white/10 text-stone-300 hover:border-violet-300 hover:bg-violet-50/50 hover:text-violet-400 hover:shadow-sm'
                         }`}
                       >
-                        <IconComp size={15} className={isActive ? 'text-white-force' : 'text-stone-500'} />
+                        <IconComp size={15} className={isActive ? 'text-white-force' : 'text-stone-400'} />
                         <span className="font-bold">{tier.label}</span>
                       </button>
                     );
@@ -434,7 +434,7 @@ I would like to proceed with this architecture. Please provide further details.`
                     exit={{ opacity: 0, height: 0 }}
                     className="space-y-4 overflow-hidden mt-10 text-left"
                   >
-                    <span className="text-stone-500 font-sans text-[10px] uppercase tracking-widest font-extrabold">02 SELECT COMPLEXITY</span>
+                    <span className="text-stone-400 font-sans text-[10px] uppercase tracking-widest font-extrabold">02 SELECT COMPLEXITY</span>
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
                       {[
                         { id: 'small', label: 'Lean / Focused', desc: 'Pre-production MVP build with essential features.' },
@@ -448,14 +448,14 @@ I would like to proceed with this architecture. Please provide further details.`
                             onClick={() => setCalcScope(scope.id as any)}
                             className={`p-4 text-left rounded-xl transition-all border cursor-pointer flex flex-col justify-between h-full ${
                               isActive 
-                                ? 'bg-white border-stone-200 text-stone-800 shadow-md shadow-stone-200/50 scale-[1.01]' 
-                                : 'bg-[#faf8f5] border-stone-200/60 text-stone-700 hover:border-violet-300 hover:bg-violet-50/50 hover:text-violet-700 hover:shadow-sm'
+                                ? 'bg-[#050505] border-white/10 text-stone-100 shadow-md shadow-stone-200/50 scale-[1.01]' 
+                                : 'bg-[#0a0a0a] border-white/10 text-stone-300 hover:border-violet-300 hover:bg-violet-50/50 hover:text-violet-400 hover:shadow-sm'
                             }`}
                           >
-                            <span className={`text-xs font-mono tracking-wide font-black uppercase mb-1.5 ${isActive ? 'text-white-force' : 'text-stone-850'}`}>
+                            <span className={`text-xs font-mono tracking-wide font-black uppercase mb-1.5 ${isActive ? 'text-white-force' : 'text-stone-100'}`}>
                               {scope.label}
                             </span>
-                            <span className={`text-[10px] font-sans leading-relaxed ${isActive ? 'text-stone-600' : 'text-stone-500'}`}>
+                            <span className={`text-[10px] font-sans leading-relaxed ${isActive ? 'text-stone-300' : 'text-stone-400'}`}>
                               {scope.desc}
                             </span>
                           </button>
@@ -467,27 +467,27 @@ I would like to proceed with this architecture. Please provide further details.`
 
               {/* Add-ons */}
               <div className="space-y-4 mt-10 text-left">
-                <span className="text-stone-500 font-sans text-[10px] uppercase tracking-widest font-extrabold">03 ADD OPTIONAL FEATURES</span>
+                <span className="text-stone-400 font-sans text-[10px] uppercase tracking-widest font-extrabold">03 ADD OPTIONAL FEATURES</span>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
                   <button
                     onClick={() => toggleAddon('ai')}
                     disabled={calcTier === 'ai-agents'}
                     className={`flex items-center justify-between p-4 border rounded-xl transition-all text-left cursor-pointer h-full ${
                       calcTier === 'ai-agents' 
-                        ? 'opacity-40 cursor-not-allowed border-stone-200/30 bg-stone-100/30 text-stone-500' 
+                        ? 'opacity-40 cursor-not-allowed border-white/10/30 bg-[#111]/30 text-stone-400' 
                         : calcAddons.includes('ai') 
-                          ? 'border-violet-300 bg-violet-50/70 text-violet-800 shadow-sm' 
-                          : 'border-stone-200/60 bg-[#faf8f5] text-stone-700 hover:border-violet-300 hover:bg-violet-50/50 hover:text-violet-700 hover:shadow-sm'
+                          ? 'border-violet-500/50 bg-violet-950/50 text-violet-200 shadow-lg' 
+                          : 'border-white/10 bg-[#0a0a0a] text-stone-300 hover:border-violet-500/40 hover:bg-violet-950/30 hover:text-violet-300'
                     }`}
                   >
                     <div className="flex flex-col pr-2">
                       <span className="font-sans text-xs font-bold uppercase mb-1">AI Integrations</span>
-                      <span className="text-[10px] font-sans text-stone-500 leading-normal">Gemini-powered NLP features and autonomous pipeline integrations.</span>
+                      <span className="text-[10px] font-sans text-stone-400 leading-normal">Gemini-powered NLP features and autonomous pipeline integrations.</span>
                     </div>
                     {calcTier === 'ai-agents' ? (
-                      <span className="text-[8px] uppercase text-violet-600 font-black bg-violet-50 px-2 py-0.5 rounded-md border border-violet-200 shrink-0 self-start">INCLUDED</span>
+                      <span className="text-[8px] uppercase text-violet-300 font-black bg-violet-950/60 px-2 py-0.5 rounded-md border border-violet-500/30 shrink-0 self-start">INCLUDED</span>
                     ) : (
-                      <div className={`w-4.5 h-4.5 rounded-full border flex items-center justify-center transition-all shrink-0 self-start mt-0.5 ${calcAddons.includes('ai') ? 'bg-violet-600 border-violet-600 text-white-force' : 'border-stone-300 bg-white'}`}>
+                      <div className={`w-4.5 h-4.5 rounded-full border flex items-center justify-center transition-all shrink-0 self-start mt-0.5 ${calcAddons.includes('ai') ? 'bg-violet-600 border-violet-500 text-white-force' : 'border-white/20 bg-[#050505]'}`}>
                         {calcAddons.includes('ai') && <Check size={10} className="text-white-force font-bold" />}
                       </div>
                     )}
@@ -497,15 +497,15 @@ I would like to proceed with this architecture. Please provide further details.`
                     onClick={() => toggleAddon('motion')}
                     className={`flex items-center justify-between p-4 border rounded-xl transition-all text-left cursor-pointer h-full ${
                       calcAddons.includes('motion') 
-                        ? 'border-violet-300 bg-violet-50/70 text-violet-800 shadow-sm' 
-                        : 'border-stone-200/60 bg-[#faf8f5] text-stone-700 hover:border-violet-300 hover:bg-violet-50/50 hover:text-violet-700 hover:shadow-sm'
+                        ? 'border-violet-500/50 bg-violet-950/50 text-violet-200 shadow-lg' 
+                        : 'border-white/10 bg-[#0a0a0a] text-stone-300 hover:border-violet-500/40 hover:bg-violet-950/30 hover:text-violet-300'
                     }`}
                   >
                     <div className="flex flex-col pr-2">
                       <span className="font-sans text-xs font-bold uppercase mb-1">Complex Motion</span>
-                      <span className="text-[10px] font-sans text-stone-500 leading-normal">Interactive 3D WebGL canvases, fluid vector systems, motion transitions.</span>
+                      <span className="text-[10px] font-sans text-stone-400 leading-normal">Interactive 3D WebGL canvases, fluid vector systems, motion transitions.</span>
                     </div>
-                    <div className={`w-4.5 h-4.5 rounded-full border flex items-center justify-center transition-all shrink-0 self-start mt-0.5 ${calcAddons.includes('motion') ? 'bg-violet-600 border-violet-600 text-white-force' : 'border-stone-300 bg-white'}`}>
+                    <div className={`w-4.5 h-4.5 rounded-full border flex items-center justify-center transition-all shrink-0 self-start mt-0.5 ${calcAddons.includes('motion') ? 'bg-violet-600 border-violet-500 text-white-force' : 'border-white/20 bg-[#050505]'}`}>
                       {calcAddons.includes('motion') && <Check size={10} className="text-white-force font-bold" />}
                     </div>
                   </button>
@@ -514,15 +514,15 @@ I would like to proceed with this architecture. Please provide further details.`
                     onClick={() => toggleAddon('priority')}
                     className={`flex items-center justify-between p-4 border rounded-xl transition-all text-left cursor-pointer h-full ${
                       calcAddons.includes('priority') 
-                        ? 'border-violet-300 bg-violet-50/70 text-violet-800 shadow-sm' 
-                        : 'border-stone-200/60 bg-[#faf8f5] text-stone-700 hover:border-violet-300 hover:bg-violet-50/50 hover:text-violet-700 hover:shadow-sm'
+                        ? 'border-violet-500/50 bg-violet-950/50 text-violet-200 shadow-lg' 
+                        : 'border-white/10 bg-[#0a0a0a] text-stone-300 hover:border-violet-500/40 hover:bg-violet-950/30 hover:text-violet-300'
                     }`}
                   >
                     <div className="flex flex-col pr-2">
                       <span className="font-sans text-xs font-bold uppercase mb-1">Priority SLA</span>
-                      <span className="text-[10px] font-sans text-stone-500 leading-normal">Accelerated timeline, weekly core progress reports, 24-hr priority chat.</span>
+                      <span className="text-[10px] font-sans text-stone-400 leading-normal">Accelerated timeline, weekly core progress reports, 24-hr priority chat.</span>
                     </div>
-                    <div className={`w-4.5 h-4.5 rounded-full border flex items-center justify-center transition-all shrink-0 self-start mt-0.5 ${calcAddons.includes('priority') ? 'bg-violet-600 border-violet-600 text-white-force' : 'border-stone-300 bg-white'}`}>
+                    <div className={`w-4.5 h-4.5 rounded-full border flex items-center justify-center transition-all shrink-0 self-start mt-0.5 ${calcAddons.includes('priority') ? 'bg-violet-600 border-violet-600 text-white-force' : 'border-white/20 bg-[#050505]'}`}>
                       {calcAddons.includes('priority') && <Check size={10} className="text-white-force font-bold" />}
                     </div>
                   </button>
@@ -532,51 +532,51 @@ I would like to proceed with this architecture. Please provide further details.`
             </div>
 
             {/* Results Output - Obsidian Sleek Dark Console */}
-            <div className="lg:col-span-5 bg-white p-8 sm:p-12 flex flex-col justify-between shadow-xl rounded-b-3xl lg:rounded-b-none lg:rounded-r-3xl border-t lg:border-t-0 lg:border-l border-stone-200 relative overflow-hidden text-left">
+            <div className="lg:col-span-5 bg-[#050505] p-8 sm:p-12 flex flex-col justify-between shadow-xl rounded-b-3xl lg:rounded-b-none lg:rounded-r-3xl border-t lg:border-t-0 lg:border-l border-white/10 relative overflow-hidden text-left">
               <div className="absolute -bottom-10 -right-10 w-64 h-64 bg-violet-500/10 rounded-full blur-3xl pointer-events-none" />
               <div className="absolute -top-10 -left-10 w-40 h-40 bg-rose-500/5 rounded-full blur-3xl pointer-events-none" />
 
               <div className="space-y-10 relative z-10">
                 {/* Cost */}
                 <div className="space-y-1.5">
-                  <div className="flex items-center space-x-2 text-stone-500 font-sans text-[10px] uppercase tracking-widest font-extrabold">
+                  <div className="flex items-center space-x-2 text-stone-400 font-sans text-[10px] uppercase tracking-widest font-extrabold">
                     <DollarSign size={14} className="text-violet-400" />
-                    <span className="text-stone-500">ESTIMATED INVESTMENT</span>
+                    <span className="text-stone-400">ESTIMATED INVESTMENT</span>
                   </div>
-                  <div className="text-4xl sm:text-5xl font-display font-black text-stone-900 tracking-tighter">
+                  <div className="text-4xl sm:text-5xl font-display font-black text-white tracking-tighter">
                     {estimation.priceStr}
                   </div>
                 </div>
 
                 {/* Timeline */}
                 <div className="space-y-1.5">
-                  <div className="flex items-center space-x-2 text-stone-500 font-sans text-[10px] uppercase tracking-widest font-extrabold">
+                  <div className="flex items-center space-x-2 text-stone-400 font-sans text-[10px] uppercase tracking-widest font-extrabold">
                     <Clock size={14} className="text-violet-400" />
-                    <span className="text-stone-500">PROJECTED TIMELINE</span>
+                    <span className="text-stone-400">PROJECTED TIMELINE</span>
                   </div>
-                  <div className="text-2xl font-sans text-stone-800 font-black">
+                  <div className="text-2xl font-sans text-stone-100 font-black">
                     {estimation.timelineStr}
                   </div>
                 </div>
 
                 {/* Resources */}
                 <div className="space-y-3">
-                  <div className="flex items-center space-x-2 text-stone-500 font-sans text-[10px] uppercase tracking-widest font-extrabold">
+                  <div className="flex items-center space-x-2 text-stone-400 font-sans text-[10px] uppercase tracking-widest font-extrabold">
                     <Users size={14} className="text-violet-400" />
-                    <span className="text-stone-500">TEAM ALLOCATION</span>
+                    <span className="text-stone-400">TEAM ALLOCATION</span>
                   </div>
                   <ul className="space-y-2.5">
                     {estimation.resources.map((res, i) => (
-                      <li key={i} className="flex items-center space-x-2.5 text-xs text-stone-600 font-sans">
+                      <li key={i} className="flex items-center space-x-2.5 text-xs text-stone-300 font-sans">
                         <div className="w-1.5 h-1.5 rounded-full bg-violet-400 animate-pulse" />
-                        <span className="text-stone-600">{res}</span>
+                        <span className="text-stone-300">{res}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
               </div>
 
-              <div className="pt-8 mt-8 border-t border-stone-200 relative z-10">
+              <div className="pt-8 mt-8 border-t border-white/10 relative z-10">
                 <button 
                   id="estimator-proceed-btn"
                   onClick={() => {
@@ -610,11 +610,11 @@ I would like to proceed with an estimate for my project. Please provide further 
 
       {/* 3. FAQ SECTION */}
       <ScrollReveal delay={150}>
-        <section id="pricing-faq-section" className="py-24 border-t border-stone-200/30 max-w-4xl mx-auto">
+        <section id="pricing-faq-section" className="py-24 border-t border-white/10/30 max-w-4xl mx-auto">
           <div className="text-center space-y-4 mb-16">
             <span className="text-violet-600 font-sans text-xs uppercase tracking-widest font-extrabold">✦ FREQUENTLY ASKED QUESTIONS</span>
-            <h2 className="font-display font-extrabold text-4xl text-stone-800 tracking-tight uppercase">FREQUENTLY ASKED QUESTIONS.</h2>
-            <p className="text-stone-600 text-sm max-w-md mx-auto leading-relaxed font-sans">
+            <h2 className="font-display font-extrabold text-4xl text-stone-100 tracking-tight uppercase">FREQUENTLY ASKED QUESTIONS.</h2>
+            <p className="text-stone-300 text-sm max-w-md mx-auto leading-relaxed font-sans">
               Clear answers regarding code ownership, delivery timelines, post-launch support, and custom AI integrations.
             </p>
           </div>
@@ -626,14 +626,14 @@ I would like to proceed with an estimate for my project. Please provide further 
                 <div
                   id={`faq-item-${idx}`}
                   key={idx}
-                  className="bg-[#fcfbf9] border border-stone-200/50 rounded-2xl transition-all duration-300 overflow-hidden hover:border-stone-400 shadow-sm"
+                  className="bg-[#0d0d12] border border-white/10/50 rounded-2xl transition-all duration-300 overflow-hidden hover:border-stone-400 shadow-sm"
                 >
                   <button
                     id={`faq-toggle-btn-${idx}`}
                     onClick={() => setOpenFaq(isOpen ? null : idx)}
-                    className="w-full text-left px-6 py-5 flex items-center justify-between hover:bg-[#faf8f5]/50 cursor-pointer"
+                    className="w-full text-left px-6 py-5 flex items-center justify-between hover:bg-[#0a0a0a]/50 cursor-pointer"
                   >
-                    <span className="font-display font-bold text-base sm:text-lg text-stone-800 leading-tight tracking-tight">
+                    <span className="font-display font-bold text-base sm:text-lg text-stone-100 leading-tight tracking-tight">
                       {faq.question}
                     </span>
                     <div className="text-violet-600">
@@ -646,7 +646,7 @@ I would like to proceed with an estimate for my project. Please provide further 
                       id={`faq-answer-${idx}`}
                       initial={{ opacity: 0, height: 0 }}
                       animate={{ opacity: 1, height: 'auto' }}
-                      className="px-6 pb-6 pt-2 text-sm text-stone-600 border-t border-stone-200/20 leading-relaxed"
+                      className="px-6 pb-6 pt-2 text-sm text-stone-300 border-t border-white/10/20 leading-relaxed"
                     >
                       {faq.answer}
                     </motion.div>

@@ -362,7 +362,7 @@ ${formData.name}`;
   const mailtoUrl = `mailto:devil.labs.contact@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
 
   return (
-    <div id="contact-page-root" className="pt-20 xs:pt-24 sm:pt-28 lg:pt-32 pb-32 px-4 md:px-8 max-w-7xl mx-auto min-h-screen relative overflow-hidden text-stone-800">
+    <div id="contact-page-root" className="pt-20 xs:pt-24 sm:pt-28 lg:pt-32 pb-32 px-4 md:px-8 max-w-7xl mx-auto min-h-screen relative overflow-hidden text-stone-100">
       {/* Abstract Background Blur */}
       <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-violet-600/5 rounded-full blur-[120px] pointer-events-none -z-10 mix-blend-multiply" />
       <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-fuchsia-600/5 rounded-full blur-[100px] pointer-events-none -z-10 mix-blend-multiply" />
@@ -381,7 +381,7 @@ ${formData.name}`;
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1 }}
-          className="font-display font-black text-3xl xs:text-4xl sm:text-6xl md:text-7xl lg:text-8xl text-stone-850 tracking-tighter uppercase leading-[0.9] break-words max-w-full"
+          className="font-display font-black text-3xl xs:text-4xl sm:text-6xl md:text-7xl lg:text-8xl text-stone-100 tracking-tighter uppercase leading-[0.9] break-words max-w-full"
         >
           Let's Build <br/>
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 via-rose-500 to-amber-500 font-serif italic font-light lowercase text-3xl xs:text-4xl sm:text-7xl md:text-8xl lg:text-9xl break-words max-w-full">something</span> <br/>
@@ -412,33 +412,33 @@ ${formData.name}`;
                   
                   <div className="flex items-center space-x-2">
                     <CheckCircle className="w-4 h-4 text-emerald-600" />
-                    <span className="text-violet-700 font-mono text-[10px] uppercase tracking-[0.2em] font-semibold">
+                    <span className="text-violet-400 font-mono text-[10px] uppercase tracking-[0.2em] font-semibold">
                       Configuration Calibrated
                     </span>
                   </div>
                   
                   <div className="flex flex-wrap gap-2 pt-1">
                     {loadedInfo.service && (
-                      <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-stone-200/50 text-xs font-mono text-stone-700">
+                      <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#050505] border border-white/10/50 text-xs font-mono text-stone-300">
                         <span className="text-violet-600 font-medium">Service:</span>
-                        <span className="text-stone-850 font-bold">{loadedInfo.service}</span>
+                        <span className="text-stone-100 font-bold">{loadedInfo.service}</span>
                       </div>
                     )}
                     {loadedInfo.plan && (
-                      <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-stone-200/50 text-xs font-mono text-stone-700">
+                      <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#050505] border border-white/10/50 text-xs font-mono text-stone-300">
                         <span className="text-violet-600 font-medium">Plan:</span>
                         <span className="text-emerald-600 font-bold">{loadedInfo.plan}</span>
                       </div>
                     )}
                     {loadedInfo.scope && (
-                      <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-stone-200/50 text-xs font-mono text-stone-700">
+                      <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#050505] border border-white/10/50 text-xs font-mono text-stone-300">
                         <span className="text-violet-600 font-medium">Scope:</span>
-                        <span className="text-stone-600">{loadedInfo.scope}</span>
+                        <span className="text-stone-300">{loadedInfo.scope}</span>
                       </div>
                     )}
                   </div>
                   
-                  <p className="text-[11px] text-stone-500 font-light leading-relaxed">
+                  <p className="text-[11px] text-stone-400 font-light leading-relaxed">
                     The project scope, description, and budget fields have been automatically initialized based on your services selection. Feel free to adjust any parameter below.
                   </p>
                 </motion.div>
@@ -448,7 +448,7 @@ ${formData.name}`;
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div className="flex flex-col space-y-2 relative group/field">
                   <div className="flex justify-between items-center">
-                    <label htmlFor="name" className="text-stone-700 font-mono text-xs uppercase tracking-widest font-bold group-hover/field:text-violet-600 transition-colors duration-300">
+                    <label htmlFor="name" className="text-stone-300 font-mono text-xs uppercase tracking-widest font-bold group-hover/field:text-violet-600 transition-colors duration-300">
                       ✦ INITIATOR IDENTITY *
                     </label>
                     {formData.name && (
@@ -470,7 +470,7 @@ ${formData.name}`;
                     value={formData.name}
                     onChange={handleInputChange}
                     placeholder="VICKY KUMAR"
-                    className="w-full px-6 py-4 text-stone-800 font-mono text-xs tracking-wider focus:outline-none focus:border-violet-400 focus:ring-1 focus:ring-violet-300/30 transition-all rounded-full clay-inset uppercase placeholder-stone-400"
+                    className="w-full px-6 py-4 text-stone-100 font-mono text-xs tracking-wider focus:outline-none focus:border-violet-400 focus:ring-1 focus:ring-violet-300/30 transition-all rounded-full clay-inset uppercase placeholder-stone-400"
                   />
                   {formData.name.length > 2 && (
                     <motion.div 
@@ -484,7 +484,7 @@ ${formData.name}`;
                 </div>
                 <div className="flex flex-col space-y-2 relative group/field">
                   <div className="flex justify-between items-center">
-                    <label htmlFor="email" className="text-stone-700 font-mono text-xs uppercase tracking-widest font-bold group-hover/field:text-violet-600 transition-colors duration-300">
+                    <label htmlFor="email" className="text-stone-300 font-mono text-xs uppercase tracking-widest font-bold group-hover/field:text-violet-600 transition-colors duration-300">
                       ✦ SECURE UPLINK EMAIL *
                     </label>
                     {formData.email && /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(formData.email) && (
@@ -506,7 +506,7 @@ ${formData.name}`;
                     value={formData.email}
                     onChange={handleInputChange}
                     placeholder="VICKY@DEVILLABS.TECH"
-                    className="w-full px-6 py-4 text-stone-800 font-mono text-xs tracking-wider focus:outline-none focus:border-violet-400 focus:ring-1 focus:ring-violet-300/30 transition-all rounded-full clay-inset uppercase placeholder-stone-400"
+                    className="w-full px-6 py-4 text-stone-100 font-mono text-xs tracking-wider focus:outline-none focus:border-violet-400 focus:ring-1 focus:ring-violet-300/30 transition-all rounded-full clay-inset uppercase placeholder-stone-400"
                   />
                   {formData.email && !/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(formData.email) && (
                     <motion.div 
@@ -524,7 +524,7 @@ ${formData.name}`;
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div className="flex flex-col space-y-2 relative group/field">
                   <div className="flex justify-between items-center">
-                    <label htmlFor="phone" className="text-stone-700 font-mono text-xs uppercase tracking-widest font-bold group-hover/field:text-violet-600 transition-colors duration-300">
+                    <label htmlFor="phone" className="text-stone-300 font-mono text-xs uppercase tracking-widest font-bold group-hover/field:text-violet-600 transition-colors duration-300">
                       ✦ DIRECT TELEPHONY COORDINATES *
                     </label>
                     {formData.phone && /^\d{4,14}$/.test(formData.phone.replace(/[\s\-()]/g, '')) && (
@@ -543,10 +543,10 @@ ${formData.name}`;
                       <select
                         value={phonePrefix}
                         onChange={(e) => setPhonePrefix(e.target.value)}
-                        className="px-4 py-4 text-stone-800 font-mono text-xs tracking-wider focus:outline-none focus:border-violet-400 focus:ring-1 focus:ring-violet-300/30 transition-all rounded-full clay-inset appearance-none cursor-pointer bg-transparent"
+                        className="px-4 py-4 text-stone-100 font-mono text-xs tracking-wider focus:outline-none focus:border-violet-400 focus:ring-1 focus:ring-violet-300/30 transition-all rounded-full clay-inset appearance-none cursor-pointer bg-transparent"
                       >
                         {COUNTRIES.map((c) => (
-                          <option key={c.code} value={c.dialCode} className="bg-[#fcfbf9] text-stone-850">
+                          <option key={c.code} value={c.dialCode} className="bg-[#0d0d12] text-stone-100">
                             {c.flag} {c.dialCode}
                           </option>
                         ))}
@@ -560,7 +560,7 @@ ${formData.name}`;
                       value={formData.phone}
                       onChange={handleInputChange}
                       placeholder="9876543210"
-                      className="w-full px-6 py-4 text-stone-800 font-mono text-xs tracking-wider focus:outline-none focus:border-violet-400 focus:ring-1 focus:ring-violet-300/30 transition-all rounded-full clay-inset uppercase placeholder-stone-400"
+                      className="w-full px-6 py-4 text-stone-100 font-mono text-xs tracking-wider focus:outline-none focus:border-violet-400 focus:ring-1 focus:ring-violet-300/30 transition-all rounded-full clay-inset uppercase placeholder-stone-400"
                     />
                   </div>
                   {formData.phone && !/^\d{4,14}$/.test(formData.phone.replace(/[\s\-()]/g, '')) && (
@@ -575,7 +575,7 @@ ${formData.name}`;
                 </div>
                 <div className="flex flex-col space-y-2 relative group/field">
                   <div className="flex justify-between items-center">
-                    <label htmlFor="company" className="text-stone-700 font-mono text-xs uppercase tracking-widest font-bold group-hover/field:text-violet-600 transition-colors duration-300">
+                    <label htmlFor="company" className="text-stone-300 font-mono text-xs uppercase tracking-widest font-bold group-hover/field:text-violet-600 transition-colors duration-300">
                       ✦ ORGANIZATION NODE *
                     </label>
                     {formData.company && (
@@ -597,14 +597,14 @@ ${formData.name}`;
                     value={formData.company}
                     onChange={handleInputChange}
                     placeholder="DEVIL LABS"
-                    className="w-full px-6 py-4 text-stone-800 font-mono text-xs tracking-wider focus:outline-none focus:border-violet-400 focus:ring-1 focus:ring-violet-300/30 transition-all rounded-full clay-inset uppercase placeholder-stone-400"
+                    className="w-full px-6 py-4 text-stone-100 font-mono text-xs tracking-wider focus:outline-none focus:border-violet-400 focus:ring-1 focus:ring-violet-300/30 transition-all rounded-full clay-inset uppercase placeholder-stone-400"
                   />
                 </div>
               </div>
 
               {/* Company Size */}
               <div className="flex flex-col space-y-2">
-                <label htmlFor="companySize" className="text-stone-700 font-mono text-xs uppercase tracking-widest font-bold">
+                <label htmlFor="companySize" className="text-stone-300 font-mono text-xs uppercase tracking-widest font-bold">
                   Company Size
                 </label>
                 <select
@@ -613,11 +613,11 @@ ${formData.name}`;
                   required
                   value={formData.companySize}
                   onChange={handleInputChange}
-                  className="w-full px-5 py-4 text-stone-800 font-mono text-xs tracking-wider focus:outline-none focus:border-violet-300/40 transition-all rounded-full clay-inset appearance-none cursor-pointer bg-transparent"
+                  className="w-full px-5 py-4 text-stone-100 font-mono text-xs tracking-wider focus:outline-none focus:border-violet-300/40 transition-all rounded-full clay-inset appearance-none cursor-pointer bg-transparent"
                 >
-                  <option value="" className="text-stone-400 bg-[#fdfcf9]">SELECT SIZE...</option>
+                  <option value="" className="text-stone-400 bg-[#0d0d12]">SELECT SIZE...</option>
                   {companySizes.map(sz => (
-                    <option key={sz.value} value={sz.value} className="text-stone-850 bg-[#fdfcf9]">
+                    <option key={sz.value} value={sz.value} className="text-stone-100 bg-[#0d0d12]">
                       {sz.label}
                     </option>
                   ))}
@@ -626,7 +626,7 @@ ${formData.name}`;
 
               {/* Project Scope */}
               <div className="flex flex-col space-y-2 relative">
-                <label htmlFor="scope" className="text-stone-700 font-mono text-xs uppercase tracking-widest font-bold">
+                <label htmlFor="scope" className="text-stone-300 font-mono text-xs uppercase tracking-widest font-bold">
                   Project Scope
                 </label>
                 <select
@@ -635,24 +635,24 @@ ${formData.name}`;
                   required
                   value={formData.scope}
                   onChange={handleInputChange}
-                  className="w-full px-5 py-4 text-stone-800 font-mono text-xs tracking-wider focus:outline-none focus:border-violet-300/40 transition-all rounded-full clay-inset appearance-none cursor-pointer bg-transparent"
+                  className="w-full px-5 py-4 text-stone-100 font-mono text-xs tracking-wider focus:outline-none focus:border-violet-300/40 transition-all rounded-full clay-inset appearance-none cursor-pointer bg-transparent"
                 >
-                  <option value="" className="text-stone-400 bg-[#fdfcf9]">SELECT SCOPE...</option>
+                  <option value="" className="text-stone-400 bg-[#0d0d12]">SELECT SCOPE...</option>
                   {scopes.map(sc => (
-                    <option key={sc.value} value={sc.value} className="text-stone-850 bg-[#fdfcf9]">
+                    <option key={sc.value} value={sc.value} className="text-stone-100 bg-[#0d0d12]">
                       {sc.label}
                     </option>
                   ))}
                 </select>
                 {loadedInfo?.scope && (
-                  <div className="absolute right-4 top-1.5 flex items-center gap-1.5 text-[10px] font-mono text-emerald-700 bg-emerald-50 border border-emerald-200 px-2.5 py-1 rounded-full cursor-help group/tooltip z-10 transition-all hover:bg-emerald-100">
+                  <div className="absolute right-4 top-1.5 flex items-center gap-1.5 text-[10px] font-mono text-emerald-400 bg-emerald-950/60 border border-emerald-500/30 px-2.5 py-1 rounded-full cursor-help group/tooltip z-10 transition-all hover:bg-emerald-900/60">
                     <Info className="w-3.5 h-3.5" />
                     <span className="hidden sm:inline">Captured</span>
                     <span className="sm:hidden">Prefilled</span>
                     
                     {/* Tooltip */}
-                    <div className="absolute bottom-full mb-2 right-0 w-64 p-3 bg-white border border-stone-200 rounded-lg text-[11px] text-stone-600 font-sans leading-relaxed shadow-xl opacity-0 invisible group-hover/tooltip:opacity-100 group-hover/tooltip:visible transition-all duration-300 pointer-events-none">
-                      Your project scope interest was automatically initialized to <strong className="text-emerald-700">"{loadedInfo.scope}"</strong> based on the service category you selected.
+                    <div className="absolute bottom-full mb-2 right-0 w-64 p-3 bg-[#0d0d12] border border-white/10 rounded-lg text-[11px] text-stone-300 font-sans leading-relaxed shadow-2xl opacity-0 invisible group-hover/tooltip:opacity-100 group-hover/tooltip:visible transition-all duration-300 pointer-events-none">
+                      Your project scope interest was automatically initialized to <strong className="text-emerald-400">"{loadedInfo.scope}"</strong> based on the service category you selected.
                     </div>
                   </div>
                 )}
@@ -660,7 +660,7 @@ ${formData.name}`;
 
               {/* Budget Tier */}
               <div className="flex flex-col space-y-2 relative">
-                <label htmlFor="budget" className="text-stone-700 font-mono text-xs uppercase tracking-widest font-bold">
+                <label htmlFor="budget" className="text-stone-300 font-mono text-xs uppercase tracking-widest font-bold">
                   Budget Expectation ({currency})
                 </label>
                 <select
@@ -669,23 +669,23 @@ ${formData.name}`;
                   required
                   value={formData.budget}
                   onChange={handleInputChange}
-                  className="w-full px-5 py-4 text-stone-800 font-mono text-xs tracking-wider focus:outline-none focus:border-violet-300/40 transition-all rounded-full clay-inset appearance-none cursor-pointer bg-transparent"
+                  className="w-full px-5 py-4 text-stone-100 font-mono text-xs tracking-wider focus:outline-none focus:border-violet-300/40 transition-all rounded-full clay-inset appearance-none cursor-pointer bg-transparent"
                 >
-                  <option value="" className="text-stone-400 bg-[#fdfcf9]">SELECT BUDGET...</option>
+                  <option value="" className="text-stone-400 bg-[#0d0d12]">SELECT BUDGET...</option>
                   {budgetTiers.map(bt => (
-                    <option key={bt.value} value={bt.value} className="text-stone-850 bg-[#fdfcf9]">
+                    <option key={bt.value} value={bt.value} className="text-stone-100 bg-[#0d0d12]">
                       {bt.label}
                     </option>
                   ))}
                 </select>
                 {loadedInfo?.plan && (
-                  <div className="absolute right-4 top-1.5 flex items-center gap-1.5 text-[10px] font-mono text-emerald-700 bg-emerald-50 border border-emerald-200 px-2.5 py-1 rounded-full cursor-help group/tooltip z-10 transition-all hover:bg-emerald-100">
+                  <div className="absolute right-4 top-1.5 flex items-center gap-1.5 text-[10px] font-mono text-emerald-400 bg-emerald-950/60 border border-emerald-500/30 px-2.5 py-1 rounded-full cursor-help group/tooltip z-10 transition-all hover:bg-emerald-900/60">
                     <Info className="w-3.5 h-3.5" />
                     <span className="hidden sm:inline">Estimated</span>
                     
                     {/* Tooltip */}
-                    <div className="absolute bottom-full mb-2 right-0 w-64 p-3 bg-white border border-stone-200 rounded-lg text-[11px] text-stone-600 font-sans leading-relaxed shadow-xl opacity-0 invisible group-hover/tooltip:opacity-100 group-hover/tooltip:visible transition-all duration-300 pointer-events-none">
-                      The budget was set to <strong className="text-emerald-700">"{formData.budget}"</strong> matching the standard price tier of the plan (<strong className="text-emerald-700">"{loadedInfo.plan}"</strong>) you selected.
+                    <div className="absolute bottom-full mb-2 right-0 w-64 p-3 bg-[#0d0d12] border border-white/10 rounded-lg text-[11px] text-stone-300 font-sans leading-relaxed shadow-2xl opacity-0 invisible group-hover/tooltip:opacity-100 group-hover/tooltip:visible transition-all duration-300 pointer-events-none">
+                      The budget was set to <strong className="text-emerald-400">"{formData.budget}"</strong> matching the standard price tier of the plan (<strong className="text-emerald-400">"{loadedInfo.plan}"</strong>) you selected.
                     </div>
                   </div>
                 )}
@@ -693,7 +693,7 @@ ${formData.name}`;
 
               {/* Project Specs */}
               <div className="flex flex-col space-y-2 relative">
-                <label htmlFor="specs" className="text-stone-700 font-mono text-xs uppercase tracking-widest font-bold">
+                <label htmlFor="specs" className="text-stone-300 font-mono text-xs uppercase tracking-widest font-bold">
                   The Vision
                 </label>
                 <textarea
@@ -704,16 +704,16 @@ ${formData.name}`;
                   value={formData.specs}
                   onChange={handleInputChange}
                   placeholder="TELL US ABOUT THE VISION, THE GOALS, AND THE TECHNICAL REQUIREMENTS..."
-                  className="w-full px-5 py-4 text-stone-800 font-mono text-xs tracking-wider focus:outline-none focus:border-violet-300/40 transition-all rounded-[24px] clay-inset resize-none uppercase placeholder-stone-400 leading-relaxed"
+                  className="w-full px-5 py-4 text-stone-100 font-mono text-xs tracking-wider focus:outline-none focus:border-violet-300/40 transition-all rounded-[24px] clay-inset resize-none uppercase placeholder-stone-400 leading-relaxed"
                 />
                 {(loadedInfo?.service || loadedInfo?.scope) && (
-                  <div className="absolute right-4 top-1.5 flex items-center gap-1.5 text-[10px] font-mono text-emerald-700 bg-emerald-50 border border-emerald-200 px-2.5 py-1 rounded-full cursor-help group/tooltip z-10 transition-all hover:bg-emerald-100">
+                  <div className="absolute right-4 top-1.5 flex items-center gap-1.5 text-[10px] font-mono text-emerald-400 bg-emerald-950/60 border border-emerald-500/30 px-2.5 py-1 rounded-full cursor-help group/tooltip z-10 transition-all hover:bg-emerald-900/60">
                     <Info className="w-3.5 h-3.5" />
                     <span className="hidden sm:inline">Pre-drafted Outline</span>
                     
                     {/* Tooltip */}
-                    <div className="absolute bottom-full mb-2 right-0 w-64 p-3 bg-white border border-stone-200 rounded-lg text-[11px] text-stone-600 font-sans leading-relaxed shadow-xl opacity-0 invisible group-hover/tooltip:opacity-100 group-hover/tooltip:visible transition-all duration-300 pointer-events-none">
-                      We automatically generated a customized technical brief outline referencing your selected service (<strong className="text-emerald-700">"{loadedInfo.service || loadedInfo.scope}"</strong>) to save you drafting time.
+                    <div className="absolute bottom-full mb-2 right-0 w-64 p-3 bg-[#0d0d12] border border-white/10 rounded-lg text-[11px] text-stone-300 font-sans leading-relaxed shadow-2xl opacity-0 invisible group-hover/tooltip:opacity-100 group-hover/tooltip:visible transition-all duration-300 pointer-events-none">
+                      We automatically generated a customized technical brief outline referencing your selected service (<strong className="text-emerald-400">"{loadedInfo.service || loadedInfo.scope}"</strong>) to save you drafting time.
                     </div>
                   </div>
                 )}
@@ -724,7 +724,7 @@ ${formData.name}`;
                 <motion.div 
                   initial={{ opacity: 0, height: 0 }}
                   animate={{ opacity: 1, height: 'auto' }}
-                  className="p-4 bg-rose-50 border border-rose-150 rounded-2xl text-rose-700 text-sm font-light"
+                  className="p-4 bg-rose-950/60 border border-rose-500/30 rounded-2xl text-rose-300 text-sm font-light"
                 >
                   <ul className="list-disc list-inside space-y-1">
                     {errors.map((err, idx) => (
@@ -741,10 +741,10 @@ ${formData.name}`;
                   type="checkbox"
                   checked={isConsentChecked}
                   onChange={(e) => setIsConsentChecked(e.target.checked)}
-                  className="mt-1 flex-shrink-0 w-4 h-4 rounded border-stone-300 text-violet-600 focus:ring-violet-500 cursor-pointer transition-colors"
+                  className="mt-1 flex-shrink-0 w-4 h-4 rounded border-white/20 text-violet-600 focus:ring-violet-500 cursor-pointer transition-colors"
                 />
-                <label htmlFor="consent" className="text-stone-500 text-xs font-mono leading-relaxed">
-                  I agree to the <button type="button" onClick={() => navigate('/legal/terms')} className="text-indigo-600 hover:text-stone-850 underline decoration-indigo-500/30 transition-colors">Terms of Service</button> and <button type="button" onClick={() => navigate('/legal/privacy')} className="text-indigo-600 hover:text-stone-850 underline decoration-indigo-500/30 transition-colors">Privacy Policy</button>, and understand that submission of this data is subject to the Devil Labs <button type="button" onClick={() => navigate('/legal/msa')} className="text-indigo-600 hover:text-stone-850 underline decoration-indigo-500/30 transition-colors">MSA</button>.
+                <label htmlFor="consent" className="text-stone-400 text-xs font-mono leading-relaxed">
+                  I agree to the <button type="button" onClick={() => navigate('/legal/terms')} className="text-indigo-600 hover:text-stone-100 underline decoration-indigo-500/30 transition-colors">Terms of Service</button> and <button type="button" onClick={() => navigate('/legal/privacy')} className="text-indigo-600 hover:text-stone-100 underline decoration-indigo-500/30 transition-colors">Privacy Policy</button>, and understand that submission of this data is subject to the Devil Labs <button type="button" onClick={() => navigate('/legal/msa')} className="text-indigo-600 hover:text-stone-100 underline decoration-indigo-500/30 transition-colors">MSA</button>.
                 </label>
               </div>
 
@@ -766,7 +766,7 @@ ${formData.name}`;
                   className={`w-full sm:w-auto px-10 py-5 font-bold tracking-widest text-xs uppercase transition-all duration-300 flex items-center justify-center space-x-3 rounded-full
                     ${isConsentChecked && !loading
                       ? 'clay-violet-solid cursor-pointer' 
-                      : 'opacity-50 cursor-not-allowed border border-stone-200 bg-stone-100 text-stone-400 shadow-none'
+                      : 'opacity-50 cursor-not-allowed border border-white/10 bg-[#111] text-stone-400 shadow-none'
                     }`}
                 >
                   <span>{loading ? 'INITIALIZING...' : 'INITIALIZE PROJECT'}</span>
@@ -786,7 +786,7 @@ ${formData.name}`;
                   initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.8 }}
-                  className="mt-6 clay-card p-6 md:p-8 flex flex-col items-center max-w-xl mx-auto space-y-4 border border-stone-200/40"
+                  className="mt-6 clay-card p-6 md:p-8 flex flex-col items-center max-w-xl mx-auto space-y-4 border border-white/10"
                 >
                   <div className="flex items-center space-x-2 text-violet-600 font-mono text-[10px] uppercase tracking-widest font-bold">
                     <span className="w-1.5 h-1.5 rounded-full bg-violet-500 animate-pulse" />
@@ -800,8 +800,8 @@ ${formData.name}`;
                     >
                       <Mail size={20} className="text-violet-600 group-hover:scale-110 transition-transform" />
                       <div>
-                        <div className="text-xs font-bold text-stone-850 font-mono tracking-wider">DISPATCH GMAIL BRIEF</div>
-                        <div className="text-[9px] text-stone-500 font-sans mt-0.5 leading-relaxed">Direct email to <span className="text-violet-600">devil.labs.contact@gmail.com</span></div>
+                        <div className="text-xs font-bold text-stone-100 font-mono tracking-wider">DISPATCH GMAIL BRIEF</div>
+                        <div className="text-[9px] text-stone-400 font-sans mt-0.5 leading-relaxed">Direct email to <span className="text-violet-600">devil.labs.contact@gmail.com</span></div>
                       </div>
                     </a>
 
@@ -813,8 +813,8 @@ ${formData.name}`;
                     >
                       <MessageCircle size={20} className="text-emerald-600 group-hover:scale-110 transition-transform" />
                       <div>
-                        <div className="text-xs font-bold text-stone-850 font-mono tracking-wider">DISPATCH WHATSAPP BRIEF</div>
-                        <div className="text-[9px] text-stone-500 font-sans mt-0.5 leading-relaxed">Direct WhatsApp to <span className="text-emerald-600">+91 81020 99678</span></div>
+                        <div className="text-xs font-bold text-stone-100 font-mono tracking-wider">DISPATCH WHATSAPP BRIEF</div>
+                        <div className="text-[9px] text-stone-400 font-sans mt-0.5 leading-relaxed">Direct WhatsApp to <span className="text-emerald-600">+91 81020 99678</span></div>
                       </div>
                     </a>
                   </div>
@@ -833,97 +833,97 @@ ${formData.name}`;
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="lg:col-span-5 space-y-12 pt-4 lg:pl-8 border-l-0 lg:border-l border-stone-200/50"
+          className="lg:col-span-5 space-y-12 pt-4 lg:pl-8 border-l-0 lg:border-l border-white/10/50"
         >
           <div className="space-y-8">
-            <h3 className="font-display text-2xl font-bold text-stone-850 tracking-tight">Direct Contact</h3>
-            <p className="text-stone-500 font-light text-base leading-relaxed">
+            <h3 className="font-display text-2xl font-bold text-stone-100 tracking-tight">Direct Contact</h3>
+            <p className="text-stone-400 font-light text-base leading-relaxed">
               Prefer a direct conversation? Feel free to reach out to us via email or book a call on our calendar.
             </p>
             
             <div className="space-y-6">
               <a href="tel:+918102099678" className="flex items-center space-x-6 group">
-                <div className="w-14 h-14 rounded-full clay-button flex items-center justify-center text-stone-500 group-hover:bg-violet-600 group-hover:text-white transition-all duration-500">
+                <div className="w-14 h-14 rounded-full clay-button flex items-center justify-center text-stone-400 group-hover:bg-violet-600 group-hover:text-white transition-all duration-500">
                   <Phone size={20} className="stroke-[1.5]" />
                 </div>
                 <div className="text-left">
                   <div className="text-xs font-mono text-stone-400 uppercase tracking-widest mb-1">Direct Call</div>
-                  <div className="text-stone-850 font-bold text-lg group-hover:text-violet-600 transition-colors">+91 81020 99678</div>
+                  <div className="text-stone-100 font-bold text-lg group-hover:text-violet-600 transition-colors">+91 81020 99678</div>
                 </div>
               </a>
 
               <a href="https://wa.me/918102099678" target="_blank" rel="noreferrer" className="flex items-center space-x-6 group">
-                <div className="w-14 h-14 rounded-full clay-button flex items-center justify-center text-stone-500 group-hover:bg-[#25D366] group-hover:text-white transition-all duration-500">
+                <div className="w-14 h-14 rounded-full clay-button flex items-center justify-center text-stone-400 group-hover:bg-[#25D366] group-hover:text-white transition-all duration-500">
                   <MessageCircle size={20} className="stroke-[1.5]" />
                 </div>
                 <div className="text-left">
                   <div className="text-xs font-mono text-stone-400 uppercase tracking-widest mb-1">WhatsApp</div>
-                  <div className="text-stone-850 font-bold text-lg group-hover:text-[#25D366] transition-colors">+91 81020 99678</div>
+                  <div className="text-stone-100 font-bold text-lg group-hover:text-[#25D366] transition-colors">+91 81020 99678</div>
                 </div>
               </a>
 
               <a href="mailto:devil.labs.contact@gmail.com" className="flex items-center space-x-6 group">
-                <div className="w-14 h-14 rounded-full clay-button flex items-center justify-center text-stone-500 group-hover:bg-violet-600 group-hover:text-white transition-all duration-500">
+                <div className="w-14 h-14 rounded-full clay-button flex items-center justify-center text-stone-400 group-hover:bg-violet-600 group-hover:text-white transition-all duration-500">
                   <Mail size={20} className="stroke-[1.5]" />
                 </div>
                 <div className="text-left">
                   <div className="text-xs font-mono text-stone-400 uppercase tracking-widest mb-1">Email Us</div>
-                  <div className="text-stone-850 font-bold text-lg group-hover:text-violet-600 transition-colors">devil.labs.contact@gmail.com</div>
+                  <div className="text-stone-100 font-bold text-lg group-hover:text-violet-600 transition-colors">devil.labs.contact@gmail.com</div>
                 </div>
               </a>
 
               <a href="https://calendly.com/devillabs" target="_blank" rel="noreferrer" className="flex items-center space-x-6 group">
-                <div className="w-14 h-14 rounded-full clay-button flex items-center justify-center text-stone-500 group-hover:bg-violet-600 group-hover:text-white transition-all duration-500">
+                <div className="w-14 h-14 rounded-full clay-button flex items-center justify-center text-stone-400 group-hover:bg-violet-600 group-hover:text-white transition-all duration-500">
                   <Calendar size={20} className="stroke-[1.5]" />
                 </div>
                 <div className="text-left">
                   <div className="text-xs font-mono text-stone-400 uppercase tracking-widest mb-1">Book a Call</div>
-                  <div className="text-stone-850 font-bold text-lg group-hover:text-violet-600 transition-colors">calendly.com/devillabs</div>
+                  <div className="text-stone-100 font-bold text-lg group-hover:text-violet-600 transition-colors">calendly.com/devillabs</div>
                 </div>
               </a>
 
               <div className="flex items-center space-x-6 pb-6">
-                <div className="w-14 h-14 rounded-full clay-button flex items-center justify-center text-stone-500">
+                <div className="w-14 h-14 rounded-full clay-button flex items-center justify-center text-stone-400">
                   <MapPin size={20} className="stroke-[1.5]" />
                 </div>
                 <div className="text-left">
                   <div className="text-xs font-mono text-stone-400 uppercase tracking-widest mb-1">Location</div>
-                  <div className="text-stone-850 font-bold text-lg">Gaya, Bihar, India</div>
+                  <div className="text-stone-100 font-bold text-lg">Gaya, Bihar, India</div>
                 </div>
               </div>
 
               {/* Network Platforms */}
-              <div className="space-y-4 pt-6 border-t border-stone-200/50">
+              <div className="space-y-4 pt-6 border-t border-white/10/50">
                 <h4 className="font-mono text-xs font-bold text-stone-400 uppercase tracking-[0.25em] text-left">✦ NETWORK PLATFORMS</h4>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <a href="https://github.com/Devil-Labs/" target="_blank" rel="noreferrer" className="flex items-center justify-between p-4 clay-button rounded-xl transition-all duration-300 group">
                     <div className="flex items-center space-x-3">
-                      <Github size={16} className="text-stone-500 group-hover:text-violet-600 transition-colors" />
-                      <span className="text-xs text-stone-700 font-mono font-bold tracking-wider">GitHub Org</span>
+                      <Github size={16} className="text-stone-400 group-hover:text-violet-600 transition-colors" />
+                      <span className="text-xs text-stone-300 font-mono font-bold tracking-wider">GitHub Org</span>
                     </div>
                     <ArrowUpRight size={14} className="text-stone-400 group-hover:text-violet-600 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all" />
                   </a>
 
                    <a href="https://linkedin.com/company/devillabs" target="_blank" rel="noreferrer" className="flex items-center justify-between p-4 clay-button rounded-xl transition-all duration-300 group">
                     <div className="flex items-center space-x-3">
-                      <Linkedin size={16} className="text-stone-500 group-hover:text-violet-600 transition-colors" />
-                      <span className="text-xs text-stone-700 font-mono font-bold tracking-wider">LinkedIn</span>
+                      <Linkedin size={16} className="text-stone-400 group-hover:text-violet-600 transition-colors" />
+                      <span className="text-xs text-stone-300 font-mono font-bold tracking-wider">LinkedIn</span>
                     </div>
                     <ArrowUpRight size={14} className="text-stone-400 group-hover:text-violet-600 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all" />
                   </a>
 
                   <a href="https://instagram.com/devillabs" target="_blank" rel="noreferrer" className="flex items-center justify-between p-4 clay-button rounded-xl transition-all duration-300 group">
                     <div className="flex items-center space-x-3">
-                      <Instagram size={16} className="text-stone-500 group-hover:text-violet-600 transition-colors" />
-                      <span className="text-xs text-stone-700 font-mono font-bold tracking-wider">Instagram</span>
+                      <Instagram size={16} className="text-stone-400 group-hover:text-violet-600 transition-colors" />
+                      <span className="text-xs text-stone-300 font-mono font-bold tracking-wider">Instagram</span>
                     </div>
                     <ArrowUpRight size={14} className="text-stone-400 group-hover:text-violet-600 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all" />
                   </a>
 
                   <a href="https://vickyiitp.tech" target="_blank" rel="noreferrer" className="flex items-center justify-between p-4 clay-button rounded-xl transition-all duration-300 group">
                     <div className="flex items-center space-x-3">
-                      <Globe size={16} className="text-stone-500 group-hover:text-violet-600 transition-colors" />
-                      <span className="text-xs text-stone-700 font-mono font-bold tracking-wider">Founder Site</span>
+                      <Globe size={16} className="text-stone-400 group-hover:text-violet-600 transition-colors" />
+                      <span className="text-xs text-stone-300 font-mono font-bold tracking-wider">Founder Site</span>
                     </div>
                     <ArrowUpRight size={14} className="text-stone-400 group-hover:text-violet-600 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all" />
                   </a>

@@ -6,7 +6,6 @@ import Marquee from '../components/Marquee';
 import SocialProofMarquee from '../components/SocialProofMarquee';
 import ProjectGallery from '../components/ProjectGallery';
 import HeroVideoPlayer from '../components/HeroVideoPlayer';
-import HeroImageSlider from '../components/HeroImageSlider';
 import CyberFrame from '../components/CyberFrame';
 import IndustrySolutions from '../components/IndustrySolutions';
 import ScrollReveal from '../components/ScrollReveal';
@@ -17,6 +16,8 @@ import { HandDrawnCircle, HandDrawnUnderline, HandDrawnArrow, BlueprintStickyNot
 import Creative3DStage from '../components/Creative3DStage';
 import TypographySpecimen from '../components/TypographySpecimen';
 import AEOKnowledgeHub from '../components/AEOKnowledgeHub';
+
+import StaggeredHeading from '../components/StaggeredHeading';
 
 const nichesData = [
   {
@@ -34,7 +35,7 @@ const nichesData = [
       'Advanced Custom Bundle Optimizations'
     ],
     accentColor: 'violet',
-    badgeClass: 'bg-violet-100 text-violet-700 border-violet-200',
+    badgeClass: 'bg-violet-950/60 text-violet-300 border-violet-200',
     glowColor: 'rgba(139, 92, 246, 0.25)',
     blueprint: {
       title: 'SYS_ENGINE_MODEL.C',
@@ -63,7 +64,7 @@ const nichesData = [
       'Bespoke Cognitive Customer Pipelines'
     ],
     accentColor: 'rose',
-    badgeClass: 'bg-rose-100 text-rose-700 border-rose-200',
+    badgeClass: 'bg-rose-950/60 text-rose-300 border-rose-200',
     glowColor: 'rgba(244, 63, 94, 0.25)',
     blueprint: {
       title: 'AGENT_ORCHESTRATOR.TS',
@@ -208,13 +209,10 @@ export default function LandingPage({ navigate }: LandingPageProps) {
           '--mouse-y': '45%',
           '--spotlight-radius': '120px',
         } as React.CSSProperties}
-        className="relative flex flex-col justify-center px-4 md:px-8 pb-12 pt-6 md:pb-16 md:pt-6 overflow-hidden min-h-[calc(100vh-135px)] lg:min-h-[620px] bg-white text-stone-900"
+        className="relative flex flex-col justify-center px-4 md:px-8 pb-12 pt-6 md:pb-16 md:pt-6 overflow-hidden min-h-[calc(100vh-135px)] lg:min-h-[620px] bg-[#050505] text-white"
       >
         {/* Dynamic Background Portal Layer */}
         <div className="absolute inset-0 z-0 pointer-events-none select-none">
-          {/* Base Layer: Full immersive cinematic slider */}
-          <HeroImageSlider />
-
           {/* Spotlight glow effect */}
           <div 
             className="absolute inset-0 pointer-events-none mix-blend-screen opacity-50"
@@ -223,9 +221,9 @@ export default function LandingPage({ navigate }: LandingPageProps) {
             }}
           />
           {/* Edge shadow for smooth blending */}
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_30%,#000000_100%)] pointer-events-none opacity-80" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_30%,#050505_100%)] pointer-events-none opacity-90" />
 
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_50%,#ffffff_98%)] pointer-events-none" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_50%,#000000_98%)] pointer-events-none" />
         </div>
 
         <div className="max-w-7xl w-full mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center px-4 md:px-8">
@@ -241,15 +239,15 @@ export default function LandingPage({ navigate }: LandingPageProps) {
             
             {/* Elegant, minimalist business positioning badge tag */}
             <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2.5">
-              <div className="flex items-center space-x-2 bg-white/80 border border-stone-200/60 px-4 py-2 rounded-full shadow-sm">
-                <span className="w-1.5 h-1.5 rounded-full bg-violet-600 animate-pulse" />
-                <span className="text-stone-700 font-sans text-[9px] font-extrabold uppercase tracking-[0.2em]">
+              <div className="flex items-center space-x-2 bg-[#111111]/80 border border-white/10 px-4 py-2 rounded-full shadow-sm">
+                <span className="w-1.5 h-1.5 rounded-full bg-violet-500 animate-pulse" />
+                <span className="text-stone-300 font-sans text-[9px] font-extrabold uppercase tracking-[0.2em]">
                   DEVIL LABS • DIGITAL INNOVATION
                 </span>
               </div>
-              <div className="flex items-center space-x-2 bg-white/80 border border-violet-200 px-4 py-2 rounded-full shadow-[0_0_10px_rgba(139,92,246,0.15)] backdrop-blur-md">
-                <span className="text-xs">🎓</span>
-                <span className="text-violet-700 font-sans text-[9px] font-extrabold uppercase tracking-widest">
+              <div className="flex items-center space-x-2 bg-[#111111]/80 border border-violet-500/30 px-4 py-2 rounded-full shadow-[0_0_15px_rgba(139,92,246,0.2)] backdrop-blur-md">
+                <span className="text-xs drop-shadow-[0_0_8px_rgba(139,92,246,0.5)]">🎓</span>
+                <span className="text-violet-300 font-sans text-[9px] font-extrabold uppercase tracking-widest">
                   IIT Patna Co-Founders
                 </span>
               </div>
@@ -261,12 +259,12 @@ export default function LandingPage({ navigate }: LandingPageProps) {
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
-                className="inline-flex items-center p-1.5 bg-white/40 backdrop-blur-md border border-stone-200/60 rounded-full shadow-sm"
+                className="inline-flex items-center p-1.5 bg-[#050505]/40 backdrop-blur-md border border-white/10 rounded-full shadow-sm"
               >
                 <button
                   onMouseEnter={playSpatialHoverSound}
                   onClick={() => { playClickSound(); setHeroMode('ai'); }}
-                  className={`relative px-6 py-2.5 text-[10px] sm:text-[11px] font-sans tracking-widest rounded-full transition-colors duration-300 cursor-pointer ${heroMode === 'ai' ? 'text-white font-black' : 'text-stone-600 font-bold hover:text-stone-900'}`}
+                  className={`relative px-6 py-2.5 text-[10px] sm:text-[11px] font-sans tracking-widest rounded-full transition-colors duration-300 cursor-pointer ${heroMode === 'ai' ? 'text-white font-black' : 'text-stone-300 font-bold hover:text-white'}`}
                 >
                   {heroMode === 'ai' && (
                     <motion.div layoutId="pill-bg" className="absolute inset-0 bg-gradient-to-r from-violet-600/80 to-indigo-600/80 rounded-full border border-white/20 shadow-[0_0_15px_rgba(139,92,246,0.3)]" />
@@ -276,7 +274,7 @@ export default function LandingPage({ navigate }: LandingPageProps) {
                 <button
                   onMouseEnter={playSpatialHoverSound}
                   onClick={() => { playClickSound(); setHeroMode('web'); }}
-                  className={`relative px-6 py-2.5 text-[10px] sm:text-[11px] font-sans tracking-widest rounded-full transition-colors duration-300 cursor-pointer ${heroMode === 'web' ? 'text-white font-black' : 'text-stone-600 font-bold hover:text-stone-900'}`}
+                  className={`relative px-6 py-2.5 text-[10px] sm:text-[11px] font-sans tracking-widest rounded-full transition-colors duration-300 cursor-pointer ${heroMode === 'web' ? 'text-white font-black' : 'text-stone-300 font-bold hover:text-white'}`}
                 >
                   {heroMode === 'web' && (
                     <motion.div layoutId="pill-bg" className="absolute inset-0 bg-gradient-to-r from-violet-600/80 to-indigo-600/80 rounded-full border border-white/20 shadow-[0_0_15px_rgba(139,92,246,0.3)]" />
@@ -295,21 +293,23 @@ export default function LandingPage({ navigate }: LandingPageProps) {
                   animate="show"
                   exit="exit"
                   variants={{
-                    hidden: { opacity: 0 },
+                    hidden: { opacity: 0, scale: 0.98 },
                     show: {
                       opacity: 1,
-                      transition: { staggerChildren: 0.12 }
+                      scale: 1,
+                      transition: { staggerChildren: 0.12, ease: "easeOut", duration: 0.5 }
                     },
                     exit: {
                       opacity: 0,
-                      transition: { staggerChildren: 0.08, staggerDirection: -1 }
+                      scale: 0.98,
+                      transition: { staggerChildren: 0.08, staggerDirection: -1, ease: "easeIn", duration: 0.3 }
                     }
                   }}
                   className="space-y-4 w-full flex flex-col lg:items-start items-center max-w-4xl py-2"
                 >
 
                   <motion.h1 
-                    className="text-[1.35rem] xs:text-[1.8rem] sm:text-[2.6rem] md:text-[3.2rem] lg:text-[3.2rem] xl:text-[4.2rem] leading-[1.02] font-display font-black tracking-tight uppercase flex flex-col lg:items-start items-center text-center lg:text-left w-full max-w-full text-stone-900"
+                    className="text-[1.35rem] xs:text-[1.8rem] sm:text-[2.6rem] md:text-[3.2rem] lg:text-[3.2rem] xl:text-[4.2rem] leading-[1.02] font-display font-black tracking-tight uppercase flex flex-col lg:items-start items-center text-center lg:text-left w-full max-w-full text-white"
                   >
                     {heroMode === 'ai' ? (
                       <>
@@ -320,7 +320,7 @@ export default function LandingPage({ navigate }: LandingPageProps) {
                               show: { opacity: 1, y: 0, transition: { duration: 0.65, ease: [0.16, 1, 0.3, 1] } },
                               exit: { opacity: 0, y: "-100%", transition: { duration: 0.2 } }
                             }}
-                            className="inline-block max-w-full text-stone-900 font-extrabold"
+                            className="inline-block max-w-full text-white font-extrabold"
                           >
                             BUILD
                           </motion.span>
@@ -332,7 +332,7 @@ export default function LandingPage({ navigate }: LandingPageProps) {
                               show: { opacity: 1, y: 0, transition: { duration: 0.65, ease: [0.16, 1, 0.3, 1], delay: 0.08 } },
                               exit: { opacity: 0, y: "-100%", transition: { duration: 0.2 } }
                             }}
-                            className="inline-block max-w-full text-stone-900 font-extrabold"
+                            className="inline-block max-w-full text-white font-extrabold"
                           >
                             INTELLIGENT
                           </motion.span>
@@ -344,7 +344,7 @@ export default function LandingPage({ navigate }: LandingPageProps) {
                               show: { opacity: 1, y: 0, transition: { duration: 0.65, ease: [0.16, 1, 0.3, 1], delay: 0.16 } },
                               exit: { opacity: 0, y: "-100%", transition: { duration: 0.2 } }
                             }}
-                            className="inline-block max-w-full text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-fuchsia-400 to-amber-300 font-extrabold drop-shadow-[0_0_20px_rgba(139,92,246,0.6)]"
+                            className="inline-block max-w-full text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-violet-400 bg-[length:200%_auto] text-shimmer font-extrabold drop-shadow-[0_0_25px_rgba(99,102,241,0.5)]"
                           >
                             SYSTEMS.
                           </motion.span>
@@ -359,7 +359,7 @@ export default function LandingPage({ navigate }: LandingPageProps) {
                               show: { opacity: 1, y: 0, transition: { duration: 0.65, ease: [0.16, 1, 0.3, 1] } },
                               exit: { opacity: 0, y: "-100%", transition: { duration: 0.2 } }
                             }}
-                            className="inline-block max-w-full text-stone-900 font-extrabold"
+                            className="inline-block max-w-full text-white font-extrabold"
                           >
                             SCALE HIGH-VELOCITY
                           </motion.span>
@@ -371,7 +371,7 @@ export default function LandingPage({ navigate }: LandingPageProps) {
                               show: { opacity: 1, y: 0, transition: { duration: 0.65, ease: [0.16, 1, 0.3, 1], delay: 0.08 } },
                               exit: { opacity: 0, y: "-100%", transition: { duration: 0.2 } }
                             }}
-                            className="inline-block max-w-full text-stone-900 font-extrabold"
+                            className="inline-block max-w-full text-white font-extrabold"
                           >
                             SECURED ENTERPRISE
                           </motion.span>
@@ -383,7 +383,7 @@ export default function LandingPage({ navigate }: LandingPageProps) {
                               show: { opacity: 1, y: 0, transition: { duration: 0.65, ease: [0.16, 1, 0.3, 1], delay: 0.16 } },
                               exit: { opacity: 0, y: "-100%", transition: { duration: 0.2 } }
                             }}
-                            className="inline-block max-w-full text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-fuchsia-400 to-amber-300 font-extrabold drop-shadow-[0_0_20px_rgba(139,92,246,0.6)]"
+                            className="inline-block max-w-full text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-violet-400 bg-[length:200%_auto] text-shimmer font-extrabold drop-shadow-[0_0_25px_rgba(99,102,241,0.5)]"
                           >
                             ARCHITECTURES.
                           </motion.span>
@@ -433,12 +433,12 @@ export default function LandingPage({ navigate }: LandingPageProps) {
                     }}
                     className="flex items-center space-x-3.5 pt-2 w-full justify-center lg:justify-start"
                   >
-                    <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-tr from-stone-950 to-stone-850 flex items-center justify-center text-[#faf8f5] text-[10px] font-sans font-black tracking-wider shadow-md border border-stone-800">
+                    <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-tr from-stone-950 to-stone-850 flex items-center justify-center text-[#0a0a0e] text-[10px] font-sans font-black tracking-wider shadow-md border border-stone-800">
                       VK
                     </div>
                     <div className="text-left">
-                      <div className="text-[11px] font-extrabold text-stone-900 tracking-wider uppercase font-sans">Vicky Kumar</div>
-                      <div className="text-[9px] text-stone-500 font-semibold tracking-wider uppercase leading-none mt-1 font-sans">Co-Founder, Devil Labs • CS Student (IIT Patna)</div>
+                      <div className="text-[11px] font-extrabold text-white tracking-wider uppercase font-sans">Vicky Kumar</div>
+                      <div className="text-[9px] text-stone-400 font-semibold tracking-wider uppercase leading-none mt-1 font-sans">Co-Founder, Devil Labs • CS Student (IIT Patna)</div>
                     </div>
                   </motion.div>
                 </motion.div>
@@ -446,50 +446,50 @@ export default function LandingPage({ navigate }: LandingPageProps) {
             </div>
 
             {/* STRATEGIC TRUST MATRIX - High-Contrast Bento Block Grid */}
-            <div className="w-full pt-6 border-t border-stone-200 text-left">
-              <span className="text-[9px] font-sans font-black uppercase text-stone-500 tracking-[0.25em] block mb-4">
+            <div className="w-full pt-6 border-t border-white/10 text-left">
+              <span className="text-[9px] font-sans font-black uppercase text-stone-400 tracking-[0.25em] block mb-4">
                 ✦ DEVIL LABS ADVANTAGE
               </span>
               
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 w-full">
-                <div className="bg-white/85 backdrop-blur-md border border-stone-200/70 p-5 rounded-2xl flex flex-col justify-between hover:border-violet-400 hover:bg-stone-50 transition-all duration-300 shadow-xl group">
+                <div className="bg-[#050505]/85 backdrop-blur-md border border-white/10 p-5 rounded-2xl flex flex-col justify-between hover:border-violet-400 hover:bg-[#0a0a0a] transition-all duration-300 shadow-xl group">
                   <div>
                     <span className="text-[9px] font-sans font-black text-violet-400 block mb-2 tracking-[0.1em]">
                       01 • ACADEMIC EXCELLENCE
                     </span>
-                    <h4 className="text-stone-900 font-display font-extrabold text-sm uppercase tracking-tight mb-1.5 group-hover:text-violet-400 transition-colors">
+                    <h4 className="text-white font-display font-extrabold text-sm uppercase tracking-tight mb-1.5 group-hover:text-violet-400 transition-colors">
                       IIT Patna CS
                     </h4>
                   </div>
-                  <p className="text-[11px] text-stone-600 leading-relaxed font-sans font-normal mt-1">
+                  <p className="text-[11px] text-stone-300 leading-relaxed font-sans font-normal mt-1">
                     Rigorous engineering standards and clean, efficient software design.
                   </p>
                 </div>
 
-                <div className="bg-white/85 backdrop-blur-md border border-stone-200/70 p-5 rounded-2xl flex flex-col justify-between hover:border-rose-400 hover:bg-stone-50 transition-all duration-300 shadow-xl group">
+                <div className="bg-[#050505]/85 backdrop-blur-md border border-white/10 p-5 rounded-2xl flex flex-col justify-between hover:border-rose-400 hover:bg-[#0a0a0a] transition-all duration-300 shadow-xl group">
                   <div>
                     <span className="text-[9px] font-sans font-black text-rose-400 block mb-2 tracking-[0.1em]">
                       02 • RELIABILITY &amp; SLA
                     </span>
-                    <h4 className="text-stone-900 font-display font-extrabold text-sm uppercase tracking-tight mb-1.5 group-hover:text-rose-400 transition-colors">
+                    <h4 className="text-white font-display font-extrabold text-sm uppercase tracking-tight mb-1.5 group-hover:text-rose-400 transition-colors">
                       99.9% Uptime
                     </h4>
                   </div>
-                  <p className="text-[11px] text-stone-600 leading-relaxed font-sans font-normal mt-1">
+                  <p className="text-[11px] text-stone-300 leading-relaxed font-sans font-normal mt-1">
                     Reliable systems built to perform consistently under heavy workload.
                   </p>
                 </div>
 
-                <div className="bg-white/85 backdrop-blur-md border border-stone-200/70 p-5 rounded-2xl flex flex-col justify-between hover:border-amber-400 hover:bg-stone-50 transition-all duration-300 shadow-xl group">
+                <div className="bg-[#050505]/85 backdrop-blur-md border border-white/10 p-5 rounded-2xl flex flex-col justify-between hover:border-amber-400 hover:bg-[#0a0a0a] transition-all duration-300 shadow-xl group">
                   <div>
                     <span className="text-[9px] font-sans font-black text-amber-400 block mb-2 tracking-[0.1em]">
                       03 • SPEED &amp; PERFORMANCE
                     </span>
-                    <h4 className="text-stone-900 font-display font-extrabold text-sm uppercase tracking-tight mb-1.5 group-hover:text-amber-400 transition-colors">
+                    <h4 className="text-white font-display font-extrabold text-sm uppercase tracking-tight mb-1.5 group-hover:text-amber-400 transition-colors">
                       Instant Load
                     </h4>
                   </div>
-                  <p className="text-[11px] text-stone-600 leading-relaxed font-sans font-normal mt-1">
+                  <p className="text-[11px] text-stone-300 leading-relaxed font-sans font-normal mt-1">
                     Global distribution ensures instant page loads and smooth interactions.
                   </p>
                 </div>
@@ -515,13 +515,13 @@ export default function LandingPage({ navigate }: LandingPageProps) {
                     <span>Initialize Project</span>
                     <ArrowRight size={14} className="stroke-[2.5] group-hover:translate-x-1 transition-transform" />
                   </span>
-                  <div className="absolute inset-0 w-[200%] h-full -translate-x-full group-hover:animate-[shimmer_2s_infinite] bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12" />
+                  <div className="absolute inset-0 w-[200%] h-full -translate-x-full group-hover:animate-[shimmer_2s_infinite] bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12" />
                 </button>
               </motion.div>
               
               {/* Streamlined hover action reminder */}
-              <div className="flex items-center space-x-2 text-stone-500 font-sans text-[11px]">
-                <div className={`w-1.5 h-1.5 rounded-full ${isHoveringHero ? 'bg-violet-600 animate-pulse' : 'bg-stone-300'}`} />
+              <div className="flex items-center space-x-2 text-stone-400 font-sans text-[11px]">
+                <div className={`w-1.5 h-1.5 rounded-full ${isHoveringHero ? 'bg-violet-600 animate-pulse' : 'bg-white/20'}`} />
                 <span>{isHoveringHero ? 'Interactive preview active.' : 'Explore our interactive features below.'}</span>
               </div>
             </div>
@@ -530,10 +530,10 @@ export default function LandingPage({ navigate }: LandingPageProps) {
 
           {/* RIGHT COLUMN: Portfolio & Process Video Walkthrough Engine */}
           <motion.div 
-            initial={{ opacity: 0, scale: 0.9, y: 60, rotateX: 12, rotateY: 10, transformPerspective: 1200 }}
+            initial={{ opacity: 0, scale: 0.8, y: 80, rotateX: 20, rotateY: -15, transformPerspective: 1200 }}
             whileInView={{ opacity: 1, scale: 1, y: 0, rotateX: 0, rotateY: 0 }}
             viewport={{ once: true }}
-            transition={{ type: "spring", stiffness: 60, damping: 18, delay: 0.2 }}
+            transition={{ type: "spring", stiffness: 70, damping: 16, delay: 0.15 }}
             style={{ transformStyle: "preserve-3d" }}
             className="lg:col-span-5 w-full max-w-xl mx-auto relative z-10"
           >
@@ -544,13 +544,13 @@ export default function LandingPage({ navigate }: LandingPageProps) {
 
         {/* Scroll Indicator */}
         <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1, duration: 1 }}
-          className="absolute bottom-4 left-1/2 -translate-x-1/2 flex flex-col items-center space-y-1.5"
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.2, duration: 1, ease: "easeOut" }}
+          className="absolute bottom-4 left-1/2 -translate-x-1/2 flex flex-col items-center space-y-2 pointer-events-none"
         >
-          <span className="text-stone-500 font-sans text-[9px] uppercase tracking-widest font-extrabold">Scroll</span>
-          <ArrowDown size={12} className="text-stone-500 animate-bounce" />
+          <span className="text-stone-400 font-sans text-[9px] uppercase tracking-[0.3em] font-extrabold opacity-60">Scroll</span>
+          <ArrowDown size={14} className="text-stone-400 animate-bounce opacity-80" />
         </motion.div>
       </section>
 
@@ -584,7 +584,7 @@ export default function LandingPage({ navigate }: LandingPageProps) {
           '--mouse-y': '50%',
           '--spotlight-radius': '130px',
         } as React.CSSProperties}
-        className="relative bg-[#faf9f5] py-16 sm:py-24 overflow-hidden border-b border-stone-200"
+        className="relative bg-[#0a0a0a] py-16 sm:py-24 overflow-hidden border-b border-white/10"
       >
         {/* Dynamic Background Portal Layer */}
         <div className="absolute inset-0 z-0 pointer-events-none select-none">
@@ -601,7 +601,7 @@ export default function LandingPage({ navigate }: LandingPageProps) {
             }}
           >
             {/* Cinematic Background Images revealed in the portal */}
-            <HeroImageSlider />
+            {/* Removed HeroImageSlider */}
             {/* Lens filter over image inside the spotlight */}
             <div className="absolute inset-0 bg-gradient-to-tr from-violet-600/30 via-transparent to-rose-500/30 mix-blend-color-burn" />
             
@@ -620,16 +620,16 @@ export default function LandingPage({ navigate }: LandingPageProps) {
           </div>
 
           {/* Soft vignette to blend background edges */}
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_50%,#faf9f5_98%)] pointer-events-none" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_50%,#0a0a0e_98%)] pointer-events-none" />
         </div>
 
         <div className="w-full max-w-7xl mx-auto relative z-10 px-4">
           <div className="text-center mb-12 max-w-2xl mx-auto space-y-4">
-            <span className="text-stone-500 font-sans text-[9px] uppercase tracking-[0.25em] font-black block">✦ CURATED LABS DISCIPLINES</span>
-            <h3 className="text-stone-900 font-display font-extrabold text-2xl xs:text-3xl sm:text-5xl tracking-tight uppercase leading-none break-words max-w-full">
+            <span className="text-stone-400 font-sans text-[9px] uppercase tracking-[0.25em] font-black block">✦ CURATED LABS DISCIPLINES</span>
+            <h3 className="text-white font-display font-extrabold text-2xl xs:text-3xl sm:text-5xl tracking-tight uppercase leading-none break-words max-w-full">
               curated <span className="font-serif italic font-normal text-violet-600 lowercase">premium</span> disciplines
             </h3>
-            <p className="text-stone-600 text-xs sm:text-sm leading-relaxed max-w-lg mx-auto font-sans">
+            <p className="text-stone-300 text-xs sm:text-sm leading-relaxed max-w-lg mx-auto font-sans">
               A harmonious spectrum of high-end design capabilities. No cookie-cutter templates. Every element is crafted to reflect top-trending visual standard structures.
             </p>
           </div>
@@ -650,15 +650,15 @@ export default function LandingPage({ navigate }: LandingPageProps) {
       </ScrollReveal>
 
       {/* NEW: THE MANIFESTO SECTION */}
-      <section id="manifesto-section" className="py-24 sm:py-32 px-4 md:px-8 max-w-4xl mx-auto border-b border-stone-200/60 text-center">
+      <section id="manifesto-section" className="py-24 sm:py-32 px-4 md:px-8 max-w-4xl mx-auto border-b border-white/10 text-center">
         <ScrollReveal>
-          <CyberFrame glowColor="fuchsia" className="space-y-6 sm:space-y-8 p-8 sm:p-12 md:p-16 rounded-2xl bg-white border border-stone-200/60 shadow-xl">
+          <CyberFrame glowColor="fuchsia" className="space-y-6 sm:space-y-8 p-8 sm:p-12 md:p-16 rounded-2xl bg-[#050505] border border-white/10 shadow-xl">
             <Cpu size={32} className="mx-auto text-violet-600 sm:w-10 sm:h-10 animate-pulse" />
-            <h2 className="text-lg xs:text-xl sm:text-3xl md:text-4xl lg:text-5xl font-display font-extrabold leading-[1.05] tracking-tight uppercase text-stone-900 break-words max-w-full">
+            <StaggeredHeading as="h2" className="text-lg xs:text-xl sm:text-3xl md:text-4xl lg:text-5xl font-display font-extrabold leading-[1.05] tracking-tight uppercase text-white break-words max-w-full">
               We build <span className="font-serif italic font-normal text-violet-600 lowercase">scalable</span> <HandDrawnCircle color="stroke-violet-500/85">architectures</HandDrawnCircle>, <br className="hidden sm:block" />
-              not <span className="font-serif italic font-normal text-rose-500 lowercase">fragile</span> <HandDrawnUnderline color="stroke-rose-400/85">prototypes</HandDrawnUnderline>. <br/>
-            </h2>
-            <p className="font-sans text-[9px] sm:text-[10px] tracking-[0.25em] text-stone-500 uppercase font-black">
+              not <span className="font-serif italic font-normal text-rose-500 lowercase">fragile</span> <HandDrawnUnderline color="stroke-rose-400/85">prototypes</HandDrawnUnderline>.
+            </StaggeredHeading>
+            <p className="font-sans text-[9px] sm:text-[10px] tracking-[0.25em] text-stone-400 uppercase font-black">
               ✦ OUR CORE PRINCIPLES
             </p>
           </CyberFrame>
@@ -666,14 +666,14 @@ export default function LandingPage({ navigate }: LandingPageProps) {
       </section>
 
       {/* BRAND ARCHITECTURAL NOTES / STRATEGIC DECK */}
-      <section id="architectural-notes-deck" className="py-16 sm:py-24 px-4 md:px-8 max-w-7xl mx-auto border-b border-stone-200/60 relative overflow-hidden md:overflow-visible">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1px] h-12 bg-stone-200/60 pointer-events-none" />
+      <section id="architectural-notes-deck" className="py-16 sm:py-24 px-4 md:px-8 max-w-7xl mx-auto border-b border-white/10 relative overflow-hidden md:overflow-visible">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1px] h-12 bg-white/10 pointer-events-none" />
         <div className="text-center mb-12 sm:mb-16">
-          <span className="text-stone-500 font-sans text-[9px] uppercase tracking-[0.25em] font-black block">✦ DEVIL LABS STANDARDS</span>
-          <h3 className="text-2xl xs:text-3xl sm:text-5xl font-display font-extrabold uppercase text-stone-900 tracking-tight mt-3 leading-none break-words max-w-full">
+          <span className="text-stone-400 font-sans text-[9px] uppercase tracking-[0.25em] font-black block">✦ DEVIL LABS STANDARDS</span>
+          <StaggeredHeading as="h3" className="text-2xl xs:text-3xl sm:text-5xl font-display font-extrabold uppercase text-white tracking-tight mt-3 leading-none break-words max-w-full">
             Our Design &amp; <span className="font-serif italic font-normal text-rose-600 lowercase">engineering</span> pillars
-          </h3>
-          <p className="text-stone-600 text-xs sm:text-sm mt-4 max-w-lg mx-auto leading-relaxed font-sans">
+          </StaggeredHeading>
+          <p className="text-stone-300 text-xs sm:text-sm mt-4 max-w-lg mx-auto leading-relaxed font-sans">
             A breakdown of our commitment to performance, security, and world-class user experiences.
           </p>
         </div>
@@ -683,13 +683,13 @@ export default function LandingPage({ navigate }: LandingPageProps) {
           {/* Curly Arrow pointing from note 1 to note 2 */}
           <div className="hidden lg:block absolute left-[29%] top-6 w-[12%] h-[40px] z-20">
             <HandDrawnArrow color="stroke-violet-300/70" direction="right" className="w-full h-full" />
-            <span className="absolute -top-4 left-1/2 -translate-x-1/2 text-[8px] font-sans text-stone-500 uppercase tracking-wider font-extrabold">Workflow</span>
+            <span className="absolute -top-4 left-1/2 -translate-x-1/2 text-[8px] font-sans text-stone-400 uppercase tracking-wider font-extrabold">Workflow</span>
           </div>
           
           {/* Curly Arrow pointing from note 2 to note 3 */}
           <div className="hidden lg:block absolute left-[62%] top-16 w-[12%] h-[40px] z-20">
             <HandDrawnArrow color="stroke-rose-300/70" direction="right" className="w-full h-full" />
-            <span className="absolute -top-4 left-1/2 -translate-x-1/2 text-[8px] font-sans text-stone-500 uppercase tracking-wider font-extrabold">Validation</span>
+            <span className="absolute -top-4 left-1/2 -translate-x-1/2 text-[8px] font-sans text-stone-400 uppercase tracking-wider font-extrabold">Validation</span>
           </div>
 
           <BlueprintStickyNote
@@ -729,15 +729,15 @@ export default function LandingPage({ navigate }: LandingPageProps) {
       </section>
 
       {/* 3. BUSINESS POSITIONING & CORE OPERATIONAL NICHES */}
-      <section id="positioning-section" className="py-24 sm:py-32 px-4 md:px-8 max-w-7xl mx-auto border-b border-stone-200/60">
+      <section id="positioning-section" className="py-24 sm:py-32 px-4 md:px-8 max-w-7xl mx-auto border-b border-white/10">
         <div className="text-center mb-16 md:mb-20">
-          <span className="text-stone-500 font-sans text-[9px] uppercase tracking-[0.25em] font-black block">
+          <span className="text-stone-400 font-sans text-[9px] uppercase tracking-[0.25em] font-black block">
             ✦ STRATEGIC VALUE ALIGNMENT
           </span>
-          <h2 className="text-2xl xs:text-3xl sm:text-5xl font-display font-extrabold text-stone-900 tracking-tight mt-3 uppercase leading-none break-words max-w-full">
+          <StaggeredHeading as="h2" className="text-2xl xs:text-3xl sm:text-5xl font-display font-extrabold text-white tracking-tight mt-3 uppercase leading-none break-words max-w-full">
             Business Position &amp; <span className="font-serif italic font-normal text-violet-600 lowercase">specialty</span> niches
-          </h2>
-          <p className="text-stone-500 text-xs sm:text-sm mt-4 max-w-xl mx-auto leading-relaxed font-sans">
+          </StaggeredHeading>
+          <p className="text-stone-400 text-xs sm:text-sm mt-4 max-w-xl mx-auto leading-relaxed font-sans">
             Founded by elite IIT Patna engineers, we occupy a distinct position resolving critical business bottlenecks through high-fidelity computer systems and autonomous multi-agent pipelines.
           </p>
         </div>
@@ -757,8 +757,8 @@ export default function LandingPage({ navigate }: LandingPageProps) {
                   onMouseEnter={playHoverSound}
                   className={`w-full text-left p-6 rounded-2xl border transition-all duration-300 relative overflow-hidden flex items-start space-x-4 cursor-pointer ${
                     isActive
-                      ? 'bg-white border-violet-200 shadow-[0_15px_30px_rgba(139,92,246,0.06)]'
-                      : 'bg-stone-50 border-stone-200 hover:bg-white hover:border-stone-300'
+                      ? 'bg-[#050505] border-violet-200 shadow-[0_15px_30px_rgba(139,92,246,0.06)]'
+                      : 'bg-[#0a0a0a] border-white/10 hover:bg-[#050505] hover:border-white/20'
                   }`}
                   whileHover={{ x: 4 }}
                   whileTap={{ scale: 0.99 }}
@@ -774,22 +774,22 @@ export default function LandingPage({ navigate }: LandingPageProps) {
 
                   <div className={`p-3 rounded-xl border font-sans text-xs font-black shrink-0 ${
                     isActive 
-                      ? 'bg-violet-50 border-violet-100 text-violet-700' 
-                      : 'bg-stone-100 border-stone-200 text-stone-500'
+                      ? 'bg-violet-50 border-violet-100 text-violet-400' 
+                      : 'bg-[#111] border-white/10 text-stone-400'
                   }`}>
                     {item.number}
                   </div>
 
                   <div className="space-y-1.5 text-left">
-                    <span className="text-[9px] font-sans font-extrabold uppercase tracking-widest text-stone-500">
+                    <span className="text-[9px] font-sans font-extrabold uppercase tracking-widest text-stone-400">
                       {item.tagline}
                     </span>
                     <h3 className={`font-display font-black text-sm uppercase tracking-tight ${
-                      isActive ? 'text-stone-900' : 'text-stone-600'
+                      isActive ? 'text-white' : 'text-stone-300'
                     }`}>
                       {item.title}
                     </h3>
-                    <p className="text-stone-500 text-xs leading-relaxed normal-case line-clamp-2">
+                    <p className="text-stone-400 text-xs leading-relaxed normal-case line-clamp-2">
                       {item.desc}
                     </p>
                   </div>
@@ -814,7 +814,7 @@ export default function LandingPage({ navigate }: LandingPageProps) {
                   >
                     <CyberFrame
                       glowColor={item.accentColor as 'violet' | 'fuchsia' | 'blue'}
-                      className="h-full flex flex-col justify-between p-8 md:p-10 bg-white border border-stone-200/60 shadow-lg relative overflow-hidden"
+                      className="h-full flex flex-col justify-between p-8 md:p-10 bg-[#050505] border border-white/10 shadow-lg relative overflow-hidden"
                     >
                       {/* Decorative background portal glow representing the selected segment */}
                       <div 
@@ -828,31 +828,31 @@ export default function LandingPage({ navigate }: LandingPageProps) {
                           <span className={`px-3 py-1 border text-[10px] font-sans uppercase font-extrabold tracking-widest rounded-full ${item.badgeClass}`}>
                             {item.tag}
                           </span>
-                          <span className="text-stone-500 font-sans text-[10px] uppercase font-extrabold tracking-widest">
+                          <span className="text-stone-400 font-sans text-[10px] uppercase font-extrabold tracking-widest">
                             Active Specialization
                           </span>
                         </div>
 
                         {/* Title and main desc */}
                         <div className="space-y-3">
-                          <h3 className="font-display font-black text-2xl sm:text-3xl text-stone-900 tracking-tight uppercase leading-none">
+                          <h3 className="font-display font-black text-2xl sm:text-3xl text-white tracking-tight uppercase leading-none">
                             {item.title}
                           </h3>
-                          <p className="text-stone-600 text-xs sm:text-sm leading-relaxed normal-case">
+                          <p className="text-stone-300 text-xs sm:text-sm leading-relaxed normal-case">
                             {item.desc}
                           </p>
                         </div>
 
                         {/* Niche list covered */}
                         <div className="space-y-2.5 pt-2">
-                          <span className="text-[10px] font-sans uppercase font-black tracking-widest text-stone-500 block">
+                          <span className="text-[10px] font-sans uppercase font-black tracking-widest text-stone-400 block">
                             Key Niches &amp; Specialty Areas:
                           </span>
                           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                             {item.niches.map((niche, nIdx) => (
-                              <div key={nIdx} className="flex items-center space-x-2 bg-stone-50 border border-stone-200 px-3.5 py-2.5 rounded-xl shadow-sm">
+                              <div key={nIdx} className="flex items-center space-x-2 bg-[#0a0a0a] border border-white/10 px-3.5 py-2.5 rounded-xl shadow-sm">
                                 <span className="w-1.5 h-1.5 rounded-full bg-violet-600 shrink-0" />
-                                <span className="text-stone-700 text-xs font-semibold normal-case leading-tight">
+                                <span className="text-stone-300 text-xs font-semibold normal-case leading-tight">
                                   {niche}
                                 </span>
                               </div>
@@ -862,12 +862,12 @@ export default function LandingPage({ navigate }: LandingPageProps) {
                       </div>
 
                       {/* Stat summary */}
-                      <div className="mt-8 border-t border-stone-200/60 pt-6 flex justify-between items-baseline relative z-10 font-sans">
+                      <div className="mt-8 border-t border-white/10 pt-6 flex justify-between items-baseline relative z-10 font-sans">
                         <div>
-                          <div className="text-3xl font-display font-black text-stone-900 tracking-tighter leading-none">
+                          <div className="text-3xl font-display font-black text-white tracking-tighter leading-none">
                             {item.metric}
                           </div>
-                          <div className="text-[9px] text-stone-500 tracking-wider font-black uppercase mt-1">
+                          <div className="text-[9px] text-stone-400 tracking-wider font-black uppercase mt-1">
                             {item.metricLabel}
                           </div>
                         </div>
@@ -914,27 +914,27 @@ export default function LandingPage({ navigate }: LandingPageProps) {
 
       {/* AEO & GEO KNOWLEDGE & TRUST HUB SECTION */}
       <ScrollReveal>
-        <section id="aeo-knowledge-section" className="bg-[#faf8f5] border-t border-stone-200/60">
+        <section id="aeo-knowledge-section" className="bg-[#050505] border-t border-white/10">
           <AEOKnowledgeHub />
         </section>
       </ScrollReveal>
 
       {/* 5. FINAL CTA SECTION */}
-      <section id="landing-cta-section" className="py-24 sm:py-32 bg-[#faf9f5] border-t border-stone-200/60 px-4 md:px-8 relative overflow-hidden">
+      <section id="landing-cta-section" className="py-24 sm:py-32 bg-[#0a0a0a] border-t border-white/10 px-4 md:px-8 relative overflow-hidden">
         {/* Soft elegant linear highlights */}
-        <div className="absolute top-0 left-1/4 w-[1px] h-full bg-gradient-to-b from-stone-200 via-transparent to-transparent" />
-        <div className="absolute top-0 right-1/4 w-[1px] h-full bg-gradient-to-b from-stone-200 via-transparent to-transparent" />
+        <div className="absolute top-0 left-1/4 w-[1px] h-full bg-gradient-to-b from-stone-800 via-transparent to-transparent" />
+        <div className="absolute top-0 right-1/4 w-[1px] h-full bg-gradient-to-b from-stone-800 via-transparent to-transparent" />
 
         <ScrollReveal className="max-w-4xl mx-auto">
           <div className="text-center relative z-10 space-y-10">
-            <span className="text-violet-700 font-sans text-xs uppercase tracking-widest font-black">✦ START YOUR PROJECT</span>
-            <h2 className="text-3xl xs:text-4xl sm:text-6xl font-display font-extrabold text-stone-900 uppercase tracking-tighter break-words max-w-full">
+            <span className="text-violet-500 font-sans text-xs uppercase tracking-widest font-black">✦ START YOUR PROJECT</span>
+            <StaggeredHeading as="h2" className="text-3xl xs:text-4xl sm:text-6xl font-display font-extrabold text-white uppercase tracking-tighter break-words max-w-full">
               Ready to scale?<br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-indigo-600">
                 Let's build.
               </span>
-            </h2>
-            <p className="text-stone-600 max-w-lg mx-auto text-sm leading-relaxed font-sans">
+            </StaggeredHeading>
+            <p className="text-stone-300 max-w-lg mx-auto text-sm leading-relaxed font-sans">
               Enter your email below to schedule a discovery call with our engineering team. We'll get back to you within 24 hours.
             </p>
 
@@ -947,7 +947,7 @@ export default function LandingPage({ navigate }: LandingPageProps) {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="HELLO@COMPANY.COM"
-                  className="w-full px-5 py-4 text-stone-900 font-sans text-xs tracking-wider focus:outline-none focus:border-violet-300 transition-all rounded-full bg-white border border-stone-200 shadow-inner uppercase placeholder-stone-400 font-bold"
+                  className="w-full px-5 py-4 text-white font-sans text-xs tracking-wider focus:outline-none focus:border-violet-300 transition-all rounded-full bg-[#050505] border border-white/10 shadow-inner uppercase placeholder-stone-400 font-bold"
                   disabled={loading || submitted}
                 />
               </div>
@@ -978,7 +978,7 @@ export default function LandingPage({ navigate }: LandingPageProps) {
                 id="intake-success-msg"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="text-xs font-sans text-emerald-700 bg-emerald-50 border border-emerald-150 max-w-sm mx-auto py-2.5 px-4 rounded-full shadow-sm font-semibold"
+                className="text-xs font-sans text-emerald-400 bg-emerald-50 border border-emerald-150 max-w-sm mx-auto py-2.5 px-4 rounded-full shadow-sm font-semibold"
               >
                 Thank you. We'll be in touch shortly.
               </motion.p>

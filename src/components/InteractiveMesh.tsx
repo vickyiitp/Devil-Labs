@@ -59,14 +59,14 @@ export default function InteractiveMesh() {
 
         {/* Center glowing core */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-violet-500 rounded-full blur-xl" style={{ transform: 'translateZ(100px)' }} />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-white rounded-full shadow-[0_0_15px_rgba(255,255,255,1)]" style={{ transform: 'translateZ(100px)' }} />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-[#050505] rounded-full shadow-[0_0_15px_rgba(255,255,255,1)]" style={{ transform: 'translateZ(100px)' }} />
       </motion.div>
 
       {/* Subtle overlay gradients */}
       <div className="absolute inset-0 bg-gradient-to-tr from-violet-500/10 to-transparent pointer-events-none mix-blend-screen" />
       
       {/* Badge */}
-      <div className="absolute bottom-6 right-6 px-3 py-1.5 bg-white/90 backdrop-blur-md border border-stone-200 rounded font-mono text-[10px] text-stone-600 tracking-widest uppercase">
+      <div className="absolute bottom-6 right-6 px-3 py-1.5 bg-[#050505]/90 backdrop-blur-md border border-white/10 rounded font-mono text-[10px] text-stone-300 tracking-widest uppercase">
         [ Core Alpha // Devil Labs ]
       </div>
     </div>

@@ -145,7 +145,7 @@ export default function Breadcrumb({ currentPath, navigate }: BreadcrumbProps) {
                 <button
                   id="breadcrumb-btn-home"
                   onClick={() => navigate('/')}
-                  className="flex items-center gap-1 hover:text-stone-900 transition-colors duration-200 cursor-pointer text-stone-500 font-bold"
+                  className="flex items-center gap-1 hover:text-white transition-colors duration-200 cursor-pointer text-stone-400 font-bold"
                 >
                   <Home size={10} className="shrink-0" />
                   <span>{item.name}</span>
@@ -154,12 +154,12 @@ export default function Breadcrumb({ currentPath, navigate }: BreadcrumbProps) {
                 <button
                   id={`breadcrumb-btn-${index}`}
                   onClick={() => navigate(item.path)}
-                  className="hover:text-stone-900 transition-colors duration-200 cursor-pointer text-stone-500 font-bold hover:underline decoration-violet-500/50 underline-offset-4"
+                  className="hover:text-white transition-colors duration-200 cursor-pointer text-stone-400 font-bold hover:underline decoration-violet-500/50 underline-offset-4"
                 >
                   {item.name}
                 </button>
               ) : (
-                <span className="text-stone-900 font-medium truncate max-w-[200px] sm:max-w-[400px] md:max-w-none">
+                <span className="text-white font-medium truncate max-w-[200px] sm:max-w-[400px] md:max-w-none">
                   {item.name}
                 </span>
               )}

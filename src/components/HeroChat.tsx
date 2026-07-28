@@ -77,14 +77,14 @@ export default function HeroChat() {
           >
             <div className="w-full h-full clay-card rounded-[24px] flex flex-col overflow-hidden">
               {/* Header */}
-              <div className="flex items-center justify-between p-4 border-b border-stone-200/30 bg-[#faf8f5]/60">
+              <div className="flex items-center justify-between p-4 border-b border-white/10/30 bg-[#0a0a0a]/60">
                 <div className="flex items-center space-x-2">
                   <div className="w-2.5 h-2.5 rounded-full bg-violet-500 animate-pulse" />
-                  <span className="font-mono text-xs font-black text-stone-800 uppercase tracking-wider">Lab Assistant</span>
+                  <span className="font-mono text-xs font-black text-stone-100 uppercase tracking-wider">Lab Assistant</span>
                 </div>
                 <button 
                   onClick={() => setIsOpen(false)}
-                  className="text-stone-400 hover:text-stone-700 transition-colors p-1"
+                  className="text-stone-400 hover:text-stone-300 transition-colors p-1"
                 >
                   <X size={18} />
                 </button>
@@ -101,7 +101,7 @@ export default function HeroChat() {
                       <div className={`shrink-0 w-6 h-6 rounded-full flex items-center justify-center ${msg.role === 'user' ? 'bg-violet-600 shadow-sm' : 'bg-violet-100'}`}>
                         {msg.role === 'user' ? <User size={12} className="text-white" /> : <Bot size={12} className="text-violet-600" />}
                       </div>
-                      <div className={`p-3.5 rounded-[20px] text-sm leading-relaxed ${msg.role === 'user' ? 'clay-violet-solid text-white rounded-tr-none' : 'clay-card rounded-tl-none border border-stone-200/20 text-stone-800'}`}>
+                      <div className={`p-3.5 rounded-[20px] text-sm leading-relaxed ${msg.role === 'user' ? 'clay-violet-solid text-white rounded-tr-none' : 'clay-card rounded-tl-none border border-white/10/20 text-stone-100'}`}>
                         {msg.content}
                       </div>
                     </div>
@@ -113,7 +113,7 @@ export default function HeroChat() {
                       <div className="shrink-0 w-6 h-6 rounded-full flex items-center justify-center bg-violet-100">
                         <Bot size={12} className="text-violet-600" />
                       </div>
-                      <div className="p-3.5 rounded-[20px] clay-card rounded-tl-none border border-stone-200/20 text-stone-500 text-xs flex space-x-1">
+                      <div className="p-3.5 rounded-[20px] clay-card rounded-tl-none border border-white/10/20 text-stone-400 text-xs flex space-x-1">
                         <motion.div animate={{ opacity: [0.4, 1, 0.4] }} transition={{ repeat: Infinity, duration: 1.5 }} className="w-1.5 h-1.5 bg-stone-400 rounded-full" />
                         <motion.div animate={{ opacity: [0.4, 1, 0.4] }} transition={{ repeat: Infinity, duration: 1.5, delay: 0.2 }} className="w-1.5 h-1.5 bg-stone-400 rounded-full" />
                         <motion.div animate={{ opacity: [0.4, 1, 0.4] }} transition={{ repeat: Infinity, duration: 1.5, delay: 0.4 }} className="w-1.5 h-1.5 bg-stone-400 rounded-full" />
@@ -125,19 +125,19 @@ export default function HeroChat() {
               </div>
 
               {/* Input */}
-              <form onSubmit={handleSubmit} className="p-3 border-t border-stone-200/30 bg-[#faf8f5]/60">
+              <form onSubmit={handleSubmit} className="p-3 border-t border-white/10/30 bg-[#0a0a0a]/60">
                 <div className="relative flex items-center">
                   <input
                     type="text"
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                     placeholder="Ask about our architecture..."
-                    className="w-full px-5 pr-12 py-3 text-sm text-stone-800 placeholder-stone-400 focus:outline-none focus:border-violet-300/40 transition-all rounded-full clay-inset"
+                    className="w-full px-5 pr-12 py-3 text-sm text-stone-100 placeholder-stone-400 focus:outline-none focus:border-violet-300/40 transition-all rounded-full clay-inset"
                   />
                   <button 
                     type="submit"
                     disabled={!input.trim() || isLoading}
-                    className="absolute right-3.5 p-1.5 text-stone-400 hover:text-stone-700 disabled:opacity-50 disabled:hover:text-stone-400 transition-colors"
+                    className="absolute right-3.5 p-1.5 text-stone-400 hover:text-stone-300 disabled:opacity-50 disabled:hover:text-stone-400 transition-colors"
                   >
                     <Send size={15} />
                   </button>

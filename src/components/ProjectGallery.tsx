@@ -107,7 +107,7 @@ const CloudyBlueprintNote = ({
   onPrefill: (category: string, title: string, e: React.MouseEvent) => void;
 }) => {
   return (
-    <div className="relative p-6 rounded-[24px] bg-white border border-stone-200/60 shadow-lg overflow-hidden flex flex-col justify-between h-full min-h-[240px] transition-all duration-300 hover:border-violet-300">
+    <div className="relative p-6 rounded-[24px] bg-[#050505] border border-white/10 shadow-lg overflow-hidden flex flex-col justify-between h-full min-h-[240px] transition-all duration-300 hover:border-violet-300">
       {/* Cloudy gradient accent */}
       <div className="absolute -top-10 -right-10 w-28 h-28 bg-violet-100 rounded-full blur-2xl pointer-events-none" />
       <div className="absolute -bottom-10 -left-10 w-20 h-20 bg-fuchsia-100 rounded-full blur-xl pointer-events-none" />
@@ -117,22 +117,22 @@ const CloudyBlueprintNote = ({
 
       <div>
         {/* Note tag */}
-        <div className="flex items-center justify-between border-b border-stone-200/50 pb-2.5 mb-3 font-mono text-[9px] uppercase tracking-[0.2em] text-stone-500">
+        <div className="flex items-center justify-between border-b border-white/10/50 pb-2.5 mb-3 font-mono text-[9px] uppercase tracking-[0.2em] text-stone-400">
           <span>SPEC-NOTE // LANDING-DIRECT</span>
           <span>DEVIL CORE APPROVED</span>
         </div>
 
         {/* Notes Title */}
-        <h4 className="text-stone-900 font-display font-bold text-xs uppercase tracking-wide mb-1 flex items-center gap-1.5">
+        <h4 className="text-white font-display font-bold text-xs uppercase tracking-wide mb-1 flex items-center gap-1.5">
           <span>☁️</span> {project.category} Demo Note
         </h4>
-        <p className="text-[11px] font-mono italic text-stone-500 leading-relaxed mb-4">
+        <p className="text-[11px] font-mono italic text-stone-400 leading-relaxed mb-4">
           "A verified blueprint designed to showcase dynamic server response, optimized asset caching, and clean user experience flows for {project.category} setups."
         </p>
 
         {/* Bullet points */}
-        <div className="bg-stone-50 border border-stone-200/50 rounded p-2.5 mb-3">
-          <div className="font-mono text-[9px] text-stone-600 space-y-0.5">
+        <div className="bg-[#0a0a0a] border border-white/10/50 rounded p-2.5 mb-3">
+          <div className="font-mono text-[9px] text-stone-300 space-y-0.5">
             <div>• Core Stack: {project.tech}</div>
             <div>• Active sandboxed production instance</div>
           </div>
@@ -142,7 +142,7 @@ const CloudyBlueprintNote = ({
       {/* Auto prefill button */}
       <button
         onClick={(e) => onPrefill(project.category, project.title, e)}
-        className="w-full py-2 px-3 bg-violet-50 hover:bg-violet-100 border border-violet-200 hover:border-violet-300 text-violet-700 font-mono text-[9px] font-bold uppercase tracking-[0.15em] transition-all duration-300 rounded flex items-center justify-center space-x-1.5 cursor-pointer select-none"
+        className="w-full py-2 px-3 bg-violet-50 hover:bg-violet-100 border border-violet-200 hover:border-violet-300 text-violet-400 font-mono text-[9px] font-bold uppercase tracking-[0.15em] transition-all duration-300 rounded flex items-center justify-center space-x-1.5 cursor-pointer select-none"
       >
         <span>⚡ AUTO-FILL TELEMETRY FORM</span>
       </button>
@@ -165,7 +165,7 @@ const FloatingGlassBadge = ({ projectId }: { projectId: number }) => {
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-violet-400 opacity-75"></span>
             <span className="relative inline-flex rounded-full h-3 w-3 bg-violet-500"></span>
           </div>
-          <span className="font-mono text-[10px] font-black text-stone-800 uppercase tracking-widest">LIVE BLUEPRINT ONLINE</span>
+          <span className="font-mono text-[10px] font-black text-stone-100 uppercase tracking-widest">LIVE BLUEPRINT ONLINE</span>
         </motion.div>
       );
     case 2:
@@ -176,8 +176,8 @@ const FloatingGlassBadge = ({ projectId }: { projectId: number }) => {
           style={{ transformStyle: 'preserve-3d', transform: 'translateZ(60px)' }}
           className="absolute -bottom-8 -right-4 z-40 bg-gradient-to-tr from-fuchsia-600/90 to-rose-500/90 backdrop-blur-lg border border-white/20 p-3.5 rounded-[22px] shadow-[0_12px_30px_rgba(236,72,153,0.35)] flex flex-col items-start pointer-events-none text-left max-w-[140px] select-none"
         >
-          <span className="font-mono text-[8px] text-stone-800/80 uppercase tracking-widest font-extrabold mb-0.5">E-COMMERCE SYSTEM</span>
-          <span className="font-display font-black text-xs text-stone-800 tracking-tight leading-none uppercase">STAGING STABLE</span>
+          <span className="font-mono text-[8px] text-stone-100/80 uppercase tracking-widest font-extrabold mb-0.5">E-COMMERCE SYSTEM</span>
+          <span className="font-display font-black text-xs text-stone-100 tracking-tight leading-none uppercase">STAGING STABLE</span>
         </motion.div>
       );
     case 3:
@@ -215,8 +215,8 @@ const FloatingGlassBadge = ({ projectId }: { projectId: number }) => {
           style={{ transformStyle: 'preserve-3d', transform: 'translateZ(50px)' }}
           className="absolute -top-7 -left-5 z-40 bg-gradient-to-r from-violet-600/90 to-blue-600/90 backdrop-blur-md border border-white/10 px-4.5 py-2 rounded-full shadow-[0_15px_30px_rgba(59,130,246,0.3)] flex items-center space-x-2 pointer-events-none select-none"
         >
-          <span className="text-stone-800 text-xs animate-bounce">⚡</span>
-          <span className="font-mono text-[9px] font-bold text-stone-800 tracking-widest uppercase">BIO-HUB INTERACTION</span>
+          <span className="text-stone-100 text-xs animate-bounce">⚡</span>
+          <span className="font-mono text-[9px] font-bold text-stone-100 tracking-widest uppercase">BIO-HUB INTERACTION</span>
         </motion.div>
       );
     default:
@@ -225,7 +225,7 @@ const FloatingGlassBadge = ({ projectId }: { projectId: number }) => {
           animate={{ y: [0, 9, 0], rotate: [0, 2, 0] }}
           transition={{ duration: 5.8, repeat: Infinity, ease: "easeInOut" }}
           style={{ transformStyle: 'preserve-3d', transform: 'translateZ(40px)' }}
-          className="absolute -bottom-6 -right-3 z-40 bg-white/90 backdrop-blur-xl border border-stone-200 px-4 py-2 rounded-full shadow-lg flex items-center space-x-2 pointer-events-none select-none"
+          className="absolute -bottom-6 -right-3 z-40 bg-[#050505]/90 backdrop-blur-xl border border-white/10 px-4 py-2 rounded-full shadow-lg flex items-center space-x-2 pointer-events-none select-none"
         >
           <div className="w-2 h-2 rounded-full bg-violet-400 animate-pulse" />
           <span className="font-mono text-[9px] font-bold text-gray-300 uppercase tracking-widest">STABLE PORTFOLIO DIRECT</span>
@@ -448,7 +448,7 @@ export default function ProjectGallery({ navigate }: ProjectGalleryProps = {}) {
             exit={{ opacity: 0, y: -20, scale: 0.95 }}
             className="fixed top-24 left-1/2 -translate-x-1/2 z-50 bg-violet-600 border border-violet-400 text-white font-mono text-[10px] uppercase tracking-wider py-2.5 px-5 rounded-full shadow-2xl flex items-center gap-2"
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-white animate-ping" />
+            <span className="w-1.5 h-1.5 rounded-full bg-[#050505] animate-ping" />
             <span>{telemetryMessage}</span>
           </motion.div>
         )}
@@ -460,11 +460,11 @@ export default function ProjectGallery({ navigate }: ProjectGalleryProps = {}) {
           <span className="w-1.5 h-1.5 rounded-full bg-violet-500 animate-pulse" />
           <span>PRODUCTION DIRECTORY</span>
         </div>
-        <h2 className="text-3xl sm:text-5xl md:text-6xl font-display font-extrabold text-stone-900 tracking-tight mb-4 max-w-4xl">
+        <h2 className="text-3xl sm:text-5xl md:text-6xl font-display font-extrabold text-white tracking-tight mb-4 max-w-4xl">
           World-Class <br className="hidden sm:block" />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-indigo-600">Autonomous Deployments</span>
         </h2>
-        <p className="text-stone-600 text-xs sm:text-sm max-w-xl mx-auto mb-10 leading-relaxed">
+        <p className="text-stone-300 text-xs sm:text-sm max-w-xl mx-auto mb-10 leading-relaxed">
           Interact with our live sandboxes. Experience high-velocity staging previews and detailed architecture blueprints designed into a custom horizontal deck.
         </p>
         
@@ -483,7 +483,7 @@ export default function ProjectGallery({ navigate }: ProjectGalleryProps = {}) {
                 className={`whitespace-nowrap px-4 py-2 rounded-full font-mono text-[10px] font-bold tracking-wider transition-all duration-300 active:scale-95 border ${
                   activeCategory === category
                     ? 'bg-gradient-to-r from-violet-600 to-rose-500 text-white shadow-md border-transparent'
-                    : 'bg-stone-50 text-stone-600 hover:bg-stone-100 hover:text-stone-900 border-stone-200'
+                    : 'bg-[#0a0a0a] text-stone-300 hover:bg-[#111] hover:text-white border-white/10'
                 }`}
               >
                 {category}
@@ -500,7 +500,7 @@ export default function ProjectGallery({ navigate }: ProjectGalleryProps = {}) {
         <div className="absolute top-1/2 -translate-y-1/2 -left-2 md:-left-16 z-30 hidden sm:block">
           <button
             onClick={handlePrevProject}
-            className="w-12 h-12 rounded-full bg-white/80 hover:bg-violet-50 border border-stone-200 hover:border-violet-300 text-stone-700 flex items-center justify-center transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.05)] hover:shadow-[0_0_15px_rgba(139,92,246,0.3)] group active:scale-95 cursor-pointer"
+            className="w-12 h-12 rounded-full bg-[#050505]/80 hover:bg-violet-50 border border-white/10 hover:border-violet-300 text-stone-300 flex items-center justify-center transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.05)] hover:shadow-[0_0_15px_rgba(139,92,246,0.3)] group active:scale-95 cursor-pointer"
             aria-label="Previous Project"
           >
             <span className="transform group-hover:-translate-x-0.5 transition-transform text-lg">←</span>
@@ -509,7 +509,7 @@ export default function ProjectGallery({ navigate }: ProjectGalleryProps = {}) {
         <div className="absolute top-1/2 -translate-y-1/2 -right-2 md:-right-16 z-30 hidden sm:block">
           <button
             onClick={handleNextProject}
-            className="w-12 h-12 rounded-full bg-white/80 hover:bg-violet-50 border border-stone-200 hover:border-violet-300 text-stone-700 flex items-center justify-center transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.05)] hover:shadow-[0_0_15px_rgba(139,92,246,0.3)] group active:scale-95 cursor-pointer"
+            className="w-12 h-12 rounded-full bg-[#050505]/80 hover:bg-violet-50 border border-white/10 hover:border-violet-300 text-stone-300 flex items-center justify-center transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.05)] hover:shadow-[0_0_15px_rgba(139,92,246,0.3)] group active:scale-95 cursor-pointer"
             aria-label="Next Project"
           >
             <span className="transform group-hover:translate-x-0.5 transition-transform text-lg">→</span>
@@ -520,14 +520,14 @@ export default function ProjectGallery({ navigate }: ProjectGalleryProps = {}) {
         <div className="flex sm:hidden justify-end gap-3 mb-4">
           <button
             onClick={handlePrevProject}
-            className="w-10 h-10 rounded-full bg-white border border-stone-200 text-stone-700 flex items-center justify-center active:scale-95 shadow-sm"
+            className="w-10 h-10 rounded-full bg-[#050505] border border-white/10 text-stone-300 flex items-center justify-center active:scale-95 shadow-sm"
             aria-label="Previous Project"
           >
             <span>←</span>
           </button>
           <button
             onClick={handleNextProject}
-            className="w-10 h-10 rounded-full bg-violet-50 border border-violet-300 text-violet-700 flex items-center justify-center active:scale-95 animate-pulse shadow-sm"
+            className="w-10 h-10 rounded-full bg-violet-50 border border-violet-300 text-violet-400 flex items-center justify-center active:scale-95 animate-pulse shadow-sm"
             aria-label="Next Project"
           >
             <span>→</span>
@@ -555,28 +555,28 @@ export default function ProjectGallery({ navigate }: ProjectGalleryProps = {}) {
                     <div className="col-span-1 md:col-span-7 relative flex flex-col justify-center">
                       <Interactive3DCard projectId={project.id}>
                         <FloatingGlassBadge projectId={project.id} />
-                        <CyberFrame glowColor={['violet', 'fuchsia', 'blue'][project.id % 3] as 'violet' | 'fuchsia' | 'blue'} className="p-4 rounded-xl cursor-default bg-white/80 backdrop-blur-md h-full flex flex-col hover:border-violet-200 relative overflow-visible border border-stone-200/60 shadow-lg">
+                        <CyberFrame glowColor={['violet', 'fuchsia', 'blue'][project.id % 3] as 'violet' | 'fuchsia' | 'blue'} className="p-4 rounded-xl cursor-default bg-[#050505]/80 backdrop-blur-md h-full flex flex-col hover:border-violet-200 relative overflow-visible border border-white/10 shadow-lg">
                           {/* Live Sandbox preview mock with perspective translation */}
                           <div 
                             style={{ transform: 'translateZ(25px)', transformStyle: 'preserve-3d' }}
-                            className="w-full aspect-[4/3] bg-gradient-to-br from-violet-50 to-stone-100 rounded-lg overflow-hidden relative mb-4 border border-stone-200 flex flex-col shadow-inner"
+                            className="w-full aspect-[4/3] bg-gradient-to-br from-violet-50 to-stone-100 rounded-lg overflow-hidden relative mb-4 border border-white/10 flex flex-col shadow-inner"
                           >
                             {/* Browser Mock Header */}
-                            <div className="h-6 w-full bg-white/90 border-b border-stone-200 flex items-center px-3 space-x-1.5 shrink-0 z-20 backdrop-blur-md">
+                            <div className="h-6 w-full bg-[#050505]/90 border-b border-white/10 flex items-center px-3 space-x-1.5 shrink-0 z-20 backdrop-blur-md">
                               <div className="w-2 h-2 rounded-full bg-red-400/80" />
                               <div className="w-2 h-2 rounded-full bg-yellow-400/80" />
                               <div className="w-2 h-2 rounded-full bg-green-400/80" />
-                              <div className="ml-2 px-2 py-0.5 rounded bg-stone-100 border border-stone-200 text-[8px] font-mono text-stone-500 truncate max-w-[150px]">
+                              <div className="ml-2 px-2 py-0.5 rounded bg-[#111] border border-white/10 text-[8px] font-mono text-stone-400 truncate max-w-[150px]">
                                 {project.link.replace(/^https?:\/\//, '')}
                               </div>
                             </div>
                             
                             {/* Browser Mock Content */}
-                            <div className="relative flex-grow w-full overflow-hidden bg-white">
+                            <div className="relative flex-grow w-full overflow-hidden bg-[#050505]">
                               <div className="absolute top-0 left-0 w-[400%] h-[400%] origin-top-left pointer-events-none" style={{ transform: 'scale(0.25)' }}>
                                 <iframe 
                                   src={project.link} 
-                                  className="w-full h-full border-none bg-white"
+                                  className="w-full h-full border-none bg-[#050505]"
                                   sandbox="allow-scripts allow-same-origin"
                                   loading="lazy"
                                   title={project.title}
@@ -585,8 +585,8 @@ export default function ProjectGallery({ navigate }: ProjectGalleryProps = {}) {
                               
                               {/* Interactive click overlay */}
                               <div className="absolute inset-0 z-10 bg-black/40 hover:bg-black/10 transition-colors duration-300 flex items-center justify-center cursor-pointer" onClick={() => window.open(project.link, '_blank', 'noopener,noreferrer')}>
-                                 <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-lg transform scale-90 hover:scale-100 transition-all duration-300">
-                                   <ArrowUpRight className="text-black" size={18} />
+                                 <div className="w-10 h-10 rounded-full bg-[#050505] flex items-center justify-center shadow-lg transform scale-90 hover:scale-100 transition-all duration-300">
+                                   <ArrowUpRight className="text-stone-200" size={18} />
                                  </div>
                               </div>
                             </div>
@@ -598,21 +598,21 @@ export default function ProjectGallery({ navigate }: ProjectGalleryProps = {}) {
                             className="flex items-start justify-between px-1 mt-auto"
                           >
                             <div className="flex items-center space-x-3">
-                              <div className="w-6 h-6 rounded bg-stone-100 border border-stone-200 flex items-center justify-center">
-                                <span className="font-display font-black text-[10px] text-stone-800">DL</span>
+                              <div className="w-6 h-6 rounded bg-[#111] border border-white/10 flex items-center justify-center">
+                                <span className="font-display font-black text-[10px] text-stone-100">DL</span>
                               </div>
                               <div>
-                                <h4 className="text-stone-900 text-xs sm:text-sm font-bold tracking-tight">{project.title.split('//')[1] || project.title}</h4>
+                                <h4 className="text-white text-xs sm:text-sm font-bold tracking-tight">{project.title.split('//')[1] || project.title}</h4>
                                 <div className="flex items-center space-x-2 mt-0.5">
-                                  <span className="text-stone-500 text-[11px]">{project.client}</span>
+                                  <span className="text-stone-400 text-[11px]">{project.client}</span>
                                   {project.isPro && (
-                                    <span className="px-1 py-0.5 bg-violet-100 text-violet-700 text-[8px] font-bold tracking-wider rounded uppercase">PRO</span>
+                                    <span className="px-1 py-0.5 bg-violet-950/60 text-violet-300 text-[8px] font-bold tracking-wider rounded uppercase">PRO</span>
                                   )}
                                 </div>
                               </div>
                             </div>
                             
-                            <div className="flex items-center space-x-2.5 text-stone-500 text-[11px] font-medium">
+                            <div className="flex items-center space-x-2.5 text-stone-400 text-[11px] font-medium">
                               <div className="flex items-center space-x-1">
                                 <Heart size={12} />
                                 <span>{project.likes}</span>
@@ -635,7 +635,7 @@ export default function ProjectGallery({ navigate }: ProjectGalleryProps = {}) {
                 );
               })
             ) : (
-              <div className="text-center py-20 text-stone-500 font-mono text-xs">
+              <div className="text-center py-20 text-stone-400 font-mono text-xs">
                 NO ACTIVE DEPLOYMENTS REGISTERED UNDER THIS FILTER CHANNEL
               </div>
             )}
@@ -661,16 +661,16 @@ export default function ProjectGallery({ navigate }: ProjectGalleryProps = {}) {
                   <div className={`h-1.5 rounded-full transition-all duration-500 ${
                     activeProjectIndex === pIdx 
                       ? 'w-12 bg-gradient-to-r from-violet-500 to-fuchsia-500 shadow-[0_0_12px_rgba(139,92,246,0.4)]' 
-                      : 'w-2.5 bg-stone-300 hover:bg-stone-400'
+                      : 'w-2.5 bg-white/20 hover:bg-stone-400'
                   }`} />
                 </button>
               ))}
             </div>
 
             {/* Quick telemetry/nav helper label */}
-            <div className="mt-3 font-mono text-[9px] text-stone-500 uppercase tracking-widest flex items-center gap-2">
+            <div className="mt-3 font-mono text-[9px] text-stone-400 uppercase tracking-widest flex items-center gap-2">
               <span>PROJECT 0{activeProjectIndex + 1} OF 0{filteredProjects.length}</span>
-              <span className="text-stone-700">•</span>
+              <span className="text-stone-300">•</span>
               <span>SELECT METRIC TO PRE-FILL CONTRACT</span>
             </div>
           </div>
@@ -681,7 +681,7 @@ export default function ProjectGallery({ navigate }: ProjectGalleryProps = {}) {
       <div className="mt-20 text-center relative z-10">
         <button 
           onClick={() => navigate ? navigate('/projects') : window.location.assign('/projects')}
-          className="px-6 py-3 bg-stone-50 border border-stone-200 text-stone-700 font-mono text-[10px] font-bold uppercase tracking-widest hover:bg-violet-600 hover:border-violet-600 hover:text-white transition-all duration-300 rounded-full cursor-pointer shadow-sm"
+          className="px-6 py-3 bg-[#0a0a0a] border border-white/10 text-stone-300 font-mono text-[10px] font-bold uppercase tracking-widest hover:bg-violet-600 hover:border-violet-600 hover:text-white transition-all duration-300 rounded-full cursor-pointer shadow-sm"
         >
           Explore Full Vertical Matrix
         </button>

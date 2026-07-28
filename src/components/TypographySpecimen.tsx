@@ -130,7 +130,7 @@ export default function TypographySpecimen() {
   };
 
   return (
-    <div className="w-full py-16 px-4 sm:px-6 lg:px-8 bg-[#faf9f5] border-t border-b border-stone-200/50 relative overflow-hidden">
+    <div className="w-full py-16 px-4 sm:px-6 lg:px-8 bg-[#0a0a0a] border-t border-b border-white/10/50 relative overflow-hidden">
       {/* Editorial Watermark Grid */}
       <div className="absolute inset-0 bg-[radial-gradient(#2d262006_1px,transparent_1px)] [background-size:24px_24px] opacity-70 pointer-events-none" />
       <div className="absolute top-0 left-12 w-px h-full bg-gradient-to-b from-stone-200/30 via-transparent to-stone-200/30 pointer-events-none hidden md:block" />
@@ -139,28 +139,28 @@ export default function TypographySpecimen() {
       <div className="max-w-7xl mx-auto relative z-10 space-y-12">
         
         {/* Title and Header Block */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b border-stone-200/50">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b border-white/10/50">
           <div className="space-y-3 max-w-2xl text-left">
             <span className="text-violet-600 text-metadata-label flex items-center space-x-1.5">
               <Type size={12} className="text-violet-500" />
               <span>TYPOGRAPHY SYSTEM SPEC</span>
             </span>
-            <h2 className="text-display-large text-stone-900 font-extrabold uppercase leading-none">
+            <h2 className="text-display-large text-white font-extrabold uppercase leading-none">
               Unified Type Specimen
             </h2>
-            <p className="text-body-standard text-stone-500 max-w-xl">
+            <p className="text-body-standard text-stone-400 max-w-xl">
               An elegant, mathematical font scale tuned with editorial weights, precise tracking ratios, and fluid line heights for balanced digital hierarchies.
             </p>
           </div>
 
           {/* Mode Switcher */}
-          <div className="inline-flex p-1 bg-[#f0ede6]/80 rounded-2xl border border-stone-200/40">
+          <div className="inline-flex p-1 bg-[#f0ede6]/80 rounded-2xl border border-white/10">
             <button
               onClick={() => setActiveTab('preview')}
               className={`px-5 py-2.5 text-[10px] uppercase tracking-widest font-black rounded-xl transition-all flex items-center space-x-1.5 cursor-pointer ${
                 activeTab === 'preview' 
-                  ? 'bg-white text-stone-900 shadow-sm' 
-                  : 'text-stone-500 hover:text-stone-800'
+                  ? 'bg-[#050505] text-white shadow-sm' 
+                  : 'text-stone-400 hover:text-stone-100'
               }`}
             >
               <BookOpen size={12} />
@@ -173,8 +173,8 @@ export default function TypographySpecimen() {
               }}
               className={`px-5 py-2.5 text-[10px] uppercase tracking-widest font-black rounded-xl transition-all flex items-center space-x-1.5 cursor-pointer ${
                 activeTab === 'playground' 
-                  ? 'bg-white text-stone-900 shadow-sm' 
-                  : 'text-stone-500 hover:text-stone-800'
+                  ? 'bg-[#050505] text-white shadow-sm' 
+                  : 'text-stone-400 hover:text-stone-100'
               }`}
             >
               <Sliders size={12} />
@@ -199,8 +199,8 @@ export default function TypographySpecimen() {
                     whileTap={{ scale: 0.99 }}
                     className={`w-full text-left p-4 rounded-2xl transition-all cursor-pointer flex flex-col justify-between ${
                       isSelected 
-                        ? 'bg-white border-2 border-violet-500/20 shadow-md relative' 
-                        : 'bg-stone-100/50 hover:bg-stone-100/80 border border-stone-200/40'
+                        ? 'bg-[#050505] border-2 border-violet-500/20 shadow-md relative' 
+                        : 'bg-[#111]/50 hover:bg-[#111]/80 border border-white/10'
                     }`}
                   >
                     {isSelected && (
@@ -215,10 +215,10 @@ export default function TypographySpecimen() {
                       </span>
                     </div>
                     <div className="mt-2 flex items-baseline justify-between">
-                      <span className="font-display font-extrabold text-lg text-stone-800 tracking-tight">
+                      <span className="font-display font-extrabold text-lg text-stone-100 tracking-tight">
                         {tier.name}
                       </span>
-                      <span className="text-[9px] font-mono text-stone-500 font-bold">
+                      <span className="text-[9px] font-mono text-stone-400 font-bold">
                         LH: {tier.lineHeight} / TS: {tier.letterSpacing}
                       </span>
                     </div>
@@ -229,44 +229,44 @@ export default function TypographySpecimen() {
 
             {/* Specimen Showcase Frame */}
             <div className="lg:col-span-7 space-y-6">
-              <div className="clay-card p-6 md:p-8 bg-white border border-stone-200/40 rounded-3xl shadow-sm flex flex-col justify-between relative min-h-[460px]">
+              <div className="clay-card p-6 md:p-8 bg-[#050505] border border-white/10 rounded-3xl shadow-sm flex flex-col justify-between relative min-h-[460px]">
                 
                 {/* Visual grid markings for editorial alignment */}
-                <div className="absolute top-4 left-4 w-3 h-3 border-t border-l border-stone-300" />
-                <div className="absolute top-4 right-4 w-3 h-3 border-t border-r border-stone-300" />
-                <div className="absolute bottom-4 left-4 w-3 h-3 border-b border-l border-stone-300" />
-                <div className="absolute bottom-4 right-4 w-3 h-3 border-b border-r border-stone-300" />
+                <div className="absolute top-4 left-4 w-3 h-3 border-t border-l border-white/20" />
+                <div className="absolute top-4 right-4 w-3 h-3 border-t border-r border-white/20" />
+                <div className="absolute bottom-4 left-4 w-3 h-3 border-b border-l border-white/20" />
+                <div className="absolute bottom-4 right-4 w-3 h-3 border-b border-r border-white/20" />
 
                 {/* Spec metadata block */}
-                <div className="flex flex-wrap items-center justify-between pb-6 border-b border-stone-200/50 text-left">
+                <div className="flex flex-wrap items-center justify-between pb-6 border-b border-white/10/50 text-left">
                   <div className="space-y-0.5">
                     <span className="text-[8px] text-stone-400 font-mono uppercase tracking-widest font-bold">FONT ARCHITECTURE</span>
-                    <h4 className="font-display font-bold text-lg text-stone-850 uppercase tracking-tight">{selectedTier.name}</h4>
+                    <h4 className="font-display font-bold text-lg text-stone-100 uppercase tracking-tight">{selectedTier.name}</h4>
                   </div>
                   <div className="flex flex-wrap gap-2 text-[9px] font-mono mt-2 sm:mt-0">
-                    <span className="bg-stone-100 px-2.5 py-1 rounded border border-stone-200/40 text-stone-600 uppercase">
+                    <span className="bg-[#111] px-2.5 py-1 rounded border border-white/10 text-stone-300 uppercase">
                       Family: {selectedTier.font}
                     </span>
-                    <span className="bg-stone-100 px-2.5 py-1 rounded border border-stone-200/40 text-stone-600 uppercase">
+                    <span className="bg-[#111] px-2.5 py-1 rounded border border-white/10 text-stone-300 uppercase">
                       Weight: {selectedTier.weight}
                     </span>
                   </div>
                 </div>
 
                 {/* Main Render Zone */}
-                <div className="py-12 flex items-center justify-center min-h-[220px] text-center px-4 bg-stone-50/50 rounded-2xl border border-stone-200/30 my-4 overflow-hidden">
+                <div className="py-12 flex items-center justify-center min-h-[220px] text-center px-4 bg-[#0a0a0a]/50 rounded-2xl border border-white/10/30 my-4 overflow-hidden">
                   <div className="w-full">
-                    <div className={`${selectedTier.className} text-stone-900 transition-all duration-300`}>
+                    <div className={`${selectedTier.className} text-white transition-all duration-300`}>
                       {selectedTier.example}
                     </div>
                   </div>
                 </div>
 
                 {/* Implementation metadata and code helper */}
-                <div className="pt-6 border-t border-stone-200/50 space-y-4 text-left">
+                <div className="pt-6 border-t border-white/10/50 space-y-4 text-left">
                   <div className="space-y-1">
                     <span className="text-[8px] text-stone-400 font-mono uppercase tracking-widest font-bold block">EDITORIAL DIRECTIVES</span>
-                    <p className="text-xs sm:text-sm text-stone-600 leading-relaxed font-sans font-light">
+                    <p className="text-xs sm:text-sm text-stone-300 leading-relaxed font-sans font-light">
                       {selectedTier.desc}
                     </p>
                   </div>
@@ -274,7 +274,7 @@ export default function TypographySpecimen() {
                   <div className="grid grid-cols-2 gap-4 pt-2 text-[10px] font-mono">
                     <div className="space-y-1">
                       <span className="text-[8px] text-stone-400 font-sans tracking-widest uppercase font-black block">RESPONSIVE BOUNDARY</span>
-                      <span className="bg-stone-100/80 px-2 py-1 rounded border border-stone-200/30 text-stone-700 block text-center uppercase">
+                      <span className="bg-[#111]/80 px-2 py-1 rounded border border-white/10/30 text-stone-300 block text-center uppercase">
                         {selectedTier.responsiveRange}
                       </span>
                     </div>
@@ -282,7 +282,7 @@ export default function TypographySpecimen() {
                       <span className="text-[8px] text-stone-400 font-sans tracking-widest uppercase font-black block">UTILITY CALLOUT</span>
                       <button 
                         onClick={() => copyToClipboard(selectedTier.className)}
-                        className="w-full bg-stone-100 hover:bg-stone-200/70 px-2 py-1 rounded border border-stone-200/30 text-stone-700 flex items-center justify-center gap-1.5 transition-colors cursor-pointer uppercase font-bold"
+                        className="w-full bg-[#111] hover:bg-white/10/70 px-2 py-1 rounded border border-white/10/30 text-stone-300 flex items-center justify-center gap-1.5 transition-colors cursor-pointer uppercase font-bold"
                       >
                         {copied ? <Check size={11} className="text-emerald-600" /> : <Copy size={11} />}
                         <span className="truncate">{selectedTier.className}</span>
@@ -302,15 +302,15 @@ export default function TypographySpecimen() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
             
             {/* Control Panel */}
-            <div className="lg:col-span-4 clay-card p-6 md:p-8 bg-white border border-stone-200/40 rounded-3xl shadow-sm space-y-6 text-left">
-              <div className="flex items-center justify-between pb-4 border-b border-stone-200/50">
+            <div className="lg:col-span-4 clay-card p-6 md:p-8 bg-[#050505] border border-white/10 rounded-3xl shadow-sm space-y-6 text-left">
+              <div className="flex items-center justify-between pb-4 border-b border-white/10/50">
                 <div className="flex items-center space-x-2">
                   <Sliders size={14} className="text-violet-500" />
-                  <h4 className="font-display font-bold text-sm text-stone-800 uppercase tracking-wide">SANDBOX CONTROLS</h4>
+                  <h4 className="font-display font-bold text-sm text-stone-100 uppercase tracking-wide">SANDBOX CONTROLS</h4>
                 </div>
                 <button 
                   onClick={resetPlayground}
-                  className="p-1.5 hover:bg-stone-100 rounded-lg text-stone-400 hover:text-stone-600 transition-colors cursor-pointer"
+                  className="p-1.5 hover:bg-[#111] rounded-lg text-stone-400 hover:text-stone-300 transition-colors cursor-pointer"
                   title="Reset Controls"
                 >
                   <RotateCcw size={13} />
@@ -332,7 +332,7 @@ export default function TypographySpecimen() {
                       className={`px-2 py-2 text-[9px] font-bold rounded-lg border text-center transition-all cursor-pointer uppercase ${
                         pgFontFamily === f.val 
                           ? 'bg-violet-600 text-white border-violet-700' 
-                          : 'bg-stone-50 border-stone-200 text-stone-600 hover:bg-stone-100'
+                          : 'bg-[#0a0a0a] border-white/10 text-stone-300 hover:bg-[#111]'
                       }`}
                     >
                       {f.label}
@@ -357,7 +357,7 @@ export default function TypographySpecimen() {
                       className={`px-1.5 py-1.5 text-[9px] font-bold rounded-lg border text-center transition-all cursor-pointer uppercase ${
                         pgFontWeight === w.val 
                           ? 'bg-violet-600 text-white border-violet-700' 
-                          : 'bg-stone-50 border-stone-200 text-stone-600 hover:bg-stone-100'
+                          : 'bg-[#0a0a0a] border-white/10 text-stone-300 hover:bg-[#111]'
                       }`}
                     >
                       {w.label}
@@ -378,7 +378,7 @@ export default function TypographySpecimen() {
                   max="72" 
                   value={pgFontSize}
                   onChange={(e) => setPgFontSize(Number(e.target.value))}
-                  className="w-full accent-violet-600 h-1 bg-stone-100 rounded-lg appearance-none cursor-pointer"
+                  className="w-full accent-violet-600 h-1 bg-[#111] rounded-lg appearance-none cursor-pointer"
                 />
               </div>
 
@@ -395,7 +395,7 @@ export default function TypographySpecimen() {
                   step="0.05"
                   value={pgLineHeight}
                   onChange={(e) => setPgLineHeight(Number(e.target.value))}
-                  className="w-full accent-violet-600 h-1 bg-stone-100 rounded-lg appearance-none cursor-pointer"
+                  className="w-full accent-violet-600 h-1 bg-[#111] rounded-lg appearance-none cursor-pointer"
                 />
               </div>
 
@@ -412,7 +412,7 @@ export default function TypographySpecimen() {
                   step="0.005"
                   value={pgLetterSpacing}
                   onChange={(e) => setPgLetterSpacing(Number(e.target.value))}
-                  className="w-full accent-violet-600 h-1 bg-stone-100 rounded-lg appearance-none cursor-pointer"
+                  className="w-full accent-violet-600 h-1 bg-[#111] rounded-lg appearance-none cursor-pointer"
                 />
               </div>
 
@@ -425,7 +425,7 @@ export default function TypographySpecimen() {
                   value={customText}
                   onChange={(e) => setCustomText(e.target.value)}
                   placeholder="TYPE TO SEE RESULTS..."
-                  className="w-full px-3.5 py-2.5 text-stone-850 font-mono text-[10px] focus:outline-none focus:border-violet-300 transition-all rounded-xl bg-stone-50 border border-stone-200 uppercase placeholder-stone-400"
+                  className="w-full px-3.5 py-2.5 text-stone-100 font-mono text-[10px] focus:outline-none focus:border-violet-300 transition-all rounded-xl bg-[#0a0a0a] border border-white/10 uppercase placeholder-stone-400"
                 />
               </div>
 
@@ -433,19 +433,19 @@ export default function TypographySpecimen() {
 
             {/* Live Sandbox Canvas */}
             <div className="lg:col-span-8 flex flex-col justify-between space-y-6">
-              <div className="clay-card p-6 md:p-8 bg-white border border-stone-200/60 text-stone-900 rounded-3xl shadow-xl flex flex-col justify-between relative min-h-[440px] flex-grow">
+              <div className="clay-card p-6 md:p-8 bg-[#050505] border border-white/10 text-white rounded-3xl shadow-xl flex flex-col justify-between relative min-h-[440px] flex-grow">
                 
                 {/* Visual grid markings */}
-                <div className="absolute top-4 left-4 w-3 h-3 border-t border-l border-stone-300" />
-                <div className="absolute top-4 right-4 w-3 h-3 border-t border-r border-stone-300" />
-                <div className="absolute bottom-4 left-4 w-3 h-3 border-b border-l border-stone-300" />
-                <div className="absolute bottom-4 right-4 w-3 h-3 border-b border-r border-stone-300" />
+                <div className="absolute top-4 left-4 w-3 h-3 border-t border-l border-white/20" />
+                <div className="absolute top-4 right-4 w-3 h-3 border-t border-r border-white/20" />
+                <div className="absolute bottom-4 left-4 w-3 h-3 border-b border-l border-white/20" />
+                <div className="absolute bottom-4 right-4 w-3 h-3 border-b border-r border-white/20" />
 
                 {/* Spec metadata */}
-                <div className="flex items-center justify-between pb-4 border-b border-stone-200/50 text-left">
+                <div className="flex items-center justify-between pb-4 border-b border-white/10/50 text-left">
                   <div className="space-y-0.5">
                     <span className="text-[8px] text-violet-600 font-mono uppercase tracking-widest font-black">LIVE EXPERIMENTATION PLATFORM</span>
-                    <h4 className="font-display font-black text-xs text-stone-850 uppercase tracking-tight">Active Canvas Sandbox</h4>
+                    <h4 className="font-display font-black text-xs text-stone-100 uppercase tracking-tight">Active Canvas Sandbox</h4>
                   </div>
                   <div className="flex space-x-1">
                     <span className="w-2 h-2 rounded-full bg-rose-400" />
@@ -455,7 +455,7 @@ export default function TypographySpecimen() {
                 </div>
 
                 {/* Text render panel */}
-                <div className="py-12 flex items-center justify-center flex-grow overflow-hidden text-center min-h-[200px] bg-stone-50/50 rounded-2xl border border-stone-200/30 my-4">
+                <div className="py-12 flex items-center justify-center flex-grow overflow-hidden text-center min-h-[200px] bg-[#0a0a0a]/50 rounded-2xl border border-white/10/30 my-4">
                   <div 
                     style={{
                       fontFamily: pgFontFamily,
@@ -464,14 +464,14 @@ export default function TypographySpecimen() {
                       lineHeight: pgLineHeight,
                       letterSpacing: `${pgLetterSpacing}em`,
                     }}
-                    className="w-full break-words transition-all duration-150 text-stone-900"
+                    className="w-full break-words transition-all duration-150 text-white"
                   >
                     {customText || 'DEVIL LABS DESIGN SYSTEM'}
                   </div>
                 </div>
 
                 {/* Generated Code Output */}
-                <div className="pt-4 border-t border-stone-200/50 text-left">
+                <div className="pt-4 border-t border-white/10/50 text-left">
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-[8px] text-stone-400 font-mono uppercase tracking-widest font-bold block">TAILWIND / INLINE SPEC CODE</span>
                     <button
@@ -483,14 +483,14 @@ export default function TypographySpecimen() {
                     </button>
                   </div>
                   
-                  <div className="bg-stone-50 border border-stone-200/50 rounded-xl p-3 font-mono text-[9px] text-stone-600 overflow-x-auto select-all max-w-full">
+                  <div className="bg-[#0a0a0a] border border-white/10/50 rounded-xl p-3 font-mono text-[9px] text-stone-300 overflow-x-auto select-all max-w-full">
                     {`// Editorial Output Code\n`}
-                    <span className="text-emerald-700">{`<div`}</span>
+                    <span className="text-emerald-400">{`<div`}</span>
                     {` style={{`}
-                    <span className="text-violet-700">{` fontFamily: "${pgFontFamily}", fontWeight: "${pgFontWeight}", fontSize: "${pgFontSize}px", lineHeight: ${pgLineHeight}, letterSpacing: "${pgLetterSpacing}em"`}</span>
+                    <span className="text-violet-400">{` fontFamily: "${pgFontFamily}", fontWeight: "${pgFontWeight}", fontSize: "${pgFontSize}px", lineHeight: ${pgLineHeight}, letterSpacing: "${pgLetterSpacing}em"`}</span>
                     {` }}>`}
-                    <span className="text-stone-900">{customText || 'DEVIL LABS DESIGN SYSTEM'}</span>
-                    <span className="text-emerald-700">{`</div>`}</span>
+                    <span className="text-white">{customText || 'DEVIL LABS DESIGN SYSTEM'}</span>
+                    <span className="text-emerald-400">{`</div>`}</span>
                   </div>
                 </div>
 

@@ -95,7 +95,7 @@ export default function Navigation({ currentPath, navigate }: NavigationProps) {
       {/* 0. HIGH-CONVERTING TOP INFO BAR */}
       <div 
         id="header-top-bar" 
-        className="fixed top-0 left-0 w-full h-[48px] md:h-12 bg-[#faf8f5]/90 backdrop-blur-xl border-b border-stone-200/40 z-[60] flex items-center justify-between px-4 sm:px-6 lg:px-8 text-xs tracking-widest font-bold text-stone-500 font-sans select-none transition-transform duration-500 ease-in-out pointer-events-auto"
+        className="fixed top-0 left-0 w-full h-[48px] md:h-12 bg-[#0a0a0a]/90 backdrop-blur-xl border-b border-white/10 z-[60] flex items-center justify-between px-4 sm:px-6 lg:px-8 text-xs tracking-widest font-bold text-stone-400 font-sans select-none transition-transform duration-500 ease-in-out pointer-events-auto"
         style={{
           transform: scrolled ? 'translateY(-100%)' : 'translateY(0)'
         }}
@@ -104,7 +104,7 @@ export default function Navigation({ currentPath, navigate }: NavigationProps) {
         <div className="flex items-center space-x-6">
           <a 
             href="mailto:devil.labs.contact@gmail.com?subject=Project%20Inquiry%20-%20Devil%20Labs" 
-            className="hidden sm:flex items-center space-x-2 text-stone-500 hover:text-stone-900 transition-colors"
+            className="hidden sm:flex items-center space-x-2 text-stone-400 hover:text-white transition-colors"
           >
             <Mail size={12} className="text-violet-600" />
             <span className="hidden lg:inline">DEVIL.LABS.CONTACT@GMAIL.COM</span>
@@ -114,7 +114,7 @@ export default function Navigation({ currentPath, navigate }: NavigationProps) {
             href="https://wa.me/918102099678?text=Hi%20Devil%20Labs%2C%20I%20would%20like%20to%20consult%20on%20a%20project%20idea%21" 
             target="_blank"
             rel="noreferrer"
-            className="flex items-center space-x-2 text-stone-500 hover:text-stone-900 transition-colors"
+            className="flex items-center space-x-2 text-stone-400 hover:text-white transition-colors"
           >
             <MessageCircle size={12} className="text-[#128C7E] animate-pulse" />
             <span>WA: +91 81020 99678</span>
@@ -139,14 +139,14 @@ export default function Navigation({ currentPath, navigate }: NavigationProps) {
 
         {/* Right Side: Network Links & Instant Talk Badge */}
         <div className="flex items-center space-x-4">
-          <div className="hidden sm:flex items-center space-x-3 border-r border-stone-200 pr-4">
-            <a href="https://github.com/Devil-Labs/" target="_blank" rel="noreferrer" className="text-stone-400 hover:text-stone-900 transition-colors">
+          <div className="hidden sm:flex items-center space-x-3 border-r border-white/10 pr-4">
+            <a href="https://github.com/Devil-Labs/" target="_blank" rel="noreferrer" className="text-stone-400 hover:text-white transition-colors">
               <Github size={12} />
             </a>
-            <a href="https://linkedin.com/company/devillabs" target="_blank" rel="noreferrer" className="text-stone-400 hover:text-stone-900 transition-colors">
+            <a href="https://linkedin.com/company/devillabs" target="_blank" rel="noreferrer" className="text-stone-400 hover:text-white transition-colors">
               <Linkedin size={12} />
             </a>
-            <a href="https://instagram.com/devillabs" target="_blank" rel="noreferrer" className="text-stone-400 hover:text-stone-900 transition-colors">
+            <a href="https://instagram.com/devillabs" target="_blank" rel="noreferrer" className="text-stone-400 hover:text-white transition-colors">
               <Instagram size={12} />
             </a>
           </div>
@@ -176,16 +176,16 @@ export default function Navigation({ currentPath, navigate }: NavigationProps) {
           id="brand-logo-btn"
           onMouseEnter={() => audioEngine.playHover()}
           onClick={() => { audioEngine.playClick(); navigate('/'); setIsOpen(false); }}
-          className="flex items-center space-x-2.5 group text-stone-800 font-bold tracking-tighter text-xl cursor-pointer clay-button px-4 py-2.5 sm:px-5 sm:py-3 rounded-full hover:border-violet-300/40 select-none"
+          className="flex items-center space-x-2.5 group text-stone-100 font-bold tracking-tighter text-xl cursor-pointer clay-button px-4 py-2.5 sm:px-5 sm:py-3 rounded-full hover:border-violet-300/40 select-none"
         >
           <div className="relative flex items-center justify-center">
             <DevilLabsLogo className="w-5 h-5" glow />
           </div>
-          <span className="font-display tracking-tight text-stone-800 text-xs sm:text-sm whitespace-nowrap group-hover:text-violet-600 transition-colors duration-300">DEVIL LABS</span>
+          <span className="font-display tracking-tight text-stone-100 text-xs sm:text-sm whitespace-nowrap group-hover:text-violet-600 transition-colors duration-300">DEVIL LABS</span>
         </button>
 
         {/* Desktop Nav - Floating Pill (Visible on XL screens to fit perfectly without screen collision) */}
-        <nav id="desktop-nav" className="hidden xl:flex items-center bg-[#fdfcf9]/95 backdrop-blur-xl border border-white/80 px-2 py-1.5 rounded-full shadow-[8px_10px_24px_rgba(185,175,160,0.08),-8px_-10px_24px_#ffffff,inset_3px_3px_6px_rgba(255,255,255,0.95)] relative">
+        <nav id="desktop-nav" className="hidden xl:flex items-center bg-[#0d0d12]/80 backdrop-blur-2xl border border-white/10 px-2 py-1.5 rounded-full shadow-[0_10px_30px_rgba(0,0,0,0.8),inset_0_1px_0_rgba(255,255,255,0.1)] relative">
           {navItems.map((item) => {
             const isActive = currentPath === item.path;
             return (
@@ -194,16 +194,16 @@ export default function Navigation({ currentPath, navigate }: NavigationProps) {
                 key={item.path}
                 onMouseEnter={() => audioEngine.playHover()}
                 onClick={() => { audioEngine.playClick(); navigate(item.path); }}
-                className={`relative px-4 py-2 text-[11px] font-bold cursor-pointer transition-all duration-300 tracking-widest rounded-full text-stone-600 hover:text-stone-900 active:scale-95 z-10`}
+                className={`relative px-4 py-2 text-[11px] font-bold cursor-pointer transition-all duration-300 tracking-widest rounded-full text-stone-300 hover:text-white active:scale-95 z-10`}
               >
                 {isActive && (
                   <motion.div
                     layoutId="active-nav-pill"
-                    className="absolute inset-0 bg-violet-50/80 border border-violet-100/80 rounded-full -z-10 shadow-[inset_1px_1px_3px_rgba(255,255,255,0.8)]"
+                    className="absolute inset-0 bg-violet-600/25 border border-violet-500/40 rounded-full -z-10 shadow-[0_0_15px_rgba(139,92,246,0.25)]"
                     transition={{ type: "spring", stiffness: 380, damping: 30 }}
                   />
                 )}
-                <span className={isActive ? 'text-violet-600 font-extrabold' : ''}>{item.name}</span>
+                <span className={isActive ? 'text-violet-300 font-extrabold' : ''}>{item.name}</span>
               </button>
             );
           })}
@@ -215,7 +215,7 @@ export default function Navigation({ currentPath, navigate }: NavigationProps) {
             <button
               onMouseEnter={() => audioEngine.playHover()}
               onClick={() => { audioEngine.playClick(); toggleCurrency(); }}
-              className="flex items-center justify-center w-11 h-11 clay-button rounded-full font-sans text-xs font-bold text-stone-500 hover:text-stone-900 hover:border-violet-300/40 cursor-pointer"
+              className="flex items-center justify-center w-11 h-11 clay-button rounded-full font-sans text-xs font-bold text-stone-400 hover:text-white hover:border-violet-300/40 cursor-pointer"
             >
               {currency}
             </button>
@@ -239,7 +239,7 @@ export default function Navigation({ currentPath, navigate }: NavigationProps) {
             type="button"
             onMouseEnter={() => audioEngine.playHover()}
             onClick={() => { audioEngine.playClick(); toggleCurrency(); }}
-            className="flex items-center justify-center min-w-[44px] min-h-[44px] px-3 bg-[#fcfbf9]/95 backdrop-blur-xl border border-stone-200/80 rounded-full font-sans text-xs font-bold text-stone-700 hover:text-stone-900 active:scale-95 transition-all cursor-pointer shadow-sm"
+            className="flex items-center justify-center min-w-[44px] min-h-[44px] px-3 bg-[#0d0d12]/95 backdrop-blur-xl border border-white/10 rounded-full font-sans text-xs font-bold text-stone-300 hover:text-white active:scale-95 transition-all cursor-pointer shadow-sm"
           >
             {currency}
           </button>
@@ -270,7 +270,7 @@ export default function Navigation({ currentPath, navigate }: NavigationProps) {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
             onClick={() => setIsOpen(false)}
-            className="fixed inset-0 bg-stone-900/40 backdrop-blur-md z-[100] xl:hidden cursor-pointer"
+            className="fixed inset-0 bg-white/20/40 backdrop-blur-md z-[100] xl:hidden cursor-pointer"
           />
 
           {/* Slide-out Drawer Panel */}
@@ -281,30 +281,30 @@ export default function Navigation({ currentPath, navigate }: NavigationProps) {
             exit={{ x: '100%' }}
             transition={{ type: 'spring', damping: 28, stiffness: 300 }}
             id="mobile-drawer"
-            className="fixed top-0 right-0 bottom-0 w-[88%] max-w-sm bg-white text-stone-900 z-[101] xl:hidden shadow-2xl flex flex-col justify-between border-l border-stone-200 overflow-y-auto font-sans"
+            className="fixed top-0 right-0 bottom-0 w-[88%] max-w-sm bg-[#050505] text-white z-[101] xl:hidden shadow-2xl flex flex-col justify-between border-l border-white/10 overflow-y-auto font-sans"
           >
             {/* Drawer Header */}
-            <div className="p-5 border-b border-stone-200 flex items-center justify-between shrink-0 bg-stone-50">
+            <div className="p-5 border-b border-white/10 flex items-center justify-between shrink-0 bg-[#0a0a0a]">
               <div 
                 onClick={() => { audioEngine.playClick(); navigate('/'); setIsOpen(false); }}
                 className="flex items-center space-x-2.5 cursor-pointer"
               >
                 <DevilLabsLogo className="w-5 h-5 text-violet-600" glow />
-                <span className="font-display font-black text-sm tracking-tight text-stone-900 uppercase">DEVIL LABS</span>
+                <span className="font-display font-black text-sm tracking-tight text-white uppercase">DEVIL LABS</span>
               </div>
 
               <div className="flex items-center space-x-2">
                 <button
                   type="button"
                   onClick={toggleCurrency}
-                  className="px-3 py-1.5 rounded-full bg-stone-100 border border-stone-200 text-stone-600 font-mono text-xs font-bold hover:text-stone-900"
+                  className="px-3 py-1.5 rounded-full bg-[#111] border border-white/10 text-stone-300 font-mono text-xs font-bold hover:text-white"
                 >
                   {currency}
                 </button>
                 <button
                   type="button"
                   onClick={() => setIsOpen(false)}
-                  className="w-10 h-10 rounded-full bg-stone-100 border border-stone-200 text-stone-600 hover:text-stone-900 flex items-center justify-center cursor-pointer active:scale-95 transition-transform"
+                  className="w-10 h-10 rounded-full bg-[#111] border border-white/10 text-stone-300 hover:text-white flex items-center justify-center cursor-pointer active:scale-95 transition-transform"
                   aria-label="Close menu"
                 >
                   <X size={18} />
@@ -314,7 +314,7 @@ export default function Navigation({ currentPath, navigate }: NavigationProps) {
 
             {/* Nav Items List */}
             <div className="px-5 py-6 space-y-2.5 flex-1 overflow-y-auto">
-              <div className="text-[10px] font-mono font-black uppercase text-stone-500 tracking-widest mb-3 px-1">
+              <div className="text-[10px] font-mono font-black uppercase text-stone-400 tracking-widest mb-3 px-1">
                 NAVIGATION DIRECTORY
               </div>
 
@@ -333,7 +333,7 @@ export default function Navigation({ currentPath, navigate }: NavigationProps) {
                     className={`w-full min-h-[48px] text-left px-4 py-3 rounded-2xl font-sans font-extrabold text-xs sm:text-sm tracking-wider uppercase flex items-center justify-between cursor-pointer transition-all active:scale-98 ${
                       isActive 
                         ? 'bg-violet-600 text-white shadow-[0_0_20px_rgba(139,92,246,0.4)]' 
-                        : 'bg-stone-50 text-stone-600 hover:bg-stone-100 hover:text-stone-900 border border-stone-200'
+                        : 'bg-[#0a0a0a] text-stone-300 hover:bg-[#111] hover:text-white border border-white/10'
                     }`}
                   >
                     <span>{item.name}</span>
@@ -361,8 +361,8 @@ export default function Navigation({ currentPath, navigate }: NavigationProps) {
             </div>
 
             {/* Social Contact Links Panel inside Drawer */}
-            <div className="p-5 border-t border-stone-200 bg-stone-50 shrink-0 space-y-3">
-              <div className="text-[10px] font-mono font-bold uppercase text-stone-500 tracking-widest flex items-center justify-between">
+            <div className="p-5 border-t border-white/10 bg-[#0a0a0a] shrink-0 space-y-3">
+              <div className="text-[10px] font-mono font-bold uppercase text-stone-400 tracking-widest flex items-center justify-between">
                 <span>CONNECT WITH US</span>
                 <span className="text-emerald-600 text-[9px] uppercase font-bold flex items-center gap-1">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
@@ -407,16 +407,16 @@ export default function Navigation({ currentPath, navigate }: NavigationProps) {
                 {/* Email */}
                 <a
                   href="mailto:devil.labs.contact@gmail.com?subject=Project%20Inquiry%20-%20Devil%20Labs"
-                  className="flex items-center space-x-2 px-3 py-2.5 rounded-xl bg-white border border-stone-200 text-stone-600 hover:bg-stone-100 hover:text-stone-900 transition-all text-xs font-bold font-sans active:scale-95 shadow-sm"
+                  className="flex items-center space-x-2 px-3 py-2.5 rounded-xl bg-[#050505] border border-white/10 text-stone-300 hover:bg-[#111] hover:text-white transition-all text-xs font-bold font-sans active:scale-95 shadow-sm"
                 >
                   <Mail size={15} className="shrink-0 text-violet-600" />
                   <span className="truncate">Email Us</span>
                 </a>
               </div>
 
-              <div className="pt-2 flex items-center justify-between text-[10px] font-mono text-stone-500 border-t border-stone-200">
+              <div className="pt-2 flex items-center justify-between text-[10px] font-mono text-stone-400 border-t border-white/10">
                 <span>📍 Gaya &amp; Patna, Bihar</span>
-                <a href="tel:+918102099678" className="text-stone-600 hover:text-stone-900 flex items-center space-x-1 font-bold">
+                <a href="tel:+918102099678" className="text-stone-300 hover:text-white flex items-center space-x-1 font-bold">
                   <Phone size={10} className="text-emerald-500" />
                   <span>+91 81020 99678</span>
                 </a>
@@ -481,31 +481,31 @@ export function Footer({ navigate }: { navigate: (path: string) => void }) {
   const languages = ['EN', 'FR', 'DE', 'JP'];
 
   return (
-    <footer id="site-footer" className="bg-[#f5f4ef] border-t border-stone-200/60 pt-20 pb-12 px-4 sm:px-6 lg:px-8 font-sans relative z-10 overflow-hidden">
+    <footer id="site-footer" className="bg-[#050505] border-t border-white/10 pt-20 pb-12 px-4 sm:px-6 lg:px-8 font-sans relative z-10 overflow-hidden">
       {/* Subtle low-opacity background noise texture for brand consistency */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.02] bg-noise z-0" />
       
       {/* Newsletter & Links Section */}
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 md:gap-12 relative z-10 mb-20 text-stone-500 text-xs">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 md:gap-12 relative z-10 mb-20 text-stone-400 text-xs">
         
         {/* Brand Info */}
         <div className="flex flex-col space-y-4">
-          <div className="flex items-center space-x-2.5 text-stone-800 font-bold tracking-tight text-sm">
+          <div className="flex items-center space-x-2.5 text-stone-100 font-bold tracking-tight text-sm">
             <DevilLabsLogo className="w-5 h-5" />
             <span>DEVIL LABS</span>
           </div>
-          <p className="text-stone-600 max-w-xs leading-relaxed">
+          <p className="text-stone-300 max-w-xs leading-relaxed">
             AUTONOMOUS AI SYSTEMS & METICULOUS SOLUTIONS.<br/>
             BUILDING THE ARCHITECTURE OF TOMORROW.
           </p>
-          <div className="flex items-center space-x-2 text-emerald-700 border border-emerald-200 bg-emerald-50 px-3 py-1.5 w-max rounded-full shadow-sm">
+          <div className="flex items-center space-x-2 text-emerald-400 border border-emerald-200 bg-emerald-50 px-3 py-1.5 w-max rounded-full shadow-sm">
             <span className="text-xs tracking-widest font-black">ACTIVE</span>
           </div>
         </div>
 
         {/* Navigation */}
         <div className="flex flex-col space-y-3 font-bold tracking-widest text-xs">
-          <span className="text-stone-800 mb-2 font-display">INDEX</span>
+          <span className="text-stone-100 mb-2 font-display">INDEX</span>
           <button onClick={() => navigate('/services')} className="text-left hover:text-violet-600 hover:pl-2 transition-all duration-300">SERVICES</button>
           <button onClick={() => navigate('/products')} className="text-left hover:text-violet-600 hover:pl-2 transition-all duration-300">PRODUCTS</button>
           <button onClick={() => navigate('/solutions')} className="text-left hover:text-violet-600 hover:pl-2 transition-all duration-300">SOLUTIONS</button>
@@ -517,7 +517,7 @@ export function Footer({ navigate }: { navigate: (path: string) => void }) {
 
         {/* Legal */}
         <div className="flex flex-col space-y-3 font-bold tracking-widest text-xs">
-          <span className="text-stone-800 mb-2 font-display">LEGAL</span>
+          <span className="text-stone-100 mb-2 font-display">LEGAL</span>
           <button onClick={() => navigate('/legal/privacy')} className="text-left hover:text-violet-600 hover:pl-2 transition-all duration-300">PRIVACY POLICY</button>
           <button onClick={() => navigate('/legal/terms')} className="text-left hover:text-violet-600 hover:pl-2 transition-all duration-300">TERMS & REFUNDS</button>
           <button onClick={() => navigate('/legal/msa')} className="text-left hover:text-violet-600 hover:pl-2 transition-all duration-300">MSA / NDA</button>
@@ -525,7 +525,7 @@ export function Footer({ navigate }: { navigate: (path: string) => void }) {
 
         {/* Socials & Language */}
         <div className="flex flex-col space-y-3 font-bold tracking-widest text-xs">
-          <span className="text-stone-800 mb-2 font-display">NETWORK</span>
+          <span className="text-stone-100 mb-2 font-display">NETWORK</span>
           <a href="https://github.com/Devil-Labs/" target="_blank" rel="noreferrer" className="text-left hover:text-violet-600 hover:pl-2 transition-all duration-300 flex items-center justify-between group">
             <span className="flex items-center space-x-2">
               <Github size={12} className="text-stone-400 group-hover:text-violet-600 transition-colors" />
@@ -555,13 +555,13 @@ export function Footer({ navigate }: { navigate: (path: string) => void }) {
             <ArrowUpRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" />
           </a>
           <div className="pt-4">
-             <span className="text-stone-800 mb-2 block font-display">LOCALE</span>
+             <span className="text-stone-100 mb-2 block font-display">LOCALE</span>
              <div className="flex items-center space-x-3 text-xs tracking-widest font-bold">
               {languages.map((l) => (
                 <button
                   key={l}
                   onClick={() => handleLangChange(l)}
-                  className={`transition-colors duration-300 ${lang === l ? 'text-violet-600 border-b border-violet-600' : 'text-stone-400 hover:text-stone-600'}`}
+                  className={`transition-colors duration-300 ${lang === l ? 'text-violet-600 border-b border-violet-600' : 'text-stone-400 hover:text-stone-300'}`}
                 >
                   {l}
                 </button>
@@ -572,8 +572,8 @@ export function Footer({ navigate }: { navigate: (path: string) => void }) {
 
         {/* Newsletter */}
         <div className="flex flex-col space-y-3">
-          <span className="text-stone-800 font-bold tracking-widest text-xs mb-2 font-display">NEWSLETTER</span>
-          <p className="text-stone-600 text-xs mb-2">Join our mailing list for advanced design insights and tech developments.</p>
+          <span className="text-stone-100 font-bold tracking-widest text-xs mb-2 font-display">NEWSLETTER</span>
+          <p className="text-stone-300 text-xs mb-2">Join our mailing list for advanced design insights and tech developments.</p>
           <form onSubmit={handleSubscribe} className="relative flex flex-col space-y-3">
             <input 
               type="email" 
@@ -581,7 +581,7 @@ export function Footer({ navigate }: { navigate: (path: string) => void }) {
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="bg-[#faf8f5] border border-stone-200/50 rounded-full px-4 py-3 text-stone-800 text-xs font-sans placeholder-stone-400 focus:outline-none focus:border-violet-300 shadow-inner w-full font-bold"
+              className="bg-[#0a0a0a] border border-white/10/50 rounded-full px-4 py-3 text-stone-100 text-xs font-sans placeholder-stone-400 focus:outline-none focus:border-violet-300 shadow-inner w-full font-bold"
               disabled={subscribed}
             />
             <button 
@@ -607,41 +607,41 @@ export function Footer({ navigate }: { navigate: (path: string) => void }) {
       </div>
 
       {/* Dynamic Topic Cluster and Internal Linking Grid */}
-      <div className="max-w-7xl mx-auto border-t border-stone-200/40 pt-12 pb-8 mb-8 relative z-10 text-xs tracking-wider font-sans font-extrabold">
-        <span className="text-stone-800 font-black tracking-widest uppercase block mb-6 text-xs">✦ TOPIC CLUSTERS & SERVICE NODES</span>
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6 text-stone-500">
+      <div className="max-w-7xl mx-auto border-t border-white/10 pt-12 pb-8 mb-8 relative z-10 text-xs tracking-wider font-sans font-extrabold">
+        <span className="text-stone-100 font-black tracking-widest uppercase block mb-6 text-xs">✦ TOPIC CLUSTERS & SERVICE NODES</span>
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6 text-stone-400">
           {/* Services Cluster */}
           <div className="flex flex-col space-y-2">
-            <span className="text-stone-700 font-bold mb-2 uppercase tracking-widest">Core Service Offerings</span>
-            <button onClick={() => navigate('/services/ai-agents')} className="text-left hover:text-stone-900 transition-colors cursor-pointer">AUTONOMOUS AI AGENTS</button>
-            <button onClick={() => navigate('/services/fullstack')} className="text-left hover:text-stone-900 transition-colors cursor-pointer">CUSTOM FULL-STACK WEB APPS</button>
-            <button onClick={() => navigate('/services/ecommerce')} className="text-left hover:text-stone-900 transition-colors cursor-pointer">ENTERPRISE E-COMMERCE</button>
-            <button onClick={() => navigate('/services/automation')} className="text-left hover:text-stone-900 transition-colors cursor-pointer">WORKFLOW AUTOMATION & CRMS</button>
-            <button onClick={() => navigate('/services/vps')} className="text-left hover:text-stone-900 transition-colors cursor-pointer">VPS & CLOUD DEPLOYMENTS</button>
+            <span className="text-stone-300 font-bold mb-2 uppercase tracking-widest">Core Service Offerings</span>
+            <button onClick={() => navigate('/services/ai-agents')} className="text-left hover:text-white transition-colors cursor-pointer">AUTONOMOUS AI AGENTS</button>
+            <button onClick={() => navigate('/services/fullstack')} className="text-left hover:text-white transition-colors cursor-pointer">CUSTOM FULL-STACK WEB APPS</button>
+            <button onClick={() => navigate('/services/ecommerce')} className="text-left hover:text-white transition-colors cursor-pointer">ENTERPRISE E-COMMERCE</button>
+            <button onClick={() => navigate('/services/automation')} className="text-left hover:text-white transition-colors cursor-pointer">WORKFLOW AUTOMATION & CRMS</button>
+            <button onClick={() => navigate('/services/vps')} className="text-left hover:text-white transition-colors cursor-pointer">VPS & CLOUD DEPLOYMENTS</button>
           </div>
           {/* Blog/Insights Cluster */}
           <div className="flex flex-col space-y-2">
-            <span className="text-stone-700 font-bold mb-2 uppercase tracking-widest">Research & Lab Categories</span>
-            <button onClick={() => navigate('/insights?id=1')} className="text-left hover:text-stone-900 transition-colors cursor-pointer">SYSTEM ARCHITECTURE (LATENCY LABS)</button>
-            <button onClick={() => navigate('/insights?id=2')} className="text-left hover:text-stone-900 transition-colors cursor-pointer">AI SYSTEM GUARDRAILS</button>
-            <button onClick={() => navigate('/insights?id=3')} className="text-left hover:text-stone-900 transition-colors cursor-pointer">REAL-TIME STATE STREAMING</button>
-            <button onClick={() => navigate('/insights?id=4')} className="text-left hover:text-stone-900 transition-colors cursor-pointer">PROMPT HARDENING & CYBERSECURITY</button>
-            <button onClick={() => navigate('/insights?id=5')} className="text-left hover:text-stone-900 transition-colors cursor-pointer">VIBE CODING & ARCHITECTURAL DIRECTION</button>
+            <span className="text-stone-300 font-bold mb-2 uppercase tracking-widest">Research & Lab Categories</span>
+            <button onClick={() => navigate('/insights?id=1')} className="text-left hover:text-white transition-colors cursor-pointer">SYSTEM ARCHITECTURE (LATENCY LABS)</button>
+            <button onClick={() => navigate('/insights?id=2')} className="text-left hover:text-white transition-colors cursor-pointer">AI SYSTEM GUARDRAILS</button>
+            <button onClick={() => navigate('/insights?id=3')} className="text-left hover:text-white transition-colors cursor-pointer">REAL-TIME STATE STREAMING</button>
+            <button onClick={() => navigate('/insights?id=4')} className="text-left hover:text-white transition-colors cursor-pointer">PROMPT HARDENING & CYBERSECURITY</button>
+            <button onClick={() => navigate('/insights?id=5')} className="text-left hover:text-white transition-colors cursor-pointer">VIBE CODING & ARCHITECTURAL DIRECTION</button>
           </div>
           {/* Tech Stack Cluster */}
           <div className="flex flex-col space-y-2">
-            <span className="text-stone-700 font-bold mb-2 uppercase tracking-widest">Technology Stacks</span>
-            <span className="text-stone-500 hover:text-stone-900 transition-colors cursor-default">REACT 18 & NEXT.JS / VITE ENGINE</span>
-            <span className="text-stone-500 hover:text-stone-900 transition-colors cursor-default">TYPESCRIPT & MODERN ES-NEXT</span>
-            <span className="text-stone-500 hover:text-stone-900 transition-colors cursor-default">TAILWIND CSS & MOTION STYLING</span>
-            <span className="text-stone-500 hover:text-stone-900 transition-colors cursor-default">NODE.JS & EXPRESS BACKENDS</span>
-            <span className="text-stone-500 hover:text-stone-900 transition-colors cursor-default">GEMINI API / GOOGLE GENAI SDK</span>
-            <span className="text-stone-500 hover:text-stone-900 transition-colors cursor-default">DOCKER CONTAINERIZATION & CLOUD RUN</span>
+            <span className="text-stone-300 font-bold mb-2 uppercase tracking-widest">Technology Stacks</span>
+            <span className="text-stone-400 hover:text-white transition-colors cursor-default">REACT 18 & NEXT.JS / VITE ENGINE</span>
+            <span className="text-stone-400 hover:text-white transition-colors cursor-default">TYPESCRIPT & MODERN ES-NEXT</span>
+            <span className="text-stone-400 hover:text-white transition-colors cursor-default">TAILWIND CSS & MOTION STYLING</span>
+            <span className="text-stone-400 hover:text-white transition-colors cursor-default">NODE.JS & EXPRESS BACKENDS</span>
+            <span className="text-stone-400 hover:text-white transition-colors cursor-default">GEMINI API / GOOGLE GENAI SDK</span>
+            <span className="text-stone-400 hover:text-white transition-colors cursor-default">DOCKER CONTAINERIZATION & CLOUD RUN</span>
           </div>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center text-stone-500 text-xs tracking-widest font-black border-t border-stone-200/40 pt-8 mb-8 gap-4">
+      <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center text-stone-400 text-xs tracking-widest font-black border-t border-white/10 pt-8 mb-8 gap-4">
         <p>© {new Date().getFullYear()} DEVIL LABS. ALL RIGHTS RESERVED.</p>
         <p>HIGH-FIDELITY DESIGN &amp; DEVELOPMENT</p>
       </div>
@@ -655,7 +655,7 @@ export function Footer({ navigate }: { navigate: (path: string) => void }) {
           setIsFooterHovered(false);
           setClickedLetters([]); // reset Easter egg on mouse leave for replayability
         }}
-        className="w-full relative z-10 pb-8 pt-12 overflow-hidden flex flex-col items-center justify-center border border-stone-200/35 bg-[#FAF9F5]/90 rounded-[24px] sm:rounded-[32px] shadow-[inset_0_2px_12px_rgba(45,38,32,0.02),0_15px_35px_rgba(45,38,32,0.03)] cursor-crosshair group/branding transition-all duration-300"
+        className="w-full relative z-10 pb-8 pt-12 overflow-hidden flex flex-col items-center justify-center border border-white/10/35 bg-[#FAF9F5]/90 rounded-[24px] sm:rounded-[32px] shadow-[inset_0_2px_12px_rgba(45,38,32,0.02),0_15px_35px_rgba(45,38,32,0.03)] cursor-crosshair group/branding transition-all duration-300"
       >
         {/* Subtle high-tech blueprint grid */}
         <div className="absolute inset-0 opacity-[0.25] pointer-events-none bg-[linear-gradient(to_right,rgba(139,92,246,0.08)_1px,transparent_1px),linear-gradient(to_bottom,rgba(139,92,246,0.08)_1px,transparent_1px)] bg-[size:20px_20px]" />
@@ -724,7 +724,7 @@ export function Footer({ navigate }: { navigate: (path: string) => void }) {
                   }}
                 >
                   {char}
-                  <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4/5 h-[3px] bg-stone-900/5 rounded-full blur-[2px] opacity-0 group-hover/branding:opacity-100 transition-opacity pointer-events-none scale-x-50" />
+                  <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4/5 h-[3px] bg-white/20/5 rounded-full blur-[2px] opacity-0 group-hover/branding:opacity-100 transition-opacity pointer-events-none scale-x-50" />
                 </motion.span>
               );
             })}
@@ -768,7 +768,7 @@ export function Footer({ navigate }: { navigate: (path: string) => void }) {
                   }}
                 >
                   {char}
-                  <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4/5 h-[3px] bg-stone-900/5 rounded-full blur-[2px] opacity-0 group-hover/branding:opacity-100 transition-opacity pointer-events-none scale-x-50" />
+                  <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4/5 h-[3px] bg-white/20/5 rounded-full blur-[2px] opacity-0 group-hover/branding:opacity-100 transition-opacity pointer-events-none scale-x-50" />
                 </motion.span>
               );
             })}

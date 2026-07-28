@@ -130,7 +130,7 @@ export default function App() {
   return (
     <CurrencyProvider>
       <DebugProvider>
-        <div id="devil-labs-app-shell" className="min-h-screen bg-[#f5f4ef] text-stone-850 flex flex-col justify-between selection:bg-violet-500/30 selection:text-stone-900">
+        <div id="devil-labs-app-shell" className="min-h-screen bg-[#050505] text-stone-100 flex flex-col justify-between selection:bg-violet-500/30 selection:text-white">
         <SEO path={currentPath} />
         <ScrollProgress />
         <BackgroundEffects />
