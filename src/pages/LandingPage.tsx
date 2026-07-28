@@ -447,9 +447,9 @@ export default function LandingPage({ navigate }: LandingPageProps) {
 
             {/* STRATEGIC TRUST MATRIX - High-Contrast Bento Block Grid */}
             <div className="w-full pt-6 border-t border-white/10 text-left">
-              <span className="text-[9px] font-sans font-black uppercase text-stone-400 tracking-[0.25em] block mb-4">
+              <h2 className="text-[10px] font-sans font-black uppercase text-stone-300 tracking-[0.25em] block mb-4">
                 ✦ DEVIL LABS ADVANTAGE
-              </span>
+              </h2>
               
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 w-full">
                 <div className="bg-[#050505]/85 backdrop-blur-md border border-white/10 p-5 rounded-2xl flex flex-col justify-between hover:border-violet-400 hover:bg-[#0a0a0a] transition-all duration-300 shadow-xl group">
@@ -457,9 +457,9 @@ export default function LandingPage({ navigate }: LandingPageProps) {
                     <span className="text-[9px] font-sans font-black text-violet-400 block mb-2 tracking-[0.1em]">
                       01 • ACADEMIC EXCELLENCE
                     </span>
-                    <h4 className="text-white font-display font-extrabold text-sm uppercase tracking-tight mb-1.5 group-hover:text-violet-400 transition-colors">
+                    <h3 className="text-white font-display font-extrabold text-sm uppercase tracking-tight mb-1.5 group-hover:text-violet-400 transition-colors">
                       IIT Patna CS
-                    </h4>
+                    </h3>
                   </div>
                   <p className="text-[11px] text-stone-300 leading-relaxed font-sans font-normal mt-1">
                     Rigorous engineering standards and clean, efficient software design.
@@ -471,9 +471,9 @@ export default function LandingPage({ navigate }: LandingPageProps) {
                     <span className="text-[9px] font-sans font-black text-rose-400 block mb-2 tracking-[0.1em]">
                       02 • RELIABILITY &amp; SLA
                     </span>
-                    <h4 className="text-white font-display font-extrabold text-sm uppercase tracking-tight mb-1.5 group-hover:text-rose-400 transition-colors">
+                    <h3 className="text-white font-display font-extrabold text-sm uppercase tracking-tight mb-1.5 group-hover:text-rose-400 transition-colors">
                       99.9% Uptime
-                    </h4>
+                    </h3>
                   </div>
                   <p className="text-[11px] text-stone-300 leading-relaxed font-sans font-normal mt-1">
                     Reliable systems built to perform consistently under heavy workload.
@@ -485,9 +485,9 @@ export default function LandingPage({ navigate }: LandingPageProps) {
                     <span className="text-[9px] font-sans font-black text-amber-400 block mb-2 tracking-[0.1em]">
                       03 • SPEED &amp; PERFORMANCE
                     </span>
-                    <h4 className="text-white font-display font-extrabold text-sm uppercase tracking-tight mb-1.5 group-hover:text-amber-400 transition-colors">
+                    <h3 className="text-white font-display font-extrabold text-sm uppercase tracking-tight mb-1.5 group-hover:text-amber-400 transition-colors">
                       Instant Load
-                    </h4>
+                    </h3>
                   </div>
                   <p className="text-[11px] text-stone-300 leading-relaxed font-sans font-normal mt-1">
                     Global distribution ensures instant page loads and smooth interactions.
@@ -625,10 +625,10 @@ export default function LandingPage({ navigate }: LandingPageProps) {
 
         <div className="w-full max-w-7xl mx-auto relative z-10 px-4">
           <div className="text-center mb-12 max-w-2xl mx-auto space-y-4">
-            <span className="text-stone-400 font-sans text-[9px] uppercase tracking-[0.25em] font-black block">✦ CURATED LABS DISCIPLINES</span>
-            <h3 className="text-white font-display font-extrabold text-2xl xs:text-3xl sm:text-5xl tracking-tight uppercase leading-none break-words max-w-full">
-              curated <span className="font-serif italic font-normal text-violet-600 lowercase">premium</span> disciplines
-            </h3>
+            <span className="text-stone-300 font-sans text-[9px] uppercase tracking-[0.25em] font-black block">✦ CURATED LABS DISCIPLINES</span>
+            <h2 className="text-white font-display font-extrabold text-2xl xs:text-3xl sm:text-5xl tracking-tight uppercase leading-none break-words max-w-full">
+              curated <span className="font-serif italic font-normal text-violet-500 lowercase">premium</span> disciplines
+            </h2>
             <p className="text-stone-300 text-xs sm:text-sm leading-relaxed max-w-lg mx-auto font-sans">
               A harmonious spectrum of high-end design capabilities. No cookie-cutter templates. Every element is crafted to reflect top-trending visual standard structures.
             </p>

@@ -16,6 +16,7 @@ import AboutPage from './pages/AboutPage';
 import ProductsPage from './pages/ProductsPage';
 import SolutionsPage from './pages/SolutionsPage';
 import ResourcesPage from './pages/ResourcesPage';
+import AdminPage from './pages/AdminPage';
 import SkeletonLoader from './components/SkeletonLoader';
 import BackgroundEffects from './components/BackgroundEffects';
 import ScrollProgress from './components/ScrollProgress';
@@ -81,7 +82,11 @@ export default function App() {
   useEffect(() => {
     const handleOpenModal = () => setIsInitializeModalOpen(true);
     window.addEventListener('open-initialize-modal', handleOpenModal);
-    return () => window.removeEventListener('open-initialize-modal', handleOpenModal);
+    window.addEventListener('open-inquiry-modal', handleOpenModal);
+    return () => {
+      window.removeEventListener('open-initialize-modal', handleOpenModal);
+      window.removeEventListener('open-inquiry-modal', handleOpenModal);
+    };
   }, []);
 
   const renderPage = () => {
@@ -119,6 +124,8 @@ export default function App() {
         return <TermsPage navigate={navigate} />;
       case '/legal/msa':
         return <MSAPage navigate={navigate} />;
+      case '/admin':
+        return <AdminPage navigate={navigate} />;
       default:
         if (pathname.startsWith('/services/')) {
           return <ServiceDetailPage navigate={navigate} slug={pathname.split('/')[2]} />;

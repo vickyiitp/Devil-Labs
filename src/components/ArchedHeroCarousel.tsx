@@ -248,6 +248,8 @@ export default function ArchedHeroCarousel() {
                   <img 
                     src={card.bgImage} 
                     alt={card.title} 
+                    loading="eager"
+                    decoding="async"
                     referrerPolicy="no-referrer"
                     className="absolute inset-0 w-full h-full object-cover max-w-full transition-transform duration-500 hover:scale-105"
                   />
@@ -499,6 +501,8 @@ function Interactive3DCardWrapper({
         <img 
           src={card.bgImage} 
           alt={card.title} 
+          loading="eager"
+          decoding="async"
           referrerPolicy="no-referrer"
           className="absolute inset-0 w-full h-full object-cover max-w-full transition-transform duration-500 select-none pointer-events-none"
         />

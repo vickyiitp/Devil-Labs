@@ -6,6 +6,8 @@ import CyberFrame from '../components/CyberFrame';
 import StaggeredHeading from '../components/StaggeredHeading';
 import { CLIENT_PROJECTS, DEMO_PROJECTS, CATEGORIES } from '../data/projects';
 import { audioEngine } from '../lib/audio';
+import { useDataStore } from '../hooks/useDataStore';
+import { openInquiryModal } from '../lib/inquiry';
 
 interface ProjectsPageProps {
   navigate: (path: string) => void;
@@ -251,19 +253,25 @@ const CloudyBlueprintNote = ({
 };
 
 export default function ProjectsPage({ navigate }: ProjectsPageProps) {
+  const { projects: storeProjects, categories: storeCategories } = useDataStore();
   const [section, setSection] = useState<'demo' | 'client'>('demo');
   const [activeCategory, setActiveCategory] = useState("All");
   const [telemetryMessage, setTelemetryMessage] = useState<string | null>(null);
   const [activeProjectIndex, setActiveProjectIndex] = useState(0);
   const [direction, setDirection] = useState(1); // 1 = next, -1 = prev
 
+  const allCategories = ["All", ...Array.from(new Set([...storeCategories, "AI", "Web", "Infrastructure"]))];
+
+  const clientProjectsList = storeProjects.filter(p => p.section === 'client' || (p as any).client);
+  const demoProjectsList = storeProjects.filter(p => p.section === 'demo' || !(p as any).client);
+
   const filteredClientProjects = activeCategory === "All"
-    ? CLIENT_PROJECTS
-    : CLIENT_PROJECTS.filter(p => p.domain === activeCategory);
+    ? clientProjectsList
+    : clientProjectsList.filter(p => p.domain === activeCategory || p.category === activeCategory);
 
   const filteredDemoProjects = activeCategory === "All"
-    ? DEMO_PROJECTS
-    : DEMO_PROJECTS.filter(p => p.domain === activeCategory);
+    ? demoProjectsList
+    : demoProjectsList.filter(p => p.domain === activeCategory || p.category === activeCategory);
 
   const activeProjects = section === 'demo' ? filteredDemoProjects : filteredClientProjects;
 
@@ -295,24 +303,20 @@ export default function ProjectsPage({ navigate }: ProjectsPageProps) {
     e.stopPropagation();
     e.preventDefault();
 
-    // Prefill details in localStorage
-    const briefText = `Initiating discussion for custom "${category}" architecture. We are highly interested in implementing a production system modeled after the "${title}" structure. Please coordinate an architecture evaluation with Devil Labs Core.`;
-    localStorage.setItem('devil_labs_prefill_brief', briefText);
-    localStorage.setItem('devil_labs_prefill_budget', '$700 - $1,000');
-
-    // Trigger visual telemetry alert
     setTelemetryMessage(`Telemetry synchronizing: Form pre-filled with "${category}" specs!`);
     
-    // Play sound if possible
     try {
       audioEngine.playClick();
     } catch (err) {}
 
-    // Open Modal after a brief telemetry animation delay
     setTimeout(() => {
-      window.dispatchEvent(new CustomEvent('open-initialize-modal'));
+      openInquiryModal({
+        category,
+        projectTitle: title,
+        inquiryType: 'demo'
+      });
       setTelemetryMessage(null);
-    }, 1200);
+    }, 800);
   };
 
   const handleCategoryChange = (category: string) => {
@@ -514,7 +518,7 @@ export default function ProjectsPage({ navigate }: ProjectsPageProps) {
         {/* Domain Categories Filters */}
         <div className="flex flex-col items-center gap-4 w-full mt-8">
           <div className="flex sm:flex-wrap overflow-x-auto w-full justify-start sm:justify-center items-center gap-2 pb-2 scrollbar-hide px-4 sm:px-0">
-            {CATEGORIES.map((category) => (
+            {allCategories.map((category) => (
               <button
                 key={category}
                 onClick={() => handleCategoryChange(category)}
@@ -625,18 +629,18 @@ export default function ProjectsPage({ navigate }: ProjectsPageProps) {
                   >
                     {/* Live Sandbox/Phase Display Container */}
                     <div className="col-span-1 md:col-span-7 relative flex flex-col justify-center">
-                      <Interactive3DCard projectId={project.id}>
-                        <FloatingGlassBadge projectId={project.id} />
+                      <Interactive3DCard projectId={typeof project.id === 'number' ? project.id : idx + 1}>
+                        <FloatingGlassBadge projectId={typeof project.id === 'number' ? project.id : idx + 1} />
                         <div className="p-4 rounded-3xl bg-[#0d0d12] border border-white/10/50 shadow-[8px_8px_30px_rgba(45,38,32,0.06),-8px_-8px_30px_#ffffff] h-full flex flex-col justify-between relative overflow-visible">
                           
                           {/* Browser Mock Frame */}
-                          <div className={`w-full aspect-[4/3] bg-gradient-to-br ${project.thumbnail} rounded-2xl overflow-hidden relative mb-4 border border-white/10/30 transition-all duration-300 flex flex-col shadow-inner`}>
+                          <div className={`w-full aspect-[4/3] bg-gradient-to-br ${project.thumbnail || 'from-violet-900 to-indigo-950'} rounded-2xl overflow-hidden relative mb-4 border border-white/10/30 transition-all duration-300 flex flex-col shadow-inner`}>
                             <div className="h-7 w-full bg-[#111]/90 border-b border-white/10/30 flex items-center px-3 space-x-1.5 shrink-0 z-20 backdrop-blur-sm">
                               <div className="w-2.5 h-2.5 rounded-full bg-white/20" />
                               <div className="w-2.5 h-2.5 rounded-full bg-white/20" />
                               <div className="w-2.5 h-2.5 rounded-full bg-white/20" />
                               <div className="ml-2 px-2.5 py-0.5 rounded-md bg-white/10/40 border border-white/10/20 text-[8px] font-mono text-stone-400 truncate max-w-[200px]">
-                                {project.link.replace(/^https?:\/\//, '')}
+                                {(project.link || '').replace(/^https?:\/\//, '')}
                               </div>
                             </div>
                             
@@ -694,7 +698,10 @@ export default function ProjectsPage({ navigate }: ProjectsPageProps) {
                             
                             <div className="mt-auto pt-4 border-t border-white/10/30 flex items-center justify-between">
                               <div className="flex items-center space-x-2 text-stone-650">
-                                <project.icon size={14} className="text-violet-600" />
+                                {(() => {
+                                  const IconComp = typeof project.icon === 'function' ? project.icon : Cpu;
+                                  return <IconComp size={14} className="text-violet-600" />;
+                                })()}
                                 <span className="text-[10px] font-mono uppercase tracking-widest">{project.tech}</span>
                               </div>
                               

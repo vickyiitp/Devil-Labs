@@ -6,11 +6,13 @@ import {
   Package, Code, Share2
 } from 'lucide-react';
 import StaggeredHeading from '../components/StaggeredHeading';
+import { useDataStore } from '../hooks/useDataStore';
+import { openInquiryModal } from '../lib/inquiry';
 
 interface Product {
   id: string;
   name: string;
-  category: 'ai' | 'boilerplates' | 'devtools' | 'ui';
+  category: string;
   desc: string;
   features: string[];
   screenshotText: string;
@@ -117,14 +119,34 @@ const productsData: Product[] = [
 ];
 
 export default function ProductsPage({ navigate }: { navigate: (path: string) => void }) {
-  const [activeTab, setActiveTab] = useState<'all' | 'ai' | 'boilerplates' | 'devtools' | 'ui'>('all');
-  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const { products: storeProducts, categories: storeCategories } = useDataStore();
+  const [activeTab, setActiveTab] = useState<string>('all');
+  const [selectedProduct, setSelectedProduct] = useState<any | null>(null);
   const [purchaseTier, setPurchaseTier] = useState<'single' | 'team'>('single');
   const [purchased, setPurchased] = useState(false);
 
+  const displayProducts = storeProducts.length > 0 ? storeProducts.map(p => ({
+    id: p.id || String(p.title),
+    name: p.title || p.name,
+    category: p.category || 'ai',
+    desc: p.description || p.desc || '',
+    features: p.features || [
+      'Production-ready architecture',
+      'Clean TypeScript interfaces',
+      'Full documentation & support'
+    ],
+    screenshotText: p.screenshotText || p.driveLink || p.downloadUrl || 'npm i @devillabs/asset',
+    screenshotTheme: p.screenshotTheme || 'from-stone-900 to-stone-950 text-stone-200',
+    pricing: p.pricing || { single: p.price || 99, team: (p.price || 99) * 3 },
+    license: p.license || 'Commercial License',
+    docsUrl: p.docsUrl || p.driveLink || '#',
+    rating: p.rating || '5.0/5',
+    salesCount: p.salesCount || '500+ licenses'
+  })) : productsData;
+
   const filteredProducts = activeTab === 'all' 
-    ? productsData 
-    : productsData.filter(p => p.category === activeTab);
+    ? displayProducts 
+    : displayProducts.filter(p => p.category.toLowerCase() === activeTab.toLowerCase());
 
   const tabs = [
     { id: 'all', name: 'ALL DIGITAL ASSETS' },

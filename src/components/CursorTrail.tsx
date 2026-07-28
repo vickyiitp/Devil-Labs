@@ -69,6 +69,11 @@ export default function CursorTrail() {
     const render = () => {
       ctx.clearRect(0, 0, width, height);
 
+      // Limit particle count for performance
+      if (particles.current.length > 25) {
+        particles.current.splice(0, particles.current.length - 25);
+      }
+
       // Update and draw particles
       for (let i = 0; i < particles.current.length; i++) {
         const p = particles.current[i];
@@ -77,13 +82,11 @@ export default function CursorTrail() {
         p.life++;
 
         const progress = p.life / p.maxLife;
-        const opacity = 1 - progress;
+        const opacity = Math.max(0, 1 - progress);
         
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(139, 92, 246, ${opacity * 0.8})`; // Violet-500 equivalent with opacity
-        ctx.shadowBlur = 10;
-        ctx.shadowColor = 'rgba(139, 92, 246, 0.5)';
+        ctx.fillStyle = `rgba(139, 92, 246, ${opacity * 0.8})`;
         ctx.fill();
 
         if (p.life >= p.maxLife) {

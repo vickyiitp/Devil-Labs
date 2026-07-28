@@ -140,13 +140,13 @@ export default function Navigation({ currentPath, navigate }: NavigationProps) {
         {/* Right Side: Network Links & Instant Talk Badge */}
         <div className="flex items-center space-x-4">
           <div className="hidden sm:flex items-center space-x-3 border-r border-white/10 pr-4">
-            <a href="https://github.com/Devil-Labs/" target="_blank" rel="noreferrer" className="text-stone-400 hover:text-white transition-colors">
+            <a href="https://github.com/Devil-Labs/" target="_blank" rel="noreferrer" aria-label="Devil Labs GitHub Profile" className="text-stone-400 hover:text-white transition-colors">
               <Github size={12} />
             </a>
-            <a href="https://linkedin.com/company/devillabs" target="_blank" rel="noreferrer" className="text-stone-400 hover:text-white transition-colors">
+            <a href="https://linkedin.com/company/devillabs" target="_blank" rel="noreferrer" aria-label="Devil Labs LinkedIn Profile" className="text-stone-400 hover:text-white transition-colors">
               <Linkedin size={12} />
             </a>
-            <a href="https://instagram.com/devillabs" target="_blank" rel="noreferrer" className="text-stone-400 hover:text-white transition-colors">
+            <a href="https://instagram.com/devillabs" target="_blank" rel="noreferrer" aria-label="Devil Labs Instagram Profile" className="text-stone-400 hover:text-white transition-colors">
               <Instagram size={12} />
             </a>
           </div>
@@ -513,6 +513,7 @@ export function Footer({ navigate }: { navigate: (path: string) => void }) {
           <button onClick={() => navigate('/resources')} className="text-left hover:text-violet-600 hover:pl-2 transition-all duration-300">RESOURCES</button>
           <button onClick={() => navigate('/company')} className="text-left hover:text-violet-600 hover:pl-2 transition-all duration-300">COMPANY</button>
           <button onClick={() => navigate('/contact')} className="text-left hover:text-violet-600 hover:pl-2 transition-all duration-300">CONTACT</button>
+          <button onClick={() => navigate('/admin')} className="text-left text-violet-400 hover:text-violet-300 hover:pl-2 transition-all duration-300 flex items-center gap-1 font-mono"><span>⚙ ADMIN PANEL</span></button>
         </div>
 
         {/* Legal */}

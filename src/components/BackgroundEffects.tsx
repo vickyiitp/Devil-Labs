@@ -1,5 +1,5 @@
 import { motion, useMotionValue, useSpring } from 'motion/react';
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import CursorTrail from './CursorTrail';
 
 export default function BackgroundEffects() {
@@ -9,29 +9,38 @@ export default function BackgroundEffects() {
   const smoothX = useSpring(mouseX, { damping: 50, stiffness: 400 });
   const smoothY = useSpring(mouseY, { damping: 50, stiffness: 400 });
 
+  const particles = useMemo(() => {
+    return Array.from({ length: 12 }, (_, i) => ({
+      id: i,
+      duration: (i % 5) * 1.5 + 6,
+      delay: (i % 4) * 1.8,
+      left: `${(i * 8.3 + 4) % 100}vw`,
+      top: `${(i * 7.7 + 10) % 100}vh`,
+      scale: (i % 3) * 0.5 + 1
+    }));
+  }, []);
+
   useEffect(() => {
     const isTouchDevice = typeof window !== 'undefined' && ('ontouchstart' in window || navigator.maxTouchPoints > 0 || window.innerWidth < 768);
     if (isTouchDevice) {
-      // Set to static ambient center on mobile
       mouseX.set(window.innerWidth / 2);
       mouseY.set(window.innerHeight / 3);
       return;
     }
 
+    let ticking = false;
     const handleMouseMove = (e: MouseEvent) => {
-      mouseX.set(e.clientX);
-      mouseY.set(e.clientY);
-
-      const boxes = document.querySelectorAll('.debug-box');
-      for (let i = 0; i < boxes.length; i++) {
-        const box = boxes[i] as HTMLElement;
-        const rect = box.getBoundingClientRect();
-        box.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
-        box.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          mouseX.set(e.clientX);
+          mouseY.set(e.clientY);
+          ticking = false;
+        });
+        ticking = true;
       }
     };
     
-    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, [mouseX, mouseY]);
 
@@ -50,7 +59,7 @@ export default function BackgroundEffects() {
           repeat: Infinity,
           ease: "easeInOut"
         }}
-        className="fixed top-1/4 right-[10%] w-[450px] h-[450px] rounded-full bg-violet-600/10 blur-[120px] pointer-events-none -z-10"
+        className="fixed top-1/4 right-[10%] w-[450px] h-[450px] rounded-full bg-violet-600/10 blur-[120px] pointer-events-none -z-10 transform-gpu"
       />
       <motion.div
         animate={{
@@ -63,7 +72,7 @@ export default function BackgroundEffects() {
           repeat: Infinity,
           ease: "easeInOut"
         }}
-        className="fixed bottom-1/3 left-[5%] w-[500px] h-[500px] rounded-full bg-blue-600/10 blur-[150px] pointer-events-none -z-10"
+        className="fixed bottom-1/3 left-[5%] w-[500px] h-[500px] rounded-full bg-blue-600/10 blur-[150px] pointer-events-none -z-10 transform-gpu"
       />
       <motion.div
         animate={{
@@ -76,29 +85,29 @@ export default function BackgroundEffects() {
           repeat: Infinity,
           ease: "easeInOut"
         }}
-        className="fixed top-1/2 left-[40%] w-[350px] h-[350px] rounded-full bg-indigo-500/10 blur-[100px] pointer-events-none -z-10"
+        className="fixed top-1/2 left-[40%] w-[350px] h-[350px] rounded-full bg-indigo-500/10 blur-[100px] pointer-events-none -z-10 transform-gpu"
       />
 
       {/* Floating stars/particles */}
-      {[...Array(30)].map((_, i) => (
+      {particles.map((p) => (
         <motion.div
-          key={i}
+          key={p.id}
           animate={{
             y: [-20, -120],
             opacity: [0, 0.8, 0],
-            scale: [0.5, Math.random() * 2 + 1, 0.5]
+            scale: [0.5, p.scale, 0.5]
           }}
           transition={{
-            duration: Math.random() * 8 + 6,
+            duration: p.duration,
             repeat: Infinity,
-            delay: Math.random() * 8,
+            delay: p.delay,
             ease: "linear"
           }}
-          className="fixed w-[2px] h-[2px] bg-white rounded-full blur-[0.5px] pointer-events-none z-0"
+          className="fixed w-[2px] h-[2px] bg-white rounded-full blur-[0.5px] pointer-events-none z-0 transform-gpu"
           style={{
-            left: `${Math.random() * 100}vw`,
-            top: `${Math.random() * 100}vh`,
-            boxShadow: "0 0 10px 2px rgba(255,255,255,0.4)"
+            left: p.left,
+            top: p.top,
+            boxShadow: "0 0 8px 1px rgba(255,255,255,0.4)"
           }}
         />
       ))}

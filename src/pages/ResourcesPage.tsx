@@ -5,6 +5,7 @@ import {
   Code, Eye, BookMarked, Layers, Server, Shield
 } from 'lucide-react';
 import StaggeredHeading from '../components/StaggeredHeading';
+import { useDataStore } from '../hooks/useDataStore';
 
 interface ResourceItem {
   id: string;
@@ -69,12 +70,27 @@ const resourcesData: ResourceItem[] = [
 ];
 
 export default function ResourcesPage({ navigate }: { navigate: (path: string) => void }) {
-  const [activeTab, setActiveTab] = useState<'all' | 'blog' | 'docs' | 'case-studies' | 'guides'>('all');
+  const { blogs: storeBlogs } = useDataStore();
+  const [activeTab, setActiveTab] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [email, setEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
 
-  const filteredResources = resourcesData.filter((item) => {
+  const displayResources: (ResourceItem & { driveLink?: string })[] = storeBlogs.length > 0
+    ? storeBlogs.map(b => ({
+        id: b.id || b.title,
+        type: (b.category as any) || 'blog',
+        title: b.title,
+        date: b.date || 'RECENT',
+        author: b.author || 'DEVIL LABS CORE',
+        desc: b.summary || b.desc || '',
+        readTime: b.readTime || '5 MIN READ',
+        downloadable: Boolean(b.driveLink || b.publicLink || b.downloadable),
+        driveLink: b.driveLink || b.publicLink
+      }))
+    : resourcesData;
+
+  const filteredResources = displayResources.filter((item) => {
     const matchesTab = activeTab === 'all' || item.type === activeTab;
     const matchesSearch = item.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
                           item.desc.toLowerCase().includes(searchQuery.toLowerCase());
@@ -190,7 +206,11 @@ export default function ResourcesPage({ navigate }: { navigate: (path: string) =
                 {item.downloadable ? (
                   <button 
                     onClick={() => {
-                      alert('Transmission initiated: Asset compilation download starting.');
+                      if (item.driveLink) {
+                        window.open(item.driveLink, '_blank', 'noopener,noreferrer');
+                      } else {
+                        alert('Transmission initiated: Asset compilation download starting.');
+                      }
                     }}
                     className="flex items-center space-x-1.5 text-xs font-mono font-bold uppercase tracking-wider text-violet-400 hover:text-violet-300 cursor-pointer"
                   >

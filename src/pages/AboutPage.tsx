@@ -16,13 +16,13 @@ export default function AboutPage({ navigate }: AboutPageProps) {
     <div className="pt-20 xs:pt-24 sm:pt-28 lg:pt-32 pb-24 px-4 md:px-8 max-w-7xl mx-auto min-h-screen text-stone-100">
       {/* Header */}
       <section className="mb-24">
-        <motion.span 
+        <motion.h1 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           className="text-violet-400 font-mono text-xs uppercase tracking-[0.3em] font-semibold block mb-6"
         >
           ✦ ABOUT US
-        </motion.span>
+        </motion.h1>
         <StaggeredHeading 
           text="REDEFINING ENGINEERING IN INDIA." 
           className="font-display font-black text-3xl xs:text-4xl sm:text-6xl md:text-7xl lg:text-8xl text-stone-100 tracking-tighter uppercase leading-[0.9] mb-8 break-words max-w-full"

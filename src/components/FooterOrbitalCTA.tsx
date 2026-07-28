@@ -281,6 +281,7 @@ export default function FooterOrbitalCTA({ navigate }: FooterOrbitalCTAProps) {
         <div className="absolute z-30 lg:pointer-events-auto">
           <motion.button
             id="orbital-cta-center-btn"
+            aria-label="Initialize Project with Devil Labs"
             onMouseEnter={() => {
               setIsCenterHovered(true);
               audioEngine.playHover();
@@ -301,14 +302,14 @@ export default function FooterOrbitalCTA({ navigate }: FooterOrbitalCTAProps) {
             <div className="absolute -inset-4 rounded-full border border-violet-500/10 animate-ping pointer-events-none" style={{ animationDuration: '3s' }} />
 
             <div className="relative z-10 flex flex-col items-center">
-              <span className="font-sans text-[8px] text-violet-600 font-black tracking-[0.2em] mb-1">
+              <span className="font-sans text-[8px] text-violet-700 font-black tracking-[0.2em] mb-1">
                 ✦ WORK WITH DEVIL LABS
               </span>
               <div className="flex items-center space-x-2">
-                <span className="font-display font-black text-xl sm:text-2xl text-white tracking-tight uppercase leading-none">
+                <span className="font-display font-black text-xl sm:text-2xl text-stone-900 tracking-tight uppercase leading-none">
                   LET'S TALK
                 </span>
-                <ArrowRight size={16} className="text-violet-600 group-hover/orbital:translate-x-1.5 transition-transform" />
+                <ArrowRight size={16} className="text-violet-700 group-hover/orbital:translate-x-1.5 transition-transform" />
               </div>
             </div>
           </motion.button>
