@@ -253,25 +253,31 @@ const CloudyBlueprintNote = ({
 };
 
 export default function ProjectsPage({ navigate }: ProjectsPageProps) {
-  const { projects: storeProjects, categories: storeCategories } = useDataStore();
+  const { projects: storeProjects, categories: storeCategories, industries: storeIndustries } = useDataStore();
   const [section, setSection] = useState<'demo' | 'client'>('demo');
   const [activeCategory, setActiveCategory] = useState("All");
+  const [activeIndustry, setActiveIndustry] = useState("All");
   const [telemetryMessage, setTelemetryMessage] = useState<string | null>(null);
   const [activeProjectIndex, setActiveProjectIndex] = useState(0);
   const [direction, setDirection] = useState(1); // 1 = next, -1 = prev
 
   const allCategories = ["All", ...Array.from(new Set([...storeCategories, "AI", "Web", "Infrastructure"]))];
+  
+  // Auto-created industry list extracted dynamically from projects and taxonomies
+  const extractedProjectIndustries = storeProjects.map(p => p.industry).filter(Boolean);
+  const allIndustries = ["All", ...Array.from(new Set([...storeIndustries, ...extractedProjectIndustries]))];
 
   const clientProjectsList = storeProjects.filter(p => p.section === 'client' || (p as any).client);
   const demoProjectsList = storeProjects.filter(p => p.section === 'demo' || !(p as any).client);
 
-  const filteredClientProjects = activeCategory === "All"
-    ? clientProjectsList
-    : clientProjectsList.filter(p => p.domain === activeCategory || p.category === activeCategory);
+  const filterProject = (p: any) => {
+    const matchesCategory = activeCategory === "All" || p.domain === activeCategory || p.category === activeCategory;
+    const matchesIndustry = activeIndustry === "All" || p.industry === activeIndustry;
+    return matchesCategory && matchesIndustry;
+  };
 
-  const filteredDemoProjects = activeCategory === "All"
-    ? demoProjectsList
-    : demoProjectsList.filter(p => p.domain === activeCategory || p.category === activeCategory);
+  const filteredClientProjects = clientProjectsList.filter(filterProject);
+  const filteredDemoProjects = demoProjectsList.filter(filterProject);
 
   const activeProjects = section === 'demo' ? filteredDemoProjects : filteredClientProjects;
 
@@ -515,20 +521,42 @@ export default function ProjectsPage({ navigate }: ProjectsPageProps) {
           </div>
         </div>
 
-        {/* Domain Categories Filters */}
-        <div className="flex flex-col items-center gap-4 w-full mt-8">
-          <div className="flex sm:flex-wrap overflow-x-auto w-full justify-start sm:justify-center items-center gap-2 pb-2 scrollbar-hide px-4 sm:px-0">
+        {/* Domain Categories & Industry Filters */}
+        <div className="flex flex-col items-center gap-3 w-full mt-6">
+          <div className="flex flex-wrap overflow-x-auto w-full justify-start sm:justify-center items-center gap-2 scrollbar-hide px-2">
+            <span className="text-[9px] font-mono text-stone-400 font-bold uppercase tracking-wider mr-1 shrink-0">CATEGORY:</span>
             {allCategories.map((category) => (
               <button
                 key={category}
                 onClick={() => handleCategoryChange(category)}
-                className={`whitespace-nowrap px-5 py-2 rounded-full font-sans text-[10px] font-bold tracking-widest uppercase transition-all duration-300 border cursor-pointer ${
+                className={`whitespace-nowrap px-4 py-1.5 rounded-full font-sans text-[10px] font-bold tracking-widest uppercase transition-all duration-300 border cursor-pointer ${
                   activeCategory === category
                     ? 'bg-gradient-to-r from-violet-600 to-rose-500 text-white shadow-md border-transparent'
                     : 'bg-[#0d0d12] text-stone-300 hover:bg-[#050505] hover:text-stone-100 border-white/10 shadow-sm'
                 }`}
               >
                 {category}
+              </button>
+            ))}
+          </div>
+
+          <div className="flex flex-wrap overflow-x-auto w-full justify-start sm:justify-center items-center gap-2 scrollbar-hide px-2">
+            <span className="text-[9px] font-mono text-stone-400 font-bold uppercase tracking-wider mr-1 shrink-0">INDUSTRY:</span>
+            {allIndustries.map((ind) => (
+              <button
+                key={ind}
+                onClick={() => {
+                  try { audioEngine.playClick(); } catch (e) {}
+                  setActiveIndustry(ind);
+                  setActiveProjectIndex(0);
+                }}
+                className={`whitespace-nowrap px-3.5 py-1 rounded-full font-mono text-[9px] font-semibold tracking-wider uppercase transition-all duration-300 border cursor-pointer ${
+                  activeIndustry === ind
+                    ? 'bg-violet-950/80 border-violet-400 text-violet-200 shadow-[0_0_10px_rgba(139,92,246,0.2)]'
+                    : 'bg-[#0a0a0e] text-stone-400 hover:text-stone-200 border-white/10'
+                }`}
+              >
+                {ind}
               </button>
             ))}
           </div>
@@ -747,9 +775,61 @@ export default function ProjectsPage({ navigate }: ProjectsPageProps) {
           </AnimatePresence>
         </div>
 
-        {/* Dashboard Pagination Deck and Indicators */}
+        {/* Dashboard Pagination Deck and Out-of-the-Box Interactive Side Deck */}
         {activeProjects.length > 0 && (
-          <div className="mt-12 flex flex-col items-center relative z-10">
+          <div className="mt-12 flex flex-col items-center relative z-10 w-full">
+            
+            {/* Interactive Motion Cards Deck Selector */}
+            <div className="w-full max-w-4xl mx-auto mb-6">
+              <div className="text-[10px] font-mono uppercase tracking-[0.2em] font-extrabold text-stone-400 mb-3 text-center flex items-center justify-center gap-2">
+                <Sparkles size={12} className="text-violet-400 animate-spin" />
+                <span>INTERACTIVE 3D PROJECT DECK • CLICK ANY CARD TO SWITCH DEMO</span>
+              </div>
+
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
+                {activeProjects.map((proj, pIdx) => {
+                  const isActive = activeProjectIndex === pIdx;
+                  return (
+                    <motion.button
+                      key={proj.id}
+                      whileHover={{ scale: 1.06, y: -4 }}
+                      whileTap={{ scale: 0.95 }}
+                      onClick={() => {
+                        try { audioEngine.playClick(); } catch (e) {}
+                        setDirection(pIdx > activeProjectIndex ? 1 : -1);
+                        setActiveProjectIndex(pIdx);
+                      }}
+                      className={`p-2.5 rounded-2xl border text-left transition-all duration-300 relative overflow-hidden cursor-pointer flex flex-col justify-between ${
+                        isActive
+                          ? 'bg-gradient-to-b from-violet-950/90 to-[#0a0a0e] border-violet-400 shadow-[0_0_20px_rgba(139,92,246,0.35)] ring-2 ring-violet-500/40'
+                          : 'bg-[#0d0d12] border-white/10 opacity-70 hover:opacity-100 hover:border-violet-300/50'
+                      }`}
+                    >
+                      <div className="flex items-center justify-between mb-2">
+                        <span className={`text-[8px] font-mono font-black uppercase px-1.5 py-0.5 rounded-full ${
+                          isActive ? 'bg-violet-600 text-white' : 'bg-stone-800 text-stone-400'
+                        }`}>
+                          0{pIdx + 1}
+                        </span>
+                        <span className="text-[8px] font-mono text-stone-400 truncate max-w-[60px]">
+                          {proj.category || proj.domain}
+                        </span>
+                      </div>
+
+                      <h3 className="font-display font-bold text-[11px] text-stone-100 leading-tight truncate uppercase mb-1">
+                        {proj.title.split('✦')[0]}
+                      </h3>
+
+                      <div className="flex items-center justify-between text-[8px] font-mono text-stone-400 pt-1 border-t border-white/10">
+                        <span className="truncate">{proj.industry || 'Tech'}</span>
+                        {isActive && <span className="w-1.5 h-1.5 rounded-full bg-violet-400 animate-ping" />}
+                      </div>
+                    </motion.button>
+                  );
+                })}
+              </div>
+            </div>
+
             {/* Clickable Line Dash Indicators */}
             <div className="flex justify-center items-center gap-2.5">
               {activeProjects.map((proj, pIdx) => (

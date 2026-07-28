@@ -209,7 +209,7 @@ export default function LandingPage({ navigate }: LandingPageProps) {
           '--mouse-y': '45%',
           '--spotlight-radius': '120px',
         } as React.CSSProperties}
-        className="relative flex flex-col justify-center px-4 md:px-8 pb-12 pt-6 md:pb-16 md:pt-6 overflow-hidden min-h-[calc(100vh-135px)] lg:min-h-[620px] bg-[#050505] text-white"
+        className="relative flex flex-col justify-center px-4 md:px-8 py-3 sm:py-4 md:py-6 lg:py-6 overflow-hidden min-h-[calc(100vh-120px)] lg:min-h-0 lg:max-h-[calc(100vh-100px)] bg-[#050505] text-white"
       >
         {/* Dynamic Background Portal Layer */}
         <div className="absolute inset-0 z-0 pointer-events-none select-none">
@@ -285,7 +285,7 @@ export default function LandingPage({ navigate }: LandingPageProps) {
             </div>
 
             {/* Headline with Staggered Kinetic Reveal & Deep Positioning */}
-            <div className="min-h-[160px] sm:min-h-[180px] md:min-h-[210px] lg:min-h-[220px] flex flex-col justify-center w-full lg:items-start items-center">
+            <div className="min-h-[120px] sm:min-h-[140px] md:min-h-[160px] lg:min-h-[170px] flex flex-col justify-center w-full lg:items-start items-center">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={heroMode}

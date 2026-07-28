@@ -204,7 +204,7 @@ export default function ProductsPage({ navigate }: { navigate: (path: string) =>
       </div>
 
       {/* 3. PRODUCT SPECIFICATIONS CATALOG */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 max-w-sm md:max-w-2xl mx-auto mb-20">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-6xl w-full mx-auto mb-20 px-2 sm:px-4">
         <AnimatePresence mode="popLayout">
           {filteredProducts.map((product) => (
             <motion.div

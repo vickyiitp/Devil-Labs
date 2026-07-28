@@ -442,6 +442,13 @@ function notifyListeners() {
     console.error('LocalStorage save failed', e);
   }
   listeners.forEach(fn => fn());
+
+  // Auto-sync to GitHub if PAT token is configured
+  if (memoryStore.githubConfig?.token) {
+    dataStore.syncToGitHub().catch(err => {
+      console.warn('Auto GitHub Sync Error:', err?.message || err);
+    });
+  }
 }
 
 export const dataStore = {

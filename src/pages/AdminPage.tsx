@@ -9,6 +9,8 @@ import {
 import { dataStore, ProjectItem, ProductItem, ResourceItem, TestimonialItem, GitHubConfig } from '../lib/dataStore';
 import { useDataStore } from '../hooks/useDataStore';
 import { audioEngine } from '../lib/audio';
+import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
+import { jwtDecode } from 'jwt-decode';
 
 interface AdminPageProps {
   navigate: (path: string) => void;
@@ -18,7 +20,6 @@ export default function AdminPage({ navigate }: AdminPageProps) {
   const store = useDataStore();
 
   // Authentication Lock state
-  const [pinInput, setPinInput] = useState('');
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [authError, setAuthError] = useState('');
 
@@ -56,17 +57,25 @@ export default function AdminPage({ navigate }: AdminPageProps) {
   const [ghSyncing, setGhSyncing] = useState(false);
   const [ghStatusMsg, setGhStatusMsg] = useState<{ success: boolean; text: string } | null>(null);
 
-  // Handle PIN unlock
-  const handleUnlock = (e: React.FormEvent) => {
-    e.preventDefault();
-    audioEngine.playClick();
-    if (pinInput === '1234' || pinInput.toLowerCase() === 'admin' || pinInput === 'devillabs') {
-      setIsAuthenticated(true);
-      setAuthError('');
-    } else {
-      setAuthError('Invalid PIN code. Try default: 1234');
-      audioEngine.playHover();
+  // Handle Google OAuth Unlock
+  const handleGoogleSuccess = (credentialResponse: any) => {
+    try {
+      const decoded: any = jwtDecode(credentialResponse.credential);
+      if (decoded.email === 'themvaplatform@gmail.com') {
+        setIsAuthenticated(true);
+        setAuthError('');
+        audioEngine.playClick();
+      } else {
+        setAuthError(`Access Denied: ${decoded.email} is not authorized.`);
+        audioEngine.playHover();
+      }
+    } catch (e) {
+      setAuthError('Error decoding login token.');
     }
+  };
+
+  const handleGoogleError = () => {
+    setAuthError('Google Sign-In failed.');
   };
 
   const currentAnalytics = store.analytics[0] || {
@@ -302,45 +311,47 @@ export default function AdminPage({ navigate }: AdminPageProps) {
               Admin Authentication
             </h1>
             <p className="text-stone-400 text-xs font-sans">
-              Enter your access PIN to unlock the content engine, traffic analytics, and GitHub repo dispatcher.
+              Sign in with your authorized Google Workspace account to unlock the control plane.
             </p>
           </div>
 
-          <form onSubmit={handleUnlock} className="space-y-4">
-            <div className="relative">
-              <input
-                type="password"
-                required
-                value={pinInput}
-                onChange={(e) => setPinInput(e.target.value)}
-                placeholder="ENTER PIN (DEFAULT: 1234)"
-                className="w-full text-center px-4 py-3.5 bg-[#0d0d12] border border-white/10 rounded-2xl text-sm font-mono tracking-[0.4em] text-stone-100 focus:outline-none focus:border-violet-400 uppercase shadow-inner"
-              />
-            </div>
+          <div className="space-y-4 flex flex-col items-center justify-center">
+            {import.meta.env.VITE_GOOGLE_CLIENT_ID ? (
+              <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}>
+                <GoogleLogin
+                  onSuccess={handleGoogleSuccess}
+                  onError={handleGoogleError}
+                  theme="filled_black"
+                  shape="pill"
+                  useOneTap
+                />
+              </GoogleOAuthProvider>
+            ) : (
+              <div className="bg-amber-950/40 border border-amber-500/30 p-4 rounded-xl text-center">
+                <AlertCircle className="w-6 h-6 text-amber-400 mx-auto mb-2" />
+                <p className="text-amber-200 text-xs font-mono font-bold uppercase mb-1">Missing Google Client ID</p>
+                <p className="text-amber-400/80 text-[10px] font-sans">
+                  Set VITE_GOOGLE_CLIENT_ID in your environment variables to enable login.
+                </p>
+                {/* Fallback for preview/development when no Client ID is present */}
+                <button 
+                  onClick={() => setIsAuthenticated(true)}
+                  className="mt-3 w-full py-2 bg-stone-800 hover:bg-stone-700 text-white font-mono text-[10px] uppercase rounded-lg transition-colors"
+                >
+                  Bypass (Dev Only)
+                </button>
+              </div>
+            )}
 
             {authError && (
-              <p className="text-red-400 font-mono text-[11px] bg-red-950/40 border border-red-500/30 p-2.5 rounded-xl">
+              <p className="text-red-400 font-mono text-[11px] bg-red-950/40 border border-red-500/30 p-2.5 rounded-xl w-full">
                 {authError}
               </p>
             )}
+          </div>
 
-            <button
-              type="submit"
-              className="w-full py-3.5 bg-violet-600 hover:bg-violet-500 text-white font-mono text-xs font-bold uppercase tracking-widest rounded-2xl shadow-lg transition-all cursor-pointer flex items-center justify-center space-x-2"
-            >
-              <Key size={14} />
-              <span>Unlock Admin Panel</span>
-            </button>
-          </form>
-
-          <div className="pt-4 border-t border-white/10 text-[10px] font-mono text-stone-400 flex items-center justify-between">
-            <span>DEFAULT DEMO PIN: <strong className="text-violet-400">1234</strong></span>
-            <button
-              onClick={() => { setIsAuthenticated(true); }}
-              className="text-stone-400 hover:text-stone-100 underline cursor-pointer"
-            >
-              Bypass for Demo
-            </button>
+          <div className="pt-4 border-t border-white/10 text-[10px] font-mono text-stone-400 flex items-center justify-center">
+            <span>SECURE ACCESS RESTRICTED TO AUTHORIZED PERSONNEL</span>
           </div>
         </div>
       </div>
