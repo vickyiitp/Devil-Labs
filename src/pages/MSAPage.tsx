@@ -2,7 +2,7 @@ import { ArrowLeft, Briefcase } from 'lucide-react';
 
 export default function MSAPage({ navigate }: { navigate: (path: string) => void }) {
   return (
-    <div className="min-h-screen bg-[#050505] text-stone-300 font-mono p-6 sm:p-12 relative z-10 pt-32">
+    <div className="min-h-screen bg-[#050505] text-stone-300 font-mono p-6 sm:p-12 relative z-10 pt-24">
       <div className="max-w-4xl mx-auto">
         <button 
           onClick={() => navigate('/')}

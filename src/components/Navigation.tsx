@@ -92,81 +92,11 @@ export default function Navigation({ currentPath, navigate }: NavigationProps) {
 
   return (
     <>
-      {/* 0. HIGH-CONVERTING TOP INFO BAR */}
-      <div 
-        id="header-top-bar" 
-        className="fixed top-0 left-0 w-full h-[48px] md:h-12 bg-[#0a0a0a]/90 backdrop-blur-xl border-b border-white/10 z-[60] flex items-center justify-between px-4 sm:px-6 lg:px-8 text-xs tracking-widest font-bold text-stone-400 font-sans select-none transition-transform duration-500 ease-in-out pointer-events-auto"
-        style={{
-          transform: scrolled ? 'translateY(-100%)' : 'translateY(0)'
-        }}
-      >
-        {/* Left Side: Email & Tel */}
-        <div className="flex items-center space-x-3 sm:space-x-5 shrink-0">
-          <a 
-            href="mailto:devil.labs.contact@gmail.com?subject=Project%20Inquiry%20-%20Devil%20Labs" 
-            className="hidden sm:flex items-center space-x-2 text-stone-300 hover:text-white transition-colors"
-          >
-            <Mail size={12} className="text-violet-400" />
-            <span className="hidden xl:inline">DEVIL.LABS.CONTACT@GMAIL.COM</span>
-            <span className="xl:hidden">EMAIL US</span>
-          </a>
-          <a 
-            href="https://wa.me/918102099678?text=Hi%20Devil%20Labs%2C%20I%20would%20like%20to%20consult%20on%20a%20project%20idea%21" 
-            target="_blank"
-            rel="noreferrer"
-            className="flex items-center space-x-1.5 text-stone-300 hover:text-white transition-colors"
-          >
-            <MessageCircle size={12} className="text-emerald-400 animate-pulse" />
-            <span className="text-[11px] font-mono">WA: +91 81020 99678</span>
-          </a>
-        </div>
-
-        {/* Center Side: Swiping Process Ticker */}
-        <div className="hidden 2xl:flex items-center justify-center flex-1 max-w-sm px-2 relative h-5 overflow-hidden text-center text-violet-300 text-[11px] font-mono font-medium shrink">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeSlide}
-              initial={{ y: 15, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: -15, opacity: 0 }}
-              transition={{ duration: 0.4, ease: "easeInOut" }}
-              className="truncate w-full text-center"
-            >
-              {slides[activeSlide]}
-            </motion.div>
-          </AnimatePresence>
-        </div>
-
-        {/* Right Side: Network Links & Instant Talk Badge */}
-        <div className="flex items-center space-x-3 shrink-0 ml-auto">
-          <div className="hidden md:flex items-center space-x-2.5 border-r border-white/10 pr-3">
-            <a href="https://github.com/Devil-Labs/" target="_blank" rel="noreferrer" aria-label="Devil Labs GitHub Profile" className="text-stone-400 hover:text-white transition-colors p-1">
-              <Github size={13} />
-            </a>
-            <a href="https://linkedin.com/company/devillabs" target="_blank" rel="noreferrer" aria-label="Devil Labs LinkedIn Profile" className="text-stone-400 hover:text-white transition-colors p-1">
-              <Linkedin size={13} />
-            </a>
-            <a href="https://instagram.com/devillabs" target="_blank" rel="noreferrer" aria-label="Devil Labs Instagram Profile" className="text-stone-400 hover:text-white transition-colors p-1">
-              <Instagram size={13} />
-            </a>
-          </div>
-          <a 
-            href="https://wa.me/918102099678?text=Hi%20Devil%20Labs%2C%20I%20would%20like%20to%20consult%20on%20a%20project%20idea%21" 
-            target="_blank"
-            rel="noreferrer"
-            className="flex items-center space-x-1.5 text-emerald-950 border border-emerald-300 bg-emerald-100 px-3 py-1 rounded-full hover:bg-emerald-200 hover:border-emerald-400 transition-all shadow-[0_2px_6px_rgba(16,185,129,0.1)] shrink-0"
-          >
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse" />
-            <span className="text-[10px] sm:text-xs tracking-wider font-black uppercase text-emerald-950 whitespace-nowrap">TALK INSTANTLY</span>
-          </a>
-        </div>
-      </div>
-
       <header 
         id="site-header" 
         className="fixed left-0 w-full z-50 pointer-events-none font-sans transition-all duration-500 ease-in-out pt-2 sm:pt-3 md:pt-4"
         style={{
-          top: scrolled ? '0px' : '48px',
+          top: 0,
           transform: visible ? 'translateY(0)' : 'translateY(-120%)'
         }}
       >
@@ -211,6 +141,15 @@ export default function Navigation({ currentPath, navigate }: NavigationProps) {
 
         {/* Desktop CTA */}
         <div className="hidden xl:flex items-center space-x-3">
+          <a 
+            href="https://wa.me/918102099678?text=Hi%20Devil%20Labs%2C%20I%20would%20like%20to%20consult%20on%20a%20project%20idea%21" 
+            target="_blank"
+            rel="noreferrer"
+            className="flex items-center space-x-1.5 text-emerald-950 border border-emerald-300 bg-emerald-100 px-3 py-1 rounded-full hover:bg-emerald-200 hover:border-emerald-400 transition-all shadow-[0_2px_6px_rgba(16,185,129,0.1)] shrink-0"
+          >
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse" />
+            <span className="text-[10px] sm:text-xs tracking-wider font-black uppercase text-emerald-950 whitespace-nowrap">TALK INSTANTLY</span>
+          </a>
           <Magnetic range={50} strength={0.3}>
             <button
               onMouseEnter={() => audioEngine.playHover()}

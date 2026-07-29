@@ -178,7 +178,7 @@ export default function LandingPage({ navigate }: LandingPageProps) {
   };
 
   return (
-    <div id="landing-page-root" className="pt-[110px] sm:pt-[125px] lg:pt-[135px]">
+    <div id="landing-page-root" className="pt-16 sm:pt-20 lg:pt-24">
       {/* 1. HERO SECTION WITH INTEGRATED PORTAL AND AUDIO ENGINE */}
       <section 
         id="hero-section" 
@@ -209,7 +209,7 @@ export default function LandingPage({ navigate }: LandingPageProps) {
           '--mouse-y': '45%',
           '--spotlight-radius': '120px',
         } as React.CSSProperties}
-        className="relative flex flex-col justify-center px-4 md:px-8 py-3 sm:py-4 md:py-6 lg:py-6 overflow-hidden min-h-[calc(100vh-120px)] lg:min-h-0 lg:max-h-[calc(100vh-100px)] bg-[#050505] text-white"
+        className="relative flex flex-col justify-center px-4 md:px-8 overflow-hidden min-h-[90vh] bg-[#050505] text-white"
       >
         {/* Dynamic Background Portal Layer */}
         <div className="absolute inset-0 z-0 pointer-events-none select-none">
@@ -237,56 +237,10 @@ export default function LandingPage({ navigate }: LandingPageProps) {
             className="lg:col-span-7 space-y-6 lg:space-y-8 flex flex-col items-center lg:items-start text-center lg:text-left relative"
           >
             
-            {/* Elegant, minimalist business positioning badge tag */}
-            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2.5">
-              <div className="flex items-center space-x-2 bg-[#111111]/80 border border-white/10 px-4 py-2 rounded-full shadow-sm">
-                <span className="w-1.5 h-1.5 rounded-full bg-violet-500 animate-pulse" />
-                <span className="text-stone-300 font-sans text-[9px] font-extrabold uppercase tracking-[0.2em]">
-                  DEVIL LABS • DIGITAL INNOVATION
-                </span>
-              </div>
-              <div className="flex items-center space-x-2 bg-[#111111]/80 border border-violet-500/30 px-4 py-2 rounded-full shadow-[0_0_15px_rgba(139,92,246,0.2)] backdrop-blur-md">
-                <span className="text-xs drop-shadow-[0_0_8px_rgba(139,92,246,0.5)]">🎓</span>
-                <span className="text-violet-300 font-sans text-[9px] font-extrabold uppercase tracking-widest">
-                  IIT Patna Co-Founders
-                </span>
-              </div>
-            </div>
-
-            {/* Strategic Value Pillar Selector Switcher */}
-            <div className="w-full flex flex-col lg:items-start items-center">
-              <motion.div 
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                className="inline-flex items-center p-1.5 bg-[#050505]/40 backdrop-blur-md border border-white/10 rounded-full shadow-sm"
-              >
-                <button
-                  onMouseEnter={playSpatialHoverSound}
-                  onClick={() => { playClickSound(); setHeroMode('ai'); }}
-                  className={`relative px-6 py-2.5 text-[10px] sm:text-[11px] font-sans tracking-widest rounded-full transition-colors duration-300 cursor-pointer ${heroMode === 'ai' ? 'text-white font-black' : 'text-stone-300 font-bold hover:text-white'}`}
-                >
-                  {heroMode === 'ai' && (
-                    <motion.div layoutId="pill-bg" className="absolute inset-0 bg-gradient-to-r from-violet-600/80 to-indigo-600/80 rounded-full border border-white/20 shadow-[0_0_15px_rgba(139,92,246,0.3)]" />
-                  )}
-                  <span className="relative z-10 uppercase">Cognitive AI Agents</span>
-                </button>
-                <button
-                  onMouseEnter={playSpatialHoverSound}
-                  onClick={() => { playClickSound(); setHeroMode('web'); }}
-                  className={`relative px-6 py-2.5 text-[10px] sm:text-[11px] font-sans tracking-widest rounded-full transition-colors duration-300 cursor-pointer ${heroMode === 'web' ? 'text-white font-black' : 'text-stone-300 font-bold hover:text-white'}`}
-                >
-                  {heroMode === 'web' && (
-                    <motion.div layoutId="pill-bg" className="absolute inset-0 bg-gradient-to-r from-violet-600/80 to-indigo-600/80 rounded-full border border-white/20 shadow-[0_0_15px_rgba(139,92,246,0.3)]" />
-                  )}
-                  <span className="relative z-10 uppercase">High-Velocity Web</span>
-                </button>
-              </motion.div>
-            </div>
-
+            
             {/* Headline with Staggered Kinetic Reveal & Deep Positioning */}
             <div className="min-h-[120px] sm:min-h-[140px] md:min-h-[160px] lg:min-h-[170px] flex flex-col justify-center w-full lg:items-start items-center">
-              <AnimatePresence mode="wait">
+              <AnimatePresence mode="wait" initial={false}>
                 <motion.div
                   key={heroMode}
                   initial="hidden"
@@ -626,7 +580,7 @@ export default function LandingPage({ navigate }: LandingPageProps) {
         <div className="w-full max-w-7xl mx-auto relative z-10 px-4">
           <div className="text-center mb-12 max-w-2xl mx-auto space-y-4">
             <span className="text-stone-300 font-sans text-[9px] uppercase tracking-[0.25em] font-black block">✦ CURATED LABS DISCIPLINES</span>
-            <h2 className="text-white font-display font-extrabold text-2xl xs:text-3xl sm:text-5xl tracking-tight uppercase leading-none break-words max-w-full">
+            <h2 className="text-white font-display font-extrabold text-2xl xs:text-3xl sm:text-5xl tracking-tight uppercase leading-none">
               curated <span className="font-serif italic font-normal text-violet-500 lowercase">premium</span> disciplines
             </h2>
             <p className="text-stone-300 text-xs sm:text-sm leading-relaxed max-w-lg mx-auto font-sans">
@@ -654,7 +608,7 @@ export default function LandingPage({ navigate }: LandingPageProps) {
         <ScrollReveal>
           <CyberFrame glowColor="fuchsia" className="space-y-6 sm:space-y-8 p-8 sm:p-12 md:p-16 rounded-2xl bg-[#050505] border border-white/10 shadow-xl">
             <Cpu size={32} className="mx-auto text-violet-600 sm:w-10 sm:h-10 animate-pulse" />
-            <StaggeredHeading as="h2" className="text-lg xs:text-xl sm:text-3xl md:text-4xl lg:text-5xl font-display font-extrabold leading-[1.05] tracking-tight uppercase text-white break-words max-w-full">
+            <StaggeredHeading as="h2" className="text-lg xs:text-xl sm:text-3xl md:text-4xl lg:text-5xl font-display font-extrabold leading-[1.05] tracking-tight uppercase text-white">
               We build <span className="font-serif italic font-normal text-violet-600 lowercase">scalable</span> <HandDrawnCircle color="stroke-violet-500/85">architectures</HandDrawnCircle>, <br className="hidden sm:block" />
               not <span className="font-serif italic font-normal text-rose-500 lowercase">fragile</span> <HandDrawnUnderline color="stroke-rose-400/85">prototypes</HandDrawnUnderline>.
             </StaggeredHeading>
@@ -670,7 +624,7 @@ export default function LandingPage({ navigate }: LandingPageProps) {
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1px] h-12 bg-white/10 pointer-events-none" />
         <div className="text-center mb-12 sm:mb-16">
           <span className="text-stone-400 font-sans text-[9px] uppercase tracking-[0.25em] font-black block">✦ DEVIL LABS STANDARDS</span>
-          <StaggeredHeading as="h3" className="text-2xl xs:text-3xl sm:text-5xl font-display font-extrabold uppercase text-white tracking-tight mt-3 leading-none break-words max-w-full">
+          <StaggeredHeading as="h3" className="text-2xl xs:text-3xl sm:text-5xl font-display font-extrabold uppercase text-white tracking-tight mt-3 leading-none">
             Our Design &amp; <span className="font-serif italic font-normal text-rose-600 lowercase">engineering</span> pillars
           </StaggeredHeading>
           <p className="text-stone-300 text-xs sm:text-sm mt-4 max-w-lg mx-auto leading-relaxed font-sans">
@@ -679,7 +633,7 @@ export default function LandingPage({ navigate }: LandingPageProps) {
         </div>
 
         {/* Blueprint sticky notes grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6 relative items-start max-w-sm md:max-w-2xl xl:max-w-none mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6 relative items-start w-full mx-auto">
           {/* Curly Arrow pointing from note 1 to note 2 */}
           <div className="hidden lg:block absolute left-[29%] top-6 w-[12%] h-[40px] z-20">
             <HandDrawnArrow color="stroke-violet-300/70" direction="right" className="w-full h-full" />
@@ -734,7 +688,7 @@ export default function LandingPage({ navigate }: LandingPageProps) {
           <span className="text-stone-400 font-sans text-[9px] uppercase tracking-[0.25em] font-black block">
             ✦ STRATEGIC VALUE ALIGNMENT
           </span>
-          <StaggeredHeading as="h2" className="text-2xl xs:text-3xl sm:text-5xl font-display font-extrabold text-white tracking-tight mt-3 uppercase leading-none break-words max-w-full">
+          <StaggeredHeading as="h2" className="text-2xl xs:text-3xl sm:text-5xl font-display font-extrabold text-white tracking-tight mt-3 uppercase leading-none">
             Business Position &amp; <span className="font-serif italic font-normal text-violet-600 lowercase">specialty</span> niches
           </StaggeredHeading>
           <p className="text-stone-400 text-xs sm:text-sm mt-4 max-w-xl mx-auto leading-relaxed font-sans">
@@ -928,7 +882,7 @@ export default function LandingPage({ navigate }: LandingPageProps) {
         <ScrollReveal className="max-w-4xl mx-auto">
           <div className="text-center relative z-10 space-y-10">
             <span className="text-violet-500 font-sans text-xs uppercase tracking-widest font-black">✦ START YOUR PROJECT</span>
-            <StaggeredHeading as="h2" className="text-3xl xs:text-4xl sm:text-6xl font-display font-extrabold text-white uppercase tracking-tighter break-words max-w-full">
+            <StaggeredHeading as="h2" className="text-3xl xs:text-4xl sm:text-6xl font-display font-extrabold text-white uppercase tracking-tighter">
               Ready to scale?<br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-indigo-600">
                 Let's build.

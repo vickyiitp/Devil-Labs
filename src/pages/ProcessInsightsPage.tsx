@@ -49,7 +49,7 @@ export default function ProcessInsightsPage({ navigate }: ProcessInsightsPagePro
   }, []);
 
   return (
-    <div className="pt-20 xs:pt-24 sm:pt-28 lg:pt-32 pb-24 px-4 md:px-8 max-w-7xl mx-auto min-h-screen text-stone-100 relative">
+    <div className="pt-16 sm:pt-20 lg:pt-24 pb-24 px-4 md:px-8 max-w-7xl mx-auto min-h-screen text-stone-100 relative">
       
       {/* Decorative Matrix & Alignment Marks */}
       <div className="absolute top-24 left-10 text-xs text-violet-500/30 select-none pointer-events-none hidden xl:block font-mono">
@@ -72,7 +72,7 @@ export default function ProcessInsightsPage({ navigate }: ProcessInsightsPagePro
           <Sparkles size={12} className="animate-pulse" />
           <span>DevOps & Intelligence Core</span>
         </div>
-        <h1 className="font-display text-3xl xs:text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter uppercase mb-6 text-stone-100 break-words max-w-full">
+        <h1 className="font-display text-3xl xs:text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter uppercase mb-6 text-stone-100">
           THE LAB <span className="text-violet-600 font-light font-serif italic">✦</span> ENGINE & INSIGHTS
         </h1>
         <p className="text-stone-300 max-w-2xl mx-auto leading-relaxed text-sm font-sans font-light">
@@ -335,7 +335,7 @@ export default function ProcessInsightsPage({ navigate }: ProcessInsightsPagePro
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6 mb-16 max-w-sm md:max-w-2xl xl:max-w-none mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6 mb-16 w-full mx-auto">
           {testimonials.map((t, idx) => (
             <div key={idx} className="h-full">
               <div className="p-6 md:p-8 clay-card hover:scale-[1.01] hover:border-violet-300 transition-all flex flex-col justify-between h-full text-left">

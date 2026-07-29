@@ -427,7 +427,7 @@ export default function ProjectsPage({ navigate }: ProjectsPageProps) {
   };
 
   return (
-    <div className="pt-20 xs:pt-24 sm:pt-28 lg:pt-32 pb-24 px-4 md:px-8 max-w-7xl mx-auto min-h-screen relative overflow-hidden text-stone-100">
+    <div className="pt-16 sm:pt-20 lg:pt-24 pb-24 px-4 md:px-8 max-w-7xl mx-auto min-h-screen relative overflow-hidden text-stone-100">
       
       {/* Real-time telemetry notification toast */}
       <AnimatePresence>
@@ -487,7 +487,7 @@ export default function ProjectsPage({ navigate }: ProjectsPageProps) {
         </div>
         <StaggeredHeading 
           text="FEATURED PROJECTS."
-          className="text-3xl xs:text-4xl sm:text-6xl lg:text-7xl font-display font-black tracking-tighter uppercase mb-6 leading-[0.95] text-stone-100 break-words max-w-full"
+          className="text-3xl xs:text-4xl sm:text-6xl lg:text-7xl font-display font-black tracking-tighter uppercase mb-6 leading-[0.95] text-stone-100"
         />
         <p className="text-stone-300 font-sans text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
           Explore our live production demos and featured client applications. Filter by category to view detailed briefs, tech stacks, and live interactive previews.

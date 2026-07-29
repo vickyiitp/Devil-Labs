@@ -195,12 +195,12 @@ export default function PricingPage({ navigate }: PricingPageProps) {
   ];
 
   return (
-    <div id="pricing-page-root" className="pt-20 xs:pt-24 sm:pt-28 lg:pt-32 pb-24 px-4 md:px-8 max-w-7xl mx-auto text-stone-100">
+    <div id="pricing-page-root" className="pt-16 sm:pt-20 lg:pt-24 pb-24 px-4 md:px-8 max-w-7xl mx-auto text-stone-100">
       {/* 1. HEADER */}
       <section id="pricing-header" className="mb-20 flex flex-col md:flex-row md:items-end md:justify-between gap-6 border-b border-white/10/30 pb-10">
         <div className="space-y-4">
           <span className="text-violet-600 font-sans text-xs uppercase tracking-widest font-extrabold">✦ PRICING &amp; TIER PLANS</span>
-          <h1 className="font-display font-extrabold text-3xl xs:text-4xl sm:text-6xl md:text-7xl text-stone-100 tracking-tighter uppercase leading-none break-words max-w-full">
+          <h1 className="font-display font-extrabold text-3xl xs:text-4xl sm:text-6xl md:text-7xl text-stone-100 tracking-tighter uppercase leading-none">
             TRANSPARENT PRICING.
           </h1>
           <p className="text-stone-300 text-base sm:text-lg max-w-2xl leading-relaxed font-sans">
@@ -234,7 +234,7 @@ export default function PricingPage({ navigate }: PricingPageProps) {
       </section>
 
       {/* 2. PRICING CARDS (3 columns) */}
-      <section id="pricing-cards-section" className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6 items-stretch mb-32 max-w-sm md:max-w-3xl xl:max-w-none mx-auto">
+      <section id="pricing-cards-section" className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6 items-stretch mb-32 w-full mx-auto">
         {models.map((model, idx) => (
           <motion.div
             id={`pricing-card-${model.title.toLowerCase().replace(/[^a-z0-9]/g, '')}`}

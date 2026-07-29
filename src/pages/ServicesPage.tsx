@@ -20,11 +20,11 @@ export default function ServicesPage({ navigate }: ServicesPageProps) {
   ];
 
   return (
-    <div id="services-page-root" className="pt-20 xs:pt-24 sm:pt-28 lg:pt-32 pb-24 px-4 md:px-8 max-w-7xl mx-auto text-stone-100">
+    <div id="services-page-root" className="pt-16 sm:pt-20 lg:pt-24 pb-24 px-4 md:px-8 max-w-7xl mx-auto text-stone-100">
       {/* 1. HEADER */}
       <section id="services-header" className="mb-20 space-y-4">
         <span className="text-violet-400 font-sans text-xs uppercase tracking-widest font-extrabold">✦ OUR CAPABILITIES</span>
-        <StaggeredHeading text="OUR SERVICES & CAPABILITIES." className="font-display font-extrabold text-3xl xs:text-4xl sm:text-6xl md:text-7xl text-stone-100 tracking-tighter uppercase leading-none break-words max-w-full" />
+        <StaggeredHeading text="OUR SERVICES & CAPABILITIES." className="font-display font-extrabold text-3xl xs:text-4xl sm:text-6xl md:text-7xl text-stone-100 tracking-tighter uppercase leading-none" />
         <p className="text-stone-300 text-base sm:text-lg max-w-2xl leading-relaxed">
           Devil Labs builds modern digital experiences, AI automation systems, and high-performance cloud infrastructure tailored to your business goals.
         </p>
@@ -45,7 +45,7 @@ export default function ServicesPage({ navigate }: ServicesPageProps) {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6 max-w-sm md:max-w-2xl xl:max-w-none mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6 w-full mx-auto">
               {category.items.map((service, idx) => {
                 const Icon = service.icon;
                 return (
@@ -126,7 +126,7 @@ export default function ServicesPage({ navigate }: ServicesPageProps) {
           </div>
 
           {/* Swipe Ticker */}
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6 max-w-sm md:max-w-2xl xl:max-w-none mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6 w-full mx-auto">
             {[
               {
                 id: "01",
@@ -197,7 +197,7 @@ export default function ServicesPage({ navigate }: ServicesPageProps) {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6 max-w-sm md:max-w-2xl xl:max-w-none mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6 w-full mx-auto">
             {tools.map((tool) => {
               const Icon = tool.icon;
               return (

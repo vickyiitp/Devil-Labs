@@ -20,7 +20,7 @@ export default function ServiceDetailPage({
 
   if (!data) {
     return (
-      <div className="pt-32 px-8 text-center max-w-2xl mx-auto h-screen flex flex-col items-center justify-center text-stone-100">
+      <div className="pt-24 px-8 text-center max-w-2xl mx-auto h-screen flex flex-col items-center justify-center text-stone-100">
         <h1 className="font-display text-4xl font-extrabold mb-4 uppercase tracking-tighter text-stone-100">
           System Error 404
         </h1>
@@ -75,7 +75,7 @@ export default function ServiceDetailPage({
             <span className="text-violet-400 font-sans text-xs uppercase tracking-widest font-extrabold block">
               ✦ {data.subtitle}
             </span>
-            <StaggeredHeading text={data.title} className="font-display font-extrabold text-3xl xs:text-4xl sm:text-6xl md:text-7xl text-stone-100 tracking-tighter uppercase leading-none break-words max-w-full" />
+            <StaggeredHeading text={data.title} className="font-display font-extrabold text-3xl xs:text-4xl sm:text-6xl md:text-7xl text-stone-100 tracking-tighter uppercase leading-none" />
             <p className="text-stone-300 text-base sm:text-lg leading-relaxed mt-6 max-w-2xl">
               {data.desc}
             </p>
@@ -83,7 +83,7 @@ export default function ServiceDetailPage({
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-20 max-w-sm md:max-w-2xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-20 w-full mx-auto">
         {data.features.map((feature: any, idx: number) => {
           let statusColor = "text-emerald-400 bg-emerald-500";
           let statusLabel = "Production Ready";

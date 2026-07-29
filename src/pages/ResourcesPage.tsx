@@ -115,7 +115,7 @@ export default function ResourcesPage({ navigate }: { navigate: (path: string) =
   ];
 
   return (
-    <div id="resources-page-root" className="pt-20 xs:pt-24 sm:pt-28 lg:pt-32 pb-24 px-4 md:px-8 max-w-7xl mx-auto text-stone-100">
+    <div id="resources-page-root" className="pt-16 sm:pt-20 lg:pt-24 pb-24 px-4 md:px-8 max-w-7xl mx-auto text-stone-100">
       
       {/* 1. HEADER */}
       <section id="resources-header" className="mb-16 space-y-4">
@@ -125,7 +125,7 @@ export default function ResourcesPage({ navigate }: { navigate: (path: string) =
         </div>
         <StaggeredHeading 
           text="ENGINEERING LABS & DOCUMENTATION." 
-          className="font-display font-extrabold text-3xl xs:text-4xl sm:text-6xl md:text-7xl text-stone-100 tracking-tighter uppercase leading-none break-words max-w-full"
+          className="font-display font-extrabold text-3xl xs:text-4xl sm:text-6xl md:text-7xl text-stone-100 tracking-tighter uppercase leading-none"
         />
         <p className="text-stone-300 text-base sm:text-lg max-w-3xl leading-relaxed font-sans">
           Welcome to our official resource depository. Read our architectural deep-dives, grab copy-paste development templates, explore industrial case studies, and browse our formal specifications list.
@@ -165,7 +165,7 @@ export default function ResourcesPage({ navigate }: { navigate: (path: string) =
       </div>
 
       {/* 3. DYNAMIC RESOURCE DEPOSITORY GRID */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-20 max-w-sm md:max-w-2xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-20 w-full mx-auto">
         <AnimatePresence mode="popLayout">
           {filteredResources.map((item, idx) => (
             <motion.div

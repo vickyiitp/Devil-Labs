@@ -103,7 +103,7 @@ export default function SolutionsPage({ navigate }: { navigate: (path: string) =
   const SelectedIcon = selected.icon;
 
   return (
-    <div id="solutions-page-root" className="pt-20 xs:pt-24 sm:pt-28 lg:pt-32 pb-24 px-4 md:px-8 max-w-7xl mx-auto text-stone-100">
+    <div id="solutions-page-root" className="pt-16 sm:pt-20 lg:pt-24 pb-24 px-4 md:px-8 max-w-7xl mx-auto text-stone-100">
       
       {/* 1. HEADER DIVISION */}
       <section id="solutions-header" className="mb-16 space-y-4">
@@ -111,7 +111,7 @@ export default function SolutionsPage({ navigate }: { navigate: (path: string) =
           <Shield size={14} />
           <span>✦ INDUSTRY SOLUTIONS</span>
         </div>
-        <StaggeredHeading text="PROVEN SOLUTIONS BY INDUSTRY." className="font-display font-extrabold text-3xl xs:text-4xl sm:text-6xl md:text-7xl text-stone-100 tracking-tighter uppercase leading-none break-words max-w-full" />
+        <StaggeredHeading text="PROVEN SOLUTIONS BY INDUSTRY." className="font-display font-extrabold text-3xl xs:text-4xl sm:text-6xl md:text-7xl text-stone-100 tracking-tighter uppercase leading-none" />
         <p className="text-stone-300 text-base sm:text-lg max-w-3xl leading-relaxed font-sans">
           We build targeted digital systems that solve core operational challenges and drive measurable business growth. Select your industry below to explore tailored solutions, key features, and verified outcomes.
         </p>

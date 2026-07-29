@@ -172,7 +172,7 @@ export default function ProductsPage({ navigate }: { navigate: (path: string) =>
   };
 
   return (
-    <div id="products-page-root" className="pt-20 xs:pt-24 sm:pt-28 lg:pt-32 pb-24 px-4 md:px-8 max-w-7xl mx-auto text-stone-100">
+    <div id="products-page-root" className="pt-16 sm:pt-20 lg:pt-24 pb-24 px-4 md:px-8 max-w-7xl mx-auto text-stone-100">
       
       {/* 1. HEADER DIVISION */}
       <section id="products-header" className="mb-16 space-y-4">
@@ -180,7 +180,7 @@ export default function ProductsPage({ navigate }: { navigate: (path: string) =>
           <Package size={14} />
           <span>✦ DIGITAL PRODUCTS &amp; ASSETS</span>
         </div>
-        <StaggeredHeading text="PREMIUM SOFTWARE & DEVELOPER ASSETS." className="font-display font-extrabold text-3xl xs:text-4xl sm:text-6xl md:text-7xl text-stone-100 tracking-tighter uppercase leading-none break-words max-w-full" />
+        <StaggeredHeading text="PREMIUM SOFTWARE & DEVELOPER ASSETS." className="font-display font-extrabold text-3xl xs:text-4xl sm:text-6xl md:text-7xl text-stone-100 tracking-tighter uppercase leading-none" />
         <p className="text-stone-300 text-base sm:text-lg max-w-3xl leading-relaxed font-sans">
           We design production-ready Next.js starter templates, developer SDKs, AI agent microservices, and design systems to boost your launch velocity. Built with clean architecture and production-tested code.
         </p>

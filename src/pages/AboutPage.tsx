@@ -13,7 +13,7 @@ interface AboutPageProps {
 
 export default function AboutPage({ navigate }: AboutPageProps) {
   return (
-    <div className="pt-20 xs:pt-24 sm:pt-28 lg:pt-32 pb-24 px-4 md:px-8 max-w-7xl mx-auto min-h-screen text-stone-100">
+    <div className="pt-16 sm:pt-20 lg:pt-24 pb-24 px-4 md:px-8 max-w-7xl mx-auto min-h-screen text-stone-100">
       {/* Header */}
       <section className="mb-24">
         <motion.h1 
@@ -25,7 +25,7 @@ export default function AboutPage({ navigate }: AboutPageProps) {
         </motion.h1>
         <StaggeredHeading 
           text="REDEFINING ENGINEERING IN INDIA." 
-          className="font-display font-black text-3xl xs:text-4xl sm:text-6xl md:text-7xl lg:text-8xl text-stone-100 tracking-tighter uppercase leading-[0.9] mb-8 break-words max-w-full"
+          className="font-display font-black text-3xl xs:text-4xl sm:text-6xl md:text-7xl lg:text-8xl text-stone-100 tracking-tighter uppercase leading-[0.9] mb-8"
         />
       </section>
 

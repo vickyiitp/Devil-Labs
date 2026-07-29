@@ -362,7 +362,7 @@ ${formData.name}`;
   const mailtoUrl = `mailto:devil.labs.contact@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
 
   return (
-    <div id="contact-page-root" className="pt-20 xs:pt-24 sm:pt-28 lg:pt-32 pb-32 px-4 md:px-8 max-w-7xl mx-auto min-h-screen relative overflow-hidden text-stone-100">
+    <div id="contact-page-root" className="pt-16 sm:pt-20 lg:pt-24 pb-32 px-4 md:px-8 max-w-7xl mx-auto min-h-screen relative overflow-hidden text-stone-100">
       {/* Abstract Background Blur */}
       <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-violet-600/5 rounded-full blur-[120px] pointer-events-none -z-10 mix-blend-multiply" />
       <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-fuchsia-600/5 rounded-full blur-[100px] pointer-events-none -z-10 mix-blend-multiply" />
@@ -381,10 +381,10 @@ ${formData.name}`;
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1 }}
-          className="font-display font-black text-3xl xs:text-4xl sm:text-6xl md:text-7xl lg:text-8xl text-stone-100 tracking-tighter uppercase leading-[0.9] break-words max-w-full"
+          className="font-display font-black text-4xl sm:text-6xl md:text-7xl lg:text-8xl text-stone-100 tracking-tighter uppercase leading-[0.9]"
         >
           Let's Build <br/>
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 via-rose-500 to-amber-500 font-serif italic font-light lowercase text-3xl xs:text-4xl sm:text-7xl md:text-8xl lg:text-9xl break-words max-w-full">something</span> <br/>
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 via-rose-500 to-amber-500 font-serif italic font-light lowercase text-5xl sm:text-7xl md:text-8xl lg:text-9xl">something</span> <br/>
           Beautiful.
         </motion.h1>
       </section>

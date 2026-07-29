@@ -9,7 +9,6 @@ import ScrollProgress from './components/ScrollProgress';
 import CommandPalette from './components/CommandPalette';
 import SEO from './components/SEO';
 import FloatingContact from './components/FloatingContact';
-import Breadcrumb from './components/Breadcrumb';
 import { DebugProvider } from './components/DebugContext';
 import { CurrencyProvider } from './contexts/CurrencyContext';
 import InitializeModal from './components/InitializeModal';
@@ -140,9 +139,6 @@ export default function App() {
         <Navigation currentPath={currentPath} navigate={navigate} />
 
         <div className="relative z-10">
-          {/* Navigational Breadcrumb Trail */}
-          <Breadcrumb currentPath={currentPath} navigate={navigate} />
-
           {/* Dynamic Main Page Container */}
           <main id="main-content" className="flex-grow">
             <ScrollSection>
