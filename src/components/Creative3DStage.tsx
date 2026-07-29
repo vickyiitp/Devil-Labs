@@ -273,37 +273,22 @@ export default function Creative3DStage({ playClick, playHover }: Creative3DStag
   return (
     <div 
       id="website-walkthrough-video-root" 
-      className="rounded-2xl bg-[#0d0d12] shadow-2xl overflow-hidden flex flex-col h-full min-h-[480px] lg:min-h-[500px] relative text-left p-0"
+      className="flex flex-col h-full min-h-[480px] lg:min-h-[500px] relative text-left p-0"
     >
       {/* Professional Player Top Telemetry Header */}
-      <div className="p-3.5 sm:p-4 border-b border-white/10 bg-[#050505]/80 flex flex-col gap-2 z-10 backdrop-blur-xl">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-2">
-            <Layers2 size={14} className="text-violet-600 animate-spin-slow" />
-            <span className="font-mono text-[10px] font-black uppercase tracking-widest text-stone-300">
-              ✦ WEB ARCHITECTURE VISUALIZER
-            </span>
-          </div>
-          <div className="flex items-center space-x-1.5 bg-violet-100/80 px-2.5 py-1 rounded-full border border-violet-200">
-            <span className="w-1.5 h-1.5 rounded-full bg-violet-500 animate-ping" />
-            <span className="font-mono text-[9px] font-black uppercase text-violet-400 tracking-wide">
-              ● AUTO RUNTIME PREVIEW
-            </span>
-          </div>
-        </div>
-
+      <div className="z-10">
         {/* Tab Controls representing actual website processes */}
-        <div className="grid grid-cols-5 gap-1 bg-[#111]/50 p-0.5 rounded-xl border border-white/10">
+        <div className="grid grid-cols-5 gap-1 p-1">
           {WALKTHROUGH_PAGES.map((page, idx) => {
             const isActive = activeIdx === idx;
             return (
               <button
                 key={page.id}
                 onClick={() => handleTimelineClick(idx)}
-                className={`py-1.5 text-[8px] sm:text-[9.5px] font-mono font-bold uppercase rounded-lg transition-all duration-300 cursor-pointer ${
+                className={`py-2 text-[8px] sm:text-[9.5px] font-mono font-bold uppercase transition-all duration-300 cursor-pointer ${
                   isActive 
-                    ? 'bg-[#050505] text-violet-400 shadow-sm border border-white/10 scale-[1.01]' 
-                    : 'text-stone-400 hover:text-stone-100 hover:bg-[#050505]/60'
+                    ? 'text-violet-400 border-b-2 border-violet-500' 
+                    : 'text-stone-400 hover:text-stone-100 border-b-2 border-transparent'
                 }`}
               >
                 {page.name.split(' ')[0]}
@@ -316,9 +301,9 @@ export default function Creative3DStage({ playClick, playHover }: Creative3DStag
       {/* Video Simulated Sandbox Canvas Container */}
       <div 
         ref={stageRef}
-        className="flex-1 relative overflow-hidden flex flex-col justify-between p-4 sm:p-5 select-none bg-[#0a0a0a] min-h-[290px] lg:min-h-[300px]"
+        className="flex-1 relative overflow-hidden flex flex-col justify-between p-4 sm:p-5 select-none min-h-[290px] lg:min-h-[300px]"
         style={{
-          boxShadow: `inset 0 0 50px ${activePage.glowColor}`,
+          boxShadow: `inset 0 0 50px ${activePage.glowColor}10`,
           transition: 'box-shadow 0.6s ease'
         }}
       >

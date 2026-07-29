@@ -94,7 +94,7 @@ export default function Navigation({ currentPath, navigate }: NavigationProps) {
     <>
       <header 
         id="site-header" 
-        className="fixed left-0 w-full z-50 pointer-events-none font-sans transition-all duration-500 ease-in-out pt-2 sm:pt-3 md:pt-4"
+        className="fixed left-0 w-full z-50 pointer-events-none font-sans transition-all duration-500 ease-in-out pt-2"
         style={{
           top: 0,
           transform: visible ? 'translateY(0)' : 'translateY(-120%)'
@@ -115,7 +115,7 @@ export default function Navigation({ currentPath, navigate }: NavigationProps) {
         </button>
 
         {/* Desktop Nav - Floating Pill (Visible on XL screens to fit perfectly without screen collision) */}
-        <nav id="desktop-nav" className="hidden xl:flex items-center bg-[#0d0d12]/80 backdrop-blur-2xl border border-white/10 px-2 py-1.5 rounded-full shadow-[0_10px_30px_rgba(0,0,0,0.8),inset_0_1px_0_rgba(255,255,255,0.1)] relative">
+        <nav id="desktop-nav" className="hidden xl:flex items-center bg-[#050505]/80 backdrop-blur-2xl border border-white/10 px-2 py-1.5 rounded-full shadow-[0_10px_30px_rgba(0,0,0,0.8),inset_0_1px_0_rgba(255,255,255,0.1)] relative">
           {navItems.map((item) => {
             const isActive = currentPath === item.path;
             return (
@@ -276,9 +276,7 @@ export default function Navigation({ currentPath, navigate }: NavigationProps) {
                     }`}
                   >
                     <span>{item.name}</span>
-                    <span className={`text-xs ${isActive ? 'text-amber-300' : 'text-stone-400'}`}>
-                      {item.label.split(' ')[0]} →
-                    </span>
+                    
                   </button>
                 );
               })}

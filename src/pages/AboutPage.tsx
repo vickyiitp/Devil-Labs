@@ -13,7 +13,7 @@ interface AboutPageProps {
 
 export default function AboutPage({ navigate }: AboutPageProps) {
   return (
-    <div className="pt-16 sm:pt-20 lg:pt-24 pb-24 px-4 md:px-8 max-w-7xl mx-auto min-h-screen text-stone-100">
+    <div className="pt-12 sm:pt-16 lg:pt-20 pb-24 px-4 md:px-8 max-w-7xl mx-auto min-h-screen text-stone-100">
       {/* Header */}
       <section className="mb-24">
         <motion.h1 

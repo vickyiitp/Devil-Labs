@@ -172,7 +172,7 @@ export default function ProductsPage({ navigate }: { navigate: (path: string) =>
   };
 
   return (
-    <div id="products-page-root" className="pt-16 sm:pt-20 lg:pt-24 pb-24 px-4 md:px-8 max-w-7xl mx-auto text-stone-100">
+    <div id="products-page-root" className="pt-12 sm:pt-16 lg:pt-20 pb-24 px-4 md:px-8 max-w-7xl mx-auto text-stone-100">
       
       {/* 1. HEADER DIVISION */}
       <section id="products-header" className="mb-16 space-y-4">

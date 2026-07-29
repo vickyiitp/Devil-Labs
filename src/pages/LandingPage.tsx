@@ -178,7 +178,7 @@ export default function LandingPage({ navigate }: LandingPageProps) {
   };
 
   return (
-    <div id="landing-page-root" className="pt-16 sm:pt-20 lg:pt-24">
+    <div id="landing-page-root" className="pt-12 sm:pt-16 lg:pt-20">
       {/* 1. HERO SECTION WITH INTEGRATED PORTAL AND AUDIO ENGINE */}
       <section 
         id="hero-section" 
@@ -226,7 +226,7 @@ export default function LandingPage({ navigate }: LandingPageProps) {
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_50%,#000000_98%)] pointer-events-none" />
         </div>
 
-        <div className="max-w-7xl w-full mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center px-4 md:px-8">
+        <div className="max-w-7xl w-full mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start px-4 md:px-8">
           
           {/* LEFT COLUMN: Deep Technical Value Engine & Strategic Business Hook */}
           <motion.div
@@ -238,7 +238,22 @@ export default function LandingPage({ navigate }: LandingPageProps) {
           >
             
             
-            {/* Headline with Staggered Kinetic Reveal & Deep Positioning */}
+            {/* Value Proposition Toggle */}
+            <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.2 }} className="flex items-center bg-[#111]/80 backdrop-blur-md p-1 rounded-full border border-white/10 shadow-xl">
+              <button onClick={() => { playClickSound(); setHeroMode("ai"); }} className={`px-5 py-2 rounded-full text-[9px] sm:text-[10px] font-sans font-black uppercase tracking-widest transition-all duration-300 relative ${heroMode === 'ai' ? 'text-white' : 'text-stone-400 hover:text-stone-200'}`}>
+                {heroMode === 'ai' && (
+                  <motion.div layoutId="hero-toggle-bg" className="absolute inset-0 bg-violet-600 rounded-full shadow-[0_0_20px_rgba(139,92,246,0.4)]" />
+                )}
+                <span className="relative z-10">Cognitive AI Agents</span>
+              </button>
+              <button onClick={() => { playClickSound(); setHeroMode("web"); }} className={`px-5 py-2 rounded-full text-[9px] sm:text-[10px] font-sans font-black uppercase tracking-widest transition-all duration-300 relative ${heroMode === 'web' ? 'text-white' : 'text-stone-400 hover:text-stone-200'}`}>
+                {heroMode === 'web' && (
+                  <motion.div layoutId="hero-toggle-bg" className="absolute inset-0 bg-blue-600 rounded-full shadow-[0_0_20px_rgba(37,99,235,0.4)]" />
+                )}
+                <span className="relative z-10">High-Velocity Web</span>
+              </button>
+            </motion.div>
+
             <div className="min-h-[120px] sm:min-h-[140px] md:min-h-[160px] lg:min-h-[170px] flex flex-col justify-center w-full lg:items-start items-center">
               <AnimatePresence mode="wait" initial={false}>
                 <motion.div
@@ -377,7 +392,6 @@ export default function LandingPage({ navigate }: LandingPageProps) {
                       "We build secure, high-performance web applications and enterprise platforms tailored to your business goals. Powered by modern cloud infrastructure, we deliver ultra-fast load times and seamless user experiences."
                     )}
                   </motion.p>
-
                   {/* Premium founder signature & co-founder badge */}
                   <motion.div
                     variants={{
@@ -387,9 +401,7 @@ export default function LandingPage({ navigate }: LandingPageProps) {
                     }}
                     className="flex items-center space-x-3.5 pt-2 w-full justify-center lg:justify-start"
                   >
-                    <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-tr from-stone-950 to-stone-850 flex items-center justify-center text-[#0a0a0e] text-[10px] font-sans font-black tracking-wider shadow-md border border-stone-800">
-                      VK
-                    </div>
+                    <img src="https://github.com/vickyiitp.png?size=80" alt="Vicky Kumar" className="flex-shrink-0 w-10 h-10 rounded-full shadow-md border border-stone-800 object-cover" />
                     <div className="text-left">
                       <div className="text-[11px] font-extrabold text-white tracking-wider uppercase font-sans">Vicky Kumar</div>
                       <div className="text-[9px] text-stone-400 font-semibold tracking-wider uppercase leading-none mt-1 font-sans">Co-Founder, Devil Labs • CS Student (IIT Patna)</div>
@@ -479,7 +491,6 @@ export default function LandingPage({ navigate }: LandingPageProps) {
                 <span>{isHoveringHero ? 'Interactive preview active.' : 'Explore our interactive features below.'}</span>
               </div>
             </div>
-
           </motion.div>
 
           {/* RIGHT COLUMN: Portfolio & Process Video Walkthrough Engine */}
@@ -489,7 +500,7 @@ export default function LandingPage({ navigate }: LandingPageProps) {
             viewport={{ once: true }}
             transition={{ type: "spring", stiffness: 70, damping: 16, delay: 0.15 }}
             style={{ transformStyle: "preserve-3d" }}
-            className="lg:col-span-5 w-full max-w-xl mx-auto relative z-10"
+            className="lg:col-span-5 w-full max-w-xl mx-auto relative z-10 lg:self-start lg:-mt-12"
           >
             <Creative3DStage playClick={playClickSound} playHover={playHoverSound} />
           </motion.div>

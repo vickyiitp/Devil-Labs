@@ -49,7 +49,7 @@ export default function ProcessInsightsPage({ navigate }: ProcessInsightsPagePro
   }, []);
 
   return (
-    <div className="pt-16 sm:pt-20 lg:pt-24 pb-24 px-4 md:px-8 max-w-7xl mx-auto min-h-screen text-stone-100 relative">
+    <div className="pt-12 sm:pt-16 lg:pt-20 pb-24 px-4 md:px-8 max-w-7xl mx-auto min-h-screen text-stone-100 relative">
       
       {/* Decorative Matrix & Alignment Marks */}
       <div className="absolute top-24 left-10 text-xs text-violet-500/30 select-none pointer-events-none hidden xl:block font-mono">

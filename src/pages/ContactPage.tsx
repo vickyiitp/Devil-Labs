@@ -362,7 +362,7 @@ ${formData.name}`;
   const mailtoUrl = `mailto:devil.labs.contact@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
 
   return (
-    <div id="contact-page-root" className="pt-16 sm:pt-20 lg:pt-24 pb-32 px-4 md:px-8 max-w-7xl mx-auto min-h-screen relative overflow-hidden text-stone-100">
+    <div id="contact-page-root" className="pt-12 sm:pt-16 lg:pt-20 pb-32 px-4 md:px-8 max-w-7xl mx-auto min-h-screen relative overflow-hidden text-stone-100">
       {/* Abstract Background Blur */}
       <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-violet-600/5 rounded-full blur-[120px] pointer-events-none -z-10 mix-blend-multiply" />
       <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-fuchsia-600/5 rounded-full blur-[100px] pointer-events-none -z-10 mix-blend-multiply" />

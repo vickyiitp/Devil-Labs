@@ -195,7 +195,7 @@ export default function PricingPage({ navigate }: PricingPageProps) {
   ];
 
   return (
-    <div id="pricing-page-root" className="pt-16 sm:pt-20 lg:pt-24 pb-24 px-4 md:px-8 max-w-7xl mx-auto text-stone-100">
+    <div id="pricing-page-root" className="pt-12 sm:pt-16 lg:pt-20 pb-24 px-4 md:px-8 max-w-7xl mx-auto text-stone-100">
       {/* 1. HEADER */}
       <section id="pricing-header" className="mb-20 flex flex-col md:flex-row md:items-end md:justify-between gap-6 border-b border-white/10/30 pb-10">
         <div className="space-y-4">

@@ -1,0 +1,121 @@
+
+                  {/* Premium founder signature & co-founder badge */}
+                  <motion.div
+                    variants={{
+                      hidden: { opacity: 0, y: 10 },
+                      show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: 0.15 } },
+                      exit: { opacity: 0, y: -10, transition: { duration: 0.3 } }
+                    }}
+                    className="flex items-center space-x-3.5 pt-2 w-full justify-center lg:justify-start"
+                  >
+                    <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-tr from-stone-950 to-stone-850 flex items-center justify-center text-[#0a0a0e] text-[10px] font-sans font-black tracking-wider shadow-md border border-stone-800">
+                      VK
+                    </div>
+                    <div className="text-left">
+                      <div className="text-[11px] font-extrabold text-white tracking-wider uppercase font-sans">Vicky Kumar</div>
+                      <div className="text-[9px] text-stone-400 font-semibold tracking-wider uppercase leading-none mt-1 font-sans">Co-Founder, Devil Labs • CS Student (IIT Patna)</div>
+                    </div>
+                  </motion.div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
+            {/* STRATEGIC TRUST MATRIX - High-Contrast Bento Block Grid */}
+            <div className="w-full pt-6 border-t border-white/10 text-left">
+              <h2 className="text-[10px] font-sans font-black uppercase text-stone-300 tracking-[0.25em] block mb-4">
+                ✦ DEVIL LABS ADVANTAGE
+              </h2>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 w-full">
+                <div className="bg-[#050505]/85 backdrop-blur-md border border-white/10 p-5 rounded-2xl flex flex-col justify-between hover:border-violet-400 hover:bg-[#0a0a0a] transition-all duration-300 shadow-xl group">
+                  <div>
+                    <span className="text-[9px] font-sans font-black text-violet-400 block mb-2 tracking-[0.1em]">
+                      01 • ACADEMIC EXCELLENCE
+                    </span>
+                    <h3 className="text-white font-display font-extrabold text-sm uppercase tracking-tight mb-1.5 group-hover:text-violet-400 transition-colors">
+                      IIT Patna CS
+                    </h3>
+                  </div>
+                  <p className="text-[11px] text-stone-300 leading-relaxed font-sans font-normal mt-1">
+                    Rigorous engineering standards and clean, efficient software design.
+                  </p>
+                </div>
+
+                <div className="bg-[#050505]/85 backdrop-blur-md border border-white/10 p-5 rounded-2xl flex flex-col justify-between hover:border-rose-400 hover:bg-[#0a0a0a] transition-all duration-300 shadow-xl group">
+                  <div>
+                    <span className="text-[9px] font-sans font-black text-rose-400 block mb-2 tracking-[0.1em]">
+                      02 • RELIABILITY &amp; SLA
+                    </span>
+                    <h3 className="text-white font-display font-extrabold text-sm uppercase tracking-tight mb-1.5 group-hover:text-rose-400 transition-colors">
+                      99.9% Uptime
+                    </h3>
+                  </div>
+                  <p className="text-[11px] text-stone-300 leading-relaxed font-sans font-normal mt-1">
+                    Reliable systems built to perform consistently under heavy workload.
+                  </p>
+                </div>
+
+                <div className="bg-[#050505]/85 backdrop-blur-md border border-white/10 p-5 rounded-2xl flex flex-col justify-between hover:border-amber-400 hover:bg-[#0a0a0a] transition-all duration-300 shadow-xl group">
+                  <div>
+                    <span className="text-[9px] font-sans font-black text-amber-400 block mb-2 tracking-[0.1em]">
+                      03 • SPEED &amp; PERFORMANCE
+                    </span>
+                    <h3 className="text-white font-display font-extrabold text-sm uppercase tracking-tight mb-1.5 group-hover:text-amber-400 transition-colors">
+                      Instant Load
+                    </h3>
+                  </div>
+                  <p className="text-[11px] text-stone-300 leading-relaxed font-sans font-normal mt-1">
+                    Global distribution ensures instant page loads and smooth interactions.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Call to Action Row */}
+            <div className="relative flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2 w-full">
+              {/* Soft responsive gradient overlay for readability against varying backgrounds */}
+              <div className="absolute -inset-x-4 -inset-y-6 sm:-inset-y-8 sm:-inset-x-8 bg-[radial-gradient(ellipse_at_center,rgba(12,10,9,0.9)_0%,rgba(12,10,9,0.5)_50%,transparent_100%)] blur-xl -z-10 pointer-events-none" />
+              <motion.div
+                initial={{ opacity: 0, scale: 0.97 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                className="shrink-0 w-full sm:w-auto"
+              >
+                <button
+                  onMouseEnter={playSpatialHoverSound}
+                  onClick={() => { playClickSound(); window.dispatchEvent(new CustomEvent('open-initialize-modal')); }}
+                  className="group relative w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-violet-600 to-indigo-600 text-white font-sans font-bold text-xs tracking-widest uppercase rounded-full flex items-center justify-center space-x-3 cursor-pointer transition-all duration-300 hover:shadow-[0_0_25px_rgba(139,92,246,0.5)] hover:scale-105 overflow-hidden"
+                >
+                  <span className="relative z-10 flex items-center space-x-2">
+                    <span>Initialize Project</span>
+                    <ArrowRight size={14} className="stroke-[2.5] group-hover:translate-x-1 transition-transform" />
+                  </span>
+                  <div className="absolute inset-0 w-[200%] h-full -translate-x-full group-hover:animate-[shimmer_2s_infinite] bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12" />
+                </button>
+              </motion.div>
+              
+              {/* Streamlined hover action reminder */}
+              <div className="flex items-center space-x-2 text-stone-400 font-sans text-[11px]">
+                <div className={`w-1.5 h-1.5 rounded-full ${isHoveringHero ? 'bg-violet-600 animate-pulse' : 'bg-white/20'}`} />
+                <span>{isHoveringHero ? 'Interactive preview active.' : 'Explore our interactive features below.'}</span>
+              </div>
+            </div>
+
+          </motion.div>
+
+          {/* RIGHT COLUMN: Portfolio & Process Video Walkthrough Engine */}
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.8, y: 80, rotateX: 20, rotateY: -15, transformPerspective: 1200 }}
+            whileInView={{ opacity: 1, scale: 1, y: 0, rotateX: 0, rotateY: 0 }}
+            viewport={{ once: true }}
+            transition={{ type: "spring", stiffness: 70, damping: 16, delay: 0.15 }}
+            style={{ transformStyle: "preserve-3d" }}
+            className="lg:col-span-5 w-full max-w-xl mx-auto relative z-10"
+          >
+            <Creative3DStage playClick={playClickSound} playHover={playHoverSound} />
+          </motion.div>
+
+        </div>
+
+        {/* Scroll Indicator */}
+        <motion.div 

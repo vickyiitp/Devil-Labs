@@ -20,7 +20,7 @@ export default function ServicesPage({ navigate }: ServicesPageProps) {
   ];
 
   return (
-    <div id="services-page-root" className="pt-16 sm:pt-20 lg:pt-24 pb-24 px-4 md:px-8 max-w-7xl mx-auto text-stone-100">
+    <div id="services-page-root" className="pt-12 sm:pt-16 lg:pt-20 pb-24 px-4 md:px-8 max-w-7xl mx-auto text-stone-100">
       {/* 1. HEADER */}
       <section id="services-header" className="mb-20 space-y-4">
         <span className="text-violet-400 font-sans text-xs uppercase tracking-widest font-extrabold">✦ OUR CAPABILITIES</span>
