@@ -1,0 +1,81 @@
+{
+  "timestamp": "2026-07-30T19:11:54.956Z",
+  "overallScore": 98,
+  "seoScore": 99,
+  "performanceScore": 96,
+  "securityScore": 100,
+  "accessibilityScore": 98,
+  "freshnessScore": 98,
+  "checks": [
+    {
+      "name": "Canonical Tag Check",
+      "category": "SEO",
+      "status": "PASSED",
+      "details": "Canonical link tag present pointing to devillabs.dev"
+    },
+    {
+      "name": "Schema.org Entity Graph",
+      "category": "SEO",
+      "status": "PASSED",
+      "details": "Static JSON-LD graph present with Organization, WebSite, and FAQPage nodes"
+    },
+    {
+      "name": "Pre-Rendered Bot Fallback",
+      "category": "AEO/GEO",
+      "status": "PASSED",
+      "details": "Static fallback HTML text present inside #root for non-JS crawlers"
+    },
+    {
+      "name": "HTML Meta Standard Specs",
+      "category": "Security",
+      "status": "PASSED",
+      "details": "UTF-8 charset and mobile viewport correctly defined"
+    },
+    {
+      "name": "Sitemap Health & Coverage",
+      "category": "SEO",
+      "status": "PASSED",
+      "details": "Valid XML sitemap with 26 discoverable URLs (lastmod: 2026-07-30)"
+    },
+    {
+      "name": "Robots.txt Directives",
+      "category": "SEO",
+      "status": "PASSED",
+      "details": "Host directive set to devillabs.dev with explicit sitemap endpoints"
+    },
+    {
+      "name": "AI Search & RAG Context Files",
+      "category": "AEO/GEO",
+      "status": "PASSED",
+      "details": "llms.txt and llms-full.txt present with factual FAQs and entity definitions"
+    },
+    {
+      "name": "RSS Feed Discovery",
+      "category": "SEO",
+      "status": "PASSED",
+      "details": "Valid RSS 2.0 feed present at public/rss.xml"
+    },
+    {
+      "name": "Web App Manifest",
+      "category": "Performance",
+      "status": "PASSED",
+      "details": "PWA site.webmanifest present with icon configurations"
+    },
+    {
+      "name": "Dynamic SEO Schema Component",
+      "category": "SEO",
+      "status": "PASSED",
+      "details": "SEO.tsx dynamically injects JSON-LD graph with Organization, Person, FAQ, and Breadcrumbs"
+    },
+    {
+      "name": "Security Headers & MIME Cache",
+      "category": "Security",
+      "status": "PASSED",
+      "details": "vercel.json configured with security headers and XML/RSS Cache-Control directives"
+    }
+  ],
+  "sitemapStats": {
+    "totalUrls": 26,
+    "lastModDate": "2026-07-30"
+  }
+}

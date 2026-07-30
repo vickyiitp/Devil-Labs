@@ -11,6 +11,7 @@ import { useDataStore } from '../hooks/useDataStore';
 import { audioEngine } from '../lib/audio';
 import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 import { jwtDecode } from 'jwt-decode';
+import SelfEvolvingOSDashboard from '../components/SelfEvolvingOSDashboard';
 
 interface AdminPageProps {
   navigate: (path: string) => void;
@@ -24,7 +25,7 @@ export default function AdminPage({ navigate }: AdminPageProps) {
   const [authError, setAuthError] = useState('');
 
   // Active Tab
-  const [activeTab, setActiveTab] = useState<'analytics' | 'projects' | 'products' | 'blogs' | 'testimonials' | 'taxonomies' | 'github'>('analytics');
+  const [activeTab, setActiveTab] = useState<'analytics' | 'self-evolving' | 'projects' | 'products' | 'blogs' | 'testimonials' | 'taxonomies' | 'github'>('analytics');
 
   // Search & Filters inside Admin
   const [searchQuery, setSearchQuery] = useState('');
@@ -418,6 +419,7 @@ export default function AdminPage({ navigate }: AdminPageProps) {
         <div className="flex overflow-x-auto gap-2 p-1.5 bg-[#0d0d12] border border-white/10 rounded-2xl no-scrollbar">
           {[
             { id: 'analytics', label: 'Analytics & Traffic', icon: BarChart3, count: null },
+            { id: 'self-evolving', label: 'AI OS Telemetry', icon: Cpu, count: null },
             { id: 'projects', label: 'Projects', icon: LayoutGrid, count: store.projects.length },
             { id: 'products', label: 'Digital Products', icon: Package, count: store.products.length },
             { id: 'blogs', label: 'Blogs & Whitepapers', icon: FileText, count: store.blogs.length },
@@ -448,6 +450,13 @@ export default function AdminPage({ navigate }: AdminPageProps) {
             );
           })}
         </div>
+
+        {/* ============================================================ */}
+        {/* TAB 0: SELF-EVOLVING AI WEBSITE OS TELEMETRY */}
+        {/* ============================================================ */}
+        {activeTab === 'self-evolving' && (
+          <SelfEvolvingOSDashboard />
+        )}
 
         {/* ============================================================ */}
         {/* TAB 1: ANALYTICS & TRAFFIC DISPATCHER */}
