@@ -1,15 +1,29 @@
 import express from "express";
 import path from "path";
+import dotenv from "dotenv";
 import { createServer as createViteServer } from "vite";
 import { serviceCategories } from "./src/data/services";
 import { articles } from "./src/data/insights";
 import { dispatchNotifications } from "./src/utils/notificationService";
 
+dotenv.config();
+
 async function startServer() {
   const app = express();
-  const PORT = 3000;
+  const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 3000;
 
   app.use(express.json());
+
+  // CORS Middleware
+  app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+    res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+    if (req.method === "OPTIONS") {
+      return res.sendStatus(200);
+    }
+    next();
+  });
 
   // API Routes
   app.post("/api/contact", async (req, res) => {
@@ -68,7 +82,7 @@ async function startServer() {
       }));
 
       const response = await ai.models.generateContent({
-        model: "gemini-3.5-flash",
+        model: "gemini-2.5-flash",
         contents,
         config: { systemInstruction },
       });

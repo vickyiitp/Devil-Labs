@@ -1,4 +1,5 @@
 import nodemailer from 'nodemailer';
+import { appendLeadToGoogleSheets, saveBriefToGoogleDrive } from '../lib/googleServices';
 
 export interface LeadData {
   name: string;
@@ -11,9 +12,20 @@ export interface LeadData {
   specs: string;
 }
 
-export async function dispatchNotifications(lead: LeadData) {
-  const results = {
+export interface DispatchResults {
+  email: { success: boolean; info: string };
+  googleSheets: { success: boolean; info: string };
+  googleDrive: { success: boolean; info: string };
+  telegram: { success: boolean; info: string };
+  whatsapp: { success: boolean; info: string };
+  sms: { success: boolean; info: string };
+}
+
+export async function dispatchNotifications(lead: LeadData): Promise<DispatchResults> {
+  const results: DispatchResults = {
     email: { success: false, info: '' },
+    googleSheets: { success: false, info: '' },
+    googleDrive: { success: false, info: '' },
     telegram: { success: false, info: '' },
     whatsapp: { success: false, info: '' },
     sms: { success: false, info: '' }
@@ -34,9 +46,25 @@ ${lead.specs}
 ==================================
 `;
 
-  // 1. EMAIL DISPATCH via Nodemailer SMTP (Free & Open Source)
+  // 1. GOOGLE SHEETS DISPATCH (Log lead to Google Sheets CRM)
   try {
-    const smtpHost = process.env.SMTP_HOST;
+    results.googleSheets = await appendLeadToGoogleSheets(lead);
+  } catch (error: any) {
+    console.error('Google Sheets dispatch error:', error);
+    results.googleSheets = { success: false, info: error.message || 'Google Sheets logging failed.' };
+  }
+
+  // 2. GOOGLE DRIVE DISPATCH (Save spec document brief in Google Drive)
+  try {
+    results.googleDrive = await saveBriefToGoogleDrive(lead);
+  } catch (error: any) {
+    console.error('Google Drive dispatch error:', error);
+    results.googleDrive = { success: false, info: error.message || 'Google Drive brief upload failed.' };
+  }
+
+  // 3. EMAIL DISPATCH via Nodemailer / Gmail SMTP
+  try {
+    const smtpHost = process.env.SMTP_HOST || 'smtp.gmail.com';
     const smtpPort = process.env.SMTP_PORT ? parseInt(process.env.SMTP_PORT, 10) : 587;
     const smtpUser = process.env.SMTP_USER;
     const smtpPass = process.env.SMTP_PASS;
@@ -141,27 +169,85 @@ ${lead.specs}
           `
         };
         await transporter.sendMail(clientMailOptions);
-        results.email = { success: true, info: 'Dispatched successfully via custom SMTP (admin and client notified).' };
+        results.email = { success: true, info: 'Dispatched successfully via Gmail/SMTP (admin and client notified).' };
       } catch (clientMailError: any) {
         console.error("Admin notification succeeded but Client confirmation failed:", clientMailError);
-        results.email = { success: true, info: `Admin notified, but client auto-confirmation failed: ${clientMailError.message}` };
+        results.email = { success: true, info: `Admin notified via SMTP, client confirmation error: ${clientMailError.message}` };
       }
     } else {
-      results.email = { success: false, info: 'SMTP configuration missing in environment. Logged to server stdout.' };
-      console.log(`[Email Mock Fallback] SMTP keys not found. ${messageText}`);
+      // FormSubmit Dispatch (Free & keyless direct email delivery to devil.labs.contact@gmail.com)
+      console.log('SMTP credentials not set. Initiating FormSubmit direct delivery uplink...');
+      const fsResponse = await fetch(`https://formsubmit.co/ajax/${adminEmail}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          _subject: `🚨 [NEW LEAD] ${lead.company} - ${lead.scope}`,
+          _captcha: 'false',
+          _replyto: lead.email,
+          _template: 'table',
+          "Client Name": lead.name,
+          "Email Address": lead.email,
+          "Phone Number": lead.phone,
+          "Organization": lead.company,
+          "Company Size": lead.companySize,
+          "Project Scope": lead.scope,
+          "Budget Expectation": lead.budget,
+          "Project Specifications": lead.specs
+        })
+      });
+
+      if (fsResponse.ok) {
+        results.email = { success: true, info: `Dispatched successfully to ${adminEmail} via FormSubmit API.` };
+      } else {
+        const fsErrText = await fsResponse.text();
+        results.email = { success: false, info: `FormSubmit API returned: ${fsErrText}` };
+      }
     }
   } catch (error: any) {
     console.error("Email notification failed:", error);
-    results.email = { success: false, info: error.message || 'SMTP transmission failed.' };
+    // Fallback attempt to FormSubmit if Nodemailer threw an exception
+    try {
+      const adminEmail = process.env.ADMIN_EMAIL || 'devil.labs.contact@gmail.com';
+      const fsResponse = await fetch(`https://formsubmit.co/ajax/${adminEmail}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          _subject: `🚨 [NEW LEAD] ${lead.company} - ${lead.scope}`,
+          _captcha: 'false',
+          _replyto: lead.email,
+          "Client Name": lead.name,
+          "Email Address": lead.email,
+          "Phone Number": lead.phone,
+          "Organization": lead.company,
+          "Company Size": lead.companySize,
+          "Project Scope": lead.scope,
+          "Budget Expectation": lead.budget,
+          "Project Specifications": lead.specs
+        })
+      });
+
+      if (fsResponse.ok) {
+        results.email = { success: true, info: `Dispatched successfully to ${adminEmail} via FormSubmit API.` };
+      } else {
+        results.email = { success: false, info: error.message || 'Email transmission failed.' };
+      }
+    } catch (fsErr: any) {
+      results.email = { success: false, info: error.message || 'SMTP & FormSubmit failed.' };
+    }
   }
 
-  // 2. TELEGRAM DISPATCH (Free & Open Source Bot API)
+  // 4. TELEGRAM DISPATCH (Free & Open Source Bot API)
   try {
     const tgToken = process.env.TELEGRAM_BOT_TOKEN;
     const tgChatId = process.env.TELEGRAM_CHAT_ID;
 
     if (tgToken && tgChatId) {
-      // Escape special characters for Telegram MarkdownV2
       const escapeMarkdown = (text: string) => {
         return text.replace(/[_*\[\]()~`>#+\-=|{}.!]/g, '\\$&');
       };
@@ -200,12 +286,11 @@ ${lead.specs}
     results.telegram = { success: false, info: error.message || 'Telegram connection failed.' };
   }
 
-  // 3. WHATSAPP DISPATCH
-  // Standard Meta API or open-source local WhatsApp web webhook (e.g. self-hosted Baileys / evolution-api / wwebjs)
+  // 5. WHATSAPP DISPATCH
   try {
-    const waApiUrl = process.env.WHATSAPP_API_URL; // URL of self-hosted WhatsApp gateway or webhook handler
+    const waApiUrl = process.env.WHATSAPP_API_URL;
     const waToken = process.env.WHATSAPP_API_TOKEN;
-    const waPhone = process.env.WHATSAPP_RECIPIENT_PHONE; // Target phone to notify
+    const waPhone = process.env.WHATSAPP_RECIPIENT_PHONE;
 
     if (waApiUrl && waPhone) {
       const payload = {
@@ -229,14 +314,12 @@ ${lead.specs}
         results.whatsapp = { success: false, info: `WhatsApp API error: ${errText}` };
       }
     } else {
-      // Look for Twilio WhatsApp fallbacks if configured
       const twilioSid = process.env.TWILIO_ACCOUNT_SID;
       const twilioAuthToken = process.env.TWILIO_AUTH_TOKEN;
-      const twilioFrom = process.env.TWILIO_WHATSAPP_FROM; // e.g. whatsapp:+14155238886
+      const twilioFrom = process.env.TWILIO_WHATSAPP_FROM;
       const twilioTo = process.env.TWILIO_WHATSAPP_TO;
 
       if (twilioSid && twilioAuthToken && twilioFrom && twilioTo) {
-        // Base64 encode credentials
         const auth = Buffer.from(`${twilioSid}:${twilioAuthToken}`).toString('base64');
         const waMsg = `🚨 Devil Labs: New Lead 🚨\n\nName: ${lead.name}\nEmail: ${lead.email}\nPhone: ${lead.phone}\nCompany: ${lead.company}\nScope: ${lead.scope}\nBudget: ${lead.budget}\n\nSpecs: ${lead.specs}`;
 
@@ -269,14 +352,13 @@ ${lead.specs}
     results.whatsapp = { success: false, info: error.message || 'WhatsApp pipeline failed.' };
   }
 
-  // 4. SMS DISPATCH (Phone Message)
+  // 6. SMS DISPATCH
   try {
-    const smsGatewayUrl = process.env.SMS_GATEWAY_URL; // e.g. open source HTTP SMS Gateway or virtual SIM endpoint
+    const smsGatewayUrl = process.env.SMS_GATEWAY_URL;
     const smsGatewayToken = process.env.SMS_GATEWAY_TOKEN;
     const smsRecipient = process.env.SMS_RECIPIENT_PHONE;
 
     if (smsGatewayUrl && smsRecipient) {
-      // Universal custom HTTP SMS gateway format
       const formattedUrl = smsGatewayUrl
         .replace('{to}', encodeURIComponent(smsRecipient))
         .replace('{message}', encodeURIComponent(`Devil Labs Lead: ${lead.name} from ${lead.company} needs ${lead.scope}`));
@@ -299,10 +381,9 @@ ${lead.specs}
         results.sms = { success: false, info: `Custom SMS Gateway returned HTTP status ${response.status}.` };
       }
     } else {
-      // Look for Twilio SMS parameters
       const twilioSid = process.env.TWILIO_ACCOUNT_SID;
       const twilioAuthToken = process.env.TWILIO_AUTH_TOKEN;
-      const twilioFrom = process.env.TWILIO_FROM_SMS; // e.g., standard phone number +123456789
+      const twilioFrom = process.env.TWILIO_FROM_SMS;
       const twilioTo = process.env.TWILIO_TO_SMS;
 
       if (twilioSid && twilioAuthToken && twilioFrom && twilioTo) {

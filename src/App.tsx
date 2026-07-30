@@ -12,6 +12,7 @@ import FloatingContact from './components/FloatingContact';
 import { DebugProvider } from './components/DebugContext';
 import { CurrencyProvider } from './contexts/CurrencyContext';
 import InitializeModal from './components/InitializeModal';
+import ErrorBoundary from './components/ErrorBoundary';
 
 // Code split all secondary routes for fast initial page load & high Lighthouse score
 const ServicesPage = lazy(() => import('./pages/ServicesPage'));
@@ -127,62 +128,58 @@ export default function App() {
   };
 
   return (
-    <CurrencyProvider>
-      <DebugProvider>
-        <div id="devil-labs-app-shell" className="min-h-screen bg-[#050505] text-stone-100 flex flex-col justify-between selection:bg-violet-500/30 selection:text-white">
-        <SEO path={currentPath} />
-        <ScrollProgress />
-        <BackgroundEffects />
-        <CommandPalette navigate={navigate} />
-        
-        {/* Navigation Header - Fixed at root level for immediate clickability & visibility */}
-        <Navigation currentPath={currentPath} navigate={navigate} />
-
-        <div className="relative z-10">
-          {/* Dynamic Main Page Container */}
-          <main id="main-content" className="flex-grow">
-            <ScrollSection>
-              <AnimatePresence mode="wait">
-              <motion.div
-                key={currentPath}
-                initial={{ opacity: 0, scale: 0.98, y: 10 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 1.01, y: -10 }}
-                transition={{ 
-                  duration: 0.3, 
-                  ease: [0.16, 1, 0.3, 1]
-                }}
-                className="w-full flex-grow flex flex-col justify-between"
-              >
-                <Suspense fallback={<SkeletonLoader />}>
-                  {renderPage()}
-                </Suspense>
-              </motion.div>
-            </AnimatePresence>
+    <ErrorBoundary>
+      <CurrencyProvider>
+        <DebugProvider>
+          <div id="devil-labs-app-shell" className="min-h-screen bg-[#050505] text-stone-100 flex flex-col justify-between selection:bg-violet-500/30 selection:text-white">
+          <SEO path={currentPath} />
+          <ScrollProgress />
+          <BackgroundEffects />
+          <CommandPalette navigate={navigate} />
           
-            </ScrollSection>
-          </main>
-        </div>
+          {/* Navigation Header - Fixed at root level for immediate clickability & visibility */}
+          <Navigation currentPath={currentPath} navigate={navigate} />
 
-        {/* Curated Claymorphic Design Disciplines Section (Sleek Pre-Footer Showcase) */}
-        {!['/legal/privacy', '/legal/terms', '/legal/msa'].includes(currentPath) && (
-          <ScrollSection>
+          <div className="relative z-10 flex-grow">
+            {/* Dynamic Main Page Container */}
+            <main id="main-content" className="flex-grow">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentPath}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -8 }}
+                  transition={{ 
+                    duration: 0.25, 
+                    ease: [0.16, 1, 0.3, 1]
+                  }}
+                  className="w-full flex-grow flex flex-col justify-between"
+                >
+                  <Suspense fallback={<SkeletonLoader />}>
+                    {renderPage()}
+                  </Suspense>
+                </motion.div>
+              </AnimatePresence>
+            </main>
+          </div>
+
+          {/* Curated Claymorphic Design Disciplines Section (Sleek Pre-Footer Showcase) */}
+          {!['/legal/privacy', '/legal/terms', '/legal/msa'].includes(currentPath) && (
             <ClayTopicShowcase />
-          </ScrollSection>
-        )}
+          )}
 
-        {/* Footer Element with Scroll-Triggered Reveal Animation */}
-        <ScrollSection>
+          {/* Footer Element with Scroll-Triggered Reveal Animation */}
           <Footer navigate={navigate} />
-        </ScrollSection>
-        <FloatingContact />
-        <InitializeModal 
-          isOpen={isInitializeModalOpen} 
-          onClose={() => setIsInitializeModalOpen(false)} 
-          navigate={navigate} 
-        />
-      </div>
-    </DebugProvider>
-    </CurrencyProvider>
+
+          <FloatingContact />
+          <InitializeModal 
+            isOpen={isInitializeModalOpen} 
+            onClose={() => setIsInitializeModalOpen(false)} 
+            navigate={navigate} 
+          />
+        </div>
+      </DebugProvider>
+      </CurrencyProvider>
+    </ErrorBoundary>
   );
 }

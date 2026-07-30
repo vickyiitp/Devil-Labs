@@ -1,8 +1,29 @@
 import { motion } from 'motion/react';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
+import heroPoster from '../assets/images/hero_intelligent_systems_1784785833146.webp';
 
 export default function HeroVideoPlayer() {
   const [loaded, setLoaded] = useState(false);
+  const [hasError, setHasError] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    // Safety timeout: if video metadata hasn't loaded in 2.5s, reveal fallback poster
+    const timer = setTimeout(() => {
+      setLoaded(true);
+    }, 2500);
+    return () => clearTimeout(timer);
+  }, []);
+
+  const handleMediaReady = () => {
+    setLoaded(true);
+    setHasError(false);
+  };
+
+  const handleMediaError = () => {
+    setHasError(true);
+    setLoaded(true);
+  };
 
   return (
     <motion.div 
@@ -16,24 +37,45 @@ export default function HeroVideoPlayer() {
       className="w-full max-w-full h-full relative rounded-2xl overflow-hidden bg-[#050505] border border-white/10 flex items-center justify-center shadow-2xl group"
     >
       {!loaded && (
-        <div className="absolute inset-0 bg-[#111] z-10 p-6 flex flex-col justify-end max-w-full">
-          <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-stone-200/50 to-transparent animate-[shimmer_1.5s_infinite]" />
+        <div className="absolute inset-0 bg-[#0d0d12] z-10 p-6 flex flex-col justify-end max-w-full">
+          <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-violet-500/20 to-transparent animate-[shimmer_1.5s_infinite]" />
           <div className="w-1/3 h-4 bg-white/10 rounded-sm mb-4" />
           <div className="w-1/2 h-4 bg-white/10 rounded-sm" />
         </div>
       )}
 
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        preload="metadata"
-        className={`absolute inset-0 w-full h-full object-cover max-w-full transition-opacity duration-700 ${loaded ? 'opacity-85 group-hover:opacity-100' : 'opacity-0'}`}
-        src="https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-a-technological-network-31626-large.mp4"
-        onCanPlayThrough={() => setLoaded(true)}
+      {/* High-fidelity Fallback Image Poster if Video fails or is delayed */}
+      <img
+        src={heroPoster}
+        alt="Devil Labs Autonomous Systems"
+        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${
+          hasError || !loaded ? 'opacity-70' : 'opacity-0'
+        }`}
       />
-      <div className="absolute inset-0 bg-gradient-to-tr from-violet-900/10 via-stone-900/10 to-stone-900/30 pointer-events-none mix-blend-overlay z-10" />
+
+      {!hasError && (
+        <video
+          ref={videoRef}
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+          poster={heroPoster}
+          className={`absolute inset-0 w-full h-full object-cover max-w-full transition-opacity duration-700 ${
+            loaded ? 'opacity-85 group-hover:opacity-100' : 'opacity-0'
+          }`}
+          src="https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-a-technological-network-31626-large.mp4"
+          onCanPlay={handleMediaReady}
+          onCanPlayThrough={handleMediaReady}
+          onLoadedData={handleMediaReady}
+          onLoadedMetadata={handleMediaReady}
+          onPlay={handleMediaReady}
+          onError={handleMediaError}
+        />
+      )}
+
+      <div className="absolute inset-0 bg-gradient-to-tr from-violet-900/20 via-stone-900/10 to-stone-950/40 pointer-events-none mix-blend-overlay z-10" />
       
       {/* Inner decorative elements */}
       <div className="absolute inset-4 sm:inset-6 border border-white/10 rounded-xl pointer-events-none transition-colors duration-500 group-hover:border-violet-500/40 z-20" />

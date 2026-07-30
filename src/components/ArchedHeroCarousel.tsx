@@ -253,7 +253,7 @@ export default function ArchedHeroCarousel() {
                     referrerPolicy="no-referrer"
                     className="absolute inset-0 w-full h-full object-cover max-w-full transition-transform duration-500 hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-white via-white/70 to-white/30" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/75 to-transparent" />
                   
                   {/* Floating labels inside card */}
                   <div className="absolute inset-0 p-2.5 sm:p-3 flex flex-col justify-between text-left">
@@ -261,7 +261,7 @@ export default function ArchedHeroCarousel() {
                       {card.tag}
                     </span>
                     <div>
-                      <span className="font-mono text-[6px] sm:text-[7px] text-violet-600 block leading-none uppercase tracking-widest mb-1 font-bold">
+                      <span className="font-mono text-[6px] sm:text-[7px] text-violet-400 block leading-none uppercase tracking-widest mb-1 font-extrabold">
                         {card.subtitle.split('//')[0]}
                       </span>
                       <h5 className="font-display font-black text-[10px] sm:text-[12px] text-white uppercase tracking-tight leading-tight">

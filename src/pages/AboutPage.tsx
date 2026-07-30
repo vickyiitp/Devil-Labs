@@ -25,7 +25,7 @@ export default function AboutPage({ navigate }: AboutPageProps) {
         </motion.h1>
         <StaggeredHeading 
           text="REDEFINING ENGINEERING IN INDIA." 
-          className="font-display font-black text-3xl xs:text-4xl sm:text-6xl md:text-7xl lg:text-8xl text-stone-100 tracking-tighter uppercase leading-[0.9] mb-8"
+          className="font-display font-black text-2xl xs:text-3xl sm:text-5xl md:text-7xl lg:text-8xl text-stone-100 tracking-tighter uppercase leading-[0.95] mb-8 break-words max-w-full"
         />
       </section>
 

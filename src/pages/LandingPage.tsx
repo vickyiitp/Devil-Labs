@@ -16,6 +16,7 @@ import { HandDrawnCircle, HandDrawnUnderline, HandDrawnArrow, BlueprintStickyNot
 import Creative3DStage from '../components/Creative3DStage';
 import TypographySpecimen from '../components/TypographySpecimen';
 import AEOKnowledgeHub from '../components/AEOKnowledgeHub';
+import RecentUpdates from '../components/RecentUpdates';
 
 import StaggeredHeading from '../components/StaggeredHeading';
 
@@ -165,16 +166,68 @@ export default function LandingPage({ navigate }: LandingPageProps) {
     return () => clearTimeout(timer);
   }, []);
 
-  const handleEmailSubmit = (e: React.FormEvent) => {
+  const handleEmailSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email) return;
 
     setLoading(true);
-    setTimeout(() => {
+    const payload = {
+      name: "Landing Page Lead",
+      email: email,
+      phone: "Not provided",
+      company: "Discovery Call Request",
+      companySize: "Unknown",
+      scope: "General Inquiry / Discovery Call",
+      budget: "Custom",
+      specs: `Lead submitted interest via Landing Page intake form from email: ${email}`
+    };
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+
+      if (!response.ok) {
+        // FormSubmit fallback
+        await fetch('https://formsubmit.co/ajax/devil.labs.contact@gmail.com', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            _subject: `🚨 [LANDING PAGE LEAD] ${email}`,
+            _captcha: 'false',
+            _replyto: email,
+            "Lead Email": email,
+            "Source": "Landing Page Footer Intake"
+          })
+        });
+      }
+    } catch (err) {
+      try {
+        await fetch('https://formsubmit.co/ajax/devil.labs.contact@gmail.com', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            _subject: `🚨 [LANDING PAGE LEAD] ${email}`,
+            _captcha: 'false',
+            _replyto: email,
+            "Lead Email": email,
+            "Source": "Landing Page Footer Intake"
+          })
+        });
+      } catch (fsErr) {}
+    } finally {
       setLoading(false);
       setSubmitted(true);
       setEmail('');
-    }, 1200);
+    }
   };
 
   return (
@@ -607,15 +660,176 @@ export default function LandingPage({ navigate }: LandingPageProps) {
         <SocialProofMarquee />
       </ScrollReveal>
 
-      {/* 2. TECH STACK MARQUEE */}
+      {/* TECH STACK MARQUEE */}
       <ScrollReveal>
         <section id="marquee-section" className="w-full">
           <Marquee />
         </section>
       </ScrollReveal>
 
-      {/* NEW: THE MANIFESTO SECTION */}
-      <section id="manifesto-section" className="py-24 sm:py-32 px-4 md:px-8 max-w-4xl mx-auto border-b border-white/10 text-center">
+      {/* 1. RECENT SYSTEM UPDATES & CHANGELOG */}
+      <ScrollReveal>
+        <RecentUpdates />
+      </ScrollReveal>
+
+      {/* 2. FEATURED PROJECTS SHOWCASE */}
+      <ScrollReveal>
+        <section id="recent-work-section" className="py-20 sm:py-28 px-4 md:px-8 max-w-7xl mx-auto border-b border-white/10">
+          <ProjectGallery />
+        </section>
+      </ScrollReveal>
+
+
+      {/* 4. BUSINESS POSITIONING & IIT PATNA PEDIGREE */}
+      <section id="positioning-section" className="py-24 sm:py-32 px-4 md:px-8 max-w-7xl mx-auto border-b border-white/10">
+        <div className="text-center mb-16 md:mb-20">
+          <span className="text-stone-400 font-sans text-[9px] uppercase tracking-[0.25em] font-black block">
+            ✦ STRATEGIC VALUE ALIGNMENT
+          </span>
+          <StaggeredHeading as="h2" className="text-2xl xs:text-3xl sm:text-5xl font-display font-extrabold text-white tracking-tight mt-3 uppercase leading-none">
+            Business Position &amp; <span className="font-serif italic font-normal text-violet-600 lowercase">specialty</span> niches
+          </StaggeredHeading>
+          <p className="text-stone-400 text-xs sm:text-sm mt-4 max-w-xl mx-auto leading-relaxed font-sans">
+            Founded by elite IIT Patna engineers, we occupy a distinct position resolving critical business bottlenecks through high-fidelity computer systems and autonomous multi-agent pipelines.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+          <div className="lg:col-span-5 flex flex-col justify-center space-y-4">
+            {nichesData.map((item) => {
+              const isActive = activeNicheTab === item.id;
+              return (
+                <motion.button
+                  key={item.id}
+                  onClick={() => {
+                    playClickSound();
+                    setActiveNicheTab(item.id);
+                  }}
+                  onMouseEnter={playHoverSound}
+                  className={`w-full text-left p-6 rounded-2xl border transition-all duration-300 relative overflow-hidden flex items-start space-x-4 cursor-pointer ${
+                    isActive
+                      ? 'bg-[#050505] border-violet-200 shadow-[0_15px_30px_rgba(139,92,246,0.06)]'
+                      : 'bg-[#0a0a0a] border-white/10 hover:bg-[#050505] hover:border-white/20'
+                  }`}
+                  whileHover={{ x: 4 }}
+                  whileTap={{ scale: 0.99 }}
+                >
+                  {isActive && (
+                    <motion.div
+                      layoutId="active-niche-bar"
+                      className="absolute left-0 top-0 bottom-0 w-[4px] bg-gradient-to-b from-violet-600 to-rose-500"
+                      transition={{ type: "spring", stiffness: 100, damping: 15 }}
+                    />
+                  )}
+
+                  <div className={`p-3 rounded-xl border font-sans text-xs font-black shrink-0 ${
+                    isActive 
+                      ? 'bg-violet-950 border-violet-600 text-violet-100' 
+                      : 'bg-[#111] border-white/10 text-stone-400'
+                  }`}>
+                    {item.number}
+                  </div>
+
+                  <div className="space-y-1.5 text-left">
+                    <span className="text-[9px] font-sans font-extrabold uppercase tracking-widest text-stone-400">
+                      {item.tagline}
+                    </span>
+                    <h3 className={`font-display font-black text-sm uppercase tracking-tight ${
+                      isActive ? 'text-white' : 'text-stone-300'
+                    }`}>
+                      {item.title}
+                    </h3>
+                    <p className="text-stone-400 text-xs leading-relaxed normal-case line-clamp-2">
+                      {item.desc}
+                    </p>
+                  </div>
+                </motion.button>
+              );
+            })}
+          </div>
+
+          <div className="lg:col-span-7">
+            <AnimatePresence mode="wait">
+              {nichesData.map((item) => {
+                if (item.id !== activeNicheTab) return null;
+                return (
+                  <motion.div
+                    key={item.id}
+                    initial={{ opacity: 0, x: 20, scale: 0.98 }}
+                    animate={{ opacity: 1, x: 0, scale: 1 }}
+                    exit={{ opacity: 0, x: -20, scale: 0.98 }}
+                    transition={{ type: "spring", stiffness: 100, damping: 15 }}
+                    className="h-full"
+                  >
+                    <CyberFrame
+                      glowColor={item.accentColor as 'violet' | 'fuchsia' | 'blue'}
+                      className="h-full flex flex-col justify-between p-8 md:p-10 bg-[#050505] border border-white/10 shadow-lg relative overflow-hidden"
+                    >
+                      <div 
+                        className="absolute -top-32 -right-32 w-80 h-80 rounded-full blur-3xl pointer-events-none opacity-40 transition-all duration-500"
+                        style={{ backgroundColor: item.glowColor }}
+                      />
+
+                      <div className="space-y-6 relative z-10 text-left">
+                        <div className="flex justify-between items-start">
+                          <span className={`px-3 py-1 border text-[10px] font-sans uppercase font-extrabold tracking-widest rounded-full ${item.badgeClass}`}>
+                            {item.tag}
+                          </span>
+                          <span className="text-stone-400 font-sans text-[10px] uppercase font-extrabold tracking-widest">
+                            Active Specialization
+                          </span>
+                        </div>
+
+                        <div className="space-y-3">
+                          <h3 className="font-display font-black text-2xl sm:text-3xl text-white tracking-tight uppercase leading-none">
+                            {item.title}
+                          </h3>
+                          <p className="text-stone-300 text-xs sm:text-sm leading-relaxed normal-case">
+                            {item.desc}
+                          </p>
+                        </div>
+
+                        <div className="space-y-2.5 pt-2">
+                          <span className="text-[10px] font-sans uppercase font-black tracking-widest text-stone-400 block">
+                            Key Niches &amp; Specialty Areas:
+                          </span>
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                            {item.niches.map((niche, nIdx) => (
+                              <div key={nIdx} className="flex items-center space-x-2 bg-[#0a0a0a] border border-white/10 px-3.5 py-2.5 rounded-xl shadow-sm">
+                                <span className="w-1.5 h-1.5 rounded-full bg-violet-600 shrink-0" />
+                                <span className="text-stone-300 text-xs font-semibold normal-case leading-tight">
+                                  {niche}
+                                </span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="mt-8 border-t border-white/10 pt-6 flex justify-between items-baseline relative z-10 font-sans">
+                        <div>
+                          <div className="text-3xl font-display font-black text-white tracking-tighter leading-none">
+                            {item.metric}
+                          </div>
+                          <div className="text-[9px] text-stone-400 tracking-wider font-black uppercase mt-1">
+                            {item.metricLabel}
+                          </div>
+                        </div>
+                        <span className="text-[10px] text-violet-500 font-black uppercase tracking-widest">
+                          Certified Framework
+                        </span>
+                      </div>
+                    </CyberFrame>
+                  </motion.div>
+                );
+              })}
+            </AnimatePresence>
+          </div>
+        </div>
+      </section>
+
+      {/* 5. MANIFESTO & CORE ENGINEERING PILLARS */}
+      <section id="manifesto-section" className="py-20 sm:py-28 px-4 md:px-8 max-w-4xl mx-auto border-b border-white/10 text-center">
         <ScrollReveal>
           <CyberFrame glowColor="fuchsia" className="space-y-6 sm:space-y-8 p-8 sm:p-12 md:p-16 rounded-2xl bg-[#050505] border border-white/10 shadow-xl">
             <Cpu size={32} className="mx-auto text-violet-600 sm:w-10 sm:h-10 animate-pulse" />
@@ -643,15 +857,12 @@ export default function LandingPage({ navigate }: LandingPageProps) {
           </p>
         </div>
 
-        {/* Blueprint sticky notes grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6 relative items-start w-full mx-auto">
-          {/* Curly Arrow pointing from note 1 to note 2 */}
           <div className="hidden lg:block absolute left-[29%] top-6 w-[12%] h-[40px] z-20">
             <HandDrawnArrow color="stroke-violet-300/70" direction="right" className="w-full h-full" />
             <span className="absolute -top-4 left-1/2 -translate-x-1/2 text-[8px] font-sans text-stone-400 uppercase tracking-wider font-extrabold">Workflow</span>
           </div>
           
-          {/* Curly Arrow pointing from note 2 to note 3 */}
           <div className="hidden lg:block absolute left-[62%] top-16 w-[12%] h-[40px] z-20">
             <HandDrawnArrow color="stroke-rose-300/70" direction="right" className="w-full h-full" />
             <span className="absolute -top-4 left-1/2 -translate-x-1/2 text-[8px] font-sans text-stone-400 uppercase tracking-wider font-extrabold">Validation</span>
@@ -693,194 +904,31 @@ export default function LandingPage({ navigate }: LandingPageProps) {
         </div>
       </section>
 
-      {/* 3. BUSINESS POSITIONING & CORE OPERATIONAL NICHES */}
-      <section id="positioning-section" className="py-24 sm:py-32 px-4 md:px-8 max-w-7xl mx-auto border-b border-white/10">
-        <div className="text-center mb-16 md:mb-20">
-          <span className="text-stone-400 font-sans text-[9px] uppercase tracking-[0.25em] font-black block">
-            ✦ STRATEGIC VALUE ALIGNMENT
-          </span>
-          <StaggeredHeading as="h2" className="text-2xl xs:text-3xl sm:text-5xl font-display font-extrabold text-white tracking-tight mt-3 uppercase leading-none">
-            Business Position &amp; <span className="font-serif italic font-normal text-violet-600 lowercase">specialty</span> niches
-          </StaggeredHeading>
-          <p className="text-stone-400 text-xs sm:text-sm mt-4 max-w-xl mx-auto leading-relaxed font-sans">
-            Founded by elite IIT Patna engineers, we occupy a distinct position resolving critical business bottlenecks through high-fidelity computer systems and autonomous multi-agent pipelines.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-          {/* LEFT COLUMN: Segment Selection (lg:col-span-5) */}
-          <div className="lg:col-span-5 flex flex-col justify-center space-y-4">
-            {nichesData.map((item) => {
-              const isActive = activeNicheTab === item.id;
-              return (
-                <motion.button
-                  key={item.id}
-                  onClick={() => {
-                    playClickSound();
-                    setActiveNicheTab(item.id);
-                  }}
-                  onMouseEnter={playHoverSound}
-                  className={`w-full text-left p-6 rounded-2xl border transition-all duration-300 relative overflow-hidden flex items-start space-x-4 cursor-pointer ${
-                    isActive
-                      ? 'bg-[#050505] border-violet-200 shadow-[0_15px_30px_rgba(139,92,246,0.06)]'
-                      : 'bg-[#0a0a0a] border-white/10 hover:bg-[#050505] hover:border-white/20'
-                  }`}
-                  whileHover={{ x: 4 }}
-                  whileTap={{ scale: 0.99 }}
-                >
-                  {/* Left border active highlight */}
-                  {isActive && (
-                    <motion.div
-                      layoutId="active-niche-bar"
-                      className="absolute left-0 top-0 bottom-0 w-[4px] bg-gradient-to-b from-violet-600 to-rose-500"
-                      transition={{ type: "spring", stiffness: 100, damping: 15 }}
-                    />
-                  )}
-
-                  <div className={`p-3 rounded-xl border font-sans text-xs font-black shrink-0 ${
-                    isActive 
-                      ? 'bg-violet-950 border-violet-600 text-violet-100' 
-                      : 'bg-[#111] border-white/10 text-stone-400'
-                  }`}>
-                    {item.number}
-                  </div>
-
-                  <div className="space-y-1.5 text-left">
-                    <span className="text-[9px] font-sans font-extrabold uppercase tracking-widest text-stone-400">
-                      {item.tagline}
-                    </span>
-                    <h3 className={`font-display font-black text-sm uppercase tracking-tight ${
-                      isActive ? 'text-white' : 'text-stone-300'
-                    }`}>
-                      {item.title}
-                    </h3>
-                    <p className="text-stone-400 text-xs leading-relaxed normal-case line-clamp-2">
-                      {item.desc}
-                    </p>
-                  </div>
-                </motion.button>
-              );
-            })}
-          </div>
-
-          {/* RIGHT COLUMN: Dynamic Blueprint & Detailed Specifications (lg:col-span-7) */}
-          <div className="lg:col-span-7">
-            <AnimatePresence mode="wait">
-              {nichesData.map((item) => {
-                if (item.id !== activeNicheTab) return null;
-                return (
-                  <motion.div
-                    key={item.id}
-                    initial={{ opacity: 0, x: 20, scale: 0.98 }}
-                    animate={{ opacity: 1, x: 0, scale: 1 }}
-                    exit={{ opacity: 0, x: -20, scale: 0.98 }}
-                    transition={{ type: "spring", stiffness: 100, damping: 15 }}
-                    className="h-full"
-                  >
-                    <CyberFrame
-                      glowColor={item.accentColor as 'violet' | 'fuchsia' | 'blue'}
-                      className="h-full flex flex-col justify-between p-8 md:p-10 bg-[#050505] border border-white/10 shadow-lg relative overflow-hidden"
-                    >
-                      {/* Decorative background portal glow representing the selected segment */}
-                      <div 
-                        className="absolute -top-32 -right-32 w-80 h-80 rounded-full blur-3xl pointer-events-none opacity-40 transition-all duration-500"
-                        style={{ backgroundColor: item.glowColor }}
-                      />
-
-                      <div className="space-y-6 relative z-10 text-left">
-                        {/* Badges / Header */}
-                        <div className="flex justify-between items-start">
-                          <span className={`px-3 py-1 border text-[10px] font-sans uppercase font-extrabold tracking-widest rounded-full ${item.badgeClass}`}>
-                            {item.tag}
-                          </span>
-                          <span className="text-stone-400 font-sans text-[10px] uppercase font-extrabold tracking-widest">
-                            Active Specialization
-                          </span>
-                        </div>
-
-                        {/* Title and main desc */}
-                        <div className="space-y-3">
-                          <h3 className="font-display font-black text-2xl sm:text-3xl text-white tracking-tight uppercase leading-none">
-                            {item.title}
-                          </h3>
-                          <p className="text-stone-300 text-xs sm:text-sm leading-relaxed normal-case">
-                            {item.desc}
-                          </p>
-                        </div>
-
-                        {/* Niche list covered */}
-                        <div className="space-y-2.5 pt-2">
-                          <span className="text-[10px] font-sans uppercase font-black tracking-widest text-stone-400 block">
-                            Key Niches &amp; Specialty Areas:
-                          </span>
-                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                            {item.niches.map((niche, nIdx) => (
-                              <div key={nIdx} className="flex items-center space-x-2 bg-[#0a0a0a] border border-white/10 px-3.5 py-2.5 rounded-xl shadow-sm">
-                                <span className="w-1.5 h-1.5 rounded-full bg-violet-600 shrink-0" />
-                                <span className="text-stone-300 text-xs font-semibold normal-case leading-tight">
-                                  {niche}
-                                </span>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Stat summary */}
-                      <div className="mt-8 border-t border-white/10 pt-6 flex justify-between items-baseline relative z-10 font-sans">
-                        <div>
-                          <div className="text-3xl font-display font-black text-white tracking-tighter leading-none">
-                            {item.metric}
-                          </div>
-                          <div className="text-[9px] text-stone-400 tracking-wider font-black uppercase mt-1">
-                            {item.metricLabel}
-                          </div>
-                        </div>
-                        <span className="text-[10px] text-violet-500 font-black uppercase tracking-widest">
-                          Certified Framework
-                        </span>
-                      </div>
-                    </CyberFrame>
-                  </motion.div>
-                );
-              })}
-            </AnimatePresence>
-          </div>
-        </div>
-      </section>
-
-      {/* 3.5. INDUSTRY SOLUTIONS */}
+      {/* 6. INDUSTRY SOLUTIONS */}
       <ScrollReveal>
         <div>
           <IndustrySolutions />
         </div>
       </ScrollReveal>
 
-      {/* NEW: DELIVERABLE CAPABILITIES SPECIFICATIONS */}
+      {/* 7. DELIVERABLE CAPABILITIES SPECIFICATIONS */}
       <ScrollReveal>
         <section id="deliverable-capabilities-marquee" className="py-24 px-4 md:px-8 max-w-7xl mx-auto">
           <PolishedFeatureMarquee />
         </section>
       </ScrollReveal>
 
-      {/* 4. RECENT WORK TEASER */}
-      <ScrollReveal>
-        <section id="recent-work-section" className="py-24 sm:py-32 px-4 md:px-8 max-w-7xl mx-auto">
-          <ProjectGallery />
-        </section>
-      </ScrollReveal>
-
-      {/* TYPOGRAPHY SYSTEM SPECIMEN SHOWCASE */}
-      <ScrollReveal>
-        <section id="typography-specimen-section">
-          <TypographySpecimen />
-        </section>
-      </ScrollReveal>
-
-      {/* AEO & GEO KNOWLEDGE & TRUST HUB SECTION */}
+      {/* 8. AEO & GEO KNOWLEDGE & TRUST HUB SECTION */}
       <ScrollReveal>
         <section id="aeo-knowledge-section" className="bg-[#050505] border-t border-white/10">
           <AEOKnowledgeHub />
+        </section>
+      </ScrollReveal>
+
+      {/* 9. TYPOGRAPHY SYSTEM SPECIMEN SHOWCASE */}
+      <ScrollReveal>
+        <section id="typography-specimen-section">
+          <TypographySpecimen />
         </section>
       </ScrollReveal>
 

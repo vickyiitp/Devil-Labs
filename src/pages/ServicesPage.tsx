@@ -34,12 +34,12 @@ export default function ServicesPage({ navigate }: ServicesPageProps) {
       <section id="services-grid-section" className="space-y-32 mb-32">
         {serviceCategories.map((category, catIdx) => (
           <div key={category.id} className="relative">
-            <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 border-b border-white/10/30 pb-6">
-              <div>
+            <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-12 border-b border-white/10/30 pb-6">
+              <div className="max-w-full">
                 <span className="text-violet-400 font-sans text-xs uppercase tracking-widest font-extrabold block mb-2">
                   ✦ Category {String(catIdx + 1).padStart(2, '0')}
                 </span>
-                <h2 className="font-display font-extrabold text-4xl text-stone-100 tracking-tight uppercase">
+                <h2 className="font-display font-extrabold text-2xl sm:text-3xl md:text-4xl text-stone-100 tracking-tight uppercase break-words max-w-full">
                   {category.title}
                 </h2>
               </div>
@@ -65,7 +65,7 @@ export default function ServicesPage({ navigate }: ServicesPageProps) {
                         navigate(`/services/${service.slug}`);
                       }
                     }}
-                    className="group p-6 md:p-8 flex flex-col justify-between cursor-pointer hover:border-violet-400/40 hover:scale-[1.025] relative overflow-hidden text-left clay-card"
+                    className="group p-5 sm:p-6 md:p-8 flex flex-col justify-between cursor-pointer hover:border-violet-400/40 hover:scale-[1.025] relative overflow-hidden text-left clay-card min-w-0 w-full"
                   >
                     <div className="absolute top-0 right-0 w-32 h-32 bg-violet-600/10 rounded-full blur-2xl transform translate-x-1/2 -translate-y-1/2 group-hover:bg-violet-500/20 transition-all" />
                     

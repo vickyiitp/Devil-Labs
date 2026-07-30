@@ -180,19 +180,19 @@ export default function ProductsPage({ navigate }: { navigate: (path: string) =>
           <Package size={14} />
           <span>✦ DIGITAL PRODUCTS &amp; ASSETS</span>
         </div>
-        <StaggeredHeading text="PREMIUM SOFTWARE & DEVELOPER ASSETS." className="font-display font-extrabold text-3xl xs:text-4xl sm:text-6xl md:text-7xl text-stone-100 tracking-tighter uppercase leading-none" />
+        <StaggeredHeading text="PREMIUM SOFTWARE & DEVELOPER ASSETS." className="font-display font-extrabold text-2xl xs:text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-stone-100 tracking-tighter uppercase leading-none break-words max-w-full" />
         <p className="text-stone-300 text-base sm:text-lg max-w-3xl leading-relaxed font-sans">
           We design production-ready Next.js starter templates, developer SDKs, AI agent microservices, and design systems to boost your launch velocity. Built with clean architecture and production-tested code.
         </p>
       </section>
 
       {/* 2. DYNAMIC FILTER NAVIGATION */}
-      <div className="flex flex-wrap gap-2.5 border-b border-white/10/55 pb-6 mb-12">
+      <div className="flex items-center overflow-x-auto flex-nowrap md:flex-wrap gap-2.5 border-b border-white/10/55 pb-4 md:pb-6 mb-12 scrollbar-none -mx-4 px-4 sm:mx-0 sm:px-0">
         {tabs.map((tab) => (
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id as any)}
-            className={`px-4.5 py-2 rounded-full text-xs font-sans font-bold tracking-wider uppercase transition-all cursor-pointer ${
+            className={`px-4.5 py-2 rounded-full text-xs font-sans font-bold tracking-wider uppercase whitespace-nowrap shrink-0 transition-all cursor-pointer ${
               activeTab === tab.id 
                 ? 'bg-[#050505] border border-white/10 text-stone-100 shadow-sm' 
                 : 'bg-[#111] hover:bg-white/10 text-stone-300'

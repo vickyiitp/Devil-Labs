@@ -406,12 +406,66 @@ export function Footer({ navigate }: { navigate: (path: string) => void }) {
     localStorage.setItem('devil-labs-lang', newLang);
   };
 
-  const handleSubscribe = (e: React.FormEvent) => {
+  const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
-    if(email) {
-      setSubscribed(true);
-      setEmail('');
-      setTimeout(() => setSubscribed(false), 5000);
+    if (!email) return;
+
+    const leadEmail = email;
+    setSubscribed(true);
+    setEmail('');
+    setTimeout(() => setSubscribed(false), 5000);
+
+    const payload = {
+      name: "Newsletter Subscriber",
+      email: leadEmail,
+      phone: "Not provided",
+      company: "Newsletter Subscription",
+      companySize: "Unknown",
+      scope: "Newsletter Subscription",
+      budget: "N/A",
+      specs: `User subscribed to Devil Labs Newsletter from email: ${leadEmail}`
+    };
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+
+      if (!response.ok) {
+        await fetch('https://formsubmit.co/ajax/devil.labs.contact@gmail.com', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            _subject: `🚨 [NEWSLETTER SUBSCRIPTION] ${leadEmail}`,
+            _captcha: 'false',
+            _replyto: leadEmail,
+            "Subscriber Email": leadEmail,
+            "Source": "Footer Newsletter Form"
+          })
+        });
+      }
+    } catch (err) {
+      try {
+        await fetch('https://formsubmit.co/ajax/devil.labs.contact@gmail.com', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            _subject: `🚨 [NEWSLETTER SUBSCRIPTION] ${leadEmail}`,
+            _captcha: 'false',
+            _replyto: leadEmail,
+            "Subscriber Email": leadEmail,
+            "Source": "Footer Newsletter Form"
+          })
+        });
+      } catch (fsErr) {}
     }
   };
 
@@ -593,7 +647,7 @@ export function Footer({ navigate }: { navigate: (path: string) => void }) {
           setIsFooterHovered(false);
           setClickedLetters([]); // reset Easter egg on mouse leave for replayability
         }}
-        className="w-full relative z-10 pb-8 pt-12 overflow-hidden flex flex-col items-center justify-center border border-white/10/35 bg-[#FAF9F5]/90 rounded-[24px] sm:rounded-[32px] shadow-[inset_0_2px_12px_rgba(45,38,32,0.02),0_15px_35px_rgba(45,38,32,0.03)] cursor-crosshair group/branding transition-all duration-300"
+        className="w-full relative z-10 pb-8 pt-12 overflow-hidden flex flex-col items-center justify-center border border-white/10 bg-[#0a0a0f] rounded-[24px] sm:rounded-[32px] shadow-[0_15px_35px_rgba(0,0,0,0.6)] cursor-crosshair group/branding transition-all duration-300"
       >
         {/* Subtle high-tech blueprint grid */}
         <div className="absolute inset-0 opacity-[0.25] pointer-events-none bg-[linear-gradient(to_right,rgba(139,92,246,0.08)_1px,transparent_1px),linear-gradient(to_bottom,rgba(139,92,246,0.08)_1px,transparent_1px)] bg-[size:20px_20px]" />
@@ -609,7 +663,7 @@ export function Footer({ navigate }: { navigate: (path: string) => void }) {
         <div 
           className="absolute inset-0 pointer-events-none transition-opacity duration-500 blur-3xl opacity-0 group-hover/branding:opacity-100"
           style={{
-            background: `radial-gradient(circle 200px at ${footerMouse.x}% ${footerMouse.y}%, rgba(139, 92, 246, 0.08), rgba(236, 72, 153, 0.05), transparent 70%)`
+            background: `radial-gradient(circle 200px at ${footerMouse.x}% ${footerMouse.y}%, rgba(139, 92, 246, 0.15), rgba(236, 72, 153, 0.08), transparent 70%)`
           }}
         />
 
@@ -636,12 +690,12 @@ export function Footer({ navigate }: { navigate: (path: string) => void }) {
                   className="inline-block relative cursor-pointer font-black select-none px-0.5"
                   style={{
                     WebkitTextStroke: isClicked 
-                      ? '2.5px rgb(139, 92, 246)' 
-                      : '1.5px rgba(124, 58, 237, 0.15)',
+                      ? '2.5px rgb(167, 139, 250)' 
+                      : '1.5px rgba(167, 139, 250, 0.35)',
                     textShadow: isClicked 
-                      ? '0 10px 25px rgba(139, 92, 246, 0.35)' 
-                      : '1px 1px 5px rgba(0,0,0,0.01)',
-                    color: isClicked ? '#7c3aed' : 'transparent',
+                      ? '0 10px 25px rgba(139, 92, 246, 0.5)' 
+                      : '0 4px 15px rgba(0,0,0,0.5)',
+                    color: isClicked ? '#a78bfa' : 'rgba(255, 255, 255, 0.9)',
                     transformStyle: "preserve-3d",
                   }}
                   initial={{ y: 20, opacity: 0 }}
@@ -656,13 +710,13 @@ export function Footer({ navigate }: { navigate: (path: string) => void }) {
                   whileHover={{
                     scale: 1.15,
                     y: -10,
-                    color: "#7c3aed",
+                    color: "#c4b5fd",
                     WebkitTextStroke: '2.5px #ec4899',
-                    textShadow: '0 15px 35px rgba(139, 92, 246, 0.45), 0 0 15px rgba(236, 72, 153, 0.2)',
+                    textShadow: '0 15px 35px rgba(139, 92, 246, 0.6), 0 0 15px rgba(236, 72, 153, 0.3)',
                   }}
                 >
                   {char}
-                  <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4/5 h-[3px] bg-white/20/5 rounded-full blur-[2px] opacity-0 group-hover/branding:opacity-100 transition-opacity pointer-events-none scale-x-50" />
+                  <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4/5 h-[3px] bg-violet-500/30 rounded-full blur-[2px] opacity-0 group-hover/branding:opacity-100 transition-opacity pointer-events-none scale-x-50" />
                 </motion.span>
               );
             })}
@@ -680,12 +734,12 @@ export function Footer({ navigate }: { navigate: (path: string) => void }) {
                   className="inline-block relative cursor-pointer font-black select-none px-0.5"
                   style={{
                     WebkitTextStroke: isClicked 
-                      ? '2.5px rgb(139, 92, 246)' 
-                      : '1.5px rgba(124, 58, 237, 0.15)',
+                      ? '2.5px rgb(167, 139, 250)' 
+                      : '1.5px rgba(167, 139, 250, 0.35)',
                     textShadow: isClicked 
-                      ? '0 10px 25px rgba(139, 92, 246, 0.35)' 
-                      : '1px 1px 5px rgba(0,0,0,0.01)',
-                    color: isClicked ? '#7c3aed' : 'transparent',
+                      ? '0 10px 25px rgba(139, 92, 246, 0.5)' 
+                      : '0 4px 15px rgba(0,0,0,0.5)',
+                    color: isClicked ? '#a78bfa' : 'rgba(255, 255, 255, 0.9)',
                     transformStyle: "preserve-3d",
                   }}
                   initial={{ y: 20, opacity: 0 }}
@@ -700,13 +754,13 @@ export function Footer({ navigate }: { navigate: (path: string) => void }) {
                   whileHover={{
                     scale: 1.15,
                     y: -10,
-                    color: "#7c3aed",
+                    color: "#c4b5fd",
                     WebkitTextStroke: '2.5px #ec4899',
-                    textShadow: '0 15px 35px rgba(139, 92, 246, 0.45), 0 0 15px rgba(236, 72, 153, 0.2)',
+                    textShadow: '0 15px 35px rgba(139, 92, 246, 0.6), 0 0 15px rgba(236, 72, 153, 0.3)',
                   }}
                 >
                   {char}
-                  <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4/5 h-[3px] bg-white/20/5 rounded-full blur-[2px] opacity-0 group-hover/branding:opacity-100 transition-opacity pointer-events-none scale-x-50" />
+                  <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4/5 h-[3px] bg-violet-500/30 rounded-full blur-[2px] opacity-0 group-hover/branding:opacity-100 transition-opacity pointer-events-none scale-x-50" />
                 </motion.span>
               );
             })}

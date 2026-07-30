@@ -1,13 +1,15 @@
 import React, { useEffect } from 'react';
 import { motion } from 'motion/react';
-import { Mail, MessageSquare, Globe, PhoneCall, Check, ArrowRight, ShieldCheck, RefreshCw, Sparkles } from 'lucide-react';
+import { Mail, MessageSquare, Globe, PhoneCall, Check, ArrowRight, ShieldCheck, RefreshCw, Sparkles, Table, FileText } from 'lucide-react';
 import { audioEngine } from '../lib/audio';
 
 interface DispatchStatus {
-  email?: { success: boolean; id?: string };
-  telegram?: { success: boolean };
-  whatsapp?: { success: boolean };
-  sms?: { success: boolean };
+  email?: { success: boolean; info?: string };
+  googleSheets?: { success: boolean; info?: string };
+  googleDrive?: { success: boolean; info?: string };
+  telegram?: { success: boolean; info?: string };
+  whatsapp?: { success: boolean; info?: string };
+  sms?: { success: boolean; info?: string };
 }
 
 interface FormSuccessAnimationProps {
@@ -21,7 +23,7 @@ interface FormSuccessAnimationProps {
 
 export default function FormSuccessAnimation({
   title = "TRANSMISSION COMPLETED",
-  subtitle = "YOUR PROJECT BRIEF HAS BEEN DISPATCHED LIVE ACROSS OUR HIGH-SPEED LAB PIPELINE.",
+  subtitle = "YOUR PROJECT BRIEF HAS BEEN DISPATCHED LIVE ACROSS OUR HIGH-SPEED LAB PIPELINE & GOOGLE WORKSPACE SYSTEMS.",
   dispatchResults,
   onReset,
   resetButtonText = "SUBMIT ANOTHER BRIEF",
@@ -98,55 +100,41 @@ export default function FormSuccessAnimation({
               className={`absolute w-2 h-2 rounded-full ${colorClass} shadow-sm pointer-events-none`}
               initial={{ x: 0, y: 0, scale: 0, opacity: 1 }}
               animate={{
-                x,
-                y,
-                scale: [0, 1.4, 0],
-                opacity: [0, 1, 0],
-                rotate: [0, 180]
+                x: [0, x],
+                y: [0, y],
+                scale: [0, 1.4, 0.6],
+                opacity: [1, 0.9, 0]
               }}
               transition={{
-                duration: 1.1,
-                delay: 0.2 + idx * 0.03,
-                ease: [0.16, 1, 0.3, 1]
+                duration: 1.4,
+                ease: [0.22, 1, 0.36, 1],
+                delay: (idx % 4) * 0.05
               }}
             />
           );
         })}
 
-        {/* Central Claymorphic Orb Container */}
+        {/* Floating Glowing Shield Icon */}
         <motion.div
-          initial={{ scale: 0, rotate: -20 }}
+          initial={{ scale: 0.5, rotate: -15 }}
           animate={{ scale: 1, rotate: 0 }}
-          transition={{ type: "spring", stiffness: 220, damping: 18, delay: 0.1 }}
-          className="relative z-10 w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-gradient-to-tr from-violet-600 via-indigo-600 to-violet-500 text-white flex items-center justify-center shadow-xl border border-white/30"
+          transition={{
+            type: "spring",
+            stiffness: 260,
+            damping: 18,
+            delay: 0.2
+          }}
+          className="relative w-20 h-20 rounded-2xl bg-gradient-to-br from-violet-600 via-indigo-600 to-violet-800 p-0.5 shadow-2xl flex items-center justify-center"
         >
-          {/* Inner metallic ring glow */}
-          <div className="absolute inset-1 rounded-full border border-white/20 pointer-events-none" />
-
-          {/* SVG Animated Checkmark Path */}
-          <motion.svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-12 h-12 sm:w-14 sm:h-14 text-white drop-shadow-md"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="3.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <motion.path
-              d="M20 6 9 17l-5-5"
-              initial={{ pathLength: 0, opacity: 0 }}
-              animate={{ pathLength: 1, opacity: 1 }}
-              transition={{
-                duration: 0.55,
-                delay: 0.35,
-                ease: "easeInOut"
-              }}
+          <div className="w-full h-full bg-[#08080c] rounded-[0.95rem] flex items-center justify-center relative">
+            <ShieldCheck size={36} className="text-violet-400" />
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
+              className="absolute inset-0 rounded-2xl border border-violet-500/20 border-t-violet-400 pointer-events-none"
             />
-          </motion.svg>
+          </div>
 
-          {/* Top-right sparkle accent */}
           <motion.div
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: [0, 1.3, 1], opacity: 1 }}
@@ -209,37 +197,81 @@ export default function FormSuccessAnimation({
             </span>
           </div>
 
-          {/* Log channel 1: SMTP Email */}
+          {/* Log channel 1: Google Sheets CRM */}
           <motion.div
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.65 }}
+            transition={{ delay: 0.62 }}
             className="flex justify-between items-center text-[11px]"
           >
             <span className="flex items-center space-x-2 text-stone-300">
-              <Mail size={12} className="text-violet-600" />
-              <span>SMTP SECURE MAIL:</span>
+              <Table size={12} className="text-emerald-500" />
+              <span>GOOGLE SHEETS CRM:</span>
+            </span>
+            {dispatchResults?.googleSheets?.success ? (
+              <span className="text-emerald-600 font-bold flex items-center gap-1">
+                <Check size={12} /> LOGGED TO SHEET
+              </span>
+            ) : (
+              <span className="text-stone-400 font-bold flex items-center gap-1">
+                <Check size={12} /> READY (KEYS PENDING)
+              </span>
+            )}
+          </motion.div>
+
+          {/* Log channel 2: Google Drive Brief Archive */}
+          <motion.div
+            initial={{ opacity: 0, x: -10 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.66 }}
+            className="flex justify-between items-center text-[11px]"
+          >
+            <span className="flex items-center space-x-2 text-stone-300">
+              <FileText size={12} className="text-amber-500" />
+              <span>GOOGLE DRIVE ARCHIVE:</span>
+            </span>
+            {dispatchResults?.googleDrive?.success ? (
+              <span className="text-emerald-600 font-bold flex items-center gap-1">
+                <Check size={12} /> BRIEF ARCHIVED
+              </span>
+            ) : (
+              <span className="text-stone-400 font-bold flex items-center gap-1">
+                <Check size={12} /> READY (KEYS PENDING)
+              </span>
+            )}
+          </motion.div>
+
+          {/* Log channel 3: SMTP Email */}
+          <motion.div
+            initial={{ opacity: 0, x: -10 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.70 }}
+            className="flex justify-between items-center text-[11px]"
+          >
+            <span className="flex items-center space-x-2 text-stone-300">
+              <Mail size={12} className="text-violet-500" />
+              <span>GMAIL / SMTP MAIL:</span>
             </span>
             {dispatchResults?.email?.success ? (
               <span className="text-emerald-600 font-bold flex items-center gap-1">
                 <Check size={12} /> DISPATCHED
               </span>
             ) : (
-              <span className="text-amber-600 font-bold flex items-center gap-1">
+              <span className="text-amber-500 font-bold flex items-center gap-1">
                 <Check size={12} /> STDOUT STANDBY
               </span>
             )}
           </motion.div>
 
-          {/* Log channel 2: Telegram */}
+          {/* Log channel 4: Telegram */}
           <motion.div
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.72 }}
+            transition={{ delay: 0.74 }}
             className="flex justify-between items-center text-[11px]"
           >
             <span className="flex items-center space-x-2 text-stone-300">
-              <Globe size={12} className="text-sky-600" />
+              <Globe size={12} className="text-sky-500" />
               <span>TELEGRAM BOT API:</span>
             </span>
             {dispatchResults?.telegram?.success ? (
@@ -253,15 +285,15 @@ export default function FormSuccessAnimation({
             )}
           </motion.div>
 
-          {/* Log channel 3: WhatsApp */}
+          {/* Log channel 5: WhatsApp */}
           <motion.div
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.79 }}
+            transition={{ delay: 0.78 }}
             className="flex justify-between items-center text-[11px]"
           >
             <span className="flex items-center space-x-2 text-stone-300">
-              <MessageSquare size={12} className="text-emerald-600" />
+              <MessageSquare size={12} className="text-emerald-500" />
               <span>WHATSAPP GATEWAY:</span>
             </span>
             {dispatchResults?.whatsapp?.success ? (

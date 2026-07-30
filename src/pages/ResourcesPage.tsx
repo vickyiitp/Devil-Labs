@@ -97,12 +97,66 @@ export default function ResourcesPage({ navigate }: { navigate: (path: string) =
     return matchesTab && matchesSearch;
   });
 
-  const handleSubscribe = (e: React.FormEvent) => {
+  const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (email) {
-      setSubscribed(true);
-      setEmail('');
-      setTimeout(() => setSubscribed(false), 5000);
+    if (!email) return;
+
+    const leadEmail = email;
+    setSubscribed(true);
+    setEmail('');
+    setTimeout(() => setSubscribed(false), 5000);
+
+    const payload = {
+      name: "Research Brief Subscriber",
+      email: leadEmail,
+      phone: "Not provided",
+      company: "Telemetry Brief Subscription",
+      companySize: "Unknown",
+      scope: "Research Brief Subscription",
+      budget: "N/A",
+      specs: `User subscribed to Devil Telemetry Brief from email: ${leadEmail}`
+    };
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+
+      if (!response.ok) {
+        await fetch('https://formsubmit.co/ajax/devil.labs.contact@gmail.com', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            _subject: `🚨 [RESEARCH BRIEF SUBSCRIPTION] ${leadEmail}`,
+            _captcha: 'false',
+            _replyto: leadEmail,
+            "Subscriber Email": leadEmail,
+            "Source": "Resources Page Research Brief Form"
+          })
+        });
+      }
+    } catch (err) {
+      try {
+        await fetch('https://formsubmit.co/ajax/devil.labs.contact@gmail.com', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            _subject: `🚨 [RESEARCH BRIEF SUBSCRIPTION] ${leadEmail}`,
+            _captcha: 'false',
+            _replyto: leadEmail,
+            "Subscriber Email": leadEmail,
+            "Source": "Resources Page Research Brief Form"
+          })
+        });
+      } catch (fsErr) {}
     }
   };
 
@@ -125,7 +179,7 @@ export default function ResourcesPage({ navigate }: { navigate: (path: string) =
         </div>
         <StaggeredHeading 
           text="ENGINEERING LABS & DOCUMENTATION." 
-          className="font-display font-extrabold text-3xl xs:text-4xl sm:text-6xl md:text-7xl text-stone-100 tracking-tighter uppercase leading-none"
+          className="font-display font-extrabold text-2xl xs:text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-stone-100 tracking-tighter uppercase leading-none break-words max-w-full"
         />
         <p className="text-stone-300 text-base sm:text-lg max-w-3xl leading-relaxed font-sans">
           Welcome to our official resource depository. Read our architectural deep-dives, grab copy-paste development templates, explore industrial case studies, and browse our formal specifications list.

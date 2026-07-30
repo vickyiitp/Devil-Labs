@@ -232,11 +232,14 @@ export default function Creative3DStage({ playClick, playHover }: Creative3DStag
 
   // Continuous background wave pulse for graphs
   useEffect(() => {
-    const pulseInterval = setInterval(() => {
-      setTelemetryPulse(prev => (prev + 1) % 360);
-    }, 120);
+    let pulseInterval: NodeJS.Timeout;
+    if (isInView && document.visibilityState === 'visible') {
+      pulseInterval = setInterval(() => {
+        setTelemetryPulse(prev => (prev + 2) % 360);
+      }, 120);
+    }
     return () => clearInterval(pulseInterval);
-  }, []);
+  }, [isInView]);
 
   // Audio trigger on slide change
   useEffect(() => {

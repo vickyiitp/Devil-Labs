@@ -300,11 +300,89 @@ export default function ContactPage({ navigate }: ContactPageProps) {
         setSuccess(true);
         setDispatchResults(data.results);
       } else {
-        const errText = await response.text();
-        setErrors([`Transmission failed: ${errText || 'Internal Server Error'}`]);
+        // Client-side FormSubmit direct fallback if backend returns non-200
+        console.log('Backend API returned non-200. Triggering client-side FormSubmit fallback...');
+        const fsResponse = await fetch('https://formsubmit.co/ajax/devil.labs.contact@gmail.com', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            _subject: `🚨 [DEVIL LABS LEAD] ${payload.company} - ${payload.scope}`,
+            _captcha: 'false',
+            _replyto: payload.email,
+            "Client Name": payload.name,
+            "Email Address": payload.email,
+            "Phone Number": payload.phone,
+            "Organization": payload.company,
+            "Company Size": payload.companySize,
+            "Project Scope": payload.scope,
+            "Budget Expectation": payload.budget,
+            "Project Specifications": payload.specs
+          })
+        });
+
+        if (fsResponse.ok) {
+          localStorage.setItem('devil_labs_last_submit_time', Date.now().toString());
+          setRateLimitSecondsLeft(20);
+          setSuccess(true);
+          setDispatchResults({
+            email: { success: true, info: 'Dispatched to devil.labs.contact@gmail.com via FormSubmit.' },
+            googleSheets: { success: false, info: 'Backend pending' },
+            googleDrive: { success: false, info: 'Backend pending' },
+            telegram: { success: false, info: 'Enqueued' },
+            whatsapp: { success: false, info: 'Ready' },
+            sms: { success: false, info: 'Ready' }
+          });
+        } else {
+          const errText = await response.text();
+          setErrors([`Transmission failed: ${errText || 'Internal Server Error'}`]);
+        }
       }
     } catch (err: any) {
-      setErrors([`Network error: ${err.message || 'Transmission interrupted'}`]);
+      // Network catch: direct FormSubmit dispatch
+      try {
+        console.log('Network error connecting to /api/contact. Executing FormSubmit client uplink...');
+        const fsResponse = await fetch('https://formsubmit.co/ajax/devil.labs.contact@gmail.com', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            _subject: `🚨 [DEVIL LABS LEAD] ${payload.company} - ${payload.scope}`,
+            _captcha: 'false',
+            _replyto: payload.email,
+            "Client Name": payload.name,
+            "Email Address": payload.email,
+            "Phone Number": payload.phone,
+            "Organization": payload.company,
+            "Company Size": payload.companySize,
+            "Project Scope": payload.scope,
+            "Budget Expectation": payload.budget,
+            "Project Specifications": payload.specs
+          })
+        });
+
+        if (fsResponse.ok) {
+          localStorage.setItem('devil_labs_last_submit_time', Date.now().toString());
+          setRateLimitSecondsLeft(20);
+          setSuccess(true);
+          setDispatchResults({
+            email: { success: true, info: 'Dispatched to devil.labs.contact@gmail.com via FormSubmit.' },
+            googleSheets: { success: false, info: 'Backend pending' },
+            googleDrive: { success: false, info: 'Backend pending' },
+            telegram: { success: false, info: 'Enqueued' },
+            whatsapp: { success: false, info: 'Ready' },
+            sms: { success: false, info: 'Ready' }
+          });
+        } else {
+          setErrors([`Network error: ${err.message || 'Transmission interrupted'}`]);
+        }
+      } catch (fsCatchErr: any) {
+        setErrors([`Network error: ${err.message || 'Transmission interrupted'}`]);
+      }
     } finally {
       setLoading(false);
     }
@@ -381,10 +459,10 @@ ${formData.name}`;
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1 }}
-          className="font-display font-black text-4xl sm:text-6xl md:text-7xl lg:text-8xl text-stone-100 tracking-tighter uppercase leading-[0.9]"
+          className="font-display font-black text-2xl xs:text-3xl sm:text-5xl md:text-7xl lg:text-8xl text-stone-100 tracking-tighter uppercase leading-[0.95] break-words max-w-full"
         >
           Let's Build <br/>
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 via-rose-500 to-amber-500 font-serif italic font-light lowercase text-5xl sm:text-7xl md:text-8xl lg:text-9xl">something</span> <br/>
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 via-rose-500 to-amber-500 font-serif italic font-light lowercase text-3xl xs:text-4xl sm:text-6xl md:text-8xl lg:text-9xl break-words max-w-full">something</span> <br/>
           Beautiful.
         </motion.h1>
       </section>

@@ -29,12 +29,13 @@ export default function Image({
 }: ImageProps) {
   const [isInView, setIsInView] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [hasError, setHasError] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
   // Default low-res/placeholder generator if not provided
   const getPlaceholder = () => {
     if (placeholderSrc) return placeholderSrc;
-    if (src.includes('github.com') || src.includes('githubusercontent.com')) {
+    if (src && (src.includes('github.com') || src.includes('githubusercontent.com'))) {
       const separator = src.includes('?') ? '&' : '?';
       return `${src}${separator}size=16`;
     }
@@ -83,12 +84,18 @@ export default function Image({
 
   const handleImageLoad = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
     setIsLoaded(true);
+    setHasError(false);
     if (onLoadCallback) {
       onLoadCallback();
     }
     if (onLoad) {
       onLoad(e);
     }
+  };
+
+  const handleImageError = () => {
+    setHasError(true);
+    setIsLoaded(true);
   };
 
   return (
@@ -106,7 +113,7 @@ export default function Image({
       />
 
       {/* 2. Low-res blurred placeholder (faded out once main image loads) */}
-      {lowResUrl && (
+      {lowResUrl && !hasError && (
         <img
           src={lowResUrl}
           alt=""
@@ -120,7 +127,7 @@ export default function Image({
       )}
 
       {/* 3. Actual High-Res Image (Loaded when container intersects viewport) */}
-      {isInView && (
+      {isInView && !hasError && (
         <img
           {...props}
           src={src}
@@ -128,6 +135,7 @@ export default function Image({
           decoding="async"
           referrerPolicy={referrerPolicy}
           onLoad={handleImageLoad}
+          onError={handleImageError}
           className={`w-full h-full object-cover relative z-10 transition-all duration-700 ease-out ${
             isLoaded
               ? 'opacity-100 filter blur-0 scale-100'

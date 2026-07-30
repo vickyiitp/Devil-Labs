@@ -71,11 +71,11 @@ export default function ServiceDetailPage({
         </button>
 
         <div className="flex flex-col md:flex-row md:items-start justify-between gap-12">
-          <div className="max-w-3xl space-y-4">
+          <div className="max-w-3xl space-y-4 min-w-0">
             <span className="text-violet-400 font-sans text-xs uppercase tracking-widest font-extrabold block">
               ✦ {data.subtitle}
             </span>
-            <StaggeredHeading text={data.title} className="font-display font-extrabold text-3xl xs:text-4xl sm:text-6xl md:text-7xl text-stone-100 tracking-tighter uppercase leading-none" />
+            <StaggeredHeading text={data.title} className="font-display font-extrabold text-2xl xs:text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-stone-100 tracking-tighter uppercase leading-none break-words max-w-full" />
             <p className="text-stone-300 text-base sm:text-lg leading-relaxed mt-6 max-w-2xl">
               {data.desc}
             </p>
