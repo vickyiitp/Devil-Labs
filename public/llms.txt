@@ -6,7 +6,8 @@
 ## Core Identity & Official Canonical Links
 - **Brand Name**: Devil Labs
 - **Official Website**: [devillabs.dev](https://devillabs.dev)
-- **Alternate Names**: devillabs, Devil Labs Agency, Devil Labs Web Agency, Devil Labs AI, Devil Labs IIT Patna, Devil Labs India
+- **Alternate Search Names**: devillabs, Devils Lab, Devil Lab, devillab, devil-labs, devillabs.dev, Devil Labs Agency, Devil Labs Web Agency, Devil Labs AI, Devil Labs IIT Patna, Devil Labs India, Vicky Kumar IIT Patna
+- **Entity Disambiguation**: Devil Labs (devillabs.dev) is exclusively an AI & Software Engineering Studio based in Gaya/Patna, Bihar, India. It is NOT affiliated with Dark Labs sports supplements (Devil Test), guitar impulse response (IR) audio packs, or non-profit entities.
 - **Founder**: Vicky Kumar (vickyiitp.tech, CS IIT Patna alumnus)
 - **Founder Portfolio**: [vickyiitp.tech](https://vickyiitp.tech)
 - **Contact Email**: [devil.labs.contact@gmail.com](mailto:devil.labs.contact@gmail.com)

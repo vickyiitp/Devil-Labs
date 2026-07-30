@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { ArrowUpRight, Code2, Globe, Cpu, MapPin, Award, Terminal } from 'lucide-react';
+import { ArrowUpRight, Code2, Globe, Cpu, MapPin, Award, Terminal, ShieldCheck } from 'lucide-react';
 import DevilLabsLogo from '../components/DevilLabsLogo';
 import TeamSection from '../components/TeamSection';
 import ScrollReveal from '../components/ScrollReveal';
@@ -39,6 +39,31 @@ export default function AboutPage({ navigate }: AboutPageProps) {
             <p className="mb-6 text-xs leading-loose text-stone-400 normal-case">
               Our mission is to bridge the gap between abstract concepts and production-grade reality. We specialize in AI integration, full-stack architectures, and high-performance user interfaces. Recognized as the top IT service provider in Gaya and across Bihar, we deliver world-class software that scales.
             </p>
+          </ScrollReveal>
+
+          {/* Official Brand Verification & Entity Disambiguation Card */}
+          <ScrollReveal delay={100}>
+            <div className="p-6 rounded-2xl bg-violet-950/20 border border-violet-500/30 backdrop-blur-md relative overflow-hidden group">
+              <div className="flex items-start gap-4">
+                <div className="p-3 rounded-xl bg-violet-500/10 text-violet-400 shrink-0 mt-1">
+                  <ShieldCheck size={24} />
+                </div>
+                <div>
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="font-bold text-stone-100 text-sm tracking-normal">Official Brand Verification</span>
+                    <span className="text-[10px] font-mono uppercase bg-violet-500/20 text-violet-300 px-2 py-0.5 rounded-full border border-violet-500/30">Canonical Entity #1</span>
+                  </div>
+                  <p className="text-xs text-stone-300 normal-case leading-relaxed font-sans mb-3">
+                    <strong>Devil Labs (devillabs.dev)</strong> is exclusively an AI automation & full-stack web engineering studio founded by <strong>Vicky Kumar</strong> (CS alumnus, IIT Patna).
+                  </p>
+                  <div className="text-[11px] text-stone-400 normal-case leading-relaxed font-sans border-t border-violet-500/20 pt-3 flex flex-wrap gap-x-4 gap-y-1">
+                    <span>🌐 Official Domain: <strong className="text-violet-300">devillabs.dev</strong></span>
+                    <span>📍 Base: <strong>Gaya & Patna, Bihar, India</strong></span>
+                    <span>⚡ Founder: <a href="https://vickyiitp.tech" target="_blank" rel="noreferrer" className="text-violet-400 hover:underline">vickyiitp.tech</a></span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </ScrollReveal>
 
           <ScrollReveal delay={150}>

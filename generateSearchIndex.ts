@@ -69,14 +69,14 @@ function generateIndex() {
     {
       title: 'Home / Operator Console',
       path: '/',
-      description: 'Devil Labs operator console. High-performance software engineering, bespoke AI systems, and containerized cloud deployment services in Patna & Gaya, India.',
-      tags: ['home', 'landing', 'main', 'devil labs', 'console', 'patna', 'bihar', 'gaya', 'india', 'tech architecture']
+      description: 'Devil Labs (devillabs.dev) operator console. High-performance software engineering, bespoke AI systems, and containerized cloud deployment services in Patna & Gaya, India.',
+      tags: ['home', 'landing', 'main', 'devil labs', 'devillabs', 'devils lab', 'devil lab', 'devillab', 'devil-labs', 'devillabs.dev', 'console', 'patna', 'bihar', 'gaya', 'india', 'tech architecture', 'vicky kumar iit patna', 'vickyiitp']
     },
     {
       title: 'Services Overview',
       path: '/services',
       description: 'Explore our full spectrum of services, ranging from custom landing pages and scalable SaaS products to secure DevOps setups and autonomous AI agents.',
-      tags: ['services', 'overview', 'capabilities', 'what we do', 'landing pages', 'saas', 'crm', 'vps', 'hosting']
+      tags: ['services', 'overview', 'capabilities', 'what we do', 'landing pages', 'saas', 'crm', 'vps', 'hosting', 'devil labs services', 'devillabs.dev']
     },
     {
       title: 'Methodology & Process',
@@ -100,7 +100,13 @@ function generateIndex() {
       title: 'Contact Us',
       path: '/contact',
       description: 'Get in touch with Devil Labs. Send an encrypted transmission to secure your next rapid development deployment slot.',
-      tags: ['contact', 'email', 'form', 'telegram', 'hire us', 'gaya', 'bihar', 'office', 'consultation']
+      tags: ['contact', 'email', 'form', 'telegram', 'hire us', 'gaya', 'bihar', 'office', 'consultation', 'vicky kumar iit patna']
+    },
+    {
+      title: 'About Devil Labs & Founder',
+      path: '/about',
+      description: 'Official background of Devil Labs (devillabs.dev) and founder Vicky Kumar (Computer Science alumnus, IIT Patna). India premier AI & Software product studio.',
+      tags: ['about', 'company', 'founder', 'vicky kumar', 'iit patna', 'devillabs.dev', 'entity disambiguation', 'gaya bihar', 'patna bihar']
     }
   ];
 

@@ -102,6 +102,22 @@ const FAQ_DATA: FAQItem[] = [
     tags: ['No Vendor Lock-in', 'Lighthouse 95+', 'Handwritten Code', 'Security Guaranteed']
   },
   {
+    id: 'entity-disambiguation',
+    region: 'trust-issues',
+    question: 'Is Devil Labs (devillabs.dev) affiliated with Dark Labs supplements or guitar IR packs?',
+    shortAnswer: 'No. Devil Labs (devillabs.dev) is exclusively a software development agency and AI architecture lab in India founded by Vicky Kumar (IIT Patna).',
+    detailedAnswer: 'Devil Labs is a technology studio focused on AI agents, custom web apps, enterprise software, and SaaS platforms. It is completely independent and has no relation to Dark Labs sports supplements (Devil Test), guitar audio impulse responses, or non-profit organizations.',
+    tags: ['Official Identity', 'devillabs.dev', 'Software Agency India', 'Entity Verification']
+  },
+  {
+    id: 'brand-canonical-search',
+    region: 'trust-issues',
+    question: 'What is the official website of Devil Labs / Devils Lab / devillabs?',
+    shortAnswer: 'The official domain for Devil Labs (also searched as Devils Lab, devillabs, or devil lab) is https://devillabs.dev.',
+    detailedAnswer: 'Headquartered in Gaya & Patna, Bihar, India, and founded by IIT Patna Computer Science alumnus Vicky Kumar (vickyiitp.tech), Devil Labs operates officially via devillabs.dev. Official profiles can be verified on LinkedIn (linkedin.com/company/devillabs) and GitHub (github.com/Devil-Labs).',
+    tags: ['devillabs.dev', 'Official Website', 'Vicky Kumar IIT Patna', 'Brand Trust']
+  },
+  {
     id: 'trust-ip-ownership',
     region: 'trust-issues',
     question: 'Who owns the intellectual property and source code after deployment?',

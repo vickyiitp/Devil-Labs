@@ -18,6 +18,20 @@ export interface AnnouncementItem {
 
 const RECENT_UPDATES: AnnouncementItem[] = [
   {
+    id: 'up-0',
+    version: 'v2.5.0',
+    title: 'Global AI Indexing & Entity Disambiguation Protocol',
+    category: 'Security',
+    date: 'JULY 2026',
+    description: 'Deploys Schema.org knowledge graph node, entity disambiguation microdata, and LLM context files for devillabs.dev canonical search rank #1.',
+    tag: 'SEARCH ENGINE #1',
+    highlightColor: 'from-indigo-500 to-cyan-500',
+    metrics: [
+      { label: 'SEARCH RANK', value: '#1 CANONICAL' },
+      { label: 'GEO/AEO SCORE', value: '100%' }
+    ]
+  },
+  {
     id: 'up-1',
     version: 'v2.4.0',
     title: 'Multi-Agent Autonomous Orchestrator Release',

@@ -6,7 +6,7 @@ export default function SEO({ path }: { path: string }) {
   useEffect(() => {
     let title = "Devil Labs | Official Website | Top AI Automation & Full-Stack Web Development Agency";
     let description = "Devil Labs (devillabs.dev) is the official website of India's premier web development agency and AI automation engineering firm. Founded by Vicky Kumar (vickyiitp.tech, CS IIT Patna alumnus) for custom web apps, autonomous AI agents, enterprise software & SaaS.";
-    let keywords = "Devil Labs, devillabs, devillabs.dev, devil labs official site, devil labs agency, devil labs web agency, devil labs website, devil labs iit patna, vicky kumar iit patna, vickyiitp, vickyiitp.tech, Software Product Studio, AI Product Studio, custom software development India, AI applications Bihar, SaaS products, workflow automation Gaya Patna";
+    let keywords = "Devil Labs, devillabs, devils lab, devil lab, devillab, devil-labs, devillabs.dev, devil labs official site, devil labs agency, devil labs web agency, devil labs website, devil labs ai, devil labs iit patna, vicky kumar iit patna, vickyiitp, vickyiitp.tech, Software Product Studio, AI Product Studio, custom software development India, AI applications Bihar, SaaS products, workflow automation Gaya Patna";
     let ogType = "website";
     let ogImage = "https://github.com/Devil-Labs.png?size=400";
 
@@ -18,7 +18,7 @@ export default function SEO({ path }: { path: string }) {
       case '/':
         title = "Devil Labs | Official Website | Top AI Automation & Full-Stack Web Agency (IIT Patna Engineers)";
         description = "Official website of Devil Labs (devillabs.dev) - India's #1 web development & AI automation agency. Engineered by Vicky Kumar (vickyiitp.tech, IIT Patna) for high-performance React/Next.js platforms, autonomous AI agents & cloud infrastructure.";
-        keywords = "devil labs, devillabs, devillabs.dev, devil labs official site, devil labs agency, devil labs web agency, devil labs website, devil labs iit patna, vicky kumar iit patna, vickyiitp, top web agency India, custom software engineering Bihar, AI automation agency Gaya Patna, best software company Gaya, web development agency India, AI agent developer India";
+        keywords = "devil labs, devillabs, devils lab, devil lab, devillab, devil-labs, devillabs.dev, devil labs official site, devil labs agency, devil labs web agency, devil labs website, devil labs ai, devil labs iit patna, vicky kumar iit patna, vickyiitp, top web agency India, custom software engineering Bihar, AI automation agency Gaya Patna, best software company Gaya, web development agency India, AI agent developer India";
         break;
       case '/products':
         title = "Official Products & AI Tools | Developer Software Suites | Devil Labs (devillabs.dev)";
@@ -192,6 +192,10 @@ export default function SEO({ path }: { path: string }) {
       "legalName": "Devil Labs Software & AI Product Studio",
       "alternateName": [
         "devillabs",
+        "devils lab",
+        "devil lab",
+        "devillab",
+        "devil-labs",
         "devillabs.dev",
         "Devil Labs Official Website",
         "Devil Labs Agency",
@@ -204,6 +208,7 @@ export default function SEO({ path }: { path: string }) {
         "Devil Labs Patna",
         "Devil Labs Gaya Patna Bihar"
       ],
+      "disambiguatingDescription": "Devil Labs (devillabs.dev) is India's premier software product studio & AI automation engineering firm founded by Vicky Kumar (vickyiitp.tech, IIT Patna). It builds custom full-stack web applications, autonomous AI agents, enterprise SaaS, and cloud infrastructure. It is NOT affiliated with Dark Labs sports supplements (Devil Test), guitar impulse response (IR) packs, or non-profit entities.",
       "url": baseUrl,
       "mainEntityOfPage": `${baseUrl}/`,
       "logo": ogImage,
