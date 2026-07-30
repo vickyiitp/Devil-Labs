@@ -12,8 +12,55 @@ interface SearchRecord {
   tags: string[];
 }
 
+function updateFreshnessSignals() {
+  const nowISO = new Date().toISOString();
+  const dateOnly = nowISO.split('T')[0];
+  const publicDir = path.join(process.cwd(), 'public');
+
+  if (!fs.existsSync(publicDir)) {
+    fs.mkdirSync(publicDir, { recursive: true });
+  }
+
+  // 1. Regenerate Sitemap with build date
+  const sitemapPath = path.join(publicDir, 'sitemap.xml');
+  const sitemapContent = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://devillabs.dev/</loc><lastmod>${dateOnly}</lastmod><changefreq>daily</changefreq><priority>1.00</priority></url>
+  <url><loc>https://devillabs.dev/services</loc><lastmod>${dateOnly}</lastmod><changefreq>weekly</changefreq><priority>0.95</priority></url>
+  <url><loc>https://devillabs.dev/products</loc><lastmod>${dateOnly}</lastmod><changefreq>weekly</changefreq><priority>0.90</priority></url>
+  <url><loc>https://devillabs.dev/solutions</loc><lastmod>${dateOnly}</lastmod><changefreq>weekly</changefreq><priority>0.90</priority></url>
+  <url><loc>https://devillabs.dev/projects</loc><lastmod>${dateOnly}</lastmod><changefreq>weekly</changefreq><priority>0.90</priority></url>
+  <url><loc>https://devillabs.dev/work</loc><lastmod>${dateOnly}</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://devillabs.dev/about</loc><lastmod>${dateOnly}</lastmod><changefreq>weekly</changefreq><priority>0.90</priority></url>
+  <url><loc>https://devillabs.dev/pricing</loc><lastmod>${dateOnly}</lastmod><changefreq>weekly</changefreq><priority>0.90</priority></url>
+  <url><loc>https://devillabs.dev/contact</loc><lastmod>${dateOnly}</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://devillabs.dev/process</loc><lastmod>${dateOnly}</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://devillabs.dev/insights</loc><lastmod>${dateOnly}</lastmod><changefreq>daily</changefreq><priority>0.80</priority></url>
+  <url><loc>https://devillabs.dev/resources</loc><lastmod>${dateOnly}</lastmod><changefreq>weekly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://devillabs.dev/faq</loc><lastmod>${dateOnly}</lastmod><changefreq>weekly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://devillabs.dev/services/landing-pages</loc><lastmod>${dateOnly}</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://devillabs.dev/services/business-website</loc><lastmod>${dateOnly}</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://devillabs.dev/services/ecommerce</loc><lastmod>${dateOnly}</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://devillabs.dev/services/fullstack</loc><lastmod>${dateOnly}</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://devillabs.dev/services/ai-agents</loc><lastmod>${dateOnly}</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://devillabs.dev/services/ai-tools</loc><lastmod>${dateOnly}</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://devillabs.dev/services/automation</loc><lastmod>${dateOnly}</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://devillabs.dev/services/cloud-hosting</loc><lastmod>${dateOnly}</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://devillabs.dev/services/web-apps</loc><lastmod>${dateOnly}</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://devillabs.dev/services/vps</loc><lastmod>${dateOnly}</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://devillabs.dev/legal/privacy</loc><lastmod>${dateOnly}</lastmod><changefreq>yearly</changefreq><priority>0.30</priority></url>
+  <url><loc>https://devillabs.dev/legal/terms</loc><lastmod>${dateOnly}</lastmod><changefreq>yearly</changefreq><priority>0.30</priority></url>
+  <url><loc>https://devillabs.dev/legal/msa</loc><lastmod>${dateOnly}</lastmod><changefreq>yearly</changefreq><priority>0.30</priority></url>
+</urlset>`;
+
+  fs.writeFileSync(sitemapPath, sitemapContent, 'utf8');
+  console.log(`Updated sitemap.xml with lastmod date: ${dateOnly}`);
+}
+
 function generateIndex() {
-  console.log('Generating Search Index...');
+  console.log('Generating Search Index & Freshness Signals...');
+
+  updateFreshnessSignals();
 
   const records: SearchRecord[] = [];
 
@@ -93,7 +140,7 @@ function generateIndex() {
     const typeLabel = project.id >= 100 ? 'Client Project' : 'Demo Project';
     records.push({
       title: `${project.title.replace(' // ', ' — ')} (${typeLabel})`,
-      path: `/work?id=${project.id}`, // Anchor link or filter query
+      path: `/work?id=${project.id}`,
       category: 'Projects',
       description: `Deployed tech architecture under domain ${project.domain || 'Web'}. Powered by ${project.tech}. Built for ${project.client}.`,
       tags: [
@@ -124,12 +171,7 @@ function generateIndex() {
     });
   }
 
-  // Ensure public directory exists
   const publicDir = path.join(process.cwd(), 'public');
-  if (!fs.existsSync(publicDir)) {
-    fs.mkdirSync(publicDir, { recursive: true });
-  }
-
   const outputPath = path.join(publicDir, 'search.json');
   fs.writeFileSync(outputPath, JSON.stringify(records, null, 2), 'utf8');
   console.log(`Successfully generated search index with ${records.length} records inside: ${outputPath}`);

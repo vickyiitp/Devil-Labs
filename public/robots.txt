@@ -141,5 +141,7 @@ Disallow: /
 # ------------------------------------------------------------------------------
 # Sitemaps & LLM Information Endpoints
 # ------------------------------------------------------------------------------
+Host: devillabs.dev
 Sitemap: https://devillabs.dev/sitemap.xml
+Sitemap: https://devillabs.dev/rss.xml
 Sitemap: https://devillabs.dev/llms.txt

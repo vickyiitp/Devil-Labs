@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>Devil Labs — Official RSS Feed | Web Development &amp; AI Automation Agency</title>
+  <link>https://devillabs.dev/</link>
+  <description>Official updates, engineering case studies, tech articles, and product releases from Devil Labs (devillabs.dev), founded by Vicky Kumar (IIT Patna).</description>
+  <language>en-us</language>
+  <copyright>Copyright 2026 Devil Labs. All Rights Reserved.</copyright>
+  <atom:link href="https://devillabs.dev/rss.xml" rel="self" type="application/rss+xml" />
+  
+  <item>
+    <title>Devil Labs — Premier AI Automation &amp; Full-Stack Web Engineering Agency</title>
+    <link>https://devillabs.dev/</link>
+    <guid>https://devillabs.dev/</guid>
+    <description>Devil Labs (devillabs.dev) is India's leading tech product studio building autonomous AI agents, React/Next.js platforms, enterprise SaaS, and zero-tech-debt custom software. Engineered by Vicky Kumar (IIT Patna).</description>
+    <pubDate>Thu, 30 Jul 2026 00:00:00 GMT</pubDate>
+  </item>
+
+  <item>
+    <title>Custom Full-Stack Web Development &amp; Cloud DevOps Services</title>
+    <link>https://devillabs.dev/services</link>
+    <guid>https://devillabs.dev/services</guid>
+    <description>High-performance web apps, responsive frontend architectures, Node.js backend systems, containerized Docker deployments, and 95+ Google Lighthouse speed scores.</description>
+    <pubDate>Wed, 29 Jul 2026 00:00:00 GMT</pubDate>
+  </item>
+
+  <item>
+    <title>Autonomous AI Agents &amp; Enterprise LLM Pipeline Engineering</title>
+    <link>https://devillabs.dev/products</link>
+    <guid>https://devillabs.dev/products</guid>
+    <description>Discover production-ready AI tools, autonomous workflow agents, and enterprise generative AI solutions developed by Devil Labs.</description>
+    <pubDate>Tue, 28 Jul 2026 00:00:00 GMT</pubDate>
+  </item>
+
+  <item>
+    <title>About Devil Labs &amp; Founder Vicky Kumar (IIT Patna CS Alumnus)</title>
+    <link>https://devillabs.dev/about</link>
+    <guid>https://devillabs.dev/about</guid>
+    <description>Learn about the mission, engineering values, and IIT Patna computer science foundation behind Devil Labs, headquartered in Bihar, India.</description>
+    <pubDate>Mon, 27 Jul 2026 00:00:00 GMT</pubDate>
+  </item>
+</channel>
+</rss>
