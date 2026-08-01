@@ -12,7 +12,7 @@ import FloatingContact from './components/FloatingContact';
 import { DebugProvider } from './components/DebugContext';
 import { CurrencyProvider } from './contexts/CurrencyContext';
 import InitializeModal from './components/InitializeModal';
-import InteractiveLabStoryStage from './components/InteractiveLabStoryStage';
+import StoryExperienceModal from './components/story/StoryExperienceModal';
 import ErrorBoundary from './components/ErrorBoundary';
 
 // Code split all secondary routes for fast initial page load & high Lighthouse score
@@ -184,10 +184,11 @@ export default function App() {
             onClose={() => setIsInitializeModalOpen(false)} 
             navigate={navigate} 
           />
-          <InteractiveLabStoryStage
+          <StoryExperienceModal
             isOpen={isStoryStageOpen}
             onClose={() => setIsStoryStageOpen(false)}
             onInitializeProject={() => setIsInitializeModalOpen(true)}
+            navigate={navigate}
           />
         </div>
       </DebugProvider>
