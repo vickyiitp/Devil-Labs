@@ -12,6 +12,7 @@ import FloatingContact from './components/FloatingContact';
 import { DebugProvider } from './components/DebugContext';
 import { CurrencyProvider } from './contexts/CurrencyContext';
 import InitializeModal from './components/InitializeModal';
+import InteractiveLabStoryStage from './components/InteractiveLabStoryStage';
 import ErrorBoundary from './components/ErrorBoundary';
 
 // Code split all secondary routes for fast initial page load & high Lighthouse score
@@ -73,14 +74,20 @@ function ScrollSection({ children, className = "" }: { children: ReactNode, clas
 export default function App() {
   const [currentPath, navigate] = usePath();
   const [isInitializeModalOpen, setIsInitializeModalOpen] = useState(false);
+  const [isStoryStageOpen, setIsStoryStageOpen] = useState(false);
 
   useEffect(() => {
     const handleOpenModal = () => setIsInitializeModalOpen(true);
+    const handleOpenStory = () => setIsStoryStageOpen(true);
+
     window.addEventListener('open-initialize-modal', handleOpenModal);
     window.addEventListener('open-inquiry-modal', handleOpenModal);
+    window.addEventListener('open-story-stage', handleOpenStory);
+
     return () => {
       window.removeEventListener('open-initialize-modal', handleOpenModal);
       window.removeEventListener('open-inquiry-modal', handleOpenModal);
+      window.removeEventListener('open-story-stage', handleOpenStory);
     };
   }, []);
 
@@ -176,6 +183,11 @@ export default function App() {
             isOpen={isInitializeModalOpen} 
             onClose={() => setIsInitializeModalOpen(false)} 
             navigate={navigate} 
+          />
+          <InteractiveLabStoryStage
+            isOpen={isStoryStageOpen}
+            onClose={() => setIsStoryStageOpen(false)}
+            onInitializeProject={() => setIsInitializeModalOpen(true)}
           />
         </div>
       </DebugProvider>

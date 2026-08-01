@@ -459,13 +459,23 @@ export default function LandingPage({ navigate }: LandingPageProps) {
                       show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: 0.15 } },
                       exit: { opacity: 0, y: -10, transition: { duration: 0.3 } }
                     }}
-                    className="flex items-center space-x-3.5 pt-2 w-full justify-center lg:justify-start"
+                    className="flex flex-col sm:flex-row items-center gap-4 pt-2 w-full justify-center lg:justify-start"
                   >
-                    <img src="https://github.com/vickyiitp.png?size=80" alt="Vicky Kumar" className="flex-shrink-0 w-10 h-10 rounded-full shadow-md border border-stone-800 object-cover" />
-                    <div className="text-left">
-                      <div className="text-[11px] font-extrabold text-white tracking-wider uppercase font-sans">Vicky Kumar</div>
-                      <div className="text-[9px] text-stone-400 font-semibold tracking-wider uppercase leading-none mt-1 font-sans">Co-Founder, Devil Labs • CS Student (IIT Patna)</div>
+                    <div className="flex items-center space-x-3.5">
+                      <img src="https://github.com/vickyiitp.png?size=80" alt="Vicky Kumar" className="flex-shrink-0 w-10 h-10 rounded-full shadow-md border border-stone-800 object-cover" />
+                      <div className="text-left">
+                        <div className="text-[11px] font-extrabold text-white tracking-wider uppercase font-sans">Vicky Kumar</div>
+                        <div className="text-[9px] text-stone-400 font-semibold tracking-wider uppercase leading-none mt-1 font-sans">Co-Founder, Devil Labs • CS Student (IIT Patna)</div>
+                      </div>
                     </div>
+
+                    <button
+                      onClick={() => window.dispatchEvent(new CustomEvent('open-story-stage'))}
+                      className="px-5 py-2.5 rounded-full bg-gradient-to-r from-violet-600 via-indigo-600 to-purple-600 hover:from-violet-500 hover:to-purple-500 text-white font-mono font-bold text-[11px] uppercase tracking-wider transition-all shadow-lg hover:shadow-violet-600/30 flex items-center gap-2 border border-violet-400/40"
+                    >
+                      <Sparkles size={14} className="text-amber-300 animate-pulse" />
+                      <span>ENTER THE LAB // 3D STORY</span>
+                    </button>
                   </motion.div>
                 </motion.div>
               </AnimatePresence>
