@@ -14,15 +14,30 @@ export default defineConfig(() => {
     build: {
       cssMinify: true,
       minify: 'esbuild' as const,
+      chunkSizeWarningLimit: 1600,
       rollupOptions: {
         output: {
-          manualChunks: {
-            'react-core': ['react', 'react-dom'],
-            'motion-core': ['motion/react'],
-            'lucide-icons': ['lucide-react'],
-          }
-        }
-      }
+          manualChunks(id) {
+            if (id.includes('node_modules')) {
+              if (id.includes('@google/genai')) {
+                return 'genai';
+              }
+              if (id.includes('@react-oauth')) {
+                return 'google-oauth';
+              }
+              if (id.includes('lucide-react')) {
+                return 'lucide-icons';
+              }
+              if (id.includes('motion')) {
+                return 'motion-core';
+              }
+              if (id.includes('react') || id.includes('react-dom')) {
+                return 'react-core';
+              }
+            }
+          },
+        },
+      },
     },
     server: {
       // HMR is disabled in AI Studio via DISABLE_HMR env var.

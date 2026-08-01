@@ -1,3 +1,5 @@
+import { dispatchNotifications } from '../src/utils/notificationService';
+
 export default async function handler(req: any, res: any) {
   // CORS setup
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -44,5 +46,3 @@ export default async function handler(req: any, res: any) {
     });
   }
 }
-
-import { dispatchNotifications } from '../src/utils/notificationService';
