@@ -7,9 +7,9 @@ import {
 } from 'lucide-react';
 import { audioEngine } from '../lib/audio';
 
-import heroImg1 from '../assets/images/hero_builder_cityscape_1784785823510.webp';
-import heroImg2 from '../assets/images/hero_intelligent_systems_1784785833146.webp';
-import heroImg3 from '../assets/images/hero_problem_chaos_1784785846477.webp';
+import heroImg1 from '../assets/images/image.jpg';
+const heroImg2 = 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80';
+const heroImg3 = 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=1200&auto=format&fit=crop&q=80';
 
 interface DisciplineCard {
   id: number;

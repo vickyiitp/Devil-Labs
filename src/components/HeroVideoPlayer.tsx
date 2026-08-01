@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 import { useState, useRef, useEffect } from 'react';
-import heroPoster from '../assets/images/hero_intelligent_systems_1784785833146.webp';
+import heroPoster from '../assets/images/image.jpg';
 
 export default function HeroVideoPlayer() {
   const [loaded, setLoaded] = useState(false);

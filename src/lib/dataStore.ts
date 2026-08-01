@@ -393,10 +393,14 @@ const INITIAL_ANALYTICS: AnalyticsData = {
   ]
 };
 
+const DEFAULT_GH_TOKEN = (import.meta.env?.VITE_GITHUB_TOKEN as string) || '';
+const DEFAULT_GH_REPO = (import.meta.env?.VITE_GITHUB_REPO as string) || 'vickyiitp/Devil-Labs';
+const DEFAULT_GH_BRANCH = (import.meta.env?.VITE_GITHUB_BRANCH as string) || 'main';
+
 const INITIAL_GITHUB_CONFIG: GitHubConfig = {
-  token: '',
-  repo: 'Devil-Labs/platform',
-  branch: 'main',
+  token: DEFAULT_GH_TOKEN,
+  repo: DEFAULT_GH_REPO,
+  branch: DEFAULT_GH_BRANCH,
   lastSynced: null
 };
 
@@ -414,7 +418,12 @@ function getInitialStore(): DataStoreState {
         categories: parsed.categories || INITIAL_CATEGORIES,
         industries: parsed.industries || INITIAL_INDUSTRIES,
         analytics: parsed.analytics || [INITIAL_ANALYTICS],
-        githubConfig: parsed.githubConfig || INITIAL_GITHUB_CONFIG
+        githubConfig: {
+          token: parsed.githubConfig?.token || DEFAULT_GH_TOKEN,
+          repo: parsed.githubConfig?.repo || DEFAULT_GH_REPO,
+          branch: parsed.githubConfig?.branch || DEFAULT_GH_BRANCH,
+          lastSynced: parsed.githubConfig?.lastSynced || null
+        }
       };
     }
   } catch (e) {

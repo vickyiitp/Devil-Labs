@@ -19,6 +19,7 @@ import AEOKnowledgeHub from '../components/AEOKnowledgeHub';
 import RecentUpdates from '../components/RecentUpdates';
 
 import StaggeredHeading from '../components/StaggeredHeading';
+import heroBg from '../assets/images/image.jpg';
 
 const nichesData = [
   {
@@ -264,6 +265,12 @@ export default function LandingPage({ navigate }: LandingPageProps) {
         } as React.CSSProperties}
         className="relative flex flex-col justify-center px-4 md:px-8 overflow-hidden min-h-[90vh] bg-[#050505] text-white"
       >
+        {/* Dynamic Background Image Layer */}
+        <div 
+          className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-40 mix-blend-luminosity"
+          style={{ backgroundImage: `url(${heroBg})` }}
+        />
+
         {/* Dynamic Background Portal Layer */}
         <div className="absolute inset-0 z-0 pointer-events-none select-none">
           {/* Spotlight glow effect */}

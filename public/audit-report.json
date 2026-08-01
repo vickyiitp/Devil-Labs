@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-07-30T20:20:29.354Z",
+  "timestamp": "2026-08-01T03:40:00.930Z",
   "overallScore": 98,
   "seoScore": 99,
   "performanceScore": 96,
@@ -35,7 +35,7 @@
       "name": "Sitemap Health & Coverage",
       "category": "SEO",
       "status": "PASSED",
-      "details": "Valid XML sitemap with 26 discoverable URLs (lastmod: 2026-07-30)"
+      "details": "Valid XML sitemap with 26 discoverable URLs (lastmod: 2026-08-01)"
     },
     {
       "name": "Robots.txt Directives",
@@ -76,6 +76,6 @@
   ],
   "sitemapStats": {
     "totalUrls": 26,
-    "lastModDate": "2026-07-30"
+    "lastModDate": "2026-08-01"
   }
 }

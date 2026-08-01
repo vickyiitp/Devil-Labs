@@ -62,7 +62,10 @@ export default function AdminPage({ navigate }: AdminPageProps) {
   const handleGoogleSuccess = (credentialResponse: any) => {
     try {
       const decoded: any = jwtDecode(credentialResponse.credential);
-      if (decoded.email === 'themvaplatform@gmail.com') {
+      const email = decoded.email?.toLowerCase();
+      const allowedEmails = ['themvaplatform@gmail.com', 'devil.labs.contact@gmail.com', 'vickyiitp@gmail.com'];
+      
+      if (allowedEmails.includes(email)) {
         setIsAuthenticated(true);
         setAuthError('');
         audioEngine.playClick();
@@ -330,32 +333,16 @@ export default function AdminPage({ navigate }: AdminPageProps) {
           </div>
 
           <div className="space-y-4 flex flex-col items-center justify-center">
-            {import.meta.env.VITE_GOOGLE_CLIENT_ID ? (
-              <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}>
-                <GoogleLogin
-                  onSuccess={handleGoogleSuccess}
-                  onError={handleGoogleError}
-                  theme="filled_black"
-                  shape="pill"
-                  useOneTap
-                />
-              </GoogleOAuthProvider>
-            ) : (
-              <div className="bg-amber-950/40 border border-amber-500/30 p-4 rounded-xl text-center">
-                <AlertCircle className="w-6 h-6 text-amber-400 mx-auto mb-2" />
-                <p className="text-amber-200 text-xs font-mono font-bold uppercase mb-1">Missing Google Client ID</p>
-                <p className="text-amber-400/80 text-[10px] font-sans">
-                  Set VITE_GOOGLE_CLIENT_ID in your environment variables to enable login.
-                </p>
-                {/* Fallback for preview/development when no Client ID is present */}
-                <button 
-                  onClick={() => setIsAuthenticated(true)}
-                  className="mt-3 w-full py-2 bg-stone-800 hover:bg-stone-700 text-white font-mono text-[10px] uppercase rounded-lg transition-colors"
-                >
-                  Bypass (Dev Only)
-                </button>
-              </div>
-            )}
+            <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID || '1015579832905-6qbn97i0s8mq64jh7m8ojit7qmdhtqhm.apps.googleusercontent.com'}>
+              <GoogleLogin
+                onSuccess={handleGoogleSuccess}
+                onError={handleGoogleError}
+                theme="filled_black"
+                shape="pill"
+                useOneTap
+              />
+            </GoogleOAuthProvider>
+
 
             {authError && (
               <p className="text-red-400 font-mono text-[11px] bg-red-950/40 border border-red-500/30 p-2.5 rounded-xl w-full">
