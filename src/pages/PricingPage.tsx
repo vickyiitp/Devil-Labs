@@ -200,7 +200,7 @@ export default function PricingPage({ navigate }: PricingPageProps) {
       <section id="pricing-header" className="mb-20 flex flex-col md:flex-row md:items-end md:justify-between gap-6 border-b border-white/10/30 pb-10">
         <div className="space-y-4">
           <span className="text-violet-600 font-sans text-xs uppercase tracking-widest font-extrabold">✦ PRICING &amp; TIER PLANS</span>
-          <h1 className="font-display font-extrabold text-2xl xs:text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-stone-100 tracking-tighter uppercase leading-none break-words max-w-full">
+          <h1 className="font-display font-extrabold text-2xl xs:text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-stone-100 tracking-tighter uppercase leading-none max-w-full">
             TRANSPARENT PRICING.
           </h1>
           <p className="text-stone-300 text-base sm:text-lg max-w-2xl leading-relaxed font-sans">

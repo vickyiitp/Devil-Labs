@@ -111,7 +111,7 @@ export default function SolutionsPage({ navigate }: { navigate: (path: string) =
           <Shield size={14} />
           <span>✦ INDUSTRY SOLUTIONS</span>
         </div>
-        <StaggeredHeading text="PROVEN SOLUTIONS BY INDUSTRY." className="font-display font-extrabold text-2xl xs:text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-stone-100 tracking-tighter uppercase leading-none break-words max-w-full" />
+        <StaggeredHeading text="PROVEN SOLUTIONS BY INDUSTRY." className="font-display font-extrabold text-2xl xs:text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-stone-100 tracking-tighter uppercase leading-none max-w-full" />
         <p className="text-stone-300 text-base sm:text-lg max-w-3xl leading-relaxed font-sans">
           We build targeted digital systems that solve core operational challenges and drive measurable business growth. Select your industry below to explore tailored solutions, key features, and verified outcomes.
         </p>

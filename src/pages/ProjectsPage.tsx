@@ -487,7 +487,7 @@ export default function ProjectsPage({ navigate }: ProjectsPageProps) {
         </div>
         <StaggeredHeading 
           text="FEATURED PROJECTS."
-          className="text-2xl xs:text-3xl sm:text-5xl lg:text-7xl font-display font-black tracking-tighter uppercase mb-6 leading-[0.95] text-stone-100 break-words max-w-full"
+          className="text-2xl xs:text-3xl sm:text-5xl lg:text-7xl font-display font-black tracking-tighter uppercase mb-6 leading-[0.95] text-stone-100 max-w-full"
         />
         <p className="text-stone-300 font-sans text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
           Explore our live production demos and featured client applications. Filter by category to view detailed briefs, tech stacks, and live interactive previews.

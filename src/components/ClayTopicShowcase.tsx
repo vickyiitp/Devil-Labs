@@ -369,7 +369,7 @@ function MagneticClayCard({
             {/* Title with sleek hover shift */}
             <h3 
               style={{ transform: `translateZ(55px) translateX(${coords.rY * 1.1}px) translateY(${-coords.rX * 1.1}px)` }}
-              className="font-display font-black text-xl lg:text-2xl uppercase tracking-tight text-stone-100 mt-1 flex items-center justify-between break-words w-full"
+              className="font-display font-black text-xl lg:text-2xl uppercase tracking-tight text-stone-100 mt-1 flex items-center justify-between w-full"
             >
               <span className="truncate max-w-[90%]">{topic.title}</span>
               <ArrowUpRight size={14} className={`text-stone-400 group-hover:text-violet-600 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300 flex-shrink-0 ${
@@ -756,7 +756,7 @@ export default function ClayTopicShowcase() {
             <Sparkles size={12} className="animate-spin-slow" />
             <span>CORE DESIGN & ART DIRECTION DISCIPLINES</span>
           </span>
-          <h2 className="font-display font-black text-3xl xs:text-4xl sm:text-5xl text-stone-100 uppercase tracking-tighter leading-none break-words max-w-full">
+          <h2 className="font-display font-black text-3xl xs:text-4xl sm:text-5xl text-stone-100 uppercase tracking-tighter leading-none max-w-full">
             curated premium disciplines
           </h2>
           <p className="text-stone-400 text-xs sm:text-sm font-sans max-w-xl mx-auto leading-relaxed uppercase tracking-wider">

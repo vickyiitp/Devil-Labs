@@ -75,7 +75,7 @@ export default function ServiceDetailPage({
             <span className="text-violet-400 font-sans text-xs uppercase tracking-widest font-extrabold block">
               ✦ {data.subtitle}
             </span>
-            <StaggeredHeading text={data.title} className="font-display font-extrabold text-2xl xs:text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-stone-100 tracking-tighter uppercase leading-none break-words max-w-full" />
+            <StaggeredHeading text={data.title} className="font-display font-extrabold text-2xl xs:text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-stone-100 tracking-tighter uppercase leading-none max-w-full" />
             <p className="text-stone-300 text-base sm:text-lg leading-relaxed mt-6 max-w-2xl">
               {data.desc}
             </p>

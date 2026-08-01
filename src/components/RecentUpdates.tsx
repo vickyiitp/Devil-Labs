@@ -109,7 +109,7 @@ export default function RecentUpdates() {
           </div>
           <StaggeredHeading 
             text="RECENT SYSTEM UPDATES." 
-            className="font-display font-black text-2xl xs:text-3xl sm:text-5xl md:text-6xl text-white tracking-tighter uppercase leading-none break-words max-w-full"
+            className="font-display font-black text-2xl xs:text-3xl sm:text-5xl md:text-6xl text-white tracking-tighter uppercase leading-none max-w-full"
           />
           <p className="text-stone-300 text-xs sm:text-sm font-sans max-w-xl leading-relaxed">
             Real-time changelog of our live deployments, core framework upgrades, and enterprise software releases.

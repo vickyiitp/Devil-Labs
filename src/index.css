@@ -22,8 +22,8 @@
   letter-spacing: -0.04em;
   text-transform: uppercase;
   font-size: clamp(1.25rem, 5.5vw, 4.8rem);
-  overflow-wrap: break-word;
-  word-break: break-word;
+  overflow-wrap: normal;
+  word-break: normal;
 }
 
 /* 2. DISPLAY LARGE: Commandive section-level editorial headers */
@@ -34,8 +34,8 @@
   letter-spacing: -0.035em;
   text-transform: uppercase;
   font-size: clamp(1.2rem, 4vw, 3.2rem);
-  overflow-wrap: break-word;
-  word-break: break-word;
+  overflow-wrap: normal;
+  word-break: normal;
 }
 
 /* 3. DISPLAY MEDIUM: Card headers & modular sub-sections */
@@ -46,8 +46,8 @@
   letter-spacing: -0.025em;
   text-transform: uppercase;
   font-size: clamp(1.1rem, 3vw, 2.2rem);
-  overflow-wrap: break-word;
-  word-break: break-word;
+  overflow-wrap: normal;
+  word-break: normal;
 }
 
 /* 4. EDITORIAL BODY: High-end editorial narrative, books, blogs, and immersive case study details */
@@ -102,9 +102,9 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6, .font-display {
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-  word-break: break-word;
+  overflow-wrap: normal;
+  word-wrap: normal;
+  word-break: normal;
   max-width: 100%;
   min-width: 0;
 }

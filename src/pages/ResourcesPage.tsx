@@ -179,7 +179,7 @@ export default function ResourcesPage({ navigate }: { navigate: (path: string) =
         </div>
         <StaggeredHeading 
           text="ENGINEERING LABS & DOCUMENTATION." 
-          className="font-display font-extrabold text-2xl xs:text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-stone-100 tracking-tighter uppercase leading-none break-words max-w-full"
+          className="font-display font-extrabold text-2xl xs:text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-stone-100 tracking-tighter uppercase leading-none max-w-full"
         />
         <p className="text-stone-300 text-base sm:text-lg max-w-3xl leading-relaxed font-sans">
           Welcome to our official resource depository. Read our architectural deep-dives, grab copy-paste development templates, explore industrial case studies, and browse our formal specifications list.

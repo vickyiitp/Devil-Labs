@@ -789,7 +789,7 @@ export function Footer({ navigate }: { navigate: (path: string) => void }) {
                 key="hint"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 0.6 }}
-                className="text-stone-400 group-hover/branding:text-violet-600 group-hover/branding:opacity-100 transition-all duration-300 font-black uppercase text-[10px] sm:text-xs text-center break-words px-4 w-full max-w-full"
+                className="text-stone-400 group-hover/branding:text-violet-600 group-hover/branding:opacity-100 transition-all duration-300 font-black uppercase text-[10px] sm:text-xs text-center px-4 w-full max-w-full"
               >
                 {clickedLetters.length > 0 
                   ? `Harmonics: ${clickedLetters.length}/9 segments activated` 

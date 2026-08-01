@@ -39,7 +39,7 @@ export default function ServicesPage({ navigate }: ServicesPageProps) {
                 <span className="text-violet-400 font-sans text-xs uppercase tracking-widest font-extrabold block mb-2">
                   ✦ Category {String(catIdx + 1).padStart(2, '0')}
                 </span>
-                <h2 className="font-display font-extrabold text-2xl sm:text-3xl md:text-4xl text-stone-100 tracking-tight uppercase break-words max-w-full">
+                <h2 className="font-display font-extrabold text-2xl sm:text-3xl md:text-4xl text-stone-100 tracking-tight uppercase max-w-full">
                   {category.title}
                 </h2>
               </div>

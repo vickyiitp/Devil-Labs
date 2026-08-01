@@ -180,7 +180,7 @@ export default function ProductsPage({ navigate }: { navigate: (path: string) =>
           <Package size={14} />
           <span>✦ DIGITAL PRODUCTS &amp; ASSETS</span>
         </div>
-        <StaggeredHeading text="PREMIUM SOFTWARE & DEVELOPER ASSETS." className="font-display font-extrabold text-2xl xs:text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-stone-100 tracking-tighter uppercase leading-none break-words max-w-full" />
+        <StaggeredHeading text="PREMIUM SOFTWARE & DEVELOPER ASSETS." className="font-display font-extrabold text-2xl xs:text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-stone-100 tracking-tighter uppercase leading-none max-w-full" />
         <p className="text-stone-300 text-base sm:text-lg max-w-3xl leading-relaxed font-sans">
           We design production-ready Next.js starter templates, developer SDKs, AI agent microservices, and design systems to boost your launch velocity. Built with clean architecture and production-tested code.
         </p>

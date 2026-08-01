@@ -72,7 +72,7 @@ export default function ProcessInsightsPage({ navigate }: ProcessInsightsPagePro
           <Sparkles size={12} className="animate-pulse" />
           <span>DevOps & Intelligence Core</span>
         </div>
-        <h1 className="font-display text-2xl xs:text-3xl md:text-5xl lg:text-7xl font-black tracking-tighter uppercase mb-6 text-stone-100 break-words max-w-full">
+        <h1 className="font-display text-2xl xs:text-3xl md:text-5xl lg:text-7xl font-black tracking-tighter uppercase mb-6 text-stone-100 max-w-full">
           THE LAB <span className="text-violet-600 font-light font-serif italic">✦</span> ENGINE & INSIGHTS
         </h1>
         <p className="text-stone-300 max-w-2xl mx-auto leading-relaxed text-sm font-sans font-light">
