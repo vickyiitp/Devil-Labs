@@ -31,6 +31,9 @@ export default defineConfig(() => {
               if (id.includes('motion')) {
                 return 'motion-core';
               }
+              if (id.includes('three')) {
+                return 'three-core';
+              }
               if (id.includes('react') || id.includes('react-dom')) {
                 return 'react-core';
               }

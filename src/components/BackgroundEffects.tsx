@@ -1,6 +1,7 @@
 import { motion, useMotionValue, useSpring } from 'motion/react';
 import { useEffect, useMemo } from 'react';
 import CursorTrail from './CursorTrail';
+import ThreeBackground from './ThreeBackground';
 
 export default function BackgroundEffects() {
   const mouseX = useMotionValue(typeof window !== 'undefined' ? window.innerWidth / 2 : 0);
@@ -46,6 +47,7 @@ export default function BackgroundEffects() {
 
   return (
     <>
+      <ThreeBackground />
       <CursorTrail />
       {/* Premium Floating Soft Abstract Orbs (Living Background Mesh - Desktop Only for Maximum Mobile Performance) */}
       <motion.div
