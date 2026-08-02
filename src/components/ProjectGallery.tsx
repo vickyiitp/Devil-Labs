@@ -28,7 +28,7 @@ const CloudyBlueprintNote = ({
   onPrefill: (category: string, title: string, e: React.MouseEvent) => void;
 }) => {
   return (
-    <div className="relative p-6 rounded-[24px] bg-[#050505] border border-white/10 shadow-lg overflow-hidden flex flex-col justify-between h-full min-h-[240px] transition-all duration-300 hover:border-violet-300">
+    <div className="relative p-6 rounded-[24px] bg-[#050505] border border-white/10 shadow-lg overflow-hidden flex flex-col justify-between h-full min-h-[240px] transition-all duration-300 hover:border-violet-300 text-left">
       {/* Cloudy gradient accent */}
       <div className="absolute -top-10 -right-10 w-28 h-28 bg-violet-100 rounded-full blur-2xl pointer-events-none" />
       <div className="absolute -bottom-10 -left-10 w-20 h-20 bg-fuchsia-100 rounded-full blur-xl pointer-events-none" />
@@ -38,24 +38,39 @@ const CloudyBlueprintNote = ({
 
       <div>
         {/* Note tag */}
-        <div className="flex items-center justify-between border-b border-white/10/50 pb-2.5 mb-3 font-mono text-[9px] uppercase tracking-[0.2em] text-stone-400">
-          <span>SPEC-NOTE // LANDING-DIRECT</span>
+        <div className="flex items-center justify-between border-b border-white/10/50 pb-2.5 mb-3 font-mono text-[9px] uppercase tracking-[0.25em] text-stone-400">
+          <span>CASE SPEC // DEVIL BUILD</span>
           <span>DEVIL CORE APPROVED</span>
         </div>
 
         {/* Notes Title */}
-        <h4 className="text-white font-display font-bold text-xs uppercase tracking-wide mb-1 flex items-center gap-1.5">
-          <span>☁️</span> {project.category} Demo Note
+        <h4 className="text-white font-display font-bold text-xs uppercase tracking-wide mb-3 flex items-center gap-1.5">
+          <span>⚡</span> {project.title.split('//')[1] || project.title}
         </h4>
-        <p className="text-[11px] font-mono italic text-stone-400 leading-relaxed mb-4">
-          "A verified blueprint designed to showcase dynamic server response, optimized asset caching, and clean user experience flows for {project.category} setups."
-        </p>
 
-        {/* Bullet points */}
-        <div className="bg-[#0a0a0a] border border-white/10/50 rounded p-2.5 mb-3">
-          <div className="font-mono text-[9px] text-stone-300 space-y-0.5">
-            <div>• Core Stack: {project.tech}</div>
-            <div>• Active sandboxed production instance</div>
+        {/* Case Study Details */}
+        <div className="space-y-3 mb-4 text-xs font-sans text-stone-300">
+          <div>
+            <span className="font-mono text-[10px] text-rose-400 block tracking-wider uppercase font-black">THEY CAME WITH:</span>
+            <p className="text-stone-400 text-xs leading-normal mt-0.5 font-normal">
+              {project.problem || project.description || 'Legacy software components causing slow response times and manual customer entry tracking.'}
+            </p>
+          </div>
+          <div>
+            <span className="font-mono text-[10px] text-violet-400 block tracking-wider uppercase font-black">WE BUILT:</span>
+            <p className="text-stone-450 text-xs leading-normal mt-0.5 font-normal">
+              {project.solution || 'Custom automated data ingestion pathways and secure edge compiled layout routing.'}
+            </p>
+          </div>
+          <div>
+            <span className="font-mono text-[10px] text-emerald-400 block tracking-wider uppercase font-black">NOW:</span>
+            <p className="text-stone-450 text-xs leading-normal mt-0.5 font-normal">
+              {project.result || 'Fully autonomous server syncing pipelines, zero data loss rates, and instant edge hydration.'}
+            </p>
+          </div>
+          <div className="pt-1.5 border-t border-white/5">
+            <span className="font-mono text-[10px] text-stone-500 inline-block tracking-wider uppercase font-black mr-2">UNDER THE HOOD:</span>
+            <span className="font-mono text-[10px] text-stone-300 bg-stone-900 border border-white/5 px-2 py-0.5 rounded font-bold">{project.tech}</span>
           </div>
         </div>
       </div>
@@ -63,9 +78,9 @@ const CloudyBlueprintNote = ({
       {/* Auto prefill button */}
       <button
         onClick={(e) => onPrefill(project.category, project.title, e)}
-        className="w-full py-2 px-3 bg-violet-50 hover:bg-violet-100 border border-violet-200 hover:border-violet-300 text-violet-400 font-mono text-[9px] font-bold uppercase tracking-[0.15em] transition-all duration-300 rounded flex items-center justify-center space-x-1.5 cursor-pointer select-none"
+        className="w-full py-2 px-3 bg-violet-50 hover:bg-violet-100 border border-violet-200 hover:border-violet-300 text-violet-400 font-mono text-[9px] font-bold uppercase tracking-[0.15em] transition-all duration-300 rounded flex items-center justify-center space-x-1.5 cursor-pointer select-none mt-2"
       >
-        <span>⚡ AUTO-FILL TELEMETRY FORM</span>
+        <span>⚡ SEE THE BUILD</span>
       </button>
     </div>
   );
@@ -376,17 +391,17 @@ export default function ProjectGallery({ navigate }: ProjectGalleryProps = {}) {
       </AnimatePresence>
 
       {/* Header */}
-      <div className="mb-16 flex flex-col items-center text-center relative z-10">
+      <div className="mb-16 flex flex-col items-center text-center relative z-10 font-sans">
         <div className="inline-flex items-center space-x-1.5 text-violet-500 font-mono text-[9px] uppercase tracking-[0.25em] mb-4">
           <span className="w-1.5 h-1.5 rounded-full bg-violet-500 animate-pulse" />
-          <span>PRODUCTION DIRECTORY</span>
+          <span>CASE DECK // SCENE 05</span>
         </div>
-        <h2 className="text-3xl sm:text-5xl md:text-6xl font-display font-extrabold text-white tracking-tight mb-4 max-w-4xl">
-          World-Class <br className="hidden sm:block" />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-indigo-600">Autonomous Deployments</span>
+        <h2 className="text-3xl sm:text-5xl md:text-6xl font-display font-extrabold text-white tracking-tight mb-4 max-w-4xl uppercase">
+          YOU'VE HEARD <br className="hidden sm:block" />
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-rose-500">ENOUGH FROM US. HERE'S THE WORK.</span>
         </h2>
-        <p className="text-stone-300 text-xs sm:text-sm max-w-xl mx-auto mb-10 leading-relaxed">
-          Interact with our live sandboxes. Experience high-velocity staging previews and detailed architecture blueprints designed into a custom horizontal deck.
+        <p className="text-stone-300 text-xs sm:text-sm max-w-xl mx-auto mb-10 leading-relaxed font-normal">
+          We build what happens after the demo. Interact with our live sandboxes and inspect raw staging architectures below.
         </p>
         
         {/* Category Filters */}
