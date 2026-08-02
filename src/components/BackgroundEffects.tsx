@@ -1,16 +1,8 @@
 import { motion, useMotionValue, useSpring } from 'motion/react';
 import { useEffect, useState, useMemo } from 'react';
 import CursorTrail from './CursorTrail';
-import ThreeBackground from './ThreeBackground';
-import Lab3DCanvas from './story/Lab3DCanvas';
-import BackgroundStoryWidget from './story/BackgroundStoryWidget';
-import { SceneId } from '../lib/story/storyTypes';
-import { detectPerformanceConfig } from '../lib/story/performanceEngine';
 
 export default function BackgroundEffects() {
-  const [currentSceneStep, setCurrentSceneStep] = useState<SceneId>(1);
-  const [performanceTier, setPerformanceTier] = useState<'ULTRA' | 'BALANCED' | 'LITE' | 'STATIC'>('BALANCED');
-
   const mouseX = useMotionValue(typeof window !== 'undefined' ? window.innerWidth / 2 : 0);
   const mouseY = useMotionValue(typeof window !== 'undefined' ? window.innerHeight / 2 : 0);
 
@@ -26,37 +18,6 @@ export default function BackgroundEffects() {
       top: `${(i * 7.7 + 10) % 100}vh`,
       scale: (i % 3) * 0.5 + 1
     }));
-  }, []);
-
-  useEffect(() => {
-    const config = detectPerformanceConfig();
-    setPerformanceTier(config.tier);
-
-    // Scroll listener mapping scrollY to 11 story scenes
-    const handleScroll = () => {
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      if (docHeight <= 0) return;
-      const scrollPercent = window.scrollY / docHeight; // 0 to 1
-
-      let step: SceneId = 1;
-      if (scrollPercent < 0.08) step = 1;
-      else if (scrollPercent < 0.16) step = 2;
-      else if (scrollPercent < 0.25) step = 3;
-      else if (scrollPercent < 0.36) step = 4;
-      else if (scrollPercent < 0.47) step = 5;
-      else if (scrollPercent < 0.58) step = 6;
-      else if (scrollPercent < 0.69) step = 7;
-      else if (scrollPercent < 0.80) step = 8;
-      else if (scrollPercent < 0.88) step = 9;
-      else if (scrollPercent < 0.95) step = 10;
-      else step = 11;
-
-      setCurrentSceneStep(step);
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   useEffect(() => {
@@ -85,15 +46,6 @@ export default function BackgroundEffects() {
 
   return (
     <>
-      {/* 3D Workstation & Candle Lifecycle Canvas in Background */}
-      <Lab3DCanvas sceneStep={currentSceneStep} performanceTier={performanceTier} />
-
-      {/* Floating HUD Widget for Bottom-Left Background Story Status */}
-      <BackgroundStoryWidget
-        currentScene={currentSceneStep}
-        onOpenStoryStage={() => window.dispatchEvent(new CustomEvent('open-story-stage'))}
-      />
-
       <CursorTrail />
       {/* Premium Floating Soft Abstract Orbs (Living Background Mesh - Desktop Only for Maximum Mobile Performance) */}
       <motion.div
@@ -178,4 +130,3 @@ export default function BackgroundEffects() {
     </>
   );
 }
-
