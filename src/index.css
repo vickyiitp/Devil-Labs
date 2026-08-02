@@ -2,10 +2,10 @@
 
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Syne", "Space Grotesk", sans-serif;
+  --font-display: "Outfit", "Plus Jakarta Sans", sans-serif;
   --font-serif: "Lora", Georgia, serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
-  --font-tech: "Space Grotesk", sans-serif;
+  --font-tech: "Plus Jakarta Sans", sans-serif;
 
   --color-brand-dark: #f5f4ef;
   --color-brand-accent: #7c3aed;
@@ -18,10 +18,10 @@
 .text-hero-display {
   font-family: var(--font-display);
   font-weight: 800;
-  line-height: 0.92;
-  letter-spacing: -0.04em;
+  line-height: 1.05;
+  letter-spacing: -0.015em;
   text-transform: uppercase;
-  font-size: clamp(1.25rem, 5.5vw, 4.8rem);
+  font-size: clamp(1.6rem, 6vw, 5rem);
   overflow-wrap: normal;
   word-break: normal;
 }
@@ -30,10 +30,10 @@
 .text-display-large {
   font-family: var(--font-display);
   font-weight: 800;
-  line-height: 1.02;
-  letter-spacing: -0.035em;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
   text-transform: uppercase;
-  font-size: clamp(1.2rem, 4vw, 3.2rem);
+  font-size: clamp(1.3rem, 4vw, 3.2rem);
   overflow-wrap: normal;
   word-break: normal;
 }
@@ -42,8 +42,8 @@
 .text-display-medium {
   font-family: var(--font-display);
   font-weight: 700;
-  line-height: 1.12;
-  letter-spacing: -0.025em;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
   text-transform: uppercase;
   font-size: clamp(1.1rem, 3vw, 2.2rem);
   overflow-wrap: normal;
@@ -54,7 +54,7 @@
 .text-editorial-body {
   font-family: var(--font-serif);
   font-weight: 400;
-  line-height: 1.7;
+  line-height: 1.75;
   letter-spacing: -0.01em;
   font-size: clamp(0.95rem, 1.8vw, 1.15rem);
 }
@@ -62,10 +62,10 @@
 /* 5. BODY STANDARD: Versatile, crisp sans-serif text for general layout and descriptive blocks */
 .text-body-standard {
   font-family: var(--font-sans);
-  font-weight: 400;
-  line-height: 1.6;
-  letter-spacing: -0.015em;
-  font-size: clamp(0.85rem, 1.5vw, 1rem);
+  font-weight: 450;
+  line-height: 1.65;
+  letter-spacing: -0.01em;
+  font-size: clamp(0.9rem, 1.6vw, 1.05rem);
 }
 
 /* 6. TECHNICAL MONO: Precision code blocks, performance metrics, and digital numbers */
@@ -74,7 +74,7 @@
   font-weight: 500;
   line-height: 1.45;
   letter-spacing: -0.02em;
-  font-size: clamp(0.75rem, 1.3vw, 0.9rem);
+  font-size: clamp(0.8rem, 1.4vw, 0.95rem);
 }
 
 /* 7. METADATA LABEL: Tiny, widely tracked caps for categorisation tags, indicators, and micro-specs */
@@ -82,9 +82,9 @@
   font-family: var(--font-sans);
   font-weight: 900;
   text-transform: uppercase;
-  letter-spacing: 0.25em;
-  line-height: 1.1;
-  font-size: clamp(0.6rem, 1vw, 0.75rem);
+  letter-spacing: 0.22em;
+  line-height: 1.15;
+  font-size: clamp(0.7rem, 1.1vw, 0.8rem);
 }
 
 /* Custom styles for soft Neumorphism & Illustration-driven aesthetic */

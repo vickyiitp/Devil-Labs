@@ -266,7 +266,7 @@ export default function LandingPage({ navigate }: LandingPageProps) {
             <div className="flex items-center bg-[#111]/80 backdrop-blur-md p-1 rounded-full border border-white/10 shadow-xl">
               <button 
                 onClick={() => setHeroMode("ai")} 
-                className={`px-5 py-2 rounded-full text-[9px] sm:text-[10px] font-sans font-black uppercase tracking-widest transition-all duration-300 relative ${heroMode === 'ai' ? 'text-white' : 'text-stone-400 hover:text-stone-200'}`}
+                className={`px-5 py-2 rounded-full text-xs sm:text-[13px] font-sans font-black uppercase tracking-widest transition-all duration-300 relative ${heroMode === 'ai' ? 'text-white' : 'text-stone-400 hover:text-stone-200'}`}
               >
                 {heroMode === 'ai' && (
                   <motion.div layoutId="hero-toggle-bg" className="absolute inset-0 bg-violet-600 rounded-full shadow-[0_0_20px_rgba(139,92,246,0.4)]" />
@@ -275,7 +275,7 @@ export default function LandingPage({ navigate }: LandingPageProps) {
               </button>
               <button 
                 onClick={() => setHeroMode("web")} 
-                className={`px-5 py-2 rounded-full text-[9px] sm:text-[10px] font-sans font-black uppercase tracking-widest transition-all duration-300 relative ${heroMode === 'web' ? 'text-white' : 'text-stone-400 hover:text-stone-200'}`}
+                className={`px-5 py-2 rounded-full text-xs sm:text-[13px] font-sans font-black uppercase tracking-widest transition-all duration-300 relative ${heroMode === 'web' ? 'text-white' : 'text-stone-400 hover:text-stone-200'}`}
               >
                 {heroMode === 'web' && (
                   <motion.div layoutId="hero-toggle-bg" className="absolute inset-0 bg-blue-600 rounded-full shadow-[0_0_20px_rgba(37,99,235,0.4)]" />
@@ -335,8 +335,8 @@ export default function LandingPage({ navigate }: LandingPageProps) {
                     <div className="flex items-center space-x-3.5">
                       <img src="https://github.com/vickyiitp.png?size=80" alt="Vicky Kumar" className="flex-shrink-0 w-9 h-9 rounded-full shadow-md border border-stone-800 object-cover" />
                       <div className="text-left">
-                        <div className="text-[11px] font-extrabold text-white tracking-wider uppercase font-sans">Vicky Kumar</div>
-                        <div className="text-[9px] text-stone-400 font-semibold tracking-wider uppercase leading-none mt-1 font-sans">Co-Founder, Devil Labs • CS Student (IIT Patna)</div>
+                        <div className="text-xs font-extrabold text-white tracking-wider uppercase font-sans">Vicky Kumar</div>
+                        <div className="text-xs text-stone-300 font-semibold tracking-wider uppercase leading-none mt-1.5 font-sans">Co-Founder, Devil Labs • CS Student (IIT Patna)</div>
                       </div>
                     </div>
                   </div>
@@ -378,7 +378,7 @@ export default function LandingPage({ navigate }: LandingPageProps) {
 
         {/* Scroll Indicator */}
         <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex flex-col items-center space-y-2 pointer-events-none">
-          <span className="text-stone-400 font-sans text-[9px] uppercase tracking-[0.3em] font-extrabold opacity-60">Scroll</span>
+          <span className="text-stone-400 font-sans text-xs uppercase tracking-[0.3em] font-extrabold opacity-60">Scroll</span>
           <ArrowDown size={14} className="text-stone-400 animate-bounce opacity-85" />
         </div>
       </section>
@@ -405,13 +405,13 @@ export default function LandingPage({ navigate }: LandingPageProps) {
                 className={`bg-[#0a0a0a]/90 backdrop-blur-md border border-white/10 p-6 rounded-2xl flex flex-col justify-between ${borders[idx]} transition-all duration-350 shadow-xl group`}
               >
                 <div>
-                  <span className={`text-[9px] font-sans font-black ${colors[idx]} block mb-2 tracking-[0.1em]`}>
+                  <span className={`text-xs font-sans font-black ${colors[idx]} block mb-2 tracking-[0.1em]`}>
                     0{idx + 1} • {title}
                   </span>
                   <h3 className="text-white font-display font-extrabold text-sm uppercase tracking-tight mb-2 transition-colors">
                     {heads[idx]}
                   </h3>
-                  <p className="text-[11px] text-stone-300 leading-relaxed font-sans font-normal">
+                  <p className="text-xs text-stone-300 leading-relaxed font-sans font-normal">
                     {descs[idx]}
                   </p>
                 </div>
@@ -425,7 +425,7 @@ export default function LandingPage({ navigate }: LandingPageProps) {
       <section id="disciplines-grid-section" className="py-20 bg-[#0a0a0a] border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           <div className="text-center mb-16 max-w-2xl mx-auto space-y-4">
-            <span className="text-stone-400 font-sans text-[9px] uppercase tracking-[0.25em] font-black block">✦ CAPABILITIES SPECTRUM</span>
+            <span className="text-stone-400 font-sans text-xs uppercase tracking-[0.25em] font-black block">✦ CAPABILITIES SPECTRUM</span>
             <h2 className="text-white font-display font-extrabold text-2xl xs:text-3xl sm:text-5xl tracking-tight uppercase leading-none">
               curated <span className="font-serif italic font-normal text-violet-500 lowercase">premium</span> disciplines
             </h2>
@@ -452,13 +452,13 @@ export default function LandingPage({ navigate }: LandingPageProps) {
                       <div className="w-10 h-10 rounded-xl bg-[#111] border border-white/5 flex items-center justify-center">
                         <Icon size={18} className="text-violet-400" />
                       </div>
-                      <span className="text-[8px] font-mono text-stone-550 uppercase tracking-widest bg-stone-900 border border-white/5 px-2 py-0.5 rounded-full font-bold">
+                      <span className="text-[11px] font-mono text-stone-400 uppercase tracking-widest bg-stone-900 border border-white/5 px-2.5 py-0.5 rounded-full font-bold">
                         {d.tag}
                       </span>
                     </div>
 
                     <div className="space-y-1.5 text-left">
-                      <span className="text-[8px] font-mono text-stone-400 uppercase tracking-wider block">
+                      <span className="text-[11px] font-mono text-stone-450 uppercase tracking-wider block">
                         {d.subtitle}
                       </span>
                       <h3 className="font-display font-black text-lg text-white uppercase tracking-tight">
@@ -470,7 +470,7 @@ export default function LandingPage({ navigate }: LandingPageProps) {
                     </div>
                   </div>
 
-                  <div className="border-t border-white/5 pt-4 mt-6 flex justify-between items-center text-[9px] font-mono">
+                  <div className="border-t border-white/5 pt-4 mt-6 flex justify-between items-center text-xs font-mono">
                     <span className="text-stone-400">{d.tech}</span>
                     <span className="text-violet-400 font-bold uppercase">{d.metric}</span>
                   </div>
@@ -486,7 +486,7 @@ export default function LandingPage({ navigate }: LandingPageProps) {
         <div className="absolute inset-0 bg-[radial-gradient(#ffffff02_1px,transparent_1.5px)] bg-[size:2rem_2rem] pointer-events-none" />
         <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
           <div className="text-center mb-16 max-w-2xl mx-auto space-y-4">
-            <span className="text-stone-400 font-sans text-[9px] uppercase tracking-[0.25em] font-black block">✦ DIGITAL SHOP</span>
+            <span className="text-stone-400 font-sans text-xs uppercase tracking-[0.25em] font-black block">✦ DIGITAL SHOP</span>
             <h2 className="text-white font-display font-extrabold text-2xl xs:text-3xl sm:text-5xl tracking-tight uppercase leading-none">
               Dev Tools &amp; <span className="font-serif italic font-normal text-pink-500 lowercase">boilerplates</span>
             </h2>
@@ -509,7 +509,7 @@ export default function LandingPage({ navigate }: LandingPageProps) {
                 {/* Header preview box */}
                 <div className="aspect-[16/9] w-full bg-cover bg-center bg-stone-900 border-b border-white/10 relative" style={{ backgroundImage: `url(${p.image})` }}>
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/30 to-transparent" />
-                  <span className="absolute top-4 left-4 bg-stone-900/90 border border-white/15 px-3 py-1 rounded-full text-[8px] font-mono font-black uppercase text-stone-200 tracking-wider">
+                  <span className="absolute top-4 left-4 bg-stone-900/90 border border-white/15 px-3 py-1 rounded-full text-[11px] font-mono font-black uppercase text-stone-200 tracking-wider">
                     {p.category}
                   </span>
                 </div>
@@ -527,7 +527,7 @@ export default function LandingPage({ navigate }: LandingPageProps) {
                     {p.features && p.features.length > 0 && (
                       <div className="space-y-1.5 pt-2">
                         {p.features.slice(0, 3).map((feat, fIdx) => (
-                          <div key={fIdx} className="flex items-center space-x-2 text-[10px] font-sans text-stone-300 font-medium">
+                          <div key={fIdx} className="flex items-center space-x-2 text-xs font-sans text-stone-300 font-medium">
                             <CheckCircle size={12} className="text-violet-400 shrink-0" />
                             <span>{feat}</span>
                           </div>
@@ -538,7 +538,7 @@ export default function LandingPage({ navigate }: LandingPageProps) {
 
                   <div className="border-t border-white/5 pt-4 flex items-center justify-between">
                     <div>
-                      <div className="text-[8px] font-mono text-stone-400 uppercase tracking-widest leading-none">PRICING</div>
+                      <div className="text-[11px] font-mono text-stone-400 uppercase tracking-widest leading-none">PRICING</div>
                       <div className="text-xl font-display font-black text-white mt-1">
                         ${p.priceUSD || (p.priceINR ? Math.round(p.priceINR / 83) : 99)}
                       </div>
@@ -546,7 +546,7 @@ export default function LandingPage({ navigate }: LandingPageProps) {
 
                     <button 
                       onClick={() => openInquiryModal({ itemTitle: p.title, itemType: 'Product', price: `$${p.priceUSD || 99}` })}
-                      className="px-5 py-2.5 bg-[#111] hover:bg-violet-600 border border-white/10 hover:border-violet-400 text-stone-200 hover:text-white font-mono text-[9px] font-black uppercase tracking-wider transition-all duration-300 rounded-xl cursor-pointer"
+                      className="px-5 py-2.5 bg-[#111] hover:bg-violet-600 border border-white/10 hover:border-violet-400 text-stone-200 hover:text-white font-mono text-xs font-black uppercase tracking-wider transition-all duration-300 rounded-xl cursor-pointer"
                     >
                       ACQUIRE LICENSE
                     </button>
@@ -578,7 +578,7 @@ export default function LandingPage({ navigate }: LandingPageProps) {
       {/* 6. BUSINESS POSITIONING & IIT PATNA PEDIGREE */}
       <section id="positioning-section" className="py-20 sm:py-28 px-4 md:px-8 max-w-7xl mx-auto border-b border-white/10">
         <div className="text-center mb-16 md:mb-20">
-          <span className="text-stone-400 font-sans text-[9px] uppercase tracking-[0.25em] font-black block">
+          <span className="text-stone-400 font-sans text-xs uppercase tracking-[0.25em] font-black block">
             ✦ STRATEGIC VALUE ALIGNMENT
           </span>
           <StaggeredHeading as="h2" className="text-2xl xs:text-3xl sm:text-5xl font-display font-extrabold text-white tracking-tight mt-3 uppercase leading-none">
@@ -620,7 +620,7 @@ export default function LandingPage({ navigate }: LandingPageProps) {
                   </div>
 
                   <div className="space-y-1.5 text-left">
-                    <span className="text-[9px] font-sans font-extrabold uppercase tracking-widest text-stone-400">
+                    <span className="text-xs font-sans font-extrabold uppercase tracking-widest text-stone-400">
                       {item.tagline}
                     </span>
                     <h3 className={`font-display font-black text-sm uppercase tracking-tight ${
@@ -661,10 +661,10 @@ export default function LandingPage({ navigate }: LandingPageProps) {
 
                       <div className="space-y-6 relative z-10 text-left">
                         <div className="flex justify-between items-start">
-                          <span className={`px-3 py-1 border text-[10px] font-sans uppercase font-extrabold tracking-widest rounded-full ${item.badgeClass}`}>
+                          <span className={`px-3 py-1 border text-xs font-sans uppercase font-extrabold tracking-widest rounded-full ${item.badgeClass}`}>
                             {item.tag}
                           </span>
-                          <span className="text-stone-400 font-sans text-[10px] uppercase font-extrabold tracking-widest">
+                          <span className="text-stone-450 font-sans text-xs uppercase font-extrabold tracking-widest">
                             Active Specialization
                           </span>
                         </div>
@@ -679,7 +679,7 @@ export default function LandingPage({ navigate }: LandingPageProps) {
                         </div>
 
                         <div className="space-y-2.5 pt-2">
-                          <span className="text-[10px] font-sans uppercase font-black tracking-widest text-stone-400 block">
+                          <span className="text-xs font-sans uppercase font-black tracking-widest text-stone-400 block">
                             Key Niches &amp; Specialty Areas:
                           </span>
                           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
@@ -700,11 +700,11 @@ export default function LandingPage({ navigate }: LandingPageProps) {
                           <div className="text-3xl font-display font-black text-white tracking-tighter leading-none">
                             {item.metric}
                           </div>
-                          <div className="text-[9px] text-stone-400 tracking-wider font-black uppercase mt-1">
+                          <div className="text-xs text-stone-450 tracking-wider font-black uppercase mt-1">
                             {item.metricLabel}
                           </div>
                         </div>
-                        <span className="text-[10px] text-violet-500 font-black uppercase tracking-widest">
+                        <span className="text-xs text-violet-500 font-black uppercase tracking-widest">
                           Certified Framework
                         </span>
                       </div>
@@ -726,7 +726,7 @@ export default function LandingPage({ navigate }: LandingPageProps) {
               We build <span className="font-serif italic font-normal text-violet-600 lowercase">scalable</span> <HandDrawnCircle color="stroke-violet-500/85">architectures</HandDrawnCircle>, <br className="hidden sm:block" />
               not <span className="font-serif italic font-normal text-rose-500 lowercase">fragile</span> <HandDrawnUnderline color="stroke-rose-400/85">prototypes</HandDrawnUnderline>.
             </StaggeredHeading>
-            <p className="font-sans text-[9px] sm:text-[10px] tracking-[0.25em] text-stone-400 uppercase font-black">
+            <p className="font-sans text-xs tracking-[0.25em] text-stone-450 uppercase font-black">
               ✦ OUR CORE PRINCIPLES
             </p>
           </CyberFrame>
@@ -737,7 +737,7 @@ export default function LandingPage({ navigate }: LandingPageProps) {
       <section id="architectural-notes-deck" className="py-16 sm:py-24 px-4 md:px-8 max-w-7xl mx-auto border-b border-white/10 relative overflow-hidden md:overflow-visible">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1px] h-12 bg-white/10 pointer-events-none" />
         <div className="text-center mb-12 sm:mb-16">
-          <span className="text-stone-400 font-sans text-[9px] uppercase tracking-[0.25em] font-black block">✦ DEVIL LABS STANDARDS</span>
+          <span className="text-stone-400 font-sans text-xs uppercase tracking-[0.25em] font-black block">✦ DEVIL LABS STANDARDS</span>
           <StaggeredHeading as="h3" className="text-2xl xs:text-3xl sm:text-5xl font-display font-extrabold uppercase text-white tracking-tight mt-3 leading-none">
             Our Design &amp; <span className="font-serif italic font-normal text-rose-600 lowercase">engineering</span> pillars
           </StaggeredHeading>
@@ -749,12 +749,12 @@ export default function LandingPage({ navigate }: LandingPageProps) {
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 relative items-start w-full mx-auto">
           <div className="hidden lg:block absolute left-[29%] top-6 w-[12%] h-[40px] z-20">
             <HandDrawnArrow color="stroke-violet-300/70" direction="right" className="w-full h-full" />
-            <span className="absolute -top-4 left-1/2 -translate-x-1/2 text-[8px] font-sans text-stone-400 uppercase tracking-wider font-extrabold">Workflow</span>
+            <span className="absolute -top-4 left-1/2 -translate-x-1/2 text-[11px] font-sans text-stone-400 uppercase tracking-wider font-extrabold">Workflow</span>
           </div>
           
           <div className="hidden lg:block absolute left-[62%] top-16 w-[12%] h-[40px] z-20">
             <HandDrawnArrow color="stroke-rose-300/70" direction="right" className="w-full h-full" />
-            <span className="absolute -top-4 left-1/2 -translate-x-1/2 text-[8px] font-sans text-stone-400 uppercase tracking-wider font-extrabold">Validation</span>
+            <span className="absolute -top-4 left-1/2 -translate-x-1/2 text-[11px] font-sans text-stone-400 uppercase tracking-wider font-extrabold">Validation</span>
           </div>
 
           <BlueprintStickyNote
@@ -811,7 +811,7 @@ export default function LandingPage({ navigate }: LandingPageProps) {
       <section id="blogs-showcase-section" className="py-24 bg-[#050505] border-t border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           <div className="text-center mb-16 max-w-2xl mx-auto space-y-4">
-            <span className="text-stone-400 font-sans text-[9px] uppercase tracking-[0.25em] font-black block">✦ INTELLECTUAL INSIGHTS</span>
+            <span className="text-stone-400 font-sans text-xs uppercase tracking-[0.25em] font-black block">✦ INTELLECTUAL INSIGHTS</span>
             <h2 className="text-white font-display font-extrabold text-2xl xs:text-3xl sm:text-5xl tracking-tight uppercase leading-none">
               tech logs &amp; <span className="font-serif italic font-normal text-violet-500 lowercase">whitepapers</span>
             </h2>
@@ -841,13 +841,13 @@ export default function LandingPage({ navigate }: LandingPageProps) {
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] to-transparent opacity-80" />
-                    <span className="absolute bottom-4 left-4 bg-stone-900/90 border border-white/10 px-2.5 py-0.5 rounded-md text-[8px] font-mono font-bold text-stone-300 tracking-wider">
+                    <span className="absolute bottom-4 left-4 bg-stone-900/90 border border-white/10 px-2.5 py-0.5 rounded-md text-[11px] font-mono font-bold text-stone-300 tracking-wider">
                       {b.category}
                     </span>
                   </div>
 
                   <div className="p-6 space-y-3">
-                    <div className="flex items-center space-x-3 text-[9px] font-mono text-stone-400">
+                    <div className="flex items-center space-x-3 text-xs font-mono text-stone-400">
                       <div className="flex items-center space-x-1">
                         <Clock size={10} />
                         <span>{b.readTime || '5 min read'}</span>
@@ -866,7 +866,7 @@ export default function LandingPage({ navigate }: LandingPageProps) {
                   </div>
                 </div>
 
-                <div className="p-6 pt-0 border-t border-white/5 mt-4 flex items-center justify-between text-[9px] font-mono text-stone-400">
+                <div className="p-6 pt-0 border-t border-white/5 mt-4 flex items-center justify-between text-xs font-mono text-stone-400">
                   <span>BY {b.author.toUpperCase()}</span>
                   <span className="text-violet-400 group-hover:translate-x-1.5 transition-transform flex items-center space-x-1 font-bold">
                     <span>READ ARTICLE</span>
