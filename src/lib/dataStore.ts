@@ -227,7 +227,7 @@ const INITIAL_ANALYTICS: AnalyticsData = {
   ]
 };
 
-const DEFAULT_GH_TOKEN = (import.meta.env?.VITE_GITHUB_TOKEN as string) || '';
+const DEFAULT_GH_TOKEN = '';
 const DEFAULT_GH_REPO = (import.meta.env?.VITE_GITHUB_REPO as string) || 'vickyiitp/Devil-Labs';
 const DEFAULT_GH_BRANCH = (import.meta.env?.VITE_GITHUB_BRANCH as string) || 'main';
 
