@@ -118,5 +118,9 @@ async function pingSearchEngines() {
   console.log(`🔑 IndexNow Key: ${INDEXNOW_KEY}`);
   console.log(`📍 Key Location: ${SITE_URL}/${INDEXNOW_KEY}.txt\n`);
 }
-
-pingSearchEngines();
+pingSearchEngines().then(() => {
+  process.exit(0);
+}).catch((err) => {
+  console.error(err);
+  process.exit(1);
+});

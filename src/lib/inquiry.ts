@@ -8,7 +8,7 @@ export interface InquiryPrefillOptions {
   category?: string;
 }
 
-export function openInquiryModal(options: InquiryPrefillOptions) {
+export function openInquiryModal(options: InquiryPrefillOptions = {}) {
   const title = options.itemTitle || options.projectTitle || 'Custom Scope';
   const type = options.itemType || options.inquiryType || 'Inquiry';
   

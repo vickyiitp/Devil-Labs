@@ -1,8 +1,10 @@
 import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Heart, Eye, ArrowUpRight, Lock, Globe, Layout, Code } from 'lucide-react';
+import { Heart, Eye, ArrowUpRight, Lock, Globe, Layout, Code, Sparkles } from 'lucide-react';
 import CyberFrame from './CyberFrame';
 import { audioEngine } from '../lib/audio';
+import { useDataStore } from '../hooks/useDataStore';
+import { openInquiryModal } from '../lib/inquiry';
 
 const categories = [
   'All',
@@ -11,87 +13,6 @@ const categories = [
   'Web Architecture',
   'Landing Pages',
   'Utilities'
-];
-
-const projects = [
-  {
-    id: 1,
-    title: 'INDIGO LENS // Advanced Tech Solutions',
-    client: 'IndigoLens',
-    category: 'Enterprise Systems',
-    likes: '452',
-    views: '12k',
-    isPro: true,
-    thumbnail: 'from-blue-900/40 to-black',
-    icon: Globe,
-    tech: 'React / Firebase',
-    link: 'https://indigolens.in'
-  },
-  {
-    id: 2,
-    title: 'MENU CRAFT // Digital Restaurant Engine',
-    client: 'Restaurant Demo',
-    category: 'E-Commerce',
-    likes: '124',
-    views: '3.2k',
-    isPro: true,
-    thumbnail: 'from-orange-900/40 to-black',
-    icon: Layout,
-    tech: 'React / Vercel',
-    link: 'https://menu-craft-demo.vercel.app'
-  },
-  {
-    id: 3,
-    title: 'PROP VIEW // Real Estate Showcase',
-    client: 'Property Dealer',
-    category: 'Web Architecture',
-    likes: '89',
-    views: '2.1k',
-    isPro: true,
-    thumbnail: 'from-fuchsia-900/40 to-black',
-    icon: Layout,
-    tech: 'React / Next.js',
-    link: 'https://prop-view-demo.vercel.app'
-  },
-  {
-    id: 4,
-    title: 'KISHAN FARM // Agriculture Frontend',
-    client: 'Farm Demo',
-    category: 'Landing Pages',
-    likes: '215',
-    views: '5.4k',
-    isPro: false,
-    thumbnail: 'from-emerald-900/40 to-black',
-    icon: Globe,
-    tech: 'React / Vercel',
-    link: 'https://kishan-farm.vercel.app'
-  },
-  {
-    id: 5,
-    title: 'BIO HUB // Centralized Link Utility',
-    client: 'LinkTree Alternative',
-    category: 'Utilities',
-    likes: '312',
-    views: '12k',
-    isPro: false,
-    thumbnail: 'from-violet-900/40 to-black',
-    icon: Code,
-    tech: 'React / Tailwind',
-    link: 'https://bio-hub-demo.vercel.app'
-  },
-  {
-    id: 6,
-    title: 'DEV PORTFOLIO // Developer Identity',
-    client: 'Personal',
-    category: 'Web Architecture',
-    likes: '56',
-    views: '1.5k',
-    isPro: true,
-    thumbnail: 'from-indigo-900/40 to-black',
-    icon: Code,
-    tech: 'React / Vercel',
-    link: 'https://developer-portfolio-bpgc.vercel.app'
-  }
 ];
 
 interface ProjectGalleryProps {
@@ -329,15 +250,15 @@ function Interactive3DCard({ children, projectId }: Interactive3DCardProps) {
     </div>
   );
 }
-
 export default function ProjectGallery({ navigate }: ProjectGalleryProps = {}) {
   const [activeCategory, setActiveCategory] = useState('All');
   const [telemetryMessage, setTelemetryMessage] = useState<string | null>(null);
   const [activeProjectIndex, setActiveProjectIndex] = useState(0);
   const [direction, setDirection] = useState(1); // 1 = next, -1 = prev
 
-  const filteredProjects = projects.filter(
-    (project) => activeCategory === 'All' || project.category === activeCategory
+  const store = useDataStore();
+  const filteredProjects = (store.projects || []).filter(
+    (project: any) => activeCategory === 'All' || project.category === activeCategory
   );
 
   // Context-aware category handler to sync with Contact form state
@@ -538,9 +459,10 @@ export default function ProjectGallery({ navigate }: ProjectGalleryProps = {}) {
         <div className="overflow-visible relative min-h-[500px] sm:min-h-[440px]">
           <AnimatePresence mode="wait" custom={direction}>
             {filteredProjects.length > 0 ? (
-              filteredProjects.map((project, idx) => {
+              filteredProjects.map((project: any, idx) => {
                 if (idx !== activeProjectIndex) return null;
                 const isEven = idx % 2 === 0;
+                const numericId = typeof project.id === 'number' ? project.id : parseInt(project.id, 10) || 0;
                 return (
                   <motion.div
                     key={project.id}
@@ -553,9 +475,9 @@ export default function ProjectGallery({ navigate }: ProjectGalleryProps = {}) {
                   >
                     {/* Browser Frame Column with 3D Parallax */}
                     <div className="col-span-1 md:col-span-7 relative flex flex-col justify-center">
-                      <Interactive3DCard projectId={project.id}>
-                        <FloatingGlassBadge projectId={project.id} />
-                        <CyberFrame glowColor={['violet', 'fuchsia', 'blue'][project.id % 3] as 'violet' | 'fuchsia' | 'blue'} className="p-4 rounded-xl cursor-default bg-[#050505]/80 backdrop-blur-md h-full flex flex-col hover:border-violet-200 relative overflow-visible border border-white/10 shadow-lg">
+                      <Interactive3DCard projectId={numericId}>
+                        <FloatingGlassBadge projectId={numericId} />
+                        <CyberFrame glowColor={['violet', 'fuchsia', 'blue'][numericId % 3] as 'violet' | 'fuchsia' | 'blue'} className="p-4 rounded-xl cursor-default bg-[#050505]/80 backdrop-blur-md h-full flex flex-col hover:border-violet-200 relative overflow-visible border border-white/10 shadow-lg">
                           {/* Live Sandbox preview mock with perspective translation */}
                           <div 
                             style={{ transform: 'translateZ(25px)', transformStyle: 'preserve-3d' }}
@@ -635,8 +557,22 @@ export default function ProjectGallery({ navigate }: ProjectGalleryProps = {}) {
                 );
               })
             ) : (
-              <div className="text-center py-20 text-stone-400 font-mono text-xs">
-                NO ACTIVE DEPLOYMENTS REGISTERED UNDER THIS FILTER CHANNEL
+              <div className="p-12 rounded-3xl bg-[#0d0d12]/90 border border-white/10 text-center max-w-xl mx-auto space-y-6 shadow-2xl backdrop-blur-xl my-6">
+                <div className="w-16 h-16 rounded-full bg-violet-600/10 border border-violet-500/30 flex items-center justify-center mx-auto text-violet-400">
+                  <Sparkles size={28} />
+                </div>
+                <div className="space-y-2">
+                  <h3 className="text-xl font-display font-extrabold text-white uppercase tracking-tight">No Projects Listed Yet</h3>
+                  <p className="text-xs text-stone-400 leading-relaxed font-sans">
+                    We are actively preparing new production deployments. You can initiate a custom build or add new projects directly in the Admin Panel.
+                  </p>
+                </div>
+                <button
+                  onClick={() => openInquiryModal()}
+                  className="px-6 py-3 rounded-2xl bg-gradient-to-r from-violet-600 to-indigo-600 text-white font-mono text-xs font-bold uppercase tracking-widest hover:brightness-110 transition-all shadow-lg cursor-pointer"
+                >
+                  ✦ Start A Project With Us
+                </button>
               </div>
             )}
           </AnimatePresence>

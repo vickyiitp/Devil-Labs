@@ -125,8 +125,8 @@ export default function ProductsPage({ navigate }: { navigate: (path: string) =>
   const [purchaseTier, setPurchaseTier] = useState<'single' | 'team'>('single');
   const [purchased, setPurchased] = useState(false);
 
-  const displayProducts = storeProducts.length > 0 ? storeProducts.map(p => ({
-    id: p.id || String(p.title),
+  const displayProducts = storeProducts.map(p => ({
+    id: p.id,
     name: p.title || p.name,
     category: p.category || 'ai',
     desc: p.description || p.desc || '',
@@ -137,12 +137,12 @@ export default function ProductsPage({ navigate }: { navigate: (path: string) =>
     ],
     screenshotText: p.screenshotText || p.driveLink || p.downloadUrl || 'npm i @devillabs/asset',
     screenshotTheme: p.screenshotTheme || 'from-stone-900 to-stone-950 text-stone-200',
-    pricing: p.pricing || { single: p.price || 99, team: (p.price || 99) * 3 },
-    license: p.license || 'Commercial License',
+    pricing: p.pricing || { single: p.priceUSD || 99, team: (p.priceUSD || 99) * 3 },
+    license: p.license || p.licenseType || 'Commercial License',
     docsUrl: p.docsUrl || p.driveLink || '#',
     rating: p.rating || '5.0/5',
     salesCount: p.salesCount || '500+ licenses'
-  })) : productsData;
+  }));
 
   const filteredProducts = activeTab === 'all' 
     ? displayProducts 
@@ -206,98 +206,118 @@ export default function ProductsPage({ navigate }: { navigate: (path: string) =>
       {/* 3. PRODUCT SPECIFICATIONS CATALOG */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-6xl w-full mx-auto mb-20 px-2 sm:px-4">
         <AnimatePresence mode="popLayout">
-          {filteredProducts.map((product) => (
-            <motion.div
-              layout
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-              key={product.id}
-              className="clay-card p-6 md:p-8 flex flex-col justify-between hover:scale-[1.01] hover:border-violet-300/45 transition-all text-left relative overflow-hidden"
-            >
-              <div>
-                {/* Meta details badge bar */}
-                <div className="flex items-center justify-between mb-6 text-[10px] font-mono uppercase tracking-widest font-bold text-stone-400">
-                  <span className="bg-[#111] px-2.5 py-1 rounded-full text-stone-300 border border-white/10/30">
-                    {product.category}
-                  </span>
-                  <div className="flex items-center space-x-3">
-                    <span>★ {product.rating}</span>
-                    <span className="w-1.5 h-1.5 rounded-full bg-white/20" />
-                    <span>{product.salesCount}</span>
+          {filteredProducts.length > 0 ? (
+            filteredProducts.map((product) => (
+              <motion.div
+                layout
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+                key={product.id}
+                className="clay-card p-6 md:p-8 flex flex-col justify-between hover:scale-[1.01] hover:border-violet-300/45 transition-all text-left relative overflow-hidden"
+              >
+                <div>
+                  {/* Meta details badge bar */}
+                  <div className="flex items-center justify-between mb-6 text-[10px] font-mono uppercase tracking-widest font-bold text-stone-400">
+                    <span className="bg-[#111] px-2.5 py-1 rounded-full text-stone-300 border border-white/10/30">
+                      {product.category}
+                    </span>
+                    <div className="flex items-center space-x-3">
+                      <span>★ {product.rating}</span>
+                      <span className="w-1.5 h-1.5 rounded-full bg-white/20" />
+                      <span>{product.salesCount}</span>
+                    </div>
+                  </div>
+
+                  <h3 className="font-display font-black text-2xl sm:text-3xl text-stone-100 tracking-tight mb-2 uppercase">
+                    {product.name}
+                  </h3>
+                  
+                  <p className="text-stone-300 text-sm leading-relaxed mb-6 font-sans">
+                    {product.desc}
+                  </p>
+
+                  {/* Screenshot code block / terminal */}
+                  <div className="mb-6 relative">
+                    <div className={`rounded-xl p-4 sm:p-5 font-mono text-[11px] leading-relaxed overflow-x-auto shadow-inner border border-stone-250/20 bg-gradient-to-tr ${product.screenshotTheme}`}>
+                      <div className="flex space-x-1.5 mb-3 opacity-60">
+                        <div className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
+                        <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />
+                        <div className="w-2.5 h-2.5 rounded-full bg-green-500/80" />
+                      </div>
+                      <pre className="whitespace-pre-wrap">{product.screenshotText}</pre>
+                    </div>
+                    <div className="absolute top-4 right-4 bg-[#0a0a0a]/10 backdrop-blur-md border border-[#0a0a0e]/10 rounded-lg p-1.5 opacity-60 hover:opacity-100 transition-opacity">
+                      <Code size={13} className="text-white" />
+                    </div>
+                  </div>
+
+                  {/* Bulletproof architectural specs list */}
+                  <div className="space-y-2.5 mb-8">
+                    <span className="text-[10px] font-sans uppercase tracking-widest text-stone-400 font-extrabold block mb-1">
+                      ✦ KEY FEATURES &amp; CAPABILITIES
+                    </span>
+                    {product.features.map((feature, idx) => (
+                      <div key={idx} className="flex items-start space-x-2 text-stone-300 text-xs font-sans">
+                        <CheckCircle size={14} className="text-violet-600 mt-0.5 flex-shrink-0" />
+                        <span>{feature}</span>
+                      </div>
+                    ))}
                   </div>
                 </div>
 
-                <h3 className="font-display font-black text-2xl sm:text-3xl text-stone-100 tracking-tight mb-2 uppercase">
-                  {product.name}
-                </h3>
-                
-                <p className="text-stone-300 text-sm leading-relaxed mb-6 font-sans">
-                  {product.desc}
+                {/* Action and buy footer */}
+                <div className="pt-6 border-t border-white/10/30 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
+                  <div className="text-left">
+                    <span className="text-[9px] font-sans text-stone-400 uppercase tracking-widest font-extrabold block">
+                      PRICE STARTS AT
+                    </span>
+                    <div className="flex items-baseline space-x-1">
+                      <span className="text-stone-100 font-display text-2xl font-black">${product.pricing.single}</span>
+                      <span className="text-stone-400 font-sans text-[10px] uppercase tracking-wider font-bold">/ single developer</span>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center space-x-2.5">
+                    <a 
+                      href={product.docsUrl}
+                      className="flex-1 sm:flex-none flex items-center justify-center space-x-1.5 px-4 py-2.5 rounded-full border border-white/10 hover:border-white/20 hover:bg-[#0a0a0a] text-stone-300 text-xs font-sans font-bold uppercase tracking-wider transition-all"
+                    >
+                      <BookOpen size={13} />
+                      <span>DOCS</span>
+                    </a>
+
+                    <button
+                      onClick={() => handlePurchase(product)}
+                      className="flex-1 sm:flex-none flex items-center justify-center space-x-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-violet-600 to-rose-500 hover:from-violet-700 hover:to-rose-600 text-[#0a0a0e] text-xs font-sans font-bold uppercase tracking-wider shadow-md transition-all cursor-pointer"
+                    >
+                      <ShoppingBag size={13} />
+                      <span>PURCHASE</span>
+                    </button>
+                  </div>
+                </div>
+              </motion.div>
+            ))
+          ) : (
+            <div className="col-span-1 md:col-span-2 p-12 rounded-3xl bg-[#0d0d12]/90 border border-white/10 text-center max-w-xl mx-auto space-y-6 shadow-2xl backdrop-blur-xl my-8">
+              <div className="w-16 h-16 rounded-full bg-violet-600/10 border border-violet-500/30 flex items-center justify-center mx-auto text-violet-400">
+                <ShoppingBag size={28} />
+              </div>
+              <div className="space-y-2">
+                <h3 className="text-xl font-display font-extrabold text-white uppercase tracking-tight">No Digital Products Listed Yet</h3>
+                <p className="text-xs text-stone-400 leading-relaxed font-sans">
+                  Digital products and starter kits can be added dynamically through the Admin Panel. Or contact us for bespoke enterprise software builds.
                 </p>
-
-                {/* Screenshot code block / terminal */}
-                <div className="mb-6 relative">
-                  <div className={`rounded-xl p-4 sm:p-5 font-mono text-[11px] leading-relaxed overflow-x-auto shadow-inner border border-stone-250/20 bg-gradient-to-tr ${product.screenshotTheme}`}>
-                    <div className="flex space-x-1.5 mb-3 opacity-60">
-                      <div className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
-                      <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />
-                      <div className="w-2.5 h-2.5 rounded-full bg-green-500/80" />
-                    </div>
-                    <pre className="whitespace-pre-wrap">{product.screenshotText}</pre>
-                  </div>
-                  <div className="absolute top-4 right-4 bg-[#0a0a0a]/10 backdrop-blur-md border border-[#0a0a0e]/10 rounded-lg p-1.5 opacity-60 hover:opacity-100 transition-opacity">
-                    <Code size={13} className="text-white" />
-                  </div>
-                </div>
-
-                {/* Bulletproof architectural specs list */}
-                <div className="space-y-2.5 mb-8">
-                  <span className="text-[10px] font-sans uppercase tracking-widest text-stone-400 font-extrabold block mb-1">
-                    ✦ KEY FEATURES &amp; CAPABILITIES
-                  </span>
-                  {product.features.map((feature, idx) => (
-                    <div key={idx} className="flex items-start space-x-2 text-stone-300 text-xs font-sans">
-                      <CheckCircle size={14} className="text-violet-600 mt-0.5 flex-shrink-0" />
-                      <span>{feature}</span>
-                    </div>
-                  ))}
-                </div>
               </div>
-
-              {/* Action and buy footer */}
-              <div className="pt-6 border-t border-white/10/30 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
-                <div className="text-left">
-                  <span className="text-[9px] font-sans text-stone-400 uppercase tracking-widest font-extrabold block">
-                    PRICE STARTS AT
-                  </span>
-                  <div className="flex items-baseline space-x-1">
-                    <span className="text-stone-100 font-display text-2xl font-black">${product.pricing.single}</span>
-                    <span className="text-stone-400 font-sans text-[10px] uppercase tracking-wider font-bold">/ single developer</span>
-                  </div>
-                </div>
-
-                <div className="flex items-center space-x-2.5">
-                  <a 
-                    href={product.docsUrl}
-                    className="flex-1 sm:flex-none flex items-center justify-center space-x-1.5 px-4 py-2.5 rounded-full border border-white/10 hover:border-white/20 hover:bg-[#0a0a0a] text-stone-300 text-xs font-sans font-bold uppercase tracking-wider transition-all"
-                  >
-                    <BookOpen size={13} />
-                    <span>DOCS</span>
-                  </a>
-
-                  <button
-                    onClick={() => handlePurchase(product)}
-                    className="flex-1 sm:flex-none flex items-center justify-center space-x-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-violet-600 to-rose-500 hover:from-violet-700 hover:to-rose-600 text-[#0a0a0e] text-xs font-sans font-bold uppercase tracking-wider shadow-md transition-all cursor-pointer"
-                  >
-                    <ShoppingBag size={13} />
-                    <span>PURCHASE</span>
-                  </button>
-                </div>
-              </div>
-            </motion.div>
-          ))}
+              <button
+                onClick={() => openInquiryModal()}
+                className="px-6 py-3 rounded-2xl bg-gradient-to-r from-violet-600 to-indigo-600 text-white font-mono text-xs font-bold uppercase tracking-widest hover:brightness-110 transition-all shadow-lg cursor-pointer"
+              >
+                ✦ Request Custom Software Build
+              </button>
+            </div>
+          )}
         </AnimatePresence>
       </div>
 

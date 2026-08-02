@@ -6,6 +6,8 @@ import TeamSection from '../components/TeamSection';
 import ScrollReveal from '../components/ScrollReveal';
 import BlurredImage from '../components/BlurredImage';
 import StaggeredHeading from '../components/StaggeredHeading';
+import SocialBadges from '../components/SocialBadges';
+
 
 interface AboutPageProps {
   navigate: (path: string) => void;
@@ -14,19 +16,32 @@ interface AboutPageProps {
 export default function AboutPage({ navigate }: AboutPageProps) {
   return (
     <div className="pt-12 sm:pt-16 lg:pt-20 pb-24 px-4 md:px-8 max-w-7xl mx-auto min-h-screen text-stone-100">
-      {/* Header */}
-      <section className="mb-24">
-        <motion.h1 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="text-violet-400 font-mono text-xs uppercase tracking-[0.3em] font-semibold block mb-6"
+      {/* Editorial Magazine Cover Header */}
+      <section className="mb-20">
+        <motion.div 
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="flex items-center justify-between border-b border-white/15 pb-4 mb-8"
         >
-          ✦ ABOUT US
-        </motion.h1>
-        <StaggeredHeading 
-          text="REDEFINING ENGINEERING IN INDIA." 
-          className="font-display font-black text-2xl xs:text-3xl sm:text-5xl md:text-7xl lg:text-8xl text-stone-100 tracking-tighter uppercase leading-[0.95] mb-8 max-w-full"
-        />
+          <span className="text-violet-400 font-mono text-xs uppercase tracking-[0.3em] font-bold">
+            DEVIL LABS PUBLICATION // ISSUE 01
+          </span>
+          <span className="text-neutral-500 font-mono text-xs uppercase tracking-widest hidden sm:inline">
+            EDITORIAL ART DIRECTION & ENGINEERING
+          </span>
+        </motion.div>
+
+        <h1 className="font-display font-black text-4xl sm:text-7xl lg:text-8xl text-white tracking-tighter uppercase leading-[0.9] mb-8">
+          WE DON'T DECORATE<br />
+          THE INTERNET.<br />
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-amber-300 to-rose-400">
+            WE BUILD THINGS THAT WORK ON IT.
+          </span>
+        </h1>
+
+        <p className="font-serif italic text-stone-300 text-lg sm:text-2xl max-w-3xl leading-relaxed">
+          Founded by elite computer science engineers from IIT Patna, Devil Labs operates at the intersection of high-velocity web architecture, autonomous multi-agent systems, and uncompromising digital design.
+        </p>
       </section>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 relative z-10 items-start">
@@ -223,6 +238,12 @@ export default function AboutPage({ navigate }: AboutPageProps) {
 
       {/* Our Team Interactive Section */}
       <TeamSection />
+
+      {/* Verified Social Media Badges & Embed Script Suite */}
+      <div className="mt-16">
+        <SocialBadges showEmbedCode={true} />
+      </div>
     </div>
   );
 }
+

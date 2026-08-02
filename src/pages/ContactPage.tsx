@@ -3,6 +3,8 @@ import { Send, Check, Mail, Calendar, MapPin, Phone, MessageCircle, Github, Link
 import React, { useState, useEffect } from 'react';
 import { useCurrency } from '../contexts/CurrencyContext';
 import FormSuccessAnimation from '../components/FormSuccessAnimation';
+import SocialBadges from '../components/SocialBadges';
+
 
 interface ContactPageProps {
   navigate: (path: string) => void;
@@ -445,25 +447,26 @@ ${formData.name}`;
       <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-violet-600/5 rounded-full blur-[120px] pointer-events-none -z-10 mix-blend-multiply" />
       <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-fuchsia-600/5 rounded-full blur-[100px] pointer-events-none -z-10 mix-blend-multiply" />
 
-      {/* HEADER */}
-      <section className="mb-20 text-center max-w-3xl mx-auto space-y-6">
+      {/* STORYBOOK FINAL SCENE HEADER */}
+      <section className="mb-20 text-center max-w-4xl mx-auto space-y-6">
         <motion.span 
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-violet-600 font-mono text-[10px] uppercase tracking-[0.3em] font-semibold block"
+          className="text-stone-400 font-mono text-xs uppercase tracking-[0.3em] font-bold block"
         >
-          Begin The Dialogue
+          FINAL CHAPTER // THE NEXT STEP
         </motion.span>
         <motion.h1 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1 }}
-          className="font-display font-black text-2xl xs:text-3xl sm:text-5xl md:text-7xl lg:text-8xl text-stone-100 tracking-tighter uppercase leading-[0.95] max-w-full"
+          className="font-display font-black text-4xl sm:text-7xl lg:text-8xl text-white tracking-tighter uppercase leading-[0.9]"
         >
-          Let's Build <br/>
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 via-rose-500 to-amber-500 font-serif italic font-light lowercase text-3xl xs:text-4xl sm:text-6xl md:text-8xl lg:text-9xl max-w-full">something</span> <br/>
-          Beautiful.
+          YOU HAVE THE IDEA.<br />
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-amber-300 to-cyan-400">
+            WE'LL FIGURE OUT HOW TO BUILD IT.
+          </span>
         </motion.h1>
       </section>
 
@@ -1010,7 +1013,13 @@ ${formData.name}`;
             </div>
           </div>
         </motion.div>
+
+        {/* Verified Social Profile Badges & Embed Snippets */}
+        <div className="mt-20">
+          <SocialBadges showEmbedCode={true} />
+        </div>
       </div>
     </div>
   );
 }
+

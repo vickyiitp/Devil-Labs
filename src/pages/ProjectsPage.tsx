@@ -474,6 +474,7 @@ export default function ProjectsPage({ navigate }: ProjectsPageProps) {
         />
       </div>
 
+
       {/* Merged unified Hero and Directory section */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
@@ -765,11 +766,22 @@ export default function ProjectsPage({ navigate }: ProjectsPageProps) {
                 );
               })
             ) : (
-              <div className="text-center py-24 bg-[#0d0d12] border border-white/10/50 rounded-3xl shadow-inner flex flex-col items-center justify-center p-8 w-full">
-                <span className="text-3xl mb-3">📡</span>
-                <p className="text-stone-400 font-mono text-xs tracking-widest uppercase">
-                  No registered active deployments match this channel query.
-                </p>
+              <div className="p-12 rounded-3xl bg-[#0d0d12]/90 border border-white/10 text-center max-w-xl mx-auto space-y-6 shadow-2xl backdrop-blur-xl my-8">
+                <div className="w-16 h-16 rounded-full bg-violet-600/10 border border-violet-500/30 flex items-center justify-center mx-auto text-violet-400">
+                  <Sparkles size={28} />
+                </div>
+                <div className="space-y-2">
+                  <h3 className="text-xl font-display font-extrabold text-white uppercase tracking-tight">No Projects Listed Yet</h3>
+                  <p className="text-xs text-stone-400 leading-relaxed font-sans">
+                    No active projects match this filter channel. You can launch a custom enterprise project with us or manage entries in the Admin Panel.
+                  </p>
+                </div>
+                <button
+                  onClick={() => openInquiryModal()}
+                  className="px-6 py-3 rounded-2xl bg-gradient-to-r from-violet-600 to-indigo-600 text-white font-mono text-xs font-bold uppercase tracking-widest hover:brightness-110 transition-all shadow-lg cursor-pointer"
+                >
+                  ✦ Start A Project With Us
+                </button>
               </div>
             )}
           </AnimatePresence>

@@ -611,69 +611,86 @@ export default function AdminPage({ navigate }: AdminPageProps) {
 
             {/* PROJECT CARDS LIST */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {store.projects.map((proj) => (
-                <div key={proj.id} className="p-6 bg-[#0d0d12] border border-white/10 rounded-3xl clay-card space-y-4 flex flex-col justify-between">
-                  <div className="space-y-3">
-                    <div className="relative h-40 rounded-2xl overflow-hidden border border-white/10 bg-black">
-                      <img src={proj.image} alt={proj.title} className="w-full h-full object-cover" />
-                      {proj.featuredHome && (
-                        <span className="absolute top-2 left-2 bg-violet-600 text-white font-mono text-[9px] uppercase px-2.5 py-1 rounded-full font-bold shadow-md">
-                          Featured Home
+              {store.projects.length > 0 ? (
+                store.projects.map((proj) => (
+                  <div key={proj.id} className="p-6 bg-[#0d0d12] border border-white/10 rounded-3xl clay-card space-y-4 flex flex-col justify-between">
+                    <div className="space-y-3">
+                      <div className="relative h-40 rounded-2xl overflow-hidden border border-white/10 bg-black">
+                        <img src={proj.image} alt={proj.title} className="w-full h-full object-cover" />
+                        {proj.featuredHome && (
+                          <span className="absolute top-2 left-2 bg-violet-600 text-white font-mono text-[9px] uppercase px-2.5 py-1 rounded-full font-bold shadow-md">
+                            Featured Home
+                          </span>
+                        )}
+                        <span className="absolute bottom-2 right-2 bg-black/80 text-stone-300 font-mono text-[9px] px-2 py-0.5 rounded border border-white/10">
+                          {proj.category}
                         </span>
-                      )}
-                      <span className="absolute bottom-2 right-2 bg-black/80 text-stone-300 font-mono text-[9px] px-2 py-0.5 rounded border border-white/10">
-                        {proj.category}
-                      </span>
-                    </div>
-
-                    <div>
-                      <span className="text-[10px] font-mono text-violet-400 font-bold uppercase">{proj.domain} • {proj.client}</span>
-                      <h4 className="font-display font-bold text-lg text-stone-100 line-clamp-1">{proj.title}</h4>
-                      <p className="text-stone-400 text-xs line-clamp-2 mt-1">{proj.description}</p>
-                    </div>
-
-                    {proj.driveLink && (
-                      <div className="p-2.5 bg-[#07070a] border border-white/10 rounded-xl flex items-center justify-between text-[10px] font-mono">
-                        <span className="text-stone-400">Drive / Download Link:</span>
-                        <a href={proj.driveLink} target="_blank" rel="noreferrer" className="text-violet-400 hover:underline flex items-center space-x-1">
-                          <Download size={12} />
-                          <span>View Folder</span>
-                        </a>
                       </div>
-                    )}
-                  </div>
 
-                  <div className="pt-4 border-t border-white/10 flex items-center justify-between">
-                    <div className="flex items-center space-x-2">
-                      <button
-                        onClick={() => handleOpenProjectForm(proj)}
-                        className="p-2 bg-violet-950/60 hover:bg-violet-900 border border-violet-500/30 text-violet-300 rounded-xl transition-all cursor-pointer"
-                        title="Edit Project"
-                      >
-                        <Edit3 size={14} />
-                      </button>
-                      <button
-                        onClick={() => handleDeleteProject(proj.id)}
-                        className="p-2 bg-red-950/60 hover:bg-red-900 border border-red-500/30 text-red-300 rounded-xl transition-all cursor-pointer"
-                        title="Delete Project"
-                      >
-                        <Trash2 size={14} />
-                      </button>
+                      <div>
+                        <span className="text-[10px] font-mono text-violet-400 font-bold uppercase">{proj.domain} • {proj.client}</span>
+                        <h4 className="font-display font-bold text-lg text-stone-100 line-clamp-1">{proj.title}</h4>
+                        <p className="text-stone-400 text-xs line-clamp-2 mt-1">{proj.description}</p>
+                      </div>
+
+                      {proj.driveLink && (
+                        <div className="p-2.5 bg-[#07070a] border border-white/10 rounded-xl flex items-center justify-between text-[10px] font-mono">
+                          <span className="text-stone-400">Drive / Download Link:</span>
+                          <a href={proj.driveLink} target="_blank" rel="noreferrer" className="text-violet-400 hover:underline flex items-center space-x-1">
+                            <Download size={12} />
+                            <span>View Folder</span>
+                          </a>
+                        </div>
+                      )}
                     </div>
 
-                    <button
-                      onClick={() => {
-                        dataStore.saveProject({ ...proj, featuredHome: !proj.featuredHome });
-                      }}
-                      className={`px-3 py-1.5 rounded-xl text-[10px] font-mono uppercase font-bold transition-all cursor-pointer ${
-                        proj.featuredHome ? 'bg-violet-600 text-white' : 'bg-white/10 text-stone-400 hover:bg-white/20'
-                      }`}
-                    >
-                      {proj.featuredHome ? '★ Featured' : 'Feature Home'}
-                    </button>
+                    <div className="pt-4 border-t border-white/10 flex items-center justify-between">
+                      <div className="flex items-center space-x-2">
+                        <button
+                          onClick={() => handleOpenProjectForm(proj)}
+                          className="p-2 bg-violet-950/60 hover:bg-violet-900 border border-violet-500/30 text-violet-300 rounded-xl transition-all cursor-pointer"
+                          title="Edit Project"
+                        >
+                          <Edit3 size={14} />
+                        </button>
+                        <button
+                          onClick={() => handleDeleteProject(proj.id)}
+                          className="p-2 bg-red-950/60 hover:bg-red-900 border border-red-500/30 text-red-300 rounded-xl transition-all cursor-pointer"
+                          title="Delete Project"
+                        >
+                          <Trash2 size={14} />
+                        </button>
+                      </div>
+
+                      <button
+                        onClick={() => {
+                          dataStore.saveProject({ ...proj, featuredHome: !proj.featuredHome });
+                        }}
+                        className={`px-3 py-1.5 rounded-xl text-[10px] font-mono uppercase font-bold transition-all cursor-pointer ${
+                          proj.featuredHome ? 'bg-violet-600 text-white' : 'bg-white/10 text-stone-400 hover:bg-white/20'
+                        }`}
+                      >
+                        {proj.featuredHome ? '★ Featured' : 'Feature Home'}
+                      </button>
+                    </div>
                   </div>
+                ))
+              ) : (
+                <div className="col-span-full p-12 bg-[#0d0d12] border border-white/10 rounded-3xl text-center space-y-4">
+                  <Layers className="w-12 h-12 text-violet-400 mx-auto opacity-80" />
+                  <h4 className="text-stone-200 font-display font-bold text-lg uppercase">No Projects Registered</h4>
+                  <p className="text-stone-400 text-xs max-w-md mx-auto font-sans">
+                    Your project repository is currently empty. Click "+ Add New Project" above to publish your first project.
+                  </p>
+                  <button
+                    onClick={() => handleOpenProjectForm()}
+                    className="px-5 py-2.5 bg-violet-600 hover:bg-violet-500 text-white font-mono text-xs font-bold uppercase rounded-xl transition-all cursor-pointer inline-flex items-center gap-2"
+                  >
+                    <Plus size={14} />
+                    <span>Add First Project</span>
+                  </button>
                 </div>
-              ))}
+              )}
             </div>
           </div>
         )}
@@ -703,64 +720,81 @@ export default function AdminPage({ navigate }: AdminPageProps) {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {store.products.map((prod) => (
-                <div key={prod.id} className="p-6 bg-[#0d0d12] border border-white/10 rounded-3xl clay-card space-y-4 flex flex-col justify-between">
-                  <div className="space-y-3">
-                    <div className="relative h-40 rounded-2xl overflow-hidden border border-white/10 bg-black">
-                      <img src={prod.image} alt={prod.title} className="w-full h-full object-cover" />
-                      <div className="absolute top-2 right-2 bg-violet-600 text-white font-mono text-xs px-3 py-1 rounded-full font-bold shadow-md">
-                        ${prod.priceUSD} / ₹{prod.priceINR}
+              {store.products.length > 0 ? (
+                store.products.map((prod) => (
+                  <div key={prod.id} className="p-6 bg-[#0d0d12] border border-white/10 rounded-3xl clay-card space-y-4 flex flex-col justify-between">
+                    <div className="space-y-3">
+                      <div className="relative h-40 rounded-2xl overflow-hidden border border-white/10 bg-black">
+                        <img src={prod.image} alt={prod.title} className="w-full h-full object-cover" />
+                        <div className="absolute top-2 right-2 bg-violet-600 text-white font-mono text-xs px-3 py-1 rounded-full font-bold shadow-md">
+                          ${prod.priceUSD} / ₹{prod.priceINR}
+                        </div>
                       </div>
-                    </div>
 
-                    <div>
-                      <span className="text-[10px] font-mono text-violet-400 font-bold uppercase">{prod.category} • {prod.licenseType}</span>
-                      <h4 className="font-display font-bold text-lg text-stone-100 line-clamp-1">{prod.title}</h4>
-                      <p className="text-stone-400 text-xs line-clamp-2 mt-1">{prod.description}</p>
-                    </div>
-
-                    {prod.driveLink && (
-                      <div className="p-2.5 bg-[#07070a] border border-white/10 rounded-xl flex items-center justify-between text-[10px] font-mono">
-                        <span className="text-stone-400">Public Drive / Download:</span>
-                        <a href={prod.driveLink} target="_blank" rel="noreferrer" className="text-violet-400 hover:underline flex items-center space-x-1">
-                          <Download size={12} />
-                          <span>Drive Demo</span>
-                        </a>
+                      <div>
+                        <span className="text-[10px] font-mono text-violet-400 font-bold uppercase">{prod.category} • {prod.licenseType}</span>
+                        <h4 className="font-display font-bold text-lg text-stone-100 line-clamp-1">{prod.title}</h4>
+                        <p className="text-stone-400 text-xs line-clamp-2 mt-1">{prod.description}</p>
                       </div>
-                    )}
-                  </div>
 
-                  <div className="pt-4 border-t border-white/10 flex items-center justify-between">
-                    <div className="flex items-center space-x-2">
-                      <button
-                        onClick={() => handleOpenProductForm(prod)}
-                        className="p-2 bg-violet-950/60 hover:bg-violet-900 border border-violet-500/30 text-violet-300 rounded-xl transition-all cursor-pointer"
-                        title="Edit Product"
-                      >
-                        <Edit3 size={14} />
-                      </button>
-                      <button
-                        onClick={() => handleDeleteProduct(prod.id)}
-                        className="p-2 bg-red-950/60 hover:bg-red-900 border border-red-500/30 text-red-300 rounded-xl transition-all cursor-pointer"
-                        title="Delete Product"
-                      >
-                        <Trash2 size={14} />
-                      </button>
+                      {prod.driveLink && (
+                        <div className="p-2.5 bg-[#07070a] border border-white/10 rounded-xl flex items-center justify-between text-[10px] font-mono">
+                          <span className="text-stone-400">Public Drive / Download:</span>
+                          <a href={prod.driveLink} target="_blank" rel="noreferrer" className="text-violet-400 hover:underline flex items-center space-x-1">
+                            <Download size={12} />
+                            <span>Drive Demo</span>
+                          </a>
+                        </div>
+                      )}
                     </div>
 
-                    <button
-                      onClick={() => {
-                        dataStore.saveProduct({ ...prod, featuredHome: !prod.featuredHome });
-                      }}
-                      className={`px-3 py-1.5 rounded-xl text-[10px] font-mono uppercase font-bold transition-all cursor-pointer ${
-                        prod.featuredHome ? 'bg-violet-600 text-white' : 'bg-white/10 text-stone-400 hover:bg-white/20'
-                      }`}
-                    >
-                      {prod.featuredHome ? '★ Featured' : 'Feature Home'}
-                    </button>
+                    <div className="pt-4 border-t border-white/10 flex items-center justify-between">
+                      <div className="flex items-center space-x-2">
+                        <button
+                          onClick={() => handleOpenProductForm(prod)}
+                          className="p-2 bg-violet-950/60 hover:bg-violet-900 border border-violet-500/30 text-violet-300 rounded-xl transition-all cursor-pointer"
+                          title="Edit Product"
+                        >
+                          <Edit3 size={14} />
+                        </button>
+                        <button
+                          onClick={() => handleDeleteProduct(prod.id)}
+                          className="p-2 bg-red-950/60 hover:bg-red-900 border border-red-500/30 text-red-300 rounded-xl transition-all cursor-pointer"
+                          title="Delete Product"
+                        >
+                          <Trash2 size={14} />
+                        </button>
+                      </div>
+
+                      <button
+                        onClick={() => {
+                          dataStore.saveProduct({ ...prod, featuredHome: !prod.featuredHome });
+                        }}
+                        className={`px-3 py-1.5 rounded-xl text-[10px] font-mono uppercase font-bold transition-all cursor-pointer ${
+                          prod.featuredHome ? 'bg-violet-600 text-white' : 'bg-white/10 text-stone-400 hover:bg-white/20'
+                        }`}
+                      >
+                        {prod.featuredHome ? '★ Featured' : 'Feature Home'}
+                      </button>
+                    </div>
                   </div>
+                ))
+              ) : (
+                <div className="col-span-full p-12 bg-[#0d0d12] border border-white/10 rounded-3xl text-center space-y-4">
+                  <Package className="w-12 h-12 text-violet-400 mx-auto opacity-80" />
+                  <h4 className="text-stone-200 font-display font-bold text-lg uppercase">No Digital Products</h4>
+                  <p className="text-stone-400 text-xs max-w-md mx-auto font-sans">
+                    No products listed in catalog. Click "+ Add New Product" above to publish starter kits or SDKs.
+                  </p>
+                  <button
+                    onClick={() => handleOpenProductForm()}
+                    className="px-5 py-2.5 bg-violet-600 hover:bg-violet-500 text-white font-mono text-xs font-bold uppercase rounded-xl transition-all cursor-pointer inline-flex items-center gap-2"
+                  >
+                    <Plus size={14} />
+                    <span>Add First Product</span>
+                  </button>
                 </div>
-              ))}
+              )}
             </div>
           </div>
         )}
@@ -790,59 +824,76 @@ export default function AdminPage({ navigate }: AdminPageProps) {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {store.blogs.map((blog) => (
-                <div key={blog.id} className="p-6 bg-[#0d0d12] border border-white/10 rounded-3xl clay-card space-y-4 flex flex-col justify-between">
-                  <div className="space-y-3">
-                    <div className="flex items-center justify-between text-xs font-mono">
-                      <span className="text-violet-400 font-bold uppercase">{blog.type} • {blog.category}</span>
-                      <span className="text-stone-400">{blog.date}</span>
-                    </div>
-
-                    <h4 className="font-display font-extrabold text-xl text-stone-100">{blog.title}</h4>
-                    <p className="text-stone-400 text-xs line-clamp-2 leading-relaxed">{blog.description}</p>
-
-                    {blog.driveLink && (
-                      <div className="p-2.5 bg-[#07070a] border border-white/10 rounded-xl flex items-center justify-between text-[10px] font-mono">
-                        <span className="text-stone-400">PDF / Drive Attachment:</span>
-                        <a href={blog.driveLink} target="_blank" rel="noreferrer" className="text-violet-400 hover:underline flex items-center space-x-1">
-                          <Download size={12} />
-                          <span>Open Resource</span>
-                        </a>
+              {store.blogs.length > 0 ? (
+                store.blogs.map((blog) => (
+                  <div key={blog.id} className="p-6 bg-[#0d0d12] border border-white/10 rounded-3xl clay-card space-y-4 flex flex-col justify-between">
+                    <div className="space-y-3">
+                      <div className="flex items-center justify-between text-xs font-mono">
+                        <span className="text-violet-400 font-bold uppercase">{blog.type} • {blog.category}</span>
+                        <span className="text-stone-400">{blog.date}</span>
                       </div>
-                    )}
-                  </div>
 
-                  <div className="pt-4 border-t border-white/10 flex items-center justify-between">
-                    <div className="flex items-center space-x-2">
-                      <button
-                        onClick={() => handleOpenBlogForm(blog)}
-                        className="p-2 bg-violet-950/60 hover:bg-violet-900 border border-violet-500/30 text-violet-300 rounded-xl transition-all cursor-pointer"
-                        title="Edit Blog"
-                      >
-                        <Edit3 size={14} />
-                      </button>
-                      <button
-                        onClick={() => handleDeleteBlog(blog.id)}
-                        className="p-2 bg-red-950/60 hover:bg-red-900 border border-red-500/30 text-red-300 rounded-xl transition-all cursor-pointer"
-                        title="Delete Blog"
-                      >
-                        <Trash2 size={14} />
-                      </button>
+                      <h4 className="font-display font-extrabold text-xl text-stone-100">{blog.title}</h4>
+                      <p className="text-stone-400 text-xs line-clamp-2 leading-relaxed">{blog.description}</p>
+
+                      {blog.driveLink && (
+                        <div className="p-2.5 bg-[#07070a] border border-white/10 rounded-xl flex items-center justify-between text-[10px] font-mono">
+                          <span className="text-stone-400">PDF / Drive Attachment:</span>
+                          <a href={blog.driveLink} target="_blank" rel="noreferrer" className="text-violet-400 hover:underline flex items-center space-x-1">
+                            <Download size={12} />
+                            <span>Open Resource</span>
+                          </a>
+                        </div>
+                      )}
                     </div>
 
-                    <button
-                      onClick={() => {
-                        dataStore.saveBlog({ ...blog, featuredHome: !blog.featuredHome });
-                      }}
-                      className={`px-3 py-1.5 rounded-xl text-[10px] font-mono uppercase font-bold transition-all cursor-pointer ${
-                        blog.featuredHome ? 'bg-violet-600 text-white' : 'bg-white/10 text-stone-400 hover:bg-white/20'
-                      }`}
-                    >
-                      {blog.featuredHome ? '★ Featured' : 'Feature Home'}
-                    </button>
+                    <div className="pt-4 border-t border-white/10 flex items-center justify-between">
+                      <div className="flex items-center space-x-2">
+                        <button
+                          onClick={() => handleOpenBlogForm(blog)}
+                          className="p-2 bg-violet-950/60 hover:bg-violet-900 border border-violet-500/30 text-violet-300 rounded-xl transition-all cursor-pointer"
+                          title="Edit Blog"
+                        >
+                          <Edit3 size={14} />
+                        </button>
+                        <button
+                          onClick={() => handleDeleteBlog(blog.id)}
+                          className="p-2 bg-red-950/60 hover:bg-red-900 border border-red-500/30 text-red-300 rounded-xl transition-all cursor-pointer"
+                          title="Delete Blog"
+                        >
+                          <Trash2 size={14} />
+                        </button>
+                      </div>
+
+                      <button
+                        onClick={() => {
+                          dataStore.saveBlog({ ...blog, featuredHome: !blog.featuredHome });
+                        }}
+                        className={`px-3 py-1.5 rounded-xl text-[10px] font-mono uppercase font-bold transition-all cursor-pointer ${
+                          blog.featuredHome ? 'bg-violet-600 text-white' : 'bg-white/10 text-stone-400 hover:bg-white/20'
+                        }`}
+                      >
+                        {blog.featuredHome ? '★ Featured' : 'Feature Home'}
+                      </button>
+                    </div>
                   </div>
+                ))
+              ) : (
+                <div className="col-span-full p-12 bg-[#0d0d12] border border-white/10 rounded-3xl text-center space-y-4">
+                  <FileText className="w-12 h-12 text-violet-400 mx-auto opacity-80" />
+                  <h4 className="text-stone-200 font-display font-bold text-lg uppercase">No Blog Posts / Publications</h4>
+                  <p className="text-stone-400 text-xs max-w-md mx-auto font-sans">
+                    No articles published yet. Click "+ Add New Post / Whitepaper" above to publish technical insights.
+                  </p>
+                  <button
+                    onClick={() => handleOpenBlogForm()}
+                    className="px-5 py-2.5 bg-violet-600 hover:bg-violet-500 text-white font-mono text-xs font-bold uppercase rounded-xl transition-all cursor-pointer inline-flex items-center gap-2"
+                  >
+                    <Plus size={14} />
+                    <span>Add First Post</span>
+                  </button>
                 </div>
-              ))}
+              )}
             </div>
           </div>
         )}

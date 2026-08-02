@@ -277,30 +277,44 @@ export default function ProcessInsightsPage({ navigate }: ProcessInsightsPagePro
 
             {/* Articles List / Cards */}
             <div className="space-y-4 text-left">
-              {articles.map((article) => (
-                <div 
-                  key={article.id}
-                  onClick={() => setSelectedArticle(article.id)}
-                  className="p-6 md:p-8 clay-card hover:border-violet-300 hover:scale-[1.01] transition-all cursor-pointer group flex flex-col justify-between"
-                >
-                  <div>
-                    <div className="flex items-center justify-between mb-3 font-mono">
-                      <span className="text-xs text-violet-600 tracking-wider font-bold uppercase">{article.tag}</span>
-                      <span className="text-xs text-stone-400 font-bold">{article.readTime}</span>
+              {articles.length > 0 ? (
+                articles.map((article) => (
+                  <div 
+                    key={article.id}
+                    onClick={() => setSelectedArticle(article.id)}
+                    className="p-6 md:p-8 clay-card hover:border-violet-300 hover:scale-[1.01] transition-all cursor-pointer group flex flex-col justify-between"
+                  >
+                    <div>
+                      <div className="flex items-center justify-between mb-3 font-mono">
+                        <span className="text-xs text-violet-600 tracking-wider font-bold uppercase">{article.tag}</span>
+                        <span className="text-xs text-stone-400 font-bold">{article.readTime}</span>
+                      </div>
+                      <h3 className="text-stone-100 font-extrabold uppercase tracking-tight text-sm group-hover:text-violet-600 transition-colors mb-2 font-display">
+                        {article.title}
+                      </h3>
+                      <p className="text-xs text-stone-400 leading-relaxed mb-4 font-sans font-light">
+                        {article.excerpt}
+                      </p>
                     </div>
-                    <h3 className="text-stone-100 font-extrabold uppercase tracking-tight text-sm group-hover:text-violet-600 transition-colors mb-2 font-display">
-                      {article.title}
-                    </h3>
-                    <p className="text-xs text-stone-400 leading-relaxed mb-4 font-sans font-light">
-                      {article.excerpt}
+                    <div className="flex items-center space-x-2 text-xs font-bold text-stone-400 group-hover:text-violet-600 transition-colors uppercase font-mono">
+                      <span>Decrypt Transmission</span>
+                      <ChevronRight size={12} className="group-hover:translate-x-0.5 transition-transform" />
+                    </div>
+                  </div>
+                ))
+              ) : (
+                <div className="p-8 rounded-3xl bg-[#0d0d12]/90 border border-white/10 text-center space-y-4 shadow-xl backdrop-blur-xl">
+                  <div className="w-12 h-12 rounded-full bg-violet-600/10 border border-violet-500/30 flex items-center justify-center mx-auto text-violet-400">
+                    <Terminal size={20} />
+                  </div>
+                  <div>
+                    <h4 className="text-base font-display font-bold text-white uppercase">No Lab Publications Yet</h4>
+                    <p className="text-xs text-stone-400 mt-1 font-sans">
+                      New technical papers, architecture blueprints, and agentic research notes will be published here.
                     </p>
                   </div>
-                  <div className="flex items-center space-x-2 text-xs font-bold text-stone-400 group-hover:text-violet-600 transition-colors uppercase font-mono">
-                    <span>Decrypt Transmission</span>
-                    <ChevronRight size={12} className="group-hover:translate-x-0.5 transition-transform" />
-                  </div>
                 </div>
-              ))}
+              )}
             </div>
 
             {/* Featured Abstract Art Area in Insights Column */}
